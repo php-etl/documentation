@@ -20,9 +20,7 @@ The tools built for Sylius is composed of ETL capacities and data processing fun
 ### The Sylius plugin for ETL Pipeline
 
 This plugin will enable Sylius connectivity to the [ETL Pipeline](../../components/pipeline), in order to
-read and write from and to Akeneo PIM. This integration is compatible with both
-[Akeneo Enterprise Edition client](https://github.com/akeneo/api-php-client-ee)
-and the [Akeneo Community Edition client](https://github.com/akeneo/api-php-client).
+read and write from and to Sylius.
 
 [See detailed documentation](plugin)
 
@@ -40,12 +38,6 @@ satellite:
         extractor:
           type: products
           method: all
-          search:
-            - { field: enabled, operator: '=', value: true }
-            - { field: completeness, operator: '>', value: 70, scope: ecommerce }
-            - { field: completeness, operator: '<', value: 85, scope: ecommerce }
-            - { field: categories, operator: IN, value: winter_collection }
-            - { field: family, operator: IN, value: [camcorders, digital_cameras] }
         logger:
           type: 'stderr'
         client:
