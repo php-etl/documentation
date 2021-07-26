@@ -173,7 +173,7 @@ Now, you will need to add a new amqp service in your `docker-compose.yaml` file:
 services:
   amqp:
     build:
-      context: .docker/rabbitmq/
+      context: .docker/amqp/
     ports:
       - ${AMQP_PORT:-15672}:15672
     environment:
