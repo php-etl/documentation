@@ -157,11 +157,11 @@
             
             <a class="dropdown-item" href="/documentation/connectivity/custom">Custom connector</a>
             
-            <a class="dropdown-item" href="/documentation/connectivity/json-schema">JSON schema</a>
+            <a class="dropdown-item" href="/documentation/connectivity/json-ld">JSON-LD</a>
             
             <a class="dropdown-item" href="/documentation/connectivity/akeneo">Akeneo</a>
             
-            <a class="dropdown-item" href="/documentation/connectivity/database">SQL database</a>
+            <a class="dropdown-item" href="/documentation/connectivity/sql">SQL database</a>
             
             <a class="dropdown-item" href="/documentation/connectivity/csv">CSV files</a>
             
@@ -370,7 +370,7 @@ output {
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">services</span>:
   <span style="color:#f92672">amqp</span>:
     <span style="color:#f92672">build</span>:
-      <span style="color:#f92672">context</span>: <span style="color:#ae81ff">.docker/rabbitmq/</span>
+      <span style="color:#f92672">context</span>: <span style="color:#ae81ff">.docker/amqp/</span>
     <span style="color:#f92672">ports</span>:
       - <span style="color:#ae81ff">${AMQP_PORT:-15672}:15672</span>
     <span style="color:#f92672">environment</span>:
@@ -534,104 +534,6 @@ hz <span style="color:#ae81ff">10</span>
             
             
             
-
-            
-            
-            
-
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-
-            
-            
-            
-
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-
-            
-            
-            
-
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-
-            
-            
-            
-
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-
-            
-            
-            
-            
-            
-
-            
-            
-            
-            
-            
-            
-            
-            
-
-            
-            
-            
-
-            
-            
-            
-            
-            
-            
-            
-            
             
             
             
@@ -834,6 +736,88 @@ hz <span style="color:#ae81ff">10</span>
             
             
 
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+
+            
+            
+            
             
             
             
@@ -916,7 +900,7 @@ hz <span style="color:#ae81ff">10</span>
             <a class="nav nav-prev" href="https://php-etl.github.io/documentation/installation/bare-metal/"><i class="ti-arrow-left mr-2"></i> <span class="d-none d-md-block">Bare-metal Installation</span></a>
             
             
-            <a class="nav nav-next" href="https://php-etl.github.io/documentation/components/"> <span class="d-none d-md-block">Components</span><i class="ti-arrow-right ml-2"></i></a>
+            <a class="nav nav-next" href="https://php-etl.github.io/documentation/connectivity/"> <span class="d-none d-md-block">Connectivity</span><i class="ti-arrow-right ml-2"></i></a>
             
           </nav>
         </div>

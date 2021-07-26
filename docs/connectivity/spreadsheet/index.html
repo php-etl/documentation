@@ -157,11 +157,11 @@
             
             <a class="dropdown-item" href="/documentation/connectivity/custom">Custom connector</a>
             
-            <a class="dropdown-item" href="/documentation/connectivity/json-schema">JSON schema</a>
+            <a class="dropdown-item" href="/documentation/connectivity/json-ld">JSON-LD</a>
             
             <a class="dropdown-item" href="/documentation/connectivity/akeneo">Akeneo</a>
             
-            <a class="dropdown-item" href="/documentation/connectivity/database">SQL database</a>
+            <a class="dropdown-item" href="/documentation/connectivity/sql">SQL database</a>
             
             <a class="dropdown-item" href="/documentation/connectivity/csv">CSV files</a>
             
@@ -212,8 +212,6 @@
             <a class="back-btn" href="/documentation"></a>
             
               
-            
-              
               
 
 
@@ -242,10 +240,32 @@
 
 
 
-<li data-nav-id="https://php-etl.github.io/documentation/connectivity/json-schema/" title="JSON Schema" class="sidelist
+<li data-nav-id="https://php-etl.github.io/documentation/connectivity/sql/" title="SQL" class="sidelist
   ">
-  <a href="https://php-etl.github.io/documentation/connectivity/json-schema/">
-    JSON Schema
+  <a href="https://php-etl.github.io/documentation/connectivity/sql/">
+    SQL
+  </a>
+  
+  
+</li>
+
+
+        
+      
+        
+          
+
+
+
+
+
+
+
+
+<li data-nav-id="https://php-etl.github.io/documentation/connectivity/json-ld/" title="JSON-LD" class="sidelist
+  ">
+  <a href="https://php-etl.github.io/documentation/connectivity/json-ld/">
+    JSON-LD
   </a>
   
   
@@ -290,28 +310,6 @@
   ">
   <a href="https://php-etl.github.io/documentation/connectivity/orocommerce/">
     OroCommerce
-  </a>
-  
-  
-</li>
-
-
-        
-      
-        
-          
-
-
-
-
-
-
-
-
-<li data-nav-id="https://php-etl.github.io/documentation/connectivity/orocrm/" title="OroCRM" class="sidelist
-  ">
-  <a href="https://php-etl.github.io/documentation/connectivity/orocrm/">
-    OroCRM
   </a>
   
   
@@ -491,6 +489,8 @@
             
               
             
+              
+            
           </ul>
         </div>
       </div>
@@ -498,47 +498,73 @@
         <div class="p-lg-5 p-4 bg-white">
           <h2 class="mb-5">Spreadsheet</h2>
           
-          <div class="content">
-
-
-
-
-<div style="margin-top: 10px; margin-bottom: 10px;">
-<b>FEATURE STATE:</b> <code>Middleware 0.1 [alpha]</code>
-</div>
-
-
-<h3 id="definition">Definition</h3>
-<p>This package aims at integrating the Excel or the Opendocument reader and writer into the
+          <div class="content"><h1 id="spreadsheet-plugin">Spreadsheet Plugin</h1>
+<h2 id="what-is-it-">What is it ?</h2>
+<p>The Spreadsheet plugin aims at integrating the Spreadsheet or the Opendocument reader and writer into the
 <a href="https://github.com/php-etl/pipeline">Pipeline</a> stack.</p>
-<h3 id="principles">Principles</h3>
-<p>The tools in this library will produce executable PHP sources, using an intermediate <em>Abstract Syntax Tree</em> from
-<a href="https://github.com/nikic/PHP-Parser">nikic/php-parser</a>. This intermediate format helps you combine
-the code produced by this library with other packages from <a href="https://github.com/php-etl">Middleware</a>.</p>
-<h3 id="installation">Installation</h3>
-<pre><code>composer require php-etl/spreadsheet-plugin
-</code></pre><h3 id="usage">Usage</h3>
-<p>When you write a yaml configuration file, by default the extraction starts at line 0, but
-you can also choose at which line you want your extraction to start with the <code>skip_lines</code> option</p>
-<p>Regarding the <code>logger:</code> option, it can be set or not. If it&rsquo;s not set, then <code>logger:</code> will be set to <code>\Psr\Log\NullLogger</code>.</p>
-<h4 id="extract-an-excel-file">Extract an Excel file</h4>
-<p>Reads <code>input.xlsx</code> with logs error in system&rsquo;s <a href="https://en.wikipedia.org/wiki/Standard_streams#Standard_error_(stderr)">stderr</a>.</p>
+<h2 id="installation">Installation</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">composer require php-etl/spreadsheet-plugin
+</code></pre></div><h2 id="usage">Usage</h2>
+<p>The Spreadsheet plugin allows you to instantiate an extractor or loader for excel, opendocument and csv files.</p>
+<h3 id="building-an--extractor">Building an  extractor</h3>
+<p>To build an extractor, you need to specify the path of your file, the type of extractor to build and the name of the
+sheet to read.</p>
+<p>The different types of extractor supported :</p>
+<ul>
+<li><code>excel</code></li>
+<li><code>open_document</code></li>
+<li><code>csv</code></li>
+</ul>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">spreadsheet</span>:
   <span style="color:#f92672">extractor</span>:
     <span style="color:#f92672">file_path</span>: <span style="color:#e6db74">&#39;input.xlsx&#39;</span>
-    <span style="color:#f92672">excel</span>:
+    <span style="color:#f92672">excel</span>: <span style="color:#75715e"># can be excel, open_document or csv</span>
       <span style="color:#f92672">sheet</span>: <span style="color:#e6db74">&#39;sheet2&#39;</span>
-      <span style="color:#f92672">skip_line</span>: <span style="color:#ae81ff">1</span>
-  <span style="color:#f92672">logger</span>:
-    <span style="color:#f92672">type</span>: <span style="color:#ae81ff">stderr</span>
-</code></pre></div><h4 id="load-an-opendocument-file">Load an OpenDocument file</h4>
-<p>Writes <code>output.ods</code> without logs error.</p>
+</code></pre></div><p>Warning : CSV files don&rsquo;t use any sheet, so the <code>sheet</code> option is disabled but takes additional options <code>delimiter</code> and
+<code>enclosure</code>.</p>
+<h3 id="building-a-loader">Building a loader</h3>
+<p>To build a loader, you must specify the path of your file, the type of loader to build and the name of the sheet to create.</p>
+<p>The different types of loader supported :</p>
+<ul>
+<li><code>excel</code></li>
+<li><code>open_document</code></li>
+<li><code>csv</code></li>
+</ul>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">spreadsheet</span>:
   <span style="color:#f92672">loader</span>:
-    <span style="color:#f92672">file_path</span>: <span style="color:#e6db74">&#39;output.ods&#39;</span>
-    <span style="color:#f92672">open_document</span>:
+    <span style="color:#f92672">file_path</span>: <span style="color:#e6db74">&#39;input.xlsx&#39;</span>
+    <span style="color:#f92672">excel</span>: <span style="color:#75715e"># can be excel, open_document or csv</span>
       <span style="color:#f92672">sheet</span>: <span style="color:#e6db74">&#39;sheet2&#39;</span>
-</code></pre></div></div>
+</code></pre></div><p>Warning : CSV files do not use a sheet, so the <code>sheet</code> option is disabled but takes additional options <code>delimiter</code>,
+<code>enclosure</code> and <code>encoding</code>.</p>
+<h3 id="using-a-logger">Using a logger</h3>
+<p>The <code>logger</code> option has been set up so that you can use a logger directly in the Pipeline.
+When using this option, you must specify the type of logger.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">spreadsheet</span>:
+  <span style="color:#75715e"># ...</span>
+  <span style="color:#f92672">logger</span>:
+    <span style="color:#f92672">type</span>: <span style="color:#ae81ff">stderr</span>
+</code></pre></div><h2 id="advanced-usage">Advanced usage</h2>
+<h3 id="skip-one-or-more-lines">Skip one or more lines</h3>
+<p>Your file may have a header of one or more lines, you must use the <code>skip_lines</code> option to get your pipeline to start
+extracting from the right row.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">spreadsheet</span>:
+ <span style="color:#f92672">extractor</span>: 
+   <span style="color:#f92672">excel</span>:
+     <span style="color:#75715e"># ...</span>
+     <span style="color:#f92672">skip_lines</span>: <span style="color:#ae81ff">2</span>
+</code></pre></div><p>Warning : This option is only available when building extractors</p>
+<h3 id="splitting-into-several-files">Splitting into several files</h3>
+<p>To limit the number of lines to be written to your excel, openDocument or csv file, you can specify the
+<code>max_lines</code> option.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">spreadsheet</span>:
+  <span style="color:#f92672">loader</span>:
+    <span style="color:#f92672">file_path</span>: <span style="color:#e6db74">&#39;input.xlsx&#39;</span>
+    <span style="color:#f92672">excel</span>:
+      <span style="color:#75715e"># ...</span>
+      <span style="color:#f92672">max_lines</span>: <span style="color:#ae81ff">20</span>
+</code></pre></div><p>Warning : this option is only available for loaders</p>
+</div>
           
           <p class="post-meta border-bottom pb-3 mb-0 mt-3">Updated on 30 Mar 2021</p>
           <nav class="pagination mt-3">
@@ -568,8 +594,6 @@ you can also choose at which line you want your extraction to start with the <co
             
             
             
-            
-            
 
             
             
@@ -577,51 +601,6 @@ you can also choose at which line you want your extraction to start with the <co
             
             
 
-            
-            
-            
-            
-            
-            
-            
-            
-
-            
-            
-            
-
-            
-            
-            
-            
-            
-            
-            
-            
-
-            
-            
-            
-
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-
-            
-            
-            
-
-            
-            
-            
             
             
             
@@ -666,27 +645,6 @@ you can also choose at which line you want your extraction to start with the <co
             
             
             
-            
-            
-            
-
-            
-            
-            
-            
-            
-
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
 
             
             
@@ -695,39 +653,6 @@ you can also choose at which line you want your extraction to start with the <co
             
             
             
-            
-            
-            
-            
-            
-            
-            
-            
-            
-
-            
-            
-            
-
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-
-            
-            
-            
-
             
             
             
@@ -964,6 +889,88 @@ you can also choose at which line you want your extraction to start with the <co
             
             
             
+
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
             
             
             
@@ -984,7 +991,7 @@ you can also choose at which line you want your extraction to start with the <co
             
 
             
-            <a class="nav nav-prev" href="https://php-etl.github.io/documentation/connectivity/json-schema/"><i class="ti-arrow-left mr-2"></i> <span class="d-none d-md-block">JSON Schema</span></a>
+            <a class="nav nav-prev" href="https://php-etl.github.io/documentation/connectivity/json-ld/"><i class="ti-arrow-left mr-2"></i> <span class="d-none d-md-block">JSON-LD</span></a>
             
             
             <a class="nav nav-next" href="https://php-etl.github.io/documentation/connectivity/orocommerce/"> <span class="d-none d-md-block">OroCommerce</span><i class="ti-arrow-right ml-2"></i></a>
