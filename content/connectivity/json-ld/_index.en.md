@@ -15,9 +15,9 @@ description: "Read and write JSON-LD files"
 The JSON plugin aims at integrating the JSON-LD extractor and loader into the [Pipeline](https://github.com/php-etl/pipeline)
 stack.
 
-
 ## Installation
-```
+
+```shell
 composer require php-etl/json-plugin
 ```
 

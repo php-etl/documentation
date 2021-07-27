@@ -31,23 +31,28 @@ This connection must be present in any case, whether it be when defining the ext
 loader or lookup.
 
 ```yaml
-connection:
-  dsn: 'mysql:host=127.0.0.1;port=3306;dbname=kiboko'
-  username: username
-  password: password
+sql:
+  connection:
+    dsn: 'mysql:host=127.0.0.1;port=3306;dbname=kiboko'
+    username: username
+    password: password
 ```
 
 It is possible to specify options at the time of this connection using `options`. Currently, it is only possible to
 specify if the database connection should be persistent.
 
 ```yaml
-connection:
+sql:
+  connection:
   # ...
-  options:
-    persistent: true
+    options:
+      persistent: true
 ```
 
 ### Building an extractor
+
+In the configuration of your extractor, you must write your query avec l'option `query`.
+
 ```yaml
 sql:
   extractor:
@@ -57,7 +62,18 @@ sql:
     username: username
     password: password
 ```
+
 ### Building a lookup
+
+In some cases, you will need to perform lookups by joining data from input columns to columns in a reference dataset;
+this is called a lookup.
+
+In the configuration of your lookup, you must write your query avec l'option `query`.
+
+The `merge` option allows you to add data to your dataset, in a sense merging your actual dataset with your new data.
+
+The `map` option comes from the [FastMap](../../../connectivity/fast-map) plugin, feel free to read its documentation
+to understand how to use it.
 
 ```yaml
 sql:
@@ -74,7 +90,34 @@ sql:
 
 ```
 
+### Building a ConditionalLookup
+
+The conditional lookup is a lookup that takes conditions into account. Your lookup will be executed when each
+condition is met.
+
+About its configuration, you will find the same options as for the classic lookup, except that there is an additional
+`condition` option.
+
+```yaml
+sql:
+  lookup:
+    conditional:
+      - condition: '@=input["id"] > 2'
+        query: 'SELECT * FROM foo WHERE value IS NOT NULL AND id <= ?'
+        parameters:
+          - key: 'identifier'
+            value: '@=3'
+        merge:
+          map:
+            - field: '[options]'
+              expression: 'lookup["name"]'
+  # ...
+```
+
 ### Building a loader
+
+In the configuration of your loader, you must write your query avec l'option `query`.
+
 ```yaml
 sql:
   loader:
@@ -84,6 +127,26 @@ sql:
     username: username
     password: password
 
+```
+
+### Building a ConditionalLoader
+
+The conditional loader is a loader that takes conditions into account. Your loader will be executed when each
+condition is met.
+
+About its configuration, you will find the same options as for the classic loader, except that there is an additional
+`condition` option.
+
+```yaml
+sql:
+  loader:
+    conditional:
+      - condition: '@=input["id"] > 2'
+        query: 'SELECT * FROM foo WHERE value IS NOT NULL AND id <= ?'
+        parameters:
+          - key: 'identifier'
+            value: '@=3'
+  # ...
 ```
 
 ### Using a logger
@@ -96,7 +159,6 @@ sql:
   logger:
     type: stderr
 ```
-
 
 ## Advanced Usage
 

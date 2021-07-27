@@ -675,3 +675,17 @@ In order to generate date objects, two functions has been created:
 `dateTimeZone ( string date, string timezone [ string format ] )`
 
 The results will be [`\DateTimeImmutable` PHP objects](https://www.php.net/manual/fr/class.datetimeimmutable.php).
+
+#### Manage metrics with `metricAmount`, `metricUnit` et `formatMetric`
+
+`metricAmount(string $value, int $decimalRound = 4)`
+
+This function will get the value of an attribute.
+
+`metricUnit(string $value)`
+
+This function will get the unit of an attribute.
+
+`formatMetric(array $attribut, string $locale)` 
+
+This function will formats the value according to a given country.

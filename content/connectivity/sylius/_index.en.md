@@ -9,67 +9,130 @@ description: "Connect your Sylius e-commerce through pipelines"
 
 {{< feature-state for_mw_version="0.1" state="alpha" >}}
 
-### Goal
+# Sylius Plugin
 
-The packages listed below aims at the integration of [Sylius](https://www.sylius.com) into the [ETL Pipeline](../../components/pipeline) 
-and [Satellite](../../components/satellite) stacks.
+## What is it ?
 
-The tools built for Sylius is composed of ETL capacities and data processing functions to be used in
-[Fast Map](../../components/fast-map).
+The Sylius plugin will enable Sylius connectivity to the [Pipeline](../../components/pipeline), in order to read and write from and to Sylius.
 
-### The Sylius plugin for ETL Pipeline
+## Installation
 
-This plugin will enable Sylius connectivity to the [ETL Pipeline](../../components/pipeline), in order to
-read and write from and to Sylius.
+```shell
+composer require php-etl/sylius-plugin
+```
 
-[See detailed documentation](plugin)
+## Usage
 
-### Configuration format
+### Connecting to Sylius
 
-#### Building an extractor
+To establish a connection to your Sylius API, you must specify its URL and some connection identifiers
+(`client_id`, `secret`, `username`, `password`).
 
-{{< tabs name="basic_definition" >}}
+```yaml
+sylius:
+  # ...
+  client:
+    api_url: 'http://127.0.0.1:8001'
+    client_id: '414yc7d9mnk044ko4wswgw80o8ssw80gssos488kk8ogss40ko'
+    secret: '4k8ee6n44m4gkkg0coc8o4w4coscw0w4cg0wg8sc0wsk0sw8gs'
+    username: 'api'
+    password: 'sylius-api'
+```
 
-{{< tab name="YAML" codelang="yaml"  >}}
-satellite:
-  pipeline:
-    steps:
-    - sylius:
-        extractor:
-          type: products
-          method: all
-        logger:
-          type: 'stderr'
-        client:
-          api_url: 'https://demo.sylius.com'
-          client_id: '2_5a3jtcvwi8w0cwk88w04ogkcks00o4wowwgc8gg4w0cow4wsc8'
-          secret: '4ww9l30ij2m8wsw8w04sgw4wgkwc8gss0sgc8cc0o0goo4wkso'
-          username: 'demo_9573'
-          password: 516f3e3e5
-{{< /tab >}}
+To retrieve these identifiers, go to the [official documentation](https://docs.sylius.com/en/1.7/api/index.html) of
+Sylius.
 
-{{< /tabs >}}
+### Using a logger
 
-#### Building a loader
+The `logger` option has been set up so that you can use a logger directly in the Pipeline.
+When using this option, you must specify the type of logger.
 
-{{< tabs name="basic_definition" >}}
+```yaml
+sylius:
+  # ...
+  logger:
+    type: stderr
+```
 
-{{< tab name="YAML" codelang="yaml"  >}}
-satellite:
-  pipeline:
-    steps:
-    - sylius:
-        loader:
-          type: products
-          method: create
-        logger:
-          type: 'stderr'
-        client:
-          api_url: 'https://demo.sylius.com'
-          client_id: '2_5a3jtcvwi8w0cwk88w04ogkcks00o4wowwgc8gg4w0cow4wsc8'
-          secret: '4ww9l30ij2m8wsw8w04sgw4wgkwc8gss0sgc8cc0o0goo4wkso'
-          username: 'demo_9573'
-          password: 516f3e3e5
-{{< /tab >}}
+### Building an extractor
 
-{{< /tabs >}}
+In the configuration of your extractor, you must specify the type of table you will be working on
+and which method you want to use to retrieve your data.
+
+The list of available tables is quite long : `channels`, `countries`, `carts`, `currencies`, `customers`, `exchangeRates`,
+`locales`, `orders`, `payments`, `paymentMethods`, `products`, `productAttributes`, `productAssociationTypes`, `productOptions`,
+`promotions`, `shipments`, `shippingCategories`, `taxCategories`, `taxRates`, `taxons`, `users`, `zones`.
+
+For each table, the following 3 methods are available :
+- `all` : retrieves all data from a table
+- `get` : retrieve a row from a table
+- `listPerPage` : retrieves a set number of data from a table
+
+```yaml
+sylius:
+  extractor:
+    type: products
+    method: all
+  logger:
+    type: stderr
+  client:
+    api_url: 'http://127.0.0.1:8001'
+    client_id: '414yc7d9mnk044ko4wswgw80o8ssw80gssos488kk8ogss40ko'
+    secret: '4k8ee6n44m4gkkg0coc8o4w4coscw0w4cg0wg8sc0wsk0sw8gs'
+    username: 'api'
+    password: 'sylius-api'
+```
+
+### Building a loader
+
+In the configuration of your extractor, you must specify the type of table you are going to work on
+and which method you want to use to insert your data.
+
+The list of available tables is quite long : `channels`, `countries`, `carts`, `currencies`, `customers`, `exchangeRates`,
+`locales`, `orders`, `payments`, `paymentMethods`, `products`, `productAttributes`, `productAssociationTypes`, `productOptions`,
+`promotions`, `shipments`, `shippingCategories`, `taxCategories`, `taxRates`, `taxons`, `users`, `zones`.
+
+For each table, the following 2 methods are available:
+
+- `create` : insert a row into the table
+- `delete` : delete a row from the table
+
+```yaml
+sylius:
+  loader:
+    type: products
+    method: create
+  logger:
+    type: stderr
+  client:
+    api_url: 'http://127.0.0.1:8001'
+    client_id: '414yc7d9mnk044ko4wswgw80o8ssw80gssos488kk8ogss40ko'
+    secret: '4k8ee6n44m4gkkg0coc8o4w4coscw0w4cg0wg8sc0wsk0sw8gs'
+    username: 'api'
+    password: 'sylius-api'
+```
+
+## Advanced Usage
+
+### Filtering your search
+
+In some cases, you may only want to retrieve data that matches specific criteria.
+
+When performing a search, you need to specify certain options :
+
+- `field` : the field you want to search
+- `operator` : the operator of your search
+- `value` : the value of the field you want to search
+
+Other options are available but are not essential in your search :
+
+- `scope` : channel in which you search
+- `locale` : code of the locale you are looking for
+
+```yaml
+sylius:
+  extractor:
+    # ...
+    search:
+      - { field: enabled, operator: '=', value: true }
+```

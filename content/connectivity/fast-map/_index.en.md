@@ -37,7 +37,8 @@ If you need to config your mappers, we advise you to use the yml config which wi
 This code will then be converted into a machine code that can be used by the fast map package.
 
 ### Installation
-``` 
+
+```shell
 composer require php-etl/fast-map-plugin
 ```
 

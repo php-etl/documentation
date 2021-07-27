@@ -14,6 +14,7 @@ The Spreadsheet plugin aims at integrating the Spreadsheet or the Opendocument r
 [Pipeline](https://github.com/php-etl/pipeline) stack.
 
 ## Installation
+
 ```shell
 composer require php-etl/spreadsheet-plugin
 ```
