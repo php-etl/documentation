@@ -6,49 +6,101 @@ type: "plugins"
 description: "Read and write Excel or OpenDocument files"
 ---
 
-{{< feature-state for_mw_version="0.1" state="alpha" >}}
+# Spreadsheet Plugin
 
-### Definition
-This package aims at integrating the Excel or the Opendocument reader and writer into the
+## What is it ?
+
+The Spreadsheet plugin aims at integrating the Spreadsheet or the Opendocument reader and writer into the
 [Pipeline](https://github.com/php-etl/pipeline) stack.
 
-### Principles
-The tools in this library will produce executable PHP sources, using an intermediate _Abstract Syntax Tree_ from
-[nikic/php-parser](https://github.com/nikic/PHP-Parser). This intermediate format helps you combine
-the code produced by this library with other packages from [Middleware](https://github.com/php-etl).
-
-### Installation
-```
+## Installation
+```shell
 composer require php-etl/spreadsheet-plugin
 ```
 
-### Usage
-When you write a yaml configuration file, by default the extraction starts at line 0, but
-you can also choose at which line you want your extraction to start with the `skip_lines` option
+## Usage
 
-Regarding the `logger:` option, it can be set or not. If it's not set, then `logger:` will be set to `\Psr\Log\NullLogger`.
+The Spreadsheet plugin allows you to instantiate an extractor or loader for excel, opendocument and csv files.
 
-#### Extract an Excel file
-Reads `input.xlsx` with logs error in system's [stderr](https://en.wikipedia.org/wiki/Standard_streams#Standard_error_(stderr)).
+### Building an  extractor
+To build an extractor, you need to specify the path of your file, the type of extractor to build and the name of the
+sheet to read.
+
+The different types of extractor supported :
+- `excel`
+- `open_document`
+- `csv`
 
 ```yaml
 spreadsheet:
   extractor:
     file_path: 'input.xlsx'
-    excel:
+    excel: # can be excel, open_document or csv
       sheet: 'sheet2'
-      skip_line: 1
-  logger:
-    type: stderr
 ```
-#### Load an OpenDocument file
 
-Writes `output.ods` without logs error.
+Warning : CSV files don't use any sheet, so the `sheet` option is disabled but takes additional options `delimiter` and
+`enclosure`.
+
+### Building a loader
+To build a loader, you must specify the path of your file, the type of loader to build and the name of the sheet to create.
+
+The different types of loader supported :
+- `excel`
+- `open_document`
+- `csv`
 
 ```yaml
 spreadsheet:
   loader:
-    file_path: 'output.ods'
-    open_document:
+    file_path: 'input.xlsx'
+    excel: # can be excel, open_document or csv
       sheet: 'sheet2'
 ```
+
+Warning : CSV files do not use a sheet, so the `sheet` option is disabled but takes additional options `delimiter`,
+`enclosure` and `encoding`.
+
+### Using a logger
+The `logger` option has been set up so that you can use a logger directly in the Pipeline.
+When using this option, you must specify the type of logger.
+
+```yaml
+spreadsheet:
+  # ...
+  logger:
+    type: stderr
+```
+
+## Advanced usage
+
+### Skip one or more lines
+
+Your file may have a header of one or more lines, you must use the `skip_lines` option to get your pipeline to start
+extracting from the right row.
+
+ ```yaml
+spreadsheet:
+  extractor: 
+    excel:
+      # ...
+      skip_lines: 2
+```
+
+Warning : This option is only available when building extractors
+
+### Splitting into several files
+
+To limit the number of lines to be written to your excel, openDocument or csv file, you can specify the
+`max_lines` option.
+
+```yaml
+spreadsheet:
+  loader:
+    file_path: 'input.xlsx'
+    excel:
+      # ...
+      max_lines: 20
+```
+
+Warning : this option is only available for loaders

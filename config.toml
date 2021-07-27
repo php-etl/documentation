@@ -93,8 +93,8 @@ hasChildren = true
 
   [[menu.main]]
   parent = "Connectivity"
-  name = "JSON schema"
-  url = "connectivity/json-schema"
+  name = "JSON-LD"
+  url = "connectivity/json-ld"
   weight = 2
 
   [[menu.main]]
@@ -112,7 +112,7 @@ hasChildren = true
   [[menu.main]]
   parent = "Connectivity"
   name = "SQL database"
-  url = "connectivity/database"
+  url = "connectivity/sql"
   weight = 4
 
   [[menu.main]]
