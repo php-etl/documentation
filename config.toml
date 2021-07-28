@@ -18,14 +18,14 @@ hasChildren = true
 
   [[menu.main]]
   parent = "Installation"
-  name = "System Requirements"
-  url = "system-requirements"
+  name = "Bare metal"
+  url = "installation/bare-metal"
   weight = 1
 
   [[menu.main]]
   parent = "Installation"
-  name = "Bare metal"
-  url = "installation/bare-metal"
+  name = "System Requirements"
+  url = "system-requirements"
   weight = 2
 
 [[menu.main]]
@@ -35,27 +35,33 @@ hasChildren = true
 
   [[menu.main]]
   parent = "Packages"
-  name = "Pipeline"
-  url = "components/pipeline"
+  name = "Batch"
+  url = "components/batch"
   weight = 1
 
   [[menu.main]]
   parent = "Packages"
-  name = "Fast Map"
-  url = "components/fast-map"
+  name = "Dashboard"
+  url = "components/dashboard"
   weight = 2
+
+  [[menu.main]]
+  parent = "Packages"
+  name = "Discovery"
+  url = "components/discovery"
+  weight = 3
+
+  [[menu.main]]
+  parent = "Packages"
+  name = "Pipeline"
+  url = "components/pipeline"
+  weight = 4
 
   [[menu.main]]
   parent = "Packages"
   name = "Satellite"
   url = "components/satellite"
-  weight = 3
-
-  [[menu.main]]
-  parent = "Packages"
-  name = "Batch"
-  url = "components/batch"
-  weight = 4
+  weight = 5
 
 [[menu.main]]
 weight = 3
@@ -87,38 +93,32 @@ hasChildren = true
 
   [[menu.main]]
   parent = "Connectivity"
-  name = "Open API"
-  url = "connectivity/openapi"
+  name = "Akeneo"
+  url = "connectivity/akeneo"
   weight = 1
 
   [[menu.main]]
   parent = "Connectivity"
-  name = "JSON-LD"
-  url = "connectivity/json-ld"
+  name = "CSV files"
+  url = "connectivity/csv"
   weight = 2
 
   [[menu.main]]
   parent = "Connectivity"
   name = "Custom connector"
   url = "connectivity/custom"
-  weight = 2
-
-  [[menu.main]]
-  parent = "Connectivity"
-  name = "Akeneo"
-  url = "connectivity/akeneo"
   weight = 3
 
   [[menu.main]]
   parent = "Connectivity"
-  name = "SQL database"
-  url = "connectivity/sql"
+  name = "FastMap"
+  url = "connectivity/fast-map"
   weight = 4
 
   [[menu.main]]
   parent = "Connectivity"
-  name = "CSV files"
-  url = "connectivity/csv"
+  name = "JSON-LD"
+  url = "connectivity/json-ld"
   weight = 5
 
   [[menu.main]]
@@ -126,6 +126,18 @@ hasChildren = true
   name = "Spreadsheet files"
   url = "connectivity/spreadsheet"
   weight = 6
+
+  [[menu.main]]
+  parent = "Connectivity"
+  name = "SQL database"
+  url = "connectivity/sql"
+  weight = 7
+
+  [[menu.main]]
+   parent = "Connectivity"
+   name = "Sylius"
+   url = "connectivity/sylius"
+   weight = 7
 
 [params]
 logo = "logo-web.svg"

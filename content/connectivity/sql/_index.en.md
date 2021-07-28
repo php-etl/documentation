@@ -44,7 +44,7 @@ specify if the database connection should be persistent.
 ```yaml
 sql:
   connection:
-  # ...
+    # ...
     options:
       persistent: true
 ```
