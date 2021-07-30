@@ -18,7 +18,7 @@ to use any application as long as a plugin exists.
 
 ## Install
 
-If u want to start from scratch , create a composer project using the following command
+If you want to start from scratch , create a composer project using the following command
 
 - `composer init`
 
