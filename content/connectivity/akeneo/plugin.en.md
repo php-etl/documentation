@@ -58,7 +58,7 @@ akeneo:
 
 ### Using the enterprise version
 
-The `enterprise` option allows you to use the enterprise version. By default, it's set to false.
+The `enterprise` option allows you to use the enterprise features in Akeneo and uses the Enterprise client accordingly. By default, it's set to `false`.
 
 ```yaml
 akeneo:
@@ -68,20 +68,20 @@ akeneo:
 
 ### Building an extractor
 
-In the configuration of your extractor, you must specify the type of table you will be working on
+In the configuration of your extractor, you must specify the type of resource you will be working on
 and which method you want to use to retrieve your data.
 
-The list of available tables is quite long and depends on the version of your Akeneo (enterprise or community).
+The list of available resources is quite long depend on the edition of your Akeneo (Enterprise, Growth or Community).
 
-For a community version, you can choose between several types of tables : `product`, `category`, `attribute`,
+For a Community Edition or Growth Edition, you can choose between this types of resources : `product`, `category`, `attribute`,
 `attributeOption`, `attributeGroup`, `family`, `productMediaFile`, `locale`, `channel`, `currency`, `measureFamily`,
 `associationType`, `familyVariant`, `productModel`.
 
-For an enterprise version, you will have in addition to the types present in the community version :
+For an Enterprise Edition, you will be able to use in addition to the resources present in the Community Edition :
 `publishedProduct`, `productModelDraft`, `productDraft`, `asset`, `assetCategory`, `assetTag`, `referenceEntityRecord`,
 `referenceEntityAttribute`, `referenceEntityAttributeOption`, `referenceEntity`.
 
-For each table, the following 3 methods are available :
+For each resource, the following 3 methods are available :
 - `all` : retrieves all data from a table
 - `get` : retrieve a row from a table
 - `listPerPage` : retrieves a set number of data from a table
@@ -103,19 +103,19 @@ akeneo:
 
 ### Building a lookup
 
-In some cases, you will need to perform lookups by joining data from input columns to columns in a reference dataset;
+In some cases, you will need to perform some lookups to append to the data already read some complementary data coming from a secondary data source;
 this is called a lookup.
 
-In the configuration of your lookup, you must specify the type of table you will be working on
+In the configuration of your lookup, you must specify the type of resource you will be working on
 and which method you want to use to retrieve your data.
 
-The list of available tables is quite long and depends on the version of your Akeneo (enterprise or community).
+The list of available resources is quite long and depends on the edition of your Akeneo (Enterprise, Growth or Community).
 The options available are the same as for the [loader](#building-a-loader).
 
 The `merge` option allows you to add data to your dataset, in a sense merging your actual dataset with your new data.
 
-The `map` option comes from the [FastMap](../../../connectivity/fast-map) plugin, feel free to read its documentation
-to understand how to use it.
+The `map` option comes from the [FastMap](../../../connectivity/fast-map) plugin, you may need to read its documentation
+to understand how to use it properly.
 
 ```yaml
 akeneo:
@@ -134,13 +134,12 @@ akeneo:
     password: '516f3e3e5'
 ```
 
-### Building a ConditionalLookup
+### Building a conditional lookup
 
-The conditional lookup is a lookup that takes conditions into account. Your lookup will be executed when each
-condition is met.
+The conditional lookup is very similar to a regular lookup, at the difference that the lookup will be performed only if some conditions
+are full-filled.
 
-About its configuration, you will find the same options as for the classic lookup, except that there is an additional
-`condition` option.
+In this configuration, you will find options very similar to a standard lookup, difference being on 2 new levels of encapsulation, one of them containing the condition.
 
 ```yaml
 akeneo:
@@ -156,30 +155,41 @@ akeneo:
           map:
             - field: '[options]'
               expression: 'join("|", lookup["code"])'
+      - condition: '@=(input["type"] in ["akeneo_reference_entity", "akeneo_reference_entity_collection"])'
+        type: referenceEntityRecord
+        code: '@=input["code"]'
+        method: listPerPage
+        search:
+          - { field: enabled, operator: '=', value: '@=input["code"]', scope: '@=input["code"]', locale: '@=input["fr_FR"]' }
+        merge:
+          map:
+            - field: '[options]'
+              expression: 'join("|", lookup["code"])'
   # ...
 ```
 
 ### Building a loader
 
-In the configuration of your extractor, you must specify the type of table you are going to work on
+In the configuration of your loader, you must specify the type of resource you are going to write
 and which method you want to use to insert your data.
 
-The list of available tables is quite long et dépend de la version de votre Akeneo (enterprise ou community).
+The list of available resources is quite long and dépends on your Akeneo edition (Enterprise, Growth or Community).
 
-For a community version, you can choose between several types of tables: `product`, `category`, `attribute`,
+For a Community Edition or Growth Edition, you can choose between these types of resources: `product`, `category`, `attribute`,
 `attributeOption`, `attributeGroup`, `family`, `productMediaFile`, `locale`, `channel`, `currency`, `measureFamily`,
 `associationType`, `familyVariant`, `productModel`.
 
-For an enterprise version, you will have in addition to the types present in the community version : `publishedProduct`,
+For an Enterprise Edition, you will be able to use in addition to the resources present in the Community Edition:
+`publishedProduct`,
 `productModelDraft`, `productDraft`, `asset`, `assetCategory`, `assetTag`, `referenceEntityRecord`, `referenceEntityAttribute`,
 `referenceEntityAttributeOption`, `referenceEntity`.
 
-For each table, the following 4 methods are available :
+For each resource, the following 4 methods are available :
 
-- `create` : insert a row into the table
-- `upsert` : insert or update (if it already exists) a row into the table
-- `upsertList` : insert or update a list of data
-- `delete` : delete a row from the table
+- `create`: insert a new resource
+- `upsert`: will try to update the resource, otherwise the resource will be created
+- `upsertList`: will try to update a resources list, otherwise the resources will be created
+- `delete`: delete a resource from the table
 
 ```yaml
 akeneo:
@@ -223,6 +233,7 @@ akeneo:
       - { field: completeness, operator: '>', value: 70, scope: ecommerce }
 ```
 
+You may need to read the [filtering documentation of Akeneo API](https://api.akeneo.com/documentation/filter.html)
 ### Using ExpressionLanguage
 
 The plugin takes into account the [ExpressionLanguage](https://symfony.com/doc/current/components/expression_language.html)

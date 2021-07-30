@@ -680,12 +680,12 @@ The results will be [`\DateTimeImmutable` PHP objects](https://www.php.net/manua
 
 `metricAmount(string $value, int $decimalRound = 4)`
 
-This function will get the value of an attribute.
+This function will extract the decimal part of a metric attribute's value
 
 `metricUnit(string $value)`
 
-This function will get the unit of an attribute.
+This function will extract the unit part of a metric attribute's value
 
 `formatMetric(array $attribut, string $locale)` 
 
-This function will formats the value according to a given country.
+This function will format the metric according to the specified locale
