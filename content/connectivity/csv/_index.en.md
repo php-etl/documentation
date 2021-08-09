@@ -9,6 +9,8 @@ description: "Read and write CSV files in any format"
 
 # CSV Plugin
 
+> CSV, Comma-Separated Values, is a spreadsheet-like computer file with values separated by commas.
+
 ## What is it ?
 
 The CSV plugin aims at integrating the CSV reader and writer into the [Pipeline](https://github.com/php-etl/pipeline)
@@ -40,17 +42,6 @@ To build a loader, you need to specify the path of your file.
 csv:
   loader:
     file_path: 'output.csv'
-```
-
-### Using a logger
-The `logger` option has been set up so that you can use a logger directly in the Pipeline.
-When using this option, you must specify the type of logger.
-
-```yaml
-csv:
-  # ...
-  logger:
-    type: stderr
 ```
 
 ### Additional options

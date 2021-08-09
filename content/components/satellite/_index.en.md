@@ -10,25 +10,25 @@ description: "Generated micro-services for data stream processing in the cloud"
 
 {{< feature-state for_mw_version="0.1" state="alpha" >}}
 
-### Definition of a Satellite
+# Satellite 
 
-A satellite is a micro-service running in the cloud, packaged as a docker image.
-It can be deployed in any Docker infrastructure, including Kubernetes clusters.
+> A satellite is a micro-service running in the cloud, packaged as a docker image.
+> It can be deployed in any Docker infrastructure, including Kubernetes clusters.
 
-There are 4 types of runtimes, depending on your needs you will have to choose one of:
- * `http-api`: the micro-service will be operating an API, on which several URL routes can be registered. `http-api` is used for REST API.
- * `http-hook`: the micro-service will be operating an API on a single URL route. `http-hook` is used for webhooks. A webhook is a POST request sent to a URL. It's considered to be 
-a means for one application to provide other applications with real-time information
- * `pipeline`: the micro-service will be operating a data pipeline, executed in the backend that can be executed as a cron job. For more information on pipelines, see [Pipeline](../pipeline/).
- * `batch`: the micro-service will be orchestrating more than one data pipeline, executed in the backend that can be executed as a cron job
+## Building a satellite
 
-### Building your own satellite
+The configuration of your satellite will be defined in a file named `satellite.yaml`.
 
-Make sure that you have a yaml file in your root folder which will contain all your configuration.  
-Then, let's declare the docker image (or the file) on which we want to build our micro-service. 
+### Setting up the Adapter
+
+First, you should declare the docker image, or the file, on which we want to build the micro-service.
 
 #### Using Docker 
-To use a docker image to build your micro-service, implement the `docker` key.
+To use a docker image to build your micro-service, implement the `docker` key with its configuration options :
+
+- `from` : determines the image on which your code will run
+- `workdir` : define the working directory of a Docker container
+- `tags` : determines the references to the Docker images
 
 {{< tabs name="basic_definition" >}}
 
@@ -61,8 +61,14 @@ $satellite = (new Docker\Satellite(
 
 {{< /tabs >}}
 
+Here, we chose to use the `php:8.0-cli-alpine` base image on which our code will be executed.
+You could use any docker image of your choice, however you will need to have a PHP runtime 
+available, in a compatible version: >=8.0 with the CLI SAPI.
+
 #### Using system 
 To use a system file to build your micro-service, implement the `filesystem` key.
+
+The filesystem key is accompanied by a `path` key which determines the path of the microservice to be built.
 
 {{< tabs name="basic_definition_system" >}}
 
@@ -79,14 +85,11 @@ satellite:
 
 {{< /tabs >}}
 
-Here, we chose to use the `php:8.0-cli-alpine` base image on which our code will be executed.
-You could use any docker image of your choice, however you will need to have a PHP runtime 
-available, in a compatible version: >=8.0 with the CLI SAPI.
+### Configure composer 
 
-#### Configure composer 
+As a second step, we need to declare the composer dependencies our microservice will have with the `composer` key.
 
-Next, as a second step, we need to declare the composer dependencies our microservice will have.
-We will require them through composer, with a declarative manner.
+The `require` option allows to add all the packages, write like `package_name:version`, that we need for our microservice.
 
 {{< tabs name="basic_with_composer" >}}
 
@@ -121,10 +124,19 @@ $dockerfile->push(
 
 You can add the `from_local` option in your configuration. This option copies an existing composer.json and composer.lock.
 
-#### Configure the runtime
+### Setting up the runtime
 
 Now that we have made our environment prepared for our satellite, we will declare 
 the way we want our pipeline to handle our data flows.
+
+There are 4 types of runtimes, depending on your needs you will have to choose one of:
+ * `http-api`: the micro-service will be operating an API, on which several URL routes can be registered. `http-api` is used for REST API.
+ * `http-hook`: the micro-service will be operating an API on a single URL route. `http-hook` is used for webhooks. A webhook is a POST request sent to a URL. It's considered to be 
+a means for one application to provide other applications with real-time information
+ * `pipeline`: the micro-service will be operating a data pipeline, executed in the backend that can be executed as a cron job. For more information on pipelines, see [Pipeline](../pipeline/).
+ * `workflow`: the micro-service will be orchestrating more than one data pipeline, executed in the backend that can be executed as a cron job
+
+#### Using Pipeline
 
 {{< tabs name="dataflows" >}}
 
@@ -179,6 +191,28 @@ $pipeline->build();
 {{< /tab >}}
 
 {{< /tabs >}}
+
+##### Setting up a logger
+
+It's possible to add a logger at each step of the pipeline.
+
+[See detailed logger documentation](../../connectivity/logger)
+
+```yaml
+satellite:
+# ...
+   pipeline:
+      steps:
+      - akeneo:
+        # ...
+        logger:
+          channel: pipeline
+          destinations:
+            - elasticsearch:
+                level: warning
+                hosts:
+                  - http://user:password@elasticsearch.example.com:9200
+```
 
 ### Configuration formats
 

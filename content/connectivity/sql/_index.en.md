@@ -8,12 +8,12 @@ description: "Write SQL queries"
 
 # SQL Plugin
 
+> SQL, Structured Query Language, is a language for manipulating databases.
+
 ## What is it ?
 
 The SQL plugin allows you to write your own SQL queries and use them into the [Pipeline](https://github.com/php-etl/pipeline)
 stack.
-
-SQL, Structured Query Language, is a language for manipulating databases.
 
 ## Installation
 
@@ -147,17 +147,6 @@ sql:
           - key: 'identifier'
             value: '@=3'
   # ...
-```
-
-### Using a logger
-The `logger` option has been set up so that you can use a logger directly in the Pipeline.
-When using this option, you must specify the type of logger.
-
-```yaml
-sql:
-  # ...
-  logger:
-    type: stderr
 ```
 
 ## Advanced Usage

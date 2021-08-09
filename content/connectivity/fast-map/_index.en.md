@@ -11,6 +11,10 @@ description: "Data transformation and serialization, with compiled and static ma
 
 # Fast Map
 
+> A mapping is an operation that associates each element of a source of data into
+> a new format of the same data. By this operation, it is possible to transform
+> the way the data is represented.
+
 ## What is it ?
 
 The FastMap plugin aims at integrating mappers into the [Pipeline](https://github.com/php-etl/pipeline) stack.
@@ -35,12 +39,6 @@ This component allows you to configure your mapper according to the type of data
 
 If you need to config your mappers, we advise you to use the yml config which will generate a php code usable by the fast-map-config.
 This code will then be converted into a machine code that can be used by the fast map package.
-
-## What is a Mapping ?
-
-A mapping is an operation that associates each element of a source of data into 
-a new format of the same data. By this operation, it is possible to transform
-the way the data is represented.
 
 ## Installation
 

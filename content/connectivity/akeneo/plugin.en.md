@@ -43,19 +43,6 @@ akeneo:
 To retrieve these identifiers, you need to add a
 [connection](https://help.akeneo.com/pim/v4/updates/connections.html) in your Akeneo PIM.
 
-
-### Using a logger
-
-The `logger` option has been set up so that you can use a logger directly in the Pipeline.
-When using this option, you must specify the type of logger.
-
-```yaml
-akeneo:
-  # ...
-  logger:
-    type: stderr
-```
-
 ### Using the enterprise version
 
 The `enterprise` option allows you to use the enterprise features in Akeneo and uses the Enterprise client accordingly. By default, it's set to `false`.
@@ -68,8 +55,8 @@ akeneo:
 
 ### Building an extractor
 
-In the configuration of your extractor, you must specify the type of resource you will be working on
-and which method you want to use to retrieve your data.
+In the configuration of your extractor, you must specify the `type` of resource you will be working on
+and which `method you want to use to retrieve your data.
 
 The list of available resources is quite long depend on the edition of your Akeneo (Enterprise, Growth or Community).
 
@@ -106,8 +93,8 @@ akeneo:
 In some cases, you will need to perform some lookups to append to the data already read some complementary data coming from a secondary data source;
 this is called a lookup.
 
-In the configuration of your lookup, you must specify the type of resource you will be working on
-and which method you want to use to retrieve your data.
+In the configuration of your lookup, you must specify the `type` of resource you will be working on
+and which `method` you want to use to retrieve your data.
 
 The list of available resources is quite long and depends on the edition of your Akeneo (Enterprise, Growth or Community).
 The options available are the same as for the [loader](#building-a-loader).
@@ -170,8 +157,8 @@ akeneo:
 
 ### Building a loader
 
-In the configuration of your loader, you must specify the type of resource you are going to write
-and which method you want to use to insert your data.
+In the configuration of your loader, you must specify the `type` of resource you are going to write
+and which `method` you want to use to insert your data.
 
 The list of available resources is quite long and dépends on your Akeneo edition (Enterprise, Growth or Community).
 

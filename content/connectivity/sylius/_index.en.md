@@ -11,6 +11,8 @@ description: "Connect your Sylius e-commerce through pipelines"
 
 # Sylius Plugin
 
+> Sylius is a Headless E-commerce platform.
+
 ## What is it ?
 
 The Sylius plugin will enable Sylius connectivity to the [Pipeline](../../components/pipeline), in order to read and write from and to Sylius.
@@ -41,18 +43,6 @@ sylius:
 
 To retrieve these identifiers, go to the [official documentation](https://docs.sylius.com/en/1.7/api/index.html) of
 Sylius.
-
-### Using a logger
-
-The `logger` option has been set up so that you can use a logger directly in the Pipeline.
-When using this option, you must specify the type of logger.
-
-```yaml
-sylius:
-  # ...
-  logger:
-    type: stderr
-```
 
 ### Building an extractor
 
