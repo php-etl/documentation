@@ -5,7 +5,26 @@ draft: false
 ---
 
 # Logger
+
+- [What is it ?](#what-is-it-)
+- [Installation](#installation)
+- [Usage](#usage)
+    - [Setting your channel](#setting-your-channel)
+    - [Setting one or more destinations](#setting-one-or-more-destinations)
+        - [Using ElasticSearch](#using-elasticsearch)
+        - [Using Logstash](#using-logstash)
+        - [Using a Stream](#using-a-stream)
+        - [Using Syslog](#using-syslog)
+        - [Using GELF](#using-gelf)
+    - [TCP protocol configuration](#tcp-protocol-configuration)
+    - [AMQP protocol configuration](#amqp-protocol-configuration)
+    - [The different levels of logs in PHP](#usage)
+
+---
+
 > A log is a type of file that stores a history of events.
+
+# What is it ?
 
 In some cases you may need to identify why your Pipeline is failing, so we have set up a logger system that you can 
 use in different steps of your pipeline.
@@ -22,7 +41,7 @@ First, you need to specify the name of your channel in which your logs will be w
 
 ```yaml
 logger:
-channel: pipeline
+  channel: pipeline
 ```
 
 ### Setting one or more destinations

@@ -6,12 +6,19 @@ draft: false
 
 # FTP Plugin
 
-> FTP, File Transfert Protocol, est un protocole utilisé pour transférer des fichiers d'un ordinateur à un serveur ou d'un 
-> serveur à un ordinateur.
+- [What is it ?](#what-is-it-)
+- [Installation](#installation)
+- [Usage](#usage)
+    - [Building a loader](#building-a-loader)
+    - [Sample configuration](#sample-configuration)
+---
+
+> FTP, File Transfer Protocol, is a protocol used to transfer files from a computer to a server or from a server to a 
+> computer.
 
 ## What is it ?
 
-The FTP plugin allows you to upload files on one or many servers.
+The FTP plugin aims at integrating the files uploader into the [Pipeline stack](https://github.com/php-etl/pipeline).
 
 ## Installation
 

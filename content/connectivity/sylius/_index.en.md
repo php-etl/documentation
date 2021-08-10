@@ -11,6 +11,17 @@ description: "Connect your Sylius e-commerce through pipelines"
 
 # Sylius Plugin
 
+- [What is it ?](#what-is-it-)
+- [Installation](#installation)
+- [Usage](#usage)
+    - [Connecting to Sylius](#connecting-to-sylius)
+    - [Building an extractor](#building-an-extractor)
+    - [Building a loader](#building-a-loader)
+- [Advanced usage](#advanced-usage)
+    - [Filtering your search](#filtering-your-search)
+
+---
+
 > Sylius is a Headless E-commerce platform.
 
 ## What is it ?

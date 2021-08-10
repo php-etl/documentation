@@ -8,6 +8,21 @@ description: "Write SQL queries"
 
 # SQL Plugin
 
+- [What is it ?](#what-is-it-)
+- [Installation](#installation)
+- [Usage](#usage)
+    - [Database connection](#database-connection)
+    - [Building an extractor](#building-an-extractor)
+    - [Building a lookup](#building-a-lookup)
+    - [Building a ConditionalLookup](#building-a-conditionallookup)
+    - [Building a loader](#building-a-loader)
+    - [Building a ConditionalLoader](#building-a-conditionalloader)
+- [Advanced usage](#advanced-usage)
+    - [Using params in your queries](#using-params-in-your-queries)
+    - [Creating before and after queries](#creating-before-and-after-queries)
+    
+---
+
 > SQL, Structured Query Language, is a language for manipulating databases.
 
 ## What is it ?

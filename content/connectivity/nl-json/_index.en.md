@@ -10,6 +10,14 @@ description: "Read and write JSON-LD files"
 
 # JSON Plugin
 
+- [What is it ?](#what-is-it-)
+- [Installation](#installation)
+- [Usage](#usage)
+    - [Building an extractor](#building-an-extractor)
+    - [Building a loader](#building-a-loader)
+
+--- 
+
 > JSON (JavaScript Object Notation) is a lightweight format for data exchange.
 
 ## What is it ?

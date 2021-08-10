@@ -11,6 +11,16 @@ description: "Data transformation and serialization, with compiled and static ma
 
 # Fast Map
 
+- [What is it ?](#what-is-it-)
+- [Installation](#installation)
+- [Usage](#usage)
+  - [Building an ArrayMapper](#building-an-arraymapper)
+  - [Building a ListMapper](#building-a-listmapper)
+  - [Building a CollectionMapper](#building-a-collectionmapper)
+  - [Building an ObjectMapper](#building-an-objectmapper)
+  
+---
+
 > A mapping is an operation that associates each element of a source of data into
 > a new format of the same data. By this operation, it is possible to transform
 > the way the data is represented.

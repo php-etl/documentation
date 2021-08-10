@@ -12,12 +12,25 @@ description: "Generated micro-services for data stream processing in the cloud"
 
 # Satellite 
 
+- [Building a satellite](#building-a-satellite)
+    - [Setting up the Adapter](#setting-up-the-adapter)
+        - [Using Docker](#using-docker)
+        - [Using system](#using-system)
+    - [Configure composer](#configure-composer)
+    - [Setting up the runtime](#setting-up-the-runtime)
+        - [Using Pipeline](#using-pipeline)
+        - [Using Workflow](#using-workflow)
+- [Configuration formats](#configuration-formats)
+- [Executing the command](#executing-the-command)
+
+---
+
 > A satellite is a micro-service running in the cloud, packaged as a docker image.
 > It can be deployed in any Docker infrastructure, including Kubernetes clusters.
 
 ## Building a satellite
 
-The configuration of your satellite will be defined in a file named `satellite.yaml`.
+The configuration of your satellite must be defined in a yaml file.
 
 ### Setting up the Adapter
 
@@ -89,7 +102,7 @@ satellite:
 
 As a second step, we need to declare the composer dependencies our microservice will have with the `composer` key.
 
-The `require` option allows to add all the packages, write like `package_name:version`, that we need for our microservice.
+The `require` option allows to add all the packages, write like `package_name:version`, that we need for your microservice.
 
 {{< tabs name="basic_with_composer" >}}
 
@@ -97,10 +110,6 @@ The `require` option allows to add all the packages, write like `package_name:ve
 satellite:
 #...
   composer:
-    autoload:
-      psr4:
-      - namespace: "Pipeline\\"
-        paths: [""]
     require:
       - "php-etl/pipeline:^0.2"
       - "php-etl/fast-map:^0.2"
@@ -122,7 +131,27 @@ $dockerfile->push(
 
 {{< /tabs >}}
 
-You can add the `from_local` option in your configuration. This option copies an existing composer.json and composer.lock.
+The `autoload` option is optional and allows you to configure your autoloader by specifying one or more namespaces and 
+and directories paths as if you were directly in the composer.json.
+
+```yaml
+satellite:
+#...
+  composer:
+    autoload:
+      psr4:
+        - namespace: "Pipeline\\"
+          paths: [""]
+``` 
+
+The `from_local` option is optional and copies local repositories instead of downloading them.
+
+```yaml
+satellite:
+#...
+  composer:
+    from_local: true
+``` 
 
 ### Setting up the runtime
 
@@ -138,11 +167,13 @@ a means for one application to provide other applications with real-time informa
 
 #### Using Pipeline
 
+Please visit the [Pipeline documentation page](../pipeline) to find out how to set up your pipeline.
+
 {{< tabs name="dataflows" >}}
 
 {{< tab name="YAML" codelang="yaml"  >}}
 satellite:
-#...
+   # ...
    pipeline:
       steps:
       - akeneo:
@@ -156,8 +187,6 @@ satellite:
               - { field: completeness, operator: '<', value: 85, scope: ecommerce }
               - { field: categories, operator: IN, value: winter_collection }
               - { field: family, operator: IN, value: [camcorders, digital_cameras] }
-          logger:
-            type: 'stderr'
       - fastmap:
           map:
             - field: '[sku]'
@@ -192,26 +221,52 @@ $pipeline->build();
 
 {{< /tabs >}}
 
-##### Setting up a logger
+#### Using Workflow
 
-It's possible to add a logger at each step of the pipeline.
-
-[See detailed logger documentation](../../connectivity/logger)
+Please visit the [Workflow documentation page](../workflow) to find out how to set up your workflow.
 
 ```yaml
 satellite:
-# ...
-   pipeline:
-      steps:
-      - akeneo:
-        # ...
-        logger:
-          channel: pipeline
-          destinations:
-            - elasticsearch:
-                level: warning
-                hosts:
-                  - http://user:password@elasticsearch.example.com:9200
+  # ...
+  workflow:
+    jobs:
+    - name: 'Lorem ipsum dolor'
+      pipeline:
+        steps:
+        - akeneo:
+            extractor:
+              type: category
+              method: all
+            client:
+              api_url: 'http://localhost:8080'
+              client_id: '5_5dxapwm2rs4kkso8wgwk08o88gg0wc0owkgsgg0gkcwos4o0wo'
+              secret: 34n14k1ajy800g0ocww8w8cwckogoc844ggwcs8gkg8w4k4888
+              username: 'kiboko_2145'
+              password: 62d0f1090
+        - csv:
+            loader:
+              file_path: categories.csv
+              delimiter: ','
+              enclosure: '"'
+              escape: '\\'
+    - pipeline:
+        steps:
+        - akeneo:
+            extractor:
+              type: product
+              method: all
+            client:
+              api_url: 'http://localhost:8080'
+              client_id: '5_5dxapwm2rs4kkso8wgwk08o88gg0wc0owkgsgg0gkcwos4o0wo'
+              secret: 34n14k1ajy800g0ocww8w8cwckogoc844ggwcs8gkg8w4k4888
+              username: 'kiboko_2145'
+              password: 62d0f1090
+        - csv:
+            loader:
+              file_path: products.csv
+              delimiter: ','
+              enclosure: '"'
+              escape: '\'
 ```
 
 ### Configuration formats
@@ -220,13 +275,22 @@ There are 2 ways to declare satellites :
 * Use the [PHP objects](php-objects)
 * Use the [YAML configuration Syntax](yaml-format)
 
-### Executing the command
-After configuring your config file, you can run the command which will allow you to create the Dockerfile or the file system :
-```
+### Execute your micro-service
+After configuring your config file, you can run the command which will allow you to create the Dockerfile or the file 
+system. 
+
+```shell
+# will execute the satellite.yaml file located at the root of the project
 php bin/console build
+
+# specify the name of the file to be executed
+php bin/console build `satellite.yaml`
 ```
 
-You can also specify the name of the file to be executed : 
-```
-php bin/console build `satellite.yaml`
+Cette commande va créer un dossier avec un fichier `function.php` contenant le code de votre Pipeline.
+
+Une fois fais, il faut exécuter ce fichier php à l'aide de la commande php.
+
+```shell
+php path/to/folder/function.php
 ```

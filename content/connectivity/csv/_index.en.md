@@ -9,6 +9,17 @@ description: "Read and write CSV files in any format"
 
 # CSV Plugin
 
+- [What is it ?](#what-is-it-)
+- [Installation](#what-is-it-)
+- [Usage](#what-is-it-)
+    - [Building an extractor](#building-an-extractor)
+    - [Building a loader](#building-a-loader)
+    - [Additional options](#additional-options)
+- [Advanced Usage](#advanced-usage)
+    - [Splitting into several files](#splitting-into-several-files)
+- [See more](#see-more)    
+---
+
 > CSV, Comma-Separated Values, is a spreadsheet-like computer file with values separated by commas.
 
 ## What is it ?
@@ -88,8 +99,3 @@ Warning : this option is only available for loaders
 ## See more
 
 If you want to see complete configurations, please go to the [examples](/examples) folder.
-
-## See also
-* [php-etl/pipeline](https://github.com/php-etl/pipeline)
-* [php-etl/fast-map](https://github.com/php-etl/fast-map)
-* [php-etl/akeneo-expression-language](https://github.com/php-etl/akeneo-expression-language)

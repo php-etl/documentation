@@ -7,18 +7,43 @@ description: "Functions for manipulating Akeneo API data"
 
 {{< feature-state for_mw_version="0.1" state="alpha" >}}
 
-### Goal
+- [What is it ?](#what-is-it-)
+- [Installation](#installation)
+- [Usage](#usage)
+- [Functions reference](#functions-reference)
+    - [Attribute data manipulation](#attribute-data-manipulation)
+        - [Filter by locale](#filter-by-locale)
+        - [Filter by scope](#filter-by-scope)
+        - [Take the first available value by scopes](#take-the-first-available-value-by-scopes)
+        - [Combining results filter](#combining-results-filter)
+        - [Excluding results filter](#excluding-results-filter)
+        - [Extracting a slice of the values list](#extracting-a-slice-of-the-values-list)
+        - [Extracting the beginning of the values list](#extracting-the-beginning-of-the-values-list)
+        - [Extracting the end of the values list](#extracting-the-end-of-the-values-list)
+        - [Extracting the values list, after an offset](#extracting-the-values-list-after-an-offset)
+        - [Extracting the first value from the list](#extracting-the-first-value-from-the-list)
+        - [Extracting the last value from the list](#extracting-the-last-value-from-the-list)
+    - [Dates management with dateTime and dateTimeZone](#dates-management-with-datetime-and-datetimezone)
+    - [Manage metrics with metricAmount, metricUnit and formatMetric](#manage-metrics-with-metricamount-metricunit-and-formatmetric)
+    
+## What is it ?
 
 This library implements functions for manipulating Akeneo API data through the
 [Symfony Expression Language](https://symfony.com/doc/current/components/expression_language.html).
 
-### Installation
+## Installation
 
 ```
 composer require php-etl/akeneo-expression-language
 ```
 
-### Usage
+## Usage
+
+To use Akeneo's expression language functions, you must first add the `expression_language` key and put in 
+the provider `Kiboko\Component\ExpressionLanguage\Akeneo\AkeneoFilterProvider`.
+
+Then, in the fields that can use expression languages, you can use any [functions](#functions-reference) provided by 
+the Akeneo provider.
 
 {{< tabs name="basic_definition" >}}
 
@@ -72,9 +97,9 @@ $interpreter->evaluate($expression, ['input' => $input]);
 
 {{< /tabs >}}
 
-### Functions reference
+## Functions reference
 
-#### Attribute data manipulation
+### Attribute data manipulation
 
 Akeneo has a specific data format that would make cumbersome the data mapping
 if there were no dedicated tools. In this matter the Expression Language functions
@@ -89,7 +114,7 @@ from your Akeneo attributes:
 Those functions needs som companions in order to be useful. Those companions
 will help you to apply filtering depending on your business logic.
 
-##### Filter by locale
+#### Filter by locale
 
 `locale ( string ...locale )`
 
@@ -147,7 +172,7 @@ with no reordering.
 
 {{< /tabs >}}
 
-##### Filter by scope
+#### Filter by scope
 
 `scope ( string ...scope )`
 
@@ -205,7 +230,7 @@ with no reordering.
 
 {{< /tabs >}}
 
-##### Take the first available value by scopes
+#### Take the first available value by scopes
 
 `coalesce ( string ...scope )`
 
@@ -252,7 +277,7 @@ This filter will extract the first value tat matches a scope in the provided sco
 
 {{< /tabs >}}
 
-##### Combining results filter
+#### Combining results filter
 
 `anyOf ( ...filters )`
 
@@ -311,7 +336,7 @@ filter is true.
 
 {{< /tabs >}}
 
-##### Excluding results filter
+#### Excluding results filter
 
 `allOf ( ...filters )`
 
@@ -359,7 +384,7 @@ to every specified filter. It will result in a list where **all** filters are tr
 
 {{< /tabs >}}
 
-##### Extracting a slice of the values list
+#### Extracting a slice of the values list
 
 `slice ( int offset , int length )`
 
@@ -411,7 +436,7 @@ This filter will extract `length` values, starting at `offset`.
 
 {{< /tabs >}}
 
-##### Extracting the beginning of the values list
+#### Extracting the beginning of the values list
 
 `head ( int length )`
 
@@ -463,7 +488,7 @@ This filter will extract `length` values, starting at the beginning.
 
 {{< /tabs >}}
 
-##### Extracting the end of the values list
+#### Extracting the end of the values list
 
 `tail ( int length )`
 
@@ -515,7 +540,7 @@ This filter will extract `length` values, starting at the end.
 
 {{< /tabs >}}
 
-##### Extracting the values list, after an offset
+#### Extracting the values list, after an offset
 
 `offset ( int offset )`
 
@@ -572,7 +597,7 @@ This filter will extract all the values after the `offset` position.
 
 {{< /tabs >}}
 
-##### Extracting the first value from the list
+#### Extracting the first value from the list
 
 `first ( )`
 
@@ -619,7 +644,7 @@ This filter will extract the first value of the list.
 
 {{< /tabs >}}
 
-##### Extracting the last value from the list
+#### Extracting the last value from the list
 
 `last ( )`
 
@@ -666,7 +691,7 @@ This filter will extract the last value of the list.
 
 {{< /tabs >}}
 
-#### Dates management with `dateTime` and `dateTimeZone`
+### Dates management with `dateTime` and `dateTimeZone`
 
 In order to generate date objects, two functions has been created:
 
@@ -676,7 +701,7 @@ In order to generate date objects, two functions has been created:
 
 The results will be [`\DateTimeImmutable` PHP objects](https://www.php.net/manual/fr/class.datetimeimmutable.php).
 
-#### Manage metrics with `metricAmount`, `metricUnit` et `formatMetric`
+### Manage metrics with `metricAmount`, `metricUnit` and `formatMetric`
 
 `metricAmount(string $value, int $decimalRound = 4)`
 

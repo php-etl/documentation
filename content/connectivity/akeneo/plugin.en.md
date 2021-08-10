@@ -9,6 +9,19 @@ description: "Akeneo API integration in satellites pipelines"
 
 # Akeneo Plugin
 
+- [What is it ?](#what-is-it-)
+- [Installation](#installation)
+- [Usage](#usage)
+    - [Connecting to Akeneo](#connecting-to-akeneo)
+    - [Using the enterprise version](#using-the-enterprise-version)
+    - [Building an extractor](#building-an-extractor)
+    - [Building a lookup](#building-a-lookup)
+    - [Building a conditional lookup](#building-a-conditional-lookup)
+    - [Building a loader](#building-a-loader)
+- [Advanced Usage](#advanced-usage)
+    - [Filtering your search](#filtering-your-search)
+    - [Using ExpressionLanguage](#using-expressionlanguage)
+--- 
 ## What is it ?
 
 The Akeneo plugin aims at integration the Akeneo PHP clients into the

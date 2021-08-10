@@ -8,6 +8,17 @@ description: "Read and write Excel or OpenDocument files"
 
 # Spreadsheet Plugin
 
+- [What is it ?](#what-is-it-)
+- [Installation](#installation)
+- [Usage](#usage)
+    - [Building an extractor](#building-an-extractor)
+    - [Building a loader](#building-a-loader)
+- [Advanced usage](#advanced-usage)
+    - [Skip one or more lines](#skip-one-or-more-lines)
+    - [Splitting into several files](#splitting-into-several-files)
+
+---
+
 > XLSX is the file format saved for Microsoft Excel spreadsheets.
 
 > ODS is the file format saved for OpenDocument spreadsheets.
