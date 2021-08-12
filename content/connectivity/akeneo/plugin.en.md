@@ -39,7 +39,7 @@ composer require php-etl/akeneo-plugin
 
 ### Connecting to Akeneo
 
-To establish a connection to your Akeneo PIM, you must specify its URL and some connection identifiers
+To establish a connection to your Akeneo PIM, you must specify its URL (`api_url`) and some connection identifiers
 (`client_id`, `secret`, `username`, `password`).
 
 ```yaml
@@ -56,7 +56,9 @@ akeneo:
 To retrieve these identifiers, you need to add a
 [connection](https://help.akeneo.com/pim/v4/updates/connections.html) in your Akeneo PIM.
 
-### Using the enterprise version
+Warning: For the `api_url` option, you must remove the `/` at the end of your URL if there is one.
+
+### Using the enterprise edition
 
 The `enterprise` option allows you to use the enterprise features in Akeneo and uses the Enterprise client accordingly. By default, it's set to `false`.
 
@@ -91,8 +93,6 @@ akeneo:
   extractor:
     type: product
     method: all
-  logger:
-    type: stderr
   client:
     api_url: 'http://demo.akeneo.com/'
     client_id: '414yc7d9mnk044ko4wswgw80o8ssw80gssos488kk8ogss40ko'

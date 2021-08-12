@@ -30,8 +30,8 @@ hasChildren = true
 
   [[menu.main]]
   parent = "Installation"
-  name = "Getting started with Akeneo"
-  url = "installation/getting-started-akeneo"
+  name = "Getting started"
+  url = "installation/getting-started"
   weight = 2
 
 [[menu.main]]
@@ -68,6 +68,12 @@ hasChildren = true
   name = "Satellite"
   url = "components/satellite"
   weight = 5
+
+  [[menu.main]]
+  parent = "Packages"
+  name = "Workflow"
+  url = "components/workflow"
+  weight = 6
 
 [[menu.main]]
 weight = 3
@@ -117,45 +123,51 @@ hasChildren = true
 
   [[menu.main]]
   parent = "Connectivity"
+  name = "Expression Language"
+  url = "connectivity/expression-language"
+  weight = 4
+
+  [[menu.main]]
+  parent = "Connectivity"
   name = "FastMap"
   url = "connectivity/fast-map"
-  weight = 4
+  weight = 5
 
   [[menu.main]]
   parent = "Connectivity"
   name = "FTP"
   url = "connectivity/ftp"
-  weight = 5
+  weight = 6
 
   [[menu.main]]
   parent = "Connectivity"
   name = "Logger"
   url = "connectivity/logger"
-  weight = 6
+  weight = 7
 
   [[menu.main]]
   parent = "Connectivity"
   name = "NL-JSON"
   url = "connectivity/nl-json"
-  weight = 7
+  weight = 8
 
   [[menu.main]]
   parent = "Connectivity"
   name = "Spreadsheet files"
   url = "connectivity/spreadsheet"
-  weight = 8
+  weight = 9
 
   [[menu.main]]
   parent = "Connectivity"
   name = "SQL database"
   url = "connectivity/sql"
-  weight = 9
+  weight = 10
 
   [[menu.main]]
    parent = "Connectivity"
    name = "Sylius"
    url = "connectivity/sylius"
-   weight = 10
+   weight = 11
 
 [params]
 logo = "logo-web.svg"

@@ -48,8 +48,6 @@ pipeline:
           delimiter: ';'
           enclosure: '"'
           escape: '\\'
-        logger:
-          type: stderr
     - csv:
         loader:
           file_path: path/to/file/output.csv

@@ -74,8 +74,6 @@ sylius:
   extractor:
     type: products
     method: all
-  logger:
-    type: stderr
   client:
     api_url: 'http://127.0.0.1:8001'
     client_id: '414yc7d9mnk044ko4wswgw80o8ssw80gssos488kk8ogss40ko'
@@ -103,8 +101,6 @@ sylius:
   loader:
     type: products
     method: create
-  logger:
-    type: stderr
   client:
     api_url: 'http://127.0.0.1:8001'
     client_id: '414yc7d9mnk044ko4wswgw80o8ssw80gssos488kk8ogss40ko'
