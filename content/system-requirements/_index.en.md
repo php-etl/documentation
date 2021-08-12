@@ -149,7 +149,7 @@ RabbitMQ is a message queue service, handling storage, routing and concurrency h
 In your project, create a file named `.docker/amqp/Dockerfile` with the following contents:
 
 ```dockerfile
-FROM rabbitmq:3.7-management-alpine
+FROM rabbitmq:3.8-management-alpine
 
 RUN set -ex\
     && apk update \
@@ -157,9 +157,7 @@ RUN set -ex\
     && apk add --no-cache --virtual .build-deps \
         zip \
         curl \
-    && curl https://dl.bintray.com/rabbitmq/community-plugins/3.7.x/rabbitmq_delayed_message_exchange/rabbitmq_delayed_message_exchange-20171201-3.7.x.zip > $RABBITMQ_HOME/plugins/rabbitmq_delayed_message_exchange-20171201-3.7.x.zip \
-    && unzip $RABBITMQ_HOME/plugins/rabbitmq_delayed_message_exchange-20171201-3.7.x.zip -d $RABBITMQ_HOME/plugins \
-    && rm $RABBITMQ_HOME/plugins/rabbitmq_delayed_message_exchange-20171201-3.7.x.zip \
+    && curl -L https://github.com/rabbitmq/rabbitmq-delayed-message-exchange/releases/download/3.8.17/rabbitmq_delayed_message_exchange-3.8.17.8f537ac.ez > $RABBITMQ_HOME/plugins/rabbitmq_delayed_message_exchange-3.8.17.8f537ac.ez \
     && apk del .build-deps
 
 RUN rabbitmq-plugins enable --offline rabbitmq_delayed_message_exchange

@@ -28,6 +28,12 @@ hasChildren = true
   url = "system-requirements"
   weight = 2
 
+  [[menu.main]]
+  parent = "Installation"
+  name = "Getting started with Akeneo"
+  url = "installation/getting-started-akeneo"
+  weight = 2
+
 [[menu.main]]
 weight = 2
 name = "Packages"

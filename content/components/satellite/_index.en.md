@@ -187,6 +187,8 @@ satellite:
               - { field: completeness, operator: '<', value: 85, scope: ecommerce }
               - { field: categories, operator: IN, value: winter_collection }
               - { field: family, operator: IN, value: [camcorders, digital_cameras] }
+          logger:
+            type: 'stderr'
       - fastmap:
           map:
             - field: '[sku]'
