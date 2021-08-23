@@ -289,9 +289,9 @@ php bin/console build
 php bin/console build `satellite.yaml`
 ```
 
-Cette commande va créer un dossier avec un fichier `function.php` contenant le code de votre Pipeline.
+This command will create a folder with a file `function.php` containing the pipeline code.
 
-Une fois fais, il faut exécuter ce fichier php à l'aide de la commande php.
+You have to execute it with php command like this :
 
 ```shell
 php path/to/folder/function.php
