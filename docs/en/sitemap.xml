@@ -63,9 +63,6 @@
     <loc>https://php-etl.github.io/documentation/connectivity/akeneo/plugin/</loc>
     <lastmod>2021-01-24T09:23:54+01:00</lastmod>
   </url><url>
-    <loc>https://php-etl.github.io/documentation/components/batch/</loc>
-    <lastmod>2021-01-22T14:05:39+01:00</lastmod>
-  </url><url>
     <loc>https://php-etl.github.io/documentation/connectivity/akeneo/</loc>
     <lastmod>2021-01-22T09:23:54+01:00</lastmod>
   </url><url>
@@ -85,12 +82,6 @@
     <lastmod>2020-07-12T15:21:02+02:00</lastmod>
   </url><url>
     <loc>https://php-etl.github.io/documentation/framework/contracts/</loc>
-    <lastmod>2020-07-12T15:21:02+02:00</lastmod>
-  </url><url>
-    <loc>https://php-etl.github.io/documentation/components/dashboard/</loc>
-    <lastmod>2020-07-12T15:21:02+02:00</lastmod>
-  </url><url>
-    <loc>https://php-etl.github.io/documentation/components/discovery/</loc>
     <lastmod>2020-07-12T15:21:02+02:00</lastmod>
   </url><url>
     <loc>https://php-etl.github.io/documentation/connectivity/fast-map/</loc>
