@@ -2,7 +2,7 @@
 <html lang="en-us">
   <head>
   <meta charset="utf-8">
-  <title>Promise</title>
+  <title>Getting started</title>
 
   <meta name="generator" content="Hugo 0.82.0" />
 
@@ -197,7 +197,7 @@
         
         
         
-        <option id="en" value="https://php-etl.github.io/documentation/framework/promise/" selected>English
+        <option id="en" value="https://php-etl.github.io/documentation/installation/getting-started/" selected>English
         </option>
         
         
@@ -230,6 +230,8 @@
               
             
               
+            
+              
               
 
 
@@ -239,10 +241,10 @@
 
 
 
-<li data-nav-id="https://php-etl.github.io/documentation/framework/" title="Frameworks" class="sidelist
+<li data-nav-id="https://php-etl.github.io/documentation/installation/" title="Installations" class="sidelist
   ">
-  <a href="https://php-etl.github.io/documentation/framework/">
-    Frameworks
+  <a href="https://php-etl.github.io/documentation/installation/">
+    Installations
   </a>
   
   
@@ -258,10 +260,10 @@
 
 
 
-<li data-nav-id="https://php-etl.github.io/documentation/framework/contracts/" title="Contracts" class="sidelist
+<li data-nav-id="https://php-etl.github.io/documentation/installation/bare-metal/" title="Bare-metal Installation" class="sidelist
   ">
-  <a href="https://php-etl.github.io/documentation/framework/contracts/">
-    Contracts
+  <a href="https://php-etl.github.io/documentation/installation/bare-metal/">
+    Bare-metal Installation
   </a>
   
   
@@ -280,32 +282,10 @@
 
 
 
-<li data-nav-id="https://php-etl.github.io/documentation/framework/metadata/" title="Metadata" class="sidelist
-  ">
-  <a href="https://php-etl.github.io/documentation/framework/metadata/">
-    Metadata
-  </a>
-  
-  
-</li>
-
-
-        
-      
-        
-          
-
-
-
-
-
-
-
-
-<li data-nav-id="https://php-etl.github.io/documentation/framework/promise/" title="Promise" class="sidelist
+<li data-nav-id="https://php-etl.github.io/documentation/installation/getting-started/" title="Getting started" class="sidelist
   active">
-  <a href="https://php-etl.github.io/documentation/framework/promise/">
-    Promise
+  <a href="https://php-etl.github.io/documentation/installation/getting-started/">
+    Getting started
   </a>
   
   
@@ -323,58 +303,211 @@
             
               
             
-              
-            
           </ul>
         </div>
       </div>
       <div class="col-lg-9">
         <div class="p-lg-5 p-4 bg-white">
-          <h2 class="mb-5">Promise</h2>
+          <h2 class="mb-5">Getting started</h2>
           
-          <div class="content">
+          <div class="content"><h1 id="getting-started">Getting Started</h1>
+<ul>
+<li><a href="#requirements">Requirements</a></li>
+<li><a href="#installation">Installation</a></li>
+<li><a href="#create-your-micro-service">Create your micro-service</a>
+<ul>
+<li><a href="#explanation-of-configuration">Explanation of configuration</a></li>
+</ul>
+</li>
+<li><a href="#running-the-pipeline">Running the pipeline</a></li>
+</ul>
+<hr>
+<h2 id="requirements">Requirements</h2>
+<p>Before creating your first middleware application you must :</p>
+<ul>
+<li><a href="https://getcomposer.org/download/">Install Composer</a> version 2</li>
+<li>Install PHP 8.0 or higher</li>
+<li>A connection to an Akeneo API (minimum read mode)</li>
+</ul>
+<h2 id="installation">Installation</h2>
+<p>After creating a new blank project, open your console terminal and run these commands :</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">composer init
+</code></pre></div><p>You must choose <code>dev</code> as the value for the <code>minimum-stability</code> option.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">composer require php-etl/satellite
+</code></pre></div><p>This command will add the <code>php-etl/satellite</code> package, that is the core of the middleware, to your composer.json.</p>
+<p>Then, choose the plugin(s) you need from <a href="../../connectivity">all our plugins</a>.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">composer require php-etl/akeneo-expression-language php-etl/akeneo-plugin
+</code></pre></div><p>In this example, the command will add the following component packages to your composer.json :</p>
+<ul>
+<li><code>php-etl/akeneo-expression-language</code> provide some config functions useful when working with Akeneo</li>
+<li><code>php-etl/akeneo-plugin</code> is a Middleware plugin dedicated to Akeneo. It allow to connect and use the Akeneo Api</li>
+</ul>
+<p>Finally, in your <code>composer.json</code> file, add the following lines :</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json"><span style="color:#e6db74">&#34;config&#34;</span><span style="color:#960050;background-color:#1e0010">:</span> {
+    <span style="color:#f92672">&#34;bin-dir&#34;</span>: <span style="color:#e6db74">&#34;bin&#34;</span>
+}<span style="color:#960050;background-color:#1e0010">,</span>
+<span style="color:#e6db74">&#34;scripts&#34;</span><span style="color:#960050;background-color:#1e0010">:</span> {
+    <span style="color:#f92672">&#34;post-install-cmd&#34;</span>: [
+        <span style="color:#e6db74">&#34;Kiboko\\Component\\Satellite\\ComposerScripts::postInstall&#34;</span>
+    ],
+    <span style="color:#f92672">&#34;post-update-cmd&#34;</span>: [
+        <span style="color:#e6db74">&#34;Kiboko\\Component\\Satellite\\ComposerScripts::postUpdate&#34;</span>
+    ]
+}
+</code></pre></div><h2 id="create-your-micro-service">Create your micro-service</h2>
+<p>Create a <code>src</code> folder in which you will add a new folder each time you want to create a microservice.
+In this new folder, create a yaml file that will contain your configuration.</p>
+<p>In our case, we have created a <code>pipeline.yaml</code> file in the <code>src/pipeline-akeneo-to-csv/</code> folder which contains the
+following content :</p>
+<!-- raw HTML omitted -->
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#75715e"># src/pipeline-akeneo-to-csv/pipeline.yaml</span>
 
+<span style="color:#f92672">satellite</span>:
 
+  <span style="color:#f92672">filesystem</span>:
+    <span style="color:#f92672">path</span>: <span style="color:#ae81ff">build</span>
 
+  <span style="color:#f92672">composer</span>:
+    <span style="color:#f92672">require</span>:
+      - <span style="color:#e6db74">&#34;php-etl/pipeline:^0.3&#34;</span>
+      - <span style="color:#e6db74">&#34;php-etl/fast-map:^0.2&#34;</span>
+      - <span style="color:#e6db74">&#34;php-etl/csv-flow:^0.2&#34;</span>
+      - <span style="color:#e6db74">&#34;akeneo/api-php-client-ee&#34;</span>
+      - <span style="color:#e6db74">&#34;laminas/laminas-diactoros&#34;</span>
+      - <span style="color:#e6db74">&#34;php-http/guzzle7-adapter&#34;</span>
 
-<div style="margin-top: 10px; margin-bottom: 10px;">
-<b>FEATURE STATE:</b> <code>Middleware 0.1 [alpha]</code>
+  <span style="color:#f92672">pipeline</span>:
+    <span style="color:#f92672">steps</span>:
+      - <span style="color:#f92672">akeneo</span>:
+          <span style="color:#f92672">enterprise</span>: <span style="color:#66d9ef">false</span>
+          <span style="color:#f92672">extractor</span>:
+            <span style="color:#f92672">type</span>: <span style="color:#ae81ff">attribute</span>
+            <span style="color:#f92672">method</span>: <span style="color:#ae81ff">all</span>
+          <span style="color:#f92672">client</span>:
+            <span style="color:#f92672">api_url</span>: <span style="color:#e6db74">&#39;api_url&#39;</span>
+            <span style="color:#f92672">client_id</span>: <span style="color:#e6db74">&#39;client_id&#39;</span>
+            <span style="color:#f92672">secret</span>: <span style="color:#e6db74">&#39;secret&#39;</span>
+            <span style="color:#f92672">username</span>: <span style="color:#e6db74">&#39;username&#39;</span>
+            <span style="color:#f92672">password</span>: <span style="color:#e6db74">&#39;password&#39;</span>
+      - <span style="color:#f92672">fastmap</span>:
+          <span style="color:#f92672">map</span>:
+            - <span style="color:#f92672">field</span>: <span style="color:#e6db74">&#39;[code]&#39;</span>
+              <span style="color:#f92672">expression</span>: <span style="color:#e6db74">&#39;input[&#34;code&#34;]&#39;</span>
+            - <span style="color:#f92672">field</span>: <span style="color:#e6db74">&#39;[type]&#39;</span>
+              <span style="color:#f92672">constant</span>: <span style="color:#e6db74">&#39;input[&#34;type&#34;]&#39;</span>
+            - <span style="color:#f92672">field</span>: <span style="color:#e6db74">&#39;[group]&#39;</span>
+              <span style="color:#f92672">expression</span>: <span style="color:#e6db74">&#39;input[&#34;group&#34;]&#39;</span>
+      - <span style="color:#f92672">csv</span>:
+          <span style="color:#f92672">loader</span>:
+            <span style="color:#f92672">file_path</span>: <span style="color:#e6db74">&#39;attributes.csv&#39;</span>
+            <span style="color:#f92672">delimiter</span>: <span style="color:#e6db74">&#39;;&#39;</span>
+            <span style="color:#f92672">enclosure</span>: <span style="color:#e6db74">&#39;&#34;&#39;</span>
+            <span style="color:#f92672">escape</span>: <span style="color:#e6db74">&#39;\&#39;</span>
+
+</code></pre></div><!-- raw HTML omitted -->
+<p>In this example we extract every attribute ok Akeneo and export some informations into a csv file.</p>
+<h3 id="explanation-of-configuration">Explanation of configuration</h3>
+<h4 id="1-the-system-declaration-">1. The system declaration :</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">satellite</span>:
+
+  <span style="color:#f92672">filesystem</span>:
+    <span style="color:#f92672">path</span>: <span style="color:#ae81ff">build</span>
+    
+  <span style="color:#f92672">composer</span>:
+    <span style="color:#f92672">require</span>:
+      - <span style="color:#e6db74">&#34;php-etl/pipeline:^0.3&#34;</span>
+      - <span style="color:#e6db74">&#34;php-etl/fast-map:^0.2&#34;</span>
+      - <span style="color:#e6db74">&#34;php-etl/csv-flow:^0.2&#34;</span>
+      - <span style="color:#e6db74">&#34;akeneo/api-php-client-ee&#34;</span>
+      - <span style="color:#e6db74">&#34;laminas/laminas-diactoros&#34;</span>
+      - <span style="color:#e6db74">&#34;php-http/guzzle7-adapter&#34;</span>
+      
+  <span style="color:#f92672">pipeline</span>:
+    <span style="color:#f92672">steps</span>:
+</code></pre></div><p>To understand the structure of the configuration go to the <a href="../../components/satellite">Satellite documentation</a>.</p>
+<h4 id="2-steps">2. Steps</h4>
+<p>In this pipeline , you have 3 steps.
+The first one, allow you to extract every attribute of the Akeneo instance you are connected to
+(you have to configure your credentials).
+For more explication about this plugin, check the corresponding documentation page.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml">  - <span style="color:#f92672">fastmap</span>:
+      <span style="color:#f92672">map</span>:
+        - <span style="color:#f92672">field</span>: <span style="color:#e6db74">&#39;[code]&#39;</span>
+          <span style="color:#f92672">expression</span>: <span style="color:#e6db74">&#39;input[&#34;code&#34;]&#39;</span>
+        - <span style="color:#f92672">field</span>: <span style="color:#e6db74">&#39;[type]&#39;</span>
+          <span style="color:#f92672">constant</span>: <span style="color:#e6db74">&#39;input[&#34;type&#34;]&#39;</span>
+        - <span style="color:#f92672">field</span>: <span style="color:#e6db74">&#39;[group]&#39;</span>
+          <span style="color:#f92672">expression</span>: <span style="color:#e6db74">&#39;input[&#34;group&#34;]&#39;</span>
+</code></pre></div><p>This step uses the fastmap plugin, like the Akeneo plugin, there is a dedicated documentation.
+This step create associative array with key : code, type and group and fill row with values
+corresponding to the data from the last step, in the input variable, so you access using the
+<a href="https://symfony.com/doc/current/components/expression_language.html">Symfony expression language syntax</a>
+We will see later that you can add some functions in every step , and use them in <code>expression</code>.
+If you want to see what is available in this step, you can use Postman and check the data returned by Akeneo.
+Here, an attribute is represented like that:</p>
+<!-- raw HTML omitted -->
+<pre><code>{
+  &quot;_links&quot;: {
+    &quot;self&quot;: {
+      &quot;href&quot;: &quot;https://myakeneo/api/rest/v1/attributes/accessoires&quot;
+    }
+  },
+  &quot;code&quot;: &quot;accessories&quot;,
+  &quot;type&quot;: &quot;pim_catalog_text&quot;,
+  &quot;group&quot;: &quot;marketing&quot;,
+  &quot;unique&quot;: false,
+  &quot;useable_as_grid_filter&quot;: false,
+  &quot;allowed_extensions&quot;: [],
+  &quot;metric_family&quot;: null,
+  &quot;default_metric_unit&quot;: null,
+  &quot;reference_data_name&quot;: null,
+  &quot;available_locales&quot;: [],
+  &quot;max_characters&quot;: null,
+  &quot;validation_rule&quot;: null,
+  &quot;validation_regexp&quot;: null,
+  &quot;wysiwyg_enabled&quot;: null,
+  &quot;number_min&quot;: null,
+  &quot;number_max&quot;: null,
+  &quot;decimals_allowed&quot;: null,
+  &quot;negative_allowed&quot;: null,
+  &quot;date_min&quot;: null,
+  &quot;date_max&quot;: null,
+  &quot;max_file_size&quot;: null,
+  &quot;minimum_input_length&quot;: null,
+  &quot;sort_order&quot;: 17,
+  &quot;localizable&quot;: true,
+  &quot;scopable&quot;: false,
+  &quot;labels&quot;: {
+    &quot;fr_FR&quot;: &quot;Accessoires&quot;
+  },
+  &quot;auto_option_sorting&quot;: null,
+  &quot;default_value&quot;: null,
+  &quot;group_labels&quot;: {
+    &quot;fr_FR&quot;: &quot;Marketing&quot;
+  }
+}
+</code></pre><!-- raw HTML omitted -->
+<p>And the last step, exporting the data into a csv file.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml">- <span style="color:#f92672">csv</span>:
+    <span style="color:#f92672">loader</span>:
+        <span style="color:#f92672">file_path</span>: <span style="color:#e6db74">&#39;attributes.csv&#39;</span>
+        <span style="color:#f92672">delimiter</span>: <span style="color:#e6db74">&#39;;&#39;</span>
+        <span style="color:#f92672">enclosure</span>: <span style="color:#e6db74">&#39;&#34;&#39;</span>
+        <span style="color:#f92672">escape</span>: <span style="color:#e6db74">&#39;\&#39;</span>
+</code></pre></div><p>We create a <code>attributes.csv</code> file. The header is the key of the array of the last step (code, type, group).
+And this step will fill data automatically.</p>
+<h2 id="running-the-pipeline">Running the pipeline</h2>
+<p>Once you have completed your configuration, open a console terminal and run these commands :</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#75715e"># php bin/satellite build --path-to-your-config-file</span>
+php bin/satellite build src/pipeline-akeneo-to-csv/pipeline.yaml
+</code></pre></div><p>Warning: You must run this command every time you change your configuration.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#75715e"># php --path-to-the-generated-function-file</span>
+php src/pipeline-akeneo-to-csv/build/function.php
+</code></pre></div><p>The first command will build your microservice and create a folder whose name is the value defined in the path of your
+filesystem in which there is a generated function.php file.</p>
+<p>The second command allows you to run your microservice. The execution of your microservice may take several minutes,
+so please wait until the execution is completed.</p>
 </div>
-
-
-<h3 id="definition-of-a-promise">Definition of a Promise</h3>
-<p>A promise represents a single result of an asynchronous operation.</p>
-<p>Two operations are called asynchronous when they are independent, i.e.
-when the second operation does not need to wait for the first to finish before starting.</p>
-<p>This object allows you to synchronise two (or more) actions that take place in time but not at the same speed.</p>
-<h3 id="callbacks">Callbacks</h3>
-<p>The <code>then</code> method records reminders to receive the possible value of a promise, and the <code>failure</code> method represents the reason why it cannot be kept.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php"><span style="color:#f92672">&lt;?</span><span style="color:#a6e22e">php</span> 
-
-<span style="color:#66d9ef">use</span> <span style="color:#a6e22e">Kiboko\Component\Promise\Promise</span>;
-
-$promise <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Promise</span>();
-$promise
-   <span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">then</span>(<span style="color:#66d9ef">function</span> ($value) {
-        <span style="color:#66d9ef">echo</span> <span style="color:#e6db74">&#34;Hello, &#34;</span><span style="color:#f92672">.</span>$value;
-   })
-   <span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">failure</span>(<span style="color:#66d9ef">function</span> (<span style="color:#a6e22e">\Exception</span> $exception) {
-        <span style="color:#66d9ef">echo</span> <span style="color:#e6db74">&#39;Oups, error : &#39;</span><span style="color:#f92672">.</span>$exception;
-   })
-;
-</code></pre></div><h3 id="resolving-a-promise">Resolving a promise</h3>
-<p>Promises are fulfilled using the resolve($value) method.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php"><span style="color:#f92672">&lt;?</span><span style="color:#a6e22e">php</span>
-
-$promise<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">resolve</span>(<span style="color:#e6db74">&#39;world&#39;</span>);
-<span style="color:#75715e">// Outputs &#39;Hello, world&#39;
-</span></code></pre></div><h3 id="promise-failure">Promise failure</h3>
-<p>Promises are failed using the fail($exception) method.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php"><span style="color:#f92672">&lt;?</span><span style="color:#a6e22e">php</span>
-
-$promise<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">fail</span>(<span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Exception</span>(<span style="color:#e6db74">&#39;Something went wrong&#39;</span>));
-<span style="color:#75715e">// Outputs &#39;Oups, error : Exception: Something went wrong&#39;
-</span></code></pre></div></div>
           
           <p class="post-meta border-bottom pb-3 mb-0 mt-3">Updated on 12 Jul 2020</p>
           <nav class="pagination mt-3">
@@ -828,80 +961,6 @@ $promise<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">fail
             
             
             
-            
-
-            
-            
-            
-            
-            
-
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-
-            
-            
-            
-
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-
-            
-            
-            
-
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-
-            
-            
-            
-
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
 
             
             
@@ -949,6 +1008,80 @@ $promise<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">fail
             
             
             
+
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
             
             
             
@@ -966,10 +1099,10 @@ $promise<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">fail
             
 
             
-            <a class="nav nav-prev" href="https://php-etl.github.io/documentation/framework/contracts/"><i class="ti-arrow-left mr-2"></i> <span class="d-none d-md-block">Contracts</span></a>
+            <a class="nav nav-prev" href="https://php-etl.github.io/documentation/installation/bare-metal/"><i class="ti-arrow-left mr-2"></i> <span class="d-none d-md-block">Bare-metal Installation</span></a>
             
             
-            <a class="nav nav-next" href="https://php-etl.github.io/documentation/installation/"> <span class="d-none d-md-block">Installations</span><i class="ti-arrow-right ml-2"></i></a>
+            <a class="nav nav-next" href="https://php-etl.github.io/documentation/system-requirements/"> <span class="d-none d-md-block">System Requirements</span><i class="ti-arrow-right ml-2"></i></a>
             
           </nav>
         </div>

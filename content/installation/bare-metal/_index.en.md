@@ -20,42 +20,142 @@ This page will help you install Logstash, ElasticSearch and Kibana in a quick wa
 
 #### PHP dependencies
 
-We will use the *Symfony Console* and *Monolog* as a base for our application.
+We will use the *Satellite* CLI tool, which is responsible in transforming your YAML or JSON pipeline configuration 
+files into runnable PHP code.
 
 In your project directory run the following:
 
-`composer require symfony/console monolog/monolog`
+`composer require php-etl/satellite`
 
-This command will check out the most appropriate versions of both components.
+This command will import the `satellite` command in your project, depending on your framework, you may find it in
+different directories:
+* bare-metal: `vendor/bin/satellite`
+* Symfony: `bin/satellite`
 
-### Prepare your executable
+### Prepare your pipelines
 
-Create a `bin/middleware` file with the execution permission and the following contents:
+Create a `src/my-example-pipeline` directory and add this content to a `pipeline.yaml` file inside:
 
-```php
-#!/usr/bin/env php
-<?php
-
-require __DIR__ . '/../vendor/autoload.php';
-
-use MyMiddleware\Console\Command;
-use Symfony\Component\Console\Application;
-use Symfony\Component\Console\Input\ArgvInput;
-use Symfony\Component\Console\Output\ConsoleOutput;
-
-$app = new Application('Pipelines Runner');
-
-$app->addCommands([
-    new Command\FastMap\CompileCommand(
-        Command\FastMap\CompileCommand::$defaultName
-    ),
-
-    new Command\Pipeline\CustomersRunCommand(
-        Command\Pipeline\CustomersRunCommand::$defaultName
-    ),
-]);
-
-$app->run(new ArgvInput($argv), new ConsoleOutput());
+```yaml
+satellite:
+  filesystem:
+    path: build
+  composer:
+    require:
+      - "php-etl/pipeline:^0.3"
+      - "php-etl/fast-map:^0.2"
+      - "php-etl/csv-flow:^0.2"
+      - "monolog/monolog"
+      - "elasticsearch/elasticsearch"
+  pipeline:
+    steps:
+    - csv:
+        extractor:
+          file_path: 'foo.csv'
+      logger:
+        channel: pipeline
+        destinations:
+          - elasticsearch:
+              level: warning
+              hosts:
+                - elasticsearch.example.com:9200
+    - fastmap:
+        expression_language:
+          - 'Kiboko\Component\ExpressionLanguage\Akeneo\AkeneoFilterProvider'
+        conditional:
+          - condition: 'input["family"] === "clothing"'
+            map:
+              - field: '[code]'
+                copy: '[identifier]'
+              - field: '[family]'
+                copy: '[family]'
+              - field: '[translations][en_US]'
+                expression: 'input'
+                map:
+                  - field: '[name]'
+                    expression: 'attribute(input["values"]["variation_name"], locale("en_US"), scope("ecommerce"))'
+                  - field: '[slug]'
+                    expression: 'input["identifier"]'
+                  - field: '[description]'
+                    expression: 'attribute(input["values"]["description"], locale("en_US"), scope("ecommerce"))'
+                  - field: '[composition]'
+                    expression: 'attribute(input["values"]["composition"], locale(null), scope(null))'
+                  - field: '[wash_temperature]'
+                    expression: 'attribute(input["values"]["wash_temperature"], locale(null), scope(null))'
+                  - field: '[care_instructions]'
+                    expression: 'attribute(input["values"]["care_instructions"], locale(null), scope(null))'
+                  - field: '[material]'
+                    expression: 'attribute(input["values"]["material"], locale(null), scope(null))'
+          - condition: 'input["family"] === "led_tvs"'
+            map:
+              - field: '[code]'
+                copy: '[identifier]'
+              - field: '[family]'
+                copy: '[family]'
+              - field: '[translations][en_US]'
+                expression: 'input'
+                map:
+                  - field: '[name]'
+                    expression: 'attribute(input["values"]["variation_name"], locale("en_US"), scope("ecommerce"))'
+                  - field: '[slug]'
+                    expression: 'input["identifier"]'
+                  - field: '[description]'
+                    expression: 'attribute(input["values"]["description"], locale("en_US"), scope("ecommerce"))'
+          - condition: 'input["family"] === "accessories"'
+            map:
+              - field: '[code]'
+                copy: '[identifier]'
+              - field: '[family]'
+                copy: '[family]'
+              - field: '[translations][en_US]'
+                expression: 'input'
+                map:
+                  - field: '[name]'
+                    expression: 'attribute(input["values"]["variation_name"], locale("en_US"), scope("ecommerce"))'
+                  - field: '[slug]'
+                    expression: 'input["identifier"]'
+                  - field: '[composition]'
+                    expression: 'attribute(input["values"]["composition"], locale(null), scope(null))'
+                  - field: '[material]'
+                    expression: 'attribute(input["values"]["material"], locale(null), scope(null))'
+          - condition: 'true'
+            map:
+              - field: '[code]'
+                copy: '[identifier]'
+              - field: '[family]'
+                copy: '[family]'
+      logger:
+        channel: pipeline
+        destinations:
+          - elasticsearch:
+              level: warning
+              hosts:
+                - elasticsearch.example.com:9200
+    - sylius:
+        loader:
+          type: products
+          method: create
+        client:
+          api_url: 'http://localhost'
+          client_id: '414yc7d9mnk044ko4wswgw80o8ssw80gssos488kk8ogss40ko'
+          secret: '4k8ee6n44m4gkkg0coc8o4w4coscw0w4cg0wg8sc0wsk0sw8gs'
+          username: 'api'
+          password: 'sylius-api'
+      logger:
+        channel: pipeline
+        destinations:
+          - elasticsearch:
+              level: warning
+              hosts:
+                - elasticsearch.example.com:9200
+    - stream:
+        loader:
+          destination: 'stdout'
+      logger:
+        channel: pipeline
+        destinations:
+          - elasticsearch:
+              level: warning
+              hosts:
+                - elasticsearch.example.com:9200
 ```
-
-Now that you have your executable, file, we will need to 

@@ -7,10 +7,6 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>The Middleware Documents are copyright © [Kiboko](https://kiboko.fr/) 2020, 2021.</copyright>
-    <lastBuildDate>Fri, 22 Jan 2021 14:05:39 +0100</lastBuildDate>
-    
-	<atom:link href="https://php-etl.github.io/documentation/components/batch/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Fri, 22 Jan 2021 14:05:39 +0100</lastBuildDate><atom:link href="https://php-etl.github.io/documentation/components/batch/index.xml" rel="self" type="application/rss+xml" />
   </channel>
 </rss>

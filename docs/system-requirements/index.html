@@ -99,9 +99,11 @@
           </a>
           <div class="dropdown-menu">
             
-            <a class="dropdown-item" href="/documentation/system-requirements">System Requirements</a>
-            
             <a class="dropdown-item" href="/documentation/installation/bare-metal">Bare metal</a>
+            
+            <a class="dropdown-item" href="/documentation/installation/getting-started">Getting started</a>
+            
+            <a class="dropdown-item" href="/documentation/system-requirements">System Requirements</a>
             
           </div>
         </li>
@@ -115,13 +117,17 @@
           </a>
           <div class="dropdown-menu">
             
-            <a class="dropdown-item" href="/documentation/components/pipeline">Pipeline</a>
+            <a class="dropdown-item" href="/documentation/components/batch">Batch</a>
             
-            <a class="dropdown-item" href="/documentation/components/fast-map">Fast Map</a>
+            <a class="dropdown-item" href="/documentation/components/dashboard">Dashboard</a>
+            
+            <a class="dropdown-item" href="/documentation/components/discovery">Discovery</a>
+            
+            <a class="dropdown-item" href="/documentation/components/pipeline">Pipeline</a>
             
             <a class="dropdown-item" href="/documentation/components/satellite">Satellite</a>
             
-            <a class="dropdown-item" href="/documentation/components/batch">Batch</a>
+            <a class="dropdown-item" href="/documentation/components/workflow">Workflow</a>
             
           </div>
         </li>
@@ -153,19 +159,27 @@
           </a>
           <div class="dropdown-menu">
             
-            <a class="dropdown-item" href="/documentation/connectivity/openapi">Open API</a>
-            
-            <a class="dropdown-item" href="/documentation/connectivity/custom">Custom connector</a>
-            
-            <a class="dropdown-item" href="/documentation/connectivity/json-ld">JSON-LD</a>
-            
             <a class="dropdown-item" href="/documentation/connectivity/akeneo">Akeneo</a>
-            
-            <a class="dropdown-item" href="/documentation/connectivity/sql">SQL database</a>
             
             <a class="dropdown-item" href="/documentation/connectivity/csv">CSV files</a>
             
+            <a class="dropdown-item" href="/documentation/connectivity/custom">Custom connector</a>
+            
+            <a class="dropdown-item" href="/documentation/connectivity/expression-language">Expression Language</a>
+            
+            <a class="dropdown-item" href="/documentation/connectivity/fast-map">FastMap</a>
+            
+            <a class="dropdown-item" href="/documentation/connectivity/ftp">FTP</a>
+            
+            <a class="dropdown-item" href="/documentation/connectivity/logger">Logger</a>
+            
+            <a class="dropdown-item" href="/documentation/connectivity/nl-json">NL-JSON</a>
+            
             <a class="dropdown-item" href="/documentation/connectivity/spreadsheet">Spreadsheet files</a>
+            
+            <a class="dropdown-item" href="/documentation/connectivity/sql">SQL database</a>
+            
+            <a class="dropdown-item" href="/documentation/connectivity/sylius">Sylius</a>
             
           </div>
         </li>
@@ -350,7 +364,7 @@ output {
 </code></pre></div><h3 id="rabbitmq">RabbitMQ</h3>
 <p>RabbitMQ is a message queue service, handling storage, routing and concurrency handling between consumers.</p>
 <p>In your project, create a file named <code>.docker/amqp/Dockerfile</code> with the following contents:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-dockerfile" data-lang="dockerfile"><span style="color:#66d9ef">FROM</span><span style="color:#e6db74"> rabbitmq:3.7-management-alpine</span><span style="color:#960050;background-color:#1e0010">
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-dockerfile" data-lang="dockerfile"><span style="color:#66d9ef">FROM</span><span style="color:#e6db74"> rabbitmq:3.8-management-alpine</span><span style="color:#960050;background-color:#1e0010">
 </span><span style="color:#960050;background-color:#1e0010">
 </span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">RUN</span> set -ex<span style="color:#ae81ff">\
 </span><span style="color:#ae81ff"></span>    <span style="color:#f92672">&amp;&amp;</span> apk update <span style="color:#ae81ff">\
@@ -358,9 +372,7 @@ output {
 </span><span style="color:#ae81ff"></span>    <span style="color:#f92672">&amp;&amp;</span> apk add --no-cache --virtual .build-deps <span style="color:#ae81ff">\
 </span><span style="color:#ae81ff"></span>        zip <span style="color:#ae81ff">\
 </span><span style="color:#ae81ff"></span>        curl <span style="color:#ae81ff">\
-</span><span style="color:#ae81ff"></span>    <span style="color:#f92672">&amp;&amp;</span> curl https://dl.bintray.com/rabbitmq/community-plugins/3.7.x/rabbitmq_delayed_message_exchange/rabbitmq_delayed_message_exchange-20171201-3.7.x.zip &gt; $RABBITMQ_HOME/plugins/rabbitmq_delayed_message_exchange-20171201-3.7.x.zip <span style="color:#ae81ff">\
-</span><span style="color:#ae81ff"></span>    <span style="color:#f92672">&amp;&amp;</span> unzip $RABBITMQ_HOME/plugins/rabbitmq_delayed_message_exchange-20171201-3.7.x.zip -d $RABBITMQ_HOME/plugins <span style="color:#ae81ff">\
-</span><span style="color:#ae81ff"></span>    <span style="color:#f92672">&amp;&amp;</span> rm $RABBITMQ_HOME/plugins/rabbitmq_delayed_message_exchange-20171201-3.7.x.zip <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>    <span style="color:#f92672">&amp;&amp;</span> curl -L https://github.com/rabbitmq/rabbitmq-delayed-message-exchange/releases/download/3.8.17/rabbitmq_delayed_message_exchange-3.8.17.8f537ac.ez &gt; $RABBITMQ_HOME/plugins/rabbitmq_delayed_message_exchange-3.8.17.8f537ac.ez <span style="color:#ae81ff">\
 </span><span style="color:#ae81ff"></span>    <span style="color:#f92672">&amp;&amp;</span> apk del .build-deps<span style="color:#960050;background-color:#1e0010">
 </span><span style="color:#960050;background-color:#1e0010">
 </span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">RUN</span> rabbitmq-plugins enable --offline rabbitmq_delayed_message_exchange<span style="color:#960050;background-color:#1e0010">
@@ -525,84 +537,6 @@ hz <span style="color:#ae81ff">10</span>
             
             
             
-
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-
-            
-            
-            
-
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-
-            
-            
-            
-
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-
-            
-            
-            
-
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-
-            
-            
-            
-
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-
-            
             
             
 
@@ -697,6 +631,312 @@ hz <span style="color:#ae81ff">10</span>
             
             
             
+
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
             
             
             
@@ -794,72 +1034,6 @@ hz <span style="color:#ae81ff">10</span>
             
             
             
-
-            
-            
-            
-
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-
-            
-            
-            
-
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-
-            
-            
-            
-
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-
-            
-            
-            
-            
-            
-
-            
-            
-            
-            
-            
             
             
             
@@ -897,10 +1071,10 @@ hz <span style="color:#ae81ff">10</span>
             
 
             
-            <a class="nav nav-prev" href="https://php-etl.github.io/documentation/installation/bare-metal/"><i class="ti-arrow-left mr-2"></i> <span class="d-none d-md-block">Bare-metal Installation</span></a>
+            <a class="nav nav-prev" href="https://php-etl.github.io/documentation/installation/getting-started/"><i class="ti-arrow-left mr-2"></i> <span class="d-none d-md-block">Getting started</span></a>
             
             
-            <a class="nav nav-next" href="https://php-etl.github.io/documentation/connectivity/"> <span class="d-none d-md-block">Connectivity</span><i class="ti-arrow-right ml-2"></i></a>
+            <a class="nav nav-next" href="https://php-etl.github.io/documentation/connectivity/"> <span class="d-none d-md-block">Connectivities</span><i class="ti-arrow-right ml-2"></i></a>
             
           </nav>
         </div>
@@ -909,6 +1083,7 @@ hz <span style="color:#ae81ff">10</span>
   </div>
 </section>
 <!-- /details page -->
+
 
 
 
