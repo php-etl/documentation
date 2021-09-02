@@ -5,6 +5,7 @@ draft: false
 type: "plugins"
 icon: "ti-layout-grid3"
 description: "Read and write Excel or OpenDocument files"
+weight: 5
 ---
 
 {{< feature-state for_mw_version="0.1" state="alpha" >}}

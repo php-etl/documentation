@@ -5,6 +5,7 @@ draft: false
 type: "plugins"
 icon: "ti-server"
 description: "Process data from SQL data stores in your pipelines"
+weight: 6
 ---
 
 # SQL Plugin

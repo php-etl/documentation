@@ -1,12 +1,16 @@
 ---
-title: "Logger"
+title: "Logging"
 date: 2021-08-06T16:40:18+02:00
 draft: false
+type: "component"
+icon: "ti-archive"
+description: "Execution logging and error reporting"
+weight: 4
 ---
 
 # Logger
 
-- [What is it ?](#what-is-it-)
+- [What is it for?](#what-is-it-for)
 - [Installation](#installation)
 - [Usage](#usage)
     - [Setting your channel](#setting-your-channel)
@@ -22,9 +26,9 @@ draft: false
 
 ---
 
-> A log is a type of file that stores a history of events.
+> A log is a type of file that stores a history of messages.
 
-# What is it ?
+# What is it for?
 
 In some cases you may need to identify why your Pipeline is failing, so we have set up a logger system that you can 
 use in different steps of your pipeline.

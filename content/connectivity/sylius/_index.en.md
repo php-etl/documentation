@@ -5,6 +5,7 @@ draft: false
 type: "plugins"
 logo: "sylius"
 description: "Connect your Sylius e-commerce through pipelines"
+weight: 3
 ---
 
 {{< feature-state for_mw_version="0.1" state="alpha" >}}

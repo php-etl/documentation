@@ -5,6 +5,7 @@ draft: false
 type: "plugins"
 logo: "csv"
 description: "Read and write CSV files in any format"
+weight: 4
 ---
 
 # CSV Plugin

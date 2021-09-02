@@ -5,6 +5,7 @@ draft: false
 type: "plugins"
 logo: "fastmap"
 description: "Data transformation and serialization, with compiled and static mappers"
+weight: 2
 ---
 
 {{< feature-state for_mw_version="0.1" state="alpha" >}}

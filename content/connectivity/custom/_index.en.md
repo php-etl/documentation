@@ -3,9 +3,9 @@ title: "Custom connector"
 date: 2021-01-22T09:23:54+01:00
 draft: false
 type: "plugins"
-logo: "custom"
-description: "Read transform and write files in any format
-"
+icon: "ti-settings"
+description: "Read transform and write files in any format"
+weight: 10
 ---
 
 - [Definition](#definition)

@@ -5,6 +5,7 @@ draft: false
 type: "plugins"
 icon: "ti-package"
 description: "Read and write NL-JSON files through your pipelines"
+weight: 9
 ---
 
 {{< feature-state for_mw_version="0.1" state="alpha" >}}

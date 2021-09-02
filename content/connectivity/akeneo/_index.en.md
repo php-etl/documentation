@@ -5,6 +5,7 @@ draft: false
 type: "plugins"
 logo: "akeneo"
 description: "Connect your Akeneo PIM through pipelines"
+weight: 1
 ---
 
 - [Goal](#goal)
