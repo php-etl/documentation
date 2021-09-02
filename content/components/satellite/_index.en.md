@@ -10,25 +10,38 @@ description: "Generated micro-services for data stream processing in the cloud"
 
 {{< feature-state for_mw_version="0.1" state="alpha" >}}
 
-### Definition of a Satellite
+# Satellite 
 
-A satellite is a micro-service running in the cloud, packaged as a docker image.
-It can be deployed in any Docker infrastructure, including Kubernetes clusters.
+- [Building a satellite](#building-a-satellite)
+    - [Setting up the Adapter](#setting-up-the-adapter)
+        - [Using Docker](#using-docker)
+        - [Using system](#using-system)
+    - [Configure composer](#configure-composer)
+    - [Setting up the runtime](#setting-up-the-runtime)
+        - [Using Pipeline](#using-pipeline)
+        - [Using Workflow](#using-workflow)
+- [Configuration formats](#configuration-formats)
+- [Executing the command](#executing-the-command)
 
-There are 4 types of runtimes, depending on your needs you will have to choose one of:
- * `http-api`: the micro-service will be operating an API, on which several URL routes can be registered. `http-api` is used for REST API.
- * `http-hook`: the micro-service will be operating an API on a single URL route. `http-hook` is used for webhooks. A webhook is a POST request sent to a URL. It's considered to be 
-a means for one application to provide other applications with real-time information
- * `pipeline`: the micro-service will be operating a data pipeline, executed in the backend that can be executed as a cron job. For more information on pipelines, see [Pipeline](../pipeline/).
- * `batch`: the micro-service will be orchestrating more than one data pipeline, executed in the backend that can be executed as a cron job
+---
 
-### Building your own satellite
+> A satellite is a micro-service running in the cloud, packaged as a docker image.
+> It can be deployed in any Docker infrastructure, including Kubernetes clusters.
 
-Make sure that you have a yaml file in your root folder which will contain all your configuration.  
-Then, let's declare the docker image (or the file) on which we want to build our micro-service. 
+## Building a satellite
+
+The configuration of your satellite must be defined in a yaml file.
+
+### Setting up the Adapter
+
+First, you should declare the docker image, or the file, on which we want to build the micro-service.
 
 #### Using Docker 
-To use a docker image to build your micro-service, implement the `docker` key.
+To use a docker image to build your micro-service, implement the `docker` key with its configuration options :
+
+- `from` : determines the image on which your code will run
+- `workdir` : define the working directory of a Docker container
+- `tags` : determines the references to the Docker images
 
 {{< tabs name="basic_definition" >}}
 
@@ -61,8 +74,14 @@ $satellite = (new Docker\Satellite(
 
 {{< /tabs >}}
 
+Here, we chose to use the `php:8.0-cli-alpine` base image on which our code will be executed.
+You could use any docker image of your choice, however you will need to have a PHP runtime 
+available, in a compatible version: >=8.0 with the CLI SAPI.
+
 #### Using system 
 To use a system file to build your micro-service, implement the `filesystem` key.
+
+The filesystem key is accompanied by a `path` key which determines the path of the microservice to be built.
 
 {{< tabs name="basic_definition_system" >}}
 
@@ -79,14 +98,11 @@ satellite:
 
 {{< /tabs >}}
 
-Here, we chose to use the `php:8.0-cli-alpine` base image on which our code will be executed.
-You could use any docker image of your choice, however you will need to have a PHP runtime 
-available, in a compatible version: >=8.0 with the CLI SAPI.
+### Configure composer 
 
-#### Configure composer 
+As a second step, we need to declare the composer dependencies our microservice will have with the `composer` key.
 
-Next, as a second step, we need to declare the composer dependencies our microservice will have.
-We will require them through composer, with a declarative manner.
+The `require` option allows to add all the packages, write like `package_name:version`, that we need for your microservice.
 
 {{< tabs name="basic_with_composer" >}}
 
@@ -94,10 +110,6 @@ We will require them through composer, with a declarative manner.
 satellite:
 #...
   composer:
-    autoload:
-      psr4:
-      - namespace: "Pipeline\\"
-        paths: [""]
     require:
       - "php-etl/pipeline:^0.2"
       - "php-etl/fast-map:^0.2"
@@ -119,29 +131,49 @@ $dockerfile->push(
 
 {{< /tabs >}}
 
-You can add the `from_local` option in your configuration. This option copies an existing composer.json and composer.lock.
+The `autoload` option is optional and allows you to configure your autoloader by specifying one or more namespaces and 
+and directories paths as if you were directly in the composer.json.
 
-{{< tabs name="basic_with_composer_from_local" >}}
+```yaml
+satellite:
+#...
+  composer:
+    autoload:
+      psr4:
+        - namespace: "Pipeline\\"
+          paths: [""]
+``` 
 
-{{< tab name="YAML" codelang="yaml"  >}}
+The `from_local` option is optional and copies local repositories instead of downloading them.
+
+```yaml
 satellite:
 #...
   composer:
     from_local: true
-{{< /tab >}}
+``` 
 
-{{< /tabs >}}
-
-#### Configure the runtime
+### Setting up the runtime
 
 Now that we have made our environment prepared for our satellite, we will declare 
 the way we want our pipeline to handle our data flows.
+
+There are 4 types of runtimes, depending on your needs you will have to choose one of:
+ * `http-api`: the micro-service will be operating an API, on which several URL routes can be registered. `http-api` is used for REST API.
+ * `http-hook`: the micro-service will be operating an API on a single URL route. `http-hook` is used for webhooks. A webhook is a POST request sent to a URL. It's considered to be 
+a means for one application to provide other applications with real-time information
+ * `pipeline`: the micro-service will be operating a data pipeline, executed in the backend that can be executed as a cron job. For more information on pipelines, see [Pipeline](../pipeline/).
+ * `workflow`: the micro-service will be orchestrating more than one data pipeline, executed in the backend that can be executed as a cron job
+
+#### Using Pipeline
+
+Please visit the [Pipeline documentation page](../pipeline) to find out how to set up your pipeline.
 
 {{< tabs name="dataflows" >}}
 
 {{< tab name="YAML" codelang="yaml"  >}}
 satellite:
-#...
+   # ...
    pipeline:
       steps:
       - akeneo:
@@ -191,19 +223,76 @@ $pipeline->build();
 
 {{< /tabs >}}
 
+#### Using Workflow
+
+Please visit the [Workflow documentation page](../workflow) to find out how to set up your workflow.
+
+```yaml
+satellite:
+  # ...
+  workflow:
+    jobs:
+    - name: 'Lorem ipsum dolor'
+      pipeline:
+        steps:
+        - akeneo:
+            extractor:
+              type: category
+              method: all
+            client:
+              api_url: 'http://localhost:8080'
+              client_id: '5_5dxapwm2rs4kkso8wgwk08o88gg0wc0owkgsgg0gkcwos4o0wo'
+              secret: 34n14k1ajy800g0ocww8w8cwckogoc844ggwcs8gkg8w4k4888
+              username: 'kiboko_2145'
+              password: 62d0f1090
+        - csv:
+            loader:
+              file_path: categories.csv
+              delimiter: ','
+              enclosure: '"'
+              escape: '\\'
+    - pipeline:
+        steps:
+        - akeneo:
+            extractor:
+              type: product
+              method: all
+            client:
+              api_url: 'http://localhost:8080'
+              client_id: '5_5dxapwm2rs4kkso8wgwk08o88gg0wc0owkgsgg0gkcwos4o0wo'
+              secret: 34n14k1ajy800g0ocww8w8cwckogoc844ggwcs8gkg8w4k4888
+              username: 'kiboko_2145'
+              password: 62d0f1090
+        - csv:
+            loader:
+              file_path: products.csv
+              delimiter: ','
+              enclosure: '"'
+              escape: '\'
+```
+
 ### Configuration formats
 
 There are 2 ways to declare satellites :
 * Use the [PHP objects](php-objects)
 * Use the [YAML configuration Syntax](yaml-format)
 
-### Executing the command
-After configuring your config file, you can run the command which will allow you to create the Dockerfile or the file system :
-```
+### Execute your micro-service
+After configuring your config file, you can run the command which will allow you to create the Dockerfile or the file 
+system. 
+
+```shell
+# will execute the satellite.yaml file located at the root of the project
 php bin/console build
+
+# specify the name of the file to be executed
+php bin/console build `satellite.yaml`
 ```
 
-You can also specify the name of the file to be executed : 
-```
-php bin/console build `satellite.yaml`
+This command will create a folder with a file `function.php` containing the pipeline code.
+
+You have to execute it with php command like this :
+
+```shell
+php path/to/folder/function.php
 ```

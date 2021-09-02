@@ -8,12 +8,28 @@ description: "Read and write Excel or OpenDocument files"
 
 # Spreadsheet Plugin
 
+- [What is it ?](#what-is-it-)
+- [Installation](#installation)
+- [Usage](#usage)
+    - [Building an extractor](#building-an-extractor)
+    - [Building a loader](#building-a-loader)
+- [Advanced usage](#advanced-usage)
+    - [Skip one or more lines](#skip-one-or-more-lines)
+    - [Splitting into several files](#splitting-into-several-files)
+
+---
+
+> XLSX is the file format saved for Microsoft Excel spreadsheets.
+
+> ODS is the file format saved for OpenDocument spreadsheets.
+
 ## What is it ?
 
-The Spreadsheet plugin aims at integrating the Spreadsheet or the Opendocument reader and writer into the
+The Spreadsheet plugin aims at integrating the spreadsheet (CSV, XLSX and ODS) reader and writer into the
 [Pipeline](https://github.com/php-etl/pipeline) stack.
 
 ## Installation
+
 ```shell
 composer require php-etl/spreadsheet-plugin
 ```
@@ -60,17 +76,6 @@ spreadsheet:
 
 Warning : CSV files do not use a sheet, so the `sheet` option is disabled but takes additional options `delimiter`,
 `enclosure` and `encoding`.
-
-### Using a logger
-The `logger` option has been set up so that you can use a logger directly in the Pipeline.
-When using this option, you must specify the type of logger.
-
-```yaml
-spreadsheet:
-  # ...
-  logger:
-    type: stderr
-```
 
 ## Advanced usage
 

@@ -8,24 +8,34 @@ description: "Read transform and write files in any format
 "
 ---
 
-### Definition
+- [Definition](#definition)
+- [Installation](#installation)
+- [Definition](#usage)
+  - [Reading from a custom file](#reading-from-a-custom-file)
+  - [Transform to a custom file](#transform-to-a-custom-file)
+  - [Writing to a custom file](#writing-to-a-custom-file)
+- [Precisions](#precisions)
+
+---
+
+## Definition
 
 The custom plugin allows you to use your own source code in your [pipelines](https://php-etl.github.io/documentation/components/pipeline/),
 allowing you to connect tools that are not supported by the standard distribution.
 
-### Installation
+## Installation
 
 ```
 composer require php-etl/custom-plugin
 ```
 
-### Usage
+## Usage
 
 You have to create a yml file which contains all the plugin configuration.
 
 Example of a config file.
 
-#### Reading from a custom file
+### Reading from a custom file
 
 {{< tabs name="basic_definition_read" >}}
 
@@ -51,7 +61,7 @@ satellite:
 
 {{< /tabs >}}
 
-#### Transform to a custom file
+### Transform to a custom file
 
 {{< tabs name="basic_definition_transform" >}}
 
@@ -70,7 +80,7 @@ satellite:
 
 {{< /tabs >}}
 
-#### Writing to a custom file
+### Writing to a custom file
 
 {{< tabs name="basic_definition_write" >}}
 
@@ -94,7 +104,7 @@ satellite:
 
 {{< /tabs >}}
 
-### Precisions
+## Precisions
 
 * `services:`
   A service is a class that allows you to have a solid structure to organize functionalities,

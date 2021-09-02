@@ -1,46 +1,85 @@
 ---
-title: "Getting started with Akeneo"
+title: "Getting started"
 date: 2020-07-12T15:21:02+02:00
 draft: false
-shortDescription: Getting started with Akeneo
+shortDescription: Getting started
 ---
 
 # Getting Started
 
-In this example we will install the middleware and connect it to an Akeneo instance using the Akeneo plugin. Free feel
-to use any application as long as a plugin exists.
+- [Requirements](#requirements)
+- [Installation](#installation)
+- [Create your micro-service](#create-your-micro-service)
+    - [Explanation of configuration](#explanation-of-configuration)
+- [Running the pipeline](#running-the-pipeline)
+    
+---
 
 ## Requirements
 
-- composer
-- php 8.0
-- An Akeneo instance
+Before creating your first middleware application you must :
 
-## Install
+- [Install Composer](https://getcomposer.org/download/) version 2
+- Install PHP 8.0 or higher
+- A connection to an Akeneo API (minimum read mode)
 
-If you want to start from scratch , create a composer project using the following command
+## Installation
 
-- `composer init`
+After creating a new blank project, open your console terminal and run these commands :
 
-Then add the following components to your composer.json :
-
-```
-composer require php-etl/satellite php-etl/akeneo-expression-language php-etl/akeneo-plugin
+```shell
+composer init
 ```
 
-- `php-etl/satellite` is the core of the middleware
+You must choose `dev` as the value for the `minimum-stability` option.
+
+```shell
+composer require php-etl/satellite
+```
+
+This command will add the `php-etl/satellite` package, that is the core of the middleware, to your composer.json.
+
+Then, choose the plugin(s) you need from [all our plugins](../../connectivity).
+
+```shell
+composer require php-etl/akeneo-expression-language php-etl/akeneo-plugin
+```
+
+In this example, the command will add the following component packages to your composer.json :
+
 - `php-etl/akeneo-expression-language` provide some config functions useful when working with Akeneo
 - `php-etl/akeneo-plugin` is a Middleware plugin dedicated to Akeneo. It allow to connect and use the Akeneo Api
 
-## Setup
 
-- Create a directory containing a new created file `pipeline.yaml` or any yaml file.
-- add the following content :
+Finally, in your `composer.json` file, add the following lines :
 
+```json
+"config": {
+    "bin-dir": "bin"
+},
+"scripts": {
+    "post-install-cmd": [
+        "Kiboko\\Component\\Satellite\\ComposerScripts::postInstall"
+    ],
+    "post-update-cmd": [
+        "Kiboko\\Component\\Satellite\\ComposerScripts::postUpdate"
+    ]
+}
+```
+
+## Create your micro-service
+
+Create a `src` folder in which you will add a new folder each time you want to create a microservice. 
+In this new folder, create a yaml file that will contain your configuration.
+
+In our case, we have created a `pipeline.yaml` file in the `src/pipeline-akeneo-to-csv/` folder which contains the 
+following content :
 
 <details>
 
 ```yaml
+# src/pipeline-akeneo-to-csv/pipeline.yaml
+
 satellite:
 
   filesystem:
@@ -68,8 +107,6 @@ satellite:
             secret: 'secret'
             username: 'username'
             password: 'password'
-        logger:
-          type: stderr
       - fastmap:
           map:
             - field: '[code]'
@@ -78,8 +115,6 @@ satellite:
               constant: 'input["type"]'
             - field: '[group]'
               expression: 'input["group"]'
-        logger:
-          type: stderr
       - csv:
           loader:
             file_path: 'attributes.csv'
@@ -93,9 +128,9 @@ satellite:
 
 In this example we extract every attribute ok Akeneo and export some informations into a csv file.
 
-We will explain every section of this config :
+### Explanation of configuration
 
-### 1. The system declaration :
+#### 1. The system declaration :
 ```yaml
 satellite:
 
@@ -115,27 +150,14 @@ satellite:
     steps:
 ```
 
-- Every pipeline config file start with satellite keyword.
-- Then you specify the output folder. This directory contain the auto-generated php application.
-- And then you have to specify some packages required for the auto-generated application to run.
-In this example we have the minimal requirement to start the pipeline, extract data from akeneo,
-transform and export the data into a csv file.
-- And finally you specify each steps of the pipeline , see below.
+To understand the structure of the configuration go to the [Satellite documentation](../../components/satellite).
 
-### 2. Steps 
+#### 2. Steps 
 
 In this pipeline , you have 3 steps.
 The first one, allow you to extract every attribute of the Akeneo instance you are connected to
 (you have to configure your credentials).
 For more explication about this plugin, check the corresponding documentation page.
-As you can see, it sends logs to the php terminal using these lines in each step :
-
-```yaml
-logger:
-    type: stderr
-```
-In fact you can send logs to Kibana using elasticsearch and obviously, a specific config.
-Anyway, for this example, we will export logs to the terminal as it the easiest possible solution.
 
 ```yaml
   - fastmap:
@@ -146,8 +168,6 @@ Anyway, for this example, we will export logs to the terminal as it the easiest 
           constant: 'input["type"]'
         - field: '[group]'
           expression: 'input["group"]'
-    logger:
-      type: stderr
 ```
 
 This step uses the fastmap plugin, like the Akeneo plugin, there is a dedicated documentation.
@@ -219,12 +239,24 @@ And the last step, exporting the data into a csv file.
 We create a `attributes.csv` file. The header is the key of the array of the last step (code, type, group).
 And this step will fill data automatically.
 
-## Run the pipeline ! 
+## Running the pipeline
 
-### Build
+Once you have completed your configuration, open a console terminal and run these commands :
 
-Once your configuration is ready :
-- Start `php bin/satellite build path/to/pipeline.yaml`.
-- Run the pipeline using `php path/to/build/function.php`
+```shell
+# php bin/satellite build --path-to-your-config-file
+php bin/satellite build src/pipeline-akeneo-to-csv/pipeline.yaml
+```
 
-Wait until your csv is ready.
+Warning: You must run this command every time you change your configuration. 
+
+```shell
+# php --path-to-the-generated-function-file
+php src/pipeline-akeneo-to-csv/build/function.php
+```
+
+The first command will build your microservice and create a folder whose name is the value defined in the path of your
+filesystem in which there is a generated function.php file.
+
+The second command allows you to run your microservice. The execution of your microservice may take several minutes, 
+so please wait until the execution is completed.

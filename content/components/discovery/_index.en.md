@@ -1,7 +1,7 @@
 ---
 title: "Discovery"
 date: 2020-07-12T15:21:02+02:00
-draft: true
+draft: false
 type: "component"
 icon: "ti-search"
 description: "API discovery, with data modeling and structure metadata"

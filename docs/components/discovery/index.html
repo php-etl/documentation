@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <title>Discovery</title>
 
-  <meta name="generator" content="Hugo 0.73.0" />
+  <meta name="generator" content="Hugo 0.82.0" />
 
   <!-- mobile responsive meta -->
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -99,13 +99,11 @@
           </a>
           <div class="dropdown-menu">
             
-            <a class="dropdown-item" href="/documentation/system-requirements">System Requirements</a>
-            
             <a class="dropdown-item" href="/documentation/installation/bare-metal">Bare metal</a>
             
-            <a class="dropdown-item" href="/documentation/installation/symfony">Symfony</a>
+            <a class="dropdown-item" href="/documentation/installation/getting-started">Getting started</a>
             
-            <a class="dropdown-item" href="/documentation/installation/laravel">Laravel</a>
+            <a class="dropdown-item" href="/documentation/system-requirements">System Requirements</a>
             
           </div>
         </li>
@@ -119,13 +117,17 @@
           </a>
           <div class="dropdown-menu">
             
-            <a class="dropdown-item" href="/documentation/components/pipeline">Pipeline</a>
+            <a class="dropdown-item" href="/documentation/components/batch">Batch</a>
             
-            <a class="dropdown-item" href="/documentation/components/fast-map">Fast Map</a>
+            <a class="dropdown-item" href="/documentation/components/dashboard">Dashboard</a>
+            
+            <a class="dropdown-item" href="/documentation/components/discovery">Discovery</a>
+            
+            <a class="dropdown-item" href="/documentation/components/pipeline">Pipeline</a>
             
             <a class="dropdown-item" href="/documentation/components/satellite">Satellite</a>
             
-            <a class="dropdown-item" href="/documentation/components/batch">Batch</a>
+            <a class="dropdown-item" href="/documentation/components/workflow">Workflow</a>
             
           </div>
         </li>
@@ -157,17 +159,27 @@
           </a>
           <div class="dropdown-menu">
             
-            <a class="dropdown-item" href="/documentation/connectivity/openapi">Open API</a>
-            
-            <a class="dropdown-item" href="/documentation/connectivity/json-schema">JSON schema</a>
-            
             <a class="dropdown-item" href="/documentation/connectivity/akeneo">Akeneo</a>
-            
-            <a class="dropdown-item" href="/documentation/connectivity/database">SQL database</a>
             
             <a class="dropdown-item" href="/documentation/connectivity/csv">CSV files</a>
             
+            <a class="dropdown-item" href="/documentation/connectivity/custom">Custom connector</a>
+            
+            <a class="dropdown-item" href="/documentation/connectivity/expression-language">Expression Language</a>
+            
+            <a class="dropdown-item" href="/documentation/connectivity/fast-map">FastMap</a>
+            
+            <a class="dropdown-item" href="/documentation/connectivity/ftp">FTP</a>
+            
+            <a class="dropdown-item" href="/documentation/connectivity/logger">Logger</a>
+            
+            <a class="dropdown-item" href="/documentation/connectivity/nl-json">NL-JSON</a>
+            
             <a class="dropdown-item" href="/documentation/connectivity/spreadsheet">Spreadsheet files</a>
+            
+            <a class="dropdown-item" href="/documentation/connectivity/sql">SQL database</a>
+            
+            <a class="dropdown-item" href="/documentation/connectivity/sylius">Sylius</a>
             
           </div>
         </li>
@@ -233,76 +245,6 @@
   
   
     <ul>
-      
-        
-          
-
-
-
-
-
-
-
-
-<li data-nav-id="https://php-etl.github.io/documentation/components/satellite/" title="Satellite" class="sidelist
-  ">
-  <a href="https://php-etl.github.io/documentation/components/satellite/">
-    Satellite
-  </a>
-  
-  
-    <ul>
-      
-        
-          
-
-
-
-
-
-
-
-
-<li data-nav-id="https://php-etl.github.io/documentation/components/satellite/yaml-format/" title="The YAML configuration format" class="sidelist
-  ">
-  <a href="https://php-etl.github.io/documentation/components/satellite/yaml-format/">
-    The YAML configuration format
-  </a>
-  
-  
-</li>
-
-
-        
-      
-        
-          
-
-
-
-
-
-
-
-
-<li data-nav-id="https://php-etl.github.io/documentation/components/satellite/php-objects/" title="PHP Objects" class="sidelist
-  ">
-  <a href="https://php-etl.github.io/documentation/components/satellite/php-objects/">
-    PHP Objects
-  </a>
-  
-  
-</li>
-
-
-        
-      
-    </ul>
-  
-</li>
-
-
-        
       
         
           
@@ -392,6 +334,98 @@
 
         
       
+        
+          
+
+
+
+
+
+
+
+
+<li data-nav-id="https://php-etl.github.io/documentation/components/satellite/" title="Satellite" class="sidelist
+  ">
+  <a href="https://php-etl.github.io/documentation/components/satellite/">
+    Satellite
+  </a>
+  
+  
+    <ul>
+      
+        
+          
+
+
+
+
+
+
+
+
+<li data-nav-id="https://php-etl.github.io/documentation/components/satellite/php-objects/" title="PHP Objects" class="sidelist
+  ">
+  <a href="https://php-etl.github.io/documentation/components/satellite/php-objects/">
+    PHP Objects
+  </a>
+  
+  
+</li>
+
+
+        
+      
+        
+          
+
+
+
+
+
+
+
+
+<li data-nav-id="https://php-etl.github.io/documentation/components/satellite/yaml-format/" title="The YAML configuration format" class="sidelist
+  ">
+  <a href="https://php-etl.github.io/documentation/components/satellite/yaml-format/">
+    The YAML configuration format
+  </a>
+  
+  
+</li>
+
+
+        
+      
+    </ul>
+  
+</li>
+
+
+        
+      
+        
+          
+
+
+
+
+
+
+
+
+<li data-nav-id="https://php-etl.github.io/documentation/components/workflow/" title="Workflow" class="sidelist
+  ">
+  <a href="https://php-etl.github.io/documentation/components/workflow/">
+    Workflow
+  </a>
+  
+  
+</li>
+
+
+        
+      
     </ul>
   
 </li>
@@ -423,6 +457,7 @@
 
 
 <h3 id="data-structure-discovery">Data structure discovery</h3>
+<h3 id="api-discovery">API discovery</h3>
 </div>
           
           <p class="post-meta border-bottom pb-3 mb-0 mt-3">Updated on 12 Jul 2020</p>
@@ -474,106 +509,6 @@
             
             
             
-
-            
-            
-            
-            
-            
-            
-            
-            
-
-            
-            
-            
-
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-
-            
-            
-            
-
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-
-            
-            
-            
-
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-
-            
-            
-            
-
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-
-            
-            
-            
-            
-            
-
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-
-            
             
             
 
@@ -652,6 +587,300 @@
             
             
             
+
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
             
 
             
@@ -764,6 +993,22 @@
             
             
 
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+
+            
+            
+            
             
             
             
@@ -817,6 +1062,7 @@
   </div>
 </section>
 <!-- /details page -->
+
 
 
 
