@@ -626,7 +626,17 @@
         <div class="p-lg-5 p-4 bg-white">
           <h2 class="mb-5">Spreadsheet</h2>
           
-          <div class="content"><h1 id="spreadsheet-plugin">Spreadsheet Plugin</h1>
+          <div class="content">
+
+
+
+
+<div style="margin-top: 10px; margin-bottom: 10px;">
+<b>FEATURE STATE:</b> <code>Middleware 0.1 [alpha]</code>
+</div>
+
+
+<h1 id="spreadsheet-plugin">Spreadsheet Plugin</h1>
 <ul>
 <li><a href="#what-is-it-">What is it ?</a></li>
 <li><a href="#installation">Installation</a></li>
@@ -645,69 +655,203 @@
 </ul>
 <hr>
 <blockquote>
-<p>XLSX is the file format saved for Microsoft Excel spreadsheets.</p>
+<p>XLSX is the file format used by Microsoft Excel spreadsheets.</p>
 </blockquote>
 <blockquote>
-<p>ODS is the file format saved for OpenDocument spreadsheets.</p>
+<p>ODS is the OpenDocument spreadsheet file format used by Libreoffice and OpenOffice.</p>
 </blockquote>
-<h2 id="what-is-it-">What is it ?</h2>
-<p>The Spreadsheet plugin aims at integrating the spreadsheet (CSV, XLSX and ODS) reader and writer into the
+<h2 id="what-is-it-for">What is it for?</h2>
+<p>The Spreadsheet plugin aims at integrating spreadsheet file formats (XLSX, ODS and CSV) into the
 <a href="https://github.com/php-etl/pipeline">Pipeline</a> stack.</p>
 <h2 id="installation">Installation</h2>
+<p>In a Satellite project, add the spreadsheet plugin this way:</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">composer require php-etl/spreadsheet-plugin
 </code></pre></div><h2 id="usage">Usage</h2>
-<p>The Spreadsheet plugin allows you to instantiate an extractor or loader for excel, opendocument and csv files.</p>
-<h3 id="building-an--extractor">Building an  extractor</h3>
-<p>To build an extractor, you need to specify the path of your file, the type of extractor to build and the name of the
+<h3 id="building-an-extractor">Building an extractor</h3>
+<p>To build an extractor, you need to specify the path of your file, the type of extractor to build, and the name of the
 sheet to read.</p>
-<p>The different types of extractor supported :</p>
+<p>The different types of extractor supported are:</p>
 <ul>
 <li><code>excel</code></li>
 <li><code>open_document</code></li>
 <li><code>csv</code></li>
 </ul>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">spreadsheet</span>:
+<ul class="nav nav-tabs" id="extractor" role="tablist"><li class="nav-item"><a data-toggle="tab" class="nav-link active" href="#extractor-0" role="tab" aria-controls="extractor-0" aria-selected="true">Excel</a></li>
+	  
+		<li class="nav-item"><a data-toggle="tab" class="nav-link" href="#extractor-1" role="tab" aria-controls="extractor-1">OpenDocument</a></li>
+		<li class="nav-item"><a data-toggle="tab" class="nav-link" href="#extractor-2" role="tab" aria-controls="extractor-2">CSV</a></li></ul>
+<div class="tab-content" id="extractor"><div id="extractor-0" class="tab-pane show active" role="tabpanel" aria-labelledby="extractor-0">
+
+<p><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml">
+
+<span style="color:#f92672">spreadsheet</span>:
   <span style="color:#f92672">extractor</span>:
     <span style="color:#f92672">file_path</span>: <span style="color:#e6db74">&#39;input.xlsx&#39;</span>
-    <span style="color:#f92672">excel</span>: <span style="color:#75715e"># can be excel, open_document or csv</span>
+    <span style="color:#f92672">excel</span>: 
       <span style="color:#f92672">sheet</span>: <span style="color:#e6db74">&#39;sheet2&#39;</span>
-</code></pre></div><p>Warning : CSV files don&rsquo;t use any sheet, so the <code>sheet</code> option is disabled but takes additional options <code>delimiter</code> and
-<code>enclosure</code>.</p>
+
+</code></pre></div></div>
+  <div id="extractor-1" class="tab-pane" role="tabpanel" aria-labelledby="extractor-1">
+
+<p><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml">
+
+<span style="color:#f92672">spreadsheet</span>:
+  <span style="color:#f92672">extractor</span>:
+    <span style="color:#f92672">file_path</span>: <span style="color:#e6db74">&#39;input.ods&#39;</span>
+    <span style="color:#f92672">open_document</span>: 
+      <span style="color:#f92672">sheet</span>: <span style="color:#e6db74">&#39;sheet2&#39;</span>
+
+</code></pre></div></div>
+  <div id="extractor-2" class="tab-pane" role="tabpanel" aria-labelledby="extractor-2">
+
+<p><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml">
+
+<span style="color:#f92672">spreadsheet</span>:
+  <span style="color:#f92672">extractor</span>:
+    <span style="color:#f92672">file_path</span>: <span style="color:#e6db74">&#39;input.csv&#39;</span>
+    <span style="color:#f92672">csv</span>: 
+      <span style="color:#f92672">delimiter</span>: <span style="color:#e6db74">&#39;,&#39;</span>
+      <span style="color:#f92672">enclosure</span>: <span style="color:#e6db74">&#39;&#34;&#39;</span>
+
+</code></pre></div></div></div>
+
 <h3 id="building-a-loader">Building a loader</h3>
-<p>To build a loader, you must specify the path of your file, the type of loader to build and the name of the sheet to create.</p>
-<p>The different types of loader supported :</p>
+<p>To build a loader, you must specify the path of your file, the type of loader
+to build and the name of the sheet to write data into.</p>
+<p>The different types of loader supported are:</p>
 <ul>
 <li><code>excel</code></li>
 <li><code>open_document</code></li>
 <li><code>csv</code></li>
 </ul>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">spreadsheet</span>:
+<ul class="nav nav-tabs" id="loader" role="tablist"><li class="nav-item"><a data-toggle="tab" class="nav-link active" href="#loader-0" role="tab" aria-controls="loader-0" aria-selected="true">Excel</a></li>
+	  
+		<li class="nav-item"><a data-toggle="tab" class="nav-link" href="#loader-1" role="tab" aria-controls="loader-1">OpenDocument</a></li>
+		<li class="nav-item"><a data-toggle="tab" class="nav-link" href="#loader-2" role="tab" aria-controls="loader-2">CSV</a></li></ul>
+<div class="tab-content" id="loader"><div id="loader-0" class="tab-pane show active" role="tabpanel" aria-labelledby="loader-0">
+
+<p><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml">
+
+<span style="color:#f92672">spreadsheet</span>:
   <span style="color:#f92672">loader</span>:
-    <span style="color:#f92672">file_path</span>: <span style="color:#e6db74">&#39;input.xlsx&#39;</span>
-    <span style="color:#f92672">excel</span>: <span style="color:#75715e"># can be excel, open_document or csv</span>
+    <span style="color:#f92672">file_path</span>: <span style="color:#e6db74">&#39;output.xlsx&#39;</span>
+    <span style="color:#f92672">excel</span>:
       <span style="color:#f92672">sheet</span>: <span style="color:#e6db74">&#39;sheet2&#39;</span>
-</code></pre></div><p>Warning : CSV files do not use a sheet, so the <code>sheet</code> option is disabled but takes additional options <code>delimiter</code>,
-<code>enclosure</code> and <code>encoding</code>.</p>
+
+</code></pre></div></div>
+  <div id="loader-1" class="tab-pane" role="tabpanel" aria-labelledby="loader-1">
+
+<p><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml">
+
+<span style="color:#f92672">spreadsheet</span>:
+  <span style="color:#f92672">loader</span>:
+    <span style="color:#f92672">file_path</span>: <span style="color:#e6db74">&#39;output.ods&#39;</span>
+    <span style="color:#f92672">open_document</span>: 
+      <span style="color:#f92672">sheet</span>: <span style="color:#e6db74">&#39;sheet2&#39;</span>
+
+</code></pre></div></div>
+  <div id="loader-2" class="tab-pane" role="tabpanel" aria-labelledby="loader-2">
+
+<p><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml">
+
+<span style="color:#f92672">spreadsheet</span>:
+  <span style="color:#f92672">loader</span>:
+    <span style="color:#f92672">file_path</span>: <span style="color:#e6db74">&#39;output.csv&#39;</span>
+    <span style="color:#f92672">csv</span>: 
+      <span style="color:#f92672">delimiter</span>: <span style="color:#e6db74">&#39;,&#39;</span>
+      <span style="color:#f92672">enclosure</span>: <span style="color:#e6db74">&#39;&#34;&#39;</span>
+
+</code></pre></div></div></div>
+
 <h2 id="advanced-usage">Advanced usage</h2>
 <h3 id="skip-one-or-more-lines">Skip one or more lines</h3>
 <p>Your file may have a header of one or more lines, you must use the <code>skip_lines</code> option to get your pipeline to start
 extracting from the right row.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">spreadsheet</span>:
- <span style="color:#f92672">extractor</span>: 
-   <span style="color:#f92672">excel</span>:
-     <span style="color:#75715e"># ...</span>
-     <span style="color:#f92672">skip_lines</span>: <span style="color:#ae81ff">2</span>
-</code></pre></div><p>Warning : This option is only available when building extractors</p>
+<ul class="nav nav-tabs" id="skip_lines" role="tablist"><li class="nav-item"><a data-toggle="tab" class="nav-link active" href="#skip_lines-0" role="tab" aria-controls="skip_lines-0" aria-selected="true">Excel</a></li>
+	  
+		<li class="nav-item"><a data-toggle="tab" class="nav-link" href="#skip_lines-1" role="tab" aria-controls="skip_lines-1">OpenDocument</a></li>
+		<li class="nav-item"><a data-toggle="tab" class="nav-link" href="#skip_lines-2" role="tab" aria-controls="skip_lines-2">CSV</a></li></ul>
+<div class="tab-content" id="skip_lines"><div id="skip_lines-0" class="tab-pane show active" role="tabpanel" aria-labelledby="skip_lines-0">
+
+<p><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml">
+
+<span style="color:#f92672">spreadsheet</span>:
+  <span style="color:#f92672">extractor</span>: 
+    <span style="color:#f92672">excel</span>:
+      <span style="color:#75715e"># ...</span>
+      <span style="color:#f92672">skip_lines</span>: <span style="color:#ae81ff">2</span>
+
+
+</code></pre></div></div>
+  <div id="skip_lines-1" class="tab-pane" role="tabpanel" aria-labelledby="skip_lines-1">
+
+<p><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml">
+
+<span style="color:#f92672">spreadsheet</span>:
+  <span style="color:#f92672">extractor</span>: 
+    <span style="color:#f92672">open_document</span>:
+      <span style="color:#75715e"># ...</span>
+      <span style="color:#f92672">skip_lines</span>: <span style="color:#ae81ff">2</span>
+
+</code></pre></div></div>
+  <div id="skip_lines-2" class="tab-pane" role="tabpanel" aria-labelledby="skip_lines-2">
+
+<p><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml">
+
+<span style="color:#f92672">spreadsheet</span>:
+  <span style="color:#f92672">extractor</span>: 
+    <span style="color:#f92672">csv</span>:
+      <span style="color:#75715e"># ...</span>
+      <span style="color:#f92672">skip_lines</span>: <span style="color:#ae81ff">2</span>
+
+</code></pre></div></div></div>
+
+<blockquote>
+<p>Note: This option is only available when building extractors</p>
+</blockquote>
 <h3 id="splitting-into-several-files">Splitting into several files</h3>
-<p>To limit the number of lines to be written to your excel, openDocument or csv file, you can specify the
-<code>max_lines</code> option.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">spreadsheet</span>:
+<p>To limit the number of lines you will write into the output files, you can specify the <code>max_lines</code> option.</p>
+<ul class="nav nav-tabs" id="max_lines" role="tablist"><li class="nav-item"><a data-toggle="tab" class="nav-link active" href="#max_lines-0" role="tab" aria-controls="max_lines-0" aria-selected="true">Excel</a></li>
+	  
+		<li class="nav-item"><a data-toggle="tab" class="nav-link" href="#max_lines-1" role="tab" aria-controls="max_lines-1">OpenDocument</a></li>
+		<li class="nav-item"><a data-toggle="tab" class="nav-link" href="#max_lines-2" role="tab" aria-controls="max_lines-2">CSV</a></li></ul>
+<div class="tab-content" id="max_lines"><div id="max_lines-0" class="tab-pane show active" role="tabpanel" aria-labelledby="max_lines-0">
+
+<p><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml">
+
+<span style="color:#f92672">spreadsheet</span>:
   <span style="color:#f92672">loader</span>:
-    <span style="color:#f92672">file_path</span>: <span style="color:#e6db74">&#39;input.xlsx&#39;</span>
     <span style="color:#f92672">excel</span>:
       <span style="color:#75715e"># ...</span>
       <span style="color:#f92672">max_lines</span>: <span style="color:#ae81ff">20</span>
-</code></pre></div><p>Warning : this option is only available for loaders</p>
+
+</code></pre></div></div>
+  <div id="max_lines-1" class="tab-pane" role="tabpanel" aria-labelledby="max_lines-1">
+
+<p><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml">
+
+<span style="color:#f92672">spreadsheet</span>:
+  <span style="color:#f92672">loader</span>:
+    <span style="color:#f92672">open_document</span>:
+      <span style="color:#75715e"># ...</span>
+      <span style="color:#f92672">max_lines</span>: <span style="color:#ae81ff">20</span>
+
+</code></pre></div></div>
+  <div id="max_lines-2" class="tab-pane" role="tabpanel" aria-labelledby="max_lines-2">
+
+<p><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml">
+
+<span style="color:#f92672">spreadsheet</span>:
+  <span style="color:#f92672">loader</span>:
+    <span style="color:#f92672">csv</span>:
+      <span style="color:#75715e"># ...</span>
+      <span style="color:#f92672">max_lines</span>: <span style="color:#ae81ff">20</span>
+
+</code></pre></div></div></div>
+
+<blockquote>
+<p>Note: this option is only available for loaders</p>
+</blockquote>
 </div>
           
           <p class="post-meta border-bottom pb-3 mb-0 mt-3">Updated on 30 Mar 2021</p>

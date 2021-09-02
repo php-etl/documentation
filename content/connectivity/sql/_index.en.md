@@ -3,7 +3,8 @@ title: "SQL"
 date: 2021-07-26T16:22:03+02:00
 draft: false
 type: "plugins"
-description: "Write SQL queries"
+icon: "ti-server"
+description: "Process data from SQL data stores in your pipelines"
 ---
 
 # SQL Plugin

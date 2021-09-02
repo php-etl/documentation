@@ -308,13 +308,13 @@
 						
 						{
 							value: "NL-JSON",
-							label: "<p> FEATURE STATE: Middleware 0.1 [alpha]  JSON Plugin  What is it ? Installation Usage  Building an extractor Building a loader      JSON (JavaScript Object Notation) is a lightweight format for data exchange.\n What is it ? The JSON plugin aims at integrating the NL-JSON extractor and loader into the Pipeline stack.\nInstallation composer require php-etl\/json-plugin Usage Building an extractor To build an extractor, you only need to specify the path to your file with the file_path option.\njson: extractor: file_path: \u0026#39;input.jsonld\u0026#39; Building a loader To build a loader, you only need to specify the path to your file with the file_path option.\njson: loader: file_path: \u0026#39;output.jsonld\u0026#39; </p>",
+							label: "<p> FEATURE STATE: Middleware 0.1 [alpha]  JSON Plugin  What is it ? Installation Usage  Building an extractor Building a loader      JSON (JavaScript Object Notation) is a lightweight format for data exchange.\n What is it for? The JSON plugin aims at integrating the NL-JSON extractor and loader into the Pipeline stack.\nInstallation In a Satellite project, add the NL-JSON plugin this way:\ncomposer require php-etl\/json-plugin Usage Building an extractor To build an extractor, you need to specify the path of your file with the file_path option.\nYAML  json: extractor: file_path: \u0026#39;input.nljson\u0026#39;  Building a loader To build a loader, you need to specify the path to your file with the file_path option.\nYAML  json: loader: file_path: \u0026#39;output.nljson\u0026#39;  </p>",
 							url:"https:\/\/php-etl.github.io\/documentation\/connectivity\/nl-json\/"
 						},
 						
 						{
 							value: "Spreadsheet",
-							label: "<p>Spreadsheet Plugin  What is it ? Installation Usage  Building an extractor Building a loader   Advanced usage  Skip one or more lines Splitting into several files      XLSX is the file format saved for Microsoft Excel spreadsheets.\n  ODS is the file format saved for OpenDocument spreadsheets.\n What is it ? The Spreadsheet plugin aims at integrating the spreadsheet (CSV, XLSX and ODS) reader and writer into the Pipeline stack.\nInstallation composer require php-etl\/spreadsheet-plugin Usage The Spreadsheet plugin allows you to instantiate an extractor or loader for excel, opendocument and csv files.\nBuilding an extractor To build an extractor, you need to specify the path of your file, the type of extractor to build and the name of the sheet to read.\nThe different types of extractor supported :\n excel open_document csv  spreadsheet: extractor: file_path: \u0026#39;input.xlsx\u0026#39; excel: # can be excel, open_document or csv sheet: \u0026#39;sheet2\u0026#39; Warning : CSV files don\u0026rsquo;t use any sheet, so the sheet option is disabled but takes additional options delimiter and enclosure.\nBuilding a loader To build a loader, you must specify the path of your file, the type of loader to build and the name of the sheet to create.\nThe different types of loader supported :\n excel open_document csv  spreadsheet: loader: file_path: \u0026#39;input.xlsx\u0026#39; excel: # can be excel, open_document or csv sheet: \u0026#39;sheet2\u0026#39; Warning : CSV files do not use a sheet, so the sheet option is disabled but takes additional options delimiter, enclosure and encoding.\nAdvanced usage Skip one or more lines Your file may have a header of one or more lines, you must use the skip_lines option to get your pipeline to start extracting from the right row.\nspreadsheet: extractor: excel: # ... skip_lines: 2 Warning : This option is only available when building extractors\nSplitting into several files To limit the number of lines to be written to your excel, openDocument or csv file, you can specify the max_lines option.\nspreadsheet: loader: file_path: \u0026#39;input.xlsx\u0026#39; excel: # ... max_lines: 20 Warning : this option is only available for loaders\n</p>",
+							label: "<p> FEATURE STATE: Middleware 0.1 [alpha]  Spreadsheet Plugin  What is it ? Installation Usage  Building an extractor Building a loader   Advanced usage  Skip one or more lines Splitting into several files      XLSX is the file format used by Microsoft Excel spreadsheets.\n  ODS is the OpenDocument spreadsheet file format used by Libreoffice and OpenOffice.\n What is it for? The Spreadsheet plugin aims at integrating spreadsheet file formats (XLSX, ODS and CSV) into the Pipeline stack.\nInstallation In a Satellite project, add the spreadsheet plugin this way:\ncomposer require php-etl\/spreadsheet-plugin Usage Building an extractor To build an extractor, you need to specify the path of your file, the type of extractor to build, and the name of the sheet to read.\nThe different types of extractor supported are:\n excel open_document csv  Excel OpenDocument CSV spreadsheet: extractor: file_path: \u0026#39;input.xlsx\u0026#39; excel: sheet: \u0026#39;sheet2\u0026#39;  spreadsheet: extractor: file_path: \u0026#39;input.ods\u0026#39; open_document: sheet: \u0026#39;sheet2\u0026#39;  spreadsheet: extractor: file_path: \u0026#39;input.csv\u0026#39; csv: delimiter: \u0026#39;,\u0026#39; enclosure: \u0026#39;\u0026#34;\u0026#39;  Building a loader To build a loader, you must specify the path of your file, the type of loader to build and the name of the sheet to write data into.\nThe different types of loader supported are:\n excel open_document csv  Excel OpenDocument CSV spreadsheet: loader: file_path: \u0026#39;output.xlsx\u0026#39; excel: sheet: \u0026#39;sheet2\u0026#39;  spreadsheet: loader: file_path: \u0026#39;output.ods\u0026#39; open_document: sheet: \u0026#39;sheet2\u0026#39;  spreadsheet: loader: file_path: \u0026#39;output.csv\u0026#39; csv: delimiter: \u0026#39;,\u0026#39; enclosure: \u0026#39;\u0026#34;\u0026#39;  Advanced usage Skip one or more lines Your file may have a header of one or more lines, you must use the skip_lines option to get your pipeline to start extracting from the right row.\nExcel OpenDocument CSV spreadsheet: extractor: excel: # ... skip_lines: 2  spreadsheet: extractor: open_document: # ... skip_lines: 2  spreadsheet: extractor: csv: # ... skip_lines: 2   Note: This option is only available when building extractors\n Splitting into several files To limit the number of lines you will write into the output files, you can specify the max_lines option.\nExcel OpenDocument CSV spreadsheet: loader: excel: # ... max_lines: 20  spreadsheet: loader: open_document: # ... max_lines: 20  spreadsheet: loader: csv: # ... max_lines: 20   Note: this option is only available for loaders\n </p>",
 							url:"https:\/\/php-etl.github.io\/documentation\/connectivity\/spreadsheet\/"
 						},
 						
@@ -549,23 +549,29 @@ keep control.</p>
         <div class="col-lg-4 col-sm-6 mb-4">
           <a href="https://php-etl.github.io/documentation/connectivity/sql/" class="px-4 py-5 bg-white shadow text-center d-block match-height">
             
+            <i class="ti-server icon text-primary d-block mb-4"></i>
+            
             
             <h3 class="mb-3 mt-0">SQL</h3>
-            <p class="mb-0">Write SQL queries</p>
+            <p class="mb-0">Process data from SQL data stores in your pipelines</p>
           </a>
         </div>
         
         <div class="col-lg-4 col-sm-6 mb-4">
           <a href="https://php-etl.github.io/documentation/connectivity/nl-json/" class="px-4 py-5 bg-white shadow text-center d-block match-height">
             
+            <i class="ti-package icon text-primary d-block mb-4"></i>
+            
             
             <h3 class="mb-3 mt-0">NL-JSON</h3>
-            <p class="mb-0">Read and write JSON-LD files</p>
+            <p class="mb-0">Read and write NL-JSON files through your pipelines</p>
           </a>
         </div>
         
         <div class="col-lg-4 col-sm-6 mb-4">
           <a href="https://php-etl.github.io/documentation/connectivity/spreadsheet/" class="px-4 py-5 bg-white shadow text-center d-block match-height">
+            
+            <i class="ti-layout-grid3 icon text-primary d-block mb-4"></i>
             
             
             <h3 class="mb-3 mt-0">Spreadsheet</h3>
