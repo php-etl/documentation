@@ -8,21 +8,32 @@ description: "Expression Language capabilities to express your own constraints"
 weight: 3
 ---
 
-# Expression Language
+# Expression functions
 
-- [Array Expression Language](#array-expression-language)
-- [Satellite Expression Language](#satellite-expression-language)
+### Generic Expression functions
+
+  - [Base Expression functions](#base-expression-functions)
+  - [Array Expression functions](#array-expression-functions)
+  - [String Expression functions](#array-expression-functions)
+
+### Platform-specific expression functions
+
+  - [Akeneo Expression functions](../../connectivity/akeneo/expression-language)
+
 ---
 
+We have developed some packages that provide expression functions to allow the use of more complex logic inside your satellites configuration.
 
-We have developed packages that provide functions that allow us to use expressions inside configuration for more complex logic.
+These packages are based on the [ExpressionLanguage](https://symfony.com/doc/current/components/expression_language.html) Symfony component.
 
-These packages are based on the [ExpressionLanguage](https://symfony.com/doc/current/components/expression_language.html) component of Symfony.
+## Satellite Expression functions
 
-## Array Expression Language
+[See the Base Expression functions documentation](../expression-language/satellite-expression-functions).
 
-[See the Array Expression Language documentation](../expression-language/array-expression-language).
+## Array Expression functions
 
-## Satellite Expression Language
+[See the Array Expression functions documentation](../expression-language/array-expression-functions).
 
-[See the Satellite Expression Language documentation](../expression-language/satellite-expression-language).
+## String Expression functions
+
+[See the String Expression functions documentation](../expression-language/string-expression-functions).

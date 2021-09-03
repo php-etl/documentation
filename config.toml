@@ -24,55 +24,49 @@ hasChildren = true
 
   [[menu.main]]
   parent = "Installation"
-  name = "System Requirements"
-  url = "system-requirements"
-  weight = 2
-
-  [[menu.main]]
-  parent = "Installation"
-  name = "Getting started"
-  url = "installation/getting-started"
+  name = "Manual"
+  url = "installation/manual"
   weight = 2
 
 [[menu.main]]
 weight = 2
-name = "Packages"
+name = "Features"
 hasChildren = true
 
   [[menu.main]]
-  parent = "Packages"
-  name = "Batch"
-  url = "components/batch"
+  parent = "Features"
+  name = "Dashboard"
+  url = "components/dashboard"
   weight = 1
 
   [[menu.main]]
-  parent = "Packages"
-  name = "Dashboard"
-  url = "components/dashboard"
+  parent = "Features"
+  name = "Satellite"
+  url = "components/satellite"
   weight = 2
 
   [[menu.main]]
-  parent = "Packages"
-  name = "Discovery"
-  url = "components/discovery"
+  parent = "Features"
+  name = "Pipeline"
+  url = "components/pipeline"
   weight = 3
 
   [[menu.main]]
-  parent = "Packages"
-  name = "Pipeline"
-  url = "components/pipeline"
+  parent = "Features"
+  name = "Workflow"
+  url = "components/workflow"
   weight = 4
 
   [[menu.main]]
-  parent = "Packages"
-  name = "Satellite"
-  url = "components/satellite"
+  parent = "Features"
+  name = "Expression Language"
+  url = "feature/expression-language"
   weight = 5
 
   [[menu.main]]
-  parent = "Packages"
-  name = "Workflow"
-  url = "components/workflow"
+  parent = "Features"
+  name = "Logging"
+  url = "feature/logger"
   weight = 6
 
 [[menu.main]]
@@ -123,57 +117,52 @@ hasChildren = true
 
   [[menu.main]]
   parent = "Connectivity"
-  name = "Expression Language"
-  url = "connectivity/expression-language"
-  weight = 4
-
-  [[menu.main]]
-  parent = "Connectivity"
   name = "FastMap"
   url = "connectivity/fast-map"
-  weight = 5
+  weight = 4
 
   [[menu.main]]
   parent = "Connectivity"
   name = "FTP"
   url = "connectivity/ftp"
-  weight = 6
+  weight = 5
 
   [[menu.main]]
   parent = "Connectivity"
-  name = "Logger"
-  url = "connectivity/logger"
-  weight = 7
+  name = "SFTP"
+  url = "connectivity/sftp"
+  weight = 6
 
   [[menu.main]]
   parent = "Connectivity"
   name = "NL-JSON"
   url = "connectivity/nl-json"
-  weight = 8
+  weight = 7
 
   [[menu.main]]
   parent = "Connectivity"
   name = "Spreadsheet files"
   url = "connectivity/spreadsheet"
-  weight = 9
+  weight = 8
 
   [[menu.main]]
   parent = "Connectivity"
   name = "SQL database"
   url = "connectivity/sql"
-  weight = 10
+  weight = 9
 
   [[menu.main]]
    parent = "Connectivity"
    name = "Sylius"
    url = "connectivity/sylius"
-   weight = 11
+   weight = 10
 
 [params]
 logo = "logo-web.svg"
 logo_white = "logo-web.svg"
 primary_color = "#22014f"
-light_color = "#fe8507"
+primary_color_lighten = "#f2e9fe"
+secondary_color = "#fe8507"
 dark_color = "#22014f"
 body_color = "#ddd"
 text_color = "#666"

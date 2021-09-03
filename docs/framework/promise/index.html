@@ -28,12 +28,13 @@
   <style>
   :root{
     --primary-color: #22014f;
+    --primary-color-lighten: #f2e9fe;
+    --secondary-color:#fe8507;
     --body-color:#ddd;
     --text-color:#666;
     --text-color-dark:#333;
     --text-color-light:#eee;
     --white-color:#eee;
-    --light-color:#fe8507;
     --font-family:Lato;
   }
   </style>
@@ -101,9 +102,7 @@
             
             <a class="dropdown-item" href="/documentation/installation/bare-metal">Bare metal</a>
             
-            <a class="dropdown-item" href="/documentation/installation/getting-started">Getting started</a>
-            
-            <a class="dropdown-item" href="/documentation/system-requirements">System Requirements</a>
+            <a class="dropdown-item" href="/documentation/installation/manual">Manual</a>
             
           </div>
         </li>
@@ -113,21 +112,21 @@
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle text-dark" href="#" role="button" data-toggle="dropdown"
             aria-haspopup="true" aria-expanded="false">
-            Packages
+            Features
           </a>
           <div class="dropdown-menu">
             
-            <a class="dropdown-item" href="/documentation/components/batch">Batch</a>
-            
             <a class="dropdown-item" href="/documentation/components/dashboard">Dashboard</a>
-            
-            <a class="dropdown-item" href="/documentation/components/discovery">Discovery</a>
-            
-            <a class="dropdown-item" href="/documentation/components/pipeline">Pipeline</a>
             
             <a class="dropdown-item" href="/documentation/components/satellite">Satellite</a>
             
+            <a class="dropdown-item" href="/documentation/components/pipeline">Pipeline</a>
+            
             <a class="dropdown-item" href="/documentation/components/workflow">Workflow</a>
+            
+            <a class="dropdown-item" href="/documentation/feature/expression-language">Expression Language</a>
+            
+            <a class="dropdown-item" href="/documentation/feature/logger">Logging</a>
             
           </div>
         </li>
@@ -165,13 +164,11 @@
             
             <a class="dropdown-item" href="/documentation/connectivity/custom">Custom connector</a>
             
-            <a class="dropdown-item" href="/documentation/connectivity/expression-language">Expression Language</a>
-            
             <a class="dropdown-item" href="/documentation/connectivity/fast-map">FastMap</a>
             
             <a class="dropdown-item" href="/documentation/connectivity/ftp">FTP</a>
             
-            <a class="dropdown-item" href="/documentation/connectivity/logger">Logger</a>
+            <a class="dropdown-item" href="/documentation/connectivity/sftp">SFTP</a>
             
             <a class="dropdown-item" href="/documentation/connectivity/nl-json">NL-JSON</a>
             
@@ -470,88 +467,6 @@ $promise<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">fail
             
             
             
-            
-            
-            
-
-            
-            
-            
-
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-
-            
-            
-            
-            
-            
-
-            
-            
-            
-            
-            
-            
-            
-            
-
-            
-            
-            
-
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-
-            
-            
-            
-
-            
-            
-            
-            
-            
-            
-            
-            
-
-            
-            
-            
-
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
 
             
             
@@ -597,6 +512,22 @@ $promise<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">fail
             
             
 
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+
+            
+            
+            
             
             
             
@@ -669,6 +600,37 @@ $promise<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">fail
             
             
             
+            
+            
+            
+
+            
+            
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
 
             
             
@@ -690,6 +652,9 @@ $promise<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">fail
             
             
 
+            
+            
+            
             
             
             
@@ -797,6 +762,54 @@ $promise<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">fail
             
             
             
+
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
             
             
             
@@ -878,6 +891,22 @@ $promise<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">fail
             
             
             
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
             
             
 
@@ -913,22 +942,6 @@ $promise<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">fail
             
             
             
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-
-            
-            
-            
-
             
             
             
@@ -941,7 +954,7 @@ $promise<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">fail
             <a class="nav nav-prev" href="https://php-etl.github.io/documentation/framework/contracts/"><i class="ti-arrow-left mr-2"></i> <span class="d-none d-md-block">Contracts</span></a>
             
             
-            <a class="nav nav-next" href="https://php-etl.github.io/documentation/installation/"> <span class="d-none d-md-block">Installations</span><i class="ti-arrow-right ml-2"></i></a>
+            <a class="nav nav-next" href="https://php-etl.github.io/documentation/getting-started/"> <span class="d-none d-md-block">Getting started</span><i class="ti-arrow-right ml-2"></i></a>
             
           </nav>
         </div>

@@ -60,10 +60,13 @@
                 href="https://php-etl.github.io/documentation/"
                 />
   </url><url>
-    <loc>https://php-etl.github.io/documentation/feature/expression-language/satellite-expression-language/</loc>
+    <loc>https://php-etl.github.io/documentation/feature/expression-language/satellite-expression-functions/</loc>
     <lastmod>2021-08-12T12:49:51+00:00</lastmod>
   </url><url>
-    <loc>https://php-etl.github.io/documentation/feature/expression-language/array-expression-language/</loc>
+    <loc>https://php-etl.github.io/documentation/feature/expression-language/array-expression-functions/</loc>
+    <lastmod>2021-08-12T12:08:50+00:00</lastmod>
+  </url><url>
+    <loc>https://php-etl.github.io/documentation/feature/expression-language/string-expression-functions/</loc>
     <lastmod>2021-08-12T12:08:50+00:00</lastmod>
   </url><url>
     <loc>https://php-etl.github.io/documentation/components/</loc>
@@ -93,16 +96,16 @@
     <loc>https://php-etl.github.io/documentation/framework/contracts/</loc>
     <lastmod>2020-07-12T15:21:02+02:00</lastmod>
   </url><url>
-    <loc>https://php-etl.github.io/documentation/installation/getting-started/</loc>
+    <loc>https://php-etl.github.io/documentation/getting-started/</loc>
     <lastmod>2020-07-12T15:21:02+02:00</lastmod>
   </url><url>
     <loc>https://php-etl.github.io/documentation/installation/</loc>
     <lastmod>2020-07-12T15:21:02+02:00</lastmod>
   </url><url>
-    <loc>https://php-etl.github.io/documentation/framework/promise/</loc>
+    <loc>https://php-etl.github.io/documentation/installation/manual/</loc>
     <lastmod>2020-07-12T15:21:02+02:00</lastmod>
   </url><url>
-    <loc>https://php-etl.github.io/documentation/system-requirements/</loc>
+    <loc>https://php-etl.github.io/documentation/framework/promise/</loc>
     <lastmod>2020-07-12T15:21:02+02:00</lastmod>
   </url><url>
     <loc>https://php-etl.github.io/documentation/components/satellite/yaml-format/</loc>

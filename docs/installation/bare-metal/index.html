@@ -28,12 +28,13 @@
   <style>
   :root{
     --primary-color: #22014f;
+    --primary-color-lighten: #f2e9fe;
+    --secondary-color:#fe8507;
     --body-color:#ddd;
     --text-color:#666;
     --text-color-dark:#333;
     --text-color-light:#eee;
     --white-color:#eee;
-    --light-color:#fe8507;
     --font-family:Lato;
   }
   </style>
@@ -101,9 +102,7 @@
             
             <a class="dropdown-item" href="/documentation/installation/bare-metal">Bare metal</a>
             
-            <a class="dropdown-item" href="/documentation/installation/getting-started">Getting started</a>
-            
-            <a class="dropdown-item" href="/documentation/system-requirements">System Requirements</a>
+            <a class="dropdown-item" href="/documentation/installation/manual">Manual</a>
             
           </div>
         </li>
@@ -113,21 +112,21 @@
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle text-dark" href="#" role="button" data-toggle="dropdown"
             aria-haspopup="true" aria-expanded="false">
-            Packages
+            Features
           </a>
           <div class="dropdown-menu">
             
-            <a class="dropdown-item" href="/documentation/components/batch">Batch</a>
-            
             <a class="dropdown-item" href="/documentation/components/dashboard">Dashboard</a>
-            
-            <a class="dropdown-item" href="/documentation/components/discovery">Discovery</a>
-            
-            <a class="dropdown-item" href="/documentation/components/pipeline">Pipeline</a>
             
             <a class="dropdown-item" href="/documentation/components/satellite">Satellite</a>
             
+            <a class="dropdown-item" href="/documentation/components/pipeline">Pipeline</a>
+            
             <a class="dropdown-item" href="/documentation/components/workflow">Workflow</a>
+            
+            <a class="dropdown-item" href="/documentation/feature/expression-language">Expression Language</a>
+            
+            <a class="dropdown-item" href="/documentation/feature/logger">Logging</a>
             
           </div>
         </li>
@@ -165,13 +164,11 @@
             
             <a class="dropdown-item" href="/documentation/connectivity/custom">Custom connector</a>
             
-            <a class="dropdown-item" href="/documentation/connectivity/expression-language">Expression Language</a>
-            
             <a class="dropdown-item" href="/documentation/connectivity/fast-map">FastMap</a>
             
             <a class="dropdown-item" href="/documentation/connectivity/ftp">FTP</a>
             
-            <a class="dropdown-item" href="/documentation/connectivity/logger">Logger</a>
+            <a class="dropdown-item" href="/documentation/connectivity/sftp">SFTP</a>
             
             <a class="dropdown-item" href="/documentation/connectivity/nl-json">NL-JSON</a>
             
@@ -234,6 +231,8 @@
               
             
               
+            
+              
               
 
 
@@ -284,10 +283,10 @@
 
 
 
-<li data-nav-id="https://php-etl.github.io/documentation/installation/getting-started/" title="Getting started" class="sidelist
+<li data-nav-id="https://php-etl.github.io/documentation/installation/manual/" title="Manual installation" class="sidelist
   ">
-  <a href="https://php-etl.github.io/documentation/installation/getting-started/">
-    Getting started
+  <a href="https://php-etl.github.io/documentation/installation/manual/">
+    Manual installation
   </a>
   
   
@@ -303,8 +302,6 @@
 
               
             
-              
-            
           </ul>
         </div>
       </div>
@@ -318,7 +315,7 @@ a vanilla PHP application, without the use of a specific framework.</p>
 <p>This process will make use of the <em>Composer</em> command all along. Even if Composer is a de-facto standard, please make
 sure your application can work with composer.</p>
 <h3 id="prerequisites">Prerequisites</h3>
-<p>Please check page of <a href="/system-requirements">System Requirements</a> and ensure your system can work with <strong>Middleware</strong>.
+<p>Please check page of <a href="../manual">Manual installation</a> and ensure your system can work with <strong>Middleware</strong>.
 This page will help you install Logstash, ElasticSearch and Kibana in a quick walkthrough.</p>
 <h4 id="php-dependencies">PHP dependencies</h4>
 <p>We will use the <em>Satellite</em> CLI tool, which is responsible in transforming your YAML or JSON pipeline configuration
@@ -331,130 +328,7 @@ different directories:</p>
 <li>bare-metal: <code>vendor/bin/satellite</code></li>
 <li>Symfony: <code>bin/satellite</code></li>
 </ul>
-<h3 id="prepare-your-pipelines">Prepare your pipelines</h3>
-<p>Create a <code>src/my-example-pipeline</code> directory and add this content to a <code>pipeline.yaml</code> file inside:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">satellite</span>:
-  <span style="color:#f92672">filesystem</span>:
-    <span style="color:#f92672">path</span>: <span style="color:#ae81ff">build</span>
-  <span style="color:#f92672">composer</span>:
-    <span style="color:#f92672">require</span>:
-      - <span style="color:#e6db74">&#34;php-etl/pipeline:^0.3&#34;</span>
-      - <span style="color:#e6db74">&#34;php-etl/fast-map:^0.2&#34;</span>
-      - <span style="color:#e6db74">&#34;php-etl/csv-flow:^0.2&#34;</span>
-      - <span style="color:#e6db74">&#34;monolog/monolog&#34;</span>
-      - <span style="color:#e6db74">&#34;elasticsearch/elasticsearch&#34;</span>
-  <span style="color:#f92672">pipeline</span>:
-    <span style="color:#f92672">steps</span>:
-    - <span style="color:#f92672">csv</span>:
-        <span style="color:#f92672">extractor</span>:
-          <span style="color:#f92672">file_path</span>: <span style="color:#e6db74">&#39;foo.csv&#39;</span>
-      <span style="color:#f92672">logger</span>:
-        <span style="color:#f92672">channel</span>: <span style="color:#ae81ff">pipeline</span>
-        <span style="color:#f92672">destinations</span>:
-          - <span style="color:#f92672">elasticsearch</span>:
-              <span style="color:#f92672">level</span>: <span style="color:#ae81ff">warning</span>
-              <span style="color:#f92672">hosts</span>:
-                - <span style="color:#ae81ff">elasticsearch.example.com:9200</span>
-    - <span style="color:#f92672">fastmap</span>:
-        <span style="color:#f92672">expression_language</span>:
-          - <span style="color:#e6db74">&#39;Kiboko\Component\ExpressionLanguage\Akeneo\AkeneoFilterProvider&#39;</span>
-        <span style="color:#f92672">conditional</span>:
-          - <span style="color:#f92672">condition</span>: <span style="color:#e6db74">&#39;input[&#34;family&#34;] === &#34;clothing&#34;&#39;</span>
-            <span style="color:#f92672">map</span>:
-              - <span style="color:#f92672">field</span>: <span style="color:#e6db74">&#39;[code]&#39;</span>
-                <span style="color:#f92672">copy</span>: <span style="color:#e6db74">&#39;[identifier]&#39;</span>
-              - <span style="color:#f92672">field</span>: <span style="color:#e6db74">&#39;[family]&#39;</span>
-                <span style="color:#f92672">copy</span>: <span style="color:#e6db74">&#39;[family]&#39;</span>
-              - <span style="color:#f92672">field</span>: <span style="color:#e6db74">&#39;[translations][en_US]&#39;</span>
-                <span style="color:#f92672">expression</span>: <span style="color:#e6db74">&#39;input&#39;</span>
-                <span style="color:#f92672">map</span>:
-                  - <span style="color:#f92672">field</span>: <span style="color:#e6db74">&#39;[name]&#39;</span>
-                    <span style="color:#f92672">expression</span>: <span style="color:#e6db74">&#39;attribute(input[&#34;values&#34;][&#34;variation_name&#34;], locale(&#34;en_US&#34;), scope(&#34;ecommerce&#34;))&#39;</span>
-                  - <span style="color:#f92672">field</span>: <span style="color:#e6db74">&#39;[slug]&#39;</span>
-                    <span style="color:#f92672">expression</span>: <span style="color:#e6db74">&#39;input[&#34;identifier&#34;]&#39;</span>
-                  - <span style="color:#f92672">field</span>: <span style="color:#e6db74">&#39;[description]&#39;</span>
-                    <span style="color:#f92672">expression</span>: <span style="color:#e6db74">&#39;attribute(input[&#34;values&#34;][&#34;description&#34;], locale(&#34;en_US&#34;), scope(&#34;ecommerce&#34;))&#39;</span>
-                  - <span style="color:#f92672">field</span>: <span style="color:#e6db74">&#39;[composition]&#39;</span>
-                    <span style="color:#f92672">expression</span>: <span style="color:#e6db74">&#39;attribute(input[&#34;values&#34;][&#34;composition&#34;], locale(null), scope(null))&#39;</span>
-                  - <span style="color:#f92672">field</span>: <span style="color:#e6db74">&#39;[wash_temperature]&#39;</span>
-                    <span style="color:#f92672">expression</span>: <span style="color:#e6db74">&#39;attribute(input[&#34;values&#34;][&#34;wash_temperature&#34;], locale(null), scope(null))&#39;</span>
-                  - <span style="color:#f92672">field</span>: <span style="color:#e6db74">&#39;[care_instructions]&#39;</span>
-                    <span style="color:#f92672">expression</span>: <span style="color:#e6db74">&#39;attribute(input[&#34;values&#34;][&#34;care_instructions&#34;], locale(null), scope(null))&#39;</span>
-                  - <span style="color:#f92672">field</span>: <span style="color:#e6db74">&#39;[material]&#39;</span>
-                    <span style="color:#f92672">expression</span>: <span style="color:#e6db74">&#39;attribute(input[&#34;values&#34;][&#34;material&#34;], locale(null), scope(null))&#39;</span>
-          - <span style="color:#f92672">condition</span>: <span style="color:#e6db74">&#39;input[&#34;family&#34;] === &#34;led_tvs&#34;&#39;</span>
-            <span style="color:#f92672">map</span>:
-              - <span style="color:#f92672">field</span>: <span style="color:#e6db74">&#39;[code]&#39;</span>
-                <span style="color:#f92672">copy</span>: <span style="color:#e6db74">&#39;[identifier]&#39;</span>
-              - <span style="color:#f92672">field</span>: <span style="color:#e6db74">&#39;[family]&#39;</span>
-                <span style="color:#f92672">copy</span>: <span style="color:#e6db74">&#39;[family]&#39;</span>
-              - <span style="color:#f92672">field</span>: <span style="color:#e6db74">&#39;[translations][en_US]&#39;</span>
-                <span style="color:#f92672">expression</span>: <span style="color:#e6db74">&#39;input&#39;</span>
-                <span style="color:#f92672">map</span>:
-                  - <span style="color:#f92672">field</span>: <span style="color:#e6db74">&#39;[name]&#39;</span>
-                    <span style="color:#f92672">expression</span>: <span style="color:#e6db74">&#39;attribute(input[&#34;values&#34;][&#34;variation_name&#34;], locale(&#34;en_US&#34;), scope(&#34;ecommerce&#34;))&#39;</span>
-                  - <span style="color:#f92672">field</span>: <span style="color:#e6db74">&#39;[slug]&#39;</span>
-                    <span style="color:#f92672">expression</span>: <span style="color:#e6db74">&#39;input[&#34;identifier&#34;]&#39;</span>
-                  - <span style="color:#f92672">field</span>: <span style="color:#e6db74">&#39;[description]&#39;</span>
-                    <span style="color:#f92672">expression</span>: <span style="color:#e6db74">&#39;attribute(input[&#34;values&#34;][&#34;description&#34;], locale(&#34;en_US&#34;), scope(&#34;ecommerce&#34;))&#39;</span>
-          - <span style="color:#f92672">condition</span>: <span style="color:#e6db74">&#39;input[&#34;family&#34;] === &#34;accessories&#34;&#39;</span>
-            <span style="color:#f92672">map</span>:
-              - <span style="color:#f92672">field</span>: <span style="color:#e6db74">&#39;[code]&#39;</span>
-                <span style="color:#f92672">copy</span>: <span style="color:#e6db74">&#39;[identifier]&#39;</span>
-              - <span style="color:#f92672">field</span>: <span style="color:#e6db74">&#39;[family]&#39;</span>
-                <span style="color:#f92672">copy</span>: <span style="color:#e6db74">&#39;[family]&#39;</span>
-              - <span style="color:#f92672">field</span>: <span style="color:#e6db74">&#39;[translations][en_US]&#39;</span>
-                <span style="color:#f92672">expression</span>: <span style="color:#e6db74">&#39;input&#39;</span>
-                <span style="color:#f92672">map</span>:
-                  - <span style="color:#f92672">field</span>: <span style="color:#e6db74">&#39;[name]&#39;</span>
-                    <span style="color:#f92672">expression</span>: <span style="color:#e6db74">&#39;attribute(input[&#34;values&#34;][&#34;variation_name&#34;], locale(&#34;en_US&#34;), scope(&#34;ecommerce&#34;))&#39;</span>
-                  - <span style="color:#f92672">field</span>: <span style="color:#e6db74">&#39;[slug]&#39;</span>
-                    <span style="color:#f92672">expression</span>: <span style="color:#e6db74">&#39;input[&#34;identifier&#34;]&#39;</span>
-                  - <span style="color:#f92672">field</span>: <span style="color:#e6db74">&#39;[composition]&#39;</span>
-                    <span style="color:#f92672">expression</span>: <span style="color:#e6db74">&#39;attribute(input[&#34;values&#34;][&#34;composition&#34;], locale(null), scope(null))&#39;</span>
-                  - <span style="color:#f92672">field</span>: <span style="color:#e6db74">&#39;[material]&#39;</span>
-                    <span style="color:#f92672">expression</span>: <span style="color:#e6db74">&#39;attribute(input[&#34;values&#34;][&#34;material&#34;], locale(null), scope(null))&#39;</span>
-          - <span style="color:#f92672">condition</span>: <span style="color:#e6db74">&#39;true&#39;</span>
-            <span style="color:#f92672">map</span>:
-              - <span style="color:#f92672">field</span>: <span style="color:#e6db74">&#39;[code]&#39;</span>
-                <span style="color:#f92672">copy</span>: <span style="color:#e6db74">&#39;[identifier]&#39;</span>
-              - <span style="color:#f92672">field</span>: <span style="color:#e6db74">&#39;[family]&#39;</span>
-                <span style="color:#f92672">copy</span>: <span style="color:#e6db74">&#39;[family]&#39;</span>
-      <span style="color:#f92672">logger</span>:
-        <span style="color:#f92672">channel</span>: <span style="color:#ae81ff">pipeline</span>
-        <span style="color:#f92672">destinations</span>:
-          - <span style="color:#f92672">elasticsearch</span>:
-              <span style="color:#f92672">level</span>: <span style="color:#ae81ff">warning</span>
-              <span style="color:#f92672">hosts</span>:
-                - <span style="color:#ae81ff">elasticsearch.example.com:9200</span>
-    - <span style="color:#f92672">sylius</span>:
-        <span style="color:#f92672">loader</span>:
-          <span style="color:#f92672">type</span>: <span style="color:#ae81ff">products</span>
-          <span style="color:#f92672">method</span>: <span style="color:#ae81ff">create</span>
-        <span style="color:#f92672">client</span>:
-          <span style="color:#f92672">api_url</span>: <span style="color:#e6db74">&#39;http://localhost&#39;</span>
-          <span style="color:#f92672">client_id</span>: <span style="color:#e6db74">&#39;414yc7d9mnk044ko4wswgw80o8ssw80gssos488kk8ogss40ko&#39;</span>
-          <span style="color:#f92672">secret</span>: <span style="color:#e6db74">&#39;4k8ee6n44m4gkkg0coc8o4w4coscw0w4cg0wg8sc0wsk0sw8gs&#39;</span>
-          <span style="color:#f92672">username</span>: <span style="color:#e6db74">&#39;api&#39;</span>
-          <span style="color:#f92672">password</span>: <span style="color:#e6db74">&#39;sylius-api&#39;</span>
-      <span style="color:#f92672">logger</span>:
-        <span style="color:#f92672">channel</span>: <span style="color:#ae81ff">pipeline</span>
-        <span style="color:#f92672">destinations</span>:
-          - <span style="color:#f92672">elasticsearch</span>:
-              <span style="color:#f92672">level</span>: <span style="color:#ae81ff">warning</span>
-              <span style="color:#f92672">hosts</span>:
-                - <span style="color:#ae81ff">elasticsearch.example.com:9200</span>
-    - <span style="color:#f92672">stream</span>:
-        <span style="color:#f92672">loader</span>:
-          <span style="color:#f92672">destination</span>: <span style="color:#e6db74">&#39;stdout&#39;</span>
-      <span style="color:#f92672">logger</span>:
-        <span style="color:#f92672">channel</span>: <span style="color:#ae81ff">pipeline</span>
-        <span style="color:#f92672">destinations</span>:
-          - <span style="color:#f92672">elasticsearch</span>:
-              <span style="color:#f92672">level</span>: <span style="color:#ae81ff">warning</span>
-              <span style="color:#f92672">hosts</span>:
-                - <span style="color:#ae81ff">elasticsearch.example.com:9200</span>
-</code></pre></div></div>
+</div>
           
           <p class="post-meta border-bottom pb-3 mb-0 mt-3">Updated on 12 Jul 2020</p>
           <nav class="pagination mt-3">
@@ -548,88 +422,6 @@ different directories:</p>
             
             
             
-            
-            
-            
-
-            
-            
-            
-
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-
-            
-            
-            
-            
-            
-
-            
-            
-            
-            
-            
-            
-            
-            
-
-            
-            
-            
-
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-
-            
-            
-            
-
-            
-            
-            
-            
-            
-            
-            
-            
-
-            
-            
-            
-
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
 
             
             
@@ -675,6 +467,22 @@ different directories:</p>
             
             
 
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+
+            
+            
+            
             
             
             
@@ -747,11 +555,61 @@ different directories:</p>
             
             
             
+            
+            
+            
+
+            
+            
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
 
             
             
             
 
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+
+            
+            
+            
             
             
             
@@ -875,6 +733,38 @@ different directories:</p>
             
             
             
+
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
             
             
             
@@ -944,6 +834,22 @@ different directories:</p>
             
             
             
+
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
             
 
             
@@ -988,22 +894,6 @@ different directories:</p>
             
             
             
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-
-            
-            
-            
-
             
             
             
@@ -1016,7 +906,7 @@ different directories:</p>
             <a class="nav nav-prev" href="https://php-etl.github.io/documentation/installation/"><i class="ti-arrow-left mr-2"></i> <span class="d-none d-md-block">Installations</span></a>
             
             
-            <a class="nav nav-next" href="https://php-etl.github.io/documentation/installation/getting-started/"> <span class="d-none d-md-block">Getting started</span><i class="ti-arrow-right ml-2"></i></a>
+            <a class="nav nav-next" href="https://php-etl.github.io/documentation/installation/manual/"> <span class="d-none d-md-block">Manual installation</span><i class="ti-arrow-right ml-2"></i></a>
             
           </nav>
         </div>

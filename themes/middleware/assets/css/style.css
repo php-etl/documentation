@@ -263,7 +263,7 @@ pre {
 }
 
 .bg-light {
-  background-color: var(--light-color) !important;
+  background-color: var(--primary-color-lighten) !important;
 }
 
 .text-primary {
@@ -602,10 +602,11 @@ blockquote {
   font-size: 20px !important;
   color: var(--text-color-dark);
   padding: 20px 40px;
-  border-left: 2px solid var(--primary-color);
+  border-left: 5px solid var(--primary-color);
   margin: 40px 0;
   font-weight: bold;
-  background: var(--light-color);
+  background: var(--primary-color-lighten);
+  /*filter: brightness(1.2) opacity(.5);*/
 }
 
 blockquote p {

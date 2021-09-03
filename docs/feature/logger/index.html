@@ -1,0 +1,1132 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+  <meta charset="utf-8">
+  <title>Logging</title>
+
+  <meta name="generator" content="Hugo 0.82.0" />
+
+  <!-- mobile responsive meta -->
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+  <!-- ** Plugins Needed for the Project ** -->
+  <!-- Bootstrap -->
+  <link rel="stylesheet" href="https://php-etl.github.io/documentation/plugins/bootstrap/bootstrap.min.css">
+
+  <!-- themefy-icon -->
+  <link rel="stylesheet" href="https://php-etl.github.io/documentation/plugins/themify-icons/themify-icons.css">
+
+  <!-- highlight -->
+  <link rel="stylesheet" href="https://php-etl.github.io/documentation/plugins/highlight/hybrid.css">
+
+  <!--Favicon-->
+  <link rel="icon" href="https://php-etl.github.io/documentation/images/favicon.png" type="image/x-icon">
+
+  <!-- fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700&display=swap" rel="stylesheet">
+  
+  <style>
+  :root{
+    --primary-color: #22014f;
+    --primary-color-lighten: #f2e9fe;
+    --secondary-color:#fe8507;
+    --body-color:#ddd;
+    --text-color:#666;
+    --text-color-dark:#333;
+    --text-color-light:#eee;
+    --white-color:#eee;
+    --font-family:Lato;
+  }
+  </style>
+
+<!-- Main Stylesheet -->
+
+<link href="https://php-etl.github.io/documentation/css/style.min.css" rel="stylesheet" media="screen"/>
+
+<!-- jquiry -->
+<script src="https://php-etl.github.io/documentation/plugins/jquery/jquery-1.12.4.js"></script>
+
+<!-- jquary ui -->
+<script src="https://php-etl.github.io/documentation/plugins/jquery/jquery-ui.js"></script>
+
+<!-- Bootstrap JS -->
+<script src="https://php-etl.github.io/documentation/plugins/bootstrap/bootstrap.min.js"></script>
+
+<!-- match-height JS -->
+<script src="https://php-etl.github.io/documentation/plugins/match-height/jquery.matchHeight-min.js"></script>
+
+<!-- highlight -->
+<script src="https://php-etl.github.io/documentation/plugins/highlight/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+
+
+</head>
+
+  
+  <body>
+    
+    <!-- header -->
+    <header class="shadow-bottom sticky-top bg-white">
+      <nav class="navbar navbar-expand-md navbar-light">
+  <div class="container">
+    <a class="navbar-brand px-2" href="/documentation">
+      
+      
+      
+      
+      <div class="navbar-brand">
+        <img class="img-fluid" src="https://php-etl.github.io/documentation/logo-web.svg" alt="Middleware"> Middleware
+      </div>
+      
+      
+    </a>
+    <button class="navbar-toggler border-0" type="button" data-toggle="collapse" data-target="#navigation"
+      aria-controls="navigation" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse text-center" id="navigation">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item">
+          <a class="nav-link text-dark" href="/documentation">Home</a>
+        </li>
+        
+        
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle text-dark" href="#" role="button" data-toggle="dropdown"
+            aria-haspopup="true" aria-expanded="false">
+            Installation
+          </a>
+          <div class="dropdown-menu">
+            
+            <a class="dropdown-item" href="/documentation/installation/bare-metal">Bare metal</a>
+            
+            <a class="dropdown-item" href="/documentation/installation/manual">Manual</a>
+            
+          </div>
+        </li>
+        
+        
+        
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle text-dark" href="#" role="button" data-toggle="dropdown"
+            aria-haspopup="true" aria-expanded="false">
+            Features
+          </a>
+          <div class="dropdown-menu">
+            
+            <a class="dropdown-item" href="/documentation/components/dashboard">Dashboard</a>
+            
+            <a class="dropdown-item" href="/documentation/components/satellite">Satellite</a>
+            
+            <a class="dropdown-item" href="/documentation/components/pipeline">Pipeline</a>
+            
+            <a class="dropdown-item" href="/documentation/components/workflow">Workflow</a>
+            
+            <a class="dropdown-item" href="/documentation/feature/expression-language">Expression Language</a>
+            
+            <a class="dropdown-item" href="/documentation/feature/logger">Logging</a>
+            
+          </div>
+        </li>
+        
+        
+        
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle text-dark" href="#" role="button" data-toggle="dropdown"
+            aria-haspopup="true" aria-expanded="false">
+            Framework
+          </a>
+          <div class="dropdown-menu">
+            
+            <a class="dropdown-item" href="/documentation/framework/contracts">Contracts</a>
+            
+            <a class="dropdown-item" href="/documentation/framework/metadata">Metadata</a>
+            
+            <a class="dropdown-item" href="/documentation/framework/promise">Promise</a>
+            
+          </div>
+        </li>
+        
+        
+        
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle text-dark" href="#" role="button" data-toggle="dropdown"
+            aria-haspopup="true" aria-expanded="false">
+            Connectivity
+          </a>
+          <div class="dropdown-menu">
+            
+            <a class="dropdown-item" href="/documentation/connectivity/akeneo">Akeneo</a>
+            
+            <a class="dropdown-item" href="/documentation/connectivity/csv">CSV files</a>
+            
+            <a class="dropdown-item" href="/documentation/connectivity/custom">Custom connector</a>
+            
+            <a class="dropdown-item" href="/documentation/connectivity/fast-map">FastMap</a>
+            
+            <a class="dropdown-item" href="/documentation/connectivity/ftp">FTP</a>
+            
+            <a class="dropdown-item" href="/documentation/connectivity/sftp">SFTP</a>
+            
+            <a class="dropdown-item" href="/documentation/connectivity/nl-json">NL-JSON</a>
+            
+            <a class="dropdown-item" href="/documentation/connectivity/spreadsheet">Spreadsheet files</a>
+            
+            <a class="dropdown-item" href="/documentation/connectivity/sql">SQL database</a>
+            
+            <a class="dropdown-item" href="/documentation/connectivity/sylius">Sylius</a>
+            
+          </div>
+        </li>
+        
+        
+      </ul>
+      
+      <select class="lang-list dark" id="select-language"
+        onchange="location = this.value;">
+        
+        
+        
+        
+        
+        
+        
+        
+        <option id="en" value="https://php-etl.github.io/documentation/feature/logger/" selected>English
+        </option>
+        
+        
+        
+        
+        
+        
+      </select>
+      
+    </div>
+  </div>
+</nav>
+    </header>
+    <!-- /header -->
+    
+    
+
+<!-- details page -->
+<section class="single section-sm pb-0">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-3">
+        <div class="sidebar">
+          <ul class="list-styled">
+            
+            <a class="back-btn" href="/documentation"></a>
+            
+              
+              
+
+
+
+
+
+
+
+
+<li data-nav-id="https://php-etl.github.io/documentation/feature/" title="Features" class="sidelist
+  ">
+  <a href="https://php-etl.github.io/documentation/feature/">
+    Features
+  </a>
+  
+  
+    <ul>
+      
+        
+          
+
+
+
+
+
+
+
+
+<li data-nav-id="https://php-etl.github.io/documentation/feature/expression-language/" title="Expressions" class="sidelist
+  ">
+  <a href="https://php-etl.github.io/documentation/feature/expression-language/">
+    Expressions
+  </a>
+  
+  
+    <ul>
+      
+        
+          
+
+
+
+
+
+
+
+
+<li data-nav-id="https://php-etl.github.io/documentation/feature/expression-language/array-expression-functions/" title="Array Expression Language" class="sidelist
+  ">
+  <a href="https://php-etl.github.io/documentation/feature/expression-language/array-expression-functions/">
+    Array Expression Language
+  </a>
+  
+  
+</li>
+
+
+        
+      
+        
+          
+
+
+
+
+
+
+
+
+<li data-nav-id="https://php-etl.github.io/documentation/feature/expression-language/satellite-expression-functions/" title="Satellite Expression Language" class="sidelist
+  ">
+  <a href="https://php-etl.github.io/documentation/feature/expression-language/satellite-expression-functions/">
+    Satellite Expression Language
+  </a>
+  
+  
+</li>
+
+
+        
+      
+        
+          
+
+
+
+
+
+
+
+
+<li data-nav-id="https://php-etl.github.io/documentation/feature/expression-language/string-expression-functions/" title="String Expression functions" class="sidelist
+  ">
+  <a href="https://php-etl.github.io/documentation/feature/expression-language/string-expression-functions/">
+    String Expression functions
+  </a>
+  
+  
+</li>
+
+
+        
+      
+    </ul>
+  
+</li>
+
+
+        
+      
+        
+          
+
+
+
+
+
+
+
+
+<li data-nav-id="https://php-etl.github.io/documentation/feature/logger/" title="Logging" class="sidelist
+  active">
+  <a href="https://php-etl.github.io/documentation/feature/logger/">
+    Logging
+  </a>
+  
+  
+</li>
+
+
+        
+      
+    </ul>
+  
+</li>
+
+
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+          </ul>
+        </div>
+      </div>
+      <div class="col-lg-9">
+        <div class="p-lg-5 p-4 bg-white">
+          <h2 class="mb-5">Logging</h2>
+          
+          <div class="content"><h1 id="logger">Logger</h1>
+<ul>
+<li><a href="#what-is-it-for">What is it for?</a></li>
+<li><a href="#installation">Installation</a></li>
+<li><a href="#usage">Usage</a>
+<ul>
+<li><a href="#setting-your-channel">Setting your channel</a></li>
+<li><a href="#setting-one-or-more-destinations">Setting one or more destinations</a>
+<ul>
+<li><a href="#using-elasticsearch">Using ElasticSearch</a></li>
+<li><a href="#using-logstash">Using Logstash</a></li>
+<li><a href="#using-a-stream">Using a Stream</a></li>
+<li><a href="#using-syslog">Using Syslog</a></li>
+<li><a href="#using-gelf">Using GELF</a></li>
+</ul>
+</li>
+<li><a href="#tcp-protocol-configuration">TCP protocol configuration</a></li>
+<li><a href="#amqp-protocol-configuration">AMQP protocol configuration</a></li>
+<li><a href="#usage">The different levels of logs in PHP</a></li>
+</ul>
+</li>
+</ul>
+<hr>
+<blockquote>
+<p>A log is a type of file that stores a history of messages.</p>
+</blockquote>
+<h1 id="what-is-it-for">What is it for?</h1>
+<p>In some cases you may need to identify why your Pipeline is failing, so we have set up a logger system that you can
+use in different steps of your pipeline.</p>
+<h2 id="installation">Installation</h2>
+<p>This plugin is already integrated into the Satellite package, so you won&rsquo;t need to require it with composer.</p>
+<h2 id="usage">Usage</h2>
+<h3 id="setting-your-channel">Setting your channel</h3>
+<p>First, you need to specify the name of your channel in which your logs will be written.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">logger</span>:
+  <span style="color:#f92672">channel</span>: <span style="color:#ae81ff">pipeline</span>
+</code></pre></div><h3 id="setting-one-or-more-destinations">Setting one or more destinations</h3>
+<p>Next, you need to define the destination(s) for your logs. You can choose between several logging systems:
+ElasticSearch, Logstash, Gelf, Syslog and Stream.</p>
+<h4 id="using-elasticsearch">Using ElasticSearch</h4>
+<blockquote>
+<p>ElasticSearch is a search and analysis engine.</p>
+</blockquote>
+<p>The first thing to set is the minimum <a href="#the-different-levels-of-logs-in-php">logging level</a> at which this handler will be triggered using the
+the <code>level</code> option.</p>
+<blockquote>
+<p>Note: if you need to install a local ElasticStack environment, check the <a href="../installation/manual">Manual installation</a> documentation.</p>
+</blockquote>
+<p>Next, you need to set the various hosts for your ElasticSearch application.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">logger</span>:
+  <span style="color:#75715e"># ...</span>
+  <span style="color:#f92672">destinations</span>:
+    - <span style="color:#f92672">elasticsearch</span>:
+        <span style="color:#f92672">level</span>: <span style="color:#ae81ff">warning</span>
+        <span style="color:#f92672">hosts</span>:
+          - <span style="color:#ae81ff">http://user:password@elasticsearch.example.com:9200</span>
+</code></pre></div><h4 id="using-logstash">Using Logstash</h4>
+<blockquote>
+<p>Logstash is a software tool for collecting, analysing and storing logs.</p>
+</blockquote>
+<p>When setting up your connection to Logstash, you should first set the name of your application
+using the <code>application_name</code> option and the minimum <a href="#the-different-levels-of-logs-in-php">logging level</a> at which this handler will be
+with the <code>level</code> option.</p>
+<p>Next, you need to set the protocol you want to use: <a href="#amqp-protocol-configuration">AMQP</a> or <a href="#tcp-protocol-configuration">TCP</a>.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">logger</span>:
+  <span style="color:#75715e"># ...</span>
+  <span style="color:#f92672">destinations</span>:
+    - <span style="color:#f92672">logstash</span>:
+        <span style="color:#f92672">application_name</span>: <span style="color:#ae81ff">my_log_system</span>
+        <span style="color:#f92672">level</span>: <span style="color:#ae81ff">warning</span>
+        <span style="color:#f92672">tcp</span>:
+          <span style="color:#f92672">host</span>: <span style="color:#ae81ff">logstash.example.com</span>
+          <span style="color:#f92672">port</span>: <span style="color:#ae81ff">100</span>
+</code></pre></div><h4 id="using-a-stream">Using a Stream</h4>
+<blockquote>
+<p>A log stream is an application-specific collection of data that is used as a log.
+The data is written to and read from the log stream by one or more instances of the associated application.</p>
+</blockquote>
+<p>To establish a connection to a stream, you need to establish a <code>path</code> and the minimum <a href="#the-different-levels-of-logs-in-php">logging level</a> at which this
+handler will be triggered with the this handler will be triggered with the <code>level</code> option.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">logger</span>:
+  <span style="color:#75715e"># ...</span>
+  <span style="color:#f92672">destinations</span>:
+    - <span style="color:#f92672">stream</span>:
+        <span style="color:#f92672">path</span>: <span style="color:#ae81ff">/my/path</span>
+        <span style="color:#f92672">level</span>: <span style="color:#ae81ff">warning</span>
+</code></pre></div><h4 id="using-syslog">Using Syslog</h4>
+<blockquote>
+<p>Syslog, System Logging Protocol, is a standard protocol used to send system log files or event messages
+to a dedicated server called syslog server.</p>
+</blockquote>
+<h4 id="using-gelf">Using GELF</h4>
+<blockquote>
+<p>The Graylog Extended Log Format (GELF) is a unique and convenient log format created to address all the shortcomings
+of the traditional Syslog. This feature allows you to collect structured events from anywhere,
+then compress and fragment them in a snap.</p>
+</blockquote>
+<p>The first thing to do is to set the minimum <a href="#the-different-levels-of-logs-in-php">logging level</a> at which this handler will be triggered using the <code>level</code>
+option.</p>
+<p>Next, you need to set the protocol you want to use: <a href="#amqp-protocol-configuration">AMQP</a> or <a href="#tcp-protocol-configuration">TCP</a>.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">logger</span>:
+  <span style="color:#75715e"># ...</span>
+  <span style="color:#f92672">destinations</span>:
+    - <span style="color:#f92672">gelf</span>:
+        <span style="color:#f92672">level</span>: <span style="color:#ae81ff">warning</span>
+        <span style="color:#f92672">amqp</span>:
+          <span style="color:#f92672">queue</span>: <span style="color:#ae81ff">my_queue_nama</span>
+          <span style="color:#f92672">host</span>: <span style="color:#ae81ff">example.com</span>
+          <span style="color:#f92672">port</span>: <span style="color:#ae81ff">100</span>
+          <span style="color:#f92672">login</span>: <span style="color:#ae81ff">foo</span>
+          <span style="color:#f92672">password</span>: <span style="color:#ae81ff">password</span>
+</code></pre></div><h3 id="tcp-protocol-configuration">TCP protocol configuration</h3>
+<blockquote>
+<p>TCP, Transmission Control Protocol, is a standardised protocol for the transmission of data between different
+subscribers to a computer network.</p>
+</blockquote>
+<p>The configuration for TCP is simple, you only need to set the <code>host</code> and <code>port</code> options on your system.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">tcp</span>:
+  <span style="color:#f92672">host</span>: <span style="color:#ae81ff">example.com</span>
+  <span style="color:#f92672">port</span>: <span style="color:#ae81ff">100</span>
+</code></pre></div><h3 id="amqp-protocol-configuration">AMQP protocol configuration</h3>
+<blockquote>
+<p>AMQP, Advanced Message Queuing Protocol, is a standardised transfer and framing protocol for the asynchronous,
+secure and reliable transfer of messages.</p>
+</blockquote>
+<p>For the AMQP protocol, you need to define the name of your <code>queue</code>, the <code>host</code> and <code>port</code> of your application,
+and the login credentials (<code>login</code> and <code>password</code>).</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">amqp</span>:
+  <span style="color:#f92672">queue</span>: <span style="color:#ae81ff">my_queue_nama</span>
+  <span style="color:#f92672">host</span>: <span style="color:#ae81ff">example.com</span>
+  <span style="color:#f92672">port</span>: <span style="color:#ae81ff">100</span>
+  <span style="color:#f92672">login</span>: <span style="color:#ae81ff">foo</span>
+  <span style="color:#f92672">password</span>: <span style="color:#ae81ff">password</span>
+</code></pre></div><h3 id="the-different-levels-of-logs-in-php">The different levels of logs in PHP</h3>
+<p><code>debug</code>, <code>info</code>, <code>notice</code>, <code>warning</code>, <code>error</code>, <code>critical</code>, <code>alert</code>, <code>emergency</code></p>
+</div>
+          
+          <p class="post-meta border-bottom pb-3 mb-0 mt-3">Updated on 06 Aug 2021</p>
+          <nav class="pagination mt-3">
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            <a class="nav nav-prev" href="https://php-etl.github.io/documentation/feature/expression-language/string-expression-functions/"><i class="ti-arrow-left mr-2"></i> <span class="d-none d-md-block">String Expression functions</span></a>
+            
+            
+            <a class="nav nav-next" href="https://php-etl.github.io/documentation/components/"> <span class="d-none d-md-block">Components</span><i class="ti-arrow-right ml-2"></i></a>
+            
+          </nav>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- /details page -->
+
+
+
+
+
+
+    <!-- footer -->
+<footer class="section pb-4">
+  <div class="container">
+    <div class="row align-items-center">
+      <div class="col-md-8 text-md-left text-center">
+       <p class="mb-md-0 mb-4">The Middleware Documents are copyright © <a href="https://kiboko.fr/">Kiboko</a> 2020, 2021.</p>
+      </div>
+      <div class="col-md-4 text-md-right text-center">
+        <ul class="list-inline">
+          
+        </ul>
+      </div>
+    </div>
+  </div>
+</footer>
+<!-- /footer -->
+
+<!-- Main Script -->
+
+<script src="https://php-etl.github.io/documentation/js/script.min.js"></script>
+  </body>
+
+</html>

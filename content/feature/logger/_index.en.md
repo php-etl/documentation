@@ -35,7 +35,7 @@ use in different steps of your pipeline.
 
 ## Installation
 
-This plugin is already integrated into the Satellite package, so you can't require it with the composer.
+This plugin is already integrated into the Satellite package, so you won't need to require it with composer.
 
 ## Usage 
 
@@ -59,6 +59,8 @@ ElasticSearch, Logstash, Gelf, Syslog and Stream.
 
 The first thing to set is the minimum [logging level](#the-different-levels-of-logs-in-php) at which this handler will be triggered using the
 the `level` option.
+
+> Note: if you need to install a local ElasticStack environment, check the [Manual installation](../installation/manual) documentation.
 
 Next, you need to set the various hosts for your ElasticSearch application.
 

@@ -1,24 +1,22 @@
 ---
-title: "System Requirements"
+title: "Manual installation"
 date: 2020-07-12T15:21:02+02:00
 draft: false
 ---
 
 ### Contents of this documentation
 
-In this documentation, we will make sure all your system and application dependencies are correct, 
-before you start using *Middleware*.
+In this documentation, we will create a Docker stack with all system and application dependencies, 
+in order to start using *Middleware*.
 
 ### Prepare your dependencies in Docker
 
-We will use Logstash, Elasticsearch and Kibana as a logging platform.
- 
-As those systems are complex to instakll and out-of-scope of this documentation, we will use Docker to start those services.
+We will use [Logstash](#logstash), [Elasticsearch](#elasticsearch) and [Kibana](#kibana) as a logging platform.
 
 #### Logstash
 
-Logstash is a tool whose primary goal is to consume logging from other applications, optionally apply transformations to
-it and then transfer it to a log storage.
+Logstash is a tool whose primary goal is to consume and aggregate logging from other applications,
+optionally apply transformations to it and then transfer it to a logging data store.
 
 In your project, create a file named `.docker/logstash/logstash.yml` with the following contents:
 
@@ -58,7 +56,7 @@ Now, you will need to add a new logstash service in your `docker-compose.yaml` f
 ```yaml
 services:
   logstash:
-    image: docker.elastic.co/logstash/logstash:7.12.1
+    image: docker.elastic.co/logstash/logstash:7.14.1
     volumes:
       - ./.docker/logstash/logstash.yml:/usr/share/logstash/config/logstash.yml
       - ./.docker/logstash/pipeline:/usr/share/logstash/pipeline/
@@ -98,7 +96,7 @@ Now, you will need to add a new elasticsearch service and a dedicated volume in 
 ```yaml
 services:
   elasticsearch:
-    image: docker.elastic.co/elasticsearch/elasticsearch:7.12.1
+    image: docker.elastic.co/elasticsearch/elasticsearch:7.14.1
     ports:
       - ${ELASTICSEARCH_PORT:-9200}:9200
     environment:
@@ -130,7 +128,7 @@ Now, you will need to add a new kibana service in your `docker-compose.yaml` fil
 ```yaml
 services:
   kibana:
-    image: docker.elastic.co/kibana/kibana:7.12.1
+    image: docker.elastic.co/kibana/kibana:7.14.1
     ports:
       - ${KIBANA_PORT:-5601}:5601
     environment:

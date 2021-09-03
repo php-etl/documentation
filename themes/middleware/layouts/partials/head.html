@@ -26,12 +26,13 @@
   <style>
   :root{
     --primary-color: {{ .Site.Params.primary_color }};
+    --primary-color-lighten: {{ .Site.Params.primary_color_lighten }};
+    --secondary-color:{{ .Site.Params.secondary_color }};
     --body-color:{{ .Site.Params.body_color }};
     --text-color:{{ .Site.Params.text_color }};
     --text-color-dark:{{ .Site.Params.text_color_dark }};
     --text-color-light:{{ .Site.Params.text_color_light }};
     --white-color:{{ .Site.Params.white_color }};
-    --light-color:{{ .Site.Params.light_color }};
     --font-family:{{ replace .Site.Params.font_family ' ' '+' | title }};
   }
   </style>
