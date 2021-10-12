@@ -2,7 +2,7 @@
 title: "Expressions"
 date: 2021-08-12T12:08:50Z
 draft: false
-type: "component"
+type: "feature"
 icon: "ti-ruler-pencil"
 description: "Expression Language capabilities to express your own constraints"
 weight: 3

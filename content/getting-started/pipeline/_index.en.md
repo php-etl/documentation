@@ -13,9 +13,13 @@ weight: 1
 # Pipeline
 
 - [Installation](#installation)
-- [Usage](#usage)
-    - [Simple usage](#simple-usage)
-    - [Adding logger](#adding-logger)
+- [Basic Usage](#basic-usage)
+- [Advanced Usage](#advanced-usage)
+  - [Using expressions](#using-expressions)
+  - [Using services](#using-services)
+  - [Adding logger](#adding-logger)
+  - [Adding rejection](#adding-rejection)
+  - [Adding state](#adding-state)
 
 ---
 
@@ -31,9 +35,7 @@ The steps of our pipeline are `extract`, `transform` or `load`.
 composer require php-etl/pipeline
 ```
 
-## Usage
-
-### Simple usage
+## Basic usage
 
 To define your pipeline, you need to specify which steps will make up the pipeline using the `steps` option. Each step 
 contains the configuration of a plugin. For more details, go to the documentation page of the plugin of your choice.
@@ -75,11 +77,39 @@ $pipeline = (new Pipeline($runner))
 
 {{< /tabs >}}
 
+## Advanced usage
+
+### Using expressions
+
+It's possible to use expressions in your pipeline using the `expression_language` option. To use these expressions,
+you need to use our customised Providers which provide the different expressions. For more information, please visit 
+the [detailed documentation](../../feature/expression-language) of the language expressions.
+
+```yaml
+pipeline:
+  expression_language:
+    - 'Kiboko\Component\Satellite\ExpressionLanguage\Provider'
+```
+
+### Using services
+
+You can use services in your pipeline in the same way as in a traditional Symfony application.
+
+For more details, go to the [detailed services documentation](../../feature/logger).
+
+```yaml
+pipeline:
+  services:
+    App\Service\Bar:
+      arguments:
+        - 'my-file.csv'
+```
+
 ### Adding logger
 
 It's possible to add a `logger` at each step of the pipeline.
 
-For more details, go to the [detailed logger documentation](../../connectivity/logger)
+For more details, go to the [detailed logger documentation](../../feature/logger).
 
 ```yaml
 satellite:
@@ -95,4 +125,46 @@ satellite:
                 level: warning
                 hosts:
                   - http://user:password@elasticsearch.example.com:9200
+```
+
+### Adding rejection
+
+It's possible to add a `rejection` at each step of the pipeline.
+
+For more details, go to the [detailed rejection documentation](../../feature/rejection)
+
+```yaml
+satellite:
+# ...
+   pipeline:
+      steps:
+      - akeneo:
+        # ...
+        rejection:
+          destinations:
+            - rabbitmq:
+                host: rabbitmq.example.com
+                vhost: /
+                topic: foo.rejects
+```
+
+### Adding state
+
+It's possible to add a `state` at each step of the pipeline.
+
+For more details, go to the [detailed state documentation](../../feature/state)
+
+```yaml
+satellite:
+# ...
+   pipeline:
+      steps:
+      - akeneo:
+        # ...
+        state:
+          destinations:
+            - rabbitmq:
+                host: rabbitmq.example.com
+                vhost: /
+                topic: foo.rejects
 ```

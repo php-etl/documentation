@@ -2,7 +2,7 @@
 title: "Logging"
 date: 2021-08-06T16:40:18+02:00
 draft: false
-type: "component"
+type: "feature"
 icon: "ti-archive"
 description: "Execution logging and error reporting"
 weight: 4

@@ -1,7 +1,8 @@
 ---
-title: "Getting started"
-date: 2020-07-12T15:21:02+02:00
+title: "Installation"
+date: 2021-10-12T15:21:02+02:00
 draft: false
+type: "getting-started"
 shortDescription: Getting started
 ---
 
@@ -150,7 +151,7 @@ satellite:
     steps:
 ```
 
-To understand the structure of the configuration go to the [Satellite documentation](../../components/satellite).
+To understand the structure of the configuration go to the [Satellite documentation](../satellite).
 
 #### 2. Steps 
 
