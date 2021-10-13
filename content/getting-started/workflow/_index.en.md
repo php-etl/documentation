@@ -6,6 +6,7 @@ draft: false
 
 # Workflow
 
+- [What is it ?](#what-is-it-)
 - [Installation](#installation)
 - [Basic usage](#basic-usage)
 - [Advanced usage](#advanced-usage)
@@ -13,6 +14,10 @@ draft: false
   - [Using services](#using-services)
     
 ---
+
+## What is it ?
+
+This package allows you to create a micro-service that will be orchestrating more than one data pipeline.
 
 ## Installation
 
@@ -29,8 +34,10 @@ Please see the [Pipeline documentation](../pipeline) to know how a pipeline shou
 workflow:
   jobs:
     - pipeline:
+        # the first pipeline configuration
         # ...
     - pipeline:
+        # the second pipeline configuration
         # ...
 ```
 
@@ -40,7 +47,8 @@ The `name` option allows you to name your job.
 workflow:
   jobs:
     - name: 'Pipeline 1'
-      pipeline: 
+      pipeline:
+        # the pipeline configuration
         # ...
 ```
 
@@ -59,3 +67,15 @@ pipeline:
 ```
 
 ### Using services
+
+You can use services in your pipeline in the same way as in a traditional Symfony application.
+
+For more details, go to the [detailed services documentation](../../feature/logger).
+
+```yaml
+pipeline:
+  services:
+    App\Service\Bar:
+      arguments:
+        - 'my-file.csv'
+```

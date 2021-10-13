@@ -17,13 +17,13 @@ hasChildren = true
 
   [[menu.main]]
   parent = "Getting Started"
-  name = "Installation"
-  url = "getting-started/installation"
+  name = "Setup"
+  url = "getting-started/setup"
   weight = 1
 
   [[menu.main]]
   parent = "Getting Started"
-  name = "Using Satellites"
+  name = "Creating Satellites"
   url = "getting-started/satellite"
   weight = 2
 

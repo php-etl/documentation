@@ -1,5 +1,5 @@
 ---
-title: "Satellite"
+title: "Creating Satellite"
 date: 2020-07-12T15:21:02+02:00
 weight: 1
 draft: false
@@ -89,7 +89,7 @@ The filesystem key is accompanied by a `path` key which determines the path of t
 {{< tab name="YAML" codelang="yaml"  >}}
 satellite:
   filesystem:
-    path: path/to/file/foo
+    path: path/to/folder
 #...
 {{< /tab >}}
 
@@ -101,7 +101,11 @@ satellite:
 
 ### Configure composer 
 
-As a second step, we need to declare the composer dependencies our microservice will have with the `composer` key.
+In a second step, it's possible to declare the composer dependencies that our microservice needs with the `composer` key.
+
+> Tip : This part isn't mandatory. If you do not configure it, these packages (`php-etl/pipeline-contracts`,
+`php-etl/pipeline`, `php-etl/pipeline-console-runtime`, `php-etl/workflow-console-runtime`, 
+`psr/log`, `monolog/monolog`, `symfony/console`, `symfony/dependency-injection`) will be installed automatically.
 
 The `require` option allows to add all the packages, write like `package_name:version`, that we need for your microservice.
 
@@ -112,7 +116,6 @@ satellite:
 #...
   composer:
     require:
-      - "php-etl/pipeline:^0.2"
       - "php-etl/fast-map:^0.2"
       - "php-etl/csv-flow:^0.1"
       - "akeneo/api-php-client-ee"
@@ -145,7 +148,8 @@ satellite:
           paths: [""]
 ``` 
 
-The `from_local` option is optional and copies local repositories instead of downloading them.
+The `from_local` option is optional and copies local `composer.json`, `composer.lock` and `vendor` files in your 
+microservice instead creating them.
 
 ```yaml
 satellite:
@@ -163,7 +167,7 @@ There are 4 types of runtimes, depending on your needs you will have to choose o
  * `http-api`: the micro-service will be operating an API, on which several URL routes can be registered. `http-api` is used for REST API.
  * `http-hook`: the micro-service will be operating an API on a single URL route. `http-hook` is used for webhooks. A webhook is a POST request sent to a URL. It's considered to be 
 a means for one application to provide other applications with real-time information
- * `pipeline`: the micro-service will be operating a data pipeline, executed in the backend that can be executed as a cron job. For more information on pipelines, see [Pipeline](../pipeline/).
+ * `pipeline`: the micro-service will be operating a data pipeline, executed in the backend that can be executed as a cron job.
  * `workflow`: the micro-service will be orchestrating more than one data pipeline, executed in the backend that can be executed as a cron job
 
 #### Using Pipeline
@@ -284,16 +288,16 @@ system.
 
 ```shell
 # will execute the satellite.yaml file located at the root of the project
-php bin/console build
+php bin/satellite build
 
 # specify the name of the file to be executed
-php bin/console build `satellite.yaml`
+php bin/satellite build `satellite.yaml`
 ```
 
-This command will create a folder with a file `function.php` containing the pipeline code.
+This command will create a folder with a file `main.php` containing the code to execute.
 
 You have to execute it with php command like this :
 
 ```shell
-php path/to/folder/function.php
+php path/to/folder/main.php
 ```

@@ -11,8 +11,7 @@ type: "feature"
 - [Installation](#installation)
 - [Usage](#usage)
     - [With RabbitMQ](#basic-usage)
-- [Advanced usage](#advanced-usage)
-    - [With RabbitMQ](#using-a-service)
+    - [Using a service](#using-a-service)
 ---
 
 ## What is it ?
@@ -42,9 +41,9 @@ This feature supports sending to RabbitMQ instances.
 
 To enable a connection to your RabbitMQ application, you need at least 3 options which are `host`, `vhost` and `topic`.
 
-- `host`: the name of your host name
-- `vhost`: the virtual host of your RabbitMQ instance
-- `topic`: the name of the queue to which the rejects will be sent
+- `host`: this is the name of your host name
+- `vhost`: this is the virtual host of your RabbitMQ instance
+- `topic`: this is the name of the queue to which the rejects will be sent
 
 ```yaml
 state:
@@ -59,10 +58,10 @@ state:
 
 This feature additionally takes some options that can be used when configuring to your instance.
 
-- `user`: the username of your user
-- `password`: the password of your user
-- `port`: the port that your RabbitMQ application uses
-- `exchange`: the name of the exchange to be used
+- `user`: this is the username of your user
+- `password`: this is the password of your user
+- `port`: this is the port that your RabbitMQ application uses
+- `exchange`: this is the name of the exchange to be used
 
 ```yaml
 state:
@@ -77,8 +76,6 @@ state:
         exchange: 'amq.direct'
 ```
 
-## Advanced usage
-
 ### Using a service
 
 It's possible to use a service that has been previously defined in the pipeline or the workflow configuration.
@@ -91,4 +88,5 @@ state:
     - '@App\Service\Bar'
 ```
 
-
+> Warning : In the case where the states of your steps must all be sent to the same instance with a unique manager,
+> you must use services.
