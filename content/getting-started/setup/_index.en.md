@@ -34,7 +34,7 @@ After creating a new blank project, open your console terminal and run these com
 composer init
 ```
 
-> Warning : You must choose `dev` as the value for the `minimum-stability` option and ignore composer dependencies.
+> Warning : You must choose `dev` as the value for the `minimum-stability` option.
 
 ```shell
 composer require php-etl/satellite
@@ -42,17 +42,11 @@ composer require php-etl/satellite
 
 This command will add the `php-etl/satellite` package, that is the core of the middleware, to your composer.json.
 
-Then, choose the plugin(s) you need from [all our plugins](../../connectivity).
+Then, choose the plugin(s) you need from [all our plugins](../../connectivity) and added it/them into your project.
 
 ```shell
 composer require php-etl/akeneo-expression-language php-etl/akeneo-plugin
 ```
-
-In this example, the command will add the following component packages to your composer.json :
-
-- `php-etl/akeneo-expression-language` provide some config functions useful when working with Akeneo
-- `php-etl/akeneo-plugin` is a Middleware plugin dedicated to Akeneo. It allow to connect and use the Akeneo Api
-
 
 Finally, in your `composer.json` file, add the following lines :
 

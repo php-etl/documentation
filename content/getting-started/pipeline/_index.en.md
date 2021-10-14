@@ -22,7 +22,6 @@ weight: 1
   - [Adding logger](#adding-logger)
   - [Adding rejection](#adding-rejection)
   - [Adding state](#adding-state)
-- [New version](#new-version)
 
 ---
 
@@ -38,7 +37,7 @@ This package allows you to create a micro-service that will be operating a data 
 
 ## Installation
 
-``` 
+```shell
 composer require php-etl/pipeline
 ```
 
@@ -174,51 +173,4 @@ satellite:
                 host: rabbitmq.example.com
                 vhost: /
                 topic: foo.rejects
-```
-
-## New version
-
-If you are using the previous configuration, you should use the recommended version to write your satellites.
-
-However, it is possible to use version `0.3` which allows you to import files directly into your configuration. 
-
-To use this new version, you need to specify the `version` option in your configuration file like this: 
-
-```yaml
-# path/to/satellite.yaml
-version: 0.3
-```
-
-Unlike the previous configuration, the `satellite` option becomes `satellites` and each satellite will be 
-determined by the key of your choice. Then you write your configuration as in the previous version.
-
-```yaml
-# path/to/satellite.yaml
-version: 0.3
-satellites:
-  products: # this is the satellite key
-    # ...
-```
-
-The major new feature of this version is the ability to import files directly in your configuration.
-
-The import of files can be done at several levels in your config file: 
-
-```yaml
-imports: # full configuration from another file
-  - { resource: 'examples/cli-pipeline-with-imports/satellite2.yaml' }
-
-version: '0.3'
-
-satellites:
-  imports: # configuration of a satellite
-    - { resource: 'examples/cli-pipeline-with-imports/satellites/satellites_attribute_and_category.yaml' }
-  product:
-    label: 'Product'
-    imports:  # configuration of the adapter
-      - { resource: 'examples/cli-pipeline-with-imports/filesystems/filesystem.yaml' }
-    pipeline:
-     imports: 
-        # configuration of the pipeline
-        - { resource: 'examples/cli-pipeline-with-imports/pipelines/pipeline.yaml' }
 ```
