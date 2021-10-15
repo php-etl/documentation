@@ -28,7 +28,7 @@
         {{ "<!-- topic-item -->" | safeHTML }}
         {{ range (where .Site.Pages "Type" "component") }}
         <div class="col-lg-4 col-sm-6 mb-4">
-          <a href="{{ .Permalink }}" class="px-4 py-5 bg-white shadow text-center d-block match-height">
+          <a href="{{ .Permalink }}" class="hp-push px-4 py-5 bg-white shadow text-center d-block match-height">
             {{ if .Params.Icon }}
             <i class="{{ .Params.Icon }} icon text-primary d-block mb-4"></i>
             {{ end }}
@@ -59,7 +59,7 @@
         {{ "<!-- topic-item -->" | safeHTML }}
         {{ range (where .Site.Pages "Type" "plugins") }}
         <div class="col-lg-4 col-sm-6 mb-4">
-          <a href="{{ .Permalink }}" class="px-4 py-5 bg-white shadow text-center d-block match-height">
+          <a href="{{ .Permalink }}" class="hp-push px-4 py-5 bg-white shadow text-center d-block match-height">
             {{ if .Params.Icon }}
             <i class="{{ .Params.Icon }} icon text-primary d-block mb-4"></i>
             {{ end }}
