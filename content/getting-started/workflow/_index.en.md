@@ -15,6 +15,8 @@ draft: false
     
 ---
 
+![Workflow schema](workflow.svg)
+
 ## What is it ?
 
 This package allows you to create a micro-service that will be orchestrating more than one data pipeline.

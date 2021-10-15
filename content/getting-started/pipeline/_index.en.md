@@ -29,7 +29,11 @@ weight: 1
 > The first process takes raw input data, uses it and then
 > sends the results to the second process, and so on, ending with the final result produced by the last process in progress.
 
-The steps of our pipeline are `extract`, `transform` or `load`.
+![Pipeline schema](pipeline.svg)
+
+The different steps of our pipeline are `extract`, `transform` or `load` but the transformation step isn't mandatory.
+
+> Tip : It's possible to use multiple transformation steps in a pipeline.
 
 ## What is it ?
 

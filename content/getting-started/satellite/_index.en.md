@@ -29,6 +29,8 @@ weight: 2
 > A satellite is a micro-service running in the cloud, packaged as a docker image.
 > It can be deployed in any Docker infrastructure, including Kubernetes clusters.
 
+![Satellite schema](satellite.svg)
+
 ## Building a satellite
 
 The configuration of your satellite must be defined in a yaml file.
