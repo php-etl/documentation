@@ -8,8 +8,6 @@ description: "Transfer files to a remote FTP location"
 weight: 8
 ---
 
-# FTP Plugin
-
 - [What is it ?](#what-is-it-)
 - [Installation](#installation)
 - [Usage](#usage)

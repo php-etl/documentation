@@ -8,8 +8,6 @@ description: "Execution logging and error reporting"
 weight: 4
 ---
 
-# Logger
-
 - [What is it for?](#what-is-it-for)
 - [Installation](#installation)
 - [Usage](#usage)
@@ -28,10 +26,12 @@ weight: 4
 
 > A log is a type of file that stores a history of messages.
 
-# What is it for?
+## What is it for?
 
 In some cases you may need to identify why your Pipeline is failing, so we have set up a logger system that you can 
 use in different steps of your pipeline.
+
+
 
 ## Installation
 

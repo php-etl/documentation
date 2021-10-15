@@ -5,8 +5,6 @@ draft: false
 type: "feature"
 ---
 
-# Rejection
-
 - [What is it ?](#what-is-it-)
 - [Installation](#installation)
 - [Usage](#usage)

@@ -4,8 +4,6 @@ date: 2021-10-12T17:28:06+02:00
 draft: false
 ---
 
-# Declaring services
-
 - [What is it ?](#what-is-it-)
 - [Installation](#installation)
 - [Usage](#usage)

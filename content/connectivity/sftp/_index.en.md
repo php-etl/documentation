@@ -8,8 +8,6 @@ description: "Transfer files to a remote secured SFTP location"
 weight: 9
 ---
 
-# FTP Plugin
-
 - [What is it ?](#what-is-it-)
 - [Installation](#installation)
 - [Usage](#usage)

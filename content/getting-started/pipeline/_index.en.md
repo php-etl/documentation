@@ -10,9 +10,6 @@ weight: 1
 
 {{< feature-state for_mw_version="0.1" state="alpha" >}}
 
-# Pipeline
-
-
 - [What is it](#what-is-it-)
 - [Installation](#installation)
 - [Basic Usage](#basic-usage)

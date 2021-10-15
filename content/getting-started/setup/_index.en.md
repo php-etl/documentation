@@ -6,8 +6,6 @@ type: "getting-started"
 shortDescription: Getting started
 ---
 
-# Setup
-
 - [Technical requirements](#technical-requirements)
 - [Create you project](#creating-your-project)
 - [Start creating your micro-service](#start-creating-your-micro-service)

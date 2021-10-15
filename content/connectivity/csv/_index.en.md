@@ -8,8 +8,6 @@ description: "Read and write CSV files in any format"
 weight: 4
 ---
 
-# CSV Plugin
-
 - [What is it ?](#what-is-it-)
 - [Installation](#what-is-it-)
 - [Usage](#what-is-it-)

@@ -5,8 +5,6 @@ draft: false
 type: "feature"
 ---
 
-# Array Expression functions
-
 - [What is it for?](#what-is-it-for)
 - [Installation](#installation)
 - [Usage](#usage)

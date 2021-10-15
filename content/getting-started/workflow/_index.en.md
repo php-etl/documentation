@@ -4,8 +4,6 @@ date: 2021-08-10T10:16:41+02:00
 draft: false
 ---
 
-# Workflow
-
 - [What is it ?](#what-is-it-)
 - [Installation](#installation)
 - [Basic usage](#basic-usage)

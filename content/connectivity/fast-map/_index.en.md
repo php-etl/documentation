@@ -10,8 +10,6 @@ weight: 2
 
 {{< feature-state for_mw_version="0.1" state="alpha" >}}
 
-# Fast Map
-
 - [What is it ?](#what-is-it-)
 - [Installation](#installation)
 - [Usage](#usage)
@@ -25,6 +23,9 @@ weight: 2
 > A mapping is an operation that associates each element of a source of data into
 > a new format of the same data. By this operation, it is possible to transform
 > the way the data is represented.
+
+
+![Fastmap schema](fastmap.svg)
 
 ## What is it ?
 

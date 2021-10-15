@@ -10,8 +10,6 @@ weight: 9
 
 {{< feature-state for_mw_version="0.1" state="alpha" >}}
 
-# JSON Plugin
-
 - [What is it ?](#what-is-it-)
 - [Installation](#installation)
 - [Usage](#usage)

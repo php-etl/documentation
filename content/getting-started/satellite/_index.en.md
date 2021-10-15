@@ -11,8 +11,6 @@ weight: 2
 
 {{< feature-state for_mw_version="0.1" state="alpha" >}}
 
-# Satellite 
-
 - [Building a satellite](#building-a-satellite)
     - [Setting up the Adapter](#setting-up-the-adapter)
         - [Using Docker](#using-docker)
@@ -26,8 +24,8 @@ weight: 2
 
 ---
 
-> A satellite is a micro-service running in the cloud, packaged as a docker image.
-> It can be deployed in any Docker infrastructure, including Kubernetes clusters.
+> A satellite is a micro-service that can be executed as a cron job.
+> It can be deployed in any Docker infrastructure (including Kubernetes clusters) or in any operating system.
 
 ![Satellite schema](satellite.svg)
 
