@@ -1,6 +1,6 @@
 # Middleware documentation website
 
-![alt Middleware](assets/logo.svg)
+![alt Middleware](static/favicon.png)
 
 ## Technologies
 - Hugo framework [docs](https://gohugo.io/documentation/)
