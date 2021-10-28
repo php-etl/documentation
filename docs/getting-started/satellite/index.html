@@ -20,7 +20,7 @@
   <link rel="stylesheet" href="https://php-etl.github.io/documentation/plugins/highlight/hybrid.css">
 
   <!--Favicon-->
-  <link rel="icon" href="https://php-etl.github.io/documentation/images/favicon.png" type="image/x-icon">
+  <link rel="icon" href="https://php-etl.github.io/documentation/favicon.png" type="image/x-icon">
 
   <!-- fonts -->
   <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700&display=swap" rel="stylesheet">
@@ -379,7 +379,17 @@
       </div>
       <div class="col-lg-9">
         <div class="p-lg-5 p-4 bg-white">
-          <h2 class="mb-5">Creating Satellite</h2>
+          <h1 class="single-title mb-5">
+              
+              
+              <i class="logo-lambda icon d-block">
+                  <svg>
+                      <use xlink:href="https://php-etl.github.io/documentation/sprites.svg#lambda"></use>
+                  </svg>
+              </i>
+              
+              Creating Satellite
+          </h1>
           
           <div class="content">
 
@@ -391,7 +401,6 @@
 </div>
 
 
-<h1 id="satellite">Satellite</h1>
 <ul>
 <li><a href="#building-a-satellite">Building a satellite</a>
 <ul>
@@ -415,8 +424,8 @@
 </ul>
 <hr>
 <blockquote>
-<p>A satellite is a micro-service running in the cloud, packaged as a docker image.
-It can be deployed in any Docker infrastructure, including Kubernetes clusters.</p>
+<p>A satellite is a micro-service that can be executed as a cron job.
+It can be deployed in any Docker infrastructure (including Kubernetes clusters) or in any operating system.</p>
 </blockquote>
 <p><img src="satellite.svg" alt="Satellite schema"></p>
 <h2 id="building-a-satellite">Building a satellite</h2>
