@@ -4,7 +4,7 @@ date: 2021-10-12T17:28:06+02:00
 draft: false
 ---
 
-- [What is it ?](#what-is-it-)
+- [What is it for?](#what-is-it-for)
 - [Installation](#installation)
 - [Usage](#usage)
   - [Defining your arguments](#defining-your-arguments)
@@ -14,7 +14,7 @@ draft: false
 
 ---
 
-## What is it ?
+## What is it for?
 
 Based on Symfony services, it is possible to inject objects into your pipeline or workflow.
 To learn more about services, please visit the
