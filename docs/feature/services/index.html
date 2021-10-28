@@ -430,7 +430,7 @@
           </h1>
           
           <div class="content"><ul>
-<li><a href="#what-is-it-">What is it ?</a></li>
+<li><a href="#what-is-it-for">What is it for?</a></li>
 <li><a href="#installation">Installation</a></li>
 <li><a href="#usage">Usage</a>
 <ul>
@@ -442,7 +442,7 @@
 </li>
 </ul>
 <hr>
-<h2 id="what-is-it-">What is it ?</h2>
+<h2 id="what-is-it-for">What is it for?</h2>
 <p>Based on Symfony services, it is possible to inject objects into your pipeline or workflow.
 To learn more about services, please visit the
 <a href="https://symfony.com/doc/current/service_container.html">official Symfony documentation</a>.</p>
@@ -451,35 +451,35 @@ To learn more about services, please visit the
 <h2 id="usage">Usage</h2>
 <p>If you are using a very simple service, you can define it as follows:</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">services</span>:
-  <span style="color:#f92672">App\Class\Bar</span>: <span style="color:#ae81ff">~</span>
+  <span style="color:#f92672">App\Foo\Bar</span>: <span style="color:#ae81ff">~</span>
 </code></pre></div><h3 id="defining-your-arguments">Defining your arguments</h3>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">services</span>:
-  <span style="color:#f92672">App\Class\Bar</span>:
+  <span style="color:#f92672">App\Foo\Bar</span>:
     <span style="color:#f92672">arguments</span>:
       - <span style="color:#e6db74">&#39;my-file.csv&#39;</span> <span style="color:#75715e"># it&#39;s a string argument</span>
       - { <span style="color:#f92672">host</span>: <span style="color:#e6db74">&#34;localhost&#34;</span><span style="color:#f92672">, port</span>: <span style="color:#e6db74">&#39;8000&#39;</span> } <span style="color:#75715e"># it&#39;s an array argument</span>
       - <span style="color:#ae81ff">1234</span> <span style="color:#75715e"># it&#39;s a integer argument</span>
-</code></pre></div><p>In this example, the <code>App\Class\Bar</code> service will have 3 parameters that will be passed into the
+</code></pre></div><p>In this example, the <code>App\Foo\Bar</code> service will have 3 parameters that will be passed into the
 <code>__construct</code> method of your class (in the order of writing).</p>
 <h3 id="making-the-service-public">Making the service public</h3>
 <p>If you need to make a service public, use the <code>public</code> option which you set to <code>true</code>.</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">services</span>:
-  <span style="color:#f92672">App\Class\Bar</span>:
+  <span style="color:#f92672">App\Foo\Bar</span>:
     <span style="color:#75715e"># ...</span>
     <span style="color:#f92672">public</span>: <span style="color:#66d9ef">true</span>
 </code></pre></div><h3 id="using-method-calls">Using method calls</h3>
 <p>To understand what calls are, go to the <a href="https://symfony.com/doc/current/service_container/calls.html">official call documentation</a>.</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">services</span>:
-  <span style="color:#f92672">App\Class\Bar</span>:
+  <span style="color:#f92672">App\Foo\Bar</span>:
     <span style="color:#75715e"># ...</span>
     <span style="color:#f92672">calls</span>:
       - <span style="color:#f92672">withUsername</span>: [ <span style="color:#e6db74">&#39;admin&#39;</span> ]
 </code></pre></div><h3 id="using-a-service-as-an-argument">Using a service as an argument</h3>
 <p>It&rsquo;s possible to use a service as an argument when declaring a service by using the service name preceded by <code>@</code>.</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">services</span>:
-  <span style="color:#f92672">App\Class\Foo</span>:
+  <span style="color:#f92672">App\Foo\Foo</span>:
     <span style="color:#f92672">arguments</span>:
-      - <span style="color:#e6db74">&#39;@App\Class\Bar&#39;</span>
+      - <span style="color:#e6db74">&#39;@App\Foo\Bar&#39;</span>
 </code></pre></div></div>
           
           <p class="post-meta border-bottom pb-3 mb-0 mt-3">Updated on 12 Oct 2021</p>
