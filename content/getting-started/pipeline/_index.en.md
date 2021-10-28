@@ -10,7 +10,7 @@ weight: 1
 
 {{< feature-state for_mw_version="0.1" state="alpha" >}}
 
-- [What is it](#what-is-it-)
+- [What is it for?](#what-is-it-for)
 - [Installation](#installation)
 - [Basic Usage](#basic-usage)
 - [Advanced Usage](#advanced-usage)
@@ -32,7 +32,7 @@ The different steps of our pipeline are `extract`, `transform` or `load` but the
 
 > Tip : It's possible to use multiple transformation steps in a pipeline.
 
-## What is it ?
+## What is it for?
 
 This package allows you to create a micro-service that will be operating a data pipeline.
 

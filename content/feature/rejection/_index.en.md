@@ -5,14 +5,14 @@ draft: false
 type: "feature"
 ---
 
-- [What is it ?](#what-is-it-)
+- [What is it for?](#what-is-it-for)
 - [Installation](#installation)
 - [Usage](#usage)
   - [With RabbitMQ](#basic-usage)
 
 ---
 
-## What is it ?
+## What is it for?
 
 The rejection feature allows you to manage the rejections that may occur in your project.
 
