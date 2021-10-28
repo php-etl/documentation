@@ -71,15 +71,15 @@ Now that you have set up your project, go to [Creating Satellites](../satellite)
 Once you have completed your configuration, open a console terminal and run these commands :
 
 ```shell
-# php bin/satellite build --path-to-your-config-file
-php bin/satellite build src/pipeline-akeneo-to-csv/pipeline.yaml
+# php bin/satellite build <path-to-your-config-file>
+php bin/satellite build path/to/satellite.yaml
 ```
 
 Warning: You must run this command every time you change your configuration. 
 
 ```shell
-# php --path-to-the-generated-function-file
-php src/pipeline-akeneo-to-csv/build/function.php
+# php <path-to-the-generated-function-file>
+php path/to/build/folder/
 ```
 
 The first command will build your microservice and create a folder whose name is the value defined in the path of your

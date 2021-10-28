@@ -439,37 +439,20 @@ It can be deployed in any Docker infrastructure (including Kubernetes clusters) 
 <li><code>workdir</code> : define the working directory of a Docker container</li>
 <li><code>tags</code> : determines the references to the Docker images</li>
 </ul>
-<ul class="nav nav-tabs" id="basic_definition" role="tablist"><li class="nav-item"><a data-toggle="tab" class="nav-link active" href="#basic_definition-0" role="tab" aria-controls="basic_definition-0" aria-selected="true">YAML</a></li>
-	  
-		<li class="nav-item"><a data-toggle="tab" class="nav-link" href="#basic_definition-1" role="tab" aria-controls="basic_definition-1">PHP</a></li></ul>
-<div class="tab-content" id="basic_definition"><div id="basic_definition-0" class="tab-pane show active" role="tabpanel" aria-labelledby="basic_definition-0">
+<ul class="nav nav-tabs" id="basic_definition_docker" role="tablist"><li class="nav-item"><a data-toggle="tab" class="nav-link active" href="#basic_definition_docker-0" role="tab" aria-controls="basic_definition_docker-0" aria-selected="true">YAML</a></li>
+	  </ul>
+<div class="tab-content" id="basic_definition_docker"><div id="basic_definition_docker-0" class="tab-pane show active" role="tabpanel" aria-labelledby="basic_definition_docker-0">
 
 <p><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml">
-<span style="color:#f92672">satellite</span>:
-  <span style="color:#f92672">docker</span>:
+<span style="color:#f92672">version</span>: <span style="color:#e6db74">&#39;0.3&#39;</span>
+<span style="color:#f92672">satellites</span>:
+  - <span style="color:#f92672">docker</span>:
       <span style="color:#f92672">from</span>: <span style="color:#ae81ff">php:8.0-cli-alpine</span>
       <span style="color:#f92672">workdir</span>: <span style="color:#ae81ff">/var/www/html</span>
       <span style="color:#f92672">tags</span>:
         - <span style="color:#ae81ff">kiboko/satellite:foo</span>
         - <span style="color:#ae81ff">kiboko/satellite:bar</span>
 <span style="color:#75715e">#...</span>
-</code></pre></div></div>
-  <div id="basic_definition-1" class="tab-pane" role="tabpanel" aria-labelledby="basic_definition-1">
-
-<p><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php">
-<span style="color:#f92672">&lt;?</span><span style="color:#a6e22e">php</span>
-
-<span style="color:#66d9ef">use</span> <span style="color:#a6e22e">Kiboko\Component\ETL\Satellite\Adapter\Docker</span>;
-
-$dockerfile <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Docker\Dockerfile</span>(
-    <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Docker\Dockerfile\From</span>(<span style="color:#e6db74">&#39;php:8.0-cli-alpine&#39;</span>),
-    <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Docker\Dockerfile\Workdir</span>(<span style="color:#e6db74">&#39;/var/www/html/&#39;</span>),
-);
-
-$satellite <span style="color:#f92672">=</span> (<span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Docker\Satellite</span>(
-    <span style="color:#e6db74">&#39;foo/satellite:bar&#39;</span>,
-    $dockerfile,
-))<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">addTags</span>(<span style="color:#e6db74">&#34;kiboko/satellite:foo&#34;</span>, <span style="color:#e6db74">&#34;kiboko/satellite:bar&#34;</span>);
 </code></pre></div></div></div>
 
 <p>Here, we chose to use the <code>php:8.0-cli-alpine</code> base image on which our code will be executed.
@@ -478,74 +461,56 @@ available, in a compatible version: &gt;=8.0 with the CLI SAPI.</p>
 <h4 id="using-system">Using system</h4>
 <p>To use a system file to build your micro-service, implement the <code>filesystem</code> key.</p>
 <p>The filesystem key is accompanied by a <code>path</code> key which determines the path of the microservice to be built.</p>
-<ul class="nav nav-tabs" id="basic_definition_system" role="tablist"><li class="nav-item"><a data-toggle="tab" class="nav-link active" href="#basic_definition_system-0" role="tab" aria-controls="basic_definition_system-0" aria-selected="true">YAML</a></li>
-	  
-		<li class="nav-item"><a data-toggle="tab" class="nav-link" href="#basic_definition_system-1" role="tab" aria-controls="basic_definition_system-1">PHP</a></li></ul>
-<div class="tab-content" id="basic_definition_system"><div id="basic_definition_system-0" class="tab-pane show active" role="tabpanel" aria-labelledby="basic_definition_system-0">
+<ul class="nav nav-tabs" id="basic_definition_filesystem" role="tablist"><li class="nav-item"><a data-toggle="tab" class="nav-link active" href="#basic_definition_filesystem-0" role="tab" aria-controls="basic_definition_filesystem-0" aria-selected="true">YAML</a></li>
+	  </ul>
+<div class="tab-content" id="basic_definition_filesystem"><div id="basic_definition_filesystem-0" class="tab-pane show active" role="tabpanel" aria-labelledby="basic_definition_filesystem-0">
 
 <p><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml">
-<span style="color:#f92672">satellite</span>:
-  <span style="color:#f92672">filesystem</span>:
+<span style="color:#f92672">version</span>: <span style="color:#e6db74">&#39;0.3&#39;</span>
+<span style="color:#f92672">satellites</span>:
+   - <span style="color:#f92672">filesystem</span>:
     <span style="color:#f92672">path</span>: <span style="color:#ae81ff">path/to/folder</span>
 <span style="color:#75715e">#...</span>
-</code></pre></div></div>
-  <div id="basic_definition_system-1" class="tab-pane" role="tabpanel" aria-labelledby="basic_definition_system-1">
-
-<p><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php">
-
 </code></pre></div></div></div>
 
 <h3 id="configure-composer">Configure composer</h3>
 <p>In a second step, it&rsquo;s possible to declare the composer dependencies that our microservice needs with the <code>composer</code> key.</p>
 <blockquote>
-<p>Tip : This part isn&rsquo;t mandatory. If you do not configure it, these packages (<code>php-etl/pipeline-contracts</code>,
+<p>Tip : This part is not mandatory. If you do not configure it, these packages (<code>php-etl/pipeline-contracts</code>,
 <code>php-etl/pipeline</code>, <code>php-etl/pipeline-console-runtime</code>, <code>php-etl/workflow-console-runtime</code>,
 <code>psr/log</code>, <code>monolog/monolog</code>, <code>symfony/console</code>, <code>symfony/dependency-injection</code>) will be installed automatically.</p>
 </blockquote>
 <p>The <code>require</code> option allows to add all the packages, write like <code>package_name:version</code>, that we need for your microservice.</p>
 <ul class="nav nav-tabs" id="basic_with_composer" role="tablist"><li class="nav-item"><a data-toggle="tab" class="nav-link active" href="#basic_with_composer-0" role="tab" aria-controls="basic_with_composer-0" aria-selected="true">YAML</a></li>
-	  
-		<li class="nav-item"><a data-toggle="tab" class="nav-link" href="#basic_with_composer-1" role="tab" aria-controls="basic_with_composer-1">PHP</a></li></ul>
+	  </ul>
 <div class="tab-content" id="basic_with_composer"><div id="basic_with_composer-0" class="tab-pane show active" role="tabpanel" aria-labelledby="basic_with_composer-0">
 
 <p><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml">
-<span style="color:#f92672">satellite</span>:
-<span style="color:#75715e">#...</span>
-  <span style="color:#f92672">composer</span>:
-    <span style="color:#f92672">require</span>:
-      - <span style="color:#e6db74">&#34;php-etl/fast-map:^0.2&#34;</span>
-      - <span style="color:#e6db74">&#34;php-etl/csv-flow:^0.1&#34;</span>
-      - <span style="color:#e6db74">&#34;akeneo/api-php-client-ee&#34;</span>
-      - <span style="color:#e6db74">&#34;laminas/laminas-diactoros&#34;</span>
-      - <span style="color:#e6db74">&#34;php-http/guzzle7-adapter&#34;</span>
-</code></pre></div></div>
-  <div id="basic_with_composer-1" class="tab-pane" role="tabpanel" aria-labelledby="basic_with_composer-1">
-
-<p><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php">
-$dockerfile<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">push</span>(
-    <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Docker\PHP\Composer</span>(),
-    <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Docker\PHP\ComposerInit</span>(),
-    <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Docker\PHP\ComposerMinimumStability</span>(<span style="color:#e6db74">&#39;dev&#39;</span>),
-    <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Docker\PHP\ComposerRequire</span>(<span style="color:#e6db74">&#39;php-etl/pipeline:@dev&#39;</span>)
-    <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Docker\PHP\ComposerRequire</span>(<span style="color:#e6db74">&#39;php-etl/fast-map:@dev&#39;</span>);
-);
+<span style="color:#f92672">version</span>: <span style="color:#e6db74">&#39;0.3&#39;</span>
+<span style="color:#f92672">satellites</span>:
+  - <span style="color:#75715e"># ...</span>
+    <span style="color:#f92672">composer</span>:
+      <span style="color:#f92672">require</span>:
+        - <span style="color:#e6db74">&#34;foo/bar:^0.2&#34;</span>
 </code></pre></div></div></div>
 
 <p>The <code>autoload</code> option is optional and allows you to configure your autoloader by specifying one or more namespaces and
 and directories paths as if you were directly in the composer.json.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">satellite</span>:
-<span style="color:#75715e">#...</span>
-  <span style="color:#f92672">composer</span>:
-    <span style="color:#f92672">autoload</span>:
-      <span style="color:#f92672">psr4</span>:
-        - <span style="color:#f92672">namespace</span>: <span style="color:#e6db74">&#34;Pipeline\\&#34;</span>
-          <span style="color:#f92672">paths</span>: [<span style="color:#e6db74">&#34;&#34;</span>]
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">version</span>: <span style="color:#e6db74">&#39;0.3&#39;</span>
+<span style="color:#f92672">satellites</span>:
+  - <span style="color:#75715e"># ...</span>
+    <span style="color:#f92672">composer</span>:
+      <span style="color:#f92672">autoload</span>:
+        <span style="color:#f92672">psr4</span>:
+          - <span style="color:#f92672">namespace</span>: <span style="color:#e6db74">&#34;Pipeline\\&#34;</span>
+            <span style="color:#f92672">paths</span>: [<span style="color:#e6db74">&#34;&#34;</span>]
 </code></pre></div><p>The <code>from_local</code> option is optional and copies local <code>composer.json</code>, <code>composer.lock</code> and <code>vendor</code> files in your
 microservice instead creating them.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">satellite</span>:
-<span style="color:#75715e">#...</span>
-  <span style="color:#f92672">composer</span>:
-    <span style="color:#f92672">from_local</span>: <span style="color:#66d9ef">true</span>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">version</span>: <span style="color:#e6db74">&#39;0.3&#39;</span>
+<span style="color:#f92672">satellites</span>:
+  - <span style="color:#75715e"># ...</span>
+    <span style="color:#f92672">composer</span>:
+      <span style="color:#f92672">from_local</span>: <span style="color:#66d9ef">true</span>
 </code></pre></div><h3 id="setting-up-the-runtime">Setting up the runtime</h3>
 <p>Now that we have made our environment prepared for our satellite, we will declare
 the way we want our pipeline to handle our data flows.</p>
@@ -560,13 +525,13 @@ a means for one application to provide other applications with real-time informa
 <h4 id="using-pipeline">Using Pipeline</h4>
 <p>Please visit the <a href="../pipeline">Pipeline documentation page</a> to find out how to set up your pipeline.</p>
 <ul class="nav nav-tabs" id="dataflows" role="tablist"><li class="nav-item"><a data-toggle="tab" class="nav-link active" href="#dataflows-0" role="tab" aria-controls="dataflows-0" aria-selected="true">YAML</a></li>
-	  
-		<li class="nav-item"><a data-toggle="tab" class="nav-link" href="#dataflows-1" role="tab" aria-controls="dataflows-1">PHP</a></li></ul>
+	  </ul>
 <div class="tab-content" id="dataflows"><div id="dataflows-0" class="tab-pane show active" role="tabpanel" aria-labelledby="dataflows-0">
 
 <p><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml">
-<span style="color:#f92672">satellite</span>:
-   <span style="color:#75715e"># ...</span>
+<span style="color:#f92672">version</span>: <span style="color:#e6db74">&#39;0.3&#39;</span>
+<span style="color:#f92672">satellites</span>:
+ - <span style="color:#75715e"># ...</span>
    <span style="color:#f92672">pipeline</span>:
       <span style="color:#f92672">steps</span>:
       - <span style="color:#f92672">akeneo</span>:
@@ -603,66 +568,57 @@ a means for one application to provide other applications with real-time informa
             <span style="color:#f92672">delimiter</span>: <span style="color:#e6db74">&#39;,&#39;</span>
             <span style="color:#f92672">enclosure</span>: <span style="color:#e6db74">&#39;&#34;&#39;</span>
             <span style="color:#f92672">escape</span>: <span style="color:#e6db74">&#39;\&#39;</span>
-</code></pre></div></div>
-  <div id="dataflows-1" class="tab-pane" role="tabpanel" aria-labelledby="dataflows-1">
-
-<p><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php">
-<span style="color:#f92672">&lt;?</span><span style="color:#a6e22e">php</span>
-
-<span style="color:#e6db74">/** @var array $config */</span> 
-$pipeline <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Runtime\Pipeline</span>($config);
-$pipeline<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">build</span>();
-
 </code></pre></div></div></div>
 
 <h4 id="using-workflow">Using Workflow</h4>
 <p>Please visit the <a href="../workflow">Workflow documentation page</a> to find out how to set up your workflow.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">satellite</span>:
-  <span style="color:#75715e"># ...</span>
-  <span style="color:#f92672">workflow</span>:
-    <span style="color:#f92672">jobs</span>:
-    - <span style="color:#f92672">name</span>: <span style="color:#e6db74">&#39;Lorem ipsum dolor&#39;</span>
-      <span style="color:#f92672">pipeline</span>:
-        <span style="color:#f92672">steps</span>:
-        - <span style="color:#f92672">akeneo</span>:
-            <span style="color:#f92672">extractor</span>:
-              <span style="color:#f92672">type</span>: <span style="color:#ae81ff">category</span>
-              <span style="color:#f92672">method</span>: <span style="color:#ae81ff">all</span>
-            <span style="color:#f92672">client</span>:
-              <span style="color:#f92672">api_url</span>: <span style="color:#e6db74">&#39;http://localhost:8080&#39;</span>
-              <span style="color:#f92672">client_id</span>: <span style="color:#e6db74">&#39;5_5dxapwm2rs4kkso8wgwk08o88gg0wc0owkgsgg0gkcwos4o0wo&#39;</span>
-              <span style="color:#f92672">secret</span>: <span style="color:#ae81ff">34n14k1ajy800g0ocww8w8cwckogoc844ggwcs8gkg8w4k4888</span>
-              <span style="color:#f92672">username</span>: <span style="color:#e6db74">&#39;kiboko_2145&#39;</span>
-              <span style="color:#f92672">password</span>: <span style="color:#ae81ff">62d0f1090</span>
-        - <span style="color:#f92672">csv</span>:
-            <span style="color:#f92672">loader</span>:
-              <span style="color:#f92672">file_path</span>: <span style="color:#ae81ff">categories.csv</span>
-              <span style="color:#f92672">delimiter</span>: <span style="color:#e6db74">&#39;,&#39;</span>
-              <span style="color:#f92672">enclosure</span>: <span style="color:#e6db74">&#39;&#34;&#39;</span>
-              <span style="color:#f92672">escape</span>: <span style="color:#e6db74">&#39;\\&#39;</span>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">version</span>: <span style="color:#e6db74">&#39;0.3&#39;</span>
+<span style="color:#f92672">satellites</span>:
+  - <span style="color:#75715e"># ...</span>
+    <span style="color:#f92672">workflow</span>:
+      <span style="color:#f92672">jobs</span>:
+        - <span style="color:#f92672">name</span>: <span style="color:#e6db74">&#39;Lorem ipsum dolor&#39;</span>
+          <span style="color:#f92672">pipeline</span>:
+            <span style="color:#f92672">steps</span>:
+              - <span style="color:#f92672">akeneo</span>:
+                  <span style="color:#f92672">extractor</span>:
+                    <span style="color:#f92672">type</span>: <span style="color:#ae81ff">category</span>
+                    <span style="color:#f92672">method</span>: <span style="color:#ae81ff">all</span>
+                  <span style="color:#f92672">client</span>:
+                    <span style="color:#f92672">api_url</span>: <span style="color:#e6db74">&#39;@=env(&#34;AKENEO_URL&#34;)&#39;</span>
+                    <span style="color:#f92672">client_id</span>: <span style="color:#e6db74">&#39;@=env(&#34;AKENEO_CLIENT_ID&#34;)&#39;</span>
+                    <span style="color:#f92672">secret</span>: <span style="color:#e6db74">&#39;@=env(&#34;AKENEO_CLIENT_SECRET&#34;)&#39;</span>
+                    <span style="color:#f92672">username</span>: <span style="color:#e6db74">&#39;@=env(&#34;AKENEO_USERNAME&#34;)&#39;</span>
+                    <span style="color:#f92672">password</span>: <span style="color:#e6db74">&#39;@=env(&#34;AKENEO_PASSWORD&#34;)&#39;</span>
+              - <span style="color:#f92672">csv</span>:
+                  <span style="color:#f92672">loader</span>:
+                    <span style="color:#f92672">file_path</span>: <span style="color:#ae81ff">categories.csv</span>
+                    <span style="color:#f92672">delimiter</span>: <span style="color:#e6db74">&#39;,&#39;</span>
+                    <span style="color:#f92672">enclosure</span>: <span style="color:#e6db74">&#39;&#34;&#39;</span>
+                    <span style="color:#f92672">escape</span>: <span style="color:#e6db74">&#39;\\&#39;</span>
     - <span style="color:#f92672">pipeline</span>:
         <span style="color:#f92672">steps</span>:
-        - <span style="color:#f92672">akeneo</span>:
-            <span style="color:#f92672">extractor</span>:
-              <span style="color:#f92672">type</span>: <span style="color:#ae81ff">product</span>
-              <span style="color:#f92672">method</span>: <span style="color:#ae81ff">all</span>
-            <span style="color:#f92672">client</span>:
-              <span style="color:#f92672">api_url</span>: <span style="color:#e6db74">&#39;http://localhost:8080&#39;</span>
-              <span style="color:#f92672">client_id</span>: <span style="color:#e6db74">&#39;5_5dxapwm2rs4kkso8wgwk08o88gg0wc0owkgsgg0gkcwos4o0wo&#39;</span>
-              <span style="color:#f92672">secret</span>: <span style="color:#ae81ff">34n14k1ajy800g0ocww8w8cwckogoc844ggwcs8gkg8w4k4888</span>
-              <span style="color:#f92672">username</span>: <span style="color:#e6db74">&#39;kiboko_2145&#39;</span>
-              <span style="color:#f92672">password</span>: <span style="color:#ae81ff">62d0f1090</span>
-        - <span style="color:#f92672">csv</span>:
-            <span style="color:#f92672">loader</span>:
-              <span style="color:#f92672">file_path</span>: <span style="color:#ae81ff">products.csv</span>
-              <span style="color:#f92672">delimiter</span>: <span style="color:#e6db74">&#39;,&#39;</span>
-              <span style="color:#f92672">enclosure</span>: <span style="color:#e6db74">&#39;&#34;&#39;</span>
-              <span style="color:#f92672">escape</span>: <span style="color:#e6db74">&#39;\&#39;</span>
+          - <span style="color:#f92672">akeneo</span>:
+              <span style="color:#f92672">extractor</span>:
+                <span style="color:#f92672">type</span>: <span style="color:#ae81ff">product</span>
+                <span style="color:#f92672">method</span>: <span style="color:#ae81ff">all</span>
+              <span style="color:#f92672">client</span>:
+                <span style="color:#f92672">api_url</span>: <span style="color:#e6db74">&#39;@=env(&#34;AKENEO_URL&#34;)&#39;</span>
+                <span style="color:#f92672">client_id</span>: <span style="color:#e6db74">&#39;@=env(&#34;AKENEO_CLIENT_ID&#34;)&#39;</span>
+                <span style="color:#f92672">secret</span>: <span style="color:#e6db74">&#39;@=env(&#34;AKENEO_CLIENT_SECRET&#34;)&#39;</span>
+                <span style="color:#f92672">username</span>: <span style="color:#e6db74">&#39;@=env(&#34;AKENEO_USERNAME&#34;)&#39;</span>
+                <span style="color:#f92672">password</span>: <span style="color:#e6db74">&#39;@=env(&#34;AKENEO_PASSWORD&#34;)&#39;</span>
+          - <span style="color:#f92672">csv</span>:
+              <span style="color:#f92672">loader</span>:
+                <span style="color:#f92672">file_path</span>: <span style="color:#ae81ff">products.csv</span>
+                <span style="color:#f92672">delimiter</span>: <span style="color:#e6db74">&#39;,&#39;</span>
+                <span style="color:#f92672">enclosure</span>: <span style="color:#e6db74">&#39;&#34;&#39;</span>
+                <span style="color:#f92672">escape</span>: <span style="color:#e6db74">&#39;\&#39;</span>
 </code></pre></div><h3 id="configuration-formats">Configuration formats</h3>
 <p>There are 2 ways to declare satellites :</p>
 <ul>
-<li>Use the <a href="php-objects">PHP objects</a></li>
 <li>Use the <a href="yaml-format">YAML configuration Syntax</a></li>
+<li>Use the <a href="json-format">JSON configuration Syntax</a></li>
 </ul>
 <h3 id="execute-your-micro-service">Execute your micro-service</h3>
 <p>After configuring your config file, you can run the command which will allow you to create the Dockerfile or the file

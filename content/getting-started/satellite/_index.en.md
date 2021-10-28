@@ -44,33 +44,18 @@ To use a docker image to build your micro-service, implement the `docker` key wi
 - `workdir` : define the working directory of a Docker container
 - `tags` : determines the references to the Docker images
 
-{{< tabs name="basic_definition" >}}
+{{< tabs name="basic_definition_docker" >}}
 
 {{< tab name="YAML" codelang="yaml"  >}}
-satellite:
-  docker:
+version: '0.3'
+satellites:
+  - docker:
       from: php:8.0-cli-alpine
       workdir: /var/www/html
       tags:
         - kiboko/satellite:foo
         - kiboko/satellite:bar
 #...
-{{< /tab >}}
-
-{{< tab name="PHP" codelang="php"  >}}
-<?php
-
-use Kiboko\Component\ETL\Satellite\Adapter\Docker;
-
-$dockerfile = new Docker\Dockerfile(
-    new Docker\Dockerfile\From('php:8.0-cli-alpine'),
-    new Docker\Dockerfile\Workdir('/var/www/html/'),
-);
-
-$satellite = (new Docker\Satellite(
-    'foo/satellite:bar',
-    $dockerfile,
-))->addTags("kiboko/satellite:foo", "kiboko/satellite:bar");
 {{< /tab >}}
 
 {{< /tabs >}}
@@ -84,17 +69,14 @@ To use a system file to build your micro-service, implement the `filesystem` key
 
 The filesystem key is accompanied by a `path` key which determines the path of the microservice to be built.
 
-{{< tabs name="basic_definition_system" >}}
+{{< tabs name="basic_definition_filesystem" >}}
 
 {{< tab name="YAML" codelang="yaml"  >}}
-satellite:
-  filesystem:
+version: '0.3'
+satellites:
+   - filesystem:
     path: path/to/folder
 #...
-{{< /tab >}}
-
-{{< tab name="PHP" codelang="php"  >}}
-
 {{< /tab >}}
 
 {{< /tabs >}}
@@ -103,7 +85,7 @@ satellite:
 
 In a second step, it's possible to declare the composer dependencies that our microservice needs with the `composer` key.
 
-> Tip : This part isn't mandatory. If you do not configure it, these packages (`php-etl/pipeline-contracts`,
+> Tip : This part is not mandatory. If you do not configure it, these packages (`php-etl/pipeline-contracts`,
 `php-etl/pipeline`, `php-etl/pipeline-console-runtime`, `php-etl/workflow-console-runtime`, 
 `psr/log`, `monolog/monolog`, `symfony/console`, `symfony/dependency-injection`) will be installed automatically.
 
@@ -112,25 +94,12 @@ The `require` option allows to add all the packages, write like `package_name:ve
 {{< tabs name="basic_with_composer" >}}
 
 {{< tab name="YAML" codelang="yaml"  >}}
-satellite:
-#...
-  composer:
-    require:
-      - "php-etl/fast-map:^0.2"
-      - "php-etl/csv-flow:^0.1"
-      - "akeneo/api-php-client-ee"
-      - "laminas/laminas-diactoros"
-      - "php-http/guzzle7-adapter"
-{{< /tab >}}
-
-{{< tab name="PHP" codelang="php"  >}}
-$dockerfile->push(
-    new Docker\PHP\Composer(),
-    new Docker\PHP\ComposerInit(),
-    new Docker\PHP\ComposerMinimumStability('dev'),
-    new Docker\PHP\ComposerRequire('php-etl/pipeline:@dev')
-    new Docker\PHP\ComposerRequire('php-etl/fast-map:@dev');
-);
+version: '0.3'
+satellites:
+  - # ...
+    composer:
+      require:
+        - "foo/bar:^0.2"
 {{< /tab >}}
 
 {{< /tabs >}}
@@ -139,23 +108,25 @@ The `autoload` option is optional and allows you to configure your autoloader by
 and directories paths as if you were directly in the composer.json.
 
 ```yaml
-satellite:
-#...
-  composer:
-    autoload:
-      psr4:
-        - namespace: "Pipeline\\"
-          paths: [""]
+version: '0.3'
+satellites:
+  - # ...
+    composer:
+      autoload:
+        psr4:
+          - namespace: "Pipeline\\"
+            paths: [""]
 ``` 
 
 The `from_local` option is optional and copies local `composer.json`, `composer.lock` and `vendor` files in your 
 microservice instead creating them.
 
 ```yaml
-satellite:
-#...
-  composer:
-    from_local: true
+version: '0.3'
+satellites:
+  - # ...
+    composer:
+      from_local: true
 ``` 
 
 ### Setting up the runtime
@@ -177,8 +148,9 @@ Please visit the [Pipeline documentation page](../pipeline) to find out how to s
 {{< tabs name="dataflows" >}}
 
 {{< tab name="YAML" codelang="yaml"  >}}
-satellite:
-   # ...
+version: '0.3'
+satellites:
+ - # ...
    pipeline:
       steps:
       - akeneo:
@@ -217,15 +189,6 @@ satellite:
             escape: '\'
 {{< /tab >}}
 
-{{< tab name="PHP" codelang="php"  >}}
-<?php
-
-/** @var array $config */ 
-$pipeline = new Runtime\Pipeline($config);
-$pipeline->build();
-
-{{< /tab >}}
-
 {{< /tabs >}}
 
 #### Using Workflow
@@ -233,56 +196,58 @@ $pipeline->build();
 Please visit the [Workflow documentation page](../workflow) to find out how to set up your workflow.
 
 ```yaml
-satellite:
-  # ...
-  workflow:
-    jobs:
-    - name: 'Lorem ipsum dolor'
-      pipeline:
-        steps:
-        - akeneo:
-            extractor:
-              type: category
-              method: all
-            client:
-              api_url: 'http://localhost:8080'
-              client_id: '5_5dxapwm2rs4kkso8wgwk08o88gg0wc0owkgsgg0gkcwos4o0wo'
-              secret: 34n14k1ajy800g0ocww8w8cwckogoc844ggwcs8gkg8w4k4888
-              username: 'kiboko_2145'
-              password: 62d0f1090
-        - csv:
-            loader:
-              file_path: categories.csv
-              delimiter: ','
-              enclosure: '"'
-              escape: '\\'
+version: '0.3'
+satellites:
+  - # ...
+    workflow:
+      jobs:
+        - name: 'Lorem ipsum dolor'
+          pipeline:
+            steps:
+              - akeneo:
+                  extractor:
+                    type: category
+                    method: all
+                  client:
+                    api_url: '@=env("AKENEO_URL")'
+                    client_id: '@=env("AKENEO_CLIENT_ID")'
+                    secret: '@=env("AKENEO_CLIENT_SECRET")'
+                    username: '@=env("AKENEO_USERNAME")'
+                    password: '@=env("AKENEO_PASSWORD")'
+              - csv:
+                  loader:
+                    file_path: categories.csv
+                    delimiter: ','
+                    enclosure: '"'
+                    escape: '\\'
     - pipeline:
         steps:
-        - akeneo:
-            extractor:
-              type: product
-              method: all
-            client:
-              api_url: 'http://localhost:8080'
-              client_id: '5_5dxapwm2rs4kkso8wgwk08o88gg0wc0owkgsgg0gkcwos4o0wo'
-              secret: 34n14k1ajy800g0ocww8w8cwckogoc844ggwcs8gkg8w4k4888
-              username: 'kiboko_2145'
-              password: 62d0f1090
-        - csv:
-            loader:
-              file_path: products.csv
-              delimiter: ','
-              enclosure: '"'
-              escape: '\'
+          - akeneo:
+              extractor:
+                type: product
+                method: all
+              client:
+                api_url: '@=env("AKENEO_URL")'
+                client_id: '@=env("AKENEO_CLIENT_ID")'
+                secret: '@=env("AKENEO_CLIENT_SECRET")'
+                username: '@=env("AKENEO_USERNAME")'
+                password: '@=env("AKENEO_PASSWORD")'
+          - csv:
+              loader:
+                file_path: products.csv
+                delimiter: ','
+                enclosure: '"'
+                escape: '\'
 ```
 
 ### Configuration formats
 
 There are 2 ways to declare satellites :
-* Use the [PHP objects](php-objects)
 * Use the [YAML configuration Syntax](yaml-format)
+* Use the [JSON configuration Syntax](json-format)
 
 ### Execute your micro-service
+
 After configuring your config file, you can run the command which will allow you to create the Dockerfile or the file 
 system. 
 

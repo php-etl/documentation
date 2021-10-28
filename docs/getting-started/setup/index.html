@@ -425,11 +425,11 @@
 <p>Now that you have set up your project, go to <a href="../satellite">Creating Satellites</a>.</p>
 <h2 id="running-the-pipeline">Running the pipeline</h2>
 <p>Once you have completed your configuration, open a console terminal and run these commands :</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#75715e"># php bin/satellite build --path-to-your-config-file</span>
-php bin/satellite build src/pipeline-akeneo-to-csv/pipeline.yaml
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#75715e"># php bin/satellite build &lt;path-to-your-config-file&gt;</span>
+php bin/satellite build path/to/satellite.yaml
 </code></pre></div><p>Warning: You must run this command every time you change your configuration.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#75715e"># php --path-to-the-generated-function-file</span>
-php src/pipeline-akeneo-to-csv/build/function.php
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#75715e"># php &lt;path-to-the-generated-function-file&gt;</span>
+php path/to/build/folder/
 </code></pre></div><p>The first command will build your microservice and create a folder whose name is the value defined in the path of your
 filesystem in which there is a generated function.php file.</p>
 <p>The second command allows you to run your microservice. The execution of your microservice may take several minutes,
