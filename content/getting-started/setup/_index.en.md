@@ -26,15 +26,15 @@ Before creating your first middleware application you must :
 mkdir path/to/project
 ```
 
-After creating a new blank project, open your console terminal and run these commands :
+To create a new project, you will need to initialize composer. Open your console terminal and run this command:
 
 ```shell
 composer init
 ```
 
-> Notice : You must choose `dev` as the value for the `minimum-stability` option.
+> Notice: You must choose `dev` as the value for the `minimum-stability` option.
 
-In your `composer.json` file, add the following lines :
+Composer will create a `composer.json` file, you will need to add the following lines:
 
 ```json
 "config": {
@@ -50,16 +50,19 @@ In your `composer.json` file, add the following lines :
 }
 ```
 
+In order to install the satellite compiler, run the following in your console:
+
 ```shell
 composer require php-etl/satellite
 ```
 
-This command will add the `php-etl/satellite` package, that is the core of the middleware, to your composer.json.
+This command will add the `php-etl/satellite` package. It is the compiler of Gyroscops.
 
-Then, choose the plugin(s) you need from [all our plugins](../../connectivity) and added it/them into your project.
+Once the compiler installed, you may need to add some plugins. Check out [the plugins list](../../connectivity) to know which one you may need.
 
+Example, if you need the Akeneo Plugin:
 ```shell
-composer require php-etl/akeneo-expression-language php-etl/akeneo-plugin
+composer require "php-etl/akeneo-expression-language:*" "php-etl/akeneo-plugin:*"
 ```
 
 ## Start creating your micro-service
@@ -68,22 +71,33 @@ Now that you have set up your project, go to [Creating Satellites](../satellite)
 
 ## Running the pipeline
 
-Once you have completed your configuration, open a console terminal and run these commands :
+Once you have completed your configuration, you will be able to compile your satellites:
 
 ```shell
 # php bin/satellite build <path-to-your-config-file>
-php bin/satellite build path/to/satellite.yaml
+php bin/satellite build path/to/project/satellite.yaml
 ```
 
-Warning: You must run this command every time you change your configuration. 
+> Notice: You will need to run this command every time you change your configuration files.
+
+This command will build your satellite service, either inside a Docker image or inside a filesystem directory.
+
+### If you built inside the filesystem
 
 ```shell
-# php <path-to-the-generated-function-file>
-php path/to/build/folder/
+# php <path-to-the-generated-satellite>
+php path/to/project/build/folder/
 ```
 
-The first command will build your microservice and create a folder whose name is the value defined in the path of your
-filesystem in which there is a generated function.php file.
+This command will run your satellite service located in a directory. The execution of your service may take several minutes, 
+so please wait until the execution is completed.
 
-The second command allows you to run your microservice. The execution of your microservice may take several minutes, 
+### If you built as a Docker image
+
+```shell
+# docker run --rm -ti <generated-satellite-docker-image-name>
+docker run --rm -ti foo/satellite-name:latest
+```
+
+This command will run your satellite service located in a Docker image. The execution of your service may take several minutes, 
 so please wait until the execution is completed.

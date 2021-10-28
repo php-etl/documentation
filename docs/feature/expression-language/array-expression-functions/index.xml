@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Array Expression Language on Middleware</title>
+    <title>Array Expression Language on Gyroscops</title>
     <link>https://php-etl.github.io/documentation/feature/expression-language/array-expression-functions/</link>
-    <description>Recent content in Array Expression Language on Middleware</description>
+    <description>Recent content in Array Expression Language on Gyroscops</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <copyright>The Middleware Documents are copyright © [Kiboko](https://kiboko.fr/) 2020, 2021.</copyright>
+    <copyright>The Gyroscops Documents are copyright © [Kiboko](https://kiboko.fr/) 2020, 2021.</copyright>
     <lastBuildDate>Thu, 12 Aug 2021 12:08:50 +0000</lastBuildDate><atom:link href="https://php-etl.github.io/documentation/feature/expression-language/array-expression-functions/index.xml" rel="self" type="application/rss+xml" />
   </channel>
 </rss>

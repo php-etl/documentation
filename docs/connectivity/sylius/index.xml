@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Sylius on Middleware</title>
+    <title>Sylius on Gyroscops</title>
     <link>https://php-etl.github.io/documentation/connectivity/sylius/</link>
-    <description>Recent content in Sylius on Middleware</description>
+    <description>Recent content in Sylius on Gyroscops</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <copyright>The Middleware Documents are copyright © [Kiboko](https://kiboko.fr/) 2020, 2021.</copyright>
+    <copyright>The Gyroscops Documents are copyright © [Kiboko](https://kiboko.fr/) 2020, 2021.</copyright>
     <lastBuildDate>Wed, 17 Feb 2021 10:13:54 +0100</lastBuildDate><atom:link href="https://php-etl.github.io/documentation/connectivity/sylius/index.xml" rel="self" type="application/rss+xml" />
   </channel>
 </rss>

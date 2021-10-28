@@ -401,12 +401,12 @@
 </ul>
 <h2 id="creating-your-project">Creating your project</h2>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">mkdir path/to/project
-</code></pre></div><p>After creating a new blank project, open your console terminal and run these commands :</p>
+</code></pre></div><p>To create a new project, you will need to initialize composer. Open your console terminal and run this command:</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">composer init
 </code></pre></div><blockquote>
-<p>Notice : You must choose <code>dev</code> as the value for the <code>minimum-stability</code> option.</p>
+<p>Notice: You must choose <code>dev</code> as the value for the <code>minimum-stability</code> option.</p>
 </blockquote>
-<p>In your <code>composer.json</code> file, add the following lines :</p>
+<p>Composer will create a <code>composer.json</code> file, you will need to add the following lines:</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json"><span style="color:#e6db74">&#34;config&#34;</span><span style="color:#960050;background-color:#1e0010">:</span> {
     <span style="color:#f92672">&#34;bin-dir&#34;</span>: <span style="color:#e6db74">&#34;bin&#34;</span>
 }<span style="color:#960050;background-color:#1e0010">,</span>
@@ -418,22 +418,31 @@
         <span style="color:#e6db74">&#34;Kiboko\\Component\\Satellite\\ComposerScripts::postUpdate&#34;</span>
     ]
 }
-</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">composer require php-etl/satellite
-</code></pre></div><p>This command will add the <code>php-etl/satellite</code> package, that is the core of the middleware, to your composer.json.</p>
-<p>Then, choose the plugin(s) you need from <a href="../../connectivity">all our plugins</a> and added it/them into your project.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">composer require php-etl/akeneo-expression-language php-etl/akeneo-plugin
+</code></pre></div><p>In order to install the satellite compiler, run the following in your console:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">composer require php-etl/satellite
+</code></pre></div><p>This command will add the <code>php-etl/satellite</code> package. It is the compiler of Gyroscops.</p>
+<p>Once the compiler installed, you may need to add some plugins. Check out <a href="../../connectivity">the plugins list</a> to know which one you may need.</p>
+<p>Example, if you need the Akeneo Plugin:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">composer require <span style="color:#e6db74">&#34;php-etl/akeneo-expression-language:*&#34;</span> <span style="color:#e6db74">&#34;php-etl/akeneo-plugin:*&#34;</span>
 </code></pre></div><h2 id="start-creating-your-micro-service">Start creating your micro-service</h2>
 <p>Now that you have set up your project, go to <a href="../satellite">Creating Satellites</a>.</p>
 <h2 id="running-the-pipeline">Running the pipeline</h2>
-<p>Once you have completed your configuration, open a console terminal and run these commands :</p>
+<p>Once you have completed your configuration, you will be able to compile your satellites:</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#75715e"># php bin/satellite build &lt;path-to-your-config-file&gt;</span>
-php bin/satellite build path/to/satellite.yaml
-</code></pre></div><p>Warning: You must run this command every time you change your configuration.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#75715e"># php &lt;path-to-the-generated-function-file&gt;</span>
-php path/to/build/folder/
-</code></pre></div><p>The first command will build your microservice and create a folder whose name is the value defined in the path of your
-filesystem in which there is a generated function.php file.</p>
-<p>The second command allows you to run your microservice. The execution of your microservice may take several minutes,
+php bin/satellite build path/to/project/satellite.yaml
+</code></pre></div><blockquote>
+<p>Notice: You will need to run this command every time you change your configuration files.</p>
+</blockquote>
+<p>This command will build your satellite service, either inside a Docker image or inside a filesystem directory.</p>
+<h3 id="if-you-built-inside-the-filesystem">If you built inside the filesystem</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#75715e"># php &lt;path-to-the-generated-satellite&gt;</span>
+php path/to/project/build/folder/
+</code></pre></div><p>This command will run your satellite service located in a directory. The execution of your service may take several minutes,
+so please wait until the execution is completed.</p>
+<h3 id="if-you-built-as-a-docker-image">If you built as a Docker image</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#75715e"># docker run --rm -ti &lt;generated-satellite-docker-image-name&gt;</span>
+docker run --rm -ti foo/satellite-name:latest
+</code></pre></div><p>This command will run your satellite service located in a Docker image. The execution of your service may take several minutes,
 so please wait until the execution is completed.</p>
 </div>
           
