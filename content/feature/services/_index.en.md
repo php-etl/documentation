@@ -37,7 +37,7 @@ services:
 
 ```yaml
 services:
-  App\Class\Bar:
+  App\Foo\Bar:
     arguments:
       - 'my-file.csv' # it's a string argument
       - { host: "localhost", port: '8000' } # it's an array argument
