@@ -53,7 +53,7 @@ If you need to make a service public, use the `public` option which you set to `
 
 ```yaml
 services:
-  App\Class\Bar:
+  App\Foo\Bar:
     # ...
     public: true
 ```
