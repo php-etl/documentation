@@ -44,7 +44,7 @@ services:
       - 1234 # it's a integer argument
 ```
 
-In this example, the `App\Class\Bar` service will have 3 parameters that will be passed into the 
+In this example, the `App\Foo\Bar` service will have 3 parameters that will be passed into the 
 `__construct` method of your class (in the order of writing).
 
 ### Making the service public
