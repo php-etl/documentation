@@ -64,7 +64,7 @@ To understand what calls are, go to the [official call documentation](https://sy
 
 ```yaml
 services:
-  App\Class\Bar:
+  App\Foo\Bar:
     # ...
     calls:
       - withUsername: [ 'admin' ]
