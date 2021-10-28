@@ -1,6 +1,6 @@
-# Middleware documentation website
+# Gyroscops documentation website
 
-![alt Middleware](static/favicon.png)
+![alt Gyroscops](static/favicon.png)
 
 ## Technologies
 - Hugo framework [docs](https://gohugo.io/documentation/)

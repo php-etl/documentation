@@ -3,7 +3,7 @@ languageCode = "en-us"
 # theme
 theme = "middleware"
 # site title
-title = "Middleware"
+title = "Gyroscops"
 # disable language
 disableLanguages = []
 # google analytics
@@ -165,12 +165,12 @@ languageName = "English"
 languageCode = "en-us"
 weight = 1
 home = "Home"
-copyright = "The Middleware Documents are copyright © [Kiboko](https://kiboko.fr/) 2020, 2021."
+copyright = "The Gyroscops Documents are copyright © [Kiboko](https://kiboko.fr/) 2020, 2021."
 
 # banner
 [Languages.en.params.banner]
-title = "Middleware Documentation"
-subtitle = "Browse the documentation and knowledge base to start quickly with Middleware"
+title = "Gyroscops Documentation"
+subtitle = "Browse the documentation and knowledge base to start quickly with Gyroscops"
 placeholder = "Have a question? Just ask here or enter terms"
 
 # call to action
@@ -204,12 +204,12 @@ languageName = "Français"
 languageCode = "fr-fr"
 weight = 2
 home = "Accueil"
-copyright = "La documentation Middleware est copyright © [Kiboko](https://kiboko.fr/) 2020, 2021."
+copyright = "La documentation Gyroscops est copyright © [Kiboko](https://kiboko.fr/) 2020, 2021."
 
 # banner
 [Languages.fr.params.banner]
-title = "Documentation Middleware"
-subtitle = "Browse the documentation and knowledge base to start quickly with Middleware"
+title = "Documentation Gyroscops"
+subtitle = "Browse the documentation and knowledge base to start quickly with Gyroscops"
 placeholder = "Have a question? Just ask here or enter terms"
 
 # call to action

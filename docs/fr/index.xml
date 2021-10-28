@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Middleware</title>
+    <title>Gyroscops</title>
     <link>https://php-etl.github.io/documentation/fr/</link>
-    <description>Recent content on Middleware</description>
+    <description>Recent content on Gyroscops</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>fr-fr</language>
-    <copyright>La documentation Middleware est copyright © [Kiboko](https://kiboko.fr/) 2020, 2021.</copyright><atom:link href="https://php-etl.github.io/documentation/fr/index.xml" rel="self" type="application/rss+xml" />
+    <copyright>La documentation Gyroscops est copyright © [Kiboko](https://kiboko.fr/) 2020, 2021.</copyright><atom:link href="https://php-etl.github.io/documentation/fr/index.xml" rel="self" type="application/rss+xml" />
   </channel>
 </rss>

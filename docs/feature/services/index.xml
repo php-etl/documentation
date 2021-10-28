@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Declaring services on Middleware</title>
+    <title>Declaring services on Gyroscops</title>
     <link>https://php-etl.github.io/documentation/feature/services/</link>
-    <description>Recent content in Declaring services on Middleware</description>
+    <description>Recent content in Declaring services on Gyroscops</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <copyright>The Middleware Documents are copyright © [Kiboko](https://kiboko.fr/) 2020, 2021.</copyright>
+    <copyright>The Gyroscops Documents are copyright © [Kiboko](https://kiboko.fr/) 2020, 2021.</copyright>
     <lastBuildDate>Tue, 12 Oct 2021 17:28:06 +0200</lastBuildDate><atom:link href="https://php-etl.github.io/documentation/feature/services/index.xml" rel="self" type="application/rss+xml" />
   </channel>
 </rss>

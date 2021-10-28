@@ -34,7 +34,7 @@ composer require php-etl/reporting-contracts
 
 The abstractions in those packages are useful to achieve loose coupling and interoperability.
 By using the provided interfaces as type hints, you are able to build any implementations that match the contracts.
-It could be a native Middleware component, or another package provided by the PHP community at large.
+It could be a native Gyroscops component, or another package provided by the PHP community at large.
 
 #### Design principles
 
