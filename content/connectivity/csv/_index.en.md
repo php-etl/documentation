@@ -8,8 +8,6 @@ description: "Read and write CSV files in any format"
 weight: 4
 ---
 
-# CSV Plugin
-
 - [What is it ?](#what-is-it-)
 - [Installation](#what-is-it-)
 - [Usage](#what-is-it-)
@@ -83,19 +81,18 @@ csv:
 
 ### Splitting into several files
 
-To limit the number of lines to be written to your excel, openDocument or csv file, you can specify the
-`max_lines` option.
+To limit the number of lines to be written to your csv file, you can specify the `max_lines` option.
 
 ```yaml
-spreadsheet:
+csv:
   loader:
-    file_path: 'input.xlsx'
+    file_path: 'input.csv'
     excel:
       # ...
       max_lines: 20
 ```
 
-Warning : this option is only available for loaders
+> Warning : this option is only available for loaders
 
 ## See more
 

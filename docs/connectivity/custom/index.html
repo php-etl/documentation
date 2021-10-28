@@ -20,7 +20,7 @@
   <link rel="stylesheet" href="https://php-etl.github.io/documentation/plugins/highlight/hybrid.css">
 
   <!--Favicon-->
-  <link rel="icon" href="https://php-etl.github.io/documentation/images/favicon.png" type="image/x-icon">
+  <link rel="icon" href="https://php-etl.github.io/documentation/favicon.png" type="image/x-icon">
 
   <!-- fonts -->
   <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700&display=swap" rel="stylesheet">
@@ -96,13 +96,17 @@
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle text-dark" href="#" role="button" data-toggle="dropdown"
             aria-haspopup="true" aria-expanded="false">
-            Installation
+            Getting Started
           </a>
           <div class="dropdown-menu">
             
-            <a class="dropdown-item" href="/documentation/installation/bare-metal">Bare metal</a>
+            <a class="dropdown-item" href="/documentation/getting-started/setup">Setup</a>
             
-            <a class="dropdown-item" href="/documentation/installation/manual">Manual</a>
+            <a class="dropdown-item" href="/documentation/getting-started/satellite">Creating Satellites</a>
+            
+            <a class="dropdown-item" href="/documentation/getting-started/pipeline">Pipelines</a>
+            
+            <a class="dropdown-item" href="/documentation/getting-started/workflow">Workflows</a>
             
           </div>
         </li>
@@ -116,35 +120,15 @@
           </a>
           <div class="dropdown-menu">
             
-            <a class="dropdown-item" href="/documentation/components/dashboard">Dashboard</a>
-            
-            <a class="dropdown-item" href="/documentation/components/satellite">Satellite</a>
-            
-            <a class="dropdown-item" href="/documentation/components/pipeline">Pipeline</a>
-            
-            <a class="dropdown-item" href="/documentation/components/workflow">Workflow</a>
+            <a class="dropdown-item" href="/documentation/feature/services">Declaring services</a>
             
             <a class="dropdown-item" href="/documentation/feature/expression-language">Expression Language</a>
             
             <a class="dropdown-item" href="/documentation/feature/logger">Logging</a>
             
-          </div>
-        </li>
-        
-        
-        
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle text-dark" href="#" role="button" data-toggle="dropdown"
-            aria-haspopup="true" aria-expanded="false">
-            Framework
-          </a>
-          <div class="dropdown-menu">
+            <a class="dropdown-item" href="/documentation/feature/rejection">Rejection</a>
             
-            <a class="dropdown-item" href="/documentation/framework/contracts">Contracts</a>
-            
-            <a class="dropdown-item" href="/documentation/framework/metadata">Metadata</a>
-            
-            <a class="dropdown-item" href="/documentation/framework/promise">Promise</a>
+            <a class="dropdown-item" href="/documentation/feature/state">State</a>
             
           </div>
         </li>
@@ -522,126 +506,53 @@
             
               
             
-              
-            
-              
-            
           </ul>
         </div>
       </div>
       <div class="col-lg-9">
         <div class="p-lg-5 p-4 bg-white">
-          <h2 class="mb-5">Custom connector</h2>
+          <h1 class="single-title mb-5">
+              
+              <i class="ti-settings icon d-block"></i>
+              
+              
+              Custom connector
+          </h1>
           
           <div class="content"><ul>
-<li><a href="#definition">Definition</a></li>
+<li><a href="#what-is-it-">What is it ?</a></li>
 <li><a href="#installation">Installation</a></li>
-<li><a href="#usage">Definition</a>
+<li><a href="#usage">Usage</a>
 <ul>
-<li><a href="#reading-from-a-custom-file">Reading from a custom file</a></li>
-<li><a href="#transform-to-a-custom-file">Transform to a custom file</a></li>
-<li><a href="#writing-to-a-custom-file">Writing to a custom file</a></li>
+<li><a href="#building-an-extractor">Building an extractor</a></li>
+<li><a href="#building-a-transformer">Building a transformer</a></li>
+<li><a href="#building-a-loader">Building a loader</a></li>
 </ul>
 </li>
-<li><a href="#precisions">Precisions</a></li>
 </ul>
 <hr>
 <h2 id="definition">Definition</h2>
 <p>The custom plugin allows you to use your own source code in your <a href="https://php-etl.github.io/documentation/components/pipeline/">pipelines</a>,
 allowing you to connect tools that are not supported by the standard distribution.</p>
 <h2 id="installation">Installation</h2>
-<pre><code>composer require php-etl/custom-plugin
-</code></pre><h2 id="usage">Usage</h2>
-<p>You have to create a yml file which contains all the plugin configuration.</p>
-<p>Example of a config file.</p>
-<h3 id="reading-from-a-custom-file">Reading from a custom file</h3>
-<ul class="nav nav-tabs" id="basic_definition_read" role="tablist"><li class="nav-item"><a data-toggle="tab" class="nav-link active" href="#basic_definition_read-0" role="tab" aria-controls="basic_definition_read-0" aria-selected="true">YAML</a></li>
-	  </ul>
-<div class="tab-content" id="basic_definition_read"><div id="basic_definition_read-0" class="tab-pane show active" role="tabpanel" aria-labelledby="basic_definition_read-0">
-
-<p><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml">
-<span style="color:#f92672">satellite</span>:
-  <span style="color:#f92672">pipeline</span>:
-    <span style="color:#f92672">steps</span>:
-      - <span style="color:#f92672">custom</span>:
-          <span style="color:#f92672">extractor</span>:
-            <span style="color:#f92672">services</span>:
-              <span style="color:#f92672">App\Extractor</span>:
-                <span style="color:#f92672">arguments</span>:
-                  <span style="color:#f92672">$client</span>: <span style="color:#e6db74">&#39;@App\Http\Client&#39;</span>
-                  <span style="color:#f92672">$decrypt</span>: <span style="color:#e6db74">&#39;@App\Security\Decrypt&#39;</span>
-              <span style="color:#f92672">App\Http\Client</span>: <span style="color:#ae81ff">~</span>
-              <span style="color:#f92672">App\Security\Decrypt</span>:
-                <span style="color:#f92672">arguments</span>:
-                  <span style="color:#f92672">$cipher</span>: <span style="color:#e6db74">&#39;%cipher%&#39;</span>
-            <span style="color:#f92672">use</span>: <span style="color:#e6db74">&#39;App\Extractor&#39;</span>
-            <span style="color:#f92672">parameters</span>:
-              <span style="color:#f92672">cipher</span>: <span style="color:#e6db74">&#39;14588F18B77FA61EE237D2435A567&#39;</span>
-</code></pre></div></div></div>
-
-<h3 id="transform-to-a-custom-file">Transform to a custom file</h3>
-<ul class="nav nav-tabs" id="basic_definition_transform" role="tablist"><li class="nav-item"><a data-toggle="tab" class="nav-link active" href="#basic_definition_transform-0" role="tab" aria-controls="basic_definition_transform-0" aria-selected="true">YAML</a></li>
-	  </ul>
-<div class="tab-content" id="basic_definition_transform"><div id="basic_definition_transform-0" class="tab-pane show active" role="tabpanel" aria-labelledby="basic_definition_transform-0">
-
-<p><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml">
-<span style="color:#f92672">satellite</span>:
-  <span style="color:#f92672">pipeline</span>:
-    <span style="color:#f92672">steps</span>:
-      - <span style="color:#f92672">custom</span>:
-          <span style="color:#f92672">transformer</span>:
-            <span style="color:#f92672">services</span>:
-              <span style="color:#f92672">App\Transformer</span>: 
-                <span style="color:#f92672">arguments</span>:
-                  <span style="color:#f92672">$logger</span>: <span style="color:#e6db74">&#39;@Psr\Log\LoggerInterface&#39;</span>
-            <span style="color:#f92672">use</span>: <span style="color:#e6db74">&#39;App\Transformer&#39;</span>
-</code></pre></div></div></div>
-
-<h3 id="writing-to-a-custom-file">Writing to a custom file</h3>
-<ul class="nav nav-tabs" id="basic_definition_write" role="tablist"><li class="nav-item"><a data-toggle="tab" class="nav-link active" href="#basic_definition_write-0" role="tab" aria-controls="basic_definition_write-0" aria-selected="true">YAML</a></li>
-	  </ul>
-<div class="tab-content" id="basic_definition_write"><div id="basic_definition_write-0" class="tab-pane show active" role="tabpanel" aria-labelledby="basic_definition_write-0">
-
-<p><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml">
-<span style="color:#f92672">satellite</span>:
-  <span style="color:#f92672">pipeline</span>:
-    <span style="color:#f92672">steps</span>:
-      - <span style="color:#f92672">custom</span>:
-          <span style="color:#f92672">loader</span>:
-            <span style="color:#f92672">services</span>:
-              <span style="color:#f92672">App\Security\Encrypt</span>:
-                <span style="color:#f92672">arguments</span>:
-                  <span style="color:#f92672">$cipher</span>: <span style="color:#e6db74">&#39;%cipher%&#39;</span>
-              <span style="color:#f92672">App\Loader</span>:
-                <span style="color:#f92672">arguments</span>:
-                  <span style="color:#f92672">$client</span>: <span style="color:#e6db74">&#39;@App\Http\Client&#39;</span>
-                  <span style="color:#f92672">$encrypt</span>: <span style="color:#e6db74">&#39;@App\Security\Encrypt&#39;</span>
-              <span style="color:#f92672">App\Http\Client</span>: <span style="color:#ae81ff">~</span>
-            <span style="color:#f92672">use</span>: <span style="color:#e6db74">&#39;App\Loader&#39;</span>
-</code></pre></div></div></div>
-
-<h2 id="precisions">Precisions</h2>
-<ul>
-<li>
-<p><code>services:</code>
-A service is a class that allows you to have a solid structure to organize functionalities,
-these services are stored in an easily accessible <a href="https://symfony.com/doc/current/service_container.html#manually-wiring-arguments">container</a>.
-The service container relies on the <a href="https://symfony.com/doc/current/components/dependency_injection.html">DependencyInjection</a> injecting the dependencies needed by the service.
-You can define arguments to &ldquo;request&rdquo; a service from the container by specifying the type of an argument.
-Service formats can be xml, json, fastmap, csv or any custom format</p>
-</li>
-<li>
-<p><code>use:</code>
-define the name of the service used.</p>
-</li>
-<li>
-<p><code>parameters:</code>
-provides the parameters that the service uses,
-We can define parameters that act as a reusable configuration value.
-Parameters can be of: (string, boolean, array, binary parameters and PHP constants).</p>
-</li>
-</ul>
-</div>
+<p>This plugin is already integrated into the Satellite package, so you can’t require it with the composer.</p>
+<h2 id="usage">Usage</h2>
+<p>Unlike other plugins, the configuration is the same whether it is an extractor, a transformer or a loader.</p>
+<p>First you need to <a href="../../feature/services">determine your services</a> in your pipeline or workflow and then use the <code>use</code>
+option which allows you to define which service to use.</p>
+<h3 id="building-an-extractor">Building an extractor</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">custom</span>:
+  <span style="color:#f92672">extractor</span>:
+    <span style="color:#f92672">use</span>: <span style="color:#e6db74">&#39;App\Class\Bar&#39;</span>
+</code></pre></div><h3 id="building-a-transformer">Building a transformer</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">custom</span>:
+  <span style="color:#f92672">transformer</span>:
+    <span style="color:#f92672">use</span>: <span style="color:#e6db74">&#39;App\Class\Bar&#39;</span>
+</code></pre></div><h3 id="building-a-loader">Building a loader</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">custom</span>:
+  <span style="color:#f92672">loader</span>:
+    <span style="color:#f92672">use</span>: <span style="color:#e6db74">&#39;App\Class\Bar&#39;</span>
+</code></pre></div></div>
           
           <p class="post-meta border-bottom pb-3 mb-0 mt-3">Updated on 22 Jan 2021</p>
           <nav class="pagination mt-3">
@@ -770,24 +681,6 @@ Parameters can be of: (string, boolean, array, binary parameters and PHP constan
             
             
             
-            
-            
-            
-
-            
-            
-            
-            
-            
-
-            
-            
-            
-            
-            
-            
-            
-            
 
             
             
@@ -796,19 +689,6 @@ Parameters can be of: (string, boolean, array, binary parameters and PHP constan
             
             
             
-            
-            
-            
-            
-            
-            
-            
-            
-
-            
-            
-            
-
             
             
             
@@ -856,14 +736,9 @@ Parameters can be of: (string, boolean, array, binary parameters and PHP constan
             
             
             
+            
+            
 
-            
-            
-            
-            
-            
-            
-            
             
             
             
@@ -873,8 +748,6 @@ Parameters can be of: (string, boolean, array, binary parameters and PHP constan
             
             
 
-            
-            
             
             
             
@@ -970,6 +843,140 @@ Parameters can be of: (string, boolean, array, binary parameters and PHP constan
             
             
             
+            
+            
+            
+            
+
+            
+            
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
 
             
             
@@ -1034,38 +1041,6 @@ Parameters can be of: (string, boolean, array, binary parameters and PHP constan
             
             
             
-
-            
-            
-            
-
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-
-            
-            
-            
-
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
             
 
             
@@ -1112,72 +1087,6 @@ Parameters can be of: (string, boolean, array, binary parameters and PHP constan
             
             
             
-            
-            
-            
-            
-            
-            
-            
-            
-
-            
-            
-            
-
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-
-            
-            
-            
-
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-
-            
-            
-            
-
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-
-            
-            
-            
-            
-            
-
             
             
             

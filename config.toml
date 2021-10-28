@@ -11,22 +11,39 @@ googleAnalytics = "" # paste your analytics ID here. (Ex: UA-123-45)
 publishDir = "docs"
 
 [[menu.main]]
-name = "Installation"
-url = "installation"
+name = "Getting Started"
 weight = 1
 hasChildren = true
 
   [[menu.main]]
-  parent = "Installation"
-  name = "Bare metal"
-  url = "installation/bare-metal"
+  parent = "Getting Started"
+  name = "Setup"
+  url = "getting-started/setup"
   weight = 1
 
   [[menu.main]]
-  parent = "Installation"
-  name = "Manual"
-  url = "installation/manual"
+  parent = "Getting Started"
+  name = "Creating Satellites"
+  url = "getting-started/satellite"
   weight = 2
+
+  [[menu.main]]
+  parent = "Getting Started"
+  name = "Pipelines"
+  url = "getting-started/pipeline"
+  weight = 3
+
+  [[menu.main]]
+  parent = "Getting Started"
+  name = "Workflows"
+  url = "getting-started/workflow"
+  weight = 4
+
+#   [[menu.main]]
+#   parent = "Getting Started"
+#   name = "Hooks and APIs"
+#   url = "installation/manual"
+#   weight = 5
 
 [[menu.main]]
 weight = 2
@@ -35,62 +52,33 @@ hasChildren = true
 
   [[menu.main]]
   parent = "Features"
-  name = "Dashboard"
-  url = "components/dashboard"
+  name = "Declaring services"
+  url = "feature/services"
   weight = 1
-
-  [[menu.main]]
-  parent = "Features"
-  name = "Satellite"
-  url = "components/satellite"
-  weight = 2
-
-  [[menu.main]]
-  parent = "Features"
-  name = "Pipeline"
-  url = "components/pipeline"
-  weight = 3
-
-  [[menu.main]]
-  parent = "Features"
-  name = "Workflow"
-  url = "components/workflow"
-  weight = 4
 
   [[menu.main]]
   parent = "Features"
   name = "Expression Language"
   url = "feature/expression-language"
-  weight = 5
+  weight = 2
 
   [[menu.main]]
   parent = "Features"
   name = "Logging"
   url = "feature/logger"
-  weight = 6
-
-[[menu.main]]
-weight = 3
-name = "Framework"
-hasChildren = true
-
-  [[menu.main]]
-  parent = "Framework"
-  name = "Contracts"
-  url = "framework/contracts"
-  weight = 1
-
-  [[menu.main]]
-  parent = "Framework"
-  name = "Metadata"
-  url = "framework/metadata"
-  weight = 2
-
-  [[menu.main]]
-  parent = "Framework"
-  name = "Promise"
-  url = "framework/promise"
   weight = 3
+
+  [[menu.main]]
+  parent = "Features"
+  name = "Rejection"
+  url = "feature/rejection"
+  weight = 4
+
+  [[menu.main]]
+  parent = "Features"
+  name = "State"
+  url = "feature/state"
+  weight = 5
 
 [[menu.main]]
 weight = 4

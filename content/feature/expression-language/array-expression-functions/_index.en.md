@@ -2,9 +2,8 @@
 title: "Array Expression Language"
 date: 2021-08-12T12:08:50Z
 draft: false
+type: "feature"
 ---
-
-# Array Expression Language
 
 - [What is it ?](#what-is-it-)
 - [Installation](#installation)

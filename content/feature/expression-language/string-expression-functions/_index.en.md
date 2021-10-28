@@ -2,9 +2,8 @@
 title: "String Expression functions"
 date: 2021-08-12T12:08:50Z
 draft: false
+type: "feature"
 ---
-
-# Array Expression functions
 
 - [What is it for?](#what-is-it-for)
 - [Installation](#installation)

@@ -20,7 +20,7 @@
   <link rel="stylesheet" href="https://php-etl.github.io/documentation/plugins/highlight/hybrid.css">
 
   <!--Favicon-->
-  <link rel="icon" href="https://php-etl.github.io/documentation/images/favicon.png" type="image/x-icon">
+  <link rel="icon" href="https://php-etl.github.io/documentation/favicon.png" type="image/x-icon">
 
   <!-- fonts -->
   <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700&display=swap" rel="stylesheet">
@@ -96,13 +96,17 @@
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle text-dark" href="#" role="button" data-toggle="dropdown"
             aria-haspopup="true" aria-expanded="false">
-            Installation
+            Getting Started
           </a>
           <div class="dropdown-menu">
             
-            <a class="dropdown-item" href="/documentation/installation/bare-metal">Bare metal</a>
+            <a class="dropdown-item" href="/documentation/getting-started/setup">Setup</a>
             
-            <a class="dropdown-item" href="/documentation/installation/manual">Manual</a>
+            <a class="dropdown-item" href="/documentation/getting-started/satellite">Creating Satellites</a>
+            
+            <a class="dropdown-item" href="/documentation/getting-started/pipeline">Pipelines</a>
+            
+            <a class="dropdown-item" href="/documentation/getting-started/workflow">Workflows</a>
             
           </div>
         </li>
@@ -116,35 +120,15 @@
           </a>
           <div class="dropdown-menu">
             
-            <a class="dropdown-item" href="/documentation/components/dashboard">Dashboard</a>
-            
-            <a class="dropdown-item" href="/documentation/components/satellite">Satellite</a>
-            
-            <a class="dropdown-item" href="/documentation/components/pipeline">Pipeline</a>
-            
-            <a class="dropdown-item" href="/documentation/components/workflow">Workflow</a>
+            <a class="dropdown-item" href="/documentation/feature/services">Declaring services</a>
             
             <a class="dropdown-item" href="/documentation/feature/expression-language">Expression Language</a>
             
             <a class="dropdown-item" href="/documentation/feature/logger">Logging</a>
             
-          </div>
-        </li>
-        
-        
-        
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle text-dark" href="#" role="button" data-toggle="dropdown"
-            aria-haspopup="true" aria-expanded="false">
-            Framework
-          </a>
-          <div class="dropdown-menu">
+            <a class="dropdown-item" href="/documentation/feature/rejection">Rejection</a>
             
-            <a class="dropdown-item" href="/documentation/framework/contracts">Contracts</a>
-            
-            <a class="dropdown-item" href="/documentation/framework/metadata">Metadata</a>
-            
-            <a class="dropdown-item" href="/documentation/framework/promise">Promise</a>
+            <a class="dropdown-item" href="/documentation/feature/state">State</a>
             
           </div>
         </li>
@@ -522,19 +506,24 @@
             
               
             
-              
-            
-              
-            
           </ul>
         </div>
       </div>
       <div class="col-lg-9">
         <div class="p-lg-5 p-4 bg-white">
-          <h2 class="mb-5">CSV</h2>
+          <h1 class="single-title mb-5">
+              
+              
+              <i class="logo-csv icon d-block">
+                  <svg>
+                      <use xlink:href="https://php-etl.github.io/documentation/sprites.svg#csv"></use>
+                  </svg>
+              </i>
+              
+              CSV
+          </h1>
           
-          <div class="content"><h1 id="csv-plugin">CSV Plugin</h1>
-<ul>
+          <div class="content"><ul>
 <li><a href="#what-is-it-">What is it ?</a></li>
 <li><a href="#what-is-it-">Installation</a></li>
 <li><a href="#what-is-it-">Usage</a>
@@ -592,15 +581,16 @@ stack.</p>
       - <span style="color:#ae81ff">lastname</span>
 </code></pre></div><h2 id="advanced-usage">Advanced Usage</h2>
 <h3 id="splitting-into-several-files">Splitting into several files</h3>
-<p>To limit the number of lines to be written to your excel, openDocument or csv file, you can specify the
-<code>max_lines</code> option.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">spreadsheet</span>:
+<p>To limit the number of lines to be written to your csv file, you can specify the <code>max_lines</code> option.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">csv</span>:
   <span style="color:#f92672">loader</span>:
-    <span style="color:#f92672">file_path</span>: <span style="color:#e6db74">&#39;input.xlsx&#39;</span>
+    <span style="color:#f92672">file_path</span>: <span style="color:#e6db74">&#39;input.csv&#39;</span>
     <span style="color:#f92672">excel</span>:
       <span style="color:#75715e"># ...</span>
       <span style="color:#f92672">max_lines</span>: <span style="color:#ae81ff">20</span>
-</code></pre></div><p>Warning : this option is only available for loaders</p>
+</code></pre></div><blockquote>
+<p>Warning : this option is only available for loaders</p>
+</blockquote>
 <h2 id="see-more">See more</h2>
 <p>If you want to see complete configurations, please go to the <a href="/examples">examples</a> folder.</p>
 </div>
@@ -732,24 +722,6 @@ stack.</p>
             
             
             
-            
-            
-            
-
-            
-            
-            
-            
-            
-
-            
-            
-            
-            
-            
-            
-            
-            
 
             
             
@@ -758,19 +730,6 @@ stack.</p>
             
             
             
-            
-            
-            
-            
-            
-            
-            
-            
-
-            
-            
-            
-
             
             
             
@@ -818,14 +777,9 @@ stack.</p>
             
             
             
+            
+            
 
-            
-            
-            
-            
-            
-            
-            
             
             
             
@@ -835,8 +789,6 @@ stack.</p>
             
             
 
-            
-            
             
             
             
@@ -933,6 +885,108 @@ stack.</p>
             
             
             
+            
+            
+            
+
+            
+            
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
 
             
             
@@ -1074,72 +1128,6 @@ stack.</p>
             
             
             
-            
-            
-            
-            
-            
-            
-            
-            
-
-            
-            
-            
-
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-
-            
-            
-            
-
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-
-            
-            
-            
-
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-
-            
-            
-            
-            
-            
-
             
             
             

@@ -2,9 +2,8 @@
 title: "Satellite Expression Language"
 date: 2021-08-12T12:49:51Z
 draft: false
+type: "feature"
 ---
-
-# Satellite Expression Language
 
 - [What is it ?](#what-is-it-)
 - [Installation](#installation)

@@ -10,8 +10,6 @@ weight: 3
 
 {{< feature-state for_mw_version="0.1" state="alpha" >}}
 
-# Sylius Plugin
-
 - [What is it ?](#what-is-it-)
 - [Installation](#installation)
 - [Usage](#usage)

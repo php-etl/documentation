@@ -8,8 +8,6 @@ description: "Process data from SQL data stores in your pipelines"
 weight: 6
 ---
 
-# SQL Plugin
-
 - [What is it ?](#what-is-it-)
 - [Installation](#installation)
 - [Usage](#usage)

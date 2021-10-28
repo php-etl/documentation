@@ -20,7 +20,7 @@
   <link rel="stylesheet" href="https://php-etl.github.io/documentation/plugins/highlight/hybrid.css">
 
   <!--Favicon-->
-  <link rel="icon" href="https://php-etl.github.io/documentation/images/favicon.png" type="image/x-icon">
+  <link rel="icon" href="https://php-etl.github.io/documentation/favicon.png" type="image/x-icon">
 
   <!-- fonts -->
   <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700&display=swap" rel="stylesheet">
@@ -96,13 +96,17 @@
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle text-dark" href="#" role="button" data-toggle="dropdown"
             aria-haspopup="true" aria-expanded="false">
-            Installation
+            Getting Started
           </a>
           <div class="dropdown-menu">
             
-            <a class="dropdown-item" href="/documentation/installation/bare-metal">Bare metal</a>
+            <a class="dropdown-item" href="/documentation/getting-started/setup">Setup</a>
             
-            <a class="dropdown-item" href="/documentation/installation/manual">Manual</a>
+            <a class="dropdown-item" href="/documentation/getting-started/satellite">Creating Satellites</a>
+            
+            <a class="dropdown-item" href="/documentation/getting-started/pipeline">Pipelines</a>
+            
+            <a class="dropdown-item" href="/documentation/getting-started/workflow">Workflows</a>
             
           </div>
         </li>
@@ -116,35 +120,15 @@
           </a>
           <div class="dropdown-menu">
             
-            <a class="dropdown-item" href="/documentation/components/dashboard">Dashboard</a>
-            
-            <a class="dropdown-item" href="/documentation/components/satellite">Satellite</a>
-            
-            <a class="dropdown-item" href="/documentation/components/pipeline">Pipeline</a>
-            
-            <a class="dropdown-item" href="/documentation/components/workflow">Workflow</a>
+            <a class="dropdown-item" href="/documentation/feature/services">Declaring services</a>
             
             <a class="dropdown-item" href="/documentation/feature/expression-language">Expression Language</a>
             
             <a class="dropdown-item" href="/documentation/feature/logger">Logging</a>
             
-          </div>
-        </li>
-        
-        
-        
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle text-dark" href="#" role="button" data-toggle="dropdown"
-            aria-haspopup="true" aria-expanded="false">
-            Framework
-          </a>
-          <div class="dropdown-menu">
+            <a class="dropdown-item" href="/documentation/feature/rejection">Rejection</a>
             
-            <a class="dropdown-item" href="/documentation/framework/contracts">Contracts</a>
-            
-            <a class="dropdown-item" href="/documentation/framework/metadata">Metadata</a>
-            
-            <a class="dropdown-item" href="/documentation/framework/promise">Promise</a>
+            <a class="dropdown-item" href="/documentation/feature/state">State</a>
             
           </div>
         </li>
@@ -522,16 +506,16 @@
             
               
             
-              
-            
-              
-            
           </ul>
         </div>
       </div>
       <div class="col-lg-9">
         <div class="p-lg-5 p-4 bg-white">
-          <h2 class="mb-5">Akeneo plugin</h2>
+          <h1 class="single-title mb-5">
+              
+              
+              Akeneo plugin
+          </h1>
           
           <div class="content">
 
@@ -858,275 +842,6 @@ component provided by Symfony.</p>
             
             
             
-            
-            
-            
-
-            
-            
-            
-            
-            
-
-            
-            
-            
-            
-            
-            
-            
-            
-
-            
-            
-            
-
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-
-            
-            
-            
-
-            
-            
-            
-            
-            
-            
-            
-            
-
-            
-            
-            
-
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-
-            
-            
-            
-
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-
-            
-            
-            
-
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-
-            
-            
-            
-            
-            
-
-            
-            
-            
-            
-            
-            
-            
-            
-            
-
-            
-            
-            
-
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-
-            
-            
-            
-
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-
-            
-            
-            
-
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-
-            
-            
-            
-
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-
-            
-            
-            
-
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-
-            
-            
-            
-
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-
-            
-            
-            
-
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-
-            
-            
-            
-
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-
-            
-            
-            
-
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
 
             
             
@@ -1222,17 +937,11 @@ component provided by Symfony.</p>
             
             
             
-            
-            
-            
 
             
             
             
 
-            
-            
-            
             
             
             
@@ -1260,6 +969,45 @@ component provided by Symfony.</p>
             
             
             
+            
+            
+            
+
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
 
             
             
@@ -1267,6 +1015,240 @@ component provided by Symfony.</p>
             
             
 
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+
+            
+            
+            
             
             
             

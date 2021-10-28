@@ -1,0 +1,1223 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+  <meta charset="utf-8">
+  <title>Manual installation</title>
+
+  <meta name="generator" content="Hugo 0.82.0" />
+
+  <!-- mobile responsive meta -->
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+  <!-- ** Plugins Needed for the Project ** -->
+  <!-- Bootstrap -->
+  <link rel="stylesheet" href="https://php-etl.github.io/documentation/plugins/bootstrap/bootstrap.min.css">
+
+  <!-- themefy-icon -->
+  <link rel="stylesheet" href="https://php-etl.github.io/documentation/plugins/themify-icons/themify-icons.css">
+
+  <!-- highlight -->
+  <link rel="stylesheet" href="https://php-etl.github.io/documentation/plugins/highlight/hybrid.css">
+
+  <!--Favicon-->
+  <link rel="icon" href="https://php-etl.github.io/documentation/favicon.png" type="image/x-icon">
+
+  <!-- fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700&display=swap" rel="stylesheet">
+  
+  <style>
+  :root{
+    --primary-color: #22014f;
+    --primary-color-lighten: #f2e9fe;
+    --secondary-color:#fe8507;
+    --body-color:#ddd;
+    --text-color:#666;
+    --text-color-dark:#333;
+    --text-color-light:#eee;
+    --white-color:#eee;
+    --font-family:Lato;
+  }
+  </style>
+
+<!-- Main Stylesheet -->
+
+<link href="https://php-etl.github.io/documentation/css/style.min.css" rel="stylesheet" media="screen"/>
+
+<!-- jquiry -->
+<script src="https://php-etl.github.io/documentation/plugins/jquery/jquery-1.12.4.js"></script>
+
+<!-- jquary ui -->
+<script src="https://php-etl.github.io/documentation/plugins/jquery/jquery-ui.js"></script>
+
+<!-- Bootstrap JS -->
+<script src="https://php-etl.github.io/documentation/plugins/bootstrap/bootstrap.min.js"></script>
+
+<!-- match-height JS -->
+<script src="https://php-etl.github.io/documentation/plugins/match-height/jquery.matchHeight-min.js"></script>
+
+<!-- highlight -->
+<script src="https://php-etl.github.io/documentation/plugins/highlight/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+
+
+</head>
+
+  
+  <body>
+    
+    <!-- header -->
+    <header class="shadow-bottom sticky-top bg-white">
+      <nav class="navbar navbar-expand-md navbar-light">
+  <div class="container">
+    <a class="navbar-brand px-2" href="/documentation">
+      
+      
+      
+      
+      <div class="navbar-brand">
+        <img class="img-fluid" src="https://php-etl.github.io/documentation/logo-web.svg" alt="Middleware"> Middleware
+      </div>
+      
+      
+    </a>
+    <button class="navbar-toggler border-0" type="button" data-toggle="collapse" data-target="#navigation"
+      aria-controls="navigation" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse text-center" id="navigation">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item">
+          <a class="nav-link text-dark" href="/documentation">Home</a>
+        </li>
+        
+        
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle text-dark" href="#" role="button" data-toggle="dropdown"
+            aria-haspopup="true" aria-expanded="false">
+            Getting Started
+          </a>
+          <div class="dropdown-menu">
+            
+            <a class="dropdown-item" href="/documentation/getting-started/setup">Setup</a>
+            
+            <a class="dropdown-item" href="/documentation/getting-started/satellite">Creating Satellites</a>
+            
+            <a class="dropdown-item" href="/documentation/getting-started/pipeline">Pipelines</a>
+            
+            <a class="dropdown-item" href="/documentation/getting-started/workflow">Workflows</a>
+            
+          </div>
+        </li>
+        
+        
+        
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle text-dark" href="#" role="button" data-toggle="dropdown"
+            aria-haspopup="true" aria-expanded="false">
+            Features
+          </a>
+          <div class="dropdown-menu">
+            
+            <a class="dropdown-item" href="/documentation/feature/services">Declaring services</a>
+            
+            <a class="dropdown-item" href="/documentation/feature/expression-language">Expression Language</a>
+            
+            <a class="dropdown-item" href="/documentation/feature/logger">Logging</a>
+            
+            <a class="dropdown-item" href="/documentation/feature/rejection">Rejection</a>
+            
+            <a class="dropdown-item" href="/documentation/feature/state">State</a>
+            
+          </div>
+        </li>
+        
+        
+        
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle text-dark" href="#" role="button" data-toggle="dropdown"
+            aria-haspopup="true" aria-expanded="false">
+            Connectivity
+          </a>
+          <div class="dropdown-menu">
+            
+            <a class="dropdown-item" href="/documentation/connectivity/akeneo">Akeneo</a>
+            
+            <a class="dropdown-item" href="/documentation/connectivity/csv">CSV files</a>
+            
+            <a class="dropdown-item" href="/documentation/connectivity/custom">Custom connector</a>
+            
+            <a class="dropdown-item" href="/documentation/connectivity/fast-map">FastMap</a>
+            
+            <a class="dropdown-item" href="/documentation/connectivity/ftp">FTP</a>
+            
+            <a class="dropdown-item" href="/documentation/connectivity/sftp">SFTP</a>
+            
+            <a class="dropdown-item" href="/documentation/connectivity/nl-json">NL-JSON</a>
+            
+            <a class="dropdown-item" href="/documentation/connectivity/spreadsheet">Spreadsheet files</a>
+            
+            <a class="dropdown-item" href="/documentation/connectivity/sql">SQL database</a>
+            
+            <a class="dropdown-item" href="/documentation/connectivity/sylius">Sylius</a>
+            
+          </div>
+        </li>
+        
+        
+      </ul>
+      
+      <select class="lang-list dark" id="select-language"
+        onchange="location = this.value;">
+        
+        
+        
+        
+        
+        
+        
+        
+        <option id="en" value="https://php-etl.github.io/documentation/getting-started/old/manual/" selected>English
+        </option>
+        
+        
+        
+        
+        
+        
+      </select>
+      
+    </div>
+  </div>
+</nav>
+    </header>
+    <!-- /header -->
+    
+    
+
+<!-- details page -->
+<section class="single section-sm pb-0">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-3">
+        <div class="sidebar">
+          <ul class="list-styled">
+            
+            <a class="back-btn" href="/documentation"></a>
+            
+              
+            
+              
+              
+
+
+
+
+
+
+
+
+<li data-nav-id="https://php-etl.github.io/documentation/getting-started/" title="Getting-starteds" class="sidelist
+  ">
+  <a href="https://php-etl.github.io/documentation/getting-started/">
+    Getting-starteds
+  </a>
+  
+  
+    <ul>
+      
+        
+          
+
+
+
+
+
+
+
+
+<li data-nav-id="https://php-etl.github.io/documentation/getting-started/satellite/" title="Creating Satellite" class="sidelist
+  ">
+  <a href="https://php-etl.github.io/documentation/getting-started/satellite/">
+    Creating Satellite
+  </a>
+  
+  
+    <ul>
+      
+        
+          
+
+
+
+
+
+
+
+
+<li data-nav-id="https://php-etl.github.io/documentation/getting-started/satellite/php-objects/" title="PHP Objects" class="sidelist
+  ">
+  <a href="https://php-etl.github.io/documentation/getting-started/satellite/php-objects/">
+    PHP Objects
+  </a>
+  
+  
+</li>
+
+
+        
+      
+        
+          
+
+
+
+
+
+
+
+
+<li data-nav-id="https://php-etl.github.io/documentation/getting-started/satellite/yaml-format/" title="The YAML configuration format" class="sidelist
+  ">
+  <a href="https://php-etl.github.io/documentation/getting-started/satellite/yaml-format/">
+    The YAML configuration format
+  </a>
+  
+  
+</li>
+
+
+        
+      
+    </ul>
+  
+</li>
+
+
+        
+      
+        
+          
+
+
+
+
+
+
+
+
+<li data-nav-id="https://php-etl.github.io/documentation/getting-started/pipeline/" title="Pipeline" class="sidelist
+  ">
+  <a href="https://php-etl.github.io/documentation/getting-started/pipeline/">
+    Pipeline
+  </a>
+  
+  
+</li>
+
+
+        
+      
+        
+          
+
+
+
+
+
+
+
+
+<li data-nav-id="https://php-etl.github.io/documentation/getting-started/setup/" title="Setup" class="sidelist
+  ">
+  <a href="https://php-etl.github.io/documentation/getting-started/setup/">
+    Setup
+  </a>
+  
+  
+</li>
+
+
+        
+      
+        
+          
+
+
+
+
+
+
+
+
+<li data-nav-id="https://php-etl.github.io/documentation/getting-started/workflow/" title="Workflow" class="sidelist
+  ">
+  <a href="https://php-etl.github.io/documentation/getting-started/workflow/">
+    Workflow
+  </a>
+  
+  
+</li>
+
+
+        
+      
+    </ul>
+  
+</li>
+
+
+              
+            
+              
+            
+              
+            
+          </ul>
+        </div>
+      </div>
+      <div class="col-lg-9">
+        <div class="p-lg-5 p-4 bg-white">
+          <h1 class="single-title mb-5">
+              
+              
+              Manual installation
+          </h1>
+          
+          <div class="content"><h3 id="contents-of-this-documentation">Contents of this documentation</h3>
+<p>In this documentation, we will create a Docker stack with all system and application dependencies,
+in order to start using <em>Middleware</em>.</p>
+<h3 id="prepare-your-dependencies-in-docker">Prepare your dependencies in Docker</h3>
+<p>We will use <a href="#logstash">Logstash</a>, <a href="#elasticsearch">Elasticsearch</a> and <a href="#kibana">Kibana</a> as a logging platform.</p>
+<h4 id="logstash">Logstash</h4>
+<p>Logstash is a tool whose primary goal is to consume and aggregate logging from other applications,
+optionally apply transformations to it and then transfer it to a logging data store.</p>
+<p>In your project, create a file named <code>.docker/logstash/logstash.yml</code> with the following contents:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">pipeline</span>:
+  <span style="color:#f92672">batch</span>:
+    <span style="color:#f92672">delay</span>: <span style="color:#ae81ff">50</span>
+    <span style="color:#f92672">size</span>: <span style="color:#ae81ff">125</span>
+</code></pre></div><p>To configure a logging pipeline for logstash, we will create a second file named <code>.docker/logstash/pipeline/tcp.conf</code> with the following content:</p>
+<pre><code>input {
+  tcp {
+     port =&gt; 5044
+     host =&gt; &quot;0.0.0.0&quot;
+     codec =&gt; json
+  }
+}
+
+filter {
+  date {
+    match =&gt; [ &quot;timeMillis&quot;, &quot;UNIX_MS&quot; ]
+  }
+}
+
+output {
+  elasticsearch {
+    hosts =&gt; &quot;elasticsearch:9200&quot;
+  }
+}
+</code></pre><p>Now, you will need to add a new logstash service in your <code>docker-compose.yaml</code> file:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">services</span>:
+  <span style="color:#f92672">logstash</span>:
+    <span style="color:#f92672">image</span>: <span style="color:#ae81ff">docker.elastic.co/logstash/logstash:7.14.1</span>
+    <span style="color:#f92672">volumes</span>:
+      - <span style="color:#ae81ff">./.docker/logstash/logstash.yml:/usr/share/logstash/config/logstash.yml</span>
+      - <span style="color:#ae81ff">./.docker/logstash/pipeline:/usr/share/logstash/pipeline/</span>
+    <span style="color:#f92672">restart</span>: <span style="color:#ae81ff">unless-stopped</span>
+    <span style="color:#f92672">depends_on</span>:
+      - <span style="color:#ae81ff">elasticsearch</span>
+</code></pre></div><h4 id="elasticsearch">ElasticSearch</h4>
+<p>ElasticSearch is a Document oriented database, whose main usage are logs storage and search indexation. We will use if for both.</p>
+<p>In your project, create a file named <code>.docker/elasticsearch/elasticsearch.yml</code> with the following contents:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">cluster.name</span>: <span style="color:#e6db74">&#39;hackathon-cluster&#39;</span>
+<span style="color:#f92672">bootstrap.memory_lock</span>: <span style="color:#66d9ef">true</span>
+<span style="color:#f92672">discovery.type</span>: <span style="color:#e6db74">&#39;single-node&#39;</span>
+
+<span style="color:#f92672">http.host</span>: <span style="color:#e6db74">&#39;0.0.0.0&#39;</span>
+<span style="color:#f92672">http.port</span>: <span style="color:#ae81ff">9200</span>
+
+<span style="color:#75715e"># Uncomment the following lines for a production cluster deployment</span>
+<span style="color:#75715e">#transport.host: 0.0.0.0</span>
+<span style="color:#75715e">#discovery.zen.minimum_master_nodes: 1</span>
+
+<span style="color:#f92672">http.cors.enabled </span>: <span style="color:#66d9ef">true</span>
+<span style="color:#f92672">http.cors.allow-origin </span>: <span style="color:#e6db74">&#34;*&#34;</span>
+<span style="color:#f92672">http.cors.allow-methods </span>: <span style="color:#ae81ff">OPTIONS, HEAD, GET, POST, PUT, DELETE</span>
+<span style="color:#f92672">http.cors.allow-headers </span>: <span style="color:#ae81ff">X-Requested-With,X-Auth-Token,Content-Type, Content-Length</span>
+<span style="color:#f92672">cluster.routing.allocation.disk.threshold_enabled</span>: <span style="color:#66d9ef">false</span>
+
+</code></pre></div><p>Now, you will need to add a new elasticsearch service and a dedicated volume in your <code>docker-compose.yaml</code> file:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">services</span>:
+  <span style="color:#f92672">elasticsearch</span>:
+    <span style="color:#f92672">image</span>: <span style="color:#ae81ff">docker.elastic.co/elasticsearch/elasticsearch:7.14.1</span>
+    <span style="color:#f92672">ports</span>:
+      - <span style="color:#ae81ff">${ELASTICSEARCH_PORT:-9200}:9200</span>
+    <span style="color:#f92672">environment</span>:
+      - <span style="color:#e6db74">&#34;ES_JAVA_OPTS=-Xms512m -Xmx512m&#34;</span>
+    <span style="color:#f92672">volumes</span>:
+      - <span style="color:#ae81ff">elasticsearch:/usr/share/elasticsearch/data</span>
+      - <span style="color:#ae81ff">./.docker/elasticsearch/elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml</span>
+    <span style="color:#f92672">restart</span>: <span style="color:#ae81ff">unless-stopped</span>
+
+<span style="color:#f92672">volumes</span>:
+  <span style="color:#f92672">elasticsearch</span>:
+    <span style="color:#f92672">driver</span>: <span style="color:#ae81ff">local</span>
+</code></pre></div><h4 id="kibana">Kibana</h4>
+<p>Kibana is web interface for ElasticSearch storage, capable of building graphic representations of aggregation searches.</p>
+<p>In your project, create a file named <code>.docker/kibana/kibana.yml</code> with the following contents:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">server.port</span>: <span style="color:#ae81ff">5601</span>
+<span style="color:#f92672">server.host</span>: <span style="color:#e6db74">&#34;0.0.0.0&#34;</span>
+<span style="color:#f92672">elasticsearch.hosts</span>: <span style="color:#e6db74">&#34;http://elasticsearch:9200&#34;</span>
+</code></pre></div><p>Now, you will need to add a new kibana service in your <code>docker-compose.yaml</code> file:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">services</span>:
+  <span style="color:#f92672">kibana</span>:
+    <span style="color:#f92672">image</span>: <span style="color:#ae81ff">docker.elastic.co/kibana/kibana:7.14.1</span>
+    <span style="color:#f92672">ports</span>:
+      - <span style="color:#ae81ff">${KIBANA_PORT:-5601}:5601</span>
+    <span style="color:#f92672">environment</span>:
+      - <span style="color:#ae81ff">monitoring.elasticsearch.hosts=http://elasticsearch:9200</span>
+    <span style="color:#f92672">volumes</span>:
+      - <span style="color:#ae81ff">./.docker/kibana/kibana.yml:/usr/share/kibana/config/kibana.yml</span>
+    <span style="color:#f92672">restart</span>: <span style="color:#ae81ff">unless-stopped</span>
+    <span style="color:#f92672">depends_on</span>:
+      - <span style="color:#ae81ff">elasticsearch</span>
+</code></pre></div><h3 id="rabbitmq">RabbitMQ</h3>
+<p>RabbitMQ is a message queue service, handling storage, routing and concurrency handling between consumers.</p>
+<p>In your project, create a file named <code>.docker/amqp/Dockerfile</code> with the following contents:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-dockerfile" data-lang="dockerfile"><span style="color:#66d9ef">FROM</span><span style="color:#e6db74"> rabbitmq:3.8-management-alpine</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">RUN</span> set -ex<span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>    <span style="color:#f92672">&amp;&amp;</span> apk update <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>    <span style="color:#f92672">&amp;&amp;</span> apk upgrade <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>    <span style="color:#f92672">&amp;&amp;</span> apk add --no-cache --virtual .build-deps <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>        zip <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>        curl <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>    <span style="color:#f92672">&amp;&amp;</span> curl -L https://github.com/rabbitmq/rabbitmq-delayed-message-exchange/releases/download/3.8.17/rabbitmq_delayed_message_exchange-3.8.17.8f537ac.ez &gt; $RABBITMQ_HOME/plugins/rabbitmq_delayed_message_exchange-3.8.17.8f537ac.ez <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>    <span style="color:#f92672">&amp;&amp;</span> apk del .build-deps<span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">RUN</span> rabbitmq-plugins enable --offline rabbitmq_delayed_message_exchange<span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">RUN</span> rabbitmq-plugins enable --offline rabbitmq_consistent_hash_exchange<span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">RUN</span> rabbitmq-plugins enable --offline rabbitmq_management<span style="color:#960050;background-color:#1e0010">
+</span></code></pre></div><p>Now, you will need to add a new amqp service in your <code>docker-compose.yaml</code> file:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">services</span>:
+  <span style="color:#f92672">amqp</span>:
+    <span style="color:#f92672">build</span>:
+      <span style="color:#f92672">context</span>: <span style="color:#ae81ff">.docker/amqp/</span>
+    <span style="color:#f92672">ports</span>:
+      - <span style="color:#ae81ff">${AMQP_PORT:-15672}:15672</span>
+    <span style="color:#f92672">environment</span>:
+      - <span style="color:#ae81ff">RABBITMQ_DEFAULT_USER=${AMQP_USER:-kiboko}</span>
+      - <span style="color:#ae81ff">RABBITMQ_DEFAULT_PASS=${AMQP_PASSWORD:-password}</span>
+    <span style="color:#f92672">restart</span>: <span style="color:#ae81ff">unless-stopped</span>
+</code></pre></div><h3 id="redis">Redis</h3>
+<p>Redis is a NoSQL database service.</p>
+<p>In your project, create a file named <code>.docker/redis/Dockerfile</code> with the following contents:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-dockerfile" data-lang="dockerfile"><span style="color:#66d9ef">FROM</span><span style="color:#e6db74"> redis:5-alpine</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">COPY</span> redis.conf /usr/local/etc/redis/redis.conf<span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">CMD</span> [ <span style="color:#e6db74">&#34;redis-server&#34;</span>, <span style="color:#e6db74">&#34;/usr/local/etc/redis/redis.conf&#34;</span> ]<span style="color:#960050;background-color:#1e0010">
+</span></code></pre></div><p>In your project, create a file named <code>.docker/redis/redis.conf</code> with the following contents:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-apacheconf" data-lang="apacheconf">bind <span style="color:#ae81ff">0.0.0.0</span>
+port <span style="color:#ae81ff">6379</span>
+
+<span style="color:#960050;background-color:#1e0010">protected-</span>mode yes
+
+<span style="color:#960050;background-color:#1e0010">tcp-</span>backlog <span style="color:#ae81ff">511</span>
+timeout <span style="color:#ae81ff">0</span>
+<span style="color:#960050;background-color:#1e0010">tcp-</span>keepalive <span style="color:#ae81ff">300</span>
+
+daemonize no
+supervised upstart
+
+pidfile <span style="color:#e6db74">/var/run/redis_6379.pid</span>
+
+loglevel <span style="color:#66d9ef">notice</span>
+logfile <span style="color:#e6db74">&#34;&#34;</span>
+
+databases <span style="color:#ae81ff">16</span>
+
+<span style="color:#960050;background-color:#1e0010">always-show-</span>logo yes
+
+save <span style="color:#ae81ff">900</span> <span style="color:#ae81ff">1</span>
+save <span style="color:#ae81ff">300</span> <span style="color:#ae81ff">10</span>
+save <span style="color:#ae81ff">60</span> <span style="color:#ae81ff">10000</span>
+
+<span style="color:#960050;background-color:#1e0010">stop-writes-on-bgsave-</span>error yes
+rdbcompression yes
+rdbchecksum yes
+dbfilename dump.rdb
+
+dir ./
+
+<span style="color:#960050;background-color:#1e0010">replica-serve-stale-</span>data yes
+<span style="color:#960050;background-color:#1e0010">replica-read-</span>only yes
+<span style="color:#960050;background-color:#1e0010">repl-diskless-</span>sync no
+<span style="color:#960050;background-color:#1e0010">repl-diskless-sync-</span>delay <span style="color:#ae81ff">5</span>
+<span style="color:#960050;background-color:#1e0010">repl-disable-tcp-</span>nodelay no
+<span style="color:#960050;background-color:#1e0010">replica-</span>priority <span style="color:#ae81ff">100</span>
+
+<span style="color:#960050;background-color:#1e0010">lazyfree-lazy-</span>eviction no
+<span style="color:#960050;background-color:#1e0010">lazyfree-lazy-</span>expire no
+<span style="color:#960050;background-color:#1e0010">lazyfree-lazy-server-</span>del no
+<span style="color:#960050;background-color:#1e0010">replica-lazy-</span>flush no
+
+appendonly no
+appendfilename <span style="color:#e6db74">&#34;appendonly.aof&#34;</span>
+appendfsync everysec
+<span style="color:#960050;background-color:#1e0010">no-appendfsync-on-</span>rewrite no
+<span style="color:#960050;background-color:#1e0010">auto-aof-rewrite-</span>percentage <span style="color:#ae81ff">100</span>
+<span style="color:#960050;background-color:#1e0010">auto-aof-rewrite-min-</span>size <span style="color:#ae81ff">64</span>mb
+<span style="color:#960050;background-color:#1e0010">aof-load-</span>truncated yes
+<span style="color:#960050;background-color:#1e0010">aof-use-rdb-</span>preamble yes
+
+<span style="color:#960050;background-color:#1e0010">lua-time-</span>limit <span style="color:#ae81ff">5000</span>
+
+<span style="color:#960050;background-color:#1e0010">slowlog-log-slower-</span>than <span style="color:#ae81ff">10000</span>
+<span style="color:#960050;background-color:#1e0010">slowlog-max-</span>len <span style="color:#ae81ff">128</span>
+
+<span style="color:#960050;background-color:#1e0010">latency-monitor-</span>threshold <span style="color:#ae81ff">0</span>
+
+<span style="color:#960050;background-color:#1e0010">notify-keyspace-</span>events <span style="color:#e6db74">&#34;&#34;</span>
+
+<span style="color:#960050;background-color:#1e0010">hash-max-ziplist-</span>entries <span style="color:#ae81ff">512</span>
+<span style="color:#960050;background-color:#1e0010">hash-max-ziplist-</span>value <span style="color:#ae81ff">64</span>
+<span style="color:#960050;background-color:#1e0010">list-max-ziplist-</span>size -2
+<span style="color:#960050;background-color:#1e0010">list-compress-</span>depth <span style="color:#ae81ff">0</span>
+<span style="color:#960050;background-color:#1e0010">set-max-intset-</span>entries <span style="color:#ae81ff">512</span>
+<span style="color:#960050;background-color:#1e0010">zset-max-ziplist-</span>entries <span style="color:#ae81ff">128</span>
+<span style="color:#960050;background-color:#1e0010">zset-max-ziplist-</span>value <span style="color:#ae81ff">64</span>
+<span style="color:#960050;background-color:#1e0010">hll-sparse-max-</span>bytes <span style="color:#ae81ff">3000</span>
+<span style="color:#960050;background-color:#1e0010">stream-node-max-</span>bytes <span style="color:#ae81ff">4096</span>
+<span style="color:#960050;background-color:#1e0010">stream-node-max-</span>entries <span style="color:#ae81ff">100</span>
+activerehashing yes
+<span style="color:#960050;background-color:#1e0010">client-output-buffer-</span>limit normal <span style="color:#ae81ff">0</span> <span style="color:#ae81ff">0</span> <span style="color:#ae81ff">0</span>
+<span style="color:#960050;background-color:#1e0010">client-output-buffer-</span>limit replica <span style="color:#ae81ff">256</span>mb <span style="color:#ae81ff">64</span>mb <span style="color:#ae81ff">60</span>
+<span style="color:#960050;background-color:#1e0010">client-output-buffer-</span>limit pubsub <span style="color:#ae81ff">32</span>mb <span style="color:#ae81ff">8</span>mb <span style="color:#ae81ff">60</span>
+hz <span style="color:#ae81ff">10</span>
+<span style="color:#960050;background-color:#1e0010">dynamic-</span>hz yes
+<span style="color:#960050;background-color:#1e0010">aof-rewrite-incremental-</span>fsync yes
+<span style="color:#960050;background-color:#1e0010">rdb-save-incremental-</span>fsync yes
+</code></pre></div><p>Now, you will need to add a new amqp service in your <code>docker-compose.yaml</code> file:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">services</span>:
+  <span style="color:#f92672">redis</span>:
+    <span style="color:#f92672">build</span>:
+      <span style="color:#f92672">context</span>: <span style="color:#ae81ff">.docker/redis/</span>
+    <span style="color:#f92672">restart</span>: <span style="color:#ae81ff">unless-stopped</span>
+    <span style="color:#f92672">ports</span>:
+      - <span style="color:#ae81ff">${REDIS_PORT:-6379}:6379</span>
+</code></pre></div></div>
+          
+          <p class="post-meta border-bottom pb-3 mb-0 mt-3">Updated on 12 Jul 2020</p>
+          <nav class="pagination mt-3">
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            <a class="nav nav-prev" href="https://php-etl.github.io/documentation/feature/rejection/"><i class="ti-arrow-left mr-2"></i> <span class="d-none d-md-block">Rejection</span></a>
+            
+            
+            <a class="nav nav-next" href="https://php-etl.github.io/documentation/getting-started/pipeline/"> <span class="d-none d-md-block">Pipeline</span><i class="ti-arrow-right ml-2"></i></a>
+            
+          </nav>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- /details page -->
+
+
+
+
+
+
+    <!-- footer -->
+<footer class="section pb-4">
+  <div class="container">
+    <div class="row align-items-center">
+      <div class="col-md-8 text-md-left text-center">
+       <p class="mb-md-0 mb-4">The Middleware Documents are copyright © <a href="https://kiboko.fr/">Kiboko</a> 2020, 2021.</p>
+      </div>
+      <div class="col-md-4 text-md-right text-center">
+        <ul class="list-inline">
+          
+        </ul>
+      </div>
+    </div>
+  </div>
+</footer>
+<!-- /footer -->
+
+<!-- Main Script -->
+
+<script src="https://php-etl.github.io/documentation/js/script.min.js"></script>
+  </body>
+
+</html>

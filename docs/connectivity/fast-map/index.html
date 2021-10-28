@@ -20,7 +20,7 @@
   <link rel="stylesheet" href="https://php-etl.github.io/documentation/plugins/highlight/hybrid.css">
 
   <!--Favicon-->
-  <link rel="icon" href="https://php-etl.github.io/documentation/images/favicon.png" type="image/x-icon">
+  <link rel="icon" href="https://php-etl.github.io/documentation/favicon.png" type="image/x-icon">
 
   <!-- fonts -->
   <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700&display=swap" rel="stylesheet">
@@ -96,13 +96,17 @@
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle text-dark" href="#" role="button" data-toggle="dropdown"
             aria-haspopup="true" aria-expanded="false">
-            Installation
+            Getting Started
           </a>
           <div class="dropdown-menu">
             
-            <a class="dropdown-item" href="/documentation/installation/bare-metal">Bare metal</a>
+            <a class="dropdown-item" href="/documentation/getting-started/setup">Setup</a>
             
-            <a class="dropdown-item" href="/documentation/installation/manual">Manual</a>
+            <a class="dropdown-item" href="/documentation/getting-started/satellite">Creating Satellites</a>
+            
+            <a class="dropdown-item" href="/documentation/getting-started/pipeline">Pipelines</a>
+            
+            <a class="dropdown-item" href="/documentation/getting-started/workflow">Workflows</a>
             
           </div>
         </li>
@@ -116,35 +120,15 @@
           </a>
           <div class="dropdown-menu">
             
-            <a class="dropdown-item" href="/documentation/components/dashboard">Dashboard</a>
-            
-            <a class="dropdown-item" href="/documentation/components/satellite">Satellite</a>
-            
-            <a class="dropdown-item" href="/documentation/components/pipeline">Pipeline</a>
-            
-            <a class="dropdown-item" href="/documentation/components/workflow">Workflow</a>
+            <a class="dropdown-item" href="/documentation/feature/services">Declaring services</a>
             
             <a class="dropdown-item" href="/documentation/feature/expression-language">Expression Language</a>
             
             <a class="dropdown-item" href="/documentation/feature/logger">Logging</a>
             
-          </div>
-        </li>
-        
-        
-        
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle text-dark" href="#" role="button" data-toggle="dropdown"
-            aria-haspopup="true" aria-expanded="false">
-            Framework
-          </a>
-          <div class="dropdown-menu">
+            <a class="dropdown-item" href="/documentation/feature/rejection">Rejection</a>
             
-            <a class="dropdown-item" href="/documentation/framework/contracts">Contracts</a>
-            
-            <a class="dropdown-item" href="/documentation/framework/metadata">Metadata</a>
-            
-            <a class="dropdown-item" href="/documentation/framework/promise">Promise</a>
+            <a class="dropdown-item" href="/documentation/feature/state">State</a>
             
           </div>
         </li>
@@ -522,16 +506,22 @@
             
               
             
-              
-            
-              
-            
           </ul>
         </div>
       </div>
       <div class="col-lg-9">
         <div class="p-lg-5 p-4 bg-white">
-          <h2 class="mb-5">Fast Map</h2>
+          <h1 class="single-title mb-5">
+              
+              
+              <i class="logo-fastmap icon d-block">
+                  <svg>
+                      <use xlink:href="https://php-etl.github.io/documentation/sprites.svg#fastmap"></use>
+                  </svg>
+              </i>
+              
+              Fast Map
+          </h1>
           
           <div class="content">
 
@@ -543,7 +533,6 @@
 </div>
 
 
-<h1 id="fast-map">Fast Map</h1>
 <ul>
 <li><a href="#what-is-it-">What is it ?</a></li>
 <li><a href="#installation">Installation</a></li>
@@ -562,6 +551,7 @@
 a new format of the same data. By this operation, it is possible to transform
 the way the data is represented.</p>
 </blockquote>
+<p><img src="fastmap.svg" alt="Fastmap schema"></p>
 <h2 id="what-is-it-">What is it ?</h2>
 <p>The FastMap plugin aims at integrating mappers into the <a href="https://github.com/php-etl/pipeline">Pipeline</a> stack.</p>
 <p>FastMap Plugin consists of two components, each with a different purpose.</p>
@@ -820,274 +810,6 @@ options <code>class</code> and <code>expression</code>.</p>
             
             
             
-            
-            
-            
-
-            
-            
-            
-            
-            
-
-            
-            
-            
-            
-            
-            
-            
-            
-
-            
-            
-            
-
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-
-            
-            
-            
-
-            
-            
-            
-            
-            
-            
-            
-            
-
-            
-            
-            
-
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-
-            
-            
-            
-
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-
-            
-            
-            
-
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-
-            
-            
-            
-            
-            
-
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-
-            
-            
-            
-
-            
-            
-            
-            
-            
-            
-            
-            
-
-            
-            
-            
-
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-
-            
-            
-            
-
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-
-            
-            
-            
-
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-
-            
-            
-            
-
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-
-            
-            
-            
-
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-
-            
-            
-            
-
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-
-            
-            
-            
-
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-
-            
-            
-            
-
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
 
             
             
@@ -1183,6 +905,141 @@ options <code>class</code> and <code>expression</code>.</p>
             
             
             
+
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
             
             
             
@@ -1225,9 +1082,140 @@ options <code>class</code> and <code>expression</code>.</p>
             
             
             
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
             
             
 
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+
+            
+            
+            
             
             
             

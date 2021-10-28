@@ -2,21 +2,19 @@
 title: "Expressions"
 date: 2021-08-12T12:08:50Z
 draft: false
-type: "component"
+type: "feature"
 icon: "ti-ruler-pencil"
 description: "Expression Language capabilities to express your own constraints"
 weight: 3
 ---
 
-# Expression functions
-
-### Generic Expression functions
+## Generic Expression functions
 
   - [Base Expression functions](#base-expression-functions)
   - [Array Expression functions](#array-expression-functions)
   - [String Expression functions](#array-expression-functions)
 
-### Platform-specific expression functions
+## Platform-specific expression functions
 
   - [Akeneo Expression functions](../../connectivity/akeneo/expression-language)
 
