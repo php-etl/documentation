@@ -76,7 +76,7 @@ It's possible to use a service as an argument when declaring a service by using 
 
 ```yaml
 services:
-  App\Class\Foo:
+  App\Foo\Foo:
     arguments:
-      - '@App\Class\Bar'
+      - '@App\Foo\Bar'
 ```
