@@ -30,7 +30,7 @@ If you are using a very simple service, you can define it as follows:
 
 ```yaml
 services:
-  App\Class\Bar: ~
+  App\Foo\Bar: ~
 ```
 
 ### Defining your arguments
