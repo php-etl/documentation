@@ -10,7 +10,9 @@
 - Edit theme design & layout in `themes/middleware`
 - Edit theme configuration in `config.toml`
 
-Local : `hugo server -D`
+Local : 
+- `brew install hugo`
+- `hugo server -D`
 
 ## Maintainers
 
