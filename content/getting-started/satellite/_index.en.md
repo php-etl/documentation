@@ -140,6 +140,9 @@ There are 4 types of runtimes, depending on your needs you will have to choose o
 a means for one application to provide other applications with real-time information
  * `pipeline`: the micro-service will be operating a data pipeline, executed in the backend that can be executed as a cron job.
  * `workflow`: the micro-service will be orchestrating more than one data pipeline, executed in the backend that can be executed as a cron job
+ 
+#### Using HTTP API
+Please check [How to setup HTTP API](../http-api)
 
 #### Using Pipeline
 
