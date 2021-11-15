@@ -318,6 +318,7 @@ pre {
 .navbar-brand img {
   max-width: 100px;
   margin-bottom: 0;
+  vertical-align: top;
 }
 
 .navbar .nav-item > .nav-link {
