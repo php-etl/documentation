@@ -38,6 +38,12 @@ option which allows you to define which service to use.
 custom:
   extractor:
     use: 'App\Class\Bar'
+    services:
+      App\Class\Bar:
+        arguments:
+            - '@foo'
+        tags:
+            - { example }
 ```
 
 ### Building a transformer
@@ -46,6 +52,12 @@ custom:
 custom:
   transformer:
     use: 'App\Class\Bar'
+    services:
+      App\Class\Bar:
+        arguments:
+            - '@foo'
+        tags:
+            - { example }
 ```
 
 ### Building a loader
@@ -54,4 +66,10 @@ custom:
 custom:
   loader:
     use: 'App\Class\Bar'
+    services:
+      App\Class\Bar:
+        arguments:
+            - '@foo'
+        tags:
+            - { example }
 ```
