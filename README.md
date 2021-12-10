@@ -2,6 +2,8 @@
 
 ![alt Gyroscops](static/favicon.png)
 
+[The documentation can be read here](https://php-etl.github.io/documentation/)
+
 ## Technologies
 - Hugo framework [docs](https://gohugo.io/documentation/)
 
