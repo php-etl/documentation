@@ -134,13 +134,13 @@ satellites:
 Now that we have made our environment prepared for our satellite, we will declare 
 the way we want our pipeline to handle our data flows.
 
-There are 4 types of runtimes, depending on your needs you will have to choose one of:
- * `http-api`: the micro-service will be operating an API, on which several URL routes can be registered. `http-api` is used for REST API. 
-It also allows the use of a JSON Web Token (JWT) or Basic HTTP authentication.
- * `http-hook`: the micro-service will be operating an API on a single URL route. `http-hook` is used for webhooks. A webhook is a POST request sent to a URL. It's considered to be 
-a means for one application to provide other applications with real-time information
- * `pipeline`: the micro-service will be operating a data pipeline, executed in the backend that can be executed as a cron job.
- * `workflow`: the micro-service will be orchestrating more than one data pipeline, executed in the backend that can be executed as a cron job
+There are 4 types of runtimes. Choose one depending on your needs:
+|name|usage|
+|-|-|
+|http-api|The micro-service will be operating an API, on which several URL routes can be registered. `http-api` is used for REST API. It allows the use of a JSON Web Token (JWT) or Basic HTTP authentication.|
+|http-hook|The micro-service will be operating an API on a single URL route. `http-hook` is used for webhooks. A webhook is a POST request sent to a URL. It's considered to be a mean for one application to provide other applications with real-time information.|
+|pipeline|The micro-service will be operating a data pipeline, executed in the backend that can be executed as a cron job.|
+|workflow|The micro-service will be orchestrating more than one data pipeline, executed in the backend, that can be executed as a cron job.|
  
 #### Using HTTP API
 Please check [How to setup HTTP API](../http-api)
