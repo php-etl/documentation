@@ -207,14 +207,7 @@ select:focus {
 }
 
 .section-sm {
-  padding-top: 60px;
-  padding-bottom: 60px;
-}
-
-@media (max-width: 768px) {
-  .section-sm {
-    padding-top: 40px;
-  }
+  padding-top: 30px;
 }
 
 .section-title {
@@ -817,7 +810,7 @@ tbody {
 .sidebar{
   background-color: var(--white-color);
   position: sticky;
-  top: 50px;
+  top: 150px;
   margin-bottom: 30px;
   padding: 40px 10px 20px 10px;
 }
