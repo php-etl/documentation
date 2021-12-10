@@ -10,16 +10,9 @@ weight: 1
 
 ```yaml
 satellite:
-  #  docker:
-  #    from: php:8.0-fpm-alpine
-  #    workdir: /var/www/html
-  #    tags:
-  #      - kiboko/satellite:foo
-  #      - kiboko/satellite:bar
   filesystem:
     path: foo
   composer:
-    #    from-local: true
     require:
       - "middlewares/uuid:dev-master"
       - "middlewares/base-path:dev-master"
@@ -33,18 +26,8 @@ satellite:
       - "php-etl/satellite"
       - "php-etl/api-runtime"
       - "php-etl/mapping-contracts"
-      - "tuupola/slim-jwt-auth"
-      - "tuupola/slim-basic-auth"
   http_api:
     path: /foo
-    authorization:
-      jwt:
-        secret: 'spaghetti'
-      basic:
-        - user: bob
-          password: pass
-        - user: bill
-          password: lol
     routes:
       - route: /hello
         expression: 'input["_items"]'
@@ -87,11 +70,26 @@ satellite:
                 logger:
                   type: stderr
 ```
+Build this satellite by running
+
+`bin/satellite build the-config.yaml`
+
+Then start a server in the path foo/
+
+`php -S localhost:8000 foo/main.php`
+
+POST requests can then be executed to `http://localhost:8000/foo/hello` and `http://localhost:8000/foo/events/products`.
 
 ### Adding JSON Web Token (JWT) Authorization
 
+JWT can be used to restrict requests.
+
 ```yaml
 satellite:
+# ...
+   composer:
+      require:
+         - "tuupola/slim-jwt-auth"
 # ...
    http_api:
       authorization:
@@ -99,14 +97,36 @@ satellite:
             secret: 'mysecret'
 ```
 
+With this config, each requests must contain the header __Authorization__:
+|header|value|
+|-|-|
+|`Authorization`|`Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6Ik`[...]|
+
+The string after "Bearer" is the token containing the secret. This site can be used to generate a token: [https://jwt.io](https://jwt.io)
+
 ### Adding Basic HTTP Authorization
 
 ```yaml
 satellite:
+# ...
+   composer:
+      require:
+         - "tuupola/slim-basic-auth"
 # ...
    http_api:
       authorization:
          basic:
            - user: john
              password: mypassword
+            - user: bill
+             password: otherpassword
 ```
+
+The `basic` node is an array, and can contain multiple user/password pairs.
+
+With this config, each requests must contain the header __Authorization__:
+|header|value|
+|-|-|
+|`Authorization`|`Basic am9objpteXBhc3N3b3Jk`|
+
+The string after "Basic" is the combination `user:password` [encoded in Base64](https://www.base64encode.org/).
