@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <title>SQL</title>
 
-  <meta name="generator" content="Hugo 0.82.0" />
+  <meta name="generator" content="Hugo 0.110.0">
 
   <!-- mobile responsive meta -->
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -100,13 +100,15 @@
           </a>
           <div class="dropdown-menu">
             
-            <a class="dropdown-item" href="/documentation/getting-started/setup">Setup</a>
+            <a class="dropdown-item" href="/documentation/getting-started/environment-setup">Environment Setup</a>
             
-            <a class="dropdown-item" href="/documentation/getting-started/satellite">Creating Satellites</a>
+            <a class="dropdown-item" href="/documentation/getting-started/installation">Installation</a>
             
-            <a class="dropdown-item" href="/documentation/getting-started/pipeline">Pipelines</a>
+            <a class="dropdown-item" href="/documentation/getting-started/writing-configuration">Writing Configuration</a>
             
-            <a class="dropdown-item" href="/documentation/getting-started/workflow">Workflows</a>
+            <a class="dropdown-item" href="/documentation/getting-started/compilation">Compilation</a>
+            
+            <a class="dropdown-item" href="/documentation/getting-started/execution">Execution</a>
             
           </div>
         </li>
@@ -116,19 +118,15 @@
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle text-dark" href="#" role="button" data-toggle="dropdown"
             aria-haspopup="true" aria-expanded="false">
-            Features
+            Core concepts
           </a>
           <div class="dropdown-menu">
             
-            <a class="dropdown-item" href="/documentation/feature/services">Declaring services</a>
+            <a class="dropdown-item" href="/documentation/core-concept/satellite">Satellite</a>
             
-            <a class="dropdown-item" href="/documentation/feature/expression-language">Expression Language</a>
+            <a class="dropdown-item" href="/documentation/core-concept/pipeline">Pipeline</a>
             
-            <a class="dropdown-item" href="/documentation/feature/logger">Logging</a>
-            
-            <a class="dropdown-item" href="/documentation/feature/rejection">Rejection</a>
-            
-            <a class="dropdown-item" href="/documentation/feature/state">State</a>
+            <a class="dropdown-item" href="/documentation/core-concept/workflow">Workflow</a>
             
           </div>
         </li>
@@ -161,6 +159,28 @@
             <a class="dropdown-item" href="/documentation/connectivity/sql">SQL database</a>
             
             <a class="dropdown-item" href="/documentation/connectivity/sylius">Sylius</a>
+            
+          </div>
+        </li>
+        
+        
+        
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle text-dark" href="#" role="button" data-toggle="dropdown"
+            aria-haspopup="true" aria-expanded="false">
+            Features
+          </a>
+          <div class="dropdown-menu">
+            
+            <a class="dropdown-item" href="/documentation/feature/services">Declaring services</a>
+            
+            <a class="dropdown-item" href="/documentation/feature/expression-language">Expression Language</a>
+            
+            <a class="dropdown-item" href="/documentation/feature/logger">Logging</a>
+            
+            <a class="dropdown-item" href="/documentation/feature/rejection">Rejection</a>
+            
+            <a class="dropdown-item" href="/documentation/feature/state">State</a>
             
           </div>
         </li>
@@ -206,6 +226,8 @@
           <ul class="list-styled">
             
             <a class="back-btn" href="/documentation"></a>
+            
+              
             
               
             
@@ -310,50 +332,6 @@
 
 
 
-<li data-nav-id="https://php-etl.github.io/documentation/connectivity/csv/" title="CSV" class="sidelist
-  ">
-  <a href="https://php-etl.github.io/documentation/connectivity/csv/">
-    CSV
-  </a>
-  
-  
-</li>
-
-
-        
-      
-        
-          
-
-
-
-
-
-
-
-
-<li data-nav-id="https://php-etl.github.io/documentation/connectivity/custom/" title="Custom connector" class="sidelist
-  ">
-  <a href="https://php-etl.github.io/documentation/connectivity/custom/">
-    Custom connector
-  </a>
-  
-  
-</li>
-
-
-        
-      
-        
-          
-
-
-
-
-
-
-
-
 <li data-nav-id="https://php-etl.github.io/documentation/connectivity/fast-map/" title="Fast Map" class="sidelist
   ">
   <a href="https://php-etl.github.io/documentation/connectivity/fast-map/">
@@ -376,10 +354,10 @@
 
 
 
-<li data-nav-id="https://php-etl.github.io/documentation/connectivity/ftp/" title="FTP" class="sidelist
+<li data-nav-id="https://php-etl.github.io/documentation/connectivity/sylius/" title="Sylius" class="sidelist
   ">
-  <a href="https://php-etl.github.io/documentation/connectivity/ftp/">
-    FTP
+  <a href="https://php-etl.github.io/documentation/connectivity/sylius/">
+    Sylius
   </a>
   
   
@@ -398,32 +376,10 @@
 
 
 
-<li data-nav-id="https://php-etl.github.io/documentation/connectivity/nl-json/" title="NL-JSON" class="sidelist
+<li data-nav-id="https://php-etl.github.io/documentation/connectivity/csv/" title="CSV" class="sidelist
   ">
-  <a href="https://php-etl.github.io/documentation/connectivity/nl-json/">
-    NL-JSON
-  </a>
-  
-  
-</li>
-
-
-        
-      
-        
-          
-
-
-
-
-
-
-
-
-<li data-nav-id="https://php-etl.github.io/documentation/connectivity/sftp/" title="SFTP" class="sidelist
-  ">
-  <a href="https://php-etl.github.io/documentation/connectivity/sftp/">
-    SFTP
+  <a href="https://php-etl.github.io/documentation/connectivity/csv/">
+    CSV
   </a>
   
   
@@ -486,10 +442,76 @@
 
 
 
-<li data-nav-id="https://php-etl.github.io/documentation/connectivity/sylius/" title="Sylius" class="sidelist
+<li data-nav-id="https://php-etl.github.io/documentation/connectivity/ftp/" title="FTP" class="sidelist
   ">
-  <a href="https://php-etl.github.io/documentation/connectivity/sylius/">
-    Sylius
+  <a href="https://php-etl.github.io/documentation/connectivity/ftp/">
+    FTP
+  </a>
+  
+  
+</li>
+
+
+        
+      
+        
+          
+
+
+
+
+
+
+
+
+<li data-nav-id="https://php-etl.github.io/documentation/connectivity/sftp/" title="SFTP" class="sidelist
+  ">
+  <a href="https://php-etl.github.io/documentation/connectivity/sftp/">
+    SFTP
+  </a>
+  
+  
+</li>
+
+
+        
+      
+        
+          
+
+
+
+
+
+
+
+
+<li data-nav-id="https://php-etl.github.io/documentation/connectivity/nl-json/" title="NL-JSON" class="sidelist
+  ">
+  <a href="https://php-etl.github.io/documentation/connectivity/nl-json/">
+    NL-JSON
+  </a>
+  
+  
+</li>
+
+
+        
+      
+        
+          
+
+
+
+
+
+
+
+
+<li data-nav-id="https://php-etl.github.io/documentation/connectivity/custom/" title="Custom connector" class="sidelist
+  ">
+  <a href="https://php-etl.github.io/documentation/connectivity/custom/">
+    Custom connector
   </a>
   
   
@@ -548,145 +570,143 @@
 <p>The SQL plugin allows you to write your own SQL queries and use them into the <a href="https://github.com/php-etl/pipeline">Pipeline</a>
 stack.</p>
 <h2 id="installation">Installation</h2>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">composer require php-etl/sql-plugin
-</code></pre></div><h2 id="usage">Usage</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>composer require php-etl/sql-plugin
+</span></span></code></pre></div><h2 id="usage">Usage</h2>
 <h3 id="database-connection">Database connection</h3>
 <p>The SQL plugin uses the PDO extension and relies on its interface to access databases using
 the <code>dsn</code>, <code>username</code> and <code>password</code> parameters.</p>
 <p>This connection must be present in any case, whether it be when defining the extractor,
 loader or lookup.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">sql</span>:
-  <span style="color:#f92672">connection</span>:
-    <span style="color:#f92672">dsn</span>: <span style="color:#e6db74">&#39;mysql:host=127.0.0.1;port=3306;dbname=kiboko&#39;</span>
-    <span style="color:#f92672">username</span>: <span style="color:#ae81ff">username</span>
-    <span style="color:#f92672">password</span>: <span style="color:#ae81ff">password</span>
-</code></pre></div><p>It is possible to specify options at the time of this connection using <code>options</code>. Currently, it is only possible to
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#f92672">sql</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">connection</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">dsn</span>: <span style="color:#e6db74">&#39;mysql:host=127.0.0.1;port=3306;dbname=kiboko&#39;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">username</span>: <span style="color:#ae81ff">username</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">password</span>: <span style="color:#ae81ff">password</span>
+</span></span></code></pre></div><p>It is possible to specify options at the time of this connection using <code>options</code>. Currently, it is only possible to
 specify if the database connection should be persistent.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">sql</span>:
-  <span style="color:#f92672">connection</span>:
-    <span style="color:#75715e"># ...</span>
-    <span style="color:#f92672">options</span>:
-      <span style="color:#f92672">persistent</span>: <span style="color:#66d9ef">true</span>
-</code></pre></div><h3 id="building-an-extractor">Building an extractor</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#f92672">sql</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">connection</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># ...</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">options</span>:
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">persistent</span>: <span style="color:#66d9ef">true</span>
+</span></span></code></pre></div><h3 id="building-an-extractor">Building an extractor</h3>
 <p>In the configuration of your extractor, you must write your query avec l&rsquo;option <code>query</code>.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">sql</span>:
-  <span style="color:#f92672">extractor</span>:
-    <span style="color:#f92672">query</span>: <span style="color:#e6db74">&#39;SELECT * FROM table1&#39;</span>
-  <span style="color:#f92672">connection</span>:
-    <span style="color:#f92672">dsn</span>: <span style="color:#e6db74">&#39;mysql:host=127.0.0.1;port=3306;dbname=kiboko&#39;</span>
-    <span style="color:#f92672">username</span>: <span style="color:#ae81ff">username</span>
-    <span style="color:#f92672">password</span>: <span style="color:#ae81ff">password</span>
-</code></pre></div><h3 id="building-a-lookup">Building a lookup</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#f92672">sql</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">extractor</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">query</span>: <span style="color:#e6db74">&#39;SELECT * FROM table1&#39;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">connection</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">dsn</span>: <span style="color:#e6db74">&#39;mysql:host=127.0.0.1;port=3306;dbname=kiboko&#39;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">username</span>: <span style="color:#ae81ff">username</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">password</span>: <span style="color:#ae81ff">password</span>
+</span></span></code></pre></div><h3 id="building-a-lookup">Building a lookup</h3>
 <p>In some cases, you will need to perform lookups by joining data from input columns to columns in a reference dataset;
 this is called a lookup.</p>
 <p>In the configuration of your lookup, you must write your query avec l&rsquo;option <code>query</code>.</p>
 <p>The <code>merge</code> option allows you to add data to your dataset, in a sense merging your actual dataset with your new data.</p>
 <p>The <code>map</code> option comes from the <a href="../../../connectivity/fast-map">FastMap</a> plugin, feel free to read its documentation
 to understand how to use it.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">sql</span>:
-  <span style="color:#f92672">lookup</span>:
-    <span style="color:#f92672">query</span>: <span style="color:#e6db74">&#39;SELECT * FROM table2 WHERE bar = foo&#39;</span>
-    <span style="color:#f92672">merge</span>:
-      <span style="color:#f92672">map</span>:
-        - <span style="color:#f92672">field</span>: <span style="color:#e6db74">&#39;[options]&#39;</span>
-          <span style="color:#f92672">expression</span>: <span style="color:#e6db74">&#39;lookup[&#34;name&#34;]&#39;</span>
-  <span style="color:#f92672">connection</span>:
-    <span style="color:#f92672">dsn</span>: <span style="color:#e6db74">&#39;mysql:host=127.0.0.1;port=3306;dbname=kiboko&#39;</span>
-    <span style="color:#f92672">username</span>: <span style="color:#ae81ff">username</span>
-    <span style="color:#f92672">password</span>: <span style="color:#ae81ff">password</span>
-
-</code></pre></div><h3 id="building-a-conditionallookup">Building a ConditionalLookup</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#f92672">sql</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">lookup</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">query</span>: <span style="color:#e6db74">&#39;SELECT * FROM table2 WHERE bar = foo&#39;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">merge</span>:
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">map</span>:
+</span></span><span style="display:flex;"><span>        - <span style="color:#f92672">field</span>: <span style="color:#e6db74">&#39;[options]&#39;</span>
+</span></span><span style="display:flex;"><span>          <span style="color:#f92672">expression</span>: <span style="color:#e6db74">&#39;lookup[&#34;name&#34;]&#39;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">connection</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">dsn</span>: <span style="color:#e6db74">&#39;mysql:host=127.0.0.1;port=3306;dbname=kiboko&#39;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">username</span>: <span style="color:#ae81ff">username</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">password</span>: <span style="color:#ae81ff">password</span>
+</span></span></code></pre></div><h3 id="building-a-conditionallookup">Building a ConditionalLookup</h3>
 <p>The conditional lookup is a lookup that takes conditions into account. Your lookup will be executed when each
 condition is met.</p>
 <p>About its configuration, you will find the same options as for the classic lookup, except that there is an additional
 <code>condition</code> option.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">sql</span>:
-  <span style="color:#f92672">lookup</span>:
-    <span style="color:#f92672">conditional</span>:
-      - <span style="color:#f92672">condition</span>: <span style="color:#e6db74">&#39;@=input[&#34;id&#34;] &gt; 2&#39;</span>
-        <span style="color:#f92672">query</span>: <span style="color:#e6db74">&#39;SELECT * FROM foo WHERE value IS NOT NULL AND id &lt;= ?&#39;</span>
-        <span style="color:#f92672">parameters</span>:
-          - <span style="color:#f92672">key</span>: <span style="color:#e6db74">&#39;identifier&#39;</span>
-            <span style="color:#f92672">value</span>: <span style="color:#e6db74">&#39;@=3&#39;</span>
-        <span style="color:#f92672">merge</span>:
-          <span style="color:#f92672">map</span>:
-            - <span style="color:#f92672">field</span>: <span style="color:#e6db74">&#39;[options]&#39;</span>
-              <span style="color:#f92672">expression</span>: <span style="color:#e6db74">&#39;lookup[&#34;name&#34;]&#39;</span>
-  <span style="color:#75715e"># ...</span>
-</code></pre></div><h3 id="building-a-loader">Building a loader</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#f92672">sql</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">lookup</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">conditional</span>:
+</span></span><span style="display:flex;"><span>      - <span style="color:#f92672">condition</span>: <span style="color:#e6db74">&#39;@=input[&#34;id&#34;] &gt; 2&#39;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">query</span>: <span style="color:#e6db74">&#39;SELECT * FROM foo WHERE value IS NOT NULL AND id &lt;= ?&#39;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">parameters</span>:
+</span></span><span style="display:flex;"><span>          - <span style="color:#f92672">key</span>: <span style="color:#e6db74">&#39;identifier&#39;</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">value</span>: <span style="color:#e6db74">&#39;@=3&#39;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">merge</span>:
+</span></span><span style="display:flex;"><span>          <span style="color:#f92672">map</span>:
+</span></span><span style="display:flex;"><span>            - <span style="color:#f92672">field</span>: <span style="color:#e6db74">&#39;[options]&#39;</span>
+</span></span><span style="display:flex;"><span>              <span style="color:#f92672">expression</span>: <span style="color:#e6db74">&#39;lookup[&#34;name&#34;]&#39;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e"># ...</span>
+</span></span></code></pre></div><h3 id="building-a-loader">Building a loader</h3>
 <p>In the configuration of your loader, you must write your query avec l&rsquo;option <code>query</code>.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">sql</span>:
-  <span style="color:#f92672">loader</span>:
-    <span style="color:#f92672">query</span>: <span style="color:#e6db74">&#39;INSERT INTO table1 VALUES (bar, foo, barfoo)&#39;</span>
-  <span style="color:#f92672">connection</span>:
-    <span style="color:#f92672">dsn</span>: <span style="color:#e6db74">&#39;mysql:host=127.0.0.1;port=3306;dbname=kiboko&#39;</span>
-    <span style="color:#f92672">username</span>: <span style="color:#ae81ff">username</span>
-    <span style="color:#f92672">password</span>: <span style="color:#ae81ff">password</span>
-
-</code></pre></div><h3 id="building-a-conditionalloader">Building a ConditionalLoader</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#f92672">sql</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">loader</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">query</span>: <span style="color:#e6db74">&#39;INSERT INTO table1 VALUES (bar, foo, barfoo)&#39;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">connection</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">dsn</span>: <span style="color:#e6db74">&#39;mysql:host=127.0.0.1;port=3306;dbname=kiboko&#39;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">username</span>: <span style="color:#ae81ff">username</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">password</span>: <span style="color:#ae81ff">password</span>
+</span></span></code></pre></div><h3 id="building-a-conditionalloader">Building a ConditionalLoader</h3>
 <p>The conditional loader is a loader that takes conditions into account. Your loader will be executed when each
 condition is met.</p>
 <p>About its configuration, you will find the same options as for the classic loader, except that there is an additional
 <code>condition</code> option.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">sql</span>:
-  <span style="color:#f92672">loader</span>:
-    <span style="color:#f92672">conditional</span>:
-      - <span style="color:#f92672">condition</span>: <span style="color:#e6db74">&#39;@=input[&#34;id&#34;] &gt; 2&#39;</span>
-        <span style="color:#f92672">query</span>: <span style="color:#e6db74">&#39;SELECT * FROM foo WHERE value IS NOT NULL AND id &lt;= ?&#39;</span>
-        <span style="color:#f92672">parameters</span>:
-          - <span style="color:#f92672">key</span>: <span style="color:#e6db74">&#39;identifier&#39;</span>
-            <span style="color:#f92672">value</span>: <span style="color:#e6db74">&#39;@=3&#39;</span>
-  <span style="color:#75715e"># ...</span>
-</code></pre></div><h2 id="advanced-usage">Advanced Usage</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#f92672">sql</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">loader</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">conditional</span>:
+</span></span><span style="display:flex;"><span>      - <span style="color:#f92672">condition</span>: <span style="color:#e6db74">&#39;@=input[&#34;id&#34;] &gt; 2&#39;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">query</span>: <span style="color:#e6db74">&#39;SELECT * FROM foo WHERE value IS NOT NULL AND id &lt;= ?&#39;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">parameters</span>:
+</span></span><span style="display:flex;"><span>          - <span style="color:#f92672">key</span>: <span style="color:#e6db74">&#39;identifier&#39;</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">value</span>: <span style="color:#e6db74">&#39;@=3&#39;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e"># ...</span>
+</span></span></code></pre></div><h2 id="advanced-usage">Advanced Usage</h2>
 <h3 id="using-params-in-your-queries">Using params in your queries</h3>
 <p>Thanks to the SQL plugin, it is possible to write your queries with parameters.</p>
 <p>If you write a prepared statement using named parameters (<code>:param</code>), your parameter key in the configuration will be
 the name of your parameter without the <code>:</code> :</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">sql</span>:
-  <span style="color:#f92672">loader</span>:
-    <span style="color:#f92672">query</span>: <span style="color:#e6db74">&#39;INSERT INTO table1 VALUES (:value1, :value2, :value3)&#39;</span>
-    <span style="color:#f92672">parameters</span>:
-      - <span style="color:#f92672">key</span>: <span style="color:#ae81ff">value1</span>
-        <span style="color:#f92672">value</span>: <span style="color:#e6db74">&#39;@=input[&#34;value1&#34;]&#39;</span>
-      - <span style="color:#f92672">key</span>: <span style="color:#ae81ff">value2</span>
-        <span style="color:#f92672">value</span>: <span style="color:#e6db74">&#39;@=input[&#34;value3&#34;]&#39;</span>
-      - <span style="color:#f92672">key</span>: <span style="color:#ae81ff">value3</span>
-        <span style="color:#f92672">value</span>: <span style="color:#e6db74">&#39;@=input[&#34;value3&#34;]&#39;</span>
-    <span style="color:#75715e"># ... </span>
-</code></pre></div><p>If you are using a prepared statement using interrogative markers (<code>?</code>), your parameter key in the
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#f92672">sql</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">loader</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">query</span>: <span style="color:#e6db74">&#39;INSERT INTO table1 VALUES (:value1, :value2, :value3)&#39;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">parameters</span>:
+</span></span><span style="display:flex;"><span>      - <span style="color:#f92672">key</span>: <span style="color:#ae81ff">value1</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">value</span>: <span style="color:#e6db74">&#39;@=input[&#34;value1&#34;]&#39;</span>
+</span></span><span style="display:flex;"><span>      - <span style="color:#f92672">key</span>: <span style="color:#ae81ff">value2</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">value</span>: <span style="color:#e6db74">&#39;@=input[&#34;value3&#34;]&#39;</span>
+</span></span><span style="display:flex;"><span>      - <span style="color:#f92672">key</span>: <span style="color:#ae81ff">value3</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">value</span>: <span style="color:#e6db74">&#39;@=input[&#34;value3&#34;]&#39;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># ... </span>
+</span></span></code></pre></div><p>If you are using a prepared statement using interrogative markers (<code>?</code>), your parameter key in the
 configuration will be its position (starting from 1) :</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">sql</span>:
-  <span style="color:#f92672">loader</span>: 
-    <span style="color:#f92672">query</span>: <span style="color:#e6db74">&#39;INSERT INTO table1 VALUES (?, ?, ?)&#39;</span>
-    <span style="color:#f92672">parameters</span>:
-      - <span style="color:#f92672">key</span>: <span style="color:#ae81ff">1</span>
-        <span style="color:#f92672">value</span>: <span style="color:#e6db74">&#39;@=input[&#34;value1&#34;]&#39;</span>
-      - <span style="color:#f92672">key</span>: <span style="color:#ae81ff">2</span>
-        <span style="color:#f92672">value</span>: <span style="color:#e6db74">&#39;@=input[&#34;value3&#34;]&#39;</span>
-      - <span style="color:#f92672">key</span>: <span style="color:#ae81ff">3</span>
-        <span style="color:#f92672">value</span>: <span style="color:#e6db74">&#39;@=input[&#34;value3&#34;]&#39;</span>
-  <span style="color:#75715e"># ... </span>
-</code></pre></div><h3 id="creating-before-and-after-queries">Creating before and after queries</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#f92672">sql</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">loader</span>: 
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">query</span>: <span style="color:#e6db74">&#39;INSERT INTO table1 VALUES (?, ?, ?)&#39;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">parameters</span>:
+</span></span><span style="display:flex;"><span>      - <span style="color:#f92672">key</span>: <span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">value</span>: <span style="color:#e6db74">&#39;@=input[&#34;value1&#34;]&#39;</span>
+</span></span><span style="display:flex;"><span>      - <span style="color:#f92672">key</span>: <span style="color:#ae81ff">2</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">value</span>: <span style="color:#e6db74">&#39;@=input[&#34;value3&#34;]&#39;</span>
+</span></span><span style="display:flex;"><span>      - <span style="color:#f92672">key</span>: <span style="color:#ae81ff">3</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">value</span>: <span style="color:#e6db74">&#39;@=input[&#34;value3&#34;]&#39;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e"># ... </span>
+</span></span></code></pre></div><h3 id="creating-before-and-after-queries">Creating before and after queries</h3>
 <p>In some cases, you may need to run queries in order to best prepare for the execution of your pipeline.</p>
 <h4 id="before-queries">Before queries</h4>
 <p>Before queries will be executed before performing the query written in the configuration. Often, these are
 queries that set up the database.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">sql</span>:
-  <span style="color:#f92672">before</span>:
-    <span style="color:#f92672">queries</span>:
-      - <span style="color:#e6db74">&#39;CREATE TABLE foo (id INTEGER NOT NULL, value VARCHAR(255) NOT NULL)&#39;</span>
-      - <span style="color:#e6db74">&#39;INSERT INTO foo (id, value) VALUES (1, &#34;Lorem ipsum dolor&#34;)&#39;</span>
-      - <span style="color:#e6db74">&#39;INSERT INTO foo (id, value) VALUES (2, &#34;Sit amet consecutir&#34;)&#39;</span>
-  <span style="color:#75715e"># ...</span>
-</code></pre></div><h4 id="after-queries">After queries</h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#f92672">sql</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">before</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">queries</span>:
+</span></span><span style="display:flex;"><span>      - <span style="color:#e6db74">&#39;CREATE TABLE foo (id INTEGER NOT NULL, value VARCHAR(255) NOT NULL)&#39;</span>
+</span></span><span style="display:flex;"><span>      - <span style="color:#e6db74">&#39;INSERT INTO foo (id, value) VALUES (1, &#34;Lorem ipsum dolor&#34;)&#39;</span>
+</span></span><span style="display:flex;"><span>      - <span style="color:#e6db74">&#39;INSERT INTO foo (id, value) VALUES (2, &#34;Sit amet consecutir&#34;)&#39;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e"># ...</span>
+</span></span></code></pre></div><h4 id="after-queries">After queries</h4>
 <p>After queries will be executed after performing the query written in the configuration. Often, these are
 queries that clean up the database.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">sql</span>:
-  <span style="color:#f92672">after</span>:
-    <span style="color:#f92672">queries</span>:
-      - <span style="color:#e6db74">&#39;DROP TABLE foo&#39;</span>
-  <span style="color:#75715e"># ...</span>
-</code></pre></div></div>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#f92672">sql</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">after</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">queries</span>:
+</span></span><span style="display:flex;"><span>      - <span style="color:#e6db74">&#39;DROP TABLE foo&#39;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e"># ...</span>
+</span></span></code></pre></div></div>
           
           <p class="post-meta border-bottom pb-3 mb-0 mt-3">Updated on 26 Jul 2021</p>
           <nav class="pagination mt-3">
@@ -897,6 +917,40 @@ queries that clean up the database.</p>
             
             
             
+            
+            
+            
+
+            
+            
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
 
             
             
@@ -934,22 +988,6 @@ queries that clean up the database.</p>
             
             
             
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-
-            
-            
-            
-
             
             
             

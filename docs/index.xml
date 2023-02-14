@@ -14,7 +14,7 @@
       <pubDate>Sun, 24 Jan 2021 09:23:54 +0100</pubDate>
       
       <guid>https://php-etl.github.io/documentation/connectivity/akeneo/expression-language/</guid>
-      <description>FEATURE STATE: Gyroscops 0.1 [alpha]   What is it ? Installation Usage Functions reference  Attribute data manipulation  Filter by locale Filter by scope Take the first available value by scopes Combining results filter Excluding results filter Extracting a slice of the values list Extracting the beginning of the values list Extracting the end of the values list Extracting the values list, after an offset Extracting the first value from the list Extracting the last value from the list   Dates management with dateTime and dateTimeZone Manage metrics with metricAmount, metricUnit and formatMetric    What is it ?</description>
+      <description>FEATURE STATE: Gyroscops 0.1 [alpha] What is it ? Installation Usage Functions reference Attribute data manipulation Filter by locale Filter by scope Take the first available value by scopes Combining results filter Excluding results filter Extracting a slice of the values list Extracting the beginning of the values list Extracting the end of the values list Extracting the values list, after an offset Extracting the first value from the list Extracting the last value from the list Dates management with dateTime and dateTimeZone Manage metrics with metricAmount, metricUnit and formatMetric What is it ?</description>
     </item>
     
     <item>
@@ -23,15 +23,15 @@
       <pubDate>Sun, 24 Jan 2021 09:23:54 +0100</pubDate>
       
       <guid>https://php-etl.github.io/documentation/connectivity/akeneo/plugin/</guid>
-      <description>FEATURE STATE: Gyroscops 0.1 [alpha]  Akeneo Plugin  What is it ? Installation Usage  Connecting to Akeneo Using the enterprise version Building an extractor Building a lookup Building a conditional lookup Building a loader   Advanced Usage  Filtering your search Using ExpressionLanguage     What is it ? The Akeneo plugin aims at integration the Akeneo PHP clients into the Pipeline stack. This integration is compatible with both Akeneo Enterprise Edition client and the Akeneo Community Edition client.</description>
+      <description>FEATURE STATE: Gyroscops 0.1 [alpha] Akeneo Plugin What is it ? Installation Usage Connecting to Akeneo Using the enterprise version Building an extractor Building a lookup Building a conditional lookup Building a loader Advanced Usage Filtering your search Using ExpressionLanguage What is it ? The Akeneo plugin aims at integration the Akeneo PHP clients into the Pipeline stack. This integration is compatible with both Akeneo Enterprise Edition client and the Akeneo Community Edition client.</description>
     </item>
     
     <item>
       <title>The YAML configuration format</title>
-      <link>https://php-etl.github.io/documentation/getting-started/satellite/yaml-format/</link>
+      <link>https://php-etl.github.io/documentation/core-concept/satellite/yaml-format/</link>
       <pubDate>Sun, 12 Jul 2020 15:21:02 +0200</pubDate>
       
-      <guid>https://php-etl.github.io/documentation/getting-started/satellite/yaml-format/</guid>
+      <guid>https://php-etl.github.io/documentation/core-concept/satellite/yaml-format/</guid>
       <description>The docker section In this section you will be able to specify the base docker image on which the satellite will be built. We recommend either the official PHP images based on Alpine Linux.
 The filesystem section In this section you will be able to specify the system file on which the satellite will be built.
 The composer section This section makes you able to specify some parameters that will be transmitted to composer at build time.</description>
@@ -44,15 +44,15 @@ The composer section This section makes you able to specify some parameters that
       
       <guid>https://php-etl.github.io/documentation/lorem/</guid>
       <description>Gyroscops Documentation Hello world
- (documentation/pipeline.md)[Pipelines]     component status dependencies     php-etl/contracts dev php-etl/configurator-contracts, php-etl/discovery-contracts, php-etl/function-contracts, php-etl/mapping-contracts, php-etl/messenger-contracts, php-etl/pipeline-contracts, php-etl/reporting-contracts   php-etl/configurator-contracts dev    php-etl/discovery-contracts dev    php-etl/function-contracts dev    php-etl/mapping-contracts dev    php-etl/messenger-contracts dev    php-etl/pipeline-contracts dev    php-etl/reporting-contracts dev    php-etl/flow-akeneo dev php-etl/configurator-contracts, php-etl/pipeline-contracts   php-etl/satellite dev php-etl/metadata, php-etl/configurator-contracts, php-etl/function-contracts   php-etl/metadata dev    php-etl/promise dev    php-etl/bucket dev php-etl/pipeline-contracts   php-etl/akeneo-expression-language dev    php-etl/fast-map dev php-etl/mapping-contracts   php-etl/fast-map-config dev    php-etl/phpspec-extension dev    php-etl/pipeline dev php-etl/pipeline-contracts   php-etl/flow-spout dev php-etl/pipeline-contracts   php-etl/batch dev    php-etl/flow-spl-csv dev php-etl/pipeline-contracts    </description>
+(documentation/pipeline.md)[Pipelines] component status dependencies php-etl/contracts dev php-etl/configurator-contracts, php-etl/discovery-contracts, php-etl/function-contracts, php-etl/mapping-contracts, php-etl/messenger-contracts, php-etl/pipeline-contracts, php-etl/reporting-contracts php-etl/configurator-contracts dev php-etl/discovery-contracts dev php-etl/function-contracts dev php-etl/mapping-contracts dev php-etl/messenger-contracts dev php-etl/pipeline-contracts dev php-etl/reporting-contracts dev php-etl/flow-akeneo dev php-etl/configurator-contracts, php-etl/pipeline-contracts php-etl/satellite dev php-etl/metadata, php-etl/configurator-contracts, php-etl/function-contracts php-etl/metadata dev php-etl/promise dev php-etl/bucket dev php-etl/pipeline-contracts php-etl/akeneo-expression-language dev php-etl/fast-map dev php-etl/mapping-contracts php-etl/fast-map-config dev php-etl/phpspec-extension dev php-etl/pipeline dev php-etl/pipeline-contracts php-etl/flow-spout dev php-etl/pipeline-contracts php-etl/batch dev php-etl/flow-spl-csv dev php-etl/pipeline-contracts </description>
     </item>
     
     <item>
       <title>PHP Objects</title>
-      <link>https://php-etl.github.io/documentation/getting-started/satellite/php-objects/</link>
+      <link>https://php-etl.github.io/documentation/core-concept/satellite/php-objects/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://php-etl.github.io/documentation/getting-started/satellite/php-objects/</guid>
+      <guid>https://php-etl.github.io/documentation/core-concept/satellite/php-objects/</guid>
       <description>The docker section In this section you will be able to specify the base docker image on which the satellite will be built. We recommend either the official PHP images based on Alpine Linux.
 The filesystem section In this section you will be able to specify the system file on which the satellite will be built.
 The composer section This section makes you able to specify some parameters that will be transmitted to composer at build time.</description>

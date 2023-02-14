@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <title>Sylius</title>
 
-  <meta name="generator" content="Hugo 0.82.0" />
+  <meta name="generator" content="Hugo 0.110.0">
 
   <!-- mobile responsive meta -->
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -100,13 +100,15 @@
           </a>
           <div class="dropdown-menu">
             
-            <a class="dropdown-item" href="/documentation/getting-started/setup">Setup</a>
+            <a class="dropdown-item" href="/documentation/getting-started/environment-setup">Environment Setup</a>
             
-            <a class="dropdown-item" href="/documentation/getting-started/satellite">Creating Satellites</a>
+            <a class="dropdown-item" href="/documentation/getting-started/installation">Installation</a>
             
-            <a class="dropdown-item" href="/documentation/getting-started/pipeline">Pipelines</a>
+            <a class="dropdown-item" href="/documentation/getting-started/writing-configuration">Writing Configuration</a>
             
-            <a class="dropdown-item" href="/documentation/getting-started/workflow">Workflows</a>
+            <a class="dropdown-item" href="/documentation/getting-started/compilation">Compilation</a>
+            
+            <a class="dropdown-item" href="/documentation/getting-started/execution">Execution</a>
             
           </div>
         </li>
@@ -116,19 +118,15 @@
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle text-dark" href="#" role="button" data-toggle="dropdown"
             aria-haspopup="true" aria-expanded="false">
-            Features
+            Core concepts
           </a>
           <div class="dropdown-menu">
             
-            <a class="dropdown-item" href="/documentation/feature/services">Declaring services</a>
+            <a class="dropdown-item" href="/documentation/core-concept/satellite">Satellite</a>
             
-            <a class="dropdown-item" href="/documentation/feature/expression-language">Expression Language</a>
+            <a class="dropdown-item" href="/documentation/core-concept/pipeline">Pipeline</a>
             
-            <a class="dropdown-item" href="/documentation/feature/logger">Logging</a>
-            
-            <a class="dropdown-item" href="/documentation/feature/rejection">Rejection</a>
-            
-            <a class="dropdown-item" href="/documentation/feature/state">State</a>
+            <a class="dropdown-item" href="/documentation/core-concept/workflow">Workflow</a>
             
           </div>
         </li>
@@ -161,6 +159,28 @@
             <a class="dropdown-item" href="/documentation/connectivity/sql">SQL database</a>
             
             <a class="dropdown-item" href="/documentation/connectivity/sylius">Sylius</a>
+            
+          </div>
+        </li>
+        
+        
+        
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle text-dark" href="#" role="button" data-toggle="dropdown"
+            aria-haspopup="true" aria-expanded="false">
+            Features
+          </a>
+          <div class="dropdown-menu">
+            
+            <a class="dropdown-item" href="/documentation/feature/services">Declaring services</a>
+            
+            <a class="dropdown-item" href="/documentation/feature/expression-language">Expression Language</a>
+            
+            <a class="dropdown-item" href="/documentation/feature/logger">Logging</a>
+            
+            <a class="dropdown-item" href="/documentation/feature/rejection">Rejection</a>
+            
+            <a class="dropdown-item" href="/documentation/feature/state">State</a>
             
           </div>
         </li>
@@ -206,6 +226,8 @@
           <ul class="list-styled">
             
             <a class="back-btn" href="/documentation"></a>
+            
+              
             
               
             
@@ -310,50 +332,6 @@
 
 
 
-<li data-nav-id="https://php-etl.github.io/documentation/connectivity/csv/" title="CSV" class="sidelist
-  ">
-  <a href="https://php-etl.github.io/documentation/connectivity/csv/">
-    CSV
-  </a>
-  
-  
-</li>
-
-
-        
-      
-        
-          
-
-
-
-
-
-
-
-
-<li data-nav-id="https://php-etl.github.io/documentation/connectivity/custom/" title="Custom connector" class="sidelist
-  ">
-  <a href="https://php-etl.github.io/documentation/connectivity/custom/">
-    Custom connector
-  </a>
-  
-  
-</li>
-
-
-        
-      
-        
-          
-
-
-
-
-
-
-
-
 <li data-nav-id="https://php-etl.github.io/documentation/connectivity/fast-map/" title="Fast Map" class="sidelist
   ">
   <a href="https://php-etl.github.io/documentation/connectivity/fast-map/">
@@ -376,10 +354,10 @@
 
 
 
-<li data-nav-id="https://php-etl.github.io/documentation/connectivity/ftp/" title="FTP" class="sidelist
-  ">
-  <a href="https://php-etl.github.io/documentation/connectivity/ftp/">
-    FTP
+<li data-nav-id="https://php-etl.github.io/documentation/connectivity/sylius/" title="Sylius" class="sidelist
+  active">
+  <a href="https://php-etl.github.io/documentation/connectivity/sylius/">
+    Sylius
   </a>
   
   
@@ -398,32 +376,10 @@
 
 
 
-<li data-nav-id="https://php-etl.github.io/documentation/connectivity/nl-json/" title="NL-JSON" class="sidelist
+<li data-nav-id="https://php-etl.github.io/documentation/connectivity/csv/" title="CSV" class="sidelist
   ">
-  <a href="https://php-etl.github.io/documentation/connectivity/nl-json/">
-    NL-JSON
-  </a>
-  
-  
-</li>
-
-
-        
-      
-        
-          
-
-
-
-
-
-
-
-
-<li data-nav-id="https://php-etl.github.io/documentation/connectivity/sftp/" title="SFTP" class="sidelist
-  ">
-  <a href="https://php-etl.github.io/documentation/connectivity/sftp/">
-    SFTP
+  <a href="https://php-etl.github.io/documentation/connectivity/csv/">
+    CSV
   </a>
   
   
@@ -486,10 +442,76 @@
 
 
 
-<li data-nav-id="https://php-etl.github.io/documentation/connectivity/sylius/" title="Sylius" class="sidelist
-  active">
-  <a href="https://php-etl.github.io/documentation/connectivity/sylius/">
-    Sylius
+<li data-nav-id="https://php-etl.github.io/documentation/connectivity/ftp/" title="FTP" class="sidelist
+  ">
+  <a href="https://php-etl.github.io/documentation/connectivity/ftp/">
+    FTP
+  </a>
+  
+  
+</li>
+
+
+        
+      
+        
+          
+
+
+
+
+
+
+
+
+<li data-nav-id="https://php-etl.github.io/documentation/connectivity/sftp/" title="SFTP" class="sidelist
+  ">
+  <a href="https://php-etl.github.io/documentation/connectivity/sftp/">
+    SFTP
+  </a>
+  
+  
+</li>
+
+
+        
+      
+        
+          
+
+
+
+
+
+
+
+
+<li data-nav-id="https://php-etl.github.io/documentation/connectivity/nl-json/" title="NL-JSON" class="sidelist
+  ">
+  <a href="https://php-etl.github.io/documentation/connectivity/nl-json/">
+    NL-JSON
+  </a>
+  
+  
+</li>
+
+
+        
+      
+        
+          
+
+
+
+
+
+
+
+
+<li data-nav-id="https://php-etl.github.io/documentation/connectivity/custom/" title="Custom connector" class="sidelist
+  ">
+  <a href="https://php-etl.github.io/documentation/connectivity/custom/">
+    Custom connector
   </a>
   
   
@@ -557,20 +579,20 @@
 <h2 id="what-is-it-">What is it ?</h2>
 <p>The Sylius plugin will enable Sylius connectivity to the <a href="../../components/pipeline">Pipeline</a>, in order to read and write from and to Sylius.</p>
 <h2 id="installation">Installation</h2>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">composer require php-etl/sylius-plugin
-</code></pre></div><h2 id="usage">Usage</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>composer require php-etl/sylius-plugin
+</span></span></code></pre></div><h2 id="usage">Usage</h2>
 <h3 id="connecting-to-sylius">Connecting to Sylius</h3>
 <p>To establish a connection to your Sylius API, you must specify its URL and some connection identifiers
 (<code>client_id</code>, <code>secret</code>, <code>username</code>, <code>password</code>).</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">sylius</span>:
-  <span style="color:#75715e"># ...</span>
-  <span style="color:#f92672">client</span>:
-    <span style="color:#f92672">api_url</span>: <span style="color:#e6db74">&#39;http://127.0.0.1:8001&#39;</span>
-    <span style="color:#f92672">client_id</span>: <span style="color:#e6db74">&#39;414yc7d9mnk044ko4wswgw80o8ssw80gssos488kk8ogss40ko&#39;</span>
-    <span style="color:#f92672">secret</span>: <span style="color:#e6db74">&#39;4k8ee6n44m4gkkg0coc8o4w4coscw0w4cg0wg8sc0wsk0sw8gs&#39;</span>
-    <span style="color:#f92672">username</span>: <span style="color:#e6db74">&#39;api&#39;</span>
-    <span style="color:#f92672">password</span>: <span style="color:#e6db74">&#39;sylius-api&#39;</span>
-</code></pre></div><p>To retrieve these identifiers, go to the <a href="https://docs.sylius.com/en/1.7/api/index.html">official documentation</a> of
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#f92672">sylius</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e"># ...</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">client</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">api_url</span>: <span style="color:#e6db74">&#39;http://127.0.0.1:8001&#39;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">client_id</span>: <span style="color:#e6db74">&#39;414yc7d9mnk044ko4wswgw80o8ssw80gssos488kk8ogss40ko&#39;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">secret</span>: <span style="color:#e6db74">&#39;4k8ee6n44m4gkkg0coc8o4w4coscw0w4cg0wg8sc0wsk0sw8gs&#39;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">username</span>: <span style="color:#e6db74">&#39;api&#39;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">password</span>: <span style="color:#e6db74">&#39;sylius-api&#39;</span>
+</span></span></code></pre></div><p>To retrieve these identifiers, go to the <a href="https://docs.sylius.com/en/1.7/api/index.html">official documentation</a> of
 Sylius.</p>
 <h3 id="building-an-extractor">Building an extractor</h3>
 <p>In the configuration of your extractor, you must specify the type of table you will be working on
@@ -584,17 +606,17 @@ and which method you want to use to retrieve your data.</p>
 <li><code>get</code> : retrieve a row from a table</li>
 <li><code>listPerPage</code> : retrieves a set number of data from a table</li>
 </ul>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">sylius</span>:
-  <span style="color:#f92672">extractor</span>:
-    <span style="color:#f92672">type</span>: <span style="color:#ae81ff">products</span>
-    <span style="color:#f92672">method</span>: <span style="color:#ae81ff">all</span>
-  <span style="color:#f92672">client</span>:
-    <span style="color:#f92672">api_url</span>: <span style="color:#e6db74">&#39;http://127.0.0.1:8001&#39;</span>
-    <span style="color:#f92672">client_id</span>: <span style="color:#e6db74">&#39;414yc7d9mnk044ko4wswgw80o8ssw80gssos488kk8ogss40ko&#39;</span>
-    <span style="color:#f92672">secret</span>: <span style="color:#e6db74">&#39;4k8ee6n44m4gkkg0coc8o4w4coscw0w4cg0wg8sc0wsk0sw8gs&#39;</span>
-    <span style="color:#f92672">username</span>: <span style="color:#e6db74">&#39;api&#39;</span>
-    <span style="color:#f92672">password</span>: <span style="color:#e6db74">&#39;sylius-api&#39;</span>
-</code></pre></div><h3 id="building-a-loader">Building a loader</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#f92672">sylius</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">extractor</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">type</span>: <span style="color:#ae81ff">products</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">method</span>: <span style="color:#ae81ff">all</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">client</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">api_url</span>: <span style="color:#e6db74">&#39;http://127.0.0.1:8001&#39;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">client_id</span>: <span style="color:#e6db74">&#39;414yc7d9mnk044ko4wswgw80o8ssw80gssos488kk8ogss40ko&#39;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">secret</span>: <span style="color:#e6db74">&#39;4k8ee6n44m4gkkg0coc8o4w4coscw0w4cg0wg8sc0wsk0sw8gs&#39;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">username</span>: <span style="color:#e6db74">&#39;api&#39;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">password</span>: <span style="color:#e6db74">&#39;sylius-api&#39;</span>
+</span></span></code></pre></div><h3 id="building-a-loader">Building a loader</h3>
 <p>In the configuration of your extractor, you must specify the type of table you are going to work on
 and which method you want to use to insert your data.</p>
 <p>The list of available tables is quite long : <code>channels</code>, <code>countries</code>, <code>carts</code>, <code>currencies</code>, <code>customers</code>, <code>exchangeRates</code>,
@@ -605,17 +627,17 @@ and which method you want to use to insert your data.</p>
 <li><code>create</code> : insert a row into the table</li>
 <li><code>delete</code> : delete a row from the table</li>
 </ul>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">sylius</span>:
-  <span style="color:#f92672">loader</span>:
-    <span style="color:#f92672">type</span>: <span style="color:#ae81ff">products</span>
-    <span style="color:#f92672">method</span>: <span style="color:#ae81ff">create</span>
-  <span style="color:#f92672">client</span>:
-    <span style="color:#f92672">api_url</span>: <span style="color:#e6db74">&#39;http://127.0.0.1:8001&#39;</span>
-    <span style="color:#f92672">client_id</span>: <span style="color:#e6db74">&#39;414yc7d9mnk044ko4wswgw80o8ssw80gssos488kk8ogss40ko&#39;</span>
-    <span style="color:#f92672">secret</span>: <span style="color:#e6db74">&#39;4k8ee6n44m4gkkg0coc8o4w4coscw0w4cg0wg8sc0wsk0sw8gs&#39;</span>
-    <span style="color:#f92672">username</span>: <span style="color:#e6db74">&#39;api&#39;</span>
-    <span style="color:#f92672">password</span>: <span style="color:#e6db74">&#39;sylius-api&#39;</span>
-</code></pre></div><h2 id="advanced-usage">Advanced Usage</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#f92672">sylius</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">loader</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">type</span>: <span style="color:#ae81ff">products</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">method</span>: <span style="color:#ae81ff">create</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">client</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">api_url</span>: <span style="color:#e6db74">&#39;http://127.0.0.1:8001&#39;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">client_id</span>: <span style="color:#e6db74">&#39;414yc7d9mnk044ko4wswgw80o8ssw80gssos488kk8ogss40ko&#39;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">secret</span>: <span style="color:#e6db74">&#39;4k8ee6n44m4gkkg0coc8o4w4coscw0w4cg0wg8sc0wsk0sw8gs&#39;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">username</span>: <span style="color:#e6db74">&#39;api&#39;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">password</span>: <span style="color:#e6db74">&#39;sylius-api&#39;</span>
+</span></span></code></pre></div><h2 id="advanced-usage">Advanced Usage</h2>
 <h3 id="filtering-your-search">Filtering your search</h3>
 <p>In some cases, you may only want to retrieve data that matches specific criteria.</p>
 <p>When performing a search, you need to specify certain options :</p>
@@ -629,12 +651,12 @@ and which method you want to use to insert your data.</p>
 <li><code>scope</code> : channel in which you search</li>
 <li><code>locale</code> : code of the locale you are looking for</li>
 </ul>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">sylius</span>:
-  <span style="color:#f92672">extractor</span>:
-    <span style="color:#75715e"># ...</span>
-    <span style="color:#f92672">search</span>:
-      - { <span style="color:#f92672">field: enabled, operator: &#39;=&#39;, value</span>: <span style="color:#66d9ef">true</span> }
-</code></pre></div></div>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#f92672">sylius</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">extractor</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># ...</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">search</span>:
+</span></span><span style="display:flex;"><span>      - { <span style="color:#f92672">field: enabled, operator: &#39;=&#39;, value</span>: <span style="color:#66d9ef">true</span> }
+</span></span></code></pre></div></div>
           
           <p class="post-meta border-bottom pb-3 mb-0 mt-3">Updated on 17 Feb 2021</p>
           <nav class="pagination mt-3">
@@ -845,6 +867,40 @@ and which method you want to use to insert your data.</p>
             
             
             
+            
+            
+            
+
+            
+            
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
 
             
             
@@ -882,22 +938,6 @@ and which method you want to use to insert your data.</p>
             
             
             
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-
-            
-            
-            
-
             
             
             

@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <title>NL-JSON</title>
 
-  <meta name="generator" content="Hugo 0.82.0" />
+  <meta name="generator" content="Hugo 0.110.0">
 
   <!-- mobile responsive meta -->
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -100,13 +100,15 @@
           </a>
           <div class="dropdown-menu">
             
-            <a class="dropdown-item" href="/documentation/getting-started/setup">Setup</a>
+            <a class="dropdown-item" href="/documentation/getting-started/environment-setup">Environment Setup</a>
             
-            <a class="dropdown-item" href="/documentation/getting-started/satellite">Creating Satellites</a>
+            <a class="dropdown-item" href="/documentation/getting-started/installation">Installation</a>
             
-            <a class="dropdown-item" href="/documentation/getting-started/pipeline">Pipelines</a>
+            <a class="dropdown-item" href="/documentation/getting-started/writing-configuration">Writing Configuration</a>
             
-            <a class="dropdown-item" href="/documentation/getting-started/workflow">Workflows</a>
+            <a class="dropdown-item" href="/documentation/getting-started/compilation">Compilation</a>
+            
+            <a class="dropdown-item" href="/documentation/getting-started/execution">Execution</a>
             
           </div>
         </li>
@@ -116,19 +118,15 @@
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle text-dark" href="#" role="button" data-toggle="dropdown"
             aria-haspopup="true" aria-expanded="false">
-            Features
+            Core concepts
           </a>
           <div class="dropdown-menu">
             
-            <a class="dropdown-item" href="/documentation/feature/services">Declaring services</a>
+            <a class="dropdown-item" href="/documentation/core-concept/satellite">Satellite</a>
             
-            <a class="dropdown-item" href="/documentation/feature/expression-language">Expression Language</a>
+            <a class="dropdown-item" href="/documentation/core-concept/pipeline">Pipeline</a>
             
-            <a class="dropdown-item" href="/documentation/feature/logger">Logging</a>
-            
-            <a class="dropdown-item" href="/documentation/feature/rejection">Rejection</a>
-            
-            <a class="dropdown-item" href="/documentation/feature/state">State</a>
+            <a class="dropdown-item" href="/documentation/core-concept/workflow">Workflow</a>
             
           </div>
         </li>
@@ -161,6 +159,28 @@
             <a class="dropdown-item" href="/documentation/connectivity/sql">SQL database</a>
             
             <a class="dropdown-item" href="/documentation/connectivity/sylius">Sylius</a>
+            
+          </div>
+        </li>
+        
+        
+        
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle text-dark" href="#" role="button" data-toggle="dropdown"
+            aria-haspopup="true" aria-expanded="false">
+            Features
+          </a>
+          <div class="dropdown-menu">
+            
+            <a class="dropdown-item" href="/documentation/feature/services">Declaring services</a>
+            
+            <a class="dropdown-item" href="/documentation/feature/expression-language">Expression Language</a>
+            
+            <a class="dropdown-item" href="/documentation/feature/logger">Logging</a>
+            
+            <a class="dropdown-item" href="/documentation/feature/rejection">Rejection</a>
+            
+            <a class="dropdown-item" href="/documentation/feature/state">State</a>
             
           </div>
         </li>
@@ -206,6 +226,8 @@
           <ul class="list-styled">
             
             <a class="back-btn" href="/documentation"></a>
+            
+              
             
               
             
@@ -310,50 +332,6 @@
 
 
 
-<li data-nav-id="https://php-etl.github.io/documentation/connectivity/csv/" title="CSV" class="sidelist
-  ">
-  <a href="https://php-etl.github.io/documentation/connectivity/csv/">
-    CSV
-  </a>
-  
-  
-</li>
-
-
-        
-      
-        
-          
-
-
-
-
-
-
-
-
-<li data-nav-id="https://php-etl.github.io/documentation/connectivity/custom/" title="Custom connector" class="sidelist
-  ">
-  <a href="https://php-etl.github.io/documentation/connectivity/custom/">
-    Custom connector
-  </a>
-  
-  
-</li>
-
-
-        
-      
-        
-          
-
-
-
-
-
-
-
-
 <li data-nav-id="https://php-etl.github.io/documentation/connectivity/fast-map/" title="Fast Map" class="sidelist
   ">
   <a href="https://php-etl.github.io/documentation/connectivity/fast-map/">
@@ -376,10 +354,10 @@
 
 
 
-<li data-nav-id="https://php-etl.github.io/documentation/connectivity/ftp/" title="FTP" class="sidelist
+<li data-nav-id="https://php-etl.github.io/documentation/connectivity/sylius/" title="Sylius" class="sidelist
   ">
-  <a href="https://php-etl.github.io/documentation/connectivity/ftp/">
-    FTP
+  <a href="https://php-etl.github.io/documentation/connectivity/sylius/">
+    Sylius
   </a>
   
   
@@ -398,32 +376,10 @@
 
 
 
-<li data-nav-id="https://php-etl.github.io/documentation/connectivity/nl-json/" title="NL-JSON" class="sidelist
-  active">
-  <a href="https://php-etl.github.io/documentation/connectivity/nl-json/">
-    NL-JSON
-  </a>
-  
-  
-</li>
-
-
-        
-      
-        
-          
-
-
-
-
-
-
-
-
-<li data-nav-id="https://php-etl.github.io/documentation/connectivity/sftp/" title="SFTP" class="sidelist
+<li data-nav-id="https://php-etl.github.io/documentation/connectivity/csv/" title="CSV" class="sidelist
   ">
-  <a href="https://php-etl.github.io/documentation/connectivity/sftp/">
-    SFTP
+  <a href="https://php-etl.github.io/documentation/connectivity/csv/">
+    CSV
   </a>
   
   
@@ -486,10 +442,76 @@
 
 
 
-<li data-nav-id="https://php-etl.github.io/documentation/connectivity/sylius/" title="Sylius" class="sidelist
+<li data-nav-id="https://php-etl.github.io/documentation/connectivity/ftp/" title="FTP" class="sidelist
   ">
-  <a href="https://php-etl.github.io/documentation/connectivity/sylius/">
-    Sylius
+  <a href="https://php-etl.github.io/documentation/connectivity/ftp/">
+    FTP
+  </a>
+  
+  
+</li>
+
+
+        
+      
+        
+          
+
+
+
+
+
+
+
+
+<li data-nav-id="https://php-etl.github.io/documentation/connectivity/sftp/" title="SFTP" class="sidelist
+  ">
+  <a href="https://php-etl.github.io/documentation/connectivity/sftp/">
+    SFTP
+  </a>
+  
+  
+</li>
+
+
+        
+      
+        
+          
+
+
+
+
+
+
+
+
+<li data-nav-id="https://php-etl.github.io/documentation/connectivity/nl-json/" title="NL-JSON" class="sidelist
+  active">
+  <a href="https://php-etl.github.io/documentation/connectivity/nl-json/">
+    NL-JSON
+  </a>
+  
+  
+</li>
+
+
+        
+      
+        
+          
+
+
+
+
+
+
+
+
+<li data-nav-id="https://php-etl.github.io/documentation/connectivity/custom/" title="Custom connector" class="sidelist
+  ">
+  <a href="https://php-etl.github.io/documentation/connectivity/custom/">
+    Custom connector
   </a>
   
   
@@ -549,21 +571,21 @@
 stack.</p>
 <h2 id="installation">Installation</h2>
 <p>In a Satellite project, add the NL-JSON plugin this way:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">composer require php-etl/json-plugin
-</code></pre></div><h2 id="usage">Usage</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>composer require php-etl/json-plugin
+</span></span></code></pre></div><h2 id="usage">Usage</h2>
 <h3 id="building-an-extractor">Building an extractor</h3>
 <p>To build an extractor, you need to specify the path of your file with the <code>file_path</code> option.</p>
 <ul class="nav nav-tabs" id="extractor" role="tablist"><li class="nav-item"><a data-toggle="tab" class="nav-link active" href="#extractor-0" role="tab" aria-controls="extractor-0" aria-selected="true">YAML</a></li>
 	  </ul>
 <div class="tab-content" id="extractor"><div id="extractor-0" class="tab-pane show active" role="tabpanel" aria-labelledby="extractor-0">
 
-<p><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml">
-
-<span style="color:#f92672">json</span>:
-  <span style="color:#f92672">extractor</span>:
-    <span style="color:#f92672">file_path</span>: <span style="color:#e6db74">&#39;input.nljson&#39;</span>
-
-</code></pre></div></div></div>
+<p><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">json</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">extractor</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">file_path</span>: <span style="color:#e6db74">&#39;input.nljson&#39;</span>
+</span></span><span style="display:flex;"><span>
+</span></span></code></pre></div></div></div>
 
 <h3 id="building-a-loader">Building a loader</h3>
 <p>To build a loader, you need to specify the path to your file with the <code>file_path</code> option.</p>
@@ -571,13 +593,13 @@ stack.</p>
 	  </ul>
 <div class="tab-content" id="loader"><div id="loader-0" class="tab-pane show active" role="tabpanel" aria-labelledby="loader-0">
 
-<p><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml">
-
-<span style="color:#f92672">json</span>:
-  <span style="color:#f92672">loader</span>:
-    <span style="color:#f92672">file_path</span>: <span style="color:#e6db74">&#39;output.nljson&#39;</span>
-
-</code></pre></div></div></div>
+<p><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">json</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">loader</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">file_path</span>: <span style="color:#e6db74">&#39;output.nljson&#39;</span>
+</span></span><span style="display:flex;"><span>
+</span></span></code></pre></div></div></div>
 
 </div>
           
@@ -790,6 +812,40 @@ stack.</p>
             
             
             
+            
+            
+            
+
+            
+            
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
 
             
             
@@ -827,22 +883,6 @@ stack.</p>
             
             
             
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-
-            
-            
-            
-
             
             
             

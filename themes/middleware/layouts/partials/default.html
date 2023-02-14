@@ -104,7 +104,7 @@
   {{ $numberOfPages := (add (len .Pages) (len .Sections)) }}
   {{ if ne $numberOfPages 0 }}
     <ul>
-      {{ range .Pages.ByLinkTitle }}
+      {{ range .Pages.ByWeight }}
         {{ if and .Params.hidden (not $.showhidden) }}
         {{else}}
           {{ template "section-tree-nav" dict "sect" . "currentnode" $currentNode }}

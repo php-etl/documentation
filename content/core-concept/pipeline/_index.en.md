@@ -34,7 +34,7 @@ The different steps of our pipeline are `extract`, `transform` or `load` but the
 
 ## What is it for?
 
-This package allows you to create a micro-service that will be operating a data pipeline.
+This package allows you to create a microservice that will be operating a data pipeline.
 
 ## Installation
 

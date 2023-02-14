@@ -17,36 +17,59 @@ hasChildren = true
 
   [[menu.main]]
   parent = "Getting Started"
-  name = "Setup"
-  url = "getting-started/setup"
+  name = "Environment Setup"
+  url = "getting-started/environment-setup"
   weight = 1
 
   [[menu.main]]
   parent = "Getting Started"
-  name = "Creating Satellites"
-  url = "getting-started/satellite"
+  name = "Installation"
+  url = "getting-started/installation"
   weight = 2
 
   [[menu.main]]
   parent = "Getting Started"
-  name = "Pipelines"
-  url = "getting-started/pipeline"
+  name = "Writing Configuration"
+  url = "getting-started/writing-configuration"
   weight = 3
 
   [[menu.main]]
   parent = "Getting Started"
-  name = "Workflows"
-  url = "getting-started/workflow"
+  name = "Compilation"
+  url = "getting-started/compilation"
   weight = 4
 
-#   [[menu.main]]
-#   parent = "Getting Started"
-#   name = "Hooks and APIs"
-#   url = "installation/manual"
-#   weight = 5
+  [[menu.main]]
+  parent = "Getting Started"
+  name = "Execution"
+  url = "getting-started/execution"
+  weight = 5
 
 [[menu.main]]
+name = "Core concepts"
 weight = 2
+hasChildren = true
+
+  [[menu.main]]
+  parent = "Core concepts"
+  name = "Satellite"
+  url = "core-concept/satellite"
+  weight = 1
+
+  [[menu.main]]
+  parent = "Core concepts"
+  name = "Pipeline"
+  url = "core-concept/pipeline"
+  weight = 2
+
+  [[menu.main]]
+  parent = "Core concepts"
+  name = "Workflow"
+  url = "core-concept/workflow"
+  weight = 3
+
+[[menu.main]]
+weight = 3
 name = "Features"
 hasChildren = true
 
@@ -81,7 +104,7 @@ hasChildren = true
   weight = 5
 
 [[menu.main]]
-weight = 4
+weight = 3
 name = "Connectivity"
 hasChildren = true
 

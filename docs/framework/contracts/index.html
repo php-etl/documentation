@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <title>Contracts</title>
 
-  <meta name="generator" content="Hugo 0.82.0" />
+  <meta name="generator" content="Hugo 0.110.0">
 
   <!-- mobile responsive meta -->
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -100,13 +100,15 @@
           </a>
           <div class="dropdown-menu">
             
-            <a class="dropdown-item" href="/documentation/getting-started/setup">Setup</a>
+            <a class="dropdown-item" href="/documentation/getting-started/environment-setup">Environment Setup</a>
             
-            <a class="dropdown-item" href="/documentation/getting-started/satellite">Creating Satellites</a>
+            <a class="dropdown-item" href="/documentation/getting-started/installation">Installation</a>
             
-            <a class="dropdown-item" href="/documentation/getting-started/pipeline">Pipelines</a>
+            <a class="dropdown-item" href="/documentation/getting-started/writing-configuration">Writing Configuration</a>
             
-            <a class="dropdown-item" href="/documentation/getting-started/workflow">Workflows</a>
+            <a class="dropdown-item" href="/documentation/getting-started/compilation">Compilation</a>
+            
+            <a class="dropdown-item" href="/documentation/getting-started/execution">Execution</a>
             
           </div>
         </li>
@@ -116,19 +118,15 @@
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle text-dark" href="#" role="button" data-toggle="dropdown"
             aria-haspopup="true" aria-expanded="false">
-            Features
+            Core concepts
           </a>
           <div class="dropdown-menu">
             
-            <a class="dropdown-item" href="/documentation/feature/services">Declaring services</a>
+            <a class="dropdown-item" href="/documentation/core-concept/satellite">Satellite</a>
             
-            <a class="dropdown-item" href="/documentation/feature/expression-language">Expression Language</a>
+            <a class="dropdown-item" href="/documentation/core-concept/pipeline">Pipeline</a>
             
-            <a class="dropdown-item" href="/documentation/feature/logger">Logging</a>
-            
-            <a class="dropdown-item" href="/documentation/feature/rejection">Rejection</a>
-            
-            <a class="dropdown-item" href="/documentation/feature/state">State</a>
+            <a class="dropdown-item" href="/documentation/core-concept/workflow">Workflow</a>
             
           </div>
         </li>
@@ -161,6 +159,28 @@
             <a class="dropdown-item" href="/documentation/connectivity/sql">SQL database</a>
             
             <a class="dropdown-item" href="/documentation/connectivity/sylius">Sylius</a>
+            
+          </div>
+        </li>
+        
+        
+        
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle text-dark" href="#" role="button" data-toggle="dropdown"
+            aria-haspopup="true" aria-expanded="false">
+            Features
+          </a>
+          <div class="dropdown-menu">
+            
+            <a class="dropdown-item" href="/documentation/feature/services">Declaring services</a>
+            
+            <a class="dropdown-item" href="/documentation/feature/expression-language">Expression Language</a>
+            
+            <a class="dropdown-item" href="/documentation/feature/logger">Logging</a>
+            
+            <a class="dropdown-item" href="/documentation/feature/rejection">Rejection</a>
+            
+            <a class="dropdown-item" href="/documentation/feature/state">State</a>
             
           </div>
         </li>
@@ -214,6 +234,8 @@
               
             
               
+            
+              
               
 
 
@@ -242,10 +264,10 @@
 
 
 
-<li data-nav-id="https://php-etl.github.io/documentation/framework/contracts/" title="Contracts" class="sidelist
-  active">
-  <a href="https://php-etl.github.io/documentation/framework/contracts/">
-    Contracts
+<li data-nav-id="https://php-etl.github.io/documentation/framework/metadata/" title="Metadata" class="sidelist
+  ">
+  <a href="https://php-etl.github.io/documentation/framework/metadata/">
+    Metadata
   </a>
   
   
@@ -264,10 +286,10 @@
 
 
 
-<li data-nav-id="https://php-etl.github.io/documentation/framework/metadata/" title="Metadata" class="sidelist
-  ">
-  <a href="https://php-etl.github.io/documentation/framework/metadata/">
-    Metadata
+<li data-nav-id="https://php-etl.github.io/documentation/framework/contracts/" title="Contracts" class="sidelist
+  active">
+  <a href="https://php-etl.github.io/documentation/framework/contracts/">
+    Contracts
   </a>
   
   
@@ -333,15 +355,15 @@
 <p>Code contracts are a set of abstraction interfaces made to help you build compatible code between all your pipelines, using common semantics.</p>
 <h4 id="installation">Installation</h4>
 <p>Contracts are provided as separate packages, so you can install only the ones your projects really need:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">composer require php-etl/contracts
-composer require php-etl/configurator-contracts
-composer require php-etl/discovery-contracts
-composer require php-etl/function-contracts
-composer require php-etl/mapping-contracts
-composer require php-etl/messenger-contracts
-composer require php-etl/pipeline-contracts
-composer require php-etl/reporting-contracts
-</code></pre></div><h4 id="usage">Usage</h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>composer require php-etl/contracts
+</span></span><span style="display:flex;"><span>composer require php-etl/configurator-contracts
+</span></span><span style="display:flex;"><span>composer require php-etl/discovery-contracts
+</span></span><span style="display:flex;"><span>composer require php-etl/function-contracts
+</span></span><span style="display:flex;"><span>composer require php-etl/mapping-contracts
+</span></span><span style="display:flex;"><span>composer require php-etl/messenger-contracts
+</span></span><span style="display:flex;"><span>composer require php-etl/pipeline-contracts
+</span></span><span style="display:flex;"><span>composer require php-etl/reporting-contracts
+</span></span></code></pre></div><h4 id="usage">Usage</h4>
 <p>The abstractions in those packages are useful to achieve loose coupling and interoperability.
 By using the provided interfaces as type hints, you are able to build any implementations that match the contracts.
 It could be a native Gyroscops component, or another package provided by the PHP community at large.</p>
@@ -583,6 +605,40 @@ It could be a native Gyroscops component, or another package provided by the PHP
             
             
             
+            
+            
+            
+
+            
+            
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
 
             
             
@@ -620,22 +676,6 @@ It could be a native Gyroscops component, or another package provided by the PHP
             
             
             
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-
-            
-            
-            
-
             
             
             
