@@ -5,8 +5,7 @@ draft: true
 weight: 1
 ---
 
-Gyroscops is a command line application written in PHP. To be able to use the application correctly
-the application you must first have these 2 requirements.
+Gyroscops is a command line application written in PHP. To be able to use the application, you will need to fulfill the following requirements:
 
 ### PHP 8.0 or higher
 Before proceeding, make sure your computer has a PHP version higher than or equal to 8.0 installed.
@@ -17,3 +16,10 @@ For more information on how to install PHP, go to the [official documentation](h
 After installing PHP, you must ensure that your Composer 2 is installed on your machine.
 
 For more information on how to install Composer, go to the [official documentation](https://getcomposer.org/download/).
+
+### Docker (optional)
+
+Gyroscops offers you the possibility to build your configurations as images that you can use in a dockerized environment.
+That's why you may also need Docker.
+
+For more information on how to install Docker, go to the [official documentation](https://docs.docker.com/get-docker/).

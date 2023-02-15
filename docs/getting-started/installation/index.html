@@ -294,10 +294,10 @@
               Installation
           </h1>
           
-          <div class="content"><p>The first thing you have to do is to create a folder in which you will put your project.
-In a terminal, type the following command:</p>
+          <div class="content"><p>Starting from here we will work inside a project directory we will name <code>my_project_directory</code>.</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>mkdir my_project_directory <span style="color:#f92672">&amp;&amp;</span> cd my_project_directory
-</span></span></code></pre></div><p>After creating your project, you will have to initialize your project and add all the dependencies you need.</p>
+</span></span></code></pre></div><p>Once the project dir is created and you have changed your current directory to it, the first task will be to initialize
+a composer project inside this directory and add all required dependencies.</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>composer init
 </span></span></code></pre></div><blockquote>
 <p>Notice: You must choose <code>dev</code> as the value for the <code>minimum-stability</code> option.</p>
@@ -320,7 +320,7 @@ In a terminal, type the following command:</p>
 </span></span><span style="display:flex;"><span>    ]
 </span></span><span style="display:flex;"><span>  }
 </span></span><span style="display:flex;"><span>}
-</span></span></code></pre></div><p>The most important thing you need to add to your project is our compiler :</p>
+</span></span></code></pre></div><p>Now, your environment is ready for the satellite compiler installation. The following command will install it.</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>composer require php-etl/satellite
 </span></span></code></pre></div></div>
           

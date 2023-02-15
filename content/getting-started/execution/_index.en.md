@@ -5,15 +5,16 @@ draft: true
 weight: 5
 ---
 
-Once your PHP code is generated, you only need to execute it.
+Once your PHP code is generated, it can be executed right away.
 
-However, depending on the adapter you have chosen in your configuration, the way to do it is different.
+n the following paragraphs, you will find the method for executing the satellites depending on 
+the [adapter](http://localhost:1313/documentation/core-concept/satellite#setting-up-the-adapter) you have chosen.
 
 ## If you built inside the filesystem
 
 ```shell
 # php <path-to-the-generated-satellite>
-php build/main.php
+php bin/satellite run:pipeline build/
 ```
 
 This command will run your satellite service located in a directory. The execution of your service may take several minutes,
@@ -26,6 +27,4 @@ so please wait until the execution is completed.
 docker run --rm -ti foo/satellite-name:latest
 ```
 
-This command will run your satellite service located in a Docker image. The execution of your service may take several minutes,
-so please wait until the execution is completed.
-
+This command will run your satellite service you have previously built as a Docker image you named `foo/satellite-name:latest`.

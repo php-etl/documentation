@@ -7,14 +7,14 @@ shortDescription: Getting started
 weight: 2
 ---
 
-The first thing you have to do is to create a folder in which you will put your project.
-In a terminal, type the following command:
+Starting from here we will work inside a project directory we will name `my_project_directory`.
 
 ```shell
 mkdir my_project_directory && cd my_project_directory
 ```
 
-After creating your project, you will have to initialize your project and add all the dependencies you need.
+Once the project dir is created and you have changed your current directory to it, the first task will be to initialize 
+a composer project inside this directory and add all required dependencies.
 
 ```shell
 composer init
@@ -43,7 +43,7 @@ In the auto-generated `composer.json` file, add the following lines at the end :
 }
 ```
 
-The most important thing you need to add to your project is our compiler :
+Now, your environment is ready for the satellite compiler installation. The following command will install it.
 
 ```shell
 composer require php-etl/satellite

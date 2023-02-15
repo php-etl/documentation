@@ -92,7 +92,7 @@ It's possible to declare the composer dependencies that our microservice needs w
 `php-etl/pipeline`, `php-etl/pipeline-console-runtime`, `php-etl/workflow-console-runtime`, 
 `psr/log`, `monolog/monolog`, `symfony/console`, `symfony/dependency-injection`) will be installed automatically.
 
-The `require` option allows to add all the packages, write like `package_name:version`, that we need for your microservice.
+The `require` parameter allows to add all the packages, write like `package_name:version`, that we need for your microservice.
 
 {{< tabs name="basic_with_composer" >}}
 
@@ -109,7 +109,7 @@ satellites:
 
 #### Autoload
 
-The `autoload` option is optional and allows you to configure your autoloader by specifying one or more namespaces and 
+The `autoload` parameter is optional and allows you to configure your autoloader by specifying one or more namespaces and 
 directories paths as if you were directly in the composer.json.
 
 Every autoloading configuration shall be in the following format:
@@ -130,7 +130,7 @@ satellites:
 
 #### From local
 
-The `from_local` option is optional and copies local `composer.json`, `composer.lock` and `vendor` files in your 
+The `from_local` parameter is optional and copies local `composer.json`, `composer.lock` and `vendor` files in your 
 microservice instead creating them.
 
 ```yaml
@@ -143,13 +143,13 @@ satellites:
 
 #### Repositories
 
-The `repositories` option is optional and allow you to use directories that are hosted on other repositories than Packagist.
+The `repositories` parameter is optional. It allows you to use repositories that are not hosted on [packagist.org](https://packagist.org/).
 
 Each repository should have the following configuration fields:
 
 - `name`: the name of your repository
 - `url`: the url of your repository
-- `type`: it allows to determine which authentication type is used to access your repo, see [Authentication principles](https://getcomposer.org/doc/articles/authentication-for-private-packages.md#authentication-principles).
+- `type`: the type of your repository (vcs, composer, package, etc...)
 
 
 ```yaml
@@ -163,13 +163,14 @@ satellites:
 
 #### Auth
 
-The `auth` option is optional and allows you to use packages that are protected by your server.
-You will need to tell Composer how to authenticate to the server that hosts them.
+The `auth` parameter is optional and allows you to use registries that are not public and accessed through an authentication.
+The parameter is the way for you to tell composer how to authenticate to the registry server.
 
 Each auth can have the following configuration fields:
 - `url`: the url of your repository
 - `token`: when you use a connection via token, you must use this field
-> Notice : Actually, the only way to identify to a repository is to use tokens.
+
+> Notice : Currently, the only way to identify to a repository is to use tokens. Support for other authentication methods is in our backlog.
 
 ```yaml
 version: '0.3'
