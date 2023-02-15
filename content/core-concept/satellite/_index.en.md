@@ -112,7 +112,7 @@ satellites:
 The `autoload` option is optional and allows you to configure your autoloader by specifying one or more namespaces and 
 directories paths as if you were directly in the composer.json.
 
-Chaque autoload doit être constitué des clés suivantes :
+Every autoloading configuration shall be in the following format:
 
 - `namespace`: namespace of your files
 - `paths`: directories in which the files to be loaded are located
