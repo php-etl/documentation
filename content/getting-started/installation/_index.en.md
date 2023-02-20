@@ -17,12 +17,10 @@ Once the project dir is created and you have changed your current directory to i
 a composer project inside this directory and add all required dependencies.
 
 ```shell
-composer init
+composer init --stability=dev
 ```
 
-> Notice: You must choose `dev` as the value for the `minimum-stability` option.
-
-> When asked if you want to define your require and require-dev dependencies interactively, answer `no`.
+![Composer init](composer_init.png)
 
 In the auto-generated `composer.json` file, add the following lines at the end :
 
