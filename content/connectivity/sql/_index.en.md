@@ -53,6 +53,9 @@ sql:
     password: password
 ```
 
+### Options
+
+#### Persistent
 It is possible to specify options at the time of this connection using `options`. Currently, it is only possible to
 specify if the database connection should be persistent.
 
@@ -62,6 +65,18 @@ sql:
     # ...
     options:
       persistent: true
+```
+
+#### Shared
+
+In some cases, you may need to pool connections to your database to avoid having to open and close a whole new connection 
+for every operation the database needs to perform.
+
+```yaml
+sql:
+  connection:
+    # ...
+    shared: true
 ```
 
 ### Building an extractor

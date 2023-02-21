@@ -38,8 +38,10 @@ foo: '@=env("MY_ENVIRONMENT_VARIABLE")'
 
 ## List of available functions
 
-* `env(string $name) : string|false` : Gets the value of an environment variable
-* `envAsFile(string $name) : string` : Create a file whose name is an environment variable
-* `file(string $name) : string` : Create a file
-* `base64Decode(string $name) : string|false` :  Decodes data encoded with Base64
-* `temporaryFile(string $name) : resource` : Create a temporary file
+| Name                                               | Desctiption                                         |
+|----------------------------------------------------|-----------------------------------------------------|
+| env(`string` name): `string`&vert;`false`          | Gets the value of an environment variable           |
+| envAsFile(`string` name): `string`                 | Create a file whose name is an environment variable |
+| file(`string` name): `string`                      | Create a file                                       |
+| base64Decode(`string` name): `string`&vert;`false` | Decodes data encoded with Base64                    |
+| temporaryFile(`string` name): `resource`           | Create a temporary file                             |

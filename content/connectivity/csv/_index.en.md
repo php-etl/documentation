@@ -86,13 +86,24 @@ To limit the number of lines to be written to your csv file, you can specify the
 ```yaml
 csv:
   loader:
-    file_path: 'input.csv'
-    excel:
-      # ...
-      max_lines: 20
+    # ...
+    max_lines: 20
 ```
 
 > Warning : this option is only available for loaders
+
+
+### Using a nonstandard format 
+
+In some cases, it is possible to generate a csv file that does not correspond to the standard format (for example by removing the enclosures).
+For this we have added the `nonstandard` option which is a boolean.
+
+```yaml
+csv:
+  loader:
+    # ...
+    nonstandard: true
+```
 
 ## See more
 
