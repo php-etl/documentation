@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-md {{ if .IsHome }}navbar-dark{{ else }}navbar-light{{ end }}">
   <div class="container">
-    <a class="navbar-brand px-2" href="{{ site.BaseURL | relLangURL }}">
+    <a class="navbar-brand" href="{{ site.BaseURL | relLangURL }}">
       {{ $logo:= site.Params.logo }}
       {{ $logoWhite:= site.Params.logo_white }}
       {{ if (or $logo $logoWhite) }}
@@ -11,7 +11,7 @@
       </div>
       {{ else }}
       <div class="navbar-brand">
-        <img class="img-fluid" src="{{ $logo | absURL }}" alt="{{ site.Title }}"> Gyroscops
+        <img class="img-fluid" src="{{ $logo | absURL }}" alt="{{ site.Title }}"><span class="navbar-logo"> Gyroscops</span>
       </div>
       {{ end }}
       {{ else }}
@@ -25,16 +25,13 @@
 
     <div class="collapse navbar-collapse text-center" id="navigation">
       <ul class="navbar-nav ml-auto">
-        <li class="nav-item">
-          <a class="nav-link text-dark" href="{{ site.BaseURL | relLangURL }}">{{ site.Params.home }}</a>
-        </li>
         {{ range site.Menus.main }}
         {{ if .HasChildren }}
         <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle text-dark" href="#" role="button" data-toggle="dropdown"
+          <span class="nav-link dropdown-toggle text-dark" href="#" role="button" data-toggle="dropdown"
             aria-haspopup="true" aria-expanded="false">
             {{ .Name }}
-          </a>
+          </span>
           <div class="dropdown-menu">
             {{ range .Children }}
             <a class="dropdown-item" href="{{ .URL | relLangURL }}">{{ .Name }}</a>

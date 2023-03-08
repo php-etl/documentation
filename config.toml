@@ -188,7 +188,7 @@ languageName = "English"
 languageCode = "en-us"
 weight = 1
 home = "Home"
-copyright = "The Gyroscops Documents are copyright © [Kiboko](https://kiboko.fr/) 2020, 2021."
+copyright = "The Gyroscops Documents are copyright © [Kiboko](https://kiboko.fr/) 2020-2023."
 
 # banner
 [Languages.en.params.banner]
@@ -227,7 +227,7 @@ languageName = "Français"
 languageCode = "fr-fr"
 weight = 2
 home = "Accueil"
-copyright = "La documentation Gyroscops est copyright © [Kiboko](https://kiboko.fr/) 2020, 2021."
+copyright = "La documentation Gyroscops est copyright © [Kiboko](https://kiboko.fr/) 2020-2023."
 
 # banner
 [Languages.fr.params.banner]
