@@ -16,7 +16,7 @@
         </div>
       </div>
       <div class="col-lg-9">
-        <div class="p-lg-5 p-4 bg-white">
+        <div class="p-lg-5 p-4">
           <h1 class="single-title mb-5">
               {{ if .Params.Icon }}
               <i class="{{ .Params.Icon }} icon d-block"></i>
@@ -33,7 +33,7 @@
           {{ if .Content }}
           <div class="content">{{.Content}}</div>
           {{ else }}
-          <div class="bg-light p-4">
+          <div class="p-4">
             <ul class="page-list">
               {{ template "section-tree-nav" dict "sect" . "currentnode" $currentNode }}
             </ul>
