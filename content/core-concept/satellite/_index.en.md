@@ -92,7 +92,7 @@ It's possible to declare the composer dependencies that our microservice needs w
 `php-etl/pipeline`, `php-etl/pipeline-console-runtime`, `php-etl/workflow-console-runtime`, 
 `psr/log`, `monolog/monolog`, `symfony/console`, `symfony/dependency-injection`) will be installed automatically.
 
-The `require` parameter allows to add all the packages, write like `package_name:version`, that we need for your microservice.
+The `require` parameter allows to add all the packages, written as `package_name:version`, that your microservice needs.
 
 {{< tabs name="basic_with_composer" >}}
 
@@ -130,8 +130,8 @@ satellites:
 
 #### From local
 
-The `from_local` parameter is optional and copies local `composer.json`, `composer.lock` and `vendor` files in your 
-microservice instead creating them.
+The `from_local` parameter is optional and copies local `composer.json`, `composer.lock` and `vendor` files into your 
+microservice instead of creating them.
 
 ```yaml
 version: '0.3'
@@ -158,19 +158,17 @@ satellites:
   - # ...
     composer:
       repositories:
-        - { name: 'private-packagist', type: 'composer', url: 'https://repo.packagist.com/package/' }
+        - { name: 'private-packagist', url: 'https://repo.packagist.com/package/', type: 'composer' }
 ``` 
 
 #### Auth
 
-The `auth` parameter is optional and allows you to use registries that are not public and accessed through an authentication.
+The `auth` parameter is optional and allows you to use registries that are not public and must be accessed through an authentication.
 The parameter is the way for you to tell composer how to authenticate to the registry server.
 
 Each auth can have the following configuration fields:
 - `url`: the url of your repository
 - `token`: when you use a connection via token, you must use this field
-
-> Notice : Currently, the only way to identify to a repository is to use tokens. Support for other authentication methods is in our backlog.
 
 ```yaml
 version: '0.3'
@@ -181,6 +179,7 @@ satellites:
       - { url: 'http-basic.kiboko.repo.packagist.com', token: '0fe8828b23371406295ca2b72634c0a3df2431c4787df0173ea051a0c639' }
 ``` 
 
+> Notice : Currently, the only way to identify to a repository is to use tokens. Support for other authentication methods is in our backlog.
 
 ### Setting up the runtime
 

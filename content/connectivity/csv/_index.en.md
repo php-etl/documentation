@@ -105,6 +105,4 @@ csv:
     nonstandard: true
 ```
 
-## See more
-
-If you want to see complete configurations, please go to the [examples](/examples) folder.
+> Notice : The `nonstandard` option cannot be used with the `enclosure` and `escape` options.

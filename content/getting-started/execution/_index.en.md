@@ -7,7 +7,7 @@ weight: 5
 
 Once your PHP code is generated, it can be executed right away.
 
-n the following paragraphs, you will find the method for executing the satellites depending on 
+In the following paragraphs, you will find the method for executing the satellites depending on 
 the [adapter](http://localhost:1313/documentation/core-concept/satellite#setting-up-the-adapter) you have chosen.
 
 ## If you built inside the filesystem

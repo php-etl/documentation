@@ -13,7 +13,7 @@ Before proceeding, make sure your computer has a PHP version higher than or equa
 For more information on how to install PHP, go to the [official documentation](https://www.php.net/manual/en/install.php).
 
 ### Composer 2
-After installing PHP, you must ensure that your Composer 2 is installed on your machine.
+After installing PHP, you must ensure that Composer 2 is installed on your machine.
 
 For more information on how to install Composer, go to the [official documentation](https://getcomposer.org/download/).
 
