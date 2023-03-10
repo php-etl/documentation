@@ -17,8 +17,12 @@ After installing PHP, you must ensure that Composer 2 is installed on your machi
 
 For more information on how to install Composer, go to the [official documentation](https://getcomposer.org/download/).
 
-### Docker (optional)
+### JQ
+Jq, a JSON processor, is also required for satellites to generate their composer.json files.
 
+For more information on how to install jq, go to the [official documentation](https://stedolan.github.io/jq/download/).
+
+### Docker (optional)
 Gyroscops offers you the possibility to build your configurations as images that you can use in a dockerized environment.
 That's why you may also need Docker.
 

@@ -7,7 +7,7 @@ weight: 3
 
 Now that you have initialized your project and installed our compiler, you will be able to deepen your knowledge and use our different plugins.
 
-The first thing to do is to create a `satellite.yaml` file.
+The first thing to do is creating a configuration file, which we will name `satellite.yaml`.
 
 In a terminal, enter the following command:
 
@@ -21,6 +21,7 @@ Then add this configuration to your YAML file:
 version: '0.3'
 satellites:
   akeneo_to_csv:
+    label: 'Akeneo to CSV'
     filesystem:
         path: build
     pipeline:
@@ -52,5 +53,7 @@ composer require php-etl/akeneo-plugin php-etl/csv-plugin
 
 > Be careful to use a version that is compatible with the version of the `php-etl/satellite` package that you have previously installed.
 > Find the different versions of our plugins [here](https://packagist.org/?query=php-etl%2F).
+
+> In a configuration file, paths start at the folder specified under `filesystem.path`. Here for example, the result will be `build/output.csv`.
 
 For more information on how to write your configuration, please read [satellites](../satellite).
