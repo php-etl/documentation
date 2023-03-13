@@ -276,6 +276,11 @@ pre {
   background-color: var(--light-color) !important;
 }
 
+.bg-gradient {
+  background: linear-gradient(90deg, var(--secondary-color) 10%, var(--primary-color) 90%);
+  padding-bottom: 5px;
+}
+
 .text-primary {
   color: var(--primary-color) !important;
 }
@@ -403,7 +408,7 @@ pre {
   background: transparent;
 }
 
-.navbar-dark .navbar-toggler-icon {
+.navbar-toggler-icon {
   background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(0, 0, 0, 1)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
 }
 
@@ -469,10 +474,6 @@ pre {
   .navbar-logo {
     display: none;
   }
-
-  .sidebar {
-    position: initial !important;
-  }
 }
 
 @media (min-width: 576px) {
@@ -482,10 +483,6 @@ pre {
 
   .navbar-logo {
     display: none;
-  }
-
-  .sidebar {
-    position: initial !important;
   }
 }
 
@@ -506,10 +503,6 @@ pre {
 
   .navbar-logo {
     display: none;
-  }
-
-  .sidebar {
-    position: fixed !important;
   }
 }
 
@@ -651,7 +644,7 @@ h1.single-title {
 .content h6 {
   padding: 10px 0;
   position: sticky;
-  top: 90px;
+  top: 95px;
   background: #eee;
   z-index: 1;
   margin: 0;
@@ -827,11 +820,9 @@ tbody {
 
 /*!* side list *!*/
 .sidebar {
-  position: fixed;
-  overflow-y: auto;
-  top: 90px;
-  bottom: 0;
-  padding: 30px 0;
+  position: sticky;
+  top: 95px;
+  padding: 60px 0;
 }
 
 .list-styled li.active > a {
