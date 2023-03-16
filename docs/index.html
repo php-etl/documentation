@@ -241,6 +241,12 @@
 					var projects = [
 						
 						{
+							value: "Environment Setup",
+							label: "<p>Gyroscops is a command line application written in PHP. To be able to use the application, you will need to fulfill the following requirements:\nPHP 8.2 or higher Before proceeding, make sure your computer has a PHP version higher than or equal to 8.2 installed.\nFor more information on how to install PHP, go to the official documentation.\nComposer 2 After installing PHP, you must ensure that Composer 2 is installed on your machine.\nFor more information on how to install Composer, go to the official documentation.\nJQ Jq, a JSON processor, is also required for satellites to generate their composer.json files.\nFor more information on how to install jq, go to the official documentation.\nDocker (optional) Gyroscops offers you the possibility to build your configurations as images that you can use in a dockerized environment. That\u0026rsquo;s why you may also need Docker.\nFor more information on how to install Docker, go to the official documentation.\n</p>",
+							url:"https:\/\/php-etl.github.io\/documentation\/getting-started\/environment-setup\/"
+						},
+						
+						{
 							value: "Akeneo",
 							label: "<p> Goal The Akeneo plugin for ETL Pipeline The Akeneo expression functions Goal The packages listed below aims at the integration of Akeneo PIM into the ETL Pipeline and Satellite stacks.\nThe tools built for Akeneo is composed of ETL capacities and data processing functions to be used in Fast Map.\nThe Akeneo plugin for ETL Pipeline This plugin will enable Akeneo connectivity to the ETL Pipeline, in order to read and write from and to Akeneo PIM. This integration is compatible with both Akeneo Enterprise Edition client and the Akeneo Community Edition client.\nSee detailed documentation\nThe Akeneo expression functions This plugin will extend the Fast Map data processing library with new functions dedicated to Akeneo-specific data formats and concepts.\nSee detailed documentation\n</p>",
 							url:"https:\/\/php-etl.github.io\/documentation\/connectivity\/akeneo\/"
@@ -271,6 +277,12 @@
 						},
 						
 						{
+							value: "Writing Configuration",
+							label: "<p>Now that you have initialized your project and installed our compiler, you will be able to deepen your knowledge and use our different plugins.\nThe first thing to do is creating a configuration file, which we will name satellite.yaml.\nIn a terminal, enter the following command:\ntouch satellite.yaml Then add this configuration to your YAML file:\nversion: \u0026#39;0.3\u0026#39; satellites: akeneo_to_csv: label: \u0026#39;Akeneo to CSV\u0026#39; filesystem: path: build pipeline: steps: - akeneo: enterprise: true extractor: type: product method: all client: api_url: \u0026#39;@=env(\u0026#34;AKENEO_URL\u0026#34;)\u0026#39; client_id: \u0026#39;@=env(\u0026#34;AKENEO_CLIENT_ID\u0026#34;)\u0026#39; secret: \u0026#39;@=env(\u0026#34;AKENEO_CLIENT_SECRET\u0026#34;)\u0026#39; username: \u0026#39;@=env(\u0026#34;AKENEO_USERNAME\u0026#34;)\u0026#39; password: \u0026#39;@=env(\u0026#34;AKENEO_PASSWORD\u0026#34;)\u0026#39; - csv: loader: file_path: output.csv delimiter: \u0026#39;,\u0026#39; enclosure: \u0026#39;\u0026#34;\u0026#39; escape: \u0026#39;\\\u0026#39; In our case, we use the csv and akeneo plugins, so we have to add the corresponding plugins to our project.\ncomposer require php-etl\/akeneo-plugin php-etl\/csv-plugin Be careful to use a version that is compatible with the version of the php-etl\/satellite package that you have previously installed. Find the different versions of our plugins here.\nIn a configuration file, paths start at the folder specified under filesystem.path. Here for example, the result will be build\/output.csv.\nFor more information on how to write your configuration, please read satellites.\n</p>",
+							url:"https:\/\/php-etl.github.io\/documentation\/getting-started\/writing-configuration\/"
+						},
+						
+						{
 							value: "Expressions",
 							label: "<p>Generic Expression functions Base Expression functions Array Expression functions String Expression functions Platform-specific expression functions Akeneo Expression functions We have developed some packages that provide expression functions to allow the use of more complex logic inside your satellites configuration.\nThese packages are based on the ExpressionLanguage Symfony component.\nSatellite Expression functions See the Base Expression functions documentation.\nArray Expression functions See the Array Expression functions documentation.\nString Expression functions See the String Expression functions documentation.\n</p>",
 							url:"https:\/\/php-etl.github.io\/documentation\/feature\/expression-language\/"
@@ -283,6 +295,12 @@
 						},
 						
 						{
+							value: "Compilation",
+							label: "<p>After checking and verifying that the configuration of your pipelines are correct, you will be able to compile your configuration.\nIn a terminal, write the following command :\n# php bin\/satellite build \u0026lt;path-to-your-config-file\u0026gt; php bin\/satellite build satellite.yaml In our case, the pipeline will be compiled under build\/, the directory specified in filesystem.path of the configuration.\nNotice: You will need to run this command every time you change your configuration files.\n</p>",
+							url:"https:\/\/php-etl.github.io\/documentation\/getting-started\/compilation\/"
+						},
+						
+						{
 							value: "Logging",
 							label: "<p> What is it for? Installation Usage Setting your channel Setting one or more destinations Using ElasticSearch Using Logstash Using a Stream Using Syslog Using GELF TCP protocol configuration AMQP protocol configuration The different levels of logs in PHP A log is a type of file that stores a history of messages.\nWhat is it for? In some cases you may need to identify why your Pipeline is failing, so we have set up a logger system that you can use in different steps of your pipeline.\nInstallation This plugin is already integrated into the Satellite package, so you won\u0026rsquo;t need to require it with composer.\nUsage Setting your channel First, you need to specify the name of your channel in which your logs will be written.\nlogger: channel: pipeline Setting one or more destinations Next, you need to define the destination(s) for your logs. You can choose between several logging systems: ElasticSearch, Logstash, Gelf, Syslog and Stream.\nUsing ElasticSearch ElasticSearch is a search and analysis engine.\nThe first thing to set is the minimum logging level at which this handler will be triggered using the the level option.\nNote: if you need to install a local ElasticStack environment, check the Manual installation documentation.\nNext, you need to set the various hosts for your ElasticSearch application.\nlogger: # ... destinations: - elasticsearch: level: warning hosts: - http:\/\/user:password@elasticsearch.example.com:9200 Using Logstash Logstash is a software tool for collecting, analysing and storing logs.\nWhen setting up your connection to Logstash, you should first set the name of your application using the application_name option and the minimum logging level at which this handler will be with the level option.\nNext, you need to set the protocol you want to use: AMQP or TCP.\nlogger: # ... destinations: - logstash: application_name: my_log_system level: warning tcp: host: logstash.example.com port: 100 Using a Stream A log stream is an application-specific collection of data that is used as a log. The data is written to and read from the log stream by one or more instances of the associated application.\nTo establish a connection to a stream, you need to establish a path and the minimum logging level at which this handler will be triggered with the this handler will be triggered with the level option.\nlogger: # ... destinations: - stream: path: \/my\/path level: warning Using Syslog Syslog, System Logging Protocol, is a standard protocol used to send system log files or event messages to a dedicated server called syslog server.\nUsing GELF The Graylog Extended Log Format (GELF) is a unique and convenient log format created to address all the shortcomings of the traditional Syslog. This feature allows you to collect structured events from anywhere, then compress and fragment them in a snap.\nThe first thing to do is to set the minimum logging level at which this handler will be triggered using the level option.\nNext, you need to set the protocol you want to use: AMQP or TCP.\nlogger: # ... destinations: - gelf: level: warning amqp: queue: my_queue_nama host: example.com port: 100 login: foo password: password TCP protocol configuration TCP, Transmission Control Protocol, is a standardised protocol for the transmission of data between different subscribers to a computer network.\nThe configuration for TCP is simple, you only need to set the host and port options on your system.\ntcp: host: example.com port: 100 AMQP protocol configuration AMQP, Advanced Message Queuing Protocol, is a standardised transfer and framing protocol for the asynchronous, secure and reliable transfer of messages.\nFor the AMQP protocol, you need to define the name of your queue, the host and port of your application, and the login credentials (login and password).\namqp: queue: my_queue_nama host: example.com port: 100 login: foo password: password The different levels of logs in PHP debug, info, notice, warning, error, critical, alert, emergency\n</p>",
 							url:"https:\/\/php-etl.github.io\/documentation\/feature\/logger\/"
@@ -292,6 +310,12 @@
 							value: "CSV",
 							label: "<p> What is it ? Installation Usage Building an extractor Building a loader Additional options Advanced Usage Splitting into several files See more CSV, Comma-Separated Values, is a spreadsheet-like computer file with values separated by commas.\nWhat is it ? The CSV plugin aims at integrating the CSV reader and writer into the Pipeline stack.\nInstallation composer require php-etl\/csv-plugin Usage Building an extractor To build an extractor, you need to specify the path of your file.\ncsv: extractor: file_path: \u0026#39;input.csv\u0026#39; Building a loader To build a loader, you need to specify the path of your file.\ncsv: loader: file_path: \u0026#39;output.csv\u0026#39; Additional options To build extractors or loaders, additional options exist and can be used :\ndelimiter : sets the field separator enclosure : sets the text enclosure character escape : sets the escape character safe_mode : enable safe mode in the Pipeline columns : specify the name of the columns to retrieve or write csv: loader: file_path: \u0026#39;output.csv\u0026#39; delimiter: \u0026#39;\/\u0026#39; enclosure: \u0026#39;\u0026#34;\u0026#39; escape: \u0026#39;\\\\\u0026#39; safe_mode: true columns: - firstname - lastname Advanced Usage Splitting into several files To limit the number of lines to be written to your csv file, you can specify the max_lines option.\ncsv: expression_language: - \u0026#39;Kiboko\\Component\\StringExpressionLanguage\\StringExpressionLanguageProvider\u0026#39; loader: # ... max_lines: 20 file_path: \u0026#39;@=env(\u0026#34;OUTPUT_DIRECTORY\u0026#34;)~format(\u0026#34;output_%06d.csv\u0026#34;,index)\u0026#39; For the dynamic filename to work, you must install php-etl\/string-expression-language:\ncomposer require php-etl\/string-expression-language Warning : this option is only available for loaders\nUsing a nonstandard format In some cases, it is possible to generate a csv file that does not correspond to the standard format (for example by removing the enclosures). For this we have added the nonstandard option which is a boolean.\ncsv: loader: # ... nonstandard: true Notice : The nonstandard option cannot be used with the enclosure and escape options.\n</p>",
 							url:"https:\/\/php-etl.github.io\/documentation\/connectivity\/csv\/"
+						},
+						
+						{
+							value: "Execution",
+							label: "<p>Once your PHP code is generated, it can be executed right away.\nIn the following paragraphs, you will find the method for executing the satellites depending on the adapter you have chosen.\nIf you built inside the filesystem Runs the pipeline that was compiled under build\/:\n# php \u0026lt;path-to-the-generated-satellite\u0026gt; php bin\/satellite run:pipeline build\/ This command will run your satellite service located in a directory. The execution of your service may take several minutes, so please wait until the execution is completed.\nAfter compilation, check that build\/output.csv has been created.\nIf you built as a Docker image # docker run --rm -ti \u0026lt;generated-satellite-docker-image-name\u0026gt; docker run --rm -ti foo\/satellite-name:latest This command will run your satellite service you have previously built as a Docker image you named foo\/satellite-name:latest.\n</p>",
+							url:"https:\/\/php-etl.github.io\/documentation\/getting-started\/execution\/"
 						},
 						
 						{
@@ -331,6 +355,18 @@
 						},
 						
 						{
+							value: "Getting-starteds",
+							label: "<p></p>",
+							url:"https:\/\/php-etl.github.io\/documentation\/getting-started\/"
+						},
+						
+						{
+							value: "Gyroscops",
+							label: "<p></p>",
+							url:"https:\/\/php-etl.github.io\/documentation\/"
+						},
+						
+						{
 							value: "Declaring services",
 							label: "<p> What is it for? Installation Usage Defining your arguments Making the service public Using method calls Using a service as an argument What is it for? Based on Symfony services, it is possible to inject objects into your pipeline or workflow. To learn more about services, please visit the official Symfony documentation.\nInstallation This plugin is already integrated into the Satellite package, so you can\u0026rsquo;t require it with the composer.\nUsage If you are using a very simple service, you can define it as follows:\nservices: App\\Foo\\Bar: ~ Defining your arguments services: App\\Foo\\Bar: arguments: - \u0026#39;my-file.csv\u0026#39; # it\u0026#39;s a string argument - { host: \u0026#34;localhost\u0026#34;, port: \u0026#39;8000\u0026#39; } # it\u0026#39;s an array argument - 1234 # it\u0026#39;s a integer argument In this example, the App\\Foo\\Bar service will have 3 parameters that will be passed into the __construct method of your class (in the order of writing).\nMaking the service public If you need to make a service public, use the public option which you set to true.\nservices: App\\Foo\\Bar: # ... public: true Using method calls To understand what calls are, go to the official call documentation.\nservices: App\\Foo\\Bar: # ... calls: - withUsername: [ \u0026#39;admin\u0026#39; ] Using a service as an argument It\u0026rsquo;s possible to use a service as an argument when declaring a service by using the service name preceded by @.\nservices: App\\Foo\\Foo: arguments: - \u0026#39;@App\\Foo\\Bar\u0026#39; </p>",
 							url:"https:\/\/php-etl.github.io\/documentation\/feature\/services\/"
@@ -343,21 +379,9 @@
 						},
 						
 						{
-							value: "Gyroscops",
-							label: "<p></p>",
-							url:"https:\/\/php-etl.github.io\/documentation\/"
-						},
-						
-						{
 							value: "State",
 							label: "<p> What is it for? Installation Usage With RabbitMQ Using a service What is it for? The state feature allows you to manage the states advancement of your pipeline.\nInstallation This plugin is already integrated into the Satellite package, so you can\u0026rsquo;t require it with the composer.\nUsage When you configure your pipeline, you can add the configuration of this feature to your step configuration.\nFirst, you must use the state option.\nstate: # ... With RabbitMQ This feature supports sending to RabbitMQ instances.\nBasic configuration To enable a connection to your RabbitMQ application, you need at least 3 options which are host, vhost and topic.\nhost: this is the name of your host name vhost: this is the virtual host of your RabbitMQ instance topic: this is the name of the queue to which the rejects will be sent state: destinations: - rabbitmq: host: rabbitmq.example.com vhost: \/ topic: foo.rejects Additional options This feature additionally takes some options that can be used when configuring to your instance.\nuser: this is the username of your user password: this is the password of your user port: this is the port that your RabbitMQ application uses exchange: this is the name of the exchange to be used state: destinations: - rabbitmq: host: rabbitmq.example.com port: 5672 user: \u0026#39;guest\u0026#39; password: \u0026#39;guest\u0026#39; vhost: \/ topic: foo.rejects exchange: \u0026#39;amq.direct\u0026#39; Using a service It\u0026rsquo;s possible to use a service that has been previously defined in the pipeline or the workflow configuration.\nTo use a service, you just have to write the name of your service preceded by a @.\nstate: destinations: - \u0026#39;@App\\Service\\Bar\u0026#39; Warning : In the case where the states of your steps must all be sent to the same instance with a unique manager, you must use services.\n</p>",
 							url:"https:\/\/php-etl.github.io\/documentation\/feature\/state\/"
-						},
-						
-						{
-							value: "Getting-starteds",
-							label: "<p></p>",
-							url:"https:\/\/php-etl.github.io\/documentation\/getting-started\/"
 						},
 						
 						{
