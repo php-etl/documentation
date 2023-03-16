@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <title>Fast Map</title>
 
-  <meta name="generator" content="Hugo 0.82.0" />
+  <meta name="generator" content="Hugo 0.110.0">
 
   <!-- mobile responsive meta -->
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -100,13 +100,15 @@
           </a>
           <div class="dropdown-menu">
             
-            <a class="dropdown-item" href="/documentation/getting-started/setup">Setup</a>
+            <a class="dropdown-item" href="/documentation/getting-started/environment-setup">Environment Setup</a>
             
-            <a class="dropdown-item" href="/documentation/getting-started/satellite">Creating Satellites</a>
+            <a class="dropdown-item" href="/documentation/getting-started/installation">Installation</a>
             
-            <a class="dropdown-item" href="/documentation/getting-started/pipeline">Pipelines</a>
+            <a class="dropdown-item" href="/documentation/getting-started/writing-configuration">Writing Configuration</a>
             
-            <a class="dropdown-item" href="/documentation/getting-started/workflow">Workflows</a>
+            <a class="dropdown-item" href="/documentation/getting-started/compilation">Compilation</a>
+            
+            <a class="dropdown-item" href="/documentation/getting-started/execution">Execution</a>
             
           </div>
         </li>
@@ -116,19 +118,15 @@
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle text-dark" href="#" role="button" data-toggle="dropdown"
             aria-haspopup="true" aria-expanded="false">
-            Features
+            Core concepts
           </a>
           <div class="dropdown-menu">
             
-            <a class="dropdown-item" href="/documentation/feature/services">Declaring services</a>
+            <a class="dropdown-item" href="/documentation/core-concept/satellite">Satellite</a>
             
-            <a class="dropdown-item" href="/documentation/feature/expression-language">Expression Language</a>
+            <a class="dropdown-item" href="/documentation/core-concept/pipeline">Pipeline</a>
             
-            <a class="dropdown-item" href="/documentation/feature/logger">Logging</a>
-            
-            <a class="dropdown-item" href="/documentation/feature/rejection">Rejection</a>
-            
-            <a class="dropdown-item" href="/documentation/feature/state">State</a>
+            <a class="dropdown-item" href="/documentation/core-concept/workflow">Workflow</a>
             
           </div>
         </li>
@@ -161,6 +159,28 @@
             <a class="dropdown-item" href="/documentation/connectivity/sql">SQL database</a>
             
             <a class="dropdown-item" href="/documentation/connectivity/sylius">Sylius</a>
+            
+          </div>
+        </li>
+        
+        
+        
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle text-dark" href="#" role="button" data-toggle="dropdown"
+            aria-haspopup="true" aria-expanded="false">
+            Features
+          </a>
+          <div class="dropdown-menu">
+            
+            <a class="dropdown-item" href="/documentation/feature/services">Declaring services</a>
+            
+            <a class="dropdown-item" href="/documentation/feature/expression-language">Expression Language</a>
+            
+            <a class="dropdown-item" href="/documentation/feature/logger">Logging</a>
+            
+            <a class="dropdown-item" href="/documentation/feature/rejection">Rejection</a>
+            
+            <a class="dropdown-item" href="/documentation/feature/state">State</a>
             
           </div>
         </li>
@@ -206,6 +226,8 @@
           <ul class="list-styled">
             
             <a class="back-btn" href="/documentation"></a>
+            
+              
             
               
             
@@ -310,50 +332,6 @@
 
 
 
-<li data-nav-id="https://php-etl.github.io/documentation/connectivity/csv/" title="CSV" class="sidelist
-  ">
-  <a href="https://php-etl.github.io/documentation/connectivity/csv/">
-    CSV
-  </a>
-  
-  
-</li>
-
-
-        
-      
-        
-          
-
-
-
-
-
-
-
-
-<li data-nav-id="https://php-etl.github.io/documentation/connectivity/custom/" title="Custom connector" class="sidelist
-  ">
-  <a href="https://php-etl.github.io/documentation/connectivity/custom/">
-    Custom connector
-  </a>
-  
-  
-</li>
-
-
-        
-      
-        
-          
-
-
-
-
-
-
-
-
 <li data-nav-id="https://php-etl.github.io/documentation/connectivity/fast-map/" title="Fast Map" class="sidelist
   active">
   <a href="https://php-etl.github.io/documentation/connectivity/fast-map/">
@@ -376,10 +354,10 @@
 
 
 
-<li data-nav-id="https://php-etl.github.io/documentation/connectivity/ftp/" title="FTP" class="sidelist
+<li data-nav-id="https://php-etl.github.io/documentation/connectivity/sylius/" title="Sylius" class="sidelist
   ">
-  <a href="https://php-etl.github.io/documentation/connectivity/ftp/">
-    FTP
+  <a href="https://php-etl.github.io/documentation/connectivity/sylius/">
+    Sylius
   </a>
   
   
@@ -398,32 +376,10 @@
 
 
 
-<li data-nav-id="https://php-etl.github.io/documentation/connectivity/nl-json/" title="NL-JSON" class="sidelist
+<li data-nav-id="https://php-etl.github.io/documentation/connectivity/csv/" title="CSV" class="sidelist
   ">
-  <a href="https://php-etl.github.io/documentation/connectivity/nl-json/">
-    NL-JSON
-  </a>
-  
-  
-</li>
-
-
-        
-      
-        
-          
-
-
-
-
-
-
-
-
-<li data-nav-id="https://php-etl.github.io/documentation/connectivity/sftp/" title="SFTP" class="sidelist
-  ">
-  <a href="https://php-etl.github.io/documentation/connectivity/sftp/">
-    SFTP
+  <a href="https://php-etl.github.io/documentation/connectivity/csv/">
+    CSV
   </a>
   
   
@@ -486,10 +442,76 @@
 
 
 
-<li data-nav-id="https://php-etl.github.io/documentation/connectivity/sylius/" title="Sylius" class="sidelist
+<li data-nav-id="https://php-etl.github.io/documentation/connectivity/ftp/" title="FTP" class="sidelist
   ">
-  <a href="https://php-etl.github.io/documentation/connectivity/sylius/">
-    Sylius
+  <a href="https://php-etl.github.io/documentation/connectivity/ftp/">
+    FTP
+  </a>
+  
+  
+</li>
+
+
+        
+      
+        
+          
+
+
+
+
+
+
+
+
+<li data-nav-id="https://php-etl.github.io/documentation/connectivity/sftp/" title="SFTP" class="sidelist
+  ">
+  <a href="https://php-etl.github.io/documentation/connectivity/sftp/">
+    SFTP
+  </a>
+  
+  
+</li>
+
+
+        
+      
+        
+          
+
+
+
+
+
+
+
+
+<li data-nav-id="https://php-etl.github.io/documentation/connectivity/nl-json/" title="NL-JSON" class="sidelist
+  ">
+  <a href="https://php-etl.github.io/documentation/connectivity/nl-json/">
+    NL-JSON
+  </a>
+  
+  
+</li>
+
+
+        
+      
+        
+          
+
+
+
+
+
+
+
+
+<li data-nav-id="https://php-etl.github.io/documentation/connectivity/custom/" title="Custom connector" class="sidelist
+  ">
+  <a href="https://php-etl.github.io/documentation/connectivity/custom/">
+    Custom connector
   </a>
   
   
@@ -570,14 +592,14 @@ during the mapping operation.</p>
 <p>If you need to config your mappers, we advise you to use the yml config which will generate a php code usable by the fast-map-config.
 This code will then be converted into a machine code that can be used by the fast map package.</p>
 <h2 id="installation">Installation</h2>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">composer require php-etl/fast-map-plugin
-</code></pre></div><h2 id="usage">Usage</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>composer require php-etl/fast-map-plugin
+</span></span></code></pre></div><h2 id="usage">Usage</h2>
 <h3 id="building-an-arraymapper">Building an ArrayMapper</h3>
 <p>To write a mapping to an array, you must use the `map option.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">fastmap</span>:
-  <span style="color:#f92672">map</span>:
-  <span style="color:#75715e"># ...</span>
-</code></pre></div><p>Next, you need to specify the field you are going to map to and assign a value to it.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#f92672">fastmap</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">map</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e"># ...</span>
+</span></span></code></pre></div><p>Next, you need to specify the field you are going to map to and assign a value to it.</p>
 <p>The <code>field</code> option is based on the <a href="https://symfony.com/doc/current/components/property_access.html">PropertyAccess</a>
 component of Symfony. You must therefore respect this <code>[field_name]</code> naming format.</p>
 <p>To assign a value to your field, you can choose between several options :</p>
@@ -589,83 +611,83 @@ and copy it.</li>
 component and allows you to write your own expressions.</li>
 <li><code>constant</code> : This option allows you to write directly the value of your field</li>
 </ul>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">fastmap</span>:
-  <span style="color:#f92672">map</span>:
-    - <span style="color:#f92672">field</span>: <span style="color:#e6db74">&#39;[sku]&#39;</span>
-      <span style="color:#f92672">copy</span>: <span style="color:#e6db74">&#39;[sku]&#39;</span>
-    - <span style="color:#f92672">field</span>: <span style="color:#e6db74">&#39;[title]&#39;</span>
-      <span style="color:#f92672">expression</span>: <span style="color:#e6db74">&#39;input[&#34;sku&#34;] ~&#34; | &#34;~ input[&#34;name&#34;]&#39;</span>
-    - <span style="color:#f92672">field</span>: <span style="color:#e6db74">&#39;[staticValue]&#39;</span>
-      <span style="color:#f92672">constant</span>: <span style="color:#e6db74">&#39;Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur mollis efficitur justo, id facilisis elit venenatis et.&#39;</span>
-    <span style="color:#75715e"># ...</span>
-</code></pre></div><h4 id="advanced-options">Advanced options</h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#f92672">fastmap</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">map</span>:
+</span></span><span style="display:flex;"><span>    - <span style="color:#f92672">field</span>: <span style="color:#e6db74">&#39;[sku]&#39;</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">copy</span>: <span style="color:#e6db74">&#39;[sku]&#39;</span>
+</span></span><span style="display:flex;"><span>    - <span style="color:#f92672">field</span>: <span style="color:#e6db74">&#39;[title]&#39;</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">expression</span>: <span style="color:#e6db74">&#39;input[&#34;sku&#34;] ~&#34; | &#34;~ input[&#34;name&#34;]&#39;</span>
+</span></span><span style="display:flex;"><span>    - <span style="color:#f92672">field</span>: <span style="color:#e6db74">&#39;[staticValue]&#39;</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">constant</span>: <span style="color:#e6db74">&#39;Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur mollis efficitur justo, id facilisis elit venenatis et.&#39;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># ...</span>
+</span></span></code></pre></div><h4 id="advanced-options">Advanced options</h4>
 <ul>
 <li><code>map</code> : <a href="#building-an-arraymapper">see the configuration</a></li>
 <li><code>list</code> : <a href="#building-a-listmapper">see the configuration</a></li>
 <li><code>collection</code> : <a href="#building-a-collectionmapper">see the configuration</a></li>
 <li><code>object</code> : <a href="#building-an-objectmapper">see the configuration</a></li>
 </ul>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">fastmap</span>: 
-  <span style="color:#f92672">map</span>: 
-    - <span style="color:#f92672">field</span>: <span style="color:#e6db74">&#39;[foo]&#39;</span>
-      <span style="color:#f92672">expression</span>: <span style="color:#e6db74">&#39;input&#39;</span>
-      <span style="color:#f92672">map</span>:
-        - <span style="color:#f92672">field</span>: <span style="color:#e6db74">&#39;[bar]&#39;</span>
-          <span style="color:#f92672">copy</span>: <span style="color:#e6db74">&#39;[bar]&#39;</span>
-    - <span style="color:#f92672">field</span>: <span style="color:#e6db74">&#39;[foo]&#39;</span>
-      <span style="color:#f92672">expression</span>: <span style="color:#e6db74">&#39;input&#39;</span>
-      <span style="color:#f92672">list</span>:
-        - <span style="color:#f92672">field</span>: <span style="color:#e6db74">&#39;[bar]&#39;</span>
-          <span style="color:#f92672">copy</span>: <span style="color:#e6db74">&#39;[bar]&#39;</span>
-    - <span style="color:#f92672">field</span>: <span style="color:#e6db74">&#39;[descriptions]&#39;</span>
-      <span style="color:#f92672">class</span>: <span style="color:#e6db74">&#39;Pipeline\Usage&#39;</span>
-      <span style="color:#f92672">expression</span>: <span style="color:#e6db74">&#39;input[&#34;foo&#34;]&#39;</span>
-      <span style="color:#f92672">object</span>:
-        - <span style="color:#f92672">field</span>: <span style="color:#e6db74">&#39;usage&#39;</span>
-          <span style="color:#f92672">expression</span>: <span style="color:#e6db74">&#39;&#34;Usage: &#34; ~ input[&#34;usage&#34;]&#39;</span>
-        - <span style="color:#f92672">field</span>: <span style="color:#e6db74">&#39;warning&#39;</span>
-          <span style="color:#f92672">copy</span>: <span style="color:#e6db74">&#39;[warning]&#39;</span>
-        - <span style="color:#f92672">field</span>: <span style="color:#e6db74">&#39;notice&#39;</span>
-          <span style="color:#f92672">copy</span>: <span style="color:#e6db74">&#39;[notice]&#39;</span>
-    - <span style="color:#f92672">field</span>: <span style="color:#e6db74">&#39;[messages]&#39;</span>
-      <span style="color:#f92672">class</span>: <span style="color:#e6db74">&#39;Foo\DTO\Messages&#39;</span>
-      <span style="color:#f92672">expression</span>: <span style="color:#e6db74">&#39;input&#39;</span>
-      <span style="color:#f92672">collection</span>:
-        - <span style="color:#f92672">field</span>: <span style="color:#e6db74">&#39;usage&#39;</span>
-          <span style="color:#f92672">expression</span>: <span style="color:#e6db74">&#39;&#34;Usage: &#34; ~ input[&#34;usage&#34;]&#39;</span>
-        - <span style="color:#f92672">field</span>: <span style="color:#e6db74">&#39;warning&#39;</span>
-          <span style="color:#f92672">copy</span>: <span style="color:#e6db74">&#39;[warning]&#39;</span>
-        - <span style="color:#f92672">field</span>: <span style="color:#e6db74">&#39;notice&#39;</span>
-          <span style="color:#f92672">copy</span>: <span style="color:#e6db74">&#39;[notice]&#39;</span>
-</code></pre></div><h3 id="building-a-listmapper">Building a ListMapper</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#f92672">fastmap</span>: 
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">map</span>: 
+</span></span><span style="display:flex;"><span>    - <span style="color:#f92672">field</span>: <span style="color:#e6db74">&#39;[foo]&#39;</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">expression</span>: <span style="color:#e6db74">&#39;input&#39;</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">map</span>:
+</span></span><span style="display:flex;"><span>        - <span style="color:#f92672">field</span>: <span style="color:#e6db74">&#39;[bar]&#39;</span>
+</span></span><span style="display:flex;"><span>          <span style="color:#f92672">copy</span>: <span style="color:#e6db74">&#39;[bar]&#39;</span>
+</span></span><span style="display:flex;"><span>    - <span style="color:#f92672">field</span>: <span style="color:#e6db74">&#39;[foo]&#39;</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">expression</span>: <span style="color:#e6db74">&#39;input&#39;</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">list</span>:
+</span></span><span style="display:flex;"><span>        - <span style="color:#f92672">field</span>: <span style="color:#e6db74">&#39;[bar]&#39;</span>
+</span></span><span style="display:flex;"><span>          <span style="color:#f92672">copy</span>: <span style="color:#e6db74">&#39;[bar]&#39;</span>
+</span></span><span style="display:flex;"><span>    - <span style="color:#f92672">field</span>: <span style="color:#e6db74">&#39;[descriptions]&#39;</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">class</span>: <span style="color:#e6db74">&#39;Pipeline\Usage&#39;</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">expression</span>: <span style="color:#e6db74">&#39;input[&#34;foo&#34;]&#39;</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">object</span>:
+</span></span><span style="display:flex;"><span>        - <span style="color:#f92672">field</span>: <span style="color:#e6db74">&#39;usage&#39;</span>
+</span></span><span style="display:flex;"><span>          <span style="color:#f92672">expression</span>: <span style="color:#e6db74">&#39;&#34;Usage: &#34; ~ input[&#34;usage&#34;]&#39;</span>
+</span></span><span style="display:flex;"><span>        - <span style="color:#f92672">field</span>: <span style="color:#e6db74">&#39;warning&#39;</span>
+</span></span><span style="display:flex;"><span>          <span style="color:#f92672">copy</span>: <span style="color:#e6db74">&#39;[warning]&#39;</span>
+</span></span><span style="display:flex;"><span>        - <span style="color:#f92672">field</span>: <span style="color:#e6db74">&#39;notice&#39;</span>
+</span></span><span style="display:flex;"><span>          <span style="color:#f92672">copy</span>: <span style="color:#e6db74">&#39;[notice]&#39;</span>
+</span></span><span style="display:flex;"><span>    - <span style="color:#f92672">field</span>: <span style="color:#e6db74">&#39;[messages]&#39;</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">class</span>: <span style="color:#e6db74">&#39;Foo\DTO\Messages&#39;</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">expression</span>: <span style="color:#e6db74">&#39;input&#39;</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">collection</span>:
+</span></span><span style="display:flex;"><span>        - <span style="color:#f92672">field</span>: <span style="color:#e6db74">&#39;usage&#39;</span>
+</span></span><span style="display:flex;"><span>          <span style="color:#f92672">expression</span>: <span style="color:#e6db74">&#39;&#34;Usage: &#34; ~ input[&#34;usage&#34;]&#39;</span>
+</span></span><span style="display:flex;"><span>        - <span style="color:#f92672">field</span>: <span style="color:#e6db74">&#39;warning&#39;</span>
+</span></span><span style="display:flex;"><span>          <span style="color:#f92672">copy</span>: <span style="color:#e6db74">&#39;[warning]&#39;</span>
+</span></span><span style="display:flex;"><span>        - <span style="color:#f92672">field</span>: <span style="color:#e6db74">&#39;notice&#39;</span>
+</span></span><span style="display:flex;"><span>          <span style="color:#f92672">copy</span>: <span style="color:#e6db74">&#39;[notice]&#39;</span>
+</span></span></code></pre></div><h3 id="building-a-listmapper">Building a ListMapper</h3>
 <p>To write a mapping to a list, you must use the <code>list</code> option, which will always be accompanied by the
 the <code>expression</code> option.</p>
 <ul>
 <li><code>expression</code> : allows you to write an expression which will be used in the mapping.</li>
 </ul>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">fastmap</span>:
-  <span style="color:#f92672">expression</span>: <span style="color:#e6db74">&#39;input&#39;</span>
-  <span style="color:#f92672">list</span>:
-    - <span style="color:#f92672">field</span>: <span style="color:#e6db74">&#39;[bar]&#39;</span>
-      <span style="color:#f92672">copy</span>: <span style="color:#e6db74">&#39;[bar]&#39;</span>
-</code></pre></div><h3 id="building-a-collectionmapper">Building a CollectionMapper</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#f92672">fastmap</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">expression</span>: <span style="color:#e6db74">&#39;input&#39;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">list</span>:
+</span></span><span style="display:flex;"><span>    - <span style="color:#f92672">field</span>: <span style="color:#e6db74">&#39;[bar]&#39;</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">copy</span>: <span style="color:#e6db74">&#39;[bar]&#39;</span>
+</span></span></code></pre></div><h3 id="building-a-collectionmapper">Building a CollectionMapper</h3>
 <p>To write a mapping to a collection of objects, you must use the <code>collection</code> option, which will always be accompanied
 by the <code>class</code> and <code>expression</code> options.</p>
 <ul>
 <li><code>class</code> : determines the class to use in the mapping.</li>
 <li><code>expression</code> : allows you to write an expression which will be used in the mapping.</li>
 </ul>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">fastmap</span>:
-  <span style="color:#f92672">class</span>: <span style="color:#e6db74">&#39;Foo\DTO\Messages&#39;</span>
-  <span style="color:#f92672">expression</span>: <span style="color:#e6db74">&#39;input&#39;</span>
-  <span style="color:#f92672">collection</span>:
-    - <span style="color:#f92672">field</span>: <span style="color:#e6db74">&#39;usage&#39;</span>
-      <span style="color:#f92672">expression</span>: <span style="color:#e6db74">&#39;&#34;Usage: &#34; ~ input[&#34;usage&#34;]&#39;</span>
-    - <span style="color:#f92672">field</span>: <span style="color:#e6db74">&#39;warning&#39;</span>
-      <span style="color:#f92672">copy</span>: <span style="color:#e6db74">&#39;[warning]&#39;</span>
-    - <span style="color:#f92672">field</span>: <span style="color:#e6db74">&#39;notice&#39;</span>
-      <span style="color:#f92672">copy</span>: <span style="color:#e6db74">&#39;[notice]&#39;</span>
-</code></pre></div><p>Warning: Unlike an ArrayMapper, here the field must not be between <code>[...]</code>.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#f92672">fastmap</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">class</span>: <span style="color:#e6db74">&#39;Foo\DTO\Messages&#39;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">expression</span>: <span style="color:#e6db74">&#39;input&#39;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">collection</span>:
+</span></span><span style="display:flex;"><span>    - <span style="color:#f92672">field</span>: <span style="color:#e6db74">&#39;usage&#39;</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">expression</span>: <span style="color:#e6db74">&#39;&#34;Usage: &#34; ~ input[&#34;usage&#34;]&#39;</span>
+</span></span><span style="display:flex;"><span>    - <span style="color:#f92672">field</span>: <span style="color:#e6db74">&#39;warning&#39;</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">copy</span>: <span style="color:#e6db74">&#39;[warning]&#39;</span>
+</span></span><span style="display:flex;"><span>    - <span style="color:#f92672">field</span>: <span style="color:#e6db74">&#39;notice&#39;</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">copy</span>: <span style="color:#e6db74">&#39;[notice]&#39;</span>
+</span></span></code></pre></div><p>Warning: Unlike an ArrayMapper, here the field must not be between <code>[...]</code>.</p>
 <p>See <a href="https://symfony.com/doc/current/components/property_access.html#reading-from-objects">Reading from objects</a>.</p>
 <h3 id="building-an-objectmapper">Building an ObjectMapper</h3>
 <p>To write a mapping to an object, you must use the <code>object</code> option, which will always be accompanied by the
@@ -674,13 +696,13 @@ options <code>class</code> and <code>expression</code>.</p>
 <li><code>class</code> : determines the class to be used in the mapping.</li>
 <li><code>expression</code> : allows you to write an expression that will be used in the mapping.</li>
 </ul>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">fastmap</span>:
-  <span style="color:#f92672">class</span>: <span style="color:#e6db74">&#39;Foo\DTO\Product&#39;</span>
-  <span style="color:#f92672">expression</span>: <span style="color:#e6db74">&#39;input&#39;</span>
-  <span style="color:#f92672">object</span>:
-    - <span style="color:#f92672">field</span>: <span style="color:#e6db74">&#39;sku&#39;</span>
-      <span style="color:#f92672">copy</span>: <span style="color:#e6db74">&#39;[sku]&#39;</span>
-</code></pre></div><p>Warning: Unlike an ArrayMapper, here the <code>field</code> must not be between <code>[...]</code>.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#f92672">fastmap</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">class</span>: <span style="color:#e6db74">&#39;Foo\DTO\Product&#39;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">expression</span>: <span style="color:#e6db74">&#39;input&#39;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">object</span>:
+</span></span><span style="display:flex;"><span>    - <span style="color:#f92672">field</span>: <span style="color:#e6db74">&#39;sku&#39;</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">copy</span>: <span style="color:#e6db74">&#39;[sku]&#39;</span>
+</span></span></code></pre></div><p>Warning: Unlike an ArrayMapper, here the <code>field</code> must not be between <code>[...]</code>.</p>
 <p>See <a href="https://symfony.com/doc/current/components/property_access.html#reading-from-objects">Reading from objects</a>.</p>
 </div>
           
@@ -893,6 +915,40 @@ options <code>class</code> and <code>expression</code>.</p>
             
             
             
+            
+            
+            
+
+            
+            
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
 
             
             
@@ -930,22 +986,6 @@ options <code>class</code> and <code>expression</code>.</p>
             
             
             
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-
-            
-            
-            
-
             
             
             

@@ -24,7 +24,7 @@ weight: 2
 
 ---
 
-> A satellite is a micro-service that can be executed as a cron job.
+> A satellite is a microservice that can be executed as a cron job.
 > It can be deployed in any Docker infrastructure (including Kubernetes clusters) or in any operating system.
 
 ![Satellite schema](satellite.svg)
@@ -75,7 +75,8 @@ The filesystem key is accompanied by a `path` key which determines the path of t
 version: '0.3'
 satellites:
    - filesystem:
-    path: path/to/folder
+#       path: <path/to/folder>
+        path: build
 #...
 {{< /tab >}}
 
@@ -83,13 +84,15 @@ satellites:
 
 ### Configure composer 
 
-In a second step, it's possible to declare the composer dependencies that our microservice needs with the `composer` key.
+#### Dependencies
+
+It's possible to declare the composer dependencies that our microservice needs with the `composer` key.
 
 > Tip : This part is not mandatory. If you do not configure it, these packages (`php-etl/pipeline-contracts`,
 `php-etl/pipeline`, `php-etl/pipeline-console-runtime`, `php-etl/workflow-console-runtime`, 
 `psr/log`, `monolog/monolog`, `symfony/console`, `symfony/dependency-injection`) will be installed automatically.
 
-The `require` option allows to add all the packages, write like `package_name:version`, that we need for your microservice.
+The `require` parameter allows to add all the packages, written as `package_name:version`, that your microservice needs.
 
 {{< tabs name="basic_with_composer" >}}
 
@@ -104,8 +107,15 @@ satellites:
 
 {{< /tabs >}}
 
-The `autoload` option is optional and allows you to configure your autoloader by specifying one or more namespaces and 
-and directories paths as if you were directly in the composer.json.
+#### Autoload
+
+The `autoload` parameter is optional and allows you to configure your autoloader by specifying one or more namespaces and 
+directories paths as if you were directly in the composer.json.
+
+Every autoloading configuration shall be in the following format:
+
+- `namespace`: namespace of your files
+- `paths`: directories in which the files to be loaded are located
 
 ```yaml
 version: '0.3'
@@ -118,8 +128,10 @@ satellites:
             paths: [""]
 ``` 
 
-The `from_local` option is optional and copies local `composer.json`, `composer.lock` and `vendor` files in your 
-microservice instead creating them.
+#### From local
+
+The `from_local` parameter is optional and copies local `composer.json`, `composer.lock` and `vendor` files into your 
+microservice instead of creating them.
 
 ```yaml
 version: '0.3'
@@ -128,6 +140,46 @@ satellites:
     composer:
       from_local: true
 ``` 
+
+#### Repositories
+
+The `repositories` parameter is optional. It allows you to use repositories that are not hosted on [packagist.org](https://packagist.org/).
+
+Each repository should have the following configuration fields:
+
+- `name`: the name of your repository
+- `url`: the url of your repository
+- `type`: the type of your repository (vcs, composer, package, etc...)
+
+
+```yaml
+version: '0.3'
+satellites:
+  - # ...
+    composer:
+      repositories:
+        - { name: 'private-packagist', url: 'https://repo.packagist.com/package/', type: 'composer' }
+``` 
+
+#### Auth
+
+The `auth` parameter is optional and allows you to use registries that are not public and must be accessed through an authentication.
+The parameter is the way for you to tell composer how to authenticate to the registry server.
+
+Each auth can have the following configuration fields:
+- `url`: the url of your repository
+- `token`: when you use a connection via token, you must use this field
+
+```yaml
+version: '0.3'
+satellites:
+  - # ...
+    composer:
+      auth:
+      - { url: 'http-basic.kiboko.repo.packagist.com', token: '0fe8828b23371406295ca2b72634c0a3df2431c4787df0173ea051a0c639' }
+``` 
+
+> Notice : Currently, the only way to identify to a repository is to use tokens. Support for other authentication methods is in our backlog.
 
 ### Setting up the runtime
 

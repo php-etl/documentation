@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <title>Akeneo plugin</title>
 
-  <meta name="generator" content="Hugo 0.82.0" />
+  <meta name="generator" content="Hugo 0.110.0">
 
   <!-- mobile responsive meta -->
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -100,13 +100,15 @@
           </a>
           <div class="dropdown-menu">
             
-            <a class="dropdown-item" href="/documentation/getting-started/setup">Setup</a>
+            <a class="dropdown-item" href="/documentation/getting-started/environment-setup">Environment Setup</a>
             
-            <a class="dropdown-item" href="/documentation/getting-started/satellite">Creating Satellites</a>
+            <a class="dropdown-item" href="/documentation/getting-started/installation">Installation</a>
             
-            <a class="dropdown-item" href="/documentation/getting-started/pipeline">Pipelines</a>
+            <a class="dropdown-item" href="/documentation/getting-started/writing-configuration">Writing Configuration</a>
             
-            <a class="dropdown-item" href="/documentation/getting-started/workflow">Workflows</a>
+            <a class="dropdown-item" href="/documentation/getting-started/compilation">Compilation</a>
+            
+            <a class="dropdown-item" href="/documentation/getting-started/execution">Execution</a>
             
           </div>
         </li>
@@ -116,19 +118,15 @@
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle text-dark" href="#" role="button" data-toggle="dropdown"
             aria-haspopup="true" aria-expanded="false">
-            Features
+            Core concepts
           </a>
           <div class="dropdown-menu">
             
-            <a class="dropdown-item" href="/documentation/feature/services">Declaring services</a>
+            <a class="dropdown-item" href="/documentation/core-concept/satellite">Satellite</a>
             
-            <a class="dropdown-item" href="/documentation/feature/expression-language">Expression Language</a>
+            <a class="dropdown-item" href="/documentation/core-concept/pipeline">Pipeline</a>
             
-            <a class="dropdown-item" href="/documentation/feature/logger">Logging</a>
-            
-            <a class="dropdown-item" href="/documentation/feature/rejection">Rejection</a>
-            
-            <a class="dropdown-item" href="/documentation/feature/state">State</a>
+            <a class="dropdown-item" href="/documentation/core-concept/workflow">Workflow</a>
             
           </div>
         </li>
@@ -161,6 +159,28 @@
             <a class="dropdown-item" href="/documentation/connectivity/sql">SQL database</a>
             
             <a class="dropdown-item" href="/documentation/connectivity/sylius">Sylius</a>
+            
+          </div>
+        </li>
+        
+        
+        
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle text-dark" href="#" role="button" data-toggle="dropdown"
+            aria-haspopup="true" aria-expanded="false">
+            Features
+          </a>
+          <div class="dropdown-menu">
+            
+            <a class="dropdown-item" href="/documentation/feature/services">Declaring services</a>
+            
+            <a class="dropdown-item" href="/documentation/feature/expression-language">Expression Language</a>
+            
+            <a class="dropdown-item" href="/documentation/feature/logger">Logging</a>
+            
+            <a class="dropdown-item" href="/documentation/feature/rejection">Rejection</a>
+            
+            <a class="dropdown-item" href="/documentation/feature/state">State</a>
             
           </div>
         </li>
@@ -206,6 +226,8 @@
           <ul class="list-styled">
             
             <a class="back-btn" href="/documentation"></a>
+            
+              
             
               
             
@@ -310,50 +332,6 @@
 
 
 
-<li data-nav-id="https://php-etl.github.io/documentation/connectivity/csv/" title="CSV" class="sidelist
-  ">
-  <a href="https://php-etl.github.io/documentation/connectivity/csv/">
-    CSV
-  </a>
-  
-  
-</li>
-
-
-        
-      
-        
-          
-
-
-
-
-
-
-
-
-<li data-nav-id="https://php-etl.github.io/documentation/connectivity/custom/" title="Custom connector" class="sidelist
-  ">
-  <a href="https://php-etl.github.io/documentation/connectivity/custom/">
-    Custom connector
-  </a>
-  
-  
-</li>
-
-
-        
-      
-        
-          
-
-
-
-
-
-
-
-
 <li data-nav-id="https://php-etl.github.io/documentation/connectivity/fast-map/" title="Fast Map" class="sidelist
   ">
   <a href="https://php-etl.github.io/documentation/connectivity/fast-map/">
@@ -376,10 +354,10 @@
 
 
 
-<li data-nav-id="https://php-etl.github.io/documentation/connectivity/ftp/" title="FTP" class="sidelist
+<li data-nav-id="https://php-etl.github.io/documentation/connectivity/sylius/" title="Sylius" class="sidelist
   ">
-  <a href="https://php-etl.github.io/documentation/connectivity/ftp/">
-    FTP
+  <a href="https://php-etl.github.io/documentation/connectivity/sylius/">
+    Sylius
   </a>
   
   
@@ -398,32 +376,10 @@
 
 
 
-<li data-nav-id="https://php-etl.github.io/documentation/connectivity/nl-json/" title="NL-JSON" class="sidelist
+<li data-nav-id="https://php-etl.github.io/documentation/connectivity/csv/" title="CSV" class="sidelist
   ">
-  <a href="https://php-etl.github.io/documentation/connectivity/nl-json/">
-    NL-JSON
-  </a>
-  
-  
-</li>
-
-
-        
-      
-        
-          
-
-
-
-
-
-
-
-
-<li data-nav-id="https://php-etl.github.io/documentation/connectivity/sftp/" title="SFTP" class="sidelist
-  ">
-  <a href="https://php-etl.github.io/documentation/connectivity/sftp/">
-    SFTP
+  <a href="https://php-etl.github.io/documentation/connectivity/csv/">
+    CSV
   </a>
   
   
@@ -486,10 +442,76 @@
 
 
 
-<li data-nav-id="https://php-etl.github.io/documentation/connectivity/sylius/" title="Sylius" class="sidelist
+<li data-nav-id="https://php-etl.github.io/documentation/connectivity/ftp/" title="FTP" class="sidelist
   ">
-  <a href="https://php-etl.github.io/documentation/connectivity/sylius/">
-    Sylius
+  <a href="https://php-etl.github.io/documentation/connectivity/ftp/">
+    FTP
+  </a>
+  
+  
+</li>
+
+
+        
+      
+        
+          
+
+
+
+
+
+
+
+
+<li data-nav-id="https://php-etl.github.io/documentation/connectivity/sftp/" title="SFTP" class="sidelist
+  ">
+  <a href="https://php-etl.github.io/documentation/connectivity/sftp/">
+    SFTP
+  </a>
+  
+  
+</li>
+
+
+        
+      
+        
+          
+
+
+
+
+
+
+
+
+<li data-nav-id="https://php-etl.github.io/documentation/connectivity/nl-json/" title="NL-JSON" class="sidelist
+  ">
+  <a href="https://php-etl.github.io/documentation/connectivity/nl-json/">
+    NL-JSON
+  </a>
+  
+  
+</li>
+
+
+        
+      
+        
+          
+
+
+
+
+
+
+
+
+<li data-nav-id="https://php-etl.github.io/documentation/connectivity/custom/" title="Custom connector" class="sidelist
+  ">
+  <a href="https://php-etl.github.io/documentation/connectivity/custom/">
+    Custom connector
   </a>
   
   
@@ -556,28 +578,28 @@
 compatible with both <a href="https://github.com/akeneo/api-php-client-ee">Akeneo Enterprise Edition client</a>
 and the <a href="https://github.com/akeneo/api-php-client">Akeneo Community Edition client</a>.</p>
 <h2 id="installation">Installation</h2>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">composer require php-etl/akeneo-plugin
-</code></pre></div><h2 id="usage">Usage</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>composer require php-etl/akeneo-plugin
+</span></span></code></pre></div><h2 id="usage">Usage</h2>
 <h3 id="connecting-to-akeneo">Connecting to Akeneo</h3>
 <p>To establish a connection to your Akeneo PIM, you must specify its URL (<code>api_url</code>) and some connection identifiers
 (<code>client_id</code>, <code>secret</code>, <code>username</code>, <code>password</code>).</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">akeneo</span>:
-  <span style="color:#75715e"># ...</span>
-  <span style="color:#f92672">client</span>:
-    <span style="color:#f92672">api_url</span>: <span style="color:#e6db74">&#39;http://demo.akeneo.com&#39;</span>
-    <span style="color:#f92672">client_id</span>: <span style="color:#e6db74">&#39;414yc7d9mnk044ko4wswgw80o8ssw80gssos488kk8ogss40ko&#39;</span>
-    <span style="color:#f92672">secret</span>: <span style="color:#e6db74">&#39;4k8ee6n44m4gkkg0coc8o4w4coscw0w4cg0wg8sc0wsk0sw8gs&#39;</span>
-    <span style="color:#f92672">username</span>: <span style="color:#e6db74">&#39;demo_9573&#39;</span>
-    <span style="color:#f92672">password</span>: <span style="color:#e6db74">&#39;516f3e3e5&#39;</span>
-</code></pre></div><p>To retrieve these identifiers, you need to add a
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#f92672">akeneo</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e"># ...</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">client</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">api_url</span>: <span style="color:#e6db74">&#39;http://demo.akeneo.com&#39;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">client_id</span>: <span style="color:#e6db74">&#39;414yc7d9mnk044ko4wswgw80o8ssw80gssos488kk8ogss40ko&#39;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">secret</span>: <span style="color:#e6db74">&#39;4k8ee6n44m4gkkg0coc8o4w4coscw0w4cg0wg8sc0wsk0sw8gs&#39;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">username</span>: <span style="color:#e6db74">&#39;demo_9573&#39;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">password</span>: <span style="color:#e6db74">&#39;516f3e3e5&#39;</span>
+</span></span></code></pre></div><p>To retrieve these identifiers, you need to add a
 <a href="https://help.akeneo.com/pim/v4/updates/connections.html">connection</a> in your Akeneo PIM.</p>
 <p>Warning: For the <code>api_url</code> option, you must remove the <code>/</code> at the end of your URL if there is one.</p>
 <h3 id="using-the-enterprise-edition">Using the enterprise edition</h3>
 <p>The <code>enterprise</code> option allows you to use the enterprise features in Akeneo and uses the Enterprise client accordingly. By default, it&rsquo;s set to <code>false</code>.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">akeneo</span>:
-  <span style="color:#f92672">enterprise</span>: <span style="color:#66d9ef">true</span>
-  <span style="color:#75715e"># ...</span>
-</code></pre></div><h3 id="building-an-extractor">Building an extractor</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#f92672">akeneo</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">enterprise</span>: <span style="color:#66d9ef">true</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e"># ...</span>
+</span></span></code></pre></div><h3 id="building-an-extractor">Building an extractor</h3>
 <p>In the configuration of your extractor, you must specify the <code>type</code> of resource you will be working on
 and which `method you want to use to retrieve your data.</p>
 <p>The list of available resources is quite long depend on the edition of your Akeneo (Enterprise, Growth or Community).</p>
@@ -593,17 +615,17 @@ and which `method you want to use to retrieve your data.</p>
 <li><code>get</code> : retrieve a row from a table</li>
 <li><code>listPerPage</code> : retrieves a set number of data from a table</li>
 </ul>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">akeneo</span>:
-  <span style="color:#f92672">extractor</span>:
-    <span style="color:#f92672">type</span>: <span style="color:#ae81ff">product</span>
-    <span style="color:#f92672">method</span>: <span style="color:#ae81ff">all</span>
-  <span style="color:#f92672">client</span>:
-    <span style="color:#f92672">api_url</span>: <span style="color:#e6db74">&#39;http://demo.akeneo.com/&#39;</span>
-    <span style="color:#f92672">client_id</span>: <span style="color:#e6db74">&#39;414yc7d9mnk044ko4wswgw80o8ssw80gssos488kk8ogss40ko&#39;</span>
-    <span style="color:#f92672">secret</span>: <span style="color:#e6db74">&#39;4k8ee6n44m4gkkg0coc8o4w4coscw0w4cg0wg8sc0wsk0sw8gs&#39;</span>
-    <span style="color:#f92672">username</span>: <span style="color:#e6db74">&#39;demo_9573&#39;</span>
-    <span style="color:#f92672">password</span>: <span style="color:#e6db74">&#39;516f3e3e5&#39;</span>
-</code></pre></div><h3 id="building-a-lookup">Building a lookup</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#f92672">akeneo</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">extractor</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">type</span>: <span style="color:#ae81ff">product</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">method</span>: <span style="color:#ae81ff">all</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">client</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">api_url</span>: <span style="color:#e6db74">&#39;http://demo.akeneo.com/&#39;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">client_id</span>: <span style="color:#e6db74">&#39;414yc7d9mnk044ko4wswgw80o8ssw80gssos488kk8ogss40ko&#39;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">secret</span>: <span style="color:#e6db74">&#39;4k8ee6n44m4gkkg0coc8o4w4coscw0w4cg0wg8sc0wsk0sw8gs&#39;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">username</span>: <span style="color:#e6db74">&#39;demo_9573&#39;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">password</span>: <span style="color:#e6db74">&#39;516f3e3e5&#39;</span>
+</span></span></code></pre></div><h3 id="building-a-lookup">Building a lookup</h3>
 <p>In some cases, you will need to perform some lookups to append to the data already read some complementary data coming from a secondary data source;
 this is called a lookup.</p>
 <p>In the configuration of your lookup, you must specify the <code>type</code> of resource you will be working on
@@ -613,49 +635,49 @@ The options available are the same as for the <a href="#building-a-loader">loade
 <p>The <code>merge</code> option allows you to add data to your dataset, in a sense merging your actual dataset with your new data.</p>
 <p>The <code>map</code> option comes from the <a href="../../../connectivity/fast-map">FastMap</a> plugin, you may need to read its documentation
 to understand how to use it properly.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">akeneo</span>:
-  <span style="color:#f92672">lookup</span>:
-    <span style="color:#f92672">type</span>: <span style="color:#ae81ff">product</span>
-    <span style="color:#f92672">method</span>: <span style="color:#ae81ff">all</span>
-    <span style="color:#f92672">merge</span>:
-      <span style="color:#f92672">map</span>:
-        - <span style="color:#f92672">field</span>: <span style="color:#e6db74">&#39;[options]&#39;</span>
-          <span style="color:#f92672">expression</span>: <span style="color:#e6db74">&#39;lookup[&#34;code&#34;]&#39;</span>
-  <span style="color:#f92672">client</span>:
-    <span style="color:#f92672">api_url</span>: <span style="color:#e6db74">&#39;http://demo.akeneo.com/&#39;</span>
-    <span style="color:#f92672">client_id</span>: <span style="color:#e6db74">&#39;414yc7d9mnk044ko4wswgw80o8ssw80gssos488kk8ogss40ko&#39;</span>
-    <span style="color:#f92672">secret</span>: <span style="color:#e6db74">&#39;4k8ee6n44m4gkkg0coc8o4w4coscw0w4cg0wg8sc0wsk0sw8gs&#39;</span>
-    <span style="color:#f92672">username</span>: <span style="color:#e6db74">&#39;demo_9573&#39;</span>
-    <span style="color:#f92672">password</span>: <span style="color:#e6db74">&#39;516f3e3e5&#39;</span>
-</code></pre></div><h3 id="building-a-conditional-lookup">Building a conditional lookup</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#f92672">akeneo</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">lookup</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">type</span>: <span style="color:#ae81ff">product</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">method</span>: <span style="color:#ae81ff">all</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">merge</span>:
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">map</span>:
+</span></span><span style="display:flex;"><span>        - <span style="color:#f92672">field</span>: <span style="color:#e6db74">&#39;[options]&#39;</span>
+</span></span><span style="display:flex;"><span>          <span style="color:#f92672">expression</span>: <span style="color:#e6db74">&#39;lookup[&#34;code&#34;]&#39;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">client</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">api_url</span>: <span style="color:#e6db74">&#39;http://demo.akeneo.com/&#39;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">client_id</span>: <span style="color:#e6db74">&#39;414yc7d9mnk044ko4wswgw80o8ssw80gssos488kk8ogss40ko&#39;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">secret</span>: <span style="color:#e6db74">&#39;4k8ee6n44m4gkkg0coc8o4w4coscw0w4cg0wg8sc0wsk0sw8gs&#39;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">username</span>: <span style="color:#e6db74">&#39;demo_9573&#39;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">password</span>: <span style="color:#e6db74">&#39;516f3e3e5&#39;</span>
+</span></span></code></pre></div><h3 id="building-a-conditional-lookup">Building a conditional lookup</h3>
 <p>The conditional lookup is very similar to a regular lookup, at the difference that the lookup will be performed only if some conditions
 are full-filled.</p>
 <p>In this configuration, you will find options very similar to a standard lookup, difference being on 2 new levels of encapsulation, one of them containing the condition.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">akeneo</span>:
-  <span style="color:#f92672">lookup</span>:
-    <span style="color:#f92672">conditional</span>:
-      - <span style="color:#f92672">condition</span>: <span style="color:#e6db74">&#39;@=(input[&#34;type&#34;] in [&#34;pim_catalog_simpleselect&#34;, &#34;pim_catalog_multipleselect&#34;])&#39;</span>
-        <span style="color:#f92672">type</span>: <span style="color:#ae81ff">attributeOption</span>
-        <span style="color:#f92672">code</span>: <span style="color:#e6db74">&#39;@=input[&#34;code&#34;]&#39;</span>
-        <span style="color:#f92672">method</span>: <span style="color:#ae81ff">listPerPage</span>
-        <span style="color:#f92672">search</span>:
-          - { <span style="color:#f92672">field: enabled, operator: &#39;=&#39;, value</span>: <span style="color:#e6db74">&#39;@=input[&#34;code&#34;]&#39;</span><span style="color:#f92672">, scope</span>: <span style="color:#e6db74">&#39;@=input[&#34;code&#34;]&#39;</span><span style="color:#f92672">, locale</span>: <span style="color:#e6db74">&#39;@=input[&#34;fr_FR&#34;]&#39;</span> }
-        <span style="color:#f92672">merge</span>:
-          <span style="color:#f92672">map</span>:
-            - <span style="color:#f92672">field</span>: <span style="color:#e6db74">&#39;[options]&#39;</span>
-              <span style="color:#f92672">expression</span>: <span style="color:#e6db74">&#39;join(&#34;|&#34;, lookup[&#34;code&#34;])&#39;</span>
-      - <span style="color:#f92672">condition</span>: <span style="color:#e6db74">&#39;@=(input[&#34;type&#34;] in [&#34;akeneo_reference_entity&#34;, &#34;akeneo_reference_entity_collection&#34;])&#39;</span>
-        <span style="color:#f92672">type</span>: <span style="color:#ae81ff">referenceEntityRecord</span>
-        <span style="color:#f92672">code</span>: <span style="color:#e6db74">&#39;@=input[&#34;code&#34;]&#39;</span>
-        <span style="color:#f92672">method</span>: <span style="color:#ae81ff">listPerPage</span>
-        <span style="color:#f92672">search</span>:
-          - { <span style="color:#f92672">field: enabled, operator: &#39;=&#39;, value</span>: <span style="color:#e6db74">&#39;@=input[&#34;code&#34;]&#39;</span><span style="color:#f92672">, scope</span>: <span style="color:#e6db74">&#39;@=input[&#34;code&#34;]&#39;</span><span style="color:#f92672">, locale</span>: <span style="color:#e6db74">&#39;@=input[&#34;fr_FR&#34;]&#39;</span> }
-        <span style="color:#f92672">merge</span>:
-          <span style="color:#f92672">map</span>:
-            - <span style="color:#f92672">field</span>: <span style="color:#e6db74">&#39;[options]&#39;</span>
-              <span style="color:#f92672">expression</span>: <span style="color:#e6db74">&#39;join(&#34;|&#34;, lookup[&#34;code&#34;])&#39;</span>
-  <span style="color:#75715e"># ...</span>
-</code></pre></div><h3 id="building-a-loader">Building a loader</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#f92672">akeneo</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">lookup</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">conditional</span>:
+</span></span><span style="display:flex;"><span>      - <span style="color:#f92672">condition</span>: <span style="color:#e6db74">&#39;@=(input[&#34;type&#34;] in [&#34;pim_catalog_simpleselect&#34;, &#34;pim_catalog_multipleselect&#34;])&#39;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">type</span>: <span style="color:#ae81ff">attributeOption</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">code</span>: <span style="color:#e6db74">&#39;@=input[&#34;code&#34;]&#39;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">method</span>: <span style="color:#ae81ff">listPerPage</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">search</span>:
+</span></span><span style="display:flex;"><span>          - { <span style="color:#f92672">field: enabled, operator: &#39;=&#39;, value</span>: <span style="color:#e6db74">&#39;@=input[&#34;code&#34;]&#39;</span><span style="color:#f92672">, scope</span>: <span style="color:#e6db74">&#39;@=input[&#34;code&#34;]&#39;</span><span style="color:#f92672">, locale</span>: <span style="color:#e6db74">&#39;@=input[&#34;fr_FR&#34;]&#39;</span> }
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">merge</span>:
+</span></span><span style="display:flex;"><span>          <span style="color:#f92672">map</span>:
+</span></span><span style="display:flex;"><span>            - <span style="color:#f92672">field</span>: <span style="color:#e6db74">&#39;[options]&#39;</span>
+</span></span><span style="display:flex;"><span>              <span style="color:#f92672">expression</span>: <span style="color:#e6db74">&#39;join(&#34;|&#34;, lookup[&#34;code&#34;])&#39;</span>
+</span></span><span style="display:flex;"><span>      - <span style="color:#f92672">condition</span>: <span style="color:#e6db74">&#39;@=(input[&#34;type&#34;] in [&#34;akeneo_reference_entity&#34;, &#34;akeneo_reference_entity_collection&#34;])&#39;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">type</span>: <span style="color:#ae81ff">referenceEntityRecord</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">code</span>: <span style="color:#e6db74">&#39;@=input[&#34;code&#34;]&#39;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">method</span>: <span style="color:#ae81ff">listPerPage</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">search</span>:
+</span></span><span style="display:flex;"><span>          - { <span style="color:#f92672">field: enabled, operator: &#39;=&#39;, value</span>: <span style="color:#e6db74">&#39;@=input[&#34;code&#34;]&#39;</span><span style="color:#f92672">, scope</span>: <span style="color:#e6db74">&#39;@=input[&#34;code&#34;]&#39;</span><span style="color:#f92672">, locale</span>: <span style="color:#e6db74">&#39;@=input[&#34;fr_FR&#34;]&#39;</span> }
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">merge</span>:
+</span></span><span style="display:flex;"><span>          <span style="color:#f92672">map</span>:
+</span></span><span style="display:flex;"><span>            - <span style="color:#f92672">field</span>: <span style="color:#e6db74">&#39;[options]&#39;</span>
+</span></span><span style="display:flex;"><span>              <span style="color:#f92672">expression</span>: <span style="color:#e6db74">&#39;join(&#34;|&#34;, lookup[&#34;code&#34;])&#39;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e"># ...</span>
+</span></span></code></pre></div><h3 id="building-a-loader">Building a loader</h3>
 <p>In the configuration of your loader, you must specify the <code>type</code> of resource you are going to write
 and which <code>method</code> you want to use to insert your data.</p>
 <p>The list of available resources is quite long and dépends on your Akeneo edition (Enterprise, Growth or Community).</p>
@@ -673,19 +695,19 @@ and which <code>method</code> you want to use to insert your data.</p>
 <li><code>upsertList</code>: will try to update a resources list, otherwise the resources will be created</li>
 <li><code>delete</code>: delete a resource from the table</li>
 </ul>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">akeneo</span>:
-  <span style="color:#f92672">loader</span>:
-    <span style="color:#f92672">type</span>: <span style="color:#ae81ff">products</span>
-    <span style="color:#f92672">method</span>: <span style="color:#ae81ff">create</span>
-  <span style="color:#f92672">logger</span>:
-    <span style="color:#f92672">type</span>: <span style="color:#ae81ff">stderr</span>
-  <span style="color:#f92672">client</span>:
-    <span style="color:#f92672">api_url</span>: <span style="color:#e6db74">&#39;http://demo.akeneo.com/&#39;</span>
-    <span style="color:#f92672">client_id</span>: <span style="color:#e6db74">&#39;414yc7d9mnk044ko4wswgw80o8ssw80gssos488kk8ogss40ko&#39;</span>
-    <span style="color:#f92672">secret</span>: <span style="color:#e6db74">&#39;4k8ee6n44m4gkkg0coc8o4w4coscw0w4cg0wg8sc0wsk0sw8gs&#39;</span>
-    <span style="color:#f92672">username</span>: <span style="color:#e6db74">&#39;demo_9573&#39;</span>
-    <span style="color:#f92672">password</span>: <span style="color:#e6db74">&#39;516f3e3e5&#39;</span>
-</code></pre></div><h2 id="advanced-usage">Advanced Usage</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#f92672">akeneo</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">loader</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">type</span>: <span style="color:#ae81ff">products</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">method</span>: <span style="color:#ae81ff">create</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">logger</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">type</span>: <span style="color:#ae81ff">stderr</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">client</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">api_url</span>: <span style="color:#e6db74">&#39;http://demo.akeneo.com/&#39;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">client_id</span>: <span style="color:#e6db74">&#39;414yc7d9mnk044ko4wswgw80o8ssw80gssos488kk8ogss40ko&#39;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">secret</span>: <span style="color:#e6db74">&#39;4k8ee6n44m4gkkg0coc8o4w4coscw0w4cg0wg8sc0wsk0sw8gs&#39;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">username</span>: <span style="color:#e6db74">&#39;demo_9573&#39;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">password</span>: <span style="color:#e6db74">&#39;516f3e3e5&#39;</span>
+</span></span></code></pre></div><h2 id="advanced-usage">Advanced Usage</h2>
 <h3 id="filtering-your-search">Filtering your search</h3>
 <p>In some cases, you may only want to retrieve data that matches specific criteria.</p>
 <p>When performing a search, you need to specify certain options :</p>
@@ -699,22 +721,22 @@ and which <code>method</code> you want to use to insert your data.</p>
 <li><code>scope</code> : scope in which you search</li>
 <li><code>locale</code> : code of the locale you are looking for</li>
 </ul>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">akeneo</span>:
-  <span style="color:#f92672">extractor</span>:
-    <span style="color:#75715e"># ...</span>
-    <span style="color:#f92672">search</span>:
-      - { <span style="color:#f92672">field: enabled, operator: &#39;=&#39;, value</span>: <span style="color:#66d9ef">true</span> }
-      - { <span style="color:#f92672">field: completeness, operator: &#39;&gt;&#39;, value: 70, scope</span>: <span style="color:#ae81ff">ecommerce }</span>
-</code></pre></div><p>You may need to read the <a href="https://api.akeneo.com/documentation/filter.html">filtering documentation of Akeneo API</a></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#f92672">akeneo</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">extractor</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># ...</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">search</span>:
+</span></span><span style="display:flex;"><span>      - { <span style="color:#f92672">field: enabled, operator: &#39;=&#39;, value</span>: <span style="color:#66d9ef">true</span> }
+</span></span><span style="display:flex;"><span>      - { <span style="color:#f92672">field: completeness, operator: &#39;&gt;&#39;, value: 70, scope</span>: <span style="color:#ae81ff">ecommerce }</span>
+</span></span></code></pre></div><p>You may need to read the <a href="https://api.akeneo.com/documentation/filter.html">filtering documentation of Akeneo API</a></p>
 <h3 id="using-expressionlanguage">Using ExpressionLanguage</h3>
 <p>The plugin takes into account the <a href="https://symfony.com/doc/current/components/expression_language.html">ExpressionLanguage</a>
 component provided by Symfony.</p>
 <p>We have also provided <a href="../../akeneo/expression-language">custom expression</a> to use when mapping your data.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">akeneo</span>:
-  <span style="color:#f92672">expression_language</span>:
-    - <span style="color:#e6db74">&#39;Kiboko\Component\ExpressionLanguage\Akeneo\AkeneoFilterProvider&#39;</span>
-  <span style="color:#75715e"># ...</span>
-</code></pre></div></div>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#f92672">akeneo</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">expression_language</span>:
+</span></span><span style="display:flex;"><span>    - <span style="color:#e6db74">&#39;Kiboko\Component\ExpressionLanguage\Akeneo\AkeneoFilterProvider&#39;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e"># ...</span>
+</span></span></code></pre></div></div>
           
           <p class="post-meta border-bottom pb-3 mb-0 mt-3">Updated on 24 Jan 2021</p>
           <nav class="pagination mt-3">
@@ -925,6 +947,40 @@ component provided by Symfony.</p>
             
             
             
+            
+            
+            
+
+            
+            
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
 
             
             
@@ -962,22 +1018,6 @@ component provided by Symfony.</p>
             
             
             
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-
-            
-            
-            
-
             
             
             

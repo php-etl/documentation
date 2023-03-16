@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <title>Metadata</title>
 
-  <meta name="generator" content="Hugo 0.82.0" />
+  <meta name="generator" content="Hugo 0.110.0">
 
   <!-- mobile responsive meta -->
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -100,13 +100,15 @@
           </a>
           <div class="dropdown-menu">
             
-            <a class="dropdown-item" href="/documentation/getting-started/setup">Setup</a>
+            <a class="dropdown-item" href="/documentation/getting-started/environment-setup">Environment Setup</a>
             
-            <a class="dropdown-item" href="/documentation/getting-started/satellite">Creating Satellites</a>
+            <a class="dropdown-item" href="/documentation/getting-started/installation">Installation</a>
             
-            <a class="dropdown-item" href="/documentation/getting-started/pipeline">Pipelines</a>
+            <a class="dropdown-item" href="/documentation/getting-started/writing-configuration">Writing Configuration</a>
             
-            <a class="dropdown-item" href="/documentation/getting-started/workflow">Workflows</a>
+            <a class="dropdown-item" href="/documentation/getting-started/compilation">Compilation</a>
+            
+            <a class="dropdown-item" href="/documentation/getting-started/execution">Execution</a>
             
           </div>
         </li>
@@ -116,19 +118,15 @@
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle text-dark" href="#" role="button" data-toggle="dropdown"
             aria-haspopup="true" aria-expanded="false">
-            Features
+            Core concepts
           </a>
           <div class="dropdown-menu">
             
-            <a class="dropdown-item" href="/documentation/feature/services">Declaring services</a>
+            <a class="dropdown-item" href="/documentation/core-concept/satellite">Satellite</a>
             
-            <a class="dropdown-item" href="/documentation/feature/expression-language">Expression Language</a>
+            <a class="dropdown-item" href="/documentation/core-concept/pipeline">Pipeline</a>
             
-            <a class="dropdown-item" href="/documentation/feature/logger">Logging</a>
-            
-            <a class="dropdown-item" href="/documentation/feature/rejection">Rejection</a>
-            
-            <a class="dropdown-item" href="/documentation/feature/state">State</a>
+            <a class="dropdown-item" href="/documentation/core-concept/workflow">Workflow</a>
             
           </div>
         </li>
@@ -161,6 +159,28 @@
             <a class="dropdown-item" href="/documentation/connectivity/sql">SQL database</a>
             
             <a class="dropdown-item" href="/documentation/connectivity/sylius">Sylius</a>
+            
+          </div>
+        </li>
+        
+        
+        
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle text-dark" href="#" role="button" data-toggle="dropdown"
+            aria-haspopup="true" aria-expanded="false">
+            Features
+          </a>
+          <div class="dropdown-menu">
+            
+            <a class="dropdown-item" href="/documentation/feature/services">Declaring services</a>
+            
+            <a class="dropdown-item" href="/documentation/feature/expression-language">Expression Language</a>
+            
+            <a class="dropdown-item" href="/documentation/feature/logger">Logging</a>
+            
+            <a class="dropdown-item" href="/documentation/feature/rejection">Rejection</a>
+            
+            <a class="dropdown-item" href="/documentation/feature/state">State</a>
             
           </div>
         </li>
@@ -214,6 +234,8 @@
               
             
               
+            
+              
               
 
 
@@ -242,10 +264,10 @@
 
 
 
-<li data-nav-id="https://php-etl.github.io/documentation/framework/contracts/" title="Contracts" class="sidelist
-  ">
-  <a href="https://php-etl.github.io/documentation/framework/contracts/">
-    Contracts
+<li data-nav-id="https://php-etl.github.io/documentation/framework/metadata/" title="Metadata" class="sidelist
+  active">
+  <a href="https://php-etl.github.io/documentation/framework/metadata/">
+    Metadata
   </a>
   
   
@@ -264,10 +286,10 @@
 
 
 
-<li data-nav-id="https://php-etl.github.io/documentation/framework/metadata/" title="Metadata" class="sidelist
-  active">
-  <a href="https://php-etl.github.io/documentation/framework/metadata/">
-    Metadata
+<li data-nav-id="https://php-etl.github.io/documentation/framework/contracts/" title="Contracts" class="sidelist
+  ">
+  <a href="https://php-etl.github.io/documentation/framework/contracts/">
+    Contracts
   </a>
   
   
@@ -336,76 +358,76 @@ other packages to auto-configure and handle data transformation
 and data manipulation.</p>
 <h3 id="installation">Installation</h3>
 <p>To use this package in your application, require it via composer:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">composer require php-etl/metadata
-</code></pre></div><h3 id="use-this-package-to-read-metadata-of-existing-code">Use this package to read metadata of existing code</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>composer require php-etl/metadata
+</span></span></code></pre></div><h3 id="use-this-package-to-read-metadata-of-existing-code">Use this package to read metadata of existing code</h3>
 <p>In order to read the metadata of existing PHP code, you may use the
 automatic type guesser. It can be initialised with the following code:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php"><span style="color:#f92672">&lt;?</span><span style="color:#a6e22e">php</span>
-
-<span style="color:#66d9ef">use</span> <span style="color:#a6e22e">Kiboko\Component\Metadata\TypeGuesser</span>;
-<span style="color:#66d9ef">use</span> <span style="color:#a6e22e">Phpactor\Docblock\DocblockFactory</span>;
-<span style="color:#66d9ef">use</span> <span style="color:#a6e22e">PhpParser\ParserFactory</span>;
-
-$typeGuesser <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">TypeGuesser\CompositeTypeGuesser</span>(
-    <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">TypeGuesser\Native\NativeTypeGuesser</span>(),
-    <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">TypeGuesser\Docblock\DocblockTypeGuesser</span>(
-        (<span style="color:#66d9ef">new</span> <span style="color:#a6e22e">ParserFactory</span>())<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">create</span>(<span style="color:#a6e22e">ParserFactory</span><span style="color:#f92672">::</span><span style="color:#a6e22e">ONLY_PHP7</span>),
-        <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">DocblockFactory</span>()
-    )
-);
-</code></pre></div><p>Then, use the instance as a functor to automatically discover the types metadata.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-php" data-lang="php"><span style="display:flex;"><span><span style="color:#f92672">&lt;?</span><span style="color:#a6e22e">php</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">use</span> <span style="color:#a6e22e">Kiboko\Component\Metadata\TypeGuesser</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">use</span> <span style="color:#a6e22e">Phpactor\Docblock\DocblockFactory</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">use</span> <span style="color:#a6e22e">PhpParser\ParserFactory</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>$typeGuesser <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">TypeGuesser\CompositeTypeGuesser</span>(
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">TypeGuesser\Native\NativeTypeGuesser</span>(),
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">TypeGuesser\Docblock\DocblockTypeGuesser</span>(
+</span></span><span style="display:flex;"><span>        (<span style="color:#66d9ef">new</span> <span style="color:#a6e22e">ParserFactory</span>())<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">create</span>(<span style="color:#a6e22e">ParserFactory</span><span style="color:#f92672">::</span><span style="color:#a6e22e">ONLY_PHP7</span>),
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">DocblockFactory</span>()
+</span></span><span style="display:flex;"><span>    )
+</span></span><span style="display:flex;"><span>);
+</span></span></code></pre></div><p>Then, use the instance as a functor to automatically discover the types metadata.</p>
 <p>Example of a DTO class metadata fetcher:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php"><span style="color:#f92672">&lt;?</span><span style="color:#a6e22e">php</span>
-
-<span style="color:#66d9ef">use</span> <span style="color:#a6e22e">Kiboko\Component\Metadata</span>;
-<span style="color:#66d9ef">use</span> <span style="color:#a6e22e">Kiboko\Component\Metadata\TypeGuesser\TypeGuesserInterface</span>;
-
-<span style="color:#e6db74">/** @var TypeGuesserInterface $guesser */</span>
-
-<span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Person</span>
-{
-    <span style="color:#66d9ef">public</span> <span style="color:#a6e22e">string</span> $firstName;
-    <span style="color:#66d9ef">public</span> <span style="color:#a6e22e">string</span> $lastName;
-    <span style="color:#66d9ef">public</span> <span style="color:#f92672">?</span><span style="color:#a6e22e">string</span> $job;
-}
-
-$classOrObject <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">\ReflectionClass</span>(<span style="color:#a6e22e">\Person</span><span style="color:#f92672">::</span><span style="color:#a6e22e">class</span>);
-
-<span style="color:#e6db74">/** @var Metadata\ClassTypeMetadata $metadata */</span>
-$metadata <span style="color:#f92672">=</span> (<span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Metadata\ClassTypeMetadata</span>($classOrObject<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">getShortName</span>(), $classOrObject<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">getNamespaceName</span>()))
-    <span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">addProperties</span>(<span style="color:#f92672">...</span><span style="color:#a6e22e">array_map</span>(
-            <span style="color:#66d9ef">function</span>(<span style="color:#a6e22e">\ReflectionProperty</span> $property) <span style="color:#66d9ef">use</span>($classOrObject, $guesser) {
-                <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Metadata\PropertyMetadata</span>(
-                    $property<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">getName</span>(),
-                    <span style="color:#f92672">...</span>$guesser($classOrObject, $property)
-                );
-            },
-            $classOrObject<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">getProperties</span>(<span style="color:#a6e22e">\ReflectionProperty</span><span style="color:#f92672">::</span><span style="color:#a6e22e">IS_PUBLIC</span>)
-        )
-    );
-</code></pre></div><h3 id="automatic-class-metadata-guessing">Automatic class metadata guessing</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-php" data-lang="php"><span style="display:flex;"><span><span style="color:#f92672">&lt;?</span><span style="color:#a6e22e">php</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">use</span> <span style="color:#a6e22e">Kiboko\Component\Metadata</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">use</span> <span style="color:#a6e22e">Kiboko\Component\Metadata\TypeGuesser\TypeGuesserInterface</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#e6db74">/** @var TypeGuesserInterface $guesser */</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Person</span>
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#a6e22e">string</span> $firstName;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#a6e22e">string</span> $lastName;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#f92672">?</span><span style="color:#a6e22e">string</span> $job;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>$classOrObject <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">\ReflectionClass</span>(<span style="color:#a6e22e">\Person</span><span style="color:#f92672">::</span><span style="color:#a6e22e">class</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#e6db74">/** @var Metadata\ClassTypeMetadata $metadata */</span>
+</span></span><span style="display:flex;"><span>$metadata <span style="color:#f92672">=</span> (<span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Metadata\ClassTypeMetadata</span>($classOrObject<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">getShortName</span>(), $classOrObject<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">getNamespaceName</span>()))
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">addProperties</span>(<span style="color:#f92672">...</span><span style="color:#a6e22e">array_map</span>(
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">function</span>(<span style="color:#a6e22e">\ReflectionProperty</span> $property) <span style="color:#66d9ef">use</span>($classOrObject, $guesser) {
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Metadata\PropertyMetadata</span>(
+</span></span><span style="display:flex;"><span>                    $property<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">getName</span>(),
+</span></span><span style="display:flex;"><span>                    <span style="color:#f92672">...</span>$guesser($classOrObject, $property)
+</span></span><span style="display:flex;"><span>                );
+</span></span><span style="display:flex;"><span>            },
+</span></span><span style="display:flex;"><span>            $classOrObject<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">getProperties</span>(<span style="color:#a6e22e">\ReflectionProperty</span><span style="color:#f92672">::</span><span style="color:#a6e22e">IS_PUBLIC</span>)
+</span></span><span style="display:flex;"><span>        )
+</span></span><span style="display:flex;"><span>    );
+</span></span></code></pre></div><h3 id="automatic-class-metadata-guessing">Automatic class metadata guessing</h3>
 <p>In order to simplify the class metadata building, there is a metadata guesser you can
 use to ease the building of metadata.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php"><span style="color:#f92672">&lt;?</span><span style="color:#a6e22e">php</span>
-<span style="color:#66d9ef">use</span> <span style="color:#a6e22e">Kiboko\Component\Metadata</span>;
-
-<span style="color:#e6db74">/** @var Metadata\ClassMetadataBuilder $metadataBuilder */</span>
-$metadataBuilder <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Metadata\ClassMetadataBuilder</span>(
-    <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Metadata\PropertyGuesser\ReflectionPropertyGuesser</span>($typeGuesser),
-    <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Metadata\MethodGuesser\ReflectionMethodGuesser</span>($typeGuesser),
-    <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Metadata\FieldGuesser\FieldGuesserChain</span>(
-        <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Metadata\FieldGuesser\PublicPropertyFieldGuesser</span>(),
-        <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Metadata\FieldGuesser\VirtualFieldGuesser</span>()
-    ),
-    <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Metadata\RelationGuesser\RelationGuesserChain</span>(
-        <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Metadata\RelationGuesser\PublicPropertyUnaryRelationGuesser</span>(),
-        <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Metadata\RelationGuesser\PublicPropertyMultipleRelationGuesser</span>(),
-        <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Metadata\RelationGuesser\VirtualRelationGuesser</span>()
-    )
-);
-
-$metadata <span style="color:#f92672">=</span> $metadataBuilder<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">buildFromFQCN</span>(<span style="color:#e6db74">&#39;FooBarBundle\\Entity\\Foo&#39;</span>);
-</code></pre></div><h3 id="documentation">Documentation</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-php" data-lang="php"><span style="display:flex;"><span><span style="color:#f92672">&lt;?</span><span style="color:#a6e22e">php</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">use</span> <span style="color:#a6e22e">Kiboko\Component\Metadata</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#e6db74">/** @var Metadata\ClassMetadataBuilder $metadataBuilder */</span>
+</span></span><span style="display:flex;"><span>$metadataBuilder <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Metadata\ClassMetadataBuilder</span>(
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Metadata\PropertyGuesser\ReflectionPropertyGuesser</span>($typeGuesser),
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Metadata\MethodGuesser\ReflectionMethodGuesser</span>($typeGuesser),
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Metadata\FieldGuesser\FieldGuesserChain</span>(
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Metadata\FieldGuesser\PublicPropertyFieldGuesser</span>(),
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Metadata\FieldGuesser\VirtualFieldGuesser</span>()
+</span></span><span style="display:flex;"><span>    ),
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Metadata\RelationGuesser\RelationGuesserChain</span>(
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Metadata\RelationGuesser\PublicPropertyUnaryRelationGuesser</span>(),
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Metadata\RelationGuesser\PublicPropertyMultipleRelationGuesser</span>(),
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Metadata\RelationGuesser\VirtualRelationGuesser</span>()
+</span></span><span style="display:flex;"><span>    )
+</span></span><span style="display:flex;"><span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>$metadata <span style="color:#f92672">=</span> $metadataBuilder<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">buildFromFQCN</span>(<span style="color:#e6db74">&#39;FooBarBundle\\Entity\\Foo&#39;</span>);
+</span></span></code></pre></div><h3 id="documentation">Documentation</h3>
 <p>To go further and see the DTO structure, check the <a href="https://github.com/php-etl/metadata/blob/master/docs/index.md">object reference</a>.</p>
 </div>
           
@@ -618,6 +640,40 @@ $metadata <span style="color:#f92672">=</span> $metadataBuilder<span style="colo
             
             
             
+            
+            
+            
+
+            
+            
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
 
             
             
@@ -655,22 +711,6 @@ $metadata <span style="color:#f92672">=</span> $metadataBuilder<span style="colo
             
             
             
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-
-            
-            
-            
-
             
             
             
