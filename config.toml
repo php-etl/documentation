@@ -207,7 +207,7 @@ content = "You can reach our sales team we will find together the best way to pr
 [Languages.en.params.cta.button]
 enable = true
 label = "contact us"
-link = "contact"
+link = "sales@gyroscops.com"
 
 # Heading in the home page
 [Languages.en.params.heading]
@@ -246,7 +246,7 @@ content = "Vous pouvez contacter nos équipes commerciales pour trouver le meill
 [Languages.fr.params.cta.button]
 enable = true
 label = "contactez-nous"
-link = "contact"
+link = "sales@gyroscops.com"
 
 # Heading in the home page
 [Languages.fr.params.heading]
