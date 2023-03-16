@@ -21,6 +21,7 @@ php bin/satellite run:pipeline build/
 
 This command will run your satellite service located in a directory. The execution of your service may take several minutes,
 so please wait until the execution is completed.
+
 After compilation, check that `build/output.csv` has been created.
 
 ## If you built as a Docker image

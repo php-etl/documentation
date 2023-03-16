@@ -141,7 +141,7 @@ fastmap:
 
 ### Building a ListMapper
 
-To write a mapping to a list, you must use the `list` option, which will always be accompanied by the
+To write a mapping to a list, you must use the `list` option, which will always be accompanied by
 the `expression` option.
 
 - `expression` : allows you to write an expression which will be used in the mapping.
