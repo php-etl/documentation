@@ -179,7 +179,8 @@ body_color = "#ddd"
 text_color = "#666"
 text_color_dark = "#333"
 text_color_light = "#eee"
-white_color = "#eee"
+white_color = "#fff"
+light_color = "#eee"
 font_family = "lato"
 
 ################################ English Language ######################
@@ -188,7 +189,7 @@ languageName = "English"
 languageCode = "en-us"
 weight = 1
 home = "Home"
-copyright = "The Gyroscops Documents are copyright © [Kiboko](https://kiboko.fr/) 2020, 2021."
+copyright = "The Gyroscops Documentation is copyright © [Gyroscops](https://gyroscops.com/) 2020-2023."
 
 # banner
 [Languages.en.params.banner]
@@ -227,7 +228,7 @@ languageName = "Français"
 languageCode = "fr-fr"
 weight = 2
 home = "Accueil"
-copyright = "La documentation Gyroscops est copyright © [Kiboko](https://kiboko.fr/) 2020, 2021."
+copyright = "La documentation Gyroscops est copyright © [Gyroscops](https://gyroscops.com/) 2020-2023."
 
 # banner
 [Languages.fr.params.banner]
