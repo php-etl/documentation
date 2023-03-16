@@ -2,7 +2,7 @@
 <html lang="en-us">
   <head>
   <meta charset="utf-8">
-  <title>Categories</title>
+  <title>Writing Configuration</title>
 
   <meta name="generator" content="Hugo 0.111.3">
 
@@ -196,22 +196,10 @@
         
         
         
-        <option id="en" value="https://php-etl.github.io/documentation/categories/" selected>English
+        <option id="en" value="https://php-etl.github.io/documentation/getting-started/writing-configuration/" selected>English
         </option>
         
         
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        <option id="fr" value="https://php-etl.github.io/documentation/fr/categories/">Français</option>
         
         
         
@@ -238,6 +226,140 @@
             <a class="back-btn" href="/documentation"></a>
             
               
+              
+
+
+
+
+
+
+
+
+<li data-nav-id="https://php-etl.github.io/documentation/getting-started/" title="Getting-starteds" class="sidelist
+  ">
+  <a href="https://php-etl.github.io/documentation/getting-started/">
+    Getting-starteds
+  </a>
+  
+  
+    <ul>
+      
+        
+          
+
+
+
+
+
+
+
+
+<li data-nav-id="https://php-etl.github.io/documentation/getting-started/environment-setup/" title="Environment Setup" class="sidelist
+  ">
+  <a href="https://php-etl.github.io/documentation/getting-started/environment-setup/">
+    Environment Setup
+  </a>
+  
+  
+</li>
+
+
+        
+      
+        
+          
+
+
+
+
+
+
+
+
+<li data-nav-id="https://php-etl.github.io/documentation/getting-started/installation/" title="Installation" class="sidelist
+  ">
+  <a href="https://php-etl.github.io/documentation/getting-started/installation/">
+    Installation
+  </a>
+  
+  
+</li>
+
+
+        
+      
+        
+          
+
+
+
+
+
+
+
+
+<li data-nav-id="https://php-etl.github.io/documentation/getting-started/writing-configuration/" title="Writing Configuration" class="sidelist
+  active">
+  <a href="https://php-etl.github.io/documentation/getting-started/writing-configuration/">
+    Writing Configuration
+  </a>
+  
+  
+</li>
+
+
+        
+      
+        
+          
+
+
+
+
+
+
+
+
+<li data-nav-id="https://php-etl.github.io/documentation/getting-started/compilation/" title="Compilation" class="sidelist
+  ">
+  <a href="https://php-etl.github.io/documentation/getting-started/compilation/">
+    Compilation
+  </a>
+  
+  
+</li>
+
+
+        
+      
+        
+          
+
+
+
+
+
+
+
+
+<li data-nav-id="https://php-etl.github.io/documentation/getting-started/execution/" title="Execution" class="sidelist
+  ">
+  <a href="https://php-etl.github.io/documentation/getting-started/execution/">
+    Execution
+  </a>
+  
+  
+</li>
+
+
+        
+      
+    </ul>
+  
+</li>
+
+
+              
             
               
             
@@ -255,34 +377,52 @@
           <h1 class="single-title mb-5">
               
               
-              Categories
+              Writing Configuration
           </h1>
           
-          <div class="p-4">
-            <ul class="page-list">
-              
-
-
-
-
-
-
-
-
-<li data-nav-id="https://php-etl.github.io/documentation/categories/" title="Categories" class="sidelist
-  active">
-  <a href="https://php-etl.github.io/documentation/categories/">
-    Categories
-  </a>
-  
-  
-</li>
-
-
-            </ul>
-          </div>
+          <div class="content"><p>Now that you have initialized your project and installed our compiler, you will be able to deepen your knowledge and use our different plugins.</p>
+<p>The first thing to do is creating a configuration file, which we will name <code>satellite.yaml</code>.</p>
+<p>In a terminal, enter the following command:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>touch satellite.yaml
+</span></span></code></pre></div><p>Then add this configuration to your YAML file:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#f92672">version</span>: <span style="color:#e6db74">&#39;0.3&#39;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">satellites</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">akeneo_to_csv</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">label</span>: <span style="color:#e6db74">&#39;Akeneo to CSV&#39;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">filesystem</span>:
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">path</span>: <span style="color:#ae81ff">build</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">pipeline</span>:
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">steps</span>:
+</span></span><span style="display:flex;"><span>        - <span style="color:#f92672">akeneo</span>:
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">enterprise</span>: <span style="color:#66d9ef">true</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">extractor</span>:
+</span></span><span style="display:flex;"><span>              <span style="color:#f92672">type</span>: <span style="color:#ae81ff">product</span>
+</span></span><span style="display:flex;"><span>              <span style="color:#f92672">method</span>: <span style="color:#ae81ff">all</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">client</span>:
+</span></span><span style="display:flex;"><span>              <span style="color:#f92672">api_url</span>: <span style="color:#e6db74">&#39;@=env(&#34;AKENEO_URL&#34;)&#39;</span>
+</span></span><span style="display:flex;"><span>              <span style="color:#f92672">client_id</span>: <span style="color:#e6db74">&#39;@=env(&#34;AKENEO_CLIENT_ID&#34;)&#39;</span>
+</span></span><span style="display:flex;"><span>              <span style="color:#f92672">secret</span>: <span style="color:#e6db74">&#39;@=env(&#34;AKENEO_CLIENT_SECRET&#34;)&#39;</span>
+</span></span><span style="display:flex;"><span>              <span style="color:#f92672">username</span>: <span style="color:#e6db74">&#39;@=env(&#34;AKENEO_USERNAME&#34;)&#39;</span>
+</span></span><span style="display:flex;"><span>              <span style="color:#f92672">password</span>: <span style="color:#e6db74">&#39;@=env(&#34;AKENEO_PASSWORD&#34;)&#39;</span>
+</span></span><span style="display:flex;"><span>        - <span style="color:#f92672">csv</span>:
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">loader</span>:
+</span></span><span style="display:flex;"><span>              <span style="color:#f92672">file_path</span>: <span style="color:#ae81ff">output.csv</span>
+</span></span><span style="display:flex;"><span>              <span style="color:#f92672">delimiter</span>: <span style="color:#e6db74">&#39;,&#39;</span>
+</span></span><span style="display:flex;"><span>              <span style="color:#f92672">enclosure</span>: <span style="color:#e6db74">&#39;&#34;&#39;</span>
+</span></span><span style="display:flex;"><span>              <span style="color:#f92672">escape</span>: <span style="color:#e6db74">&#39;\&#39;</span>
+</span></span></code></pre></div><p>In our case, we use the csv and akeneo plugins, so we have to add the corresponding plugins to our project.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>composer require php-etl/akeneo-plugin php-etl/csv-plugin
+</span></span></code></pre></div><blockquote>
+<p>Be careful to use a version that is compatible with the version of the <code>php-etl/satellite</code> package that you have previously installed.
+Find the different versions of our plugins <a href="https://packagist.org/?query=php-etl%2F">here</a>.</p>
+</blockquote>
+<blockquote>
+<p>In a configuration file, paths start at the folder specified under <code>filesystem.path</code>. Here for example, the result will be <code>build/output.csv</code>.</p>
+</blockquote>
+<p>For more information on how to write your configuration, please read <a href="../satellite">satellites</a>.</p>
+</div>
           
-          <p class="post-meta border-bottom pb-3 mb-0 mt-3">Updated on 01 Jan 0001</p>
+          <p class="post-meta border-bottom pb-3 mb-0 mt-3">Updated on 14 Feb 2023</p>
           <nav class="pagination mt-3">
             
             
@@ -310,8 +450,6 @@
             
             
             
-            
-            
 
             
             
@@ -319,6 +457,9 @@
             
             
 
+            
+            
+            
             
             
             
@@ -359,11 +500,13 @@
             
             
             
+            
 
             
             
             
 
+            
             
             
             
@@ -375,6 +518,8 @@
             
             
             
+            
+            
 
             
             
@@ -929,9 +1074,11 @@
             
             
 
+            
+            <a class="nav nav-prev" href="https://php-etl.github.io/documentation/getting-started/installation/"><i class="ti-arrow-left mr-2"></i> <span class="d-none d-md-block">Installation</span></a>
             
             
-            <a class="nav nav-next" href="https://php-etl.github.io/documentation/getting-started/"> <span class="d-none d-md-block">Getting-starteds</span><i class="ti-arrow-right ml-2"></i></a>
+            <a class="nav nav-next" href="https://php-etl.github.io/documentation/getting-started/compilation/"> <span class="d-none d-md-block">Compilation</span><i class="ti-arrow-right ml-2"></i></a>
             
           </nav>
         </div>

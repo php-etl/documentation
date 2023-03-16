@@ -2,7 +2,7 @@
 <html lang="en-us">
   <head>
   <meta charset="utf-8">
-  <title>Categories</title>
+  <title>Execution</title>
 
   <meta name="generator" content="Hugo 0.111.3">
 
@@ -196,22 +196,10 @@
         
         
         
-        <option id="en" value="https://php-etl.github.io/documentation/categories/" selected>English
+        <option id="en" value="https://php-etl.github.io/documentation/getting-started/execution/" selected>English
         </option>
         
         
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        <option id="fr" value="https://php-etl.github.io/documentation/fr/categories/">Français</option>
         
         
         
@@ -238,6 +226,140 @@
             <a class="back-btn" href="/documentation"></a>
             
               
+              
+
+
+
+
+
+
+
+
+<li data-nav-id="https://php-etl.github.io/documentation/getting-started/" title="Getting-starteds" class="sidelist
+  ">
+  <a href="https://php-etl.github.io/documentation/getting-started/">
+    Getting-starteds
+  </a>
+  
+  
+    <ul>
+      
+        
+          
+
+
+
+
+
+
+
+
+<li data-nav-id="https://php-etl.github.io/documentation/getting-started/environment-setup/" title="Environment Setup" class="sidelist
+  ">
+  <a href="https://php-etl.github.io/documentation/getting-started/environment-setup/">
+    Environment Setup
+  </a>
+  
+  
+</li>
+
+
+        
+      
+        
+          
+
+
+
+
+
+
+
+
+<li data-nav-id="https://php-etl.github.io/documentation/getting-started/installation/" title="Installation" class="sidelist
+  ">
+  <a href="https://php-etl.github.io/documentation/getting-started/installation/">
+    Installation
+  </a>
+  
+  
+</li>
+
+
+        
+      
+        
+          
+
+
+
+
+
+
+
+
+<li data-nav-id="https://php-etl.github.io/documentation/getting-started/writing-configuration/" title="Writing Configuration" class="sidelist
+  ">
+  <a href="https://php-etl.github.io/documentation/getting-started/writing-configuration/">
+    Writing Configuration
+  </a>
+  
+  
+</li>
+
+
+        
+      
+        
+          
+
+
+
+
+
+
+
+
+<li data-nav-id="https://php-etl.github.io/documentation/getting-started/compilation/" title="Compilation" class="sidelist
+  ">
+  <a href="https://php-etl.github.io/documentation/getting-started/compilation/">
+    Compilation
+  </a>
+  
+  
+</li>
+
+
+        
+      
+        
+          
+
+
+
+
+
+
+
+
+<li data-nav-id="https://php-etl.github.io/documentation/getting-started/execution/" title="Execution" class="sidelist
+  active">
+  <a href="https://php-etl.github.io/documentation/getting-started/execution/">
+    Execution
+  </a>
+  
+  
+</li>
+
+
+        
+      
+    </ul>
+  
+</li>
+
+
+              
             
               
             
@@ -255,34 +377,26 @@
           <h1 class="single-title mb-5">
               
               
-              Categories
+              Execution
           </h1>
           
-          <div class="p-4">
-            <ul class="page-list">
-              
-
-
-
-
-
-
-
-
-<li data-nav-id="https://php-etl.github.io/documentation/categories/" title="Categories" class="sidelist
-  active">
-  <a href="https://php-etl.github.io/documentation/categories/">
-    Categories
-  </a>
-  
-  
-</li>
-
-
-            </ul>
-          </div>
+          <div class="content"><p>Once your PHP code is generated, it can be executed right away.</p>
+<p>In the following paragraphs, you will find the method for executing the satellites depending on
+the <a href="http://localhost:1313/documentation/core-concept/satellite#setting-up-the-adapter">adapter</a> you have chosen.</p>
+<h2 id="if-you-built-inside-the-filesystem">If you built inside the filesystem</h2>
+<p>Runs the pipeline that was compiled under <code>build/</code>:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#75715e"># php &lt;path-to-the-generated-satellite&gt;</span>
+</span></span><span style="display:flex;"><span>php bin/satellite run:pipeline build/
+</span></span></code></pre></div><p>This command will run your satellite service located in a directory. The execution of your service may take several minutes,
+so please wait until the execution is completed.</p>
+<p>After compilation, check that <code>build/output.csv</code> has been created.</p>
+<h2 id="if-you-built-as-a-docker-image">If you built as a Docker image</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#75715e"># docker run --rm -ti &lt;generated-satellite-docker-image-name&gt;</span>
+</span></span><span style="display:flex;"><span>docker run --rm -ti foo/satellite-name:latest
+</span></span></code></pre></div><p>This command will run your satellite service you have previously built as a Docker image you named <code>foo/satellite-name:latest</code>.</p>
+</div>
           
-          <p class="post-meta border-bottom pb-3 mb-0 mt-3">Updated on 01 Jan 0001</p>
+          <p class="post-meta border-bottom pb-3 mb-0 mt-3">Updated on 14 Feb 2023</p>
           <nav class="pagination mt-3">
             
             
@@ -310,8 +424,6 @@
             
             
             
-            
-            
 
             
             
@@ -319,6 +431,9 @@
             
             
 
+            
+            
+            
             
             
             
@@ -391,11 +506,13 @@
             
             
             
+            
 
             
             
             
 
+            
             
             
             
@@ -410,6 +527,8 @@
             
             
             
+            
+            
 
             
             
@@ -929,9 +1048,11 @@
             
             
 
+            
+            <a class="nav nav-prev" href="https://php-etl.github.io/documentation/getting-started/compilation/"><i class="ti-arrow-left mr-2"></i> <span class="d-none d-md-block">Compilation</span></a>
             
             
-            <a class="nav nav-next" href="https://php-etl.github.io/documentation/getting-started/"> <span class="d-none d-md-block">Getting-starteds</span><i class="ti-arrow-right ml-2"></i></a>
+            <a class="nav nav-next" href="https://php-etl.github.io/documentation/feature/"> <span class="d-none d-md-block">Features</span><i class="ti-arrow-right ml-2"></i></a>
             
           </nav>
         </div>

@@ -1,7 +1,7 @@
 ---
 title: "Environment Setup"
 date: 2023-02-14T14:53:57+01:00
-draft: true
+draft: false
 weight: 1
 ---
 
