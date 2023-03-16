@@ -7,8 +7,8 @@ weight: 1
 
 Gyroscops is a command line application written in PHP. To be able to use the application, you will need to fulfill the following requirements:
 
-### PHP 8.0 or higher
-Before proceeding, make sure your computer has a PHP version higher than or equal to 8.0 installed.
+### PHP 8.2 or higher
+Before proceeding, make sure your computer has a PHP version higher than or equal to 8.2 installed.
 
 For more information on how to install PHP, go to the [official documentation](https://www.php.net/manual/en/install.php).
 
