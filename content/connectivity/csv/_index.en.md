@@ -85,9 +85,18 @@ To limit the number of lines to be written to your csv file, you can specify the
 
 ```yaml
 csv:
+  expression_language:
+    - 'Kiboko\Component\StringExpressionLanguage\StringExpressionLanguageProvider'
   loader:
     # ...
     max_lines: 20
+    file_path: '@=env("OUTPUT_DIRECTORY")~format("output_%06d.csv",index)'
+```
+
+For the dynamic filename to work, you must install `php-etl/string-expression-language`:
+
+```bash
+composer require php-etl/string-expression-language
 ```
 
 > Warning : this option is only available for loaders

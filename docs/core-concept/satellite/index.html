@@ -1,0 +1,1338 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+  <meta charset="utf-8">
+  <title>Creating Satellite</title>
+
+  <meta name="generator" content="Hugo 0.111.3">
+
+  <!-- mobile responsive meta -->
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <!-- ** Plugins Needed for the Project ** -->
+  <!-- Bootstrap -->
+  <link rel="stylesheet" href="https://php-etl.github.io/documentation/plugins/bootstrap/bootstrap.min.css">
+
+  <!-- themefy-icon -->
+  <link rel="stylesheet" href="https://php-etl.github.io/documentation/plugins/themify-icons/themify-icons.css">
+
+  <!-- highlight -->
+  <link rel="stylesheet" href="https://php-etl.github.io/documentation/plugins/highlight/hybrid.css">
+
+  <!--Favicon-->
+  <link rel="icon" href="https://php-etl.github.io/documentation/favicon.png" type="image/x-icon">
+
+  <!-- fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700&display=swap" rel="stylesheet">
+
+  <style>
+  :root{
+    --primary-color: #22014f;
+    --primary-color-lighten: #f2e9fe;
+    --secondary-color:#fe8507;
+    --body-color:#ddd;
+    --text-color:#666;
+    --text-color-dark:#333;
+    --text-color-light:#eee;
+    --white-color:#fff;
+    --light-color:#eee;
+    --font-family:Lato;
+  }
+  </style>
+
+<!-- Main Stylesheet -->
+
+<link href="https://php-etl.github.io/documentation/css/style.min.css" rel="stylesheet" media="screen"/>
+
+<!-- jquiry -->
+<script src="https://php-etl.github.io/documentation/plugins/jquery/jquery-1.12.4.js"></script>
+
+<!-- jquary ui -->
+<script src="https://php-etl.github.io/documentation/plugins/jquery/jquery-ui.js"></script>
+
+<!-- Bootstrap JS -->
+<script src="https://php-etl.github.io/documentation/plugins/bootstrap/bootstrap.min.js"></script>
+
+<!-- match-height JS -->
+<script src="https://php-etl.github.io/documentation/plugins/match-height/jquery.matchHeight-min.js"></script>
+
+<!-- highlight -->
+<script src="https://php-etl.github.io/documentation/plugins/highlight/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+
+
+</head>
+
+
+  <body>
+    
+    <!-- header -->
+    <header class="sticky-top bg-gradient">
+      <nav class="navbar navbar-expand-md bg-light">
+  <div class="container">
+    <a class="navbar-brand" href="/documentation">
+      
+      
+      
+      
+      <div class="navbar-brand">
+        <img class="img-fluid" src="https://php-etl.github.io/documentation/logo-web.svg" alt="Gyroscops"><span class="navbar-logo"> Gyroscops</span>
+      </div>
+      
+      
+    </a>
+    <button class="navbar-toggler border-0" type="button" data-toggle="collapse" data-target="#navigation"
+      aria-controls="navigation" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse text-center" id="navigation">
+      <ul class="navbar-nav ml-auto">
+        
+        
+        <li class="nav-item dropdown">
+          <span class="nav-link dropdown-toggle text-dark" href="#" role="button" data-toggle="dropdown"
+            aria-haspopup="true" aria-expanded="false">
+            Getting Started
+          </span>
+          <div class="dropdown-menu">
+            
+            <a class="dropdown-item" href="/documentation/getting-started/environment-setup">Environment Setup</a>
+            
+            <a class="dropdown-item" href="/documentation/getting-started/installation">Installation</a>
+            
+            <a class="dropdown-item" href="/documentation/getting-started/writing-configuration">Writing Configuration</a>
+            
+            <a class="dropdown-item" href="/documentation/getting-started/compilation">Compilation</a>
+            
+            <a class="dropdown-item" href="/documentation/getting-started/execution">Execution</a>
+            
+          </div>
+        </li>
+        
+        
+        
+        <li class="nav-item dropdown">
+          <span class="nav-link dropdown-toggle text-dark" href="#" role="button" data-toggle="dropdown"
+            aria-haspopup="true" aria-expanded="false">
+            Core concepts
+          </span>
+          <div class="dropdown-menu">
+            
+            <a class="dropdown-item" href="/documentation/core-concept/satellite">Satellite</a>
+            
+            <a class="dropdown-item" href="/documentation/core-concept/pipeline">Pipeline</a>
+            
+            <a class="dropdown-item" href="/documentation/core-concept/workflow">Workflow</a>
+            
+          </div>
+        </li>
+        
+        
+        
+        <li class="nav-item dropdown">
+          <span class="nav-link dropdown-toggle text-dark" href="#" role="button" data-toggle="dropdown"
+            aria-haspopup="true" aria-expanded="false">
+            Connectivity
+          </span>
+          <div class="dropdown-menu">
+            
+            <a class="dropdown-item" href="/documentation/connectivity/akeneo">Akeneo</a>
+            
+            <a class="dropdown-item" href="/documentation/connectivity/csv">CSV files</a>
+            
+            <a class="dropdown-item" href="/documentation/connectivity/custom">Custom connector</a>
+            
+            <a class="dropdown-item" href="/documentation/connectivity/fast-map">FastMap</a>
+            
+            <a class="dropdown-item" href="/documentation/connectivity/ftp">FTP</a>
+            
+            <a class="dropdown-item" href="/documentation/connectivity/sftp">SFTP</a>
+            
+            <a class="dropdown-item" href="/documentation/connectivity/nl-json">NL-JSON</a>
+            
+            <a class="dropdown-item" href="/documentation/connectivity/spreadsheet">Spreadsheet files</a>
+            
+            <a class="dropdown-item" href="/documentation/connectivity/sql">SQL database</a>
+            
+            <a class="dropdown-item" href="/documentation/connectivity/sylius">Sylius</a>
+            
+          </div>
+        </li>
+        
+        
+        
+        <li class="nav-item dropdown">
+          <span class="nav-link dropdown-toggle text-dark" href="#" role="button" data-toggle="dropdown"
+            aria-haspopup="true" aria-expanded="false">
+            Features
+          </span>
+          <div class="dropdown-menu">
+            
+            <a class="dropdown-item" href="/documentation/feature/services">Declaring services</a>
+            
+            <a class="dropdown-item" href="/documentation/feature/expression-language">Expression Language</a>
+            
+            <a class="dropdown-item" href="/documentation/feature/logger">Logging</a>
+            
+            <a class="dropdown-item" href="/documentation/feature/rejection">Rejection</a>
+            
+            <a class="dropdown-item" href="/documentation/feature/state">State</a>
+            
+          </div>
+        </li>
+        
+        
+      </ul>
+      
+      <select class="lang-list dark" id="select-language"
+        onchange="location = this.value;">
+        
+        
+        
+        
+        
+        
+        
+        
+        <option id="en" value="https://php-etl.github.io/documentation/core-concept/satellite/" selected>English
+        </option>
+        
+        
+        
+        
+        
+        
+      </select>
+      
+    </div>
+  </div>
+</nav>
+
+    </header>
+    <!-- /header -->
+    
+    
+
+<!-- details page -->
+<section class="single section-sm pb-0">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-3">
+        <div class="sidebar">
+          <ul class="list-styled">
+            
+            <a class="back-btn" href="/documentation"></a>
+            
+              
+            
+              
+            
+              
+              
+
+
+
+
+
+
+
+
+<li data-nav-id="https://php-etl.github.io/documentation/core-concept/" title="Core-concepts" class="sidelist
+  ">
+  <a href="https://php-etl.github.io/documentation/core-concept/">
+    Core-concepts
+  </a>
+  
+  
+    <ul>
+      
+        
+          
+
+
+
+
+
+
+
+
+<li data-nav-id="https://php-etl.github.io/documentation/core-concept/pipeline/" title="Pipeline" class="sidelist
+  ">
+  <a href="https://php-etl.github.io/documentation/core-concept/pipeline/">
+    Pipeline
+  </a>
+  
+  
+</li>
+
+
+        
+      
+        
+          
+
+
+
+
+
+
+
+
+<li data-nav-id="https://php-etl.github.io/documentation/core-concept/satellite/" title="Creating Satellite" class="sidelist
+  active">
+  <a href="https://php-etl.github.io/documentation/core-concept/satellite/">
+    Creating Satellite
+  </a>
+  
+  
+    <ul>
+      
+        
+          
+
+
+
+
+
+
+
+
+<li data-nav-id="https://php-etl.github.io/documentation/core-concept/satellite/yaml-format/" title="The YAML configuration format" class="sidelist
+  ">
+  <a href="https://php-etl.github.io/documentation/core-concept/satellite/yaml-format/">
+    The YAML configuration format
+  </a>
+  
+  
+</li>
+
+
+        
+      
+        
+          
+
+
+
+
+
+
+
+
+<li data-nav-id="https://php-etl.github.io/documentation/core-concept/satellite/php-objects/" title="PHP Objects" class="sidelist
+  ">
+  <a href="https://php-etl.github.io/documentation/core-concept/satellite/php-objects/">
+    PHP Objects
+  </a>
+  
+  
+</li>
+
+
+        
+      
+    </ul>
+  
+</li>
+
+
+        
+      
+        
+          
+
+
+
+
+
+
+
+
+<li data-nav-id="https://php-etl.github.io/documentation/core-concept/workflow/" title="Workflow" class="sidelist
+  ">
+  <a href="https://php-etl.github.io/documentation/core-concept/workflow/">
+    Workflow
+  </a>
+  
+  
+</li>
+
+
+        
+      
+    </ul>
+  
+</li>
+
+
+              
+            
+              
+            
+              
+            
+          </ul>
+        </div>
+      </div>
+      <div class="col-lg-9">
+        <div class="p-lg-5 p-4">
+          <h1 class="single-title mb-5">
+              
+              
+              <i class="logo-lambda icon d-block">
+                  <svg>
+                      <use xlink:href="https://php-etl.github.io/documentation/sprites.svg#lambda"></use>
+                  </svg>
+              </i>
+              
+              Creating Satellite
+          </h1>
+          
+          <div class="content">
+
+
+
+
+<div style="margin-top: 10px; margin-bottom: 10px;">
+<b>FEATURE STATE:</b> <code>Gyroscops 0.1 [alpha]</code>
+</div>
+
+
+<ul>
+<li><a href="#building-a-satellite">Building a satellite</a>
+<ul>
+<li><a href="#setting-up-the-adapter">Setting up the Adapter</a>
+<ul>
+<li><a href="#using-docker">Using Docker</a></li>
+<li><a href="#using-system">Using system</a></li>
+</ul>
+</li>
+<li><a href="#configure-composer">Configure composer</a></li>
+<li><a href="#setting-up-the-runtime">Setting up the runtime</a>
+<ul>
+<li><a href="#using-pipeline">Using Pipeline</a></li>
+<li><a href="#using-workflow">Using Workflow</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#configuration-formats">Configuration formats</a></li>
+<li><a href="#new-version-of-satellites">New version of satellites</a></li>
+</ul>
+<hr>
+<blockquote>
+<p>A satellite is a microservice that can be executed as a cron job.
+It can be deployed in any Docker infrastructure (including Kubernetes clusters) or in any operating system.</p>
+</blockquote>
+<p><img src="satellite.svg" alt="Satellite schema"></p>
+<h2 id="building-a-satellite">Building a satellite</h2>
+<p>The configuration of your satellite must be defined in a yaml file.</p>
+<h3 id="setting-up-the-adapter">Setting up the Adapter</h3>
+<p>First, you should declare the docker image, or the file, on which we want to build the micro-service.</p>
+<h4 id="using-docker">Using Docker</h4>
+<p>To use a docker image to build your micro-service, implement the <code>docker</code> key with its configuration options :</p>
+<ul>
+<li><code>from</code> : determines the image on which your code will run</li>
+<li><code>workdir</code> : define the working directory of a Docker container</li>
+<li><code>tags</code> : determines the references to the Docker images</li>
+</ul>
+<ul class="nav nav-tabs" id="basic_definition_docker" role="tablist"><li class="nav-item"><a data-toggle="tab" class="nav-link active" href="#basic_definition_docker-0" role="tab" aria-controls="basic_definition_docker-0" aria-selected="true">YAML</a></li>
+	  </ul>
+<div class="tab-content" id="basic_definition_docker"><div id="basic_definition_docker-0" class="tab-pane show active" role="tabpanel" aria-labelledby="basic_definition_docker-0">
+
+<p><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">version</span>: <span style="color:#e6db74">&#39;0.3&#39;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">satellites</span>:
+</span></span><span style="display:flex;"><span>  - <span style="color:#f92672">docker</span>:
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">from</span>: <span style="color:#ae81ff">php:8.0-cli-alpine</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">workdir</span>: <span style="color:#ae81ff">/var/www/html</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">tags</span>:
+</span></span><span style="display:flex;"><span>        - <span style="color:#ae81ff">kiboko/satellite:foo</span>
+</span></span><span style="display:flex;"><span>        - <span style="color:#ae81ff">kiboko/satellite:bar</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#...</span>
+</span></span></code></pre></div></div></div>
+
+<p>Here, we chose to use the <code>php:8.0-cli-alpine</code> base image on which our code will be executed.
+You could use any docker image of your choice, however you will need to have a PHP runtime
+available, in a compatible version: &gt;=8.0 with the CLI SAPI.</p>
+<h4 id="using-system">Using system</h4>
+<p>To use a system file to build your micro-service, implement the <code>filesystem</code> key.</p>
+<p>The filesystem key is accompanied by a <code>path</code> key which determines the path of the microservice to be built.</p>
+<ul class="nav nav-tabs" id="basic_definition_filesystem" role="tablist"><li class="nav-item"><a data-toggle="tab" class="nav-link active" href="#basic_definition_filesystem-0" role="tab" aria-controls="basic_definition_filesystem-0" aria-selected="true">YAML</a></li>
+	  </ul>
+<div class="tab-content" id="basic_definition_filesystem"><div id="basic_definition_filesystem-0" class="tab-pane show active" role="tabpanel" aria-labelledby="basic_definition_filesystem-0">
+
+<p><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">version</span>: <span style="color:#e6db74">&#39;0.3&#39;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">satellites</span>:
+</span></span><span style="display:flex;"><span>   - <span style="color:#f92672">filesystem</span>:
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#       path: &lt;path/to/folder&gt;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">path</span>: <span style="color:#ae81ff">build</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#...</span>
+</span></span></code></pre></div></div></div>
+
+<h3 id="configure-composer">Configure composer</h3>
+<h4 id="dependencies">Dependencies</h4>
+<p>It&rsquo;s possible to declare the composer dependencies that our microservice needs with the <code>composer</code> key.</p>
+<blockquote>
+<p>Tip : This part is not mandatory. If you do not configure it, these packages (<code>php-etl/pipeline-contracts</code>,
+<code>php-etl/pipeline</code>, <code>php-etl/pipeline-console-runtime</code>, <code>php-etl/workflow-console-runtime</code>,
+<code>psr/log</code>, <code>monolog/monolog</code>, <code>symfony/console</code>, <code>symfony/dependency-injection</code>) will be installed automatically.</p>
+</blockquote>
+<p>The <code>require</code> parameter allows to add all the packages, written as <code>package_name:version</code>, that your microservice needs.</p>
+<ul class="nav nav-tabs" id="basic_with_composer" role="tablist"><li class="nav-item"><a data-toggle="tab" class="nav-link active" href="#basic_with_composer-0" role="tab" aria-controls="basic_with_composer-0" aria-selected="true">YAML</a></li>
+	  </ul>
+<div class="tab-content" id="basic_with_composer"><div id="basic_with_composer-0" class="tab-pane show active" role="tabpanel" aria-labelledby="basic_with_composer-0">
+
+<p><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">version</span>: <span style="color:#e6db74">&#39;0.3&#39;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">satellites</span>:
+</span></span><span style="display:flex;"><span>  - <span style="color:#75715e"># ...</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">composer</span>:
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">require</span>:
+</span></span><span style="display:flex;"><span>        - <span style="color:#e6db74">&#34;foo/bar:^0.2&#34;</span>
+</span></span></code></pre></div></div></div>
+
+<h4 id="autoload">Autoload</h4>
+<p>The <code>autoload</code> parameter is optional and allows you to configure your autoloader by specifying one or more namespaces and
+directories paths as if you were directly in the composer.json.</p>
+<p>Every autoloading configuration shall be in the following format:</p>
+<ul>
+<li><code>namespace</code>: namespace of your files</li>
+<li><code>paths</code>: directories in which the files to be loaded are located</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#f92672">version</span>: <span style="color:#e6db74">&#39;0.3&#39;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">satellites</span>:
+</span></span><span style="display:flex;"><span>  - <span style="color:#75715e"># ...</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">composer</span>:
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">autoload</span>:
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">psr4</span>:
+</span></span><span style="display:flex;"><span>          - <span style="color:#f92672">namespace</span>: <span style="color:#e6db74">&#34;Pipeline\\&#34;</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">paths</span>: [<span style="color:#e6db74">&#34;&#34;</span>]
+</span></span></code></pre></div><h4 id="from-local">From local</h4>
+<p>The <code>from_local</code> parameter is optional and copies local <code>composer.json</code>, <code>composer.lock</code> and <code>vendor</code> files into your
+microservice instead of creating them.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#f92672">version</span>: <span style="color:#e6db74">&#39;0.3&#39;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">satellites</span>:
+</span></span><span style="display:flex;"><span>  - <span style="color:#75715e"># ...</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">composer</span>:
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">from_local</span>: <span style="color:#66d9ef">true</span>
+</span></span></code></pre></div><h4 id="repositories">Repositories</h4>
+<p>The <code>repositories</code> parameter is optional. It allows you to use repositories that are not hosted on <a href="https://packagist.org/">packagist.org</a>.</p>
+<p>Each repository should have the following configuration fields:</p>
+<ul>
+<li><code>name</code>: the name of your repository</li>
+<li><code>url</code>: the url of your repository</li>
+<li><code>type</code>: the type of your repository (vcs, composer, package, etc&hellip;)</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#f92672">version</span>: <span style="color:#e6db74">&#39;0.3&#39;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">satellites</span>:
+</span></span><span style="display:flex;"><span>  - <span style="color:#75715e"># ...</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">composer</span>:
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">repositories</span>:
+</span></span><span style="display:flex;"><span>        - { <span style="color:#f92672">name: &#39;private-packagist&#39;, url: &#39;https://repo.packagist.com/package/&#39;, type</span>: <span style="color:#e6db74">&#39;composer&#39;</span> }
+</span></span></code></pre></div><h4 id="auth">Auth</h4>
+<p>The <code>auth</code> parameter is optional and allows you to use registries that are not public and must be accessed through an authentication.
+The parameter is the way for you to tell composer how to authenticate to the registry server.</p>
+<p>Each auth can have the following configuration fields:</p>
+<ul>
+<li><code>url</code>: the url of your repository</li>
+<li><code>token</code>: when you use a connection via token, you must use this field</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#f92672">version</span>: <span style="color:#e6db74">&#39;0.3&#39;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">satellites</span>:
+</span></span><span style="display:flex;"><span>  - <span style="color:#75715e"># ...</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">composer</span>:
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">auth</span>:
+</span></span><span style="display:flex;"><span>      - { <span style="color:#f92672">url: &#39;http-basic.kiboko.repo.packagist.com&#39;, token</span>: <span style="color:#e6db74">&#39;0fe8828b23371406295ca2b72634c0a3df2431c4787df0173ea051a0c639&#39;</span> }
+</span></span></code></pre></div><blockquote>
+<p>Notice : Currently, the only way to identify to a repository is to use tokens. Support for other authentication methods is in our backlog.</p>
+</blockquote>
+<h3 id="setting-up-the-runtime">Setting up the runtime</h3>
+<p>Now that we have made our environment prepared for our satellite, we will declare
+the way we want our pipeline to handle our data flows.</p>
+<p>There are 4 types of runtimes, depending on your needs you will have to choose one of:</p>
+<ul>
+<li><code>http-api</code>: the micro-service will be operating an API, on which several URL routes can be registered. <code>http-api</code> is used for REST API.</li>
+<li><code>http-hook</code>: the micro-service will be operating an API on a single URL route. <code>http-hook</code> is used for webhooks. A webhook is a POST request sent to a URL. It&rsquo;s considered to be
+a means for one application to provide other applications with real-time information</li>
+<li><code>pipeline</code>: the micro-service will be operating a data pipeline, executed in the backend that can be executed as a cron job.</li>
+<li><code>workflow</code>: the micro-service will be orchestrating more than one data pipeline, executed in the backend that can be executed as a cron job</li>
+</ul>
+<h4 id="using-pipeline">Using Pipeline</h4>
+<p>Please visit the <a href="../pipeline">Pipeline documentation page</a> to find out how to set up your pipeline.</p>
+<ul class="nav nav-tabs" id="dataflows" role="tablist"><li class="nav-item"><a data-toggle="tab" class="nav-link active" href="#dataflows-0" role="tab" aria-controls="dataflows-0" aria-selected="true">YAML</a></li>
+	  </ul>
+<div class="tab-content" id="dataflows"><div id="dataflows-0" class="tab-pane show active" role="tabpanel" aria-labelledby="dataflows-0">
+
+<p><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">version</span>: <span style="color:#e6db74">&#39;0.3&#39;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">satellites</span>:
+</span></span><span style="display:flex;"><span> - <span style="color:#75715e"># ...</span>
+</span></span><span style="display:flex;"><span>   <span style="color:#f92672">pipeline</span>:
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">steps</span>:
+</span></span><span style="display:flex;"><span>      - <span style="color:#f92672">akeneo</span>:
+</span></span><span style="display:flex;"><span>          <span style="color:#f92672">enterprise</span>: <span style="color:#66d9ef">true</span>
+</span></span><span style="display:flex;"><span>          <span style="color:#f92672">extractor</span>:
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">type</span>: <span style="color:#ae81ff">productModel</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">method</span>: <span style="color:#ae81ff">all</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">search</span>:
+</span></span><span style="display:flex;"><span>              - { <span style="color:#f92672">field: enabled, operator: &#39;=&#39;, value</span>: <span style="color:#66d9ef">true</span> }
+</span></span><span style="display:flex;"><span>              - { <span style="color:#f92672">field: completeness, operator: &#39;&gt;&#39;, value: 70, scope</span>: <span style="color:#ae81ff">ecommerce }</span>
+</span></span><span style="display:flex;"><span>              - { <span style="color:#f92672">field: completeness, operator: &#39;&lt;&#39;, value: 85, scope</span>: <span style="color:#ae81ff">ecommerce }</span>
+</span></span><span style="display:flex;"><span>              - { <span style="color:#f92672">field: categories, operator: IN, value</span>: <span style="color:#ae81ff">winter_collection }</span>
+</span></span><span style="display:flex;"><span>              - { <span style="color:#f92672">field: family, operator: IN, value</span>: [<span style="color:#ae81ff">camcorders, digital_cameras] }</span>
+</span></span><span style="display:flex;"><span>          <span style="color:#f92672">logger</span>:
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">type</span>: <span style="color:#e6db74">&#39;stderr&#39;</span>
+</span></span><span style="display:flex;"><span>      - <span style="color:#f92672">fastmap</span>:
+</span></span><span style="display:flex;"><span>          <span style="color:#f92672">map</span>:
+</span></span><span style="display:flex;"><span>            - <span style="color:#f92672">field</span>: <span style="color:#e6db74">&#39;[sku]&#39;</span>
+</span></span><span style="display:flex;"><span>              <span style="color:#f92672">copy</span>: <span style="color:#e6db74">&#39;[sku]&#39;</span>
+</span></span><span style="display:flex;"><span>            - <span style="color:#f92672">field</span>: <span style="color:#e6db74">&#39;[title]&#39;</span>
+</span></span><span style="display:flex;"><span>              <span style="color:#f92672">expression</span>: <span style="color:#e6db74">&#39;input[&#34;sku&#34;] ~&#34; | &#34;~ input[&#34;name&#34;]&#39;</span>
+</span></span><span style="display:flex;"><span>            - <span style="color:#f92672">field</span>: <span style="color:#e6db74">&#39;[name]&#39;</span>
+</span></span><span style="display:flex;"><span>              <span style="color:#f92672">copy</span>: <span style="color:#e6db74">&#39;[name]&#39;</span>
+</span></span><span style="display:flex;"><span>            - <span style="color:#f92672">field</span>: <span style="color:#e6db74">&#39;[staticValue]&#39;</span>
+</span></span><span style="display:flex;"><span>              <span style="color:#f92672">constant</span>: <span style="color:#e6db74">&#39;Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur mollis efficitur justo, id facilisis elit venenatis et. Sed fermentum posuere convallis. Phasellus lectus neque, bibendum sit amet enim imperdiet, dignissim blandit nisi. Donec nec neque nisi. Vivamus luctus facilisis nibh id rhoncus. Vestibulum eget facilisis tortor. Etiam at cursus enim, vitae mollis ex. Proin at velit at erat bibendum ultricies. Duis ut velit malesuada, placerat nisl a, ultrices tortor.&#39;</span>
+</span></span><span style="display:flex;"><span>            - <span style="color:#f92672">field</span>: <span style="color:#e6db74">&#39;[foo]&#39;</span>
+</span></span><span style="display:flex;"><span>              <span style="color:#f92672">expression</span>: <span style="color:#e6db74">&#39;input&#39;</span>
+</span></span><span style="display:flex;"><span>              <span style="color:#f92672">list</span>:
+</span></span><span style="display:flex;"><span>                - <span style="color:#f92672">field</span>: <span style="color:#e6db74">&#39;[bar]&#39;</span>
+</span></span><span style="display:flex;"><span>                  <span style="color:#f92672">copy</span>: <span style="color:#e6db74">&#39;[bar]&#39;</span>
+</span></span><span style="display:flex;"><span>      - <span style="color:#f92672">csv</span>:
+</span></span><span style="display:flex;"><span>          <span style="color:#f92672">loader</span>:
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">file_path</span>: <span style="color:#ae81ff">output.csv</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">delimiter</span>: <span style="color:#e6db74">&#39;,&#39;</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">enclosure</span>: <span style="color:#e6db74">&#39;&#34;&#39;</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">escape</span>: <span style="color:#e6db74">&#39;\&#39;</span>
+</span></span></code></pre></div></div></div>
+
+<h4 id="using-workflow">Using Workflow</h4>
+<p>Please visit the <a href="../workflow">Workflow documentation page</a> to find out how to set up your workflow.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#f92672">version</span>: <span style="color:#e6db74">&#39;0.3&#39;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">satellites</span>:
+</span></span><span style="display:flex;"><span>  - <span style="color:#75715e"># ...</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">workflow</span>:
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">jobs</span>:
+</span></span><span style="display:flex;"><span>        - <span style="color:#f92672">name</span>: <span style="color:#e6db74">&#39;Lorem ipsum dolor&#39;</span>
+</span></span><span style="display:flex;"><span>          <span style="color:#f92672">pipeline</span>:
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">steps</span>:
+</span></span><span style="display:flex;"><span>              - <span style="color:#f92672">akeneo</span>:
+</span></span><span style="display:flex;"><span>                  <span style="color:#f92672">extractor</span>:
+</span></span><span style="display:flex;"><span>                    <span style="color:#f92672">type</span>: <span style="color:#ae81ff">category</span>
+</span></span><span style="display:flex;"><span>                    <span style="color:#f92672">method</span>: <span style="color:#ae81ff">all</span>
+</span></span><span style="display:flex;"><span>                  <span style="color:#f92672">client</span>:
+</span></span><span style="display:flex;"><span>                    <span style="color:#f92672">api_url</span>: <span style="color:#e6db74">&#39;@=env(&#34;AKENEO_URL&#34;)&#39;</span>
+</span></span><span style="display:flex;"><span>                    <span style="color:#f92672">client_id</span>: <span style="color:#e6db74">&#39;@=env(&#34;AKENEO_CLIENT_ID&#34;)&#39;</span>
+</span></span><span style="display:flex;"><span>                    <span style="color:#f92672">secret</span>: <span style="color:#e6db74">&#39;@=env(&#34;AKENEO_CLIENT_SECRET&#34;)&#39;</span>
+</span></span><span style="display:flex;"><span>                    <span style="color:#f92672">username</span>: <span style="color:#e6db74">&#39;@=env(&#34;AKENEO_USERNAME&#34;)&#39;</span>
+</span></span><span style="display:flex;"><span>                    <span style="color:#f92672">password</span>: <span style="color:#e6db74">&#39;@=env(&#34;AKENEO_PASSWORD&#34;)&#39;</span>
+</span></span><span style="display:flex;"><span>              - <span style="color:#f92672">csv</span>:
+</span></span><span style="display:flex;"><span>                  <span style="color:#f92672">loader</span>:
+</span></span><span style="display:flex;"><span>                    <span style="color:#f92672">file_path</span>: <span style="color:#ae81ff">categories.csv</span>
+</span></span><span style="display:flex;"><span>                    <span style="color:#f92672">delimiter</span>: <span style="color:#e6db74">&#39;,&#39;</span>
+</span></span><span style="display:flex;"><span>                    <span style="color:#f92672">enclosure</span>: <span style="color:#e6db74">&#39;&#34;&#39;</span>
+</span></span><span style="display:flex;"><span>                    <span style="color:#f92672">escape</span>: <span style="color:#e6db74">&#39;\\&#39;</span>
+</span></span><span style="display:flex;"><span>    - <span style="color:#f92672">pipeline</span>:
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">steps</span>:
+</span></span><span style="display:flex;"><span>          - <span style="color:#f92672">akeneo</span>:
+</span></span><span style="display:flex;"><span>              <span style="color:#f92672">extractor</span>:
+</span></span><span style="display:flex;"><span>                <span style="color:#f92672">type</span>: <span style="color:#ae81ff">product</span>
+</span></span><span style="display:flex;"><span>                <span style="color:#f92672">method</span>: <span style="color:#ae81ff">all</span>
+</span></span><span style="display:flex;"><span>              <span style="color:#f92672">client</span>:
+</span></span><span style="display:flex;"><span>                <span style="color:#f92672">api_url</span>: <span style="color:#e6db74">&#39;@=env(&#34;AKENEO_URL&#34;)&#39;</span>
+</span></span><span style="display:flex;"><span>                <span style="color:#f92672">client_id</span>: <span style="color:#e6db74">&#39;@=env(&#34;AKENEO_CLIENT_ID&#34;)&#39;</span>
+</span></span><span style="display:flex;"><span>                <span style="color:#f92672">secret</span>: <span style="color:#e6db74">&#39;@=env(&#34;AKENEO_CLIENT_SECRET&#34;)&#39;</span>
+</span></span><span style="display:flex;"><span>                <span style="color:#f92672">username</span>: <span style="color:#e6db74">&#39;@=env(&#34;AKENEO_USERNAME&#34;)&#39;</span>
+</span></span><span style="display:flex;"><span>                <span style="color:#f92672">password</span>: <span style="color:#e6db74">&#39;@=env(&#34;AKENEO_PASSWORD&#34;)&#39;</span>
+</span></span><span style="display:flex;"><span>          - <span style="color:#f92672">csv</span>:
+</span></span><span style="display:flex;"><span>              <span style="color:#f92672">loader</span>:
+</span></span><span style="display:flex;"><span>                <span style="color:#f92672">file_path</span>: <span style="color:#ae81ff">products.csv</span>
+</span></span><span style="display:flex;"><span>                <span style="color:#f92672">delimiter</span>: <span style="color:#e6db74">&#39;,&#39;</span>
+</span></span><span style="display:flex;"><span>                <span style="color:#f92672">enclosure</span>: <span style="color:#e6db74">&#39;&#34;&#39;</span>
+</span></span><span style="display:flex;"><span>                <span style="color:#f92672">escape</span>: <span style="color:#e6db74">&#39;\&#39;</span>
+</span></span></code></pre></div><h3 id="configuration-formats">Configuration formats</h3>
+<p>There are 2 ways to declare satellites :</p>
+<ul>
+<li>Use the <a href="yaml-format">YAML configuration Syntax</a></li>
+<li>Use the <a href="json-format">JSON configuration Syntax</a></li>
+</ul>
+<h3 id="execute-your-micro-service">Execute your micro-service</h3>
+<p>After configuring your config file, you can run the command which will allow you to create the Dockerfile or the file
+system.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#75715e"># will execute the satellite.yaml file located at the root of the project</span>
+</span></span><span style="display:flex;"><span>php bin/satellite build
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># specify the name of the file to be executed</span>
+</span></span><span style="display:flex;"><span>php bin/satellite build <span style="color:#e6db74">`</span>satellite.yaml<span style="color:#e6db74">`</span>
+</span></span></code></pre></div><p>This command will create a folder with a file <code>main.php</code> containing the code to execute.</p>
+<p>You have to execute it with php command like this :</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>php path/to/folder/main.php
+</span></span></code></pre></div><h2 id="new-version-of-satellites">New version of satellites</h2>
+<p>If you are using the previous configuration, you should use the recommended version to write your satellites.</p>
+<p>However, it is possible to use version <code>0.3</code> which allows you to import files directly into your configuration.</p>
+<p>To use this new version, you need to specify the <code>version</code> option in your configuration file like this:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#75715e"># path/to/satellite.yaml</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">version</span>: <span style="color:#ae81ff">0.3</span>
+</span></span></code></pre></div><p>Unlike the previous configuration, the <code>satellite</code> option becomes <code>satellites</code> and each satellite will be
+determined by the key of your choice. Then you write your configuration as in the previous version.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#75715e"># path/to/satellite.yaml</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">version</span>: <span style="color:#ae81ff">0.3</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">satellites</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">products</span>: <span style="color:#75715e"># this is the satellite key</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># ...</span>
+</span></span></code></pre></div><p>The major new feature of this version is the ability to import files directly in your configuration.</p>
+<p>The import of files can be done at several levels in your config file:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#f92672">imports</span>: <span style="color:#75715e"># full configuration from another file</span>
+</span></span><span style="display:flex;"><span>  - { <span style="color:#f92672">resource</span>: <span style="color:#e6db74">&#39;path/to/another_config_file.yaml&#39;</span> }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">version</span>: <span style="color:#e6db74">&#39;0.3&#39;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">satellites</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">imports</span>: <span style="color:#75715e"># configuration of a satellite</span>
+</span></span><span style="display:flex;"><span>    - { <span style="color:#f92672">resource</span>: <span style="color:#e6db74">&#39;path/to/satellite.yaml&#39;</span> }
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">product</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">label</span>: <span style="color:#e6db74">&#39;Product&#39;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">imports</span>:  <span style="color:#75715e"># configuration of the adapter</span>
+</span></span><span style="display:flex;"><span>      - { <span style="color:#f92672">resource</span>: <span style="color:#e6db74">&#39;path/to/filesystem.yaml&#39;</span> }
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">pipeline</span>:
+</span></span><span style="display:flex;"><span>     <span style="color:#f92672">imports</span>: 
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e"># configuration of the pipeline</span>
+</span></span><span style="display:flex;"><span>        - { <span style="color:#f92672">resource</span>: <span style="color:#e6db74">&#39;path/to/pipeline.yaml&#39;</span> }
+</span></span></code></pre></div></div>
+          
+          <p class="post-meta border-bottom pb-3 mb-0 mt-3">Updated on 12 Jul 2020</p>
+          <nav class="pagination mt-3">
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            <a class="nav nav-prev" href="https://php-etl.github.io/documentation/core-concept/pipeline/"><i class="ti-arrow-left mr-2"></i> <span class="d-none d-md-block">Pipeline</span></a>
+            
+            
+            <a class="nav nav-next" href="https://php-etl.github.io/documentation/core-concept/satellite/yaml-format/"> <span class="d-none d-md-block">The YAML configuration format</span><i class="ti-arrow-right ml-2"></i></a>
+            
+          </nav>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- /details page -->
+
+
+
+
+
+
+    <!-- footer -->
+<footer class="section pb-4">
+  <div class="container">
+    <div class="row align-items-center">
+      <div class="col-md-8 text-md-left text-center">
+       <p class="mb-md-0 mb-4">The Gyroscops Documentation is copyright © <a href="https://gyroscops.com/">Gyroscops</a> 2020-2023.</p>
+      </div>
+      <div class="col-md-4 text-md-right text-center">
+        <ul class="list-inline">
+          
+        </ul>
+      </div>
+    </div>
+  </div>
+</footer>
+<!-- /footer -->
+
+<!-- Main Script -->
+
+<script src="https://php-etl.github.io/documentation/js/script.min.js"></script>
+  </body>
+
+</html>

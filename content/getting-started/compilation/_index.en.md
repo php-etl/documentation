@@ -14,4 +14,6 @@ In a terminal, write the following command :
 php bin/satellite build satellite.yaml
 ```
 
+In our case, the pipeline will be compiled under `build/`, the directory specified in `filesystem.path` of the configuration.
+
 > Notice: You will need to run this command every time you change your configuration files.
