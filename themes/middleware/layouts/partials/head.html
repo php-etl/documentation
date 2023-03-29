@@ -1,6 +1,6 @@
 <head>
   <meta charset="utf-8">
-  <title>{{ .Title }}</title>
+  <title>{{ .Title }} {{ if not .IsHome }} | Gyroscops Documentation{{ end }}</title>
 
   {{ hugo.Generator }}
 
