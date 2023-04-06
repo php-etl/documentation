@@ -56,4 +56,4 @@ composer require php-etl/akeneo-plugin php-etl/csv-plugin
 
 > In a configuration file, paths start at the folder specified under `filesystem.path`. Here for example, the result will be `build/output.csv`.
 
-For more information on how to write your configuration, please read [satellites](../satellite).
+For more information on how to write your configuration, please read [satellites](../../core-concept/satellite).
