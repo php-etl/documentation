@@ -23,14 +23,14 @@ weight: 6
     
 ---
 
-> SQL, Structured Query Language, is a language for manipulating databases.
-
 ## What is it ?
 
 The SQL plugin allows you to write your own SQL queries and use them into the [Pipeline](https://github.com/php-etl/pipeline)
 stack.
 
 ## Installation
+
+> Before installing the SQL plugin, you must verify that the PDO extension is installed on your environment.
 
 ```shell
 composer require php-etl/sql-plugin
