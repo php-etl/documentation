@@ -27,6 +27,15 @@
     </item>
     
     <item>
+      <title>Configurator Contracts</title>
+      <link>https://php-etl.github.io/documentation/framework/contracts/configurator/</link>
+      <pubDate>Sun, 12 Jul 2020 15:21:02 +0200</pubDate>
+      
+      <guid>https://php-etl.github.io/documentation/framework/contracts/configurator/</guid>
+      <description> FEATURE STATE: Gyroscops 0.1 [alpha] </description>
+    </item>
+    
+    <item>
       <title>The YAML configuration format</title>
       <link>https://php-etl.github.io/documentation/core-concept/satellite/yaml-format/</link>
       <pubDate>Sun, 12 Jul 2020 15:21:02 +0200</pubDate>
