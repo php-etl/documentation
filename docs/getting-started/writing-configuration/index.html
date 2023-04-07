@@ -186,26 +186,6 @@
         
       </ul>
       
-      <select class="lang-list dark" id="select-language"
-        onchange="location = this.value;">
-        
-        
-        
-        
-        
-        
-        
-        
-        <option id="en" value="https://php-etl.github.io/documentation/getting-started/writing-configuration/" selected>English
-        </option>
-        
-        
-        
-        
-        
-        
-      </select>
-      
     </div>
   </div>
 </nav>
@@ -381,37 +361,28 @@
           </h1>
           
           <div class="content"><p>Now that you have initialized your project and installed our compiler, you will be able to deepen your knowledge and use our different plugins.</p>
-<p>The first thing to do is creating a configuration file, which we will name <code>satellite.yaml</code>.</p>
+<p>The first thing to do is to create a configuration file in the place you want in your project, which we will call satellite.yaml.</p>
+<p>To organize our project and avoid that our project becomes an Alibaba cave, we will create this file in a src folder.</p>
 <p>In a terminal, enter the following command:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>touch satellite.yaml
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>mkdir src <span style="color:#f92672">&amp;&amp;</span> touch src/satellite.yaml
 </span></span></code></pre></div><p>Then add this configuration to your YAML file:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#f92672">version</span>: <span style="color:#e6db74">&#39;0.3&#39;</span>
 </span></span><span style="display:flex;"><span><span style="color:#f92672">satellites</span>:
 </span></span><span style="display:flex;"><span>  <span style="color:#f92672">akeneo_to_csv</span>:
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">label</span>: <span style="color:#e6db74">&#39;Akeneo to CSV&#39;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">label</span>: <span style="color:#e6db74">&#39;CSV to NLJSON&#39;</span>
 </span></span><span style="display:flex;"><span>    <span style="color:#f92672">filesystem</span>:
 </span></span><span style="display:flex;"><span>        <span style="color:#f92672">path</span>: <span style="color:#ae81ff">build</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">pipeline</span>:
-</span></span><span style="display:flex;"><span>      <span style="color:#f92672">steps</span>:
-</span></span><span style="display:flex;"><span>        - <span style="color:#f92672">akeneo</span>:
-</span></span><span style="display:flex;"><span>            <span style="color:#f92672">enterprise</span>: <span style="color:#66d9ef">true</span>
-</span></span><span style="display:flex;"><span>            <span style="color:#f92672">extractor</span>:
-</span></span><span style="display:flex;"><span>              <span style="color:#f92672">type</span>: <span style="color:#ae81ff">product</span>
-</span></span><span style="display:flex;"><span>              <span style="color:#f92672">method</span>: <span style="color:#ae81ff">all</span>
-</span></span><span style="display:flex;"><span>            <span style="color:#f92672">client</span>:
-</span></span><span style="display:flex;"><span>              <span style="color:#f92672">api_url</span>: <span style="color:#e6db74">&#39;@=env(&#34;AKENEO_URL&#34;)&#39;</span>
-</span></span><span style="display:flex;"><span>              <span style="color:#f92672">client_id</span>: <span style="color:#e6db74">&#39;@=env(&#34;AKENEO_CLIENT_ID&#34;)&#39;</span>
-</span></span><span style="display:flex;"><span>              <span style="color:#f92672">secret</span>: <span style="color:#e6db74">&#39;@=env(&#34;AKENEO_CLIENT_SECRET&#34;)&#39;</span>
-</span></span><span style="display:flex;"><span>              <span style="color:#f92672">username</span>: <span style="color:#e6db74">&#39;@=env(&#34;AKENEO_USERNAME&#34;)&#39;</span>
-</span></span><span style="display:flex;"><span>              <span style="color:#f92672">password</span>: <span style="color:#e6db74">&#39;@=env(&#34;AKENEO_PASSWORD&#34;)&#39;</span>
-</span></span><span style="display:flex;"><span>        - <span style="color:#f92672">csv</span>:
-</span></span><span style="display:flex;"><span>            <span style="color:#f92672">loader</span>:
-</span></span><span style="display:flex;"><span>              <span style="color:#f92672">file_path</span>: <span style="color:#ae81ff">output.csv</span>
-</span></span><span style="display:flex;"><span>              <span style="color:#f92672">delimiter</span>: <span style="color:#e6db74">&#39;,&#39;</span>
-</span></span><span style="display:flex;"><span>              <span style="color:#f92672">enclosure</span>: <span style="color:#e6db74">&#39;&#34;&#39;</span>
-</span></span><span style="display:flex;"><span>              <span style="color:#f92672">escape</span>: <span style="color:#e6db74">&#39;\&#39;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">satellite</span>:
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">pipeline</span>:
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">steps</span>:
+</span></span><span style="display:flex;"><span>          - <span style="color:#f92672">csv</span>:
+</span></span><span style="display:flex;"><span>              <span style="color:#f92672">extractor</span>:
+</span></span><span style="display:flex;"><span>                <span style="color:#f92672">file_path</span>: <span style="color:#e6db74">&#39;data/products.csv&#39;</span>
+</span></span><span style="display:flex;"><span>          - <span style="color:#f92672">json</span>:
+</span></span><span style="display:flex;"><span>              <span style="color:#f92672">loader</span>:
+</span></span><span style="display:flex;"><span>                <span style="color:#f92672">file_path</span>: <span style="color:#e6db74">&#39;output.nljson&#39;</span>
 </span></span></code></pre></div><p>In our case, we use the csv and akeneo plugins, so we have to add the corresponding plugins to our project.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>composer require php-etl/akeneo-plugin php-etl/csv-plugin
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>composer require php-etl/csv-plugin:*
 </span></span></code></pre></div><blockquote>
 <p>Be careful to use a version that is compatible with the version of the <code>php-etl/satellite</code> package that you have previously installed.
 Find the different versions of our plugins <a href="https://packagist.org/?query=php-etl%2F">here</a>.</p>
@@ -1047,6 +1018,22 @@ Find the different versions of our plugins <a href="https://packagist.org/?query
             
             
 
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+
+            
+            
+            
             
             
             

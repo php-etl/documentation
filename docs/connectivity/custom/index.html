@@ -186,26 +186,6 @@
         
       </ul>
       
-      <select class="lang-list dark" id="select-language"
-        onchange="location = this.value;">
-        
-        
-        
-        
-        
-        
-        
-        
-        <option id="en" value="https://php-etl.github.io/documentation/connectivity/custom/" selected>English
-        </option>
-        
-        
-        
-        
-        
-        
-      </select>
-      
     </div>
   </div>
 </nav>
@@ -565,14 +545,32 @@ option which allows you to define which service to use.</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#f92672">custom</span>:
 </span></span><span style="display:flex;"><span>  <span style="color:#f92672">extractor</span>:
 </span></span><span style="display:flex;"><span>    <span style="color:#f92672">use</span>: <span style="color:#e6db74">&#39;App\Class\Bar&#39;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">services</span>:
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">App\Class\Bar</span>:
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">arguments</span>:
+</span></span><span style="display:flex;"><span>            - <span style="color:#e6db74">&#39;@foo&#39;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">tags</span>:
+</span></span><span style="display:flex;"><span>            - { <span style="color:#ae81ff">example }</span>
 </span></span></code></pre></div><h3 id="building-a-transformer">Building a transformer</h3>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#f92672">custom</span>:
 </span></span><span style="display:flex;"><span>  <span style="color:#f92672">transformer</span>:
 </span></span><span style="display:flex;"><span>    <span style="color:#f92672">use</span>: <span style="color:#e6db74">&#39;App\Class\Bar&#39;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">services</span>:
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">App\Class\Bar</span>:
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">arguments</span>:
+</span></span><span style="display:flex;"><span>            - <span style="color:#e6db74">&#39;@foo&#39;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">tags</span>:
+</span></span><span style="display:flex;"><span>            - { <span style="color:#ae81ff">example }</span>
 </span></span></code></pre></div><h3 id="building-a-loader">Building a loader</h3>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#f92672">custom</span>:
 </span></span><span style="display:flex;"><span>  <span style="color:#f92672">loader</span>:
 </span></span><span style="display:flex;"><span>    <span style="color:#f92672">use</span>: <span style="color:#e6db74">&#39;App\Class\Bar&#39;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">services</span>:
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">App\Class\Bar</span>:
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">arguments</span>:
+</span></span><span style="display:flex;"><span>            - <span style="color:#e6db74">&#39;@foo&#39;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">tags</span>:
+</span></span><span style="display:flex;"><span>            - { <span style="color:#ae81ff">example }</span>
 </span></span></code></pre></div></div>
           
           <p class="post-meta border-bottom pb-3 mb-0 mt-3">Updated on 22 Jan 2021</p>
@@ -1203,6 +1201,22 @@ option which allows you to define which service to use.</p>
             
             
 
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+
+            
+            
+            
             
             
             
