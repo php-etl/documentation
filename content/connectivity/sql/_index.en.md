@@ -32,6 +32,8 @@ stack.
 
 ## Installation
 
+> Before installing the SQL plugin, you must verify that the PDO extension is installed on your environment.
+
 ```shell
 composer require php-etl/sql-plugin
 ```

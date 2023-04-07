@@ -7,12 +7,14 @@ weight: 3
 
 Now that you have initialized your project and installed our compiler, you will be able to deepen your knowledge and use our different plugins.
 
-The first thing to do is creating a configuration file, which we will name `satellite.yaml`.
+The first thing to do is to create a configuration file in the place you want in your project, which we will call satellite.yaml.
+
+To organize our project and avoid that our project becomes an Alibaba cave, we will create this file in a src folder.
 
 In a terminal, enter the following command:
 
 ```shell
-touch satellite.yaml
+mkdir src && touch src/satellite.yaml
 ```
 
 Then add this configuration to your YAML file:
@@ -21,34 +23,25 @@ Then add this configuration to your YAML file:
 version: '0.3'
 satellites:
   akeneo_to_csv:
-    label: 'Akeneo to CSV'
+    label: 'CSV to NLJSON'
     filesystem:
         path: build
-    pipeline:
-      steps:
-        - akeneo:
-            enterprise: true
-            extractor:
-              type: product
-              method: all
-            client:
-              api_url: '@=env("AKENEO_URL")'
-              client_id: '@=env("AKENEO_CLIENT_ID")'
-              secret: '@=env("AKENEO_CLIENT_SECRET")'
-              username: '@=env("AKENEO_USERNAME")'
-              password: '@=env("AKENEO_PASSWORD")'
-        - csv:
-            loader:
-              file_path: output.csv
-              delimiter: ','
-              enclosure: '"'
-              escape: '\'
+    satellite:
+      pipeline:
+        steps:
+          - csv:
+              extractor:
+                file_path: 'data/products.csv'
+          - json:
+              loader:
+                file_path: 'output.nljson'
+
 ```
 
 In our case, we use the csv and akeneo plugins, so we have to add the corresponding plugins to our project.
 
 ```shell
-composer require php-etl/akeneo-plugin php-etl/csv-plugin
+composer require php-etl/csv-plugin:*
 ```
 
 > Be careful to use a version that is compatible with the version of the `php-etl/satellite` package that you have previously installed.

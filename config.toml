@@ -5,7 +5,7 @@ theme = "middleware"
 # site title
 title = "Gyroscops"
 # disable language
-disableLanguages = []
+disableLanguages = ['fr']
 # google analytics
 googleAnalytics = "" # paste your analytics ID here. (Ex: UA-123-45)
 publishDir = "docs"
