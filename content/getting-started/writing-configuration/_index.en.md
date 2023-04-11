@@ -17,31 +17,30 @@ In a terminal, enter the following command:
 mkdir src && touch src/satellite.yaml
 ```
 
-Then add this configuration to your YAML file:
+Then add this example configuration to your YAML file:
 
 ```yaml
 version: '0.3'
 satellites:
-  akeneo_to_csv:
-    label: 'CSV to NLJSON'
+  csv_to_json:
+    label: 'CSV to JSON'
     filesystem:
         path: build
-    satellite:
-      pipeline:
-        steps:
-          - csv:
-              extractor:
-                file_path: 'data/products.csv'
-          - json:
-              loader:
-                file_path: 'output.nljson'
+    pipeline:
+      steps:
+        - csv:
+            extractor:
+              file_path: 'data/products.csv'
+        - json:
+            loader:
+              file_path: 'output.json'
 
 ```
 
-In our case, we use the csv and akeneo plugins, so we have to add the corresponding plugins to our project.
+In our case, we will use a `csv` extractor and `json` loader, so we have to add the corresponding plugins to our project:
 
 ```shell
-composer require php-etl/csv-plugin:'*'
+composer require php-etl/csv-plugin:'*' php-etl/json-plugin:'*'
 ```
 
 Composer will install a version of the plugin that is compatible with the `php-etl/satellite` package you have previously installed.

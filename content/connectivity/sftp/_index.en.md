@@ -5,7 +5,7 @@ draft: false
 type: "plugins"
 icon: "ti-cloud-up"
 description: "Transfer files to a remote secured SFTP location"
-weight: 9
+weight: 6
 ---
 
 - [What is it ?](#what-is-it-)

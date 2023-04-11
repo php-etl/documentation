@@ -5,7 +5,7 @@ draft: false
 type: "feature"
 icon: "ti-archive"
 description: "Execution logging and error reporting"
-weight: 4
+weight: 3
 ---
 
 - [What is it for?](#what-is-it-for)

@@ -146,27 +146,33 @@ hasChildren = true
 
   [[menu.main]]
   parent = "Connectivity"
-  name = "NL-JSON"
-  url = "connectivity/nl-json"
+  name = "JSON"
+  url = "connectivity/json"
   weight = 7
+
+  [[menu.main]]
+  parent = "Connectivity"
+  name = "Logs"
+  url = "connectivity/log"
+  weight = 8
 
   [[menu.main]]
   parent = "Connectivity"
   name = "Spreadsheet files"
   url = "connectivity/spreadsheet"
-  weight = 8
+  weight = 9
 
   [[menu.main]]
   parent = "Connectivity"
   name = "SQL database"
   url = "connectivity/sql"
-  weight = 9
+  weight = 10
 
   [[menu.main]]
    parent = "Connectivity"
    name = "Sylius"
    url = "connectivity/sylius"
-   weight = 10
+   weight = 11
 
 [params]
 logo = "logo-web.svg"

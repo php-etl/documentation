@@ -5,7 +5,7 @@ draft: false
 type: "feature"
 icon: "ti-ruler-pencil"
 description: "Expression Language capabilities to express your own constraints"
-weight: 3
+weight: 2
 ---
 
 ## Generic Expression functions

@@ -5,7 +5,7 @@ draft: false
 type: "plugins"
 logo: "csv"
 description: "Read and write CSV files in any format"
-weight: 4
+weight: 2
 ---
 
 - [What is it ?](#what-is-it-)
