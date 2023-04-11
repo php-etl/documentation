@@ -41,11 +41,11 @@ satellites:
 In our case, we use the csv and akeneo plugins, so we have to add the corresponding plugins to our project.
 
 ```shell
-composer require php-etl/csv-plugin:*
+composer require php-etl/csv-plugin:'*'
 ```
 
-> Be careful to use a version that is compatible with the version of the `php-etl/satellite` package that you have previously installed.
-> Find the different versions of our plugins [here](https://packagist.org/?query=php-etl%2F).
+Composer will install a version of the plugin that is compatible with the `php-etl/satellite` package you have previously installed.
+Find the different versions of our plugins [here](https://packagist.org/?query=php-etl%2F).
 
 > In a configuration file, paths start at the folder specified under `filesystem.path`. Here for example, the result will be `build/output.csv`.
 
