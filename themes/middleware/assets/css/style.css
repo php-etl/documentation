@@ -691,17 +691,20 @@ h1.single-title {
   font-size: 14px;
 }
 
-blockquote {
+/* "notice" blocks. (>) */
+blockquote p {
   padding: 20px 40px;
-  border-left: 5px solid var(--primary-color);
+  border-left: 5px solid;
   margin: 30px 0;
   font-weight: bold;
   background: var(--primary-color-lighten);
+  color: var(--primary-color);
 }
 
-blockquote p {
-  color: var(--primary-color);
-  margin-bottom: 0 !important;
+/* "warning" blocks. (>>) */
+blockquote blockquote p {
+  background: #f7de96;
+  color: #594303;
 }
 
 .pagination {
