@@ -12,22 +12,20 @@ the [adapter](http://localhost:1313/documentation/core-concept/satellite#setting
 
 ## If you built inside the filesystem
 
-Runs the pipeline that was compiled under `build/`:
+Runs the pipeline that was compiled under `src/build/`:
 
 ```shell
-# php <path-to-the-generated-satellite>
-php bin/satellite run:pipeline build/
+php bin/satellite run:pipeline src/build/
 ```
 
 This command will run your satellite service located in a directory. The execution of your service may take several minutes,
 so please wait until the execution is completed.
 
-After compilation, check that `build/output.csv` has been created.
+After compilation, check that `src/build/output.csv` has been created.
 
 ## If you built as a Docker image
 
 ```shell
-# docker run --rm -ti <generated-satellite-docker-image-name>
 docker run --rm -ti foo/satellite-name:latest
 ```
 

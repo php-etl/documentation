@@ -10,10 +10,9 @@ After checking and verifying that the configuration of your pipelines are correc
 In a terminal, write the following command :
 
 ```shell
-# php bin/satellite build <path-to-your-config-file>
-php bin/satellite build satellite.yaml
+php bin/satellite build src/satellite.yaml
 ```
 
-In our case, the pipeline will be compiled under `build/`, the directory specified in `filesystem.path` of the configuration.
+In our case, the pipeline will be compiled under `src/build/`, the directory specified in `filesystem.path` of the configuration.
 
 > Notice: You will need to run this command every time you change your configuration files.

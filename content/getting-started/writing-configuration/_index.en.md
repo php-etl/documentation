@@ -46,6 +46,6 @@ composer require php-etl/csv-plugin:'*' php-etl/json-plugin:'*'
 Composer will install a version of the plugin that is compatible with the `php-etl/satellite` package you have previously installed.
 Find the different versions of our plugins [here](https://packagist.org/?query=php-etl%2F).
 
-> In a configuration file, paths start at the folder specified under `filesystem.path`. Here for example, the result will be `build/output.csv`.
+> In a configuration file, paths start at the folder specified under `filesystem.path`. Here for example, the result will be `src/build/output.csv`.
 
 For more information on how to write your configuration, please read [satellites](../satellite).
