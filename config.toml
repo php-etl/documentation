@@ -152,27 +152,21 @@ hasChildren = true
 
   [[menu.main]]
   parent = "Connectivity"
-  name = "Logs"
-  url = "connectivity/log"
-  weight = 8
-
-  [[menu.main]]
-  parent = "Connectivity"
   name = "Spreadsheet files"
   url = "connectivity/spreadsheet"
-  weight = 9
+  weight = 8
 
   [[menu.main]]
   parent = "Connectivity"
   name = "SQL database"
   url = "connectivity/sql"
-  weight = 10
+  weight = 9
 
   [[menu.main]]
    parent = "Connectivity"
    name = "Sylius"
    url = "connectivity/sylius"
-   weight = 11
+   weight = 10
 
 [params]
 logo = "logo-web.svg"

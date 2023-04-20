@@ -17,7 +17,7 @@ In a terminal, enter the following command:
 mkdir src && touch src/satellite.yaml
 ```
 
-Then add this example configuration to your YAML file:
+Then add this configuration to your YAML file:
 
 ```yaml
 version: '0.3'
@@ -37,7 +37,7 @@ satellites:
 
 ```
 
-In our case, we will use a `csv` extractor and `json` loader, so we have to add the corresponding plugins to our project:
+In our case, we use `csv` as an extractor and `json` as a loader, so we have to add the corresponding plugins to our project:
 
 ```shell
 composer require php-etl/csv-plugin:'*' php-etl/json-plugin:'*'
