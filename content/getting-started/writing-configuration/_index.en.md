@@ -5,11 +5,11 @@ draft: false
 weight: 3
 ---
 
-Now that you have initialized your project and installed our compiler, you will be able to deepen your knowledge and use our different plugins.
+Next, we will guide you through the configuration process and explain how to use our different plugins.
 
-The first thing to do is to create a configuration file in the place you want in your project, which we will call satellite.yaml.
+The first thing to do is creating a configuration file which we will call `satellite.yaml`.
 
-To organize our project and avoid that our project becomes an Alibaba cave, we will create this file in a src folder.
+To avoid keeping all our files at the root of the project, we will create `satellite.yaml` inside a `src/` folder.
 
 In a terminal, enter the following command:
 
