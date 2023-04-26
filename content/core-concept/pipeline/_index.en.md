@@ -5,7 +5,7 @@ draft: false
 type: "component"
 logo: "pipeline"
 description: "Data stream processing at high rate and low memory consuming"
-weight: 1
+weight: 2
 ---
 
 {{< feature-state for_mw_version="0.1" state="alpha" >}}

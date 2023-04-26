@@ -5,11 +5,11 @@ draft: false
 weight: 3
 ---
 
-Now that you have initialized your project and installed our compiler, you will be able to deepen your knowledge and use our different plugins.
+Next, we will guide you through the configuration process and explain how to use our different plugins.
 
-The first thing to do is to create a configuration file in the place you want in your project, which we will call satellite.yaml.
+The first thing to do is creating a configuration file which we will call `satellite.yaml`.
 
-To organize our project and avoid that our project becomes an Alibaba cave, we will create this file in a src folder.
+To avoid keeping all our files at the root of the project, we will create `satellite.yaml` inside a `src/` folder.
 
 In a terminal, enter the following command:
 
@@ -22,31 +22,30 @@ Then add this configuration to your YAML file:
 ```yaml
 version: '0.3'
 satellites:
-  akeneo_to_csv:
-    label: 'CSV to NLJSON'
+  csv_to_json:
+    label: 'CSV to JSON'
     filesystem:
         path: build
-    satellite:
-      pipeline:
-        steps:
-          - csv:
-              extractor:
-                file_path: 'data/products.csv'
-          - json:
-              loader:
-                file_path: 'output.nljson'
+    pipeline:
+      steps:
+        - csv:
+            extractor:
+              file_path: 'data/products.csv'
+        - json:
+            loader:
+              file_path: 'output.json'
 
 ```
 
-In our case, we use the csv and akeneo plugins, so we have to add the corresponding plugins to our project.
+In our case, we use `csv` as an extractor and `json` as a loader, so we have to add the corresponding plugins to our project:
 
 ```shell
-composer require php-etl/csv-plugin:*
+composer require php-etl/csv-plugin:'*' php-etl/json-plugin:'*'
 ```
 
-> Be careful to use a version that is compatible with the version of the `php-etl/satellite` package that you have previously installed.
-> Find the different versions of our plugins [here](https://packagist.org/?query=php-etl%2F).
+Composer will install a version of the plugin that is compatible with the `php-etl/satellite` package you have previously installed.
+Find the different versions of our plugins [here](https://packagist.org/?query=php-etl%2F).
 
-> In a configuration file, paths start at the folder specified under `filesystem.path`. Here for example, the result will be `build/output.csv`.
+> In a configuration file, paths start at the folder specified under `filesystem.path`. Here for example, the result will be `src/build/output.csv`.
 
 For more information on how to write your configuration, please read [satellites](../satellite).

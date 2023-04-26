@@ -146,8 +146,8 @@ hasChildren = true
 
   [[menu.main]]
   parent = "Connectivity"
-  name = "NL-JSON"
-  url = "connectivity/nl-json"
+  name = "JSON"
+  url = "connectivity/json"
   weight = 7
 
   [[menu.main]]

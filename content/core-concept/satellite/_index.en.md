@@ -6,7 +6,7 @@ draft: false
 type: "component"
 logo: "lambda"
 description: "Generated micro-services for data stream processing in the cloud"
-weight: 2
+weight: 1
 ---
 
 {{< feature-state for_mw_version="0.1" state="alpha" >}}
