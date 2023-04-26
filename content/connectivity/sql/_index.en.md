@@ -38,6 +38,17 @@ stack.
 composer require php-etl/sql-plugin
 ```
 
+>> If you want to use an engine like postgres, install `ext-php_postgres` on the computer.
+>> Add these lines to your pipeline to have an explicit error message if your SQL engine is not installed
+
+```shell
+  sql-to-csv:
+   label: 'SQLite to CSV simple'
+   composer:
+     require:
+       - "ext-php_sqlite"
+```
+
 ## Usage
 
 ### Database connection
@@ -48,11 +59,16 @@ This connection must be present in any case, whether it be when defining the ext
 loader or lookup.
 
 ```yaml
-sql:
-  connection:
-    dsn: 'mysql:host=127.0.0.1;port=3306;dbname=kiboko'
-    username: username
-    password: password
+composer:
+  require:
+    - "ext-php_mysql"
+pipeline:
+  steps:
+    sql:
+      connection:
+        dsn: 'mysql:host=127.0.0.1;port=3306;dbname=kiboko'
+        username: username
+        password: password
 ```
 
 ### Options
