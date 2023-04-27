@@ -13,11 +13,11 @@ weight: 3
 - [Usage](#usage)
     - [Setting your channel](#setting-your-channel)
     - [Setting one or more destinations](#setting-one-or-more-destinations)
-        - [Using ElasticSearch](#using-elasticsearch)
-        - [Using Logstash](#using-logstash)
         - [Using a Stream](#using-a-stream)
+        - [Using ElasticSearch](#using-elasticsearch)
         - [Using Syslog](#using-syslog)
         - [Using GELF](#using-gelf)
+        - [Using Logstash](#using-logstash)
     - [TCP protocol configuration](#tcp-protocol-configuration)
     - [AMQP protocol configuration](#amqp-protocol-configuration)
     - [The different levels of logs in PHP](#usage)
@@ -44,14 +44,35 @@ This plugin is already integrated into the Satellite package, so you won't need 
 First, you need to specify the name of your channel in which your logs will be written.
 
 ```yaml
-logger:
-  channel: pipeline
+- example_step:
+    foo: bar
+  logger:
+    channel: pipeline
 ```
 
 ### Setting one or more destinations
 
 Next, you need to define the destination(s) for your logs. You can choose between several logging systems:
 ElasticSearch, Logstash, Gelf, Syslog and Stream.
+
+#### Using a Stream
+
+> A log stream is an application-specific collection of data that is used as a log.
+> The data is written to and read from the log stream by one or more instances of the associated application.
+
+To establish a connection to a stream, you need to define a `path` and the minimum [logging level](#the-different-levels-of-logs-in-php) at which this 
+handler will be triggered with the `level` option. 
+
+```yaml
+- example_step:
+    foo: bar
+  logger:
+    # ...
+    destinations:
+      - stream:
+          path: /my/path
+          level: warning
+```
 
 #### Using ElasticSearch 
 
@@ -65,52 +86,15 @@ the `level` option.
 Next, you need to set the various hosts for your ElasticSearch application.
 
 ```yaml
-logger:
-  # ...
-  destinations:
-    - elasticsearch:
-        level: warning
-        hosts:
-          - http://user:password@elasticsearch.example.com:9200
-```
-
-#### Using Logstash
-
-> Logstash is a software tool for collecting, analysing and storing logs.
-
-When setting up your connection to Logstash, you should first set the name of your application
-using the `application_name` option and the minimum [logging level](#the-different-levels-of-logs-in-php) at which this handler will be
-with the `level` option.
-
-Next, you need to set the protocol you want to use: [AMQP](#amqp-protocol-configuration) or [TCP](#tcp-protocol-configuration).
-
-```yaml
-logger:
-  # ...
-  destinations:
-    - logstash:
-        application_name: my_log_system
-        level: warning
-        tcp:
-          host: logstash.example.com
-          port: 100
-```
-
-#### Using a Stream
-
-> A log stream is an application-specific collection of data that is used as a log.
-> The data is written to and read from the log stream by one or more instances of the associated application.
-
-To establish a connection to a stream, you need to establish a `path` and the minimum [logging level](#the-different-levels-of-logs-in-php) at which this 
-handler will be triggered with the this handler will be triggered with the `level` option. 
-
-```yaml
-logger:
-  # ...
-  destinations:
-    - stream:
-        path: /my/path
-        level: warning
+- example_step:
+    foo: bar
+  logger:
+    # ...
+    destinations:
+      - elasticsearch:
+          level: warning
+          hosts:
+           - http://user:password@elasticsearch.example.com:9200
 ```
 
 #### Using Syslog
@@ -128,17 +112,43 @@ option.
 Next, you need to set the protocol you want to use: [AMQP](#amqp-protocol-configuration) or [TCP](#tcp-protocol-configuration).
 
 ```yaml
-logger:
-  # ...
-  destinations:
-    - gelf:
-        level: warning
-        amqp:
-          queue: my_queue_nama
-          host: example.com
-          port: 100
-          login: foo
-          password: password
+- example_step:
+    foo: bar
+  logger:
+    # ...
+    destinations:
+      - gelf:
+          level: warning
+          amqp:
+            queue: my_queue_nama
+            host: example.com
+            port: 100
+            login: foo
+            password: password
+```
+
+#### Using Logstash
+
+> Logstash is a software tool for collecting, analysing and storing logs.
+
+When setting up your connection to Logstash, you should first set the name of your application
+using the `application_name` option and the minimum [logging level](#the-different-levels-of-logs-in-php) at which this handler will be
+with the `level` option.
+
+Next, you need to set the protocol you want to use: [TCP](#tcp-protocol-configuration) or [AMQP](#amqp-protocol-configuration).
+
+```yaml
+- example_step:
+    foo: bar
+  logger:
+    # ...
+    destinations:
+      - logstash:
+          application_name: my_log_system
+          level: warning
+          tcp:
+            host: logstash.example.com
+            port: 100
 ```
 
 ### TCP protocol configuration
