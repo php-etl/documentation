@@ -168,6 +168,12 @@ hasChildren = true
    url = "connectivity/sylius"
    weight = 10
 
+  [[menu.main]]
+   parent = "Connectivity"
+   name = "Prestashop"
+   url = "connectivity/prestashop"
+   weight = 11
+
 [params]
 logo = "logo-web.svg"
 logo_white = "logo-web.svg"
