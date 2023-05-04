@@ -15,20 +15,20 @@ weight: 11
 ---
 
 > Prestashop is an e-commerce platform.
-> Read more about its API's [resources](https://devdocs.prestashop-project.org/8/webservice/reference/#available-resources),
+> Read more about its API [resources](https://devdocs.prestashop-project.org/8/webservice/reference/#available-resources),
 > [options](https://devdocs.prestashop-project.org/8/webservice/cheat-sheet/),
 > and [how to open the API access.](https://devdocs.prestashop-project.org/1.7/webservice/tutorials/creating-access/)
 
 ## What is it?
 
-The Prestashop plugin aims at connecting the Prestashop API to your [pipeline](https://github.com/php-etl/pipeline).
+The Prestashop plugin aims at connecting a Prestashop instance through its API using a [pipeline](../core-concept/pipeline).
 
 Currently the following resources are supported by the plugin: `categories`, `combinations`, `manufacturers`, `product_features`, `product_feature_values`, `product_options`, `product_option_values`, `products`, `shops`, `stock_availables`, `suppliers`, `tax_rule_groups`, `tax_rules`.
 
 ## Installation
 
 ```shell
-composer require php-etl/prestashop-plugin
+composer require "php-etl/prestashop-plugin:*"
 ```
 
 ## Usage
@@ -38,21 +38,11 @@ composer require php-etl/prestashop-plugin
 {{< tab name="Example" codelang="yaml">}}
 prestashop:
   client:
-    url: 'https://prestashop.example.com'
-    api_key: 'abc1234'
+    url: 'https://prestashop.example.com' # the base URL of your Prestashop main website
+    api_key: 'abc1234'                    # the access key to the API
   extractor:
-    type: 'products'
-    method: 'all'
-{{< /tab >}}
-
-{{< tab name="Description" codelang="yaml">}}
-prestashop:
-  client:
-    url: the domain of your Prestashop website.
-    api_key: the access key to the API.
-  extractor:
-    type: the resource to retrieve.
-    method: currently the only method available is 'all'.
+    type: 'products'                      # the resource type you wish to retrieve
+    method: 'all'                         # the retrieval method, currently it should always be 'all'.
 {{< /tab >}}
 {{< /tabs >}}
 
@@ -63,63 +53,43 @@ prestashop:
   extractor:
 # ...
     options:
-      columns:
-        - 'id'
-        - 'product_type'
+      columns:           # Specify the fields you wish to retrieve
+        - 'id'.          # by default all the fields will be retrieved, which can have
+        - 'product_type' # an impact on the performance of your pipelines
         - 'price'
-      filters:
+      filters:           # filter the result based on a value, or a range of values
         id: '[1,10]'
-      sorters:
+      sorters:           # sorting fields and their direction
         id: "ASC"
-      id_shop: 1
+      id_shop: 1         # identifier of the shop containing the data you want to extract data from
       id_group_shop: 1
-      price:
-        my_price:
-          product_attribute: 25
-{{< /tab >}}
-
-{{< tab name="Description" codelang="yaml">}}
-  extractor:
-# ...
-    options:
-      columns: returns only the fields specified.
-               By default all the fields will be displayed.
-
-
-      filters: filter the result based on a value, or a range of values.
-
-      sorters: sorting fields and their direction.
-
-      id_shop: id of the shop.
-      id_group_shop: id of the shop group.
-      price:
-        my_price: display a custom field containing the price of the product.
-          country|state|postcode|currency|group|quantity|product_attribute|decimals|use_tax|use_reduction|only_reduction|use_ecotax
+      price:             # list the price requests you want the API to calculate for you
+        my_price:        # each element in this list is an individual price request you 
+                         # will ask, that will be retrieved through an individual field
+          quantity: 25
+                  # the price request may contain any of the following parameters: 
+                  # country, state, postcode, currency, group, quantity, product_attribute,
+                  # decimals, use_tax, use_reduction, only_reduction, use_ecotax
+                  # for more details, see https://devdocs.prestashop-project.org/8/webservice/tutorials/advanced-use/specific-price/
 {{< /tab >}}
 {{< /tabs >}}
 
 ##### languages:
 
 {{< tabs name="extractor_options_languages" >}}
-{{< tab name="As a list of IDs" codelang="yaml">}}
+{{< tab name="Example, with a list of identifiers" codelang="yaml">}}
   extractor:
 # ...
     options:
-      languages: [ 1, 2, 3 ]
+      languages: [ 1, 2, 3 ] # list of ids of the languages to retrieve.
 {{< /tab >}}
-{{< tab name="As a range" codelang="yaml">}}
+{{< tab name="Example, with a range of identifiers" codelang="yaml">}}
   extractor:
 # ...
     options:
-      languages:
+      languages: # a range of ids of the languages to retrieve.
         from: 1
         to: 5
-{{< /tab >}}
-{{< tab name="Description" codelang="yaml">}}
-  extractor:
-# ...
-    options:
-      languages: id, list of ids or range of ids of the languages to retrieve.
 {{< /tab >}}
 {{< /tabs >}}
 
@@ -133,18 +103,11 @@ prestashop:
     url: 'https://prestashop.example.com'
     api_key: 'abc1234'
   loader:
-    type: 'products'
-    method: 'all'
-{{< /tab >}}
-
-{{< tab name="Description" codelang="yaml">}}
-prestashop:
-  client:
-    url: the domain of your Prestashop website.
-    api_key: the access key to the API.
-  loader:
-    type: the resource to write to.
-    method: available methods are 'create', 'update', 'upsert'.
+    type: 'products'.  # the resource type to write to
+    method: 'upsert'   # the method to use, available methods are 'create', 'update', 'upsert'.
+                       # 'create' will only create products and fail if the product already exists
+                       # 'update' will only update products and fail if the product does not exist
+                       # 'upsert' will try to create the product if it does not exist or update if the product already exists
 {{< /tab >}}
 {{< /tabs >}}
 
@@ -154,16 +117,8 @@ prestashop:
   loader:
 # ...
     options: 
-      id_shop: 1
-      id_group_shop: 1
-{{< /tab >}}
-
-{{< tab name="Description" codelang="yaml">}}
-  loader:
-# ...
-    options: 
-      id_shop: id of the shop.
-      id_group_shop: id of the shop group.
+      id_shop: 1.      # id of the shop
+      id_group_shop: 1 # id of the shop group
 {{< /tab >}}
 {{< /tabs >}}
 
