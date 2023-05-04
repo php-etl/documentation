@@ -7,7 +7,7 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>The Gyroscops Documentation is copyright © [Gyroscops](https://gyroscops.com/) 2020-2023.</copyright>
-    <lastBuildDate>Tue, 14 Feb 2023 15:33:44 +0100</lastBuildDate><atom:link href="https://php-etl.github.io/documentation/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 02 May 2023 15:00:02 +0200</lastBuildDate><atom:link href="https://php-etl.github.io/documentation/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Akeneo expression language functions</title>
       <link>https://php-etl.github.io/documentation/connectivity/akeneo/expression-language/</link>
@@ -24,15 +24,6 @@
       
       <guid>https://php-etl.github.io/documentation/connectivity/akeneo/plugin/</guid>
       <description>FEATURE STATE: Gyroscops 0.1 [alpha] Akeneo Plugin What is it ? Installation Usage Connecting to Akeneo Using the enterprise version Building an extractor Building a lookup Building a conditional lookup Building a loader Advanced Usage Filtering your search Using ExpressionLanguage What is it ? The Akeneo plugin aims at integration the Akeneo PHP clients into the Pipeline stack. This integration is compatible with both Akeneo Enterprise Edition client and the Akeneo Community Edition client.</description>
-    </item>
-    
-    <item>
-      <title>Configurator Contracts</title>
-      <link>https://php-etl.github.io/documentation/framework/contracts/configurator/</link>
-      <pubDate>Sun, 12 Jul 2020 15:21:02 +0200</pubDate>
-      
-      <guid>https://php-etl.github.io/documentation/framework/contracts/configurator/</guid>
-      <description> FEATURE STATE: Gyroscops 0.1 [alpha] </description>
     </item>
     
     <item>

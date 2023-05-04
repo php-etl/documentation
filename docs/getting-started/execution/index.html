@@ -2,7 +2,7 @@
 <html lang="en-us">
   <head>
   <meta charset="utf-8">
-  <title>Execution</title>
+  <title>Execution  | Gyroscops Documentation</title>
 
   <meta name="generator" content="Hugo 0.111.3">
 
@@ -150,13 +150,15 @@
             
             <a class="dropdown-item" href="/documentation/connectivity/sftp">SFTP</a>
             
-            <a class="dropdown-item" href="/documentation/connectivity/nl-json">NL-JSON</a>
+            <a class="dropdown-item" href="/documentation/connectivity/json">JSON</a>
             
             <a class="dropdown-item" href="/documentation/connectivity/spreadsheet">Spreadsheet files</a>
             
             <a class="dropdown-item" href="/documentation/connectivity/sql">SQL database</a>
             
             <a class="dropdown-item" href="/documentation/connectivity/sylius">Sylius</a>
+            
+            <a class="dropdown-item" href="/documentation/connectivity/prestashop">Prestashop</a>
             
           </div>
         </li>
@@ -204,6 +206,8 @@
           <ul class="list-styled">
             
             <a class="back-btn" href="/documentation"></a>
+            
+              
             
               
               
@@ -347,8 +351,6 @@
             
               
             
-              
-            
           </ul>
         </div>
       </div>
@@ -364,15 +366,13 @@
 <p>In the following paragraphs, you will find the method for executing the satellites depending on
 the <a href="http://localhost:1313/documentation/core-concept/satellite#setting-up-the-adapter">adapter</a> you have chosen.</p>
 <h2 id="if-you-built-inside-the-filesystem">If you built inside the filesystem</h2>
-<p>Runs the pipeline that was compiled under <code>build/</code>:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#75715e"># php &lt;path-to-the-generated-satellite&gt;</span>
-</span></span><span style="display:flex;"><span>php bin/satellite run:pipeline build/
+<p>Runs the pipeline that was compiled under <code>src/build/</code>:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>php bin/satellite run:pipeline src/build/
 </span></span></code></pre></div><p>This command will run your satellite service located in a directory. The execution of your service may take several minutes,
 so please wait until the execution is completed.</p>
-<p>After compilation, check that <code>build/output.csv</code> has been created.</p>
+<p>After compilation, check that <code>src/build/output.csv</code> has been created.</p>
 <h2 id="if-you-built-as-a-docker-image">If you built as a Docker image</h2>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#75715e"># docker run --rm -ti &lt;generated-satellite-docker-image-name&gt;</span>
-</span></span><span style="display:flex;"><span>docker run --rm -ti foo/satellite-name:latest
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>docker run --rm -ti foo/satellite-name:latest
 </span></span></code></pre></div><p>This command will run your satellite service you have previously built as a Docker image you named <code>foo/satellite-name:latest</code>.</p>
 </div>
           
@@ -404,25 +404,20 @@ so please wait until the execution is completed.</p>
             
             
             
-
-            
-            
             
             
-            
 
-            
             
             
             
             
             
+
             
             
             
             
             
-
             
             
             
@@ -430,6 +425,7 @@ so please wait until the execution is completed.</p>
             
             
             
+
             
             
             
@@ -470,7 +466,6 @@ so please wait until the execution is completed.</p>
             
             
             
-
             
             
             
@@ -478,7 +473,7 @@ so please wait until the execution is completed.</p>
             
             
             
-            
+
             
             
             
@@ -487,7 +482,6 @@ so please wait until the execution is completed.</p>
             
             
             
-
             
             
             
@@ -495,6 +489,7 @@ so please wait until the execution is completed.</p>
             
             
             
+
             
             
             
@@ -506,16 +501,15 @@ so please wait until the execution is completed.</p>
             
             
             
+
             
             
             
 
-            
             
             
             
             
-
             
             
             
@@ -523,14 +517,14 @@ so please wait until the execution is completed.</p>
             
             
             
-            
 
+            
             
             
+
             
             
             
-
             
             
             
@@ -576,8 +570,6 @@ so please wait until the execution is completed.</p>
             
             
 
-            
-            
             
             
             
@@ -589,7 +581,6 @@ so please wait until the execution is completed.</p>
             
             
             
-            
 
             
             
@@ -638,15 +629,18 @@ so please wait until the execution is completed.</p>
             
             
             
-
             
             
             
+            
 
+            
             
             
             
             
+
+            
             
             
             
@@ -661,9 +655,9 @@ so please wait until the execution is completed.</p>
             
             
             
+
             
             
-
             
             
             
@@ -672,6 +666,7 @@ so please wait until the execution is completed.</p>
             
             
             
+            
 
             
             
@@ -693,6 +688,8 @@ so please wait until the execution is completed.</p>
             
             
 
+            
+            
             
             
             
@@ -701,11 +698,13 @@ so please wait until the execution is completed.</p>
             
             
             
+            
 
             
             
             
 
+            
             
             
             
@@ -736,17 +735,16 @@ so please wait until the execution is completed.</p>
             
             
             
-
             
             
             
 
-            
             
             
             
             
             
+
             
             
             
@@ -756,12 +754,13 @@ so please wait until the execution is completed.</p>
             
             
 
+            
             
             
+
             
             
             
-
             
             
             
@@ -774,6 +773,8 @@ so please wait until the execution is completed.</p>
             
             
             
+            
+            
 
             
             
@@ -815,6 +816,7 @@ so please wait until the execution is completed.</p>
             
             
             
+
             
             
             
@@ -822,7 +824,6 @@ so please wait until the execution is completed.</p>
             
             
             
-
             
             
             
@@ -882,23 +883,21 @@ so please wait until the execution is completed.</p>
             
             
             
-
             
             
             
 
-            
             
             
             
             
             
+
             
             
             
             
             
-
             
             
             
@@ -906,6 +905,7 @@ so please wait until the execution is completed.</p>
             
             
             
+
             
             
             
@@ -946,7 +946,6 @@ so please wait until the execution is completed.</p>
             
             
             
-
             
             
             
@@ -954,6 +953,7 @@ so please wait until the execution is completed.</p>
             
             
             
+
             
             
             
@@ -966,12 +966,13 @@ so please wait until the execution is completed.</p>
             
             
 
+            
             
             
+
             
             
             
-
             
             
             
@@ -980,15 +981,17 @@ so please wait until the execution is completed.</p>
             
             
             
-
             
             
             
 
+            
             
             
             
             
+
+            
             
             
             
@@ -1009,7 +1012,6 @@ so please wait until the execution is completed.</p>
             
             
             
-
             
             
             
@@ -1017,6 +1019,7 @@ so please wait until the execution is completed.</p>
             
             
             
+
             
             
             
