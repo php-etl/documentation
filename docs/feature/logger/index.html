@@ -2,7 +2,7 @@
 <html lang="en-us">
   <head>
   <meta charset="utf-8">
-  <title>Logging</title>
+  <title>Logging  | Gyroscops Documentation</title>
 
   <meta name="generator" content="Hugo 0.111.3">
 
@@ -150,7 +150,7 @@
             
             <a class="dropdown-item" href="/documentation/connectivity/sftp">SFTP</a>
             
-            <a class="dropdown-item" href="/documentation/connectivity/nl-json">NL-JSON</a>
+            <a class="dropdown-item" href="/documentation/connectivity/json">JSON</a>
             
             <a class="dropdown-item" href="/documentation/connectivity/spreadsheet">Spreadsheet files</a>
             
@@ -225,6 +225,28 @@
   
   
     <ul>
+      
+        
+          
+
+
+
+
+
+
+
+
+<li data-nav-id="https://php-etl.github.io/documentation/feature/services/" title="Declaring services" class="sidelist
+  ">
+  <a href="https://php-etl.github.io/documentation/feature/services/">
+    Declaring services
+  </a>
+  
+  
+</li>
+
+
+        
       
         
           
@@ -350,10 +372,10 @@
 
 
 
-<li data-nav-id="https://php-etl.github.io/documentation/feature/services/" title="Declaring services" class="sidelist
+<li data-nav-id="https://php-etl.github.io/documentation/feature/rejection/" title="Rejection" class="sidelist
   ">
-  <a href="https://php-etl.github.io/documentation/feature/services/">
-    Declaring services
+  <a href="https://php-etl.github.io/documentation/feature/rejection/">
+    Rejection
   </a>
   
   
@@ -376,28 +398,6 @@
   ">
   <a href="https://php-etl.github.io/documentation/feature/state/">
     State
-  </a>
-  
-  
-</li>
-
-
-        
-      
-        
-          
-
-
-
-
-
-
-
-
-<li data-nav-id="https://php-etl.github.io/documentation/feature/rejection/" title="Rejection" class="sidelist
-  ">
-  <a href="https://php-etl.github.io/documentation/feature/rejection/">
-    Rejection
   </a>
   
   
@@ -440,11 +440,11 @@
 <li><a href="#setting-your-channel">Setting your channel</a></li>
 <li><a href="#setting-one-or-more-destinations">Setting one or more destinations</a>
 <ul>
-<li><a href="#using-elasticsearch">Using ElasticSearch</a></li>
-<li><a href="#using-logstash">Using Logstash</a></li>
 <li><a href="#using-a-stream">Using a Stream</a></li>
+<li><a href="#using-elasticsearch">Using ElasticSearch</a></li>
 <li><a href="#using-syslog">Using Syslog</a></li>
 <li><a href="#using-gelf">Using GELF</a></li>
+<li><a href="#using-logstash">Using Logstash</a></li>
 </ul>
 </li>
 <li><a href="#tcp-protocol-configuration">TCP protocol configuration</a></li>
@@ -465,12 +465,29 @@ use in different steps of your pipeline.</p>
 <h2 id="usage">Usage</h2>
 <h3 id="setting-your-channel">Setting your channel</h3>
 <p>First, you need to specify the name of your channel in which your logs will be written.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#f92672">logger</span>:
-</span></span><span style="display:flex;"><span>  <span style="color:#f92672">channel</span>: <span style="color:#ae81ff">pipeline</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span>- <span style="color:#f92672">example_step</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">foo</span>: <span style="color:#ae81ff">bar</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">logger</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">channel</span>: <span style="color:#ae81ff">pipeline</span>
 </span></span></code></pre></div><h3 id="setting-one-or-more-destinations">Setting one or more destinations</h3>
 <p>Next, you need to define the destination(s) for your logs. You can choose between several logging systems:
 ElasticSearch, Logstash, Gelf, Syslog and Stream.</p>
-<h4 id="using-elasticsearch">Using ElasticSearch</h4>
+<h4 id="using-a-stream">Using a Stream</h4>
+<blockquote>
+<p>A log stream is an application-specific collection of data that is used as a log.
+The data is written to and read from the log stream by one or more instances of the associated application.</p>
+</blockquote>
+<p>To establish a connection to a stream, you need to define a <code>path</code> and the minimum <a href="#the-different-levels-of-logs-in-php">logging level</a> at which this
+handler will be triggered with the <code>level</code> option.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span>- <span style="color:#f92672">example_step</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">foo</span>: <span style="color:#ae81ff">bar</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">logger</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># ...</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">destinations</span>:
+</span></span><span style="display:flex;"><span>      - <span style="color:#f92672">stream</span>:
+</span></span><span style="display:flex;"><span>          <span style="color:#f92672">path</span>: <span style="color:#ae81ff">/my/path</span>
+</span></span><span style="display:flex;"><span>          <span style="color:#f92672">level</span>: <span style="color:#ae81ff">warning</span>
+</span></span></code></pre></div><h4 id="using-elasticsearch">Using ElasticSearch</h4>
 <blockquote>
 <p>ElasticSearch is a search and analysis engine.</p>
 </blockquote>
@@ -480,43 +497,15 @@ the <code>level</code> option.</p>
 <p>Note: if you need to install a local ElasticStack environment, check the <a href="../installation/manual">Manual installation</a> documentation.</p>
 </blockquote>
 <p>Next, you need to set the various hosts for your ElasticSearch application.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#f92672">logger</span>:
-</span></span><span style="display:flex;"><span>  <span style="color:#75715e"># ...</span>
-</span></span><span style="display:flex;"><span>  <span style="color:#f92672">destinations</span>:
-</span></span><span style="display:flex;"><span>    - <span style="color:#f92672">elasticsearch</span>:
-</span></span><span style="display:flex;"><span>        <span style="color:#f92672">level</span>: <span style="color:#ae81ff">warning</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#f92672">hosts</span>:
-</span></span><span style="display:flex;"><span>          - <span style="color:#ae81ff">http://user:password@elasticsearch.example.com:9200</span>
-</span></span></code></pre></div><h4 id="using-logstash">Using Logstash</h4>
-<blockquote>
-<p>Logstash is a software tool for collecting, analysing and storing logs.</p>
-</blockquote>
-<p>When setting up your connection to Logstash, you should first set the name of your application
-using the <code>application_name</code> option and the minimum <a href="#the-different-levels-of-logs-in-php">logging level</a> at which this handler will be
-with the <code>level</code> option.</p>
-<p>Next, you need to set the protocol you want to use: <a href="#amqp-protocol-configuration">AMQP</a> or <a href="#tcp-protocol-configuration">TCP</a>.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#f92672">logger</span>:
-</span></span><span style="display:flex;"><span>  <span style="color:#75715e"># ...</span>
-</span></span><span style="display:flex;"><span>  <span style="color:#f92672">destinations</span>:
-</span></span><span style="display:flex;"><span>    - <span style="color:#f92672">logstash</span>:
-</span></span><span style="display:flex;"><span>        <span style="color:#f92672">application_name</span>: <span style="color:#ae81ff">my_log_system</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#f92672">level</span>: <span style="color:#ae81ff">warning</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#f92672">tcp</span>:
-</span></span><span style="display:flex;"><span>          <span style="color:#f92672">host</span>: <span style="color:#ae81ff">logstash.example.com</span>
-</span></span><span style="display:flex;"><span>          <span style="color:#f92672">port</span>: <span style="color:#ae81ff">100</span>
-</span></span></code></pre></div><h4 id="using-a-stream">Using a Stream</h4>
-<blockquote>
-<p>A log stream is an application-specific collection of data that is used as a log.
-The data is written to and read from the log stream by one or more instances of the associated application.</p>
-</blockquote>
-<p>To establish a connection to a stream, you need to establish a <code>path</code> and the minimum <a href="#the-different-levels-of-logs-in-php">logging level</a> at which this
-handler will be triggered with the this handler will be triggered with the <code>level</code> option.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#f92672">logger</span>:
-</span></span><span style="display:flex;"><span>  <span style="color:#75715e"># ...</span>
-</span></span><span style="display:flex;"><span>  <span style="color:#f92672">destinations</span>:
-</span></span><span style="display:flex;"><span>    - <span style="color:#f92672">stream</span>:
-</span></span><span style="display:flex;"><span>        <span style="color:#f92672">path</span>: <span style="color:#ae81ff">/my/path</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#f92672">level</span>: <span style="color:#ae81ff">warning</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span>- <span style="color:#f92672">example_step</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">foo</span>: <span style="color:#ae81ff">bar</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">logger</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># ...</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">destinations</span>:
+</span></span><span style="display:flex;"><span>      - <span style="color:#f92672">elasticsearch</span>:
+</span></span><span style="display:flex;"><span>          <span style="color:#f92672">level</span>: <span style="color:#ae81ff">warning</span>
+</span></span><span style="display:flex;"><span>          <span style="color:#f92672">hosts</span>:
+</span></span><span style="display:flex;"><span>           - <span style="color:#ae81ff">http://user:password@elasticsearch.example.com:9200</span>
 </span></span></code></pre></div><h4 id="using-syslog">Using Syslog</h4>
 <blockquote>
 <p>Syslog, System Logging Protocol, is a standard protocol used to send system log files or event messages
@@ -531,17 +520,38 @@ then compress and fragment them in a snap.</p>
 <p>The first thing to do is to set the minimum <a href="#the-different-levels-of-logs-in-php">logging level</a> at which this handler will be triggered using the <code>level</code>
 option.</p>
 <p>Next, you need to set the protocol you want to use: <a href="#amqp-protocol-configuration">AMQP</a> or <a href="#tcp-protocol-configuration">TCP</a>.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#f92672">logger</span>:
-</span></span><span style="display:flex;"><span>  <span style="color:#75715e"># ...</span>
-</span></span><span style="display:flex;"><span>  <span style="color:#f92672">destinations</span>:
-</span></span><span style="display:flex;"><span>    - <span style="color:#f92672">gelf</span>:
-</span></span><span style="display:flex;"><span>        <span style="color:#f92672">level</span>: <span style="color:#ae81ff">warning</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#f92672">amqp</span>:
-</span></span><span style="display:flex;"><span>          <span style="color:#f92672">queue</span>: <span style="color:#ae81ff">my_queue_nama</span>
-</span></span><span style="display:flex;"><span>          <span style="color:#f92672">host</span>: <span style="color:#ae81ff">example.com</span>
-</span></span><span style="display:flex;"><span>          <span style="color:#f92672">port</span>: <span style="color:#ae81ff">100</span>
-</span></span><span style="display:flex;"><span>          <span style="color:#f92672">login</span>: <span style="color:#ae81ff">foo</span>
-</span></span><span style="display:flex;"><span>          <span style="color:#f92672">password</span>: <span style="color:#ae81ff">password</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span>- <span style="color:#f92672">example_step</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">foo</span>: <span style="color:#ae81ff">bar</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">logger</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># ...</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">destinations</span>:
+</span></span><span style="display:flex;"><span>      - <span style="color:#f92672">gelf</span>:
+</span></span><span style="display:flex;"><span>          <span style="color:#f92672">level</span>: <span style="color:#ae81ff">warning</span>
+</span></span><span style="display:flex;"><span>          <span style="color:#f92672">amqp</span>:
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">queue</span>: <span style="color:#ae81ff">my_queue_nama</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">host</span>: <span style="color:#ae81ff">example.com</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">port</span>: <span style="color:#ae81ff">100</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">login</span>: <span style="color:#ae81ff">foo</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">password</span>: <span style="color:#ae81ff">password</span>
+</span></span></code></pre></div><h4 id="using-logstash">Using Logstash</h4>
+<blockquote>
+<p>Logstash is a software tool for collecting, analysing and storing logs.</p>
+</blockquote>
+<p>When setting up your connection to Logstash, you should first set the name of your application
+using the <code>application_name</code> option and the minimum <a href="#the-different-levels-of-logs-in-php">logging level</a> at which this handler will be
+with the <code>level</code> option.</p>
+<p>Next, you need to set the protocol you want to use: <a href="#tcp-protocol-configuration">TCP</a> or <a href="#amqp-protocol-configuration">AMQP</a>.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span>- <span style="color:#f92672">example_step</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">foo</span>: <span style="color:#ae81ff">bar</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">logger</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># ...</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">destinations</span>:
+</span></span><span style="display:flex;"><span>      - <span style="color:#f92672">logstash</span>:
+</span></span><span style="display:flex;"><span>          <span style="color:#f92672">application_name</span>: <span style="color:#ae81ff">my_log_system</span>
+</span></span><span style="display:flex;"><span>          <span style="color:#f92672">level</span>: <span style="color:#ae81ff">warning</span>
+</span></span><span style="display:flex;"><span>          <span style="color:#f92672">tcp</span>:
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">host</span>: <span style="color:#ae81ff">logstash.example.com</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">port</span>: <span style="color:#ae81ff">100</span>
 </span></span></code></pre></div><h3 id="tcp-protocol-configuration">TCP protocol configuration</h3>
 <blockquote>
 <p>TCP, Transmission Control Protocol, is a standardised protocol for the transmission of data between different
@@ -719,6 +729,22 @@ and the login credentials (<code>login</code> and <code>password</code>).</p>
             
             
             
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
             
             
 
@@ -833,22 +859,6 @@ and the login credentials (<code>login</code> and <code>password</code>).</p>
             
             
             
-
-            
-            
-            
-
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
             
             
             
@@ -859,22 +869,6 @@ and the login credentials (<code>login</code> and <code>password</code>).</p>
             
             
 
-            
-            
-            
-            
-            
-            
-            
-            
-
-            
-            
-            
-
-            
-            
-            
             
             
             
@@ -920,6 +914,22 @@ and the login credentials (<code>login</code> and <code>password</code>).</p>
             
             
             
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+
             
             
             
@@ -1002,22 +1012,6 @@ and the login credentials (<code>login</code> and <code>password</code>).</p>
             
             
             
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-
-            
-            
-            
-
             
             
             
@@ -1157,6 +1151,22 @@ and the login credentials (<code>login</code> and <code>password</code>).</p>
             
             
             
+
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
             
             
             
@@ -1196,22 +1206,6 @@ and the login credentials (<code>login</code> and <code>password</code>).</p>
             
             
 
-            
-            
-            
-            
-            
-            
-            
-            
-
-            
-            
-            
-
-            
-            
-            
             
             
             
@@ -1243,7 +1237,7 @@ and the login credentials (<code>login</code> and <code>password</code>).</p>
             <a class="nav nav-prev" href="https://php-etl.github.io/documentation/feature/expression-language/string-expression-functions/"><i class="ti-arrow-left mr-2"></i> <span class="d-none d-md-block">String Expression functions</span></a>
             
             
-            <a class="nav nav-next" href="https://php-etl.github.io/documentation/feature/services/"> <span class="d-none d-md-block">Declaring services</span><i class="ti-arrow-right ml-2"></i></a>
+            <a class="nav nav-next" href="https://php-etl.github.io/documentation/feature/rejection/"> <span class="d-none d-md-block">Rejection</span><i class="ti-arrow-right ml-2"></i></a>
             
           </nav>
         </div>
