@@ -10,8 +10,8 @@ type: "feature"
 - [Usage](#usage)
 - [List of available functions](#list-of-available-functions)
     - [Generic functions](#generic-functions)
-    - [Functions that can be used with reduce](#functions-that-can-be-used-with-reduce)
-    - [Functions that can be used with map](#functions-that-can-be-used-with-map)
+    - [Functions that can be used with reduce](#closures-that-can-be-provided-to-reduce)
+    - [Functions that can be used with map](#closures-that-can-be-provided-to-map)
 
 ---
 
@@ -69,6 +69,6 @@ foo: '@=map(input["attributes"], extractData("[fr_FR][data]"))'
 
 ### Closures that can be provided to map
 
-| Name                                   | Description                                                           |
-|----------------------------------------|-----------------------------------------------------------------------|
-| extraxctData(`string` path): `closure` | Retrieves the value of a key in an array or the property of an object |
+| Name                                  | Description                                                           |
+|---------------------------------------|-----------------------------------------------------------------------|
+| extractData(`string` path): `closure` | Retrieves the value of a key in an array or the property of an object |
