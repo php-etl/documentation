@@ -137,7 +137,7 @@ sql:
       - condition: '@=input["id"] > 2'
         query: 'SELECT * FROM foo WHERE value IS NOT NULL AND id <= ?'
         parameters:
-          - key: 'identifier'
+          identifier:
             value: '@=3'
         merge:
           map:
@@ -176,7 +176,7 @@ sql:
       - condition: '@=input["id"] > 2'
         query: 'SELECT * FROM foo WHERE value IS NOT NULL AND id <= ?'
         parameters:
-          - key: 'identifier'
+          identifier:
             value: '@=3'
   # ...
 ```
@@ -187,7 +187,7 @@ sql:
 
 Thanks to the SQL plugin, it is possible to write your queries with parameters.
 
-If you write a prepared statement using named parameters (`:param`), your parameter key in the configuration will be
+If you write a prepared statement using named parameters (`:param`), your parameter's key in the configuration will be
 the name of your parameter without the `:` :
 
 ```yaml
@@ -195,16 +195,16 @@ sql:
   loader:
     query: 'INSERT INTO table1 VALUES (:value1, :value2, :value3)'
     parameters:
-      - key: value1
+      value1:
         value: '@=input["value1"]'
-      - key: value2
+      value2:
         value: '@=input["value3"]'
-      - key: value3
+      value3:
         value: '@=input["value3"]'
     # ... 
 ```
 
-If you are using a prepared statement using interrogative markers (`?`), your parameter key in the
+If you are using a prepared statement using interrogative markers (`?`), your parameter's key in the
 configuration will be its position (starting from 1) :
 
 ```yaml
@@ -212,11 +212,11 @@ sql:
   loader: 
     query: 'INSERT INTO table1 VALUES (?, ?, ?)'
     parameters:
-      - key: 1
+      1:
         value: '@=input["value1"]'
-      - key: 2
+      2:
         value: '@=input["value3"]'
-      - key: 3
+      3:
         value: '@=input["value3"]'
   # ... 
 ```
