@@ -26,18 +26,18 @@ In the auto-generated `composer.json` file, add the following lines at the end :
 
 ```json
 {
-  // ...
-  "config": {
-    "bin-dir": "bin"
-  },
-  "scripts": {
-    "post-install-cmd": [
-      "Kiboko\\Component\\Satellite\\ComposerScripts::postInstall"
-    ],
-    "post-update-cmd": [
-      "Kiboko\\Component\\Satellite\\ComposerScripts::postUpdate"
-    ]
-  }
+// ...
+    "config": {
+        "bin-dir": "bin"
+    },
+    "scripts": {
+        "post-install-cmd": [
+            "Kiboko\\Component\\Satellite\\ComposerScripts::postInstall"
+        ],
+        "post-update-cmd": [
+            "Kiboko\\Component\\Satellite\\ComposerScripts::postUpdate"
+        ]
+    }
 }
 ```
 

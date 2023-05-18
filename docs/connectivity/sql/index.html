@@ -158,8 +158,6 @@
             
             <a class="dropdown-item" href="/documentation/connectivity/sylius">Sylius</a>
             
-            <a class="dropdown-item" href="/documentation/connectivity/prestashop">Prestashop</a>
-            
           </div>
         </li>
         
@@ -206,6 +204,12 @@
           <ul class="list-styled">
             
             <a class="back-btn" href="/documentation"></a>
+            
+              
+            
+              
+            
+              
             
               
               
@@ -482,28 +486,6 @@
 
 
 
-<li data-nav-id="https://php-etl.github.io/documentation/connectivity/prestashop/" title="Prestashop" class="sidelist
-  ">
-  <a href="https://php-etl.github.io/documentation/connectivity/prestashop/">
-    Prestashop
-  </a>
-  
-  
-</li>
-
-
-        
-      
-        
-          
-
-
-
-
-
-
-
-
 <li data-nav-id="https://php-etl.github.io/documentation/connectivity/sylius/" title="Sylius" class="sidelist
   ">
   <a href="https://php-etl.github.io/documentation/connectivity/sylius/">
@@ -521,12 +503,6 @@
 </li>
 
 
-              
-            
-              
-            
-              
-            
               
             
               
@@ -641,7 +617,7 @@ condition is met.</p>
 </span></span><span style="display:flex;"><span>      - <span style="color:#f92672">condition</span>: <span style="color:#e6db74">&#39;@=input[&#34;id&#34;] &gt; 2&#39;</span>
 </span></span><span style="display:flex;"><span>        <span style="color:#f92672">query</span>: <span style="color:#e6db74">&#39;SELECT * FROM foo WHERE value IS NOT NULL AND id &lt;= ?&#39;</span>
 </span></span><span style="display:flex;"><span>        <span style="color:#f92672">parameters</span>:
-</span></span><span style="display:flex;"><span>          - <span style="color:#f92672">key</span>: <span style="color:#e6db74">&#39;identifier&#39;</span>
+</span></span><span style="display:flex;"><span>          <span style="color:#f92672">identifier</span>:
 </span></span><span style="display:flex;"><span>            <span style="color:#f92672">value</span>: <span style="color:#e6db74">&#39;@=3&#39;</span>
 </span></span><span style="display:flex;"><span>        <span style="color:#f92672">merge</span>:
 </span></span><span style="display:flex;"><span>          <span style="color:#f92672">map</span>:
@@ -668,36 +644,36 @@ condition is met.</p>
 </span></span><span style="display:flex;"><span>      - <span style="color:#f92672">condition</span>: <span style="color:#e6db74">&#39;@=input[&#34;id&#34;] &gt; 2&#39;</span>
 </span></span><span style="display:flex;"><span>        <span style="color:#f92672">query</span>: <span style="color:#e6db74">&#39;SELECT * FROM foo WHERE value IS NOT NULL AND id &lt;= ?&#39;</span>
 </span></span><span style="display:flex;"><span>        <span style="color:#f92672">parameters</span>:
-</span></span><span style="display:flex;"><span>          - <span style="color:#f92672">key</span>: <span style="color:#e6db74">&#39;identifier&#39;</span>
+</span></span><span style="display:flex;"><span>          <span style="color:#f92672">identifier</span>:
 </span></span><span style="display:flex;"><span>            <span style="color:#f92672">value</span>: <span style="color:#e6db74">&#39;@=3&#39;</span>
 </span></span><span style="display:flex;"><span>  <span style="color:#75715e"># ...</span>
 </span></span></code></pre></div><h2 id="advanced-usage">Advanced Usage</h2>
 <h3 id="using-params-in-your-queries">Using params in your queries</h3>
 <p>Thanks to the SQL plugin, it is possible to write your queries with parameters.</p>
-<p>If you write a prepared statement using named parameters (<code>:param</code>), your parameter key in the configuration will be
+<p>If you write a prepared statement using named parameters (<code>:param</code>), your parameter&rsquo;s key in the configuration will be
 the name of your parameter without the <code>:</code> :</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#f92672">sql</span>:
 </span></span><span style="display:flex;"><span>  <span style="color:#f92672">loader</span>:
 </span></span><span style="display:flex;"><span>    <span style="color:#f92672">query</span>: <span style="color:#e6db74">&#39;INSERT INTO table1 VALUES (:value1, :value2, :value3)&#39;</span>
 </span></span><span style="display:flex;"><span>    <span style="color:#f92672">parameters</span>:
-</span></span><span style="display:flex;"><span>      - <span style="color:#f92672">key</span>: <span style="color:#ae81ff">value1</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">value1</span>:
 </span></span><span style="display:flex;"><span>        <span style="color:#f92672">value</span>: <span style="color:#e6db74">&#39;@=input[&#34;value1&#34;]&#39;</span>
-</span></span><span style="display:flex;"><span>      - <span style="color:#f92672">key</span>: <span style="color:#ae81ff">value2</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">value2</span>:
 </span></span><span style="display:flex;"><span>        <span style="color:#f92672">value</span>: <span style="color:#e6db74">&#39;@=input[&#34;value3&#34;]&#39;</span>
-</span></span><span style="display:flex;"><span>      - <span style="color:#f92672">key</span>: <span style="color:#ae81ff">value3</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">value3</span>:
 </span></span><span style="display:flex;"><span>        <span style="color:#f92672">value</span>: <span style="color:#e6db74">&#39;@=input[&#34;value3&#34;]&#39;</span>
 </span></span><span style="display:flex;"><span>    <span style="color:#75715e"># ... </span>
-</span></span></code></pre></div><p>If you are using a prepared statement using interrogative markers (<code>?</code>), your parameter key in the
+</span></span></code></pre></div><p>If you are using a prepared statement using interrogative markers (<code>?</code>), your parameter&rsquo;s key in the
 configuration will be its position (starting from 1) :</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#f92672">sql</span>:
 </span></span><span style="display:flex;"><span>  <span style="color:#f92672">loader</span>: 
 </span></span><span style="display:flex;"><span>    <span style="color:#f92672">query</span>: <span style="color:#e6db74">&#39;INSERT INTO table1 VALUES (?, ?, ?)&#39;</span>
 </span></span><span style="display:flex;"><span>    <span style="color:#f92672">parameters</span>:
-</span></span><span style="display:flex;"><span>      - <span style="color:#f92672">key</span>: <span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">1</span>:
 </span></span><span style="display:flex;"><span>        <span style="color:#f92672">value</span>: <span style="color:#e6db74">&#39;@=input[&#34;value1&#34;]&#39;</span>
-</span></span><span style="display:flex;"><span>      - <span style="color:#f92672">key</span>: <span style="color:#ae81ff">2</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">2</span>:
 </span></span><span style="display:flex;"><span>        <span style="color:#f92672">value</span>: <span style="color:#e6db74">&#39;@=input[&#34;value3&#34;]&#39;</span>
-</span></span><span style="display:flex;"><span>      - <span style="color:#f92672">key</span>: <span style="color:#ae81ff">3</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">3</span>:
 </span></span><span style="display:flex;"><span>        <span style="color:#f92672">value</span>: <span style="color:#e6db74">&#39;@=input[&#34;value3&#34;]&#39;</span>
 </span></span><span style="display:flex;"><span>  <span style="color:#75715e"># ... </span>
 </span></span></code></pre></div><h3 id="creating-before-and-after-queries">Creating before and after queries</h3>
@@ -750,6 +726,8 @@ queries that clean up the database.</p>
             
             
             
+            
+            
 
             
             
@@ -765,6 +743,7 @@ queries that clean up the database.</p>
             
             
             
+
             
             
             
@@ -772,7 +751,6 @@ queries that clean up the database.</p>
             
             
             
-
             
             
             
@@ -802,7 +780,6 @@ queries that clean up the database.</p>
             
             
 
-            
             
             
             
@@ -814,8 +791,6 @@ queries that clean up the database.</p>
             
             
             
-            
-            
 
             
             
@@ -848,7 +823,6 @@ queries that clean up the database.</p>
             
             
             
-
             
             
             
@@ -856,6 +830,9 @@ queries that clean up the database.</p>
             
             
             
+            
+            
+
             
             
             
@@ -884,10 +861,9 @@ queries that clean up the database.</p>
             
             
             
-
             
             
-            
+
             
             
             
@@ -928,7 +904,6 @@ queries that clean up the database.</p>
             
             
             
-            
 
             
             
@@ -980,16 +955,15 @@ queries that clean up the database.</p>
             
             
             
+
             
             
             
 
-            
             
             
             
             
-
             
             
             
@@ -997,8 +971,6 @@ queries that clean up the database.</p>
             
             
             
-            
-
             
             
             
@@ -1008,13 +980,12 @@ queries that clean up the database.</p>
             
             
             
-            
+
             
             
             
             
             
-
             
             
             
@@ -1022,6 +993,7 @@ queries that clean up the database.</p>
             
             
             
+
             
             
             
@@ -1062,7 +1034,6 @@ queries that clean up the database.</p>
             
             
             
-
             
             
             
@@ -1070,6 +1041,7 @@ queries that clean up the database.</p>
             
             
             
+
             
             
             
@@ -1085,22 +1057,11 @@ queries that clean up the database.</p>
             
             
             
-            
-            
 
-            
-            
-            
-            
-            
-            
-            
             
-
             
             
             
-
             
             
             
@@ -1127,7 +1088,6 @@ queries that clean up the database.</p>
             
             
             
-
             
             
             
@@ -1135,6 +1095,7 @@ queries that clean up the database.</p>
             
             
             
+
             
             
             
@@ -1226,6 +1187,7 @@ queries that clean up the database.</p>
             
             
             
+
             
             
             
@@ -1235,20 +1197,20 @@ queries that clean up the database.</p>
             
             
             
-
             
             
             
             
             
             
+
             
             
+            
 
             
             
             
-
             
             
             
@@ -1290,13 +1252,14 @@ queries that clean up the database.</p>
             
             
             
+
             
             
+            
 
             
             
             
-
             
             
             
@@ -1394,7 +1357,7 @@ queries that clean up the database.</p>
             <a class="nav nav-prev" href="https://php-etl.github.io/documentation/connectivity/spreadsheet/"><i class="ti-arrow-left mr-2"></i> <span class="d-none d-md-block">Spreadsheet</span></a>
             
             
-            <a class="nav nav-next" href="https://php-etl.github.io/documentation/connectivity/prestashop/"> <span class="d-none d-md-block">Prestashop</span><i class="ti-arrow-right ml-2"></i></a>
+            <a class="nav nav-next" href="https://php-etl.github.io/documentation/connectivity/sylius/"> <span class="d-none d-md-block">Sylius</span><i class="ti-arrow-right ml-2"></i></a>
             
           </nav>
         </div>

@@ -638,12 +638,11 @@ h1.single-title {
 .content h1,
 .content h2,
 .content h3,
-.content h4,
-.content h4,
-.content h6 {
+.content h4 {
   padding: 10px 0;
   position: sticky;
   top: 95px;
+  scroll-margin-top: 105px;
   background: #eee;
   z-index: 1;
   margin: 0;
