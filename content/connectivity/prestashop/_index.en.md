@@ -34,8 +34,8 @@ composer require "php-etl/prestashop-plugin:*"
 ## Usage
 
 ### Building an extractor
-{{< tabs name="extractor" >}}
-{{< tab name="Example" codelang="yaml">}}
+
+```yaml
 prestashop:
   client:
     url: 'https://prestashop.example.com' # the base URL of your Prestashop main website
@@ -43,13 +43,11 @@ prestashop:
   extractor:
     type: 'products'                      # the resource type you wish to retrieve
     method: 'all'                         # the retrieval method, currently it should always be 'all'.
-{{< /tab >}}
-{{< /tabs >}}
+```
 
 #### Optional parameters:
 
-{{< tabs name="extractor_options" >}}
-{{< tab name="Example" codelang="yaml">}}
+```yaml
   extractor:
 # ...
     options:
@@ -71,8 +69,7 @@ prestashop:
                   # country, state, postcode, currency, group, quantity, product_attribute,
                   # decimals, use_tax, use_reduction, only_reduction, use_ecotax
                   # for more details, see https://devdocs.prestashop-project.org/8/webservice/tutorials/advanced-use/specific-price/
-{{< /tab >}}
-{{< /tabs >}}
+```
 
 ##### languages:
 
@@ -96,8 +93,7 @@ prestashop:
 [Read the PrestaShop Documentation for more details.](https://devdocs.prestashop-project.org/8/webservice/tutorials/advanced-use/additional-list-parameters/)
 
 ### Building a loader
-{{< tabs name="loader" >}}
-{{< tab name="Example" codelang="yaml">}}
+```yaml
 prestashop:
   client:
     url: 'https://prestashop.example.com'
@@ -108,18 +104,15 @@ prestashop:
                        # 'create' will only create products and fail if the product already exists
                        # 'update' will only update products and fail if the product does not exist
                        # 'upsert' will try to create the product if it does not exist or update if the product already exists
-{{< /tab >}}
-{{< /tabs >}}
+```
 
 #### Optional parameters:
-{{< tabs name="loader_options" >}}
-{{< tab name="Example" codelang="yaml">}}
+```yaml
   loader:
 # ...
     options: 
       id_shop: 1.      # id of the shop
       id_group_shop: 1 # id of the shop group
-{{< /tab >}}
-{{< /tabs >}}
+```
 
 [Read the PrestaShop Documentation for more details.](https://devdocs.prestashop-project.org/8/webservice/tutorials/advanced-use/additional-list-parameters/)
