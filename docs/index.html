@@ -67,9 +67,7 @@
 
   <body>
     
-    <!-- header -->
-    <header class="banner " data-background="https://php-etl.github.io/documentation/">
-      <nav class="navbar navbar-expand-md bg-light">
+    <nav class="navbar navbar-expand-md bg-light">
   <div class="container">
     <a class="navbar-brand" href="/documentation">
       
@@ -159,6 +157,8 @@
             
             <a class="dropdown-item" href="/documentation/connectivity/sylius">Sylius</a>
             
+            <a class="dropdown-item" href="/documentation/connectivity/prestashop">Prestashop</a>
+            
           </div>
         </li>
         
@@ -191,6 +191,8 @@
   </div>
 </nav>
 
+    <!-- header -->
+    <header class="banner " data-background="https://php-etl.github.io/documentation/">
       <!-- banner -->
 <div class="container section">
 	<div class="row">
@@ -347,15 +349,27 @@
 						},
 						
 						{
-							value: "Getting-starteds",
+							value: "Prestashop",
+							label: "<p> What is it? Installation Usage Building an extractor Building a loader Prestashop is an e-commerce platform. Read more about its API resources, options, and how to open the API access.\nWhat is it? The Prestashop plugin aims at connecting a Prestashop instance through its API using a pipeline.\nCurrently the following resources are supported by the plugin: categories, combinations, manufacturers, product_features, product_feature_values, product_options, product_option_values, products, shops, stock_availables, suppliers, tax_rule_groups, tax_rules.\nInstallation composer require \u0026#34;php-etl\/prestashop-plugin:*\u0026#34; Usage Building an extractor prestashop: client: url: \u0026#39;https:\/\/prestashop.example.com\u0026#39; # the base URL of your Prestashop main website api_key: \u0026#39;abc1234\u0026#39; # the access key to the API extractor: type: \u0026#39;products\u0026#39; # the resource type you wish to retrieve method: \u0026#39;all\u0026#39; # the retrieval method, currently it should always be \u0026#39;all\u0026#39;. Optional parameters: extractor: # ... options: columns: # Specify the fields you wish to retrieve - \u0026#39;id\u0026#39;. # by default all the fields will be retrieved, which can have - \u0026#39;product_type\u0026#39; # an impact on the performance of your pipelines - \u0026#39;price\u0026#39; filters: # filter the result based on a value, or a range of values id: \u0026#39;[1,10]\u0026#39; sorters: # sorting fields and their direction id: \u0026#34;ASC\u0026#34; id_shop: 1 # identifier of the shop containing the data you want to extract data from id_group_shop: 1 price: # list the price requests you want the API to calculate for you my_price: # each element in this list is an individual price request you # will ask, that will be retrieved through an individual field quantity: 25 # the price request may contain any of the following parameters: # country, state, postcode, currency, group, quantity, product_attribute, # decimals, use_tax, use_reduction, only_reduction, use_ecotax # for more details, see https:\/\/devdocs.prestashop-project.org\/8\/webservice\/tutorials\/advanced-use\/specific-price\/ languages: Example, with a list of identifiers Example, with a range of identifiers extractor: # ... options: languages: [ 1, 2, 3 ] # list of ids of the languages to retrieve. extractor: # ... options: languages: # a range of ids of the languages to retrieve. from: 1 to: 5 Read the PrestaShop Documentation for more details.\nBuilding a loader prestashop: client: url: \u0026#39;https:\/\/prestashop.example.com\u0026#39; api_key: \u0026#39;abc1234\u0026#39; loader: type: \u0026#39;products\u0026#39;. # the resource type to write to method: \u0026#39;upsert\u0026#39; # the method to use, available methods are \u0026#39;create\u0026#39;, \u0026#39;update\u0026#39;, \u0026#39;upsert\u0026#39;. # \u0026#39;create\u0026#39; will only create products and fail if the product already exists # \u0026#39;update\u0026#39; will only update products and fail if the product does not exist # \u0026#39;upsert\u0026#39; will try to create the product if it does not exist or update if the product already exists Optional parameters: loader: # ... options: id_shop: 1. # id of the shop id_group_shop: 1 # id of the shop group Read the PrestaShop Documentation for more details.\n</p>",
+							url:"https:\/\/php-etl.github.io\/documentation\/connectivity\/prestashop\/"
+						},
+						
+						{
+							value: "Connectivities",
 							label: "<p></p>",
-							url:"https:\/\/php-etl.github.io\/documentation\/getting-started\/"
+							url:"https:\/\/php-etl.github.io\/documentation\/connectivity\/"
 						},
 						
 						{
 							value: "Gyroscops",
 							label: "<p></p>",
 							url:"https:\/\/php-etl.github.io\/documentation\/"
+						},
+						
+						{
+							value: "Getting-starteds",
+							label: "<p></p>",
+							url:"https:\/\/php-etl.github.io\/documentation\/getting-started\/"
 						},
 						
 						{
@@ -386,12 +400,6 @@
 							value: "Core-concepts",
 							label: "<p></p>",
 							url:"https:\/\/php-etl.github.io\/documentation\/core-concept\/"
-						},
-						
-						{
-							value: "Connectivities",
-							label: "<p></p>",
-							url:"https:\/\/php-etl.github.io\/documentation\/connectivity\/"
 						},
 						
 						{
@@ -674,6 +682,15 @@ keep control.</p>
             
             <h3 class="mb-3 mt-0">Sylius</h3>
             <p class="mb-0">Connect your Sylius e-commerce through pipelines</p>
+          </a>
+        </div>
+        
+        <div class="col-lg-4 col-sm-6 mb-4">
+          <a href="https://php-etl.github.io/documentation/connectivity/prestashop/" class="hp-push px-4 py-5 bg-white shadow text-center d-block match-height">
+            
+            
+            <h3 class="mb-3 mt-0">Prestashop</h3>
+            <p class="mb-0">Read from and write to a PrestaShop site.</p>
           </a>
         </div>
         

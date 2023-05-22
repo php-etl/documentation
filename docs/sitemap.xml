@@ -71,10 +71,16 @@
     <loc>https://php-etl.github.io/documentation/connectivity/sylius/</loc>
     <lastmod>2021-02-17T10:13:54+01:00</lastmod>
   </url><url>
-    <loc>https://php-etl.github.io/documentation/getting-started/</loc>
-    <lastmod>2023-02-14T15:33:44+01:00</lastmod>
+    <loc>https://php-etl.github.io/documentation/connectivity/prestashop/</loc>
+    <lastmod>2023-05-02T15:00:02+02:00</lastmod>
+  </url><url>
+    <loc>https://php-etl.github.io/documentation/connectivity/</loc>
+    <lastmod>2023-05-02T15:00:02+02:00</lastmod>
   </url><url>
     <loc>https://php-etl.github.io/documentation/</loc>
+    <lastmod>2023-05-02T15:00:02+02:00</lastmod>
+  </url><url>
+    <loc>https://php-etl.github.io/documentation/getting-started/</loc>
     <lastmod>2023-02-14T15:33:44+01:00</lastmod>
   </url><url>
     <loc>https://php-etl.github.io/documentation/feature/</loc>
@@ -91,9 +97,6 @@
   </url><url>
     <loc>https://php-etl.github.io/documentation/core-concept/</loc>
     <lastmod>2021-08-10T10:16:41+02:00</lastmod>
-  </url><url>
-    <loc>https://php-etl.github.io/documentation/connectivity/</loc>
-    <lastmod>2021-08-09T14:55:05+02:00</lastmod>
   </url><url>
     <loc>https://php-etl.github.io/documentation/connectivity/akeneo/expression-language/</loc>
     <lastmod>2021-01-24T09:23:54+01:00</lastmod>
