@@ -19,6 +19,7 @@ weight: 2
   - [Adding logger](#adding-logger)
   - [Adding rejection](#adding-rejection)
   - [Adding state](#adding-state)
+  - [Setting environment variables](#setting-environment-variables)
 
 ---
 
@@ -175,3 +176,28 @@ satellite:
                 vhost: /
                 topic: foo.rejects
 ```
+
+### Setting environment variables
+
+It's possible to set environment variables in a `.env` file, located in your working directory, to re-use those variables in the declaration of your pipeline.
+
+Example of a `.env` file:
+
+```makefile
+MY_SERVICE_API_KEY=abc123
+SOME_SECRET_KEY=123456789
+```
+
+Then use the variables like this in the configuration:
+```yaml
+# ...
+  pipeline:
+    steps:
+      - akeneo:
+        # ...
+        client:
+          client_id: '@=env("MY_SERVICE_API_KEY")'
+          secret: '@=env("SOME_SECRET_KEY")'
+```
+
+>>The `.env` file must be located in the working directory (next to the configuration file of your pipeline), as it will be symlinked inside the resulting build files.
