@@ -179,7 +179,7 @@ a:focus {
   color: var(--primary-color);
 }
 
-p a {
+.content a {
   text-decoration: underline;
 }
 
