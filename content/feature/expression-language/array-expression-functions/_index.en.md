@@ -45,20 +45,21 @@ foo: '@=map(input["attributes"], extractData("[fr_FR][data]"))'
 
 ### Generic functions
 
-| Name                                                                      | Description                                                                 |
-|---------------------------------------------------------------------------|-----------------------------------------------------------------------------|
-| firstKey(`array` input): `int`&vert;`string`&vert;`null`                  | Gets the first key of an array                                              |
-| lastKey(`array` input): `int`&vert;`string`&vert;`null`                   | Gets the last key of an array                                               |
-| keyExists(`string`&vert;`int` key, `array` input): `bool`                 | Checks if the given key or index exists in the array                        |
-| merge(`array`&vert;`list` ...inputs): `array`                             | Merge one or more arrays                                                    |
-| count(`Countable`&vert;`array` input ): `int`                             | Count all elements in an array, or something in an object                   |
-| combine(`list`<`int`&vert;`string`> keys, `list<mixed> `values ): `array` | Creates an array by using one array for keys and another for its values     |
-| map(`callable` callback, `iterable` input ): `iterable`                   | Copy the iterator into an array                                             |
-| iterableToArray(`Traversable` iterator, `bool` useKeys = true ): `array`  | Applies the callback to the elements of the given iterable                  |
-| reduce(`closure` callback, `iterable` input ): `string`                   | Iteratively reduce the iterable to a single value using a callback function |
-| list(`int` length, `mixed` $value): `iterable`                            | Fill an array with values                                                   |
-| intersect(`array` $array, `array` ...$arrays): `array`                    | Computes the intersection of arrays                                         |
-| filterList(`string` $iterator, `string` $callback): `FilterIterator`      | Filters elements of an array using a callback function                      |
+| Name                                                                      | Description                                                                                                                             |
+|---------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------|
+| firstKey(`array` input): `int`&vert;`string`&vert;`null`                  | Gets the first key of an array                                                                                                          |
+| lastKey(`array` input): `int`&vert;`string`&vert;`null`                   | Gets the last key of an array                                                                                                           |
+| keyExists(`string`&vert;`int` key, `array` input): `bool`                 | Checks if the given key or index exists in the array                                                                                    |
+| merge(`array`&vert;`list` ...inputs): `array`                             | Merge one or more arrays                                                                                                                |
+| count(`Countable`&vert;`array` input ): `int`                             | Count all elements in an array, or something in an object                                                                               |
+| combine(`list`<`int`&vert;`string`> keys, `list<mixed> `values ): `array` | Creates an array by using one array for keys and another for its values                                                                 |
+| map(`callable` callback, `iterable` input ): `iterable`                   | Copy the iterator into an array                                                                                                         |
+| iterableToArray(`Traversable` iterator, `bool` useKeys = true ): `array`  | Applies the callback to the elements of the given iterable                                                                              |
+| reduce(`iterable` input, `closure` callback): `string`                    | Iteratively reduce the iterable to a single value using a callback function                                                             |
+| list(`int` length, `mixed` value): `iterable`                             | Fill an array with values                                                                                                               |
+| intersect(`array` array, `array` ...arrays): `array`                      | Computes the intersection of arrays                                                                                                     |
+| filterList(`string` iterator, `string` callback): `FilterIterator`        | Filters elements of an array using a callback function                                                                                  |
+| mapValues(`array` input, `array{pattern: replacement}` values): `array`   | Finds multiple matches in the input and replaces them with a value, with the format `{pattern: replacement, pattern: replacement ... }` |
 
 ### Closures that can be provided to reduce
 
