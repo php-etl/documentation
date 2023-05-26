@@ -401,7 +401,14 @@
 </ul>
 </li>
 <li><a href="#configuration-formats">Configuration formats</a></li>
-<li><a href="#new-version-of-satellites">New version of satellites</a></li>
+<li>Building
+<ul>
+<li><a href="#build-your-satellite-locally">Building locally</a></li>
+<li><a href="#send-your-satellite-to-gyroscops-cloud">Building through Gyroscops Cloud</a></li>
+</ul>
+</li>
+<li><a href="#migration-from-version-02-and-earlier">Migration from version 0.2 and earlier</a></li>
+<li><a href="#importing-external-configuration-files">Importing external files</a></li>
 </ul>
 <hr>
 <p>A satellite is the program that will execute your data flows. Depending on the type, it can be executed periodically or act as a microservice.</p>
@@ -671,11 +678,7 @@ a means for one application to provide other applications with real-time informa
 </span></span><span style="display:flex;"><span>              <span style="color:#f92672">enclosure</span>: <span style="color:#e6db74">&#39;&#34;&#39;</span>
 </span></span><span style="display:flex;"><span>              <span style="color:#f92672">escape</span>: <span style="color:#e6db74">&#39;\&#39;</span>
 </span></span></code></pre></div><h3 id="configuration-formats">Configuration formats</h3>
-<p>There are 2 ways to declare satellites :</p>
-<ul>
-<li>Use the <a href="yaml-format">YAML configuration Syntax</a></li>
-<li>Use the <a href="json-format">JSON configuration Syntax</a></li>
-</ul>
+<p>We are using YAML configuration format in all our example. However, you can similarly write your satellite configuration in the JSON format.</p>
 <h3 id="build-your-satellite-locally">Build your satellite locally</h3>
 <p>After declaring your satellite definition file, there is a command allowing you to generate the satellite program, either as a <a href="#using-docker">Docker image</a> or <a href="#using-the-file-system">files in your filesystem</a></p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#75715e"># Either use the satellite.yaml file in the current working directory</span>
@@ -703,7 +706,7 @@ If you are using Docker, you can do it with the following command: <code>docker 
 </span></span><span style="display:flex;"><span><span style="color:#75715e"># or specify the path to the yaml file</span>
 </span></span><span style="display:flex;"><span>php bin/cloud create path/to/satellite.yaml
 </span></span></code></pre></div><p>Once done, you will be able to control your satellite execution through the Gyroscops Cloud interface.</p>
-<h2 id="configuration-changes-in-the-version-of-satellites">Configuration changes in the version of satellites</h2>
+<h2 id="migration-from-version-02-and-earlier">Migration from version 0.2 and earlier</h2>
 <p>If you are using a configuration for satellite prior to version 0.3, you should migrate your files ot the updated version.
 the new version <code>0.3</code> of the files definitions allows you to import files and create several satellites inside a single file.</p>
 <p>To use this new version, you need to specify the <code>version</code> field in your configuration at the root of the file:</p>
@@ -717,7 +720,7 @@ determined by an identifier of your choice.</p>
 </span></span><span style="display:flex;"><span>  <span style="color:#f92672">products</span>: <span style="color:#75715e"># this is the satellite key</span>
 </span></span><span style="display:flex;"><span>    <span style="color:#75715e"># ...</span>
 </span></span></code></pre></div><p>The rest of the configuration is similar to the previous version.</p>
-<h1 id="importing-external-configuration-files">Importing external configuration files</h1>
+<h2 id="importing-external-configuration-files">Importing external configuration files</h2>
 <p>The major new feature of the version 0.3 is the ability to import external files in the Satellite configuration.</p>
 <p>The import of files can be done at several levels in your config file:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#f92672">imports</span>: <span style="color:#75715e"># full configuration from another file</span>

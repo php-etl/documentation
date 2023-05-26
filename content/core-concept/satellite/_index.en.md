@@ -20,7 +20,11 @@ weight: 1
         - [Using Pipeline](#using-pipeline)
         - [Using Workflow](#using-workflow)
 - [Configuration formats](#configuration-formats)
-- [New version of satellites](#new-version-of-satellites)
+- Building
+  - [Building locally](#build-your-satellite-locally)
+  - [Building through Gyroscops Cloud](#send-your-satellite-to-gyroscops-cloud)
+- [Migration from version 0.2 and earlier](#migration-from-version-02-and-earlier)
+- [Importing external files](#importing-external-configuration-files)
 
 ---
 
@@ -336,9 +340,7 @@ satellites:
 
 ### Configuration formats
 
-There are 2 ways to declare satellites :
-* Use the [YAML configuration Syntax](yaml-format)
-* Use the [JSON configuration Syntax](json-format)
+We are using YAML configuration format in all our example. However, you can similarly write your satellite configuration in the JSON format.
 
 ### Build your satellite locally
 
@@ -381,7 +383,7 @@ php bin/cloud create path/to/satellite.yaml
 
 Once done, you will be able to control your satellite execution through the Gyroscops Cloud interface.
 
-## Configuration changes in the version of satellites
+## Migration from version 0.2 and earlier
 
 If you are using a configuration for satellite prior to version 0.3, you should migrate your files ot the updated version.
 the new version `0.3` of the files definitions allows you to import files and create several satellites inside a single file. 
@@ -406,7 +408,7 @@ satellites:
 
 The rest of the configuration is similar to the previous version.
 
-# Importing external configuration files
+## Importing external configuration files
 
 The major new feature of the version 0.3 is the ability to import external files in the Satellite configuration.
 
