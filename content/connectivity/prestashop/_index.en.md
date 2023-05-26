@@ -21,9 +21,9 @@ weight: 11
 
 ## What is it?
 
-The Prestashop plugin aims at connecting a Prestashop instance through its API using a [pipeline](../core-concept/pipeline).
+The Prestashop plugin aims at connecting a Prestashop instance through its API using a [pipeline](../../core-concept/pipeline).
 
-Currently the following resources are supported by the plugin: `categories`, `combinations`, `manufacturers`, `product_features`, `product_feature_values`, `product_options`, `product_option_values`, `products`, `shops`, `stock_availables`, `suppliers`, `tax_rule_groups`, `tax_rules`.
+Currently, the following resources are supported by the plugin: `categories`, `combinations`, `manufacturers`, `product_features`, `product_feature_values`, `product_options`, `product_option_values`, `products`, `shops`, `stock_availables`, `suppliers`, `tax_rule_groups`, `tax_rules`.
 
 ## Installation
 

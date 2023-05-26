@@ -104,7 +104,7 @@ In the configuration of your lookup, you must write your query avec l'option `qu
 
 The `merge` option allows you to add data to your dataset, in a sense merging your actual dataset with your new data.
 
-The `map` option comes from the [FastMap](../../../connectivity/fast-map) plugin, feel free to read its documentation
+The `map` option comes from the [FastMap](../fast-map) plugin, feel free to read its documentation
 to understand how to use it.
 
 ```yaml

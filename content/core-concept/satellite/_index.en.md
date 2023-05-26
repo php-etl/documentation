@@ -5,7 +5,7 @@ weight: 1
 draft: false
 type: "component"
 logo: "lambda"
-description: "Generated micro-services for data stream processing in the cloud"
+description: "Generated satellites for data stream processing in the cloud"
 weight: 1
 ---
 
@@ -24,8 +24,11 @@ weight: 1
 
 ---
 
-> A satellite is a microservice that can be executed as a cron job.
-> It can be deployed in any Docker infrastructure (including Kubernetes clusters) or in any operating system.
+A satellite is the program that will execute your data flows. Depending on the type it can be executed periodically or act as a microservice.
+It can be deployed in a various list of infrastructures types, including LAMP stacks and container-aware stacks.
+In the context of Gyroscops, a satellite can be a [Pipeline](#using-pipeline), a [Workflow](#using-workflow), an Action, an API Proxy or an HTTP hook
+
+> Those programs are called Satellites to reflect the fact taht they need to operate very close from the main application in order to enhance their data connectivity
 
 ![Satellite schema](satellite.svg)
 
@@ -35,10 +38,11 @@ The configuration of your satellite must be defined in a yaml file.
 
 ### Setting up the Adapter
 
-First, you should declare the docker image, or the file, on which we want to build the micro-service.
+First, you should declare the docker image, or the file, on which we want to build the satellite.
 
 #### Using Docker 
-To use a docker image to build your micro-service, implement the `docker` key with its configuration options :
+
+To use a docker image to build your satellite, implement the `docker` key with its configuration options :
 
 - `from` : determines the image on which your code will run
 - `workdir` : define the working directory of a Docker container
@@ -64,8 +68,9 @@ Here, we chose to use the `php:8.0-cli-alpine` base image on which our code will
 You could use any docker image of your choice, however you will need to have a PHP runtime 
 available, in a compatible version: >=8.0 with the CLI SAPI.
 
-#### Using system 
-To use a system file to build your micro-service, implement the `filesystem` key.
+#### Using the file system
+
+To use a system file to build your satellite, implement the `filesystem` key.
 
 The filesystem key is accompanied by a `path` key which determines the path of the microservice to be built.
 
@@ -187,11 +192,11 @@ Now that we have made our environment prepared for our satellite, we will declar
 the way we want our pipeline to handle our data flows.
 
 There are 4 types of runtimes, depending on your needs you will have to choose one of:
- * `http-api`: the micro-service will be operating an API, on which several URL routes can be registered. `http-api` is used for REST API.
- * `http-hook`: the micro-service will be operating an API on a single URL route. `http-hook` is used for webhooks. A webhook is a POST request sent to a URL. It's considered to be 
+ * `http-api`: the satellite will be operating an API, on which several URL routes can be registered. `http-api` is used for REST API.
+ * `http-hook`: the satellite will be operating an API on a single URL route. `http-hook` is used for webhooks. A webhook is a POST request sent to a URL. It's considered to be 
 a means for one application to provide other applications with real-time information
- * `pipeline`: the micro-service will be operating a data pipeline, executed in the backend that can be executed as a cron job.
- * `workflow`: the micro-service will be orchestrating more than one data pipeline, executed in the backend that can be executed as a cron job
+ * `pipeline`: the satellite will be operating a data pipeline, executed in the backend that can be executed as a cron job.
+ * `workflow`: the satellite will be orchestrating more than one data pipeline, executed in the backend that can be executed as a cron job
 
 #### Using Pipeline
 
@@ -298,7 +303,7 @@ There are 2 ways to declare satellites :
 * Use the [YAML configuration Syntax](yaml-format)
 * Use the [JSON configuration Syntax](json-format)
 
-### Execute your micro-service
+### Execute your satellite
 
 After configuring your config file, you can run the command which will allow you to create the Dockerfile or the file 
 system. 

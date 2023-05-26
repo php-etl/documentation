@@ -23,7 +23,7 @@ weight: 2
 
 ## What is it ?
 
-The CSV plugin aims at integrating the CSV reader and writer into the [Pipeline](https://github.com/php-etl/pipeline)
+The CSV plugin aims at integrating the CSV reader and writer into the [Pipeline](../../core-concept/pipeline)
 stack.
 
 ## Installation

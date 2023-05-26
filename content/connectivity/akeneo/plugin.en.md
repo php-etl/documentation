@@ -114,7 +114,7 @@ The options available are the same as for the [loader](#building-a-loader).
 
 The `merge` option allows you to add data to your dataset, in a sense merging your actual dataset with your new data.
 
-The `map` option comes from the [FastMap](../../../connectivity/fast-map) plugin, you may need to read its documentation
+The `map` option comes from the [FastMap](../fast-map) plugin, you may need to read its documentation
 to understand how to use it properly.
 
 ```yaml
@@ -239,7 +239,7 @@ You may need to read the [filtering documentation of Akeneo API](https://api.ake
 The plugin takes into account the [ExpressionLanguage](https://symfony.com/doc/current/components/expression_language.html)
 component provided by Symfony.
 
-We have also provided [custom expression](../../akeneo/expression-language) to use when mapping your data.
+We have also provided [custom expression](expression-language) to use when mapping your data.
 
 ```yaml
 akeneo:

@@ -404,17 +404,19 @@
 <li><a href="#new-version-of-satellites">New version of satellites</a></li>
 </ul>
 <hr>
+<p>A satellite is the program that will execute your data flows. Depending on the type it can be executed periodically or act as a microservice.
+It can be deployed in a various list of infrastructures types, including LAMP stacks and container-aware stacks.
+In the context of Gyroscops, a satellite can be a <a href="#using-pipeline">Pipeline</a>, a <a href="#using-workflow">Workflow</a>, an Action, an API Proxy or an HTTP hook</p>
 <blockquote>
-<p>A satellite is a microservice that can be executed as a cron job.
-It can be deployed in any Docker infrastructure (including Kubernetes clusters) or in any operating system.</p>
+<p>Those programs are called Satellites to reflect the fact taht they need to operate very close from the main application in order to enhance their data connectivity</p>
 </blockquote>
 <p><img src="satellite.svg" alt="Satellite schema"></p>
 <h2 id="building-a-satellite">Building a satellite</h2>
 <p>The configuration of your satellite must be defined in a yaml file.</p>
 <h3 id="setting-up-the-adapter">Setting up the Adapter</h3>
-<p>First, you should declare the docker image, or the file, on which we want to build the micro-service.</p>
+<p>First, you should declare the docker image, or the file, on which we want to build the satellite.</p>
 <h4 id="using-docker">Using Docker</h4>
-<p>To use a docker image to build your micro-service, implement the <code>docker</code> key with its configuration options :</p>
+<p>To use a docker image to build your satellite, implement the <code>docker</code> key with its configuration options :</p>
 <ul>
 <li><code>from</code> : determines the image on which your code will run</li>
 <li><code>workdir</code> : define the working directory of a Docker container</li>
@@ -439,8 +441,8 @@ It can be deployed in any Docker infrastructure (including Kubernetes clusters) 
 <p>Here, we chose to use the <code>php:8.0-cli-alpine</code> base image on which our code will be executed.
 You could use any docker image of your choice, however you will need to have a PHP runtime
 available, in a compatible version: &gt;=8.0 with the CLI SAPI.</p>
-<h4 id="using-system">Using system</h4>
-<p>To use a system file to build your micro-service, implement the <code>filesystem</code> key.</p>
+<h4 id="using-the-file-system">Using the file system</h4>
+<p>To use a system file to build your satellite, implement the <code>filesystem</code> key.</p>
 <p>The filesystem key is accompanied by a <code>path</code> key which determines the path of the microservice to be built.</p>
 <ul class="nav nav-tabs" id="basic_definition_filesystem" role="tablist"><li class="nav-item"><a data-toggle="tab" class="nav-link active" href="#basic_definition_filesystem-0" role="tab" aria-controls="basic_definition_filesystem-0" aria-selected="true">YAML</a></li>
 	  </ul>
@@ -537,11 +539,11 @@ The parameter is the way for you to tell composer how to authenticate to the reg
 the way we want our pipeline to handle our data flows.</p>
 <p>There are 4 types of runtimes, depending on your needs you will have to choose one of:</p>
 <ul>
-<li><code>http-api</code>: the micro-service will be operating an API, on which several URL routes can be registered. <code>http-api</code> is used for REST API.</li>
-<li><code>http-hook</code>: the micro-service will be operating an API on a single URL route. <code>http-hook</code> is used for webhooks. A webhook is a POST request sent to a URL. It&rsquo;s considered to be
+<li><code>http-api</code>: the satellite will be operating an API, on which several URL routes can be registered. <code>http-api</code> is used for REST API.</li>
+<li><code>http-hook</code>: the satellite will be operating an API on a single URL route. <code>http-hook</code> is used for webhooks. A webhook is a POST request sent to a URL. It&rsquo;s considered to be
 a means for one application to provide other applications with real-time information</li>
-<li><code>pipeline</code>: the micro-service will be operating a data pipeline, executed in the backend that can be executed as a cron job.</li>
-<li><code>workflow</code>: the micro-service will be orchestrating more than one data pipeline, executed in the backend that can be executed as a cron job</li>
+<li><code>pipeline</code>: the satellite will be operating a data pipeline, executed in the backend that can be executed as a cron job.</li>
+<li><code>workflow</code>: the satellite will be orchestrating more than one data pipeline, executed in the backend that can be executed as a cron job</li>
 </ul>
 <h4 id="using-pipeline">Using Pipeline</h4>
 <p>Please visit the <a href="../pipeline">Pipeline documentation page</a> to find out how to set up your pipeline.</p>
@@ -641,7 +643,7 @@ a means for one application to provide other applications with real-time informa
 <li>Use the <a href="yaml-format">YAML configuration Syntax</a></li>
 <li>Use the <a href="json-format">JSON configuration Syntax</a></li>
 </ul>
-<h3 id="execute-your-micro-service">Execute your micro-service</h3>
+<h3 id="execute-your-satellite">Execute your satellite</h3>
 <p>After configuring your config file, you can run the command which will allow you to create the Dockerfile or the file
 system.</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#75715e"># will execute the satellite.yaml file located at the root of the project</span>

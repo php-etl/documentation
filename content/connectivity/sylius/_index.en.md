@@ -25,7 +25,7 @@ weight: 10
 
 ## What is it ?
 
-The Sylius plugin will enable Sylius connectivity to the [Pipeline](../../components/pipeline), in order to read and write from and to Sylius.
+The Sylius plugin will enable Sylius connectivity to the [Pipeline](../../core-concept/pipeline), in order to read and write from and to Sylius.
 
 ## Installation
 
