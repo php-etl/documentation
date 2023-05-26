@@ -24,11 +24,13 @@ weight: 1
 
 ---
 
-A satellite is the program that will execute your data flows. Depending on the type it can be executed periodically or act as a microservice.
-It can be deployed in a various list of infrastructures types, including LAMP stacks and container-aware stacks.
+A satellite is the program that will execute your data flows. Depending on the type, it can be executed periodically or act as a microservice.
+
+It can be deployed in a various list of infrastructure types, including LAMP stacks and container-aware stacks.
+
 In the context of Gyroscops, a satellite can be a [Pipeline](#using-pipeline), a [Workflow](#using-workflow), an Action, an API Proxy or an HTTP hook
 
-> Those programs are called Satellites to reflect the fact taht they need to operate very close from the main application in order to enhance their data connectivity
+> Those programs are called Satellites to reflect the fact that they need to operate very close from the main application in order to enhance their data connectivity
 
 ![Satellite schema](satellite.svg)
 
@@ -36,9 +38,25 @@ In the context of Gyroscops, a satellite can be a [Pipeline](#using-pipeline), a
 
 The configuration of your satellite must be defined in a yaml file.
 
+A single file can describe several satellites. Each satellite is identified by a code (`my_satellite` in the following example) and has a label.
+
+{{< tabs name="basic_definition" >}}
+
+{{< tab name="YAML" codelang="yaml"  >}}
+version: '0.3'
+satellites:
+  my_satellite:
+    label: 'My first satellite'
+      #...
+  {{< /tab >}}
+
+{{< /tabs >}}
+
 ### Setting up the Adapter
 
-First, you should declare the docker image, or the file, on which we want to build the satellite.
+Your next step, you should declare the docker image, or the file, on which you want to build the satellite.
+
+If you are using [Gyroscops Cloud](https://gyroscops.com), you can ignore this step and directly go to [the next chapter](#configure-composer).
 
 #### Using Docker 
 
@@ -53,12 +71,14 @@ To use a docker image to build your satellite, implement the `docker` key with i
 {{< tab name="YAML" codelang="yaml"  >}}
 version: '0.3'
 satellites:
-  - docker:
+  my_satellite:
+    label: 'My first Satellite'
+    docker:
       from: php:8.0-cli-alpine
       workdir: /var/www/html
       tags:
-        - kiboko/satellite:foo
-        - kiboko/satellite:bar
+        - acmeinc/my-satellite:latest
+        - acmeinc/my-satellite:1.0.0
 #...
 {{< /tab >}}
 
@@ -79,9 +99,10 @@ The filesystem key is accompanied by a `path` key which determines the path of t
 {{< tab name="YAML" codelang="yaml"  >}}
 version: '0.3'
 satellites:
-   - filesystem:
-#       path: <path/to/folder>
-        path: build
+  my_satellite:
+    label: 'My first Satellite'
+    filesystem:
+      path: ../build # path to the build directory, relative to the YAML file
 #...
 {{< /tab >}}
 
@@ -104,7 +125,9 @@ The `require` parameter allows to add all the packages, written as `package_name
 {{< tab name="YAML" codelang="yaml"  >}}
 version: '0.3'
 satellites:
-  - # ...
+  my_satellite:
+    label: 'My first Satellite'
+    # ...
     composer:
       require:
         - "foo/bar:^0.2"
@@ -125,7 +148,9 @@ Every autoloading configuration shall be in the following format:
 ```yaml
 version: '0.3'
 satellites:
-  - # ...
+  my_satellite:
+    label: 'My first Satellite'
+    # ...
     composer:
       autoload:
         psr4:
@@ -141,7 +166,9 @@ microservice instead of creating them.
 ```yaml
 version: '0.3'
 satellites:
-  - # ...
+  my_satellite:
+    label: 'My first Satellite'
+    # ...
     composer:
       from_local: true
 ``` 
@@ -160,7 +187,9 @@ Each repository should have the following configuration fields:
 ```yaml
 version: '0.3'
 satellites:
-  - # ...
+  my_satellite:
+    label: 'My first Satellite'
+    # ...
     composer:
       repositories:
         - { name: 'private-packagist', url: 'https://repo.packagist.com/package/', type: 'composer' }
@@ -178,7 +207,9 @@ Each auth can have the following configuration fields:
 ```yaml
 version: '0.3'
 satellites:
-  - # ...
+  my_satellite:
+    label: 'My first Satellite'
+    # ...
     composer:
       auth:
       - { url: 'http-basic.kiboko.repo.packagist.com', token: '0fe8828b23371406295ca2b72634c0a3df2431c4787df0173ea051a0c639' }
@@ -207,8 +238,10 @@ Please visit the [Pipeline documentation page](../pipeline) to find out how to s
 {{< tab name="YAML" codelang="yaml"  >}}
 version: '0.3'
 satellites:
- - # ...
-   pipeline:
+  my_satellite:
+    label: 'My first Satellite'
+    # ...
+    pipeline:
       steps:
       - akeneo:
           enterprise: true
@@ -255,7 +288,9 @@ Please visit the [Workflow documentation page](../workflow) to find out how to s
 ```yaml
 version: '0.3'
 satellites:
-  - # ...
+  my_satellite:
+    label: 'My first Satellite'
+    # ...
     workflow:
       jobs:
         - name: 'Lorem ipsum dolor'
@@ -277,24 +312,26 @@ satellites:
                     delimiter: ','
                     enclosure: '"'
                     escape: '\\'
-    - pipeline:
-        steps:
-          - akeneo:
-              extractor:
-                type: product
-                method: all
-              client:
-                api_url: '@=env("AKENEO_URL")'
-                client_id: '@=env("AKENEO_CLIENT_ID")'
-                secret: '@=env("AKENEO_CLIENT_SECRET")'
-                username: '@=env("AKENEO_USERNAME")'
-                password: '@=env("AKENEO_PASSWORD")'
-          - csv:
-              loader:
-                file_path: products.csv
-                delimiter: ','
-                enclosure: '"'
-                escape: '\'
+  my_second_satellite:
+    label: 'My second Satellite'
+    pipeline:
+      steps:
+        - akeneo:
+            extractor:
+              type: product
+              method: all
+            client:
+              api_url: '@=env("AKENEO_URL")'
+              client_id: '@=env("AKENEO_CLIENT_ID")'
+              secret: '@=env("AKENEO_CLIENT_SECRET")'
+              username: '@=env("AKENEO_USERNAME")'
+              password: '@=env("AKENEO_PASSWORD")'
+        - csv:
+            loader:
+              file_path: products.csv
+              delimiter: ','
+              enclosure: '"'
+              escape: '\'
 ```
 
 ### Configuration formats
@@ -303,34 +340,53 @@ There are 2 ways to declare satellites :
 * Use the [YAML configuration Syntax](yaml-format)
 * Use the [JSON configuration Syntax](json-format)
 
-### Execute your satellite
+### Build your satellite locally
 
-After configuring your config file, you can run the command which will allow you to create the Dockerfile or the file 
-system. 
+After declaring your satellite definition file, there is a command allowing you to generate the satellite program, either as a [Docker image](#using-docker) or [files in your filesystem](#using-the-file-system)
 
 ```shell
-# will execute the satellite.yaml file located at the root of the project
+# Either use the satellite.yaml file in the current working directory
 php bin/satellite build
 
-# specify the name of the file to be executed
-php bin/satellite build `satellite.yaml`
+# or specify the path to the yaml file
+php bin/satellite build path/to/satellite.yaml
 ```
 
-This command will create a folder with a file `main.php` containing the code to execute.
+If you selected the [Docker image variant](#using-docker), you can now execute this image in the way your container-aware environment
+If you are using Docker, you can do it with the following command: `docker run --rm acmeinc/my-satellite:latest my_satellite`
 
-You have to execute it with php command like this :
+If you selected the [Filesystem variant](#using-the-file-system), you can now execute this Satellite with the `run:*` commands provided:
+* For a Pipeline: `bin/satellite run:pipeline build/`
+* For a Workflow: `bin/satellite run:workflow build/`
+
+### Send your satellite to Gyroscops Cloud
+
+If you are using Gyroscops Cloud, you can push your satellite configuration to the service.
+
+You will need to authenticate to the service before sending your satellites.
 
 ```shell
-php path/to/folder/main.php
+bin/cloud login johndoe@example.com # authenticate as johndoe@example.com 
 ```
 
-## New version of satellites
+> The service may ask you to select your organization and your workspace.
 
-If you are using the previous configuration, you should use the recommended version to write your satellites.
+```shell
+# Either use the satellite.yaml file in the current working directory
+php bin/cloud create
 
-However, it is possible to use version `0.3` which allows you to import files directly into your configuration. 
+# or specify the path to the yaml file
+php bin/cloud create path/to/satellite.yaml
+```
 
-To use this new version, you need to specify the `version` option in your configuration file like this: 
+Once done, you will be able to control your satellite execution through the Gyroscops Cloud interface.
+
+## Configuration changes in the version of satellites
+
+If you are using a configuration for satellite prior to version 0.3, you should migrate your files ot the updated version.
+the new version `0.3` of the files definitions allows you to import files and create several satellites inside a single file. 
+
+To use this new version, you need to specify the `version` field in your configuration at the root of the file: 
 
 ```yaml
 # path/to/satellite.yaml
@@ -338,7 +394,7 @@ version: 0.3
 ```
 
 Unlike the previous configuration, the `satellite` option becomes `satellites` and each satellite will be 
-determined by the key of your choice. Then you write your configuration as in the previous version.
+determined by an identifier of your choice.
 
 ```yaml
 # path/to/satellite.yaml
@@ -348,7 +404,11 @@ satellites:
     # ...
 ```
 
-The major new feature of this version is the ability to import files directly in your configuration.
+The rest of the configuration is similar to the previous version.
+
+# Importing external configuration files
+
+The major new feature of the version 0.3 is the ability to import external files in the Satellite configuration.
 
 The import of files can be done at several levels in your config file: 
 
@@ -370,3 +430,5 @@ satellites:
         # configuration of the pipeline
         - { resource: 'path/to/pipeline.yaml' }
 ```
+
+This way, you will be able to separate long and complex configurations into several smaller files.

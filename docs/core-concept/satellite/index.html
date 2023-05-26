@@ -404,17 +404,31 @@
 <li><a href="#new-version-of-satellites">New version of satellites</a></li>
 </ul>
 <hr>
-<p>A satellite is the program that will execute your data flows. Depending on the type it can be executed periodically or act as a microservice.
-It can be deployed in a various list of infrastructures types, including LAMP stacks and container-aware stacks.
-In the context of Gyroscops, a satellite can be a <a href="#using-pipeline">Pipeline</a>, a <a href="#using-workflow">Workflow</a>, an Action, an API Proxy or an HTTP hook</p>
+<p>A satellite is the program that will execute your data flows. Depending on the type, it can be executed periodically or act as a microservice.</p>
+<p>It can be deployed in a various list of infrastructure types, including LAMP stacks and container-aware stacks.</p>
+<p>In the context of Gyroscops, a satellite can be a <a href="#using-pipeline">Pipeline</a>, a <a href="#using-workflow">Workflow</a>, an Action, an API Proxy or an HTTP hook</p>
 <blockquote>
-<p>Those programs are called Satellites to reflect the fact taht they need to operate very close from the main application in order to enhance their data connectivity</p>
+<p>Those programs are called Satellites to reflect the fact that they need to operate very close from the main application in order to enhance their data connectivity</p>
 </blockquote>
 <p><img src="satellite.svg" alt="Satellite schema"></p>
 <h2 id="building-a-satellite">Building a satellite</h2>
 <p>The configuration of your satellite must be defined in a yaml file.</p>
+<p>A single file can describe several satellites. Each satellite is identified by a code (<code>my_satellite</code> in the following example) and has a label.</p>
+<ul class="nav nav-tabs" id="basic_definition" role="tablist"><li class="nav-item"><a data-toggle="tab" class="nav-link active" href="#basic_definition-0" role="tab" aria-controls="basic_definition-0" aria-selected="true">YAML</a></li>
+	  </ul>
+<div class="tab-content" id="basic_definition"><div id="basic_definition-0" class="tab-pane show active" role="tabpanel" aria-labelledby="basic_definition-0">
+
+<p><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">version</span>: <span style="color:#e6db74">&#39;0.3&#39;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">satellites</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">my_satellite</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">label</span>: <span style="color:#e6db74">&#39;My first satellite&#39;</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#75715e">#...</span>
+</span></span><span style="display:flex;"><span>  </span></span></code></pre></div></div></div>
+
 <h3 id="setting-up-the-adapter">Setting up the Adapter</h3>
-<p>First, you should declare the docker image, or the file, on which we want to build the satellite.</p>
+<p>Your next step, you should declare the docker image, or the file, on which you want to build the satellite.</p>
+<p>If you are using <a href="https://gyroscops.com">Gyroscops Cloud</a>, you can ignore this step and directly go to <a href="#configure-composer">the next chapter</a>.</p>
 <h4 id="using-docker">Using Docker</h4>
 <p>To use a docker image to build your satellite, implement the <code>docker</code> key with its configuration options :</p>
 <ul>
@@ -429,12 +443,14 @@ In the context of Gyroscops, a satellite can be a <a href="#using-pipeline">Pipe
 <p><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#f92672">version</span>: <span style="color:#e6db74">&#39;0.3&#39;</span>
 </span></span><span style="display:flex;"><span><span style="color:#f92672">satellites</span>:
-</span></span><span style="display:flex;"><span>  - <span style="color:#f92672">docker</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">my_satellite</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">label</span>: <span style="color:#e6db74">&#39;My first Satellite&#39;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">docker</span>:
 </span></span><span style="display:flex;"><span>      <span style="color:#f92672">from</span>: <span style="color:#ae81ff">php:8.0-cli-alpine</span>
 </span></span><span style="display:flex;"><span>      <span style="color:#f92672">workdir</span>: <span style="color:#ae81ff">/var/www/html</span>
 </span></span><span style="display:flex;"><span>      <span style="color:#f92672">tags</span>:
-</span></span><span style="display:flex;"><span>        - <span style="color:#ae81ff">kiboko/satellite:foo</span>
-</span></span><span style="display:flex;"><span>        - <span style="color:#ae81ff">kiboko/satellite:bar</span>
+</span></span><span style="display:flex;"><span>        - <span style="color:#ae81ff">acmeinc/my-satellite:latest</span>
+</span></span><span style="display:flex;"><span>        - <span style="color:#ae81ff">acmeinc/my-satellite:1.0.0</span>
 </span></span><span style="display:flex;"><span><span style="color:#75715e">#...</span>
 </span></span></code></pre></div></div></div>
 
@@ -451,9 +467,10 @@ available, in a compatible version: &gt;=8.0 with the CLI SAPI.</p>
 <p><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#f92672">version</span>: <span style="color:#e6db74">&#39;0.3&#39;</span>
 </span></span><span style="display:flex;"><span><span style="color:#f92672">satellites</span>:
-</span></span><span style="display:flex;"><span>   - <span style="color:#f92672">filesystem</span>:
-</span></span><span style="display:flex;"><span><span style="color:#75715e">#       path: &lt;path/to/folder&gt;</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#f92672">path</span>: <span style="color:#ae81ff">build</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">my_satellite</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">label</span>: <span style="color:#e6db74">&#39;My first Satellite&#39;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">filesystem</span>:
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">path</span>: <span style="color:#ae81ff">../build</span> <span style="color:#75715e"># path to the build directory, relative to the YAML file</span>
 </span></span><span style="display:flex;"><span><span style="color:#75715e">#...</span>
 </span></span></code></pre></div></div></div>
 
@@ -473,7 +490,9 @@ available, in a compatible version: &gt;=8.0 with the CLI SAPI.</p>
 <p><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#f92672">version</span>: <span style="color:#e6db74">&#39;0.3&#39;</span>
 </span></span><span style="display:flex;"><span><span style="color:#f92672">satellites</span>:
-</span></span><span style="display:flex;"><span>  - <span style="color:#75715e"># ...</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">my_satellite</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">label</span>: <span style="color:#e6db74">&#39;My first Satellite&#39;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># ...</span>
 </span></span><span style="display:flex;"><span>    <span style="color:#f92672">composer</span>:
 </span></span><span style="display:flex;"><span>      <span style="color:#f92672">require</span>:
 </span></span><span style="display:flex;"><span>        - <span style="color:#e6db74">&#34;foo/bar:^0.2&#34;</span>
@@ -489,7 +508,9 @@ directories paths as if you were directly in the composer.json.</p>
 </ul>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#f92672">version</span>: <span style="color:#e6db74">&#39;0.3&#39;</span>
 </span></span><span style="display:flex;"><span><span style="color:#f92672">satellites</span>:
-</span></span><span style="display:flex;"><span>  - <span style="color:#75715e"># ...</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">my_satellite</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">label</span>: <span style="color:#e6db74">&#39;My first Satellite&#39;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># ...</span>
 </span></span><span style="display:flex;"><span>    <span style="color:#f92672">composer</span>:
 </span></span><span style="display:flex;"><span>      <span style="color:#f92672">autoload</span>:
 </span></span><span style="display:flex;"><span>        <span style="color:#f92672">psr4</span>:
@@ -500,7 +521,9 @@ directories paths as if you were directly in the composer.json.</p>
 microservice instead of creating them.</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#f92672">version</span>: <span style="color:#e6db74">&#39;0.3&#39;</span>
 </span></span><span style="display:flex;"><span><span style="color:#f92672">satellites</span>:
-</span></span><span style="display:flex;"><span>  - <span style="color:#75715e"># ...</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">my_satellite</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">label</span>: <span style="color:#e6db74">&#39;My first Satellite&#39;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># ...</span>
 </span></span><span style="display:flex;"><span>    <span style="color:#f92672">composer</span>:
 </span></span><span style="display:flex;"><span>      <span style="color:#f92672">from_local</span>: <span style="color:#66d9ef">true</span>
 </span></span></code></pre></div><h4 id="repositories">Repositories</h4>
@@ -513,7 +536,9 @@ microservice instead of creating them.</p>
 </ul>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#f92672">version</span>: <span style="color:#e6db74">&#39;0.3&#39;</span>
 </span></span><span style="display:flex;"><span><span style="color:#f92672">satellites</span>:
-</span></span><span style="display:flex;"><span>  - <span style="color:#75715e"># ...</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">my_satellite</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">label</span>: <span style="color:#e6db74">&#39;My first Satellite&#39;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># ...</span>
 </span></span><span style="display:flex;"><span>    <span style="color:#f92672">composer</span>:
 </span></span><span style="display:flex;"><span>      <span style="color:#f92672">repositories</span>:
 </span></span><span style="display:flex;"><span>        - { <span style="color:#f92672">name: &#39;private-packagist&#39;, url: &#39;https://repo.packagist.com/package/&#39;, type</span>: <span style="color:#e6db74">&#39;composer&#39;</span> }
@@ -527,7 +552,9 @@ The parameter is the way for you to tell composer how to authenticate to the reg
 </ul>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#f92672">version</span>: <span style="color:#e6db74">&#39;0.3&#39;</span>
 </span></span><span style="display:flex;"><span><span style="color:#f92672">satellites</span>:
-</span></span><span style="display:flex;"><span>  - <span style="color:#75715e"># ...</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">my_satellite</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">label</span>: <span style="color:#e6db74">&#39;My first Satellite&#39;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># ...</span>
 </span></span><span style="display:flex;"><span>    <span style="color:#f92672">composer</span>:
 </span></span><span style="display:flex;"><span>      <span style="color:#f92672">auth</span>:
 </span></span><span style="display:flex;"><span>      - { <span style="color:#f92672">url: &#39;http-basic.kiboko.repo.packagist.com&#39;, token</span>: <span style="color:#e6db74">&#39;0fe8828b23371406295ca2b72634c0a3df2431c4787df0173ea051a0c639&#39;</span> }
@@ -554,8 +581,10 @@ a means for one application to provide other applications with real-time informa
 <p><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#f92672">version</span>: <span style="color:#e6db74">&#39;0.3&#39;</span>
 </span></span><span style="display:flex;"><span><span style="color:#f92672">satellites</span>:
-</span></span><span style="display:flex;"><span> - <span style="color:#75715e"># ...</span>
-</span></span><span style="display:flex;"><span>   <span style="color:#f92672">pipeline</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">my_satellite</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">label</span>: <span style="color:#e6db74">&#39;My first Satellite&#39;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># ...</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">pipeline</span>:
 </span></span><span style="display:flex;"><span>      <span style="color:#f92672">steps</span>:
 </span></span><span style="display:flex;"><span>      - <span style="color:#f92672">akeneo</span>:
 </span></span><span style="display:flex;"><span>          <span style="color:#f92672">enterprise</span>: <span style="color:#66d9ef">true</span>
@@ -597,7 +626,9 @@ a means for one application to provide other applications with real-time informa
 <p>Please visit the <a href="../workflow">Workflow documentation page</a> to find out how to set up your workflow.</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#f92672">version</span>: <span style="color:#e6db74">&#39;0.3&#39;</span>
 </span></span><span style="display:flex;"><span><span style="color:#f92672">satellites</span>:
-</span></span><span style="display:flex;"><span>  - <span style="color:#75715e"># ...</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">my_satellite</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">label</span>: <span style="color:#e6db74">&#39;My first Satellite&#39;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># ...</span>
 </span></span><span style="display:flex;"><span>    <span style="color:#f92672">workflow</span>:
 </span></span><span style="display:flex;"><span>      <span style="color:#f92672">jobs</span>:
 </span></span><span style="display:flex;"><span>        - <span style="color:#f92672">name</span>: <span style="color:#e6db74">&#39;Lorem ipsum dolor&#39;</span>
@@ -619,55 +650,75 @@ a means for one application to provide other applications with real-time informa
 </span></span><span style="display:flex;"><span>                    <span style="color:#f92672">delimiter</span>: <span style="color:#e6db74">&#39;,&#39;</span>
 </span></span><span style="display:flex;"><span>                    <span style="color:#f92672">enclosure</span>: <span style="color:#e6db74">&#39;&#34;&#39;</span>
 </span></span><span style="display:flex;"><span>                    <span style="color:#f92672">escape</span>: <span style="color:#e6db74">&#39;\\&#39;</span>
-</span></span><span style="display:flex;"><span>    - <span style="color:#f92672">pipeline</span>:
-</span></span><span style="display:flex;"><span>        <span style="color:#f92672">steps</span>:
-</span></span><span style="display:flex;"><span>          - <span style="color:#f92672">akeneo</span>:
-</span></span><span style="display:flex;"><span>              <span style="color:#f92672">extractor</span>:
-</span></span><span style="display:flex;"><span>                <span style="color:#f92672">type</span>: <span style="color:#ae81ff">product</span>
-</span></span><span style="display:flex;"><span>                <span style="color:#f92672">method</span>: <span style="color:#ae81ff">all</span>
-</span></span><span style="display:flex;"><span>              <span style="color:#f92672">client</span>:
-</span></span><span style="display:flex;"><span>                <span style="color:#f92672">api_url</span>: <span style="color:#e6db74">&#39;@=env(&#34;AKENEO_URL&#34;)&#39;</span>
-</span></span><span style="display:flex;"><span>                <span style="color:#f92672">client_id</span>: <span style="color:#e6db74">&#39;@=env(&#34;AKENEO_CLIENT_ID&#34;)&#39;</span>
-</span></span><span style="display:flex;"><span>                <span style="color:#f92672">secret</span>: <span style="color:#e6db74">&#39;@=env(&#34;AKENEO_CLIENT_SECRET&#34;)&#39;</span>
-</span></span><span style="display:flex;"><span>                <span style="color:#f92672">username</span>: <span style="color:#e6db74">&#39;@=env(&#34;AKENEO_USERNAME&#34;)&#39;</span>
-</span></span><span style="display:flex;"><span>                <span style="color:#f92672">password</span>: <span style="color:#e6db74">&#39;@=env(&#34;AKENEO_PASSWORD&#34;)&#39;</span>
-</span></span><span style="display:flex;"><span>          - <span style="color:#f92672">csv</span>:
-</span></span><span style="display:flex;"><span>              <span style="color:#f92672">loader</span>:
-</span></span><span style="display:flex;"><span>                <span style="color:#f92672">file_path</span>: <span style="color:#ae81ff">products.csv</span>
-</span></span><span style="display:flex;"><span>                <span style="color:#f92672">delimiter</span>: <span style="color:#e6db74">&#39;,&#39;</span>
-</span></span><span style="display:flex;"><span>                <span style="color:#f92672">enclosure</span>: <span style="color:#e6db74">&#39;&#34;&#39;</span>
-</span></span><span style="display:flex;"><span>                <span style="color:#f92672">escape</span>: <span style="color:#e6db74">&#39;\&#39;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">my_second_satellite</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">label</span>: <span style="color:#e6db74">&#39;My second Satellite&#39;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">pipeline</span>:
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">steps</span>:
+</span></span><span style="display:flex;"><span>        - <span style="color:#f92672">akeneo</span>:
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">extractor</span>:
+</span></span><span style="display:flex;"><span>              <span style="color:#f92672">type</span>: <span style="color:#ae81ff">product</span>
+</span></span><span style="display:flex;"><span>              <span style="color:#f92672">method</span>: <span style="color:#ae81ff">all</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">client</span>:
+</span></span><span style="display:flex;"><span>              <span style="color:#f92672">api_url</span>: <span style="color:#e6db74">&#39;@=env(&#34;AKENEO_URL&#34;)&#39;</span>
+</span></span><span style="display:flex;"><span>              <span style="color:#f92672">client_id</span>: <span style="color:#e6db74">&#39;@=env(&#34;AKENEO_CLIENT_ID&#34;)&#39;</span>
+</span></span><span style="display:flex;"><span>              <span style="color:#f92672">secret</span>: <span style="color:#e6db74">&#39;@=env(&#34;AKENEO_CLIENT_SECRET&#34;)&#39;</span>
+</span></span><span style="display:flex;"><span>              <span style="color:#f92672">username</span>: <span style="color:#e6db74">&#39;@=env(&#34;AKENEO_USERNAME&#34;)&#39;</span>
+</span></span><span style="display:flex;"><span>              <span style="color:#f92672">password</span>: <span style="color:#e6db74">&#39;@=env(&#34;AKENEO_PASSWORD&#34;)&#39;</span>
+</span></span><span style="display:flex;"><span>        - <span style="color:#f92672">csv</span>:
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">loader</span>:
+</span></span><span style="display:flex;"><span>              <span style="color:#f92672">file_path</span>: <span style="color:#ae81ff">products.csv</span>
+</span></span><span style="display:flex;"><span>              <span style="color:#f92672">delimiter</span>: <span style="color:#e6db74">&#39;,&#39;</span>
+</span></span><span style="display:flex;"><span>              <span style="color:#f92672">enclosure</span>: <span style="color:#e6db74">&#39;&#34;&#39;</span>
+</span></span><span style="display:flex;"><span>              <span style="color:#f92672">escape</span>: <span style="color:#e6db74">&#39;\&#39;</span>
 </span></span></code></pre></div><h3 id="configuration-formats">Configuration formats</h3>
 <p>There are 2 ways to declare satellites :</p>
 <ul>
 <li>Use the <a href="yaml-format">YAML configuration Syntax</a></li>
 <li>Use the <a href="json-format">JSON configuration Syntax</a></li>
 </ul>
-<h3 id="execute-your-satellite">Execute your satellite</h3>
-<p>After configuring your config file, you can run the command which will allow you to create the Dockerfile or the file
-system.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#75715e"># will execute the satellite.yaml file located at the root of the project</span>
+<h3 id="build-your-satellite-locally">Build your satellite locally</h3>
+<p>After declaring your satellite definition file, there is a command allowing you to generate the satellite program, either as a <a href="#using-docker">Docker image</a> or <a href="#using-the-file-system">files in your filesystem</a></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#75715e"># Either use the satellite.yaml file in the current working directory</span>
 </span></span><span style="display:flex;"><span>php bin/satellite build
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e"># specify the name of the file to be executed</span>
-</span></span><span style="display:flex;"><span>php bin/satellite build <span style="color:#e6db74">`</span>satellite.yaml<span style="color:#e6db74">`</span>
-</span></span></code></pre></div><p>This command will create a folder with a file <code>main.php</code> containing the code to execute.</p>
-<p>You have to execute it with php command like this :</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>php path/to/folder/main.php
-</span></span></code></pre></div><h2 id="new-version-of-satellites">New version of satellites</h2>
-<p>If you are using the previous configuration, you should use the recommended version to write your satellites.</p>
-<p>However, it is possible to use version <code>0.3</code> which allows you to import files directly into your configuration.</p>
-<p>To use this new version, you need to specify the <code>version</code> option in your configuration file like this:</p>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># or specify the path to the yaml file</span>
+</span></span><span style="display:flex;"><span>php bin/satellite build path/to/satellite.yaml
+</span></span></code></pre></div><p>If you selected the <a href="#using-docker">Docker image variant</a>, you can now execute this image in the way your container-aware environment
+If you are using Docker, you can do it with the following command: <code>docker run --rm acmeinc/my-satellite:latest my_satellite</code></p>
+<p>If you selected the <a href="#using-the-file-system">Filesystem variant</a>, you can now execute this Satellite with the <code>run:*</code> commands provided:</p>
+<ul>
+<li>For a Pipeline: <code>bin/satellite run:pipeline build/</code></li>
+<li>For a Workflow: <code>bin/satellite run:workflow build/</code></li>
+</ul>
+<h3 id="send-your-satellite-to-gyroscops-cloud">Send your satellite to Gyroscops Cloud</h3>
+<p>If you are using Gyroscops Cloud, you can push your satellite configuration to the service.</p>
+<p>You will need to authenticate to the service before sending your satellites.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>bin/cloud login johndoe@example.com <span style="color:#75715e"># authenticate as johndoe@example.com </span>
+</span></span></code></pre></div><blockquote>
+<p>The service may ask you to select your organization and your workspace.</p>
+</blockquote>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#75715e"># Either use the satellite.yaml file in the current working directory</span>
+</span></span><span style="display:flex;"><span>php bin/cloud create
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># or specify the path to the yaml file</span>
+</span></span><span style="display:flex;"><span>php bin/cloud create path/to/satellite.yaml
+</span></span></code></pre></div><p>Once done, you will be able to control your satellite execution through the Gyroscops Cloud interface.</p>
+<h2 id="configuration-changes-in-the-version-of-satellites">Configuration changes in the version of satellites</h2>
+<p>If you are using a configuration for satellite prior to version 0.3, you should migrate your files ot the updated version.
+the new version <code>0.3</code> of the files definitions allows you to import files and create several satellites inside a single file.</p>
+<p>To use this new version, you need to specify the <code>version</code> field in your configuration at the root of the file:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#75715e"># path/to/satellite.yaml</span>
 </span></span><span style="display:flex;"><span><span style="color:#f92672">version</span>: <span style="color:#ae81ff">0.3</span>
 </span></span></code></pre></div><p>Unlike the previous configuration, the <code>satellite</code> option becomes <code>satellites</code> and each satellite will be
-determined by the key of your choice. Then you write your configuration as in the previous version.</p>
+determined by an identifier of your choice.</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#75715e"># path/to/satellite.yaml</span>
 </span></span><span style="display:flex;"><span><span style="color:#f92672">version</span>: <span style="color:#ae81ff">0.3</span>
 </span></span><span style="display:flex;"><span><span style="color:#f92672">satellites</span>:
 </span></span><span style="display:flex;"><span>  <span style="color:#f92672">products</span>: <span style="color:#75715e"># this is the satellite key</span>
 </span></span><span style="display:flex;"><span>    <span style="color:#75715e"># ...</span>
-</span></span></code></pre></div><p>The major new feature of this version is the ability to import files directly in your configuration.</p>
+</span></span></code></pre></div><p>The rest of the configuration is similar to the previous version.</p>
+<h1 id="importing-external-configuration-files">Importing external configuration files</h1>
+<p>The major new feature of the version 0.3 is the ability to import external files in the Satellite configuration.</p>
 <p>The import of files can be done at several levels in your config file:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#f92672">imports</span>: <span style="color:#75715e"># full configuration from another file</span>
 </span></span><span style="display:flex;"><span>  - { <span style="color:#f92672">resource</span>: <span style="color:#e6db74">&#39;path/to/another_config_file.yaml&#39;</span> }
@@ -685,7 +736,8 @@ determined by the key of your choice. Then you write your configuration as in th
 </span></span><span style="display:flex;"><span>     <span style="color:#f92672">imports</span>: 
 </span></span><span style="display:flex;"><span>        <span style="color:#75715e"># configuration of the pipeline</span>
 </span></span><span style="display:flex;"><span>        - { <span style="color:#f92672">resource</span>: <span style="color:#e6db74">&#39;path/to/pipeline.yaml&#39;</span> }
-</span></span></code></pre></div></div>
+</span></span></code></pre></div><p>This way, you will be able to separate long and complex configurations into several smaller files.</p>
+</div>
           
           <p class="post-meta border-bottom pb-3 mb-0 mt-3">Updated on 12 Jul 2020</p>
           <nav class="pagination mt-3">
