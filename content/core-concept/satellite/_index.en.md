@@ -35,8 +35,7 @@ It can be deployed in a various list of infrastructure types, including LAMP sta
 In the context of Gyroscops, a satellite can be a [Pipeline](#using-pipeline), a [Workflow](#using-workflow), an Action, an API Proxy or an HTTP hook
 
 > Those programs are called Satellites to reflect the fact that they need to operate very close from the main application in order to enhance their data connectivity
-
-![Satellite schema](satellite.svg)
+> ![Satellite schema](satellite.svg)
 
 ## Building a satellite
 
