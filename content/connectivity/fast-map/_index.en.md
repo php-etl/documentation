@@ -66,6 +66,7 @@ To write a mapping to an array, you must use the `map option.
 
 ```yaml
 fastmap:
+  append: true # Optional. Merges this step's output into the previous step's result.
   map:
   # ...
 ```
