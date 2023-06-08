@@ -734,6 +734,7 @@ table th {
   vertical-align: top;
   border: 1px solid #dee2e6;
   margin-bottom: 0;
+  font-size: 15px;
 }
 
 thead {
