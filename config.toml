@@ -174,6 +174,12 @@ hasChildren = true
    url = "connectivity/prestashop"
    weight = 11
 
+  [[menu.main]]
+   parent = "Connectivity"
+   name = "Filtering, drop or reject"
+   url = "connectivity/filtering"
+   weight = 12
+
 [params]
 logo = "logo-web.svg"
 logo_white = "logo-web.svg"
