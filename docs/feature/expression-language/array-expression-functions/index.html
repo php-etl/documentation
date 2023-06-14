@@ -499,20 +499,24 @@ and use the <code>Kiboko\Component\ArrayExpressionLanguage\ArrayExpressionLangua
 <td>Applies the callback to the elements of the given iterable</td>
 </tr>
 <tr>
-<td>reduce(<code>closure</code> callback, <code>iterable</code> input ): <code>string</code></td>
+<td>reduce(<code>iterable</code> input, <code>closure</code> callback): <code>string</code></td>
 <td>Iteratively reduce the iterable to a single value using a callback function</td>
 </tr>
 <tr>
-<td>list(<code>int</code> length, <code>mixed</code> $value): <code>iterable</code></td>
+<td>list(<code>int</code> length, <code>mixed</code> value): <code>iterable</code></td>
 <td>Fill an array with values</td>
 </tr>
 <tr>
-<td>intersect(<code>array</code> $array, <code>array</code> &hellip;$arrays): <code>array</code></td>
+<td>intersect(<code>array</code> array, <code>array</code> &hellip;arrays): <code>array</code></td>
 <td>Computes the intersection of arrays</td>
 </tr>
 <tr>
-<td>filterList(<code>string</code> $iterator, <code>string</code> $callback): <code>FilterIterator</code></td>
+<td>filterList(<code>string</code> iterator, <code>string</code> callback): <code>FilterIterator</code></td>
 <td>Filters elements of an array using a callback function</td>
+</tr>
+<tr>
+<td>mapValues(<code>array</code> input, <code>array{pattern: replacement}</code> values): <code>array</code></td>
+<td>Finds multiple matches in the input and replaces them with a value, with the format <code>{pattern: replacement, pattern: replacement ... }</code></td>
 </tr>
 </tbody>
 </table>

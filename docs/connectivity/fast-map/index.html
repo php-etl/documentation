@@ -567,6 +567,7 @@
 <li><a href="#building-a-listmapper">Building a ListMapper</a></li>
 <li><a href="#building-a-collectionmapper">Building a CollectionMapper</a></li>
 <li><a href="#building-an-objectmapper">Building an ObjectMapper</a></li>
+<li><a href="#building-a-conditionalmapper">Building a ConditionalMapper</a></li>
 </ul>
 </li>
 </ul>
@@ -599,6 +600,7 @@ This code will then be converted into a machine code that can be used by the fas
 <h3 id="building-an-arraymapper">Building an ArrayMapper</h3>
 <p>To write a mapping to an array, you must use the `map option.</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#f92672">fastmap</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">append</span>: <span style="color:#66d9ef">true</span> <span style="color:#75715e"># Optional. Merges this step&#39;s output into the previous step&#39;s result.</span>
 </span></span><span style="display:flex;"><span>  <span style="color:#f92672">map</span>:
 </span></span><span style="display:flex;"><span>  <span style="color:#75715e"># ...</span>
 </span></span></code></pre></div><p>Next, you need to specify the field you are going to map to and assign a value to it.</p>
@@ -706,7 +708,22 @@ options <code>class</code> and <code>expression</code>.</p>
 </span></span><span style="display:flex;"><span>      <span style="color:#f92672">copy</span>: <span style="color:#e6db74">&#39;[sku]&#39;</span>
 </span></span></code></pre></div><p>Warning: Unlike an ArrayMapper, here the <code>field</code> must not be between <code>[...]</code>.</p>
 <p>See <a href="https://symfony.com/doc/current/components/property_access.html#reading-from-objects">Reading from objects</a>.</p>
-</div>
+<h3 id="building-a-conditionalmapper">Building a ConditionalMapper</h3>
+<p>To write a list of mappers that will only execute if a condition is met, you must use the <code>conditional</code> option,
+under which you can declare multiple <a href="#building-an-arraymapper">Array</a> (<code>map</code>) or <a href="#building-an-objectmapper">Object</a> (<code>object</code>) mappers,
+each protected by a <code>condition</code>.</p>
+<p>The behaviour is similar to <code>if ... else if ...</code>, meaning <strong>only 1 of the mappers will be executed</strong>.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#f92672">fastmap</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">conditional</span>:
+</span></span><span style="display:flex;"><span>    - <span style="color:#f92672">condition</span>: <span style="color:#e6db74">&#39;keyExists(&#34;sku&#34;, input)&#39;</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">append</span>: <span style="color:#66d9ef">true</span> <span style="color:#75715e"># Optional. Merges this step&#39;s output into the previous step&#39;s result.</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">map</span>:
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e"># ...</span>
+</span></span><span style="display:flex;"><span>    - <span style="color:#f92672">condition</span>: <span style="color:#e6db74">&#39;keyExists(&#34;identifier&#34;, input)&#39;</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">append</span>: <span style="color:#66d9ef">true</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">object</span>:
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e"># ...</span>
+</span></span></code></pre></div></div>
           
           <p class="post-meta border-bottom pb-3 mb-0 mt-3">Updated on 12 Jul 2020</p>
           <nav class="pagination mt-3">
