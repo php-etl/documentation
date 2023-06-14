@@ -8,13 +8,6 @@ description: "Connect your Akeneo PIM through pipelines"
 weight: 1
 ---
 
-- [Goal](#goal)
-- [The Akeneo plugin for ETL Pipeline](#the-akeneo-plugin-for-etl-pipeline)
-- [The Akeneo expression functions](#the-akeneo-expression-functions)
----
-
-### Goal
-
 The packages listed below aims at the integration of [Akeneo PIM](https://www.akeneo.com) into the [ETL Pipeline](../../core-concept/pipeline) 
 and [Satellite](../../core-concept/satellite) stacks.
 

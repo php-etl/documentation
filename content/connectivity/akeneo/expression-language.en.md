@@ -3,6 +3,7 @@ title: "Akeneo expression language functions"
 date: 2021-01-24T09:23:54+01:00
 draft: false
 description: "Functions for manipulating Akeneo API data"
+weight: 2
 ---
 
 {{< feature-state for_mw_version="0.1" state="alpha" >}}

@@ -52,10 +52,10 @@ prestashop:
 # ...
     options:
       columns:           # Specify the fields you wish to retrieve
-        - 'id'.          # by default all the fields will be retrieved, which can have
+        - 'id'           # by default all the fields will be retrieved, which can have
         - 'product_type' # an impact on the performance of your pipelines
         - 'price'
-      filters:           # filter the result based on a value, or a range of values
+      filter:            # filter the result based on a value, or a range of values
         id: '[1,10]'
       sorters:           # sorting fields and their direction
         id: "ASC"
@@ -99,11 +99,11 @@ prestashop:
     url: 'https://prestashop.example.com'
     api_key: 'abc1234'
   loader:
-    type: 'products'.  # the resource type to write to
+    type: 'products'   # the resource type to write to
     method: 'upsert'   # the method to use, available methods are 'create', 'update', 'upsert'.
                        # 'create' will only create products and fail if the product already exists
                        # 'update' will only update products and fail if the product does not exist
-                       # 'upsert' will try to create the product if it does not exist or update if the product already exists
+                       # 'upsert' will try to update if the product already exists or create the product if it does not exist
 ```
 
 #### Optional parameters:
@@ -111,7 +111,7 @@ prestashop:
   loader:
 # ...
     options: 
-      id_shop: 1.      # id of the shop
+      id_shop: 1       # id of the shop
       id_group_shop: 1 # id of the shop group
 ```
 
