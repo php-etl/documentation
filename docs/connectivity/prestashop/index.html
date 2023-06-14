@@ -160,6 +160,8 @@
             
             <a class="dropdown-item" href="/documentation/connectivity/prestashop">Prestashop</a>
             
+            <a class="dropdown-item" href="/documentation/connectivity/filtering">Filtering, drop or reject</a>
+            
           </div>
         </li>
         
@@ -255,10 +257,10 @@
 
 
 
-<li data-nav-id="https://php-etl.github.io/documentation/connectivity/akeneo/expression-language/" title="Akeneo expression language functions" class="sidelist
+<li data-nav-id="https://php-etl.github.io/documentation/connectivity/akeneo/plugin/" title="Akeneo plugin" class="sidelist
   ">
-  <a href="https://php-etl.github.io/documentation/connectivity/akeneo/expression-language/">
-    Akeneo expression language functions
+  <a href="https://php-etl.github.io/documentation/connectivity/akeneo/plugin/">
+    Akeneo plugin
   </a>
   
   
@@ -277,10 +279,10 @@
 
 
 
-<li data-nav-id="https://php-etl.github.io/documentation/connectivity/akeneo/plugin/" title="Akeneo plugin" class="sidelist
+<li data-nav-id="https://php-etl.github.io/documentation/connectivity/akeneo/expression-language/" title="Akeneo expression language functions" class="sidelist
   ">
-  <a href="https://php-etl.github.io/documentation/connectivity/akeneo/plugin/">
-    Akeneo plugin
+  <a href="https://php-etl.github.io/documentation/connectivity/akeneo/expression-language/">
+    Akeneo expression language functions
   </a>
   
   
@@ -516,6 +518,28 @@
 
         
       
+        
+          
+
+
+
+
+
+
+
+
+<li data-nav-id="https://php-etl.github.io/documentation/connectivity/filtering/" title="Filtering, drop or reject" class="sidelist
+  ">
+  <a href="https://php-etl.github.io/documentation/connectivity/filtering/">
+    Filtering, drop or reject
+  </a>
+  
+  
+</li>
+
+
+        
+      
     </ul>
   
 </li>
@@ -578,10 +602,10 @@ and <a href="https://devdocs.prestashop-project.org/1.7/webservice/tutorials/cre
 </span></span><span style="display:flex;"><span><span style="color:#75715e"># ...</span>
 </span></span><span style="display:flex;"><span>    <span style="color:#f92672">options</span>:
 </span></span><span style="display:flex;"><span>      <span style="color:#f92672">columns</span>:           <span style="color:#75715e"># Specify the fields you wish to retrieve</span>
-</span></span><span style="display:flex;"><span>        - <span style="color:#e6db74">&#39;id&#39;</span><span style="color:#ae81ff">.         </span> <span style="color:#75715e"># by default all the fields will be retrieved, which can have</span>
+</span></span><span style="display:flex;"><span>        - <span style="color:#e6db74">&#39;id&#39;</span>           <span style="color:#75715e"># by default all the fields will be retrieved, which can have</span>
 </span></span><span style="display:flex;"><span>        - <span style="color:#e6db74">&#39;product_type&#39;</span> <span style="color:#75715e"># an impact on the performance of your pipelines</span>
 </span></span><span style="display:flex;"><span>        - <span style="color:#e6db74">&#39;price&#39;</span>
-</span></span><span style="display:flex;"><span>      <span style="color:#f92672">filters</span>:           <span style="color:#75715e"># filter the result based on a value, or a range of values</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">filter</span>:            <span style="color:#75715e"># filter the result based on a value, or a range of values</span>
 </span></span><span style="display:flex;"><span>        <span style="color:#f92672">id</span>: <span style="color:#e6db74">&#39;[1,10]&#39;</span>
 </span></span><span style="display:flex;"><span>      <span style="color:#f92672">sorters</span>:           <span style="color:#75715e"># sorting fields and their direction</span>
 </span></span><span style="display:flex;"><span>        <span style="color:#f92672">id</span>: <span style="color:#e6db74">&#34;ASC&#34;</span>
@@ -625,16 +649,16 @@ and <a href="https://devdocs.prestashop-project.org/1.7/webservice/tutorials/cre
 </span></span><span style="display:flex;"><span>    <span style="color:#f92672">url</span>: <span style="color:#e6db74">&#39;https://prestashop.example.com&#39;</span>
 </span></span><span style="display:flex;"><span>    <span style="color:#f92672">api_key</span>: <span style="color:#e6db74">&#39;abc1234&#39;</span>
 </span></span><span style="display:flex;"><span>  <span style="color:#f92672">loader</span>:
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">type</span>: <span style="color:#e6db74">&#39;products&#39;</span><span style="color:#ae81ff">. </span> <span style="color:#75715e"># the resource type to write to</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">type</span>: <span style="color:#e6db74">&#39;products&#39;</span>   <span style="color:#75715e"># the resource type to write to</span>
 </span></span><span style="display:flex;"><span>    <span style="color:#f92672">method</span>: <span style="color:#e6db74">&#39;upsert&#39;</span>   <span style="color:#75715e"># the method to use, available methods are &#39;create&#39;, &#39;update&#39;, &#39;upsert&#39;.</span>
 </span></span><span style="display:flex;"><span>                       <span style="color:#75715e"># &#39;create&#39; will only create products and fail if the product already exists</span>
 </span></span><span style="display:flex;"><span>                       <span style="color:#75715e"># &#39;update&#39; will only update products and fail if the product does not exist</span>
-</span></span><span style="display:flex;"><span>                       <span style="color:#75715e"># &#39;upsert&#39; will try to create the product if it does not exist or update if the product already exists</span>
+</span></span><span style="display:flex;"><span>                       <span style="color:#75715e"># &#39;upsert&#39; will try to update if the product already exists or create the product if it does not exist</span>
 </span></span></code></pre></div><h4 id="optional-parameters-1">Optional parameters:</h4>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span>  <span style="color:#f92672">loader</span>:
 </span></span><span style="display:flex;"><span><span style="color:#75715e"># ...</span>
 </span></span><span style="display:flex;"><span>    <span style="color:#f92672">options</span>: 
-</span></span><span style="display:flex;"><span>      <span style="color:#f92672">id_shop</span>: <span style="color:#ae81ff">1</span><span style="color:#ae81ff">.     </span> <span style="color:#75715e"># id of the shop</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">id_shop</span>: <span style="color:#ae81ff">1</span>       <span style="color:#75715e"># id of the shop</span>
 </span></span><span style="display:flex;"><span>      <span style="color:#f92672">id_group_shop</span>: <span style="color:#ae81ff">1</span> <span style="color:#75715e"># id of the shop group</span>
 </span></span></code></pre></div><p><a href="https://devdocs.prestashop-project.org/8/webservice/tutorials/advanced-use/additional-list-parameters/">Read the PrestaShop Documentation for more details.</a></p>
 </div>
@@ -886,6 +910,22 @@ and <a href="https://devdocs.prestashop-project.org/1.7/webservice/tutorials/cre
             
             
             
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+
             
             
             
@@ -1311,7 +1351,7 @@ and <a href="https://devdocs.prestashop-project.org/1.7/webservice/tutorials/cre
             <a class="nav nav-prev" href="https://php-etl.github.io/documentation/connectivity/sylius/"><i class="ti-arrow-left mr-2"></i> <span class="d-none d-md-block">Sylius</span></a>
             
             
-            <a class="nav nav-next" href="https://php-etl.github.io/documentation/getting-started/"> <span class="d-none d-md-block">Getting-starteds</span><i class="ti-arrow-right ml-2"></i></a>
+            <a class="nav nav-next" href="https://php-etl.github.io/documentation/connectivity/filtering/"> <span class="d-none d-md-block">Filtering, drop or reject</span><i class="ti-arrow-right ml-2"></i></a>
             
           </nav>
         </div>
