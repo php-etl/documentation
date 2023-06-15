@@ -37,7 +37,9 @@ This library implements functions for manipulating Akeneo API data through the
 composer require php-etl/akeneo-expression-language
 ```
 
-## Usage
+## Filter Provider
+
+### Usage
 
 To use Akeneo's expression language functions, you must first add the `expression_language` key and put in 
 the provider `Kiboko\Component\ExpressionLanguage\Akeneo\AkeneoFilterProvider`.
@@ -97,9 +99,9 @@ $interpreter->evaluate($expression, ['input' => $input]);
 
 {{< /tabs >}}
 
-## Functions reference
+### Functions reference
 
-### Attribute data manipulation
+#### Attribute data manipulation
 
 Akeneo has a specific data format that would make cumbersome the data mapping
 if there were no dedicated tools. In this matter the Expression Language functions
@@ -714,3 +716,40 @@ This function will extract the unit part of a metric attribute's value
 `formatMetric(array $attribut, string $locale)` 
 
 This function will format the metric according to the specified locale
+
+## Builder Provider
+
+The Akeneo API expects you to have certain types of format for your attributes. 
+The functions provided by the AkeneoBuilderProvider allow you to create the expected formats easily.
+
+### Usage 
+
+To use the Akeneo's Builder expression language, you must first add the `expression_language` key and put in 
+the provider `Kiboko\Component\ExpressionLanguage\Akeneo\AkeneoBuilderProvider`.
+
+Then, in the fields that can use expression languages, you can use any [functions](#builder-functions-reference) provided by 
+the Akeneo Builder provider.
+
+{{< tabs name="basic_definition" >}}
+
+{{< tab name="YAML" codelang="yaml"  >}}
+- fastmap:
+    expression_language:
+    - 'Kiboko\Component\ExpressionLanguage\Akeneo\AkeneoBuilderProvider'
+    map:
+    - field: '[title]'
+      expression: 'withValue(input["title"])'
+{{< /tab >}}
+
+{{< /tabs >}}
+
+### Functions reference
+
+|Name|Description|Example|
+|---|---|---|
+|build(`string` ...values)|Enables several values to be grouped together in a single ordered array corresponding to the format that the API expects.|build(input["values"])|
+|withValue(`string` value, `string` locale, `string` scope)|Creates the expected format for attributes of type single-line text, multi-line text, boolean, date, number, measurement.|withValue(input["variant_name"], "fr_FR", "ecommerce")|
+|withSimpleOption(`string` code, `string` attribute, `string` labels, `string` locale = 'null', `string` scope = 'null')|Creates the expected format for single-option attributes.|build(withSimpleOption("PHY","kind", {"fr_FR": "PHY"}))|
+|withMultipleOption(`string` codes, `string` attribute, `string` labels, `string` locale, `string` scope)|Creates the expected format for multiple-option attributes.|withMultipleOption(input["collection"], "collection", {"fr_FR": "My collection"}, "fr_FR", "ecommerce")|
+|withReferenceEntityValue(`string` value, `string` locale = 'null', `string` channel = 'null')|Creates the expected format for reference entity record attributes of type single-line text, multi-line text, boolean, date, number, measurement.|withReferenceEntityValue(input["label"], "fr_FR")|
+|withReferenceEntitySimpleOption(`string` value, `string` locale = 'null', `string` channel = 'null')|Creates the expected format for simple-select reference entity record attributes.|withReferenceEntitySimpleOption(input["associated_crops_code"], "fr_FR")|

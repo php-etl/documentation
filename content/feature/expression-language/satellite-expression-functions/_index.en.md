@@ -38,7 +38,7 @@ foo: '@=env("MY_ENVIRONMENT_VARIABLE")'
 
 ## List of available functions
 
-| Name                                               | Desctiption                                         |
+| Name                                               | Description                                         |
 |----------------------------------------------------|-----------------------------------------------------|
 | env(`string` name): `string`&vert;`false`          | Gets the value of an environment variable           |
 | envAsFile(`string` name): `string`                 | Create a file whose name is an environment variable |
