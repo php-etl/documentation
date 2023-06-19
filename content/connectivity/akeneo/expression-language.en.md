@@ -9,23 +9,27 @@ description: "Functions for manipulating Akeneo API data"
 
 - [What is it ?](#what-is-it-)
 - [Installation](#installation)
-- [Usage](#usage)
-- [Functions reference](#functions-reference)
-    - [Attribute data manipulation](#attribute-data-manipulation)
-        - [Filter by locale](#filter-by-locale)
-        - [Filter by scope](#filter-by-scope)
-        - [Take the first available value by scopes](#take-the-first-available-value-by-scopes)
-        - [Combining results filter](#combining-results-filter)
-        - [Excluding results filter](#excluding-results-filter)
-        - [Extracting a slice of the values list](#extracting-a-slice-of-the-values-list)
-        - [Extracting the beginning of the values list](#extracting-the-beginning-of-the-values-list)
-        - [Extracting the end of the values list](#extracting-the-end-of-the-values-list)
-        - [Extracting the values list, after an offset](#extracting-the-values-list-after-an-offset)
-        - [Extracting the first value from the list](#extracting-the-first-value-from-the-list)
-        - [Extracting the last value from the list](#extracting-the-last-value-from-the-list)
-    - [Dates management with dateTime and dateTimeZone](#dates-management-with-datetime-and-datetimezone)
-    - [Manage metrics with metricAmount, metricUnit and formatMetric](#manage-metrics-with-metricamount-metricunit-and-formatmetric)
-    
+- [Filter Provider](#filter-provider)
+  - [Usage](#usage)
+  - [Functions reference](#functions-reference)
+      - [Attribute data manipulation](#attribute-data-manipulation)
+          - [Filter by locale](#filter-by-locale)
+          - [Filter by scope](#filter-by-scope)
+          - [Take the first available value by scopes](#take-the-first-available-value-by-scopes)
+          - [Combining results filter](#combining-results-filter)
+          - [Excluding results filter](#excluding-results-filter)
+          - [Extracting a slice of the values list](#extracting-a-slice-of-the-values-list)
+          - [Extracting the beginning of the values list](#extracting-the-beginning-of-the-values-list)
+          - [Extracting the end of the values list](#extracting-the-end-of-the-values-list)
+          - [Extracting the values list, after an offset](#extracting-the-values-list-after-an-offset)
+          - [Extracting the first value from the list](#extracting-the-first-value-from-the-list)
+          - [Extracting the last value from the list](#extracting-the-last-value-from-the-list)
+      - [Dates management with dateTime and dateTimeZone](#dates-management-with-datetime-and-datetimezone)
+      - [Manage metrics with metricAmount, metricUnit and formatMetric](#manage-metrics-with-metricamount-metricunit-and-formatmetric)
+- [Builder Provider](#builder-provider)
+  - [Usage](#builder-provider)
+  - [Functions reference](#builder-provider)
+      
 ## What is it ?
 
 This library implements functions for manipulating Akeneo API data through the
@@ -722,7 +726,7 @@ This function will format the metric according to the specified locale
 The Akeneo API expects you to have certain types of format for your attributes. 
 The functions provided by the AkeneoBuilderProvider allow you to create the expected formats easily.
 
-### Usage 
+### Usage
 
 To use the Akeneo's Builder expression language, you must first add the `expression_language` key and put in 
 the provider `Kiboko\Component\ExpressionLanguage\Akeneo\AkeneoBuilderProvider`.
