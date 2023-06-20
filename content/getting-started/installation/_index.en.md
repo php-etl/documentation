@@ -17,7 +17,7 @@ Once the project dir is created and you have changed your current directory to i
 a composer project inside this directory and add all required dependencies.
 
 ```shell
-composer init --stability=dev
+composer init
 ```
 
 ![Composer init](composer_init.png)
