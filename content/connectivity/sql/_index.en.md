@@ -19,6 +19,7 @@ weight: 9
     - [Building a ConditionalLoader](#building-a-conditionalloader)
 - [Advanced usage](#advanced-usage)
     - [Using params in your queries](#using-params-in-your-queries)
+    - [Using an unknown number of parameters](#using-an-unknown-number-of-parameters)
     - [Creating before and after queries](#creating-before-and-after-queries)
     
 ---
@@ -219,6 +220,43 @@ sql:
       3:
         value: '@=input["value3"]'
   # ... 
+```
+
+### Using an unknown number of parameters
+
+In some cases, you may not know in advance how many parameters you will need to enter,
+for example if you are searching using an `IN` with many values.
+
+Using `from` instead of `value` will bind as many parameters as there are values in the path.
+
+And use [the expression `inSql(path, parameter_name)`](../../feature/expression-language/satellite-expression-functions/#list-of-available-functions) to prepare the values in the query.
+
+```yaml
+sql:
+  loader: 
+    query: '@="SELECT * FROM category WHERE id " ~ inSql(input["codes_list"], "identifier") ~ "'
+    parameters:
+      identifier:
+        from: '@=input["codes_list"]'
+  # ...
+```
+
+If at runtime there are 4 values under `[codes_list]`, this would be equivalent to writing:
+
+```yaml
+sql:
+  loader: 
+    query: 'SELECT * FROM category WHERE id IN (:identifier_0, :identifier_1, :identifier_2, :identifier_3)'
+    parameters:
+      identifier_0:
+        value: '@=input["codes_list"][0]'
+      identifier_1:
+        value: '@=input["codes_list"][1]'
+      identifier_2:
+        value: '@=input["codes_list"][2]'
+      identifier_3:
+        value: '@=input["codes_list"][3]'
+  # ...
 ```
 
 ### Creating before and after queries
