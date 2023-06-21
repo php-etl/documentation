@@ -38,10 +38,11 @@ foo: '@=env("MY_ENVIRONMENT_VARIABLE")'
 
 ## List of available functions
 
-| Name                                               | Description                                         |
-|----------------------------------------------------|-----------------------------------------------------|
-| env(`string` name): `string`&vert;`false`          | Gets the value of an environment variable           |
-| envAsFile(`string` name): `string`                 | Create a file whose name is an environment variable |
-| file(`string` name): `string`                      | Create a file                                       |
-| base64Decode(`string` name): `string`&vert;`false` | Decodes data encoded with Base64                    |
-| temporaryFile(`string` name): `resource`           | Create a temporary file                             |
+| Name                                                  | Description                                                                                                                                                                                                                                                                          |
+|-------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| env(`string` name): `string|false`                    | Gets the value of an environment variable                                                                                                                                                                                                                                            |
+| envAsFile(`string` name): `string`                    | Create a file whose name is an environment variable                                                                                                                                                                                                                                  |
+| file(`string` name): `string`                         | Create a file                                                                                                                                                                                                                                                                        |
+| base64Decode(`string` name): `string|false`           | Decodes data encoded with Base64                                                                                                                                                                                                                                                     |
+| temporaryFile(`string` name): `resource`              | Create a temporary file                                                                                                                                                                                                                                                              |
+| inSql(`array` path, `string` parameterName): `string` | Writes "IN (...)" with as many parameters as there are values under `path`, in the format: `:parameterName_0`, `:parameterName_1`... To be used in a SQL query [when searching among an unknown number of values](../../../connectivity/sql/#using-an-unknown-number-of-parameters). |
