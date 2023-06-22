@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <title>Filtering, drop or reject  | Gyroscops Documentation</title>
 
-  <meta name="generator" content="Hugo 0.111.3">
+  <meta name="generator" content="Hugo 0.92.2" />
 
   <!-- mobile responsive meta -->
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -584,19 +584,19 @@
 <h2 id="usage">Usage</h2>
 <h3 id="dropping-a-line">Dropping a line</h3>
 <p>For example, this will ignore the line if the field &ldquo;<code>identifier</code>&rdquo; is missing, using the <a href="../../feature/expression-language/array-expression-functions#generic-functions">array expression</a> <code>keyExists</code>:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span>- <span style="color:#f92672">filter</span>:
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">drop</span>:
-</span></span><span style="display:flex;"><span>      - <span style="color:#f92672">when</span>: <span style="color:#e6db74">&#39;@=!keyExists(&#34;identifier&#34;, input)&#39;</span>
-</span></span></code></pre></div><h3 id="rejecting-a-line">Rejecting a line</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml">- <span style="color:#f92672">filter</span>:
+    <span style="color:#f92672">drop</span>:
+      - <span style="color:#f92672">when</span>: <span style="color:#e6db74">&#39;@=!keyExists(&#34;identifier&#34;, input)&#39;</span>
+</code></pre></div><h3 id="rejecting-a-line">Rejecting a line</h3>
 <p>This is equivalent to dropping a line, but when paired with a <a href="../../feature/rejection">rejection configuration</a> you will be able to log information about the dropped line.</p>
 <p>This will ignore a line where the field &ldquo;<code>image</code>&rdquo; is empty, and store that data in some destination:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span>- <span style="color:#f92672">filter</span>:
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">reject</span>:
-</span></span><span style="display:flex;"><span>      - <span style="color:#f92672">when</span>: <span style="color:#e6db74">&#39;@=input[&#34;identifier&#34;] === null&#39;</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">rejection</span>:
-</span></span><span style="display:flex;"><span>      <span style="color:#f92672">destinations</span>:
-</span></span><span style="display:flex;"><span>        <span style="color:#75715e"># ...</span>
-</span></span></code></pre></div></div>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml">- <span style="color:#f92672">filter</span>:
+    <span style="color:#f92672">reject</span>:
+      - <span style="color:#f92672">when</span>: <span style="color:#e6db74">&#39;@=input[&#34;identifier&#34;] === null&#39;</span>
+    <span style="color:#f92672">rejection</span>:
+      <span style="color:#f92672">destinations</span>:
+        <span style="color:#75715e"># ...</span>
+</code></pre></div></div>
           
           <p class="post-meta border-bottom pb-3 mb-0 mt-3">Updated on 07 Jun 2023</p>
           <nav class="pagination mt-3">

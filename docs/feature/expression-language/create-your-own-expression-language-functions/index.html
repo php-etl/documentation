@@ -2,7 +2,7 @@
 <html lang="en-us">
   <head>
   <meta charset="utf-8">
-  <title>Array Expression Language  | Gyroscops Documentation</title>
+  <title>Create you own Expression Language functions extending Symfony Expression Language  | Gyroscops Documentation</title>
 
   <meta name="generator" content="Hugo 0.92.2" />
 
@@ -210,10 +210,6 @@
             <a class="back-btn" href="/documentation"></a>
             
               
-            
-              
-            
-              
               
 
 
@@ -283,6 +279,28 @@
 
 
 
+<li data-nav-id="https://php-etl.github.io/documentation/feature/expression-language/create-your-own-expression-language-functions/" title="Create you own Expression Language functions extending Symfony Expression Language" class="sidelist
+  active">
+  <a href="https://php-etl.github.io/documentation/feature/expression-language/create-your-own-expression-language-functions/">
+    Create you own Expression Language functions extending Symfony Expression Language
+  </a>
+  
+  
+</li>
+
+
+        
+      
+        
+          
+
+
+
+
+
+
+
+
 <li data-nav-id="https://php-etl.github.io/documentation/feature/expression-language/satellite-expression-functions/" title="Satellite Expression Language" class="sidelist
   ">
   <a href="https://php-etl.github.io/documentation/feature/expression-language/satellite-expression-functions/">
@@ -306,7 +324,7 @@
 
 
 <li data-nav-id="https://php-etl.github.io/documentation/feature/expression-language/array-expression-functions/" title="Array Expression Language" class="sidelist
-  active">
+  ">
   <a href="https://php-etl.github.io/documentation/feature/expression-language/array-expression-functions/">
     Array Expression Language
   </a>
@@ -423,6 +441,10 @@
             
               
             
+              
+            
+              
+            
           </ul>
         </div>
       </div>
@@ -431,130 +453,148 @@
           <h1 class="single-title mb-5">
               
               
-              Array Expression Language
+              Create you own Expression Language functions extending Symfony Expression Language
           </h1>
           
           <div class="content"><ul>
-<li><a href="#what-is-it-">What is it ?</a></li>
-<li><a href="#installation">Installation</a></li>
-<li><a href="#usage">Usage</a></li>
-<li><a href="#list-of-available-functions">List of available functions</a>
-<ul>
-<li><a href="#generic-functions">Generic functions</a></li>
-<li><a href="#closures-that-can-be-provided-to-reduce">Functions that can be used with reduce</a></li>
-<li><a href="#closures-that-can-be-provided-to-map">Functions that can be used with map</a></li>
-</ul>
-</li>
+<li><a href="#introduction">Introduction</a></li>
+<li><a href="#create-a-php-project-with-composer">Create a PHP project with composer</a></li>
+<li><a href="#install-the-symfonyexpression-language-dependency">Install the symfony/expression-language dependency</a></li>
 </ul>
 <hr>
-<h2 id="what-is-it-">What is it ?</h2>
-<p>This package extends the ExpressionLanguage component of Symfony to compile and evaluate arrays with custom functions.</p>
-<h2 id="installation">Installation</h2>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">composer require php-etl/array-expression-language
-</code></pre></div><h2 id="usage">Usage</h2>
-<p>To use the functions provided in this package, you need to add the <code>expression_language</code> key to your plugin configuration
-and use the <code>Kiboko\Component\ArrayExpressionLanguage\ArrayExpressionLanguageProvider</code> Provider.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">expression_language</span>:
-  - <span style="color:#ae81ff">Kiboko\Component\ArrayExpressionLanguage\ArrayExpressionLanguageProvider</span>
-</code></pre></div><p>To determine that a value in your configuration will be a language expression, you must use the <code>@</code> annotation.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">foo</span>: <span style="color:#e6db74">&#39;@=map(input[&#34;attributes&#34;], extractData(&#34;[fr_FR][data]&#34;))&#39;</span>
-</code></pre></div><h2 id="list-of-available-functions">List of available functions</h2>
-<h3 id="generic-functions">Generic functions</h3>
-<table>
-<thead>
-<tr>
-<th>Name</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>firstKey(<code>array</code> input): <code>int</code>|<code>string</code>|<code>null</code></td>
-<td>Gets the first key of an array</td>
-</tr>
-<tr>
-<td>lastKey(<code>array</code> input): <code>int</code>|<code>string</code>|<code>null</code></td>
-<td>Gets the last key of an array</td>
-</tr>
-<tr>
-<td>keyExists(<code>string</code>|<code>int</code> key, <code>array</code> input): <code>bool</code></td>
-<td>Checks if the given key or index exists in the array</td>
-</tr>
-<tr>
-<td>merge(<code>array</code>|<code>list</code> &hellip;inputs): <code>array</code></td>
-<td>Merge one or more arrays</td>
-</tr>
-<tr>
-<td>count(<code>Countable</code>|<code>array</code> input ): <code>int</code></td>
-<td>Count all elements in an array, or something in an object</td>
-</tr>
-<tr>
-<td>combine(<code>list</code>&lt;<code>int</code>|<code>string</code>&gt; keys, <code>list&lt;mixed&gt; </code>values ): <code>array</code></td>
-<td>Creates an array by using one array for keys and another for its values</td>
-</tr>
-<tr>
-<td>map(<code>callable</code> callback, <code>iterable</code> input ): <code>iterable</code></td>
-<td>Copy the iterator into an array</td>
-</tr>
-<tr>
-<td>iterableToArray(<code>Traversable</code> iterator, <code>bool</code> useKeys = true ): <code>array</code></td>
-<td>Applies the callback to the elements of the given iterable</td>
-</tr>
-<tr>
-<td>reduce(<code>iterable</code> input, <code>closure</code> callback): <code>string</code></td>
-<td>Iteratively reduce the iterable to a single value using a callback function</td>
-</tr>
-<tr>
-<td>list(<code>int</code> length, <code>mixed</code> value): <code>iterable</code></td>
-<td>Fill an array with values</td>
-</tr>
-<tr>
-<td>intersect(<code>array</code> array, <code>array</code> &hellip;arrays): <code>array</code></td>
-<td>Computes the intersection of arrays</td>
-</tr>
-<tr>
-<td>filterList(<code>string</code> iterator, <code>string</code> callback): <code>FilterIterator</code></td>
-<td>Filters elements of an array using a callback function</td>
-</tr>
-<tr>
-<td>mapValues(<code>array</code> input, <code>array{pattern: replacement}</code> values): <code>array</code></td>
-<td>Finds multiple matches in the input and replaces them with a value, with the format <code>{pattern: replacement, pattern: replacement ... }</code></td>
-</tr>
-</tbody>
-</table>
-<h3 id="closures-that-can-be-provided-to-reduce">Closures that can be provided to reduce</h3>
-<table>
-<thead>
-<tr>
-<th>Name</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>join(<code>string</code> separator): <code>closure</code></td>
-<td>Join array elements with a string</td>
-</tr>
-</tbody>
-</table>
-<h3 id="closures-that-can-be-provided-to-map">Closures that can be provided to map</h3>
-<table>
-<thead>
-<tr>
-<th>Name</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>extractData(<code>string</code> path): <code>closure</code></td>
-<td>Retrieves the value of a key in an array or the property of an object</td>
-</tr>
-</tbody>
-</table>
+<h2 id="introduction">Introduction</h2>
+<p>This package will extend the ExpressionLanguage component of Symfony to compile and evaluate your datas with custom functions.</p>
+<p>The package is an example as a base tool to create you own functions that you will use in you Gyroscops projects.</p>
+<p>As example, we will create a function to calculate the modulo</p>
+<h2 id="create-a-php-project-with-composer">Create a PHP project with composer</h2>
+<p>Create you local project :</p>
+<pre><code>`mkdir calculator-expression-language &amp;&amp; cd calculator-expression-language`
+</code></pre>
+<p>Start initialisation with composer :</p>
+<pre><code>`composer init`
+</code></pre>
+<p>Answer the question to have the base of a PHP project</p>
+<p>Your composer.json file should be like this :</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json">
+{
+    <span style="color:#f92672">&#34;name&#34;</span>: <span style="color:#e6db74">&#34;my-project/calculator-expression-language&#34;</span>,
+    <span style="color:#f92672">&#34;type&#34;</span>: <span style="color:#e6db74">&#34;library&#34;</span>,
+    <span style="color:#f92672">&#34;autoload&#34;</span>: {
+        <span style="color:#f92672">&#34;psr-4&#34;</span>: {
+            <span style="color:#f92672">&#34;MyProject\\CalculatorExpressionLanguage\\&#34;</span>: <span style="color:#e6db74">&#34;src/&#34;</span>
+        }
+    },
+    <span style="color:#f92672">&#34;require&#34;</span>: {}
+}
+
+</code></pre></div><p>You should have this file schema :</p>
+<pre tabindex="0"><code class="language-tree" data-lang="tree">src/
+vendor/
+   composer/
+   psr/
+   autoload.php
+composer.json
+composer.lock
+</code></pre><p>Now, we have a base of a PHP project and we can start to develop the specific function</p>
+<h2 id="create-the-specific-expression-language-functions-for-gyroscops">Create the specific Expression Language functions for Gyroscops</h2>
+<ol>
+<li>Add PHP version required :</li>
+</ol>
+<p><code>composer require php:^8.2</code></p>
+<ol start="2">
+<li>Add the symfony/expression-language dependency</li>
+</ol>
+<p>We need this dependency because the package we are developing is extending this Symfony package</p>
+<p><code>composer require symfony/expression-language:*</code></p>
+<ol start="3">
+<li>Create a Provider</li>
+</ol>
+<p>We are creating a Provider to declare this function we will use in our Expression Language</p>
+<p>Create the file <code>src/MyProject/ExpressionLanguageProvider.php</code></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php"><span style="color:#f92672">&lt;?</span><span style="color:#a6e22e">php</span>
+
+<span style="color:#66d9ef">namespace</span> <span style="color:#a6e22e">MyProject\Compoment\CalculatorExpressionLanguage</span>;
+
+<span style="color:#66d9ef">use</span> <span style="color:#a6e22e">Symfony\Component\ExpressionLanguage\ExpressionFunction</span>;
+<span style="color:#66d9ef">use</span> <span style="color:#a6e22e">Symfony\Component\ExpressionLanguage\ExpressionFunctionProviderInterface</span>;
+
+<span style="color:#66d9ef">class</span> <span style="color:#a6e22e">CalculatorExpressionLanguageProvider</span> <span style="color:#66d9ef">implements</span> <span style="color:#a6e22e">ExpressionFunctionProviderInterface</span>
+{
+
+    <span style="color:#e6db74">/**
+</span><span style="color:#e6db74">     * @inheritDoc
+</span><span style="color:#e6db74">     */</span>
+    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">getFunctions</span>()<span style="color:#f92672">:</span> <span style="color:#66d9ef">array</span>
+    {
+        <span style="color:#66d9ef">return</span> [
+            <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">GetRemainder</span>(<span style="color:#e6db74">&#39;getRemainder&#39;</span>),
+        ];
+    }
+}
+</code></pre></div><ol start="4">
+<li>
+<p>Create the class that will contain the code for the expression we want to add to Gyroscops</p>
+<p><code>src/GetRemainder.php</code></p>
+</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php"><span style="color:#f92672">&lt;?</span><span style="color:#a6e22e">php</span>
+
+<span style="color:#66d9ef">declare</span>(<span style="color:#a6e22e">strict_types</span><span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>);
+
+<span style="color:#66d9ef">namespace</span> <span style="color:#a6e22e">MyProject\Component\CalculatorExpressionLanguage</span>;
+
+<span style="color:#66d9ef">use</span> <span style="color:#a6e22e">Symfony\Component\ExpressionLanguage\ExpressionFunction</span>;
+
+<span style="color:#66d9ef">final</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">GetRemainder</span> <span style="color:#66d9ef">extends</span> <span style="color:#a6e22e">ExpressionFunction</span>
+{
+    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">function</span> __construct($name)
+    {
+        <span style="color:#66d9ef">parent</span><span style="color:#f92672">::</span><span style="color:#a6e22e">__construct</span>(
+            $name,
+            $this<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">compile</span>(<span style="color:#f92672">...</span>)<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">bindTo</span>($this),
+            $this<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">evaluate</span>(<span style="color:#f92672">...</span>)<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">bindTo</span>($this)
+        );
+    }
+
+    <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">compile</span>(<span style="color:#a6e22e">integer</span> $value, <span style="color:#a6e22e">integer</span> $divider )<span style="color:#f92672">:</span> <span style="color:#a6e22e">string</span>
+    {
+        <span style="color:#66d9ef">return</span> <span style="color:#e6db74">&lt;&lt;&lt;</span><span style="color:#e6db74">PHP</span><span style="color:#e6db74">
+</span><span style="color:#e6db74">            (function () use (\$input) : integer {
+</span><span style="color:#e6db74">                if(\$divisor === 0){
+</span><span style="color:#e6db74">                    return false;
+</span><span style="color:#e6db74">                }
+</span><span style="color:#e6db74">            
+</span><span style="color:#e6db74">                return \$divider % \$value;
+</span><span style="color:#e6db74">            })()
+</span><span style="color:#e6db74">            </span><span style="color:#e6db74">PHP</span>;
+    }
+
+    <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">evaluate</span>(<span style="color:#66d9ef">array</span> $context, <span style="color:#a6e22e">integer</span> $value, <span style="color:#a6e22e">integer</span> $divisor )<span style="color:#f92672">:</span> <span style="color:#a6e22e">integer</span>
+    {
+        <span style="color:#66d9ef">if</span>($divisor <span style="color:#f92672">===</span> <span style="color:#ae81ff">0</span>){
+            <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">false</span>;
+        }
+        <span style="color:#66d9ef">return</span> $value <span style="color:#f92672">%</span> $divisor;
+    }
+}
+</code></pre></div><p>Now, we can test the code with evaluate methode : &hellip;</p>
+<p>If we need more functions, we can declare its in the Provider and create classes has we did for GetRemainder()</p>
+<h2 id="make-this-package-usable-in-a-gyroscops-project">Make this package usable in a Gyroscops project</h2>
+<h3 id="versioning-the-package-this-git">Versioning the package this Git</h3>
+<p>&hellip;</p>
+<h3 id="pushing-the-package-in-a-repository">Pushing the package in a repository</h3>
+<ul>
+<li>Using Packagist
+&hellip;</li>
+<li>Using directly the repository
+&hellip;</li>
+</ul>
+<h2 id="add-this-package-in-the-gyroscops-project">Add this package in the Gyroscops project</h2>
+<p>In the Gyroscops project (<a href="https://php-etl.github.io/documentation/getting-started/installation/">Getting-starteds/Installation</a>), we can require it with composer :</p>
+<p><code>composer require my-project/calculator-expression-language</code></p>
 </div>
           
-          <p class="post-meta border-bottom pb-3 mb-0 mt-3">Updated on 12 Aug 2021</p>
+          <p class="post-meta border-bottom pb-3 mb-0 mt-3">Updated on 21 Jun 2023</p>
           <nav class="pagination mt-3">
             
             
@@ -582,8 +622,6 @@ and use the <code>Kiboko\Component\ArrayExpressionLanguage\ArrayExpressionLangua
             
             
             
-            
-            
 
             
             
@@ -591,6 +629,9 @@ and use the <code>Kiboko\Component\ArrayExpressionLanguage\ArrayExpressionLangua
             
             
 
+            
+            
+            
             
             
             
@@ -612,13 +653,17 @@ and use the <code>Kiboko\Component\ArrayExpressionLanguage\ArrayExpressionLangua
             
             
             
-
             
             
             
+            
 
+            
             
             
+            
+            
+
             
             
             
@@ -695,6 +740,9 @@ and use the <code>Kiboko\Component\ArrayExpressionLanguage\ArrayExpressionLangua
             
             
             
+            
+            
+            
 
             
             
@@ -743,7 +791,6 @@ and use the <code>Kiboko\Component\ArrayExpressionLanguage\ArrayExpressionLangua
             
             
             
-
             
             
             
@@ -753,13 +800,12 @@ and use the <code>Kiboko\Component\ArrayExpressionLanguage\ArrayExpressionLangua
             
             
             
-            
+
             
             
             
             
             
-
             
             
             
@@ -767,6 +813,7 @@ and use the <code>Kiboko\Component\ArrayExpressionLanguage\ArrayExpressionLangua
             
             
             
+
             
             
             
@@ -807,7 +854,6 @@ and use the <code>Kiboko\Component\ArrayExpressionLanguage\ArrayExpressionLangua
             
             
             
-
             
             
             
@@ -815,6 +861,7 @@ and use the <code>Kiboko\Component\ArrayExpressionLanguage\ArrayExpressionLangua
             
             
             
+
             
             
             
@@ -830,9 +877,9 @@ and use the <code>Kiboko\Component\ArrayExpressionLanguage\ArrayExpressionLangua
             
             
             
+
             
             
-
             
             
             
@@ -841,6 +888,7 @@ and use the <code>Kiboko\Component\ArrayExpressionLanguage\ArrayExpressionLangua
             
             
             
+            
 
             
             
@@ -910,10 +958,6 @@ and use the <code>Kiboko\Component\ArrayExpressionLanguage\ArrayExpressionLangua
             
             
 
-            
-            
-            
-            
             
             
             
@@ -929,8 +973,6 @@ and use the <code>Kiboko\Component\ArrayExpressionLanguage\ArrayExpressionLangua
             
             
             
-            
-            
 
             
             
@@ -948,7 +990,6 @@ and use the <code>Kiboko\Component\ArrayExpressionLanguage\ArrayExpressionLangua
             
             
 
-            
             
             
             
@@ -964,8 +1005,6 @@ and use the <code>Kiboko\Component\ArrayExpressionLanguage\ArrayExpressionLangua
             
             
             
-            
-            
 
             
             
@@ -983,6 +1022,7 @@ and use the <code>Kiboko\Component\ArrayExpressionLanguage\ArrayExpressionLangua
             
             
 
+            
             
             
             
@@ -995,7 +1035,10 @@ and use the <code>Kiboko\Component\ArrayExpressionLanguage\ArrayExpressionLangua
             
             
             
+            
 
+            
+            
             
             
             
@@ -1008,20 +1051,27 @@ and use the <code>Kiboko\Component\ArrayExpressionLanguage\ArrayExpressionLangua
             
             
             
+
             
             
             
+
             
             
             
-
             
             
             
+            
+            
+            
+            
+            
 
             
             
             
+
             
             
             
@@ -1246,10 +1296,10 @@ and use the <code>Kiboko\Component\ArrayExpressionLanguage\ArrayExpressionLangua
             
 
             
-            <a class="nav nav-prev" href="https://php-etl.github.io/documentation/feature/expression-language/satellite-expression-functions/"><i class="ti-arrow-left mr-2"></i> <span class="d-none d-md-block">Satellite Expression Language</span></a>
+            <a class="nav nav-prev" href="https://php-etl.github.io/documentation/feature/expression-language/"><i class="ti-arrow-left mr-2"></i> <span class="d-none d-md-block">Expressions</span></a>
             
             
-            <a class="nav nav-next" href="https://php-etl.github.io/documentation/feature/expression-language/string-expression-functions/"> <span class="d-none d-md-block">String Expression functions</span><i class="ti-arrow-right ml-2"></i></a>
+            <a class="nav nav-next" href="https://php-etl.github.io/documentation/feature/expression-language/satellite-expression-functions/"> <span class="d-none d-md-block">Satellite Expression Language</span><i class="ti-arrow-right ml-2"></i></a>
             
           </nav>
         </div>

@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <title>State  | Gyroscops Documentation</title>
 
-  <meta name="generator" content="Hugo 0.111.3">
+  <meta name="generator" content="Hugo 0.92.2" />
 
   <!-- mobile responsive meta -->
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -452,9 +452,9 @@
 <h2 id="usage">Usage</h2>
 <p>When you configure your pipeline, you can add the configuration of this feature to your step configuration.</p>
 <p>First, you must use the <code>state</code> option.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#f92672">state</span>:
-</span></span><span style="display:flex;"><span>  <span style="color:#75715e"># ...</span>
-</span></span></code></pre></div><h3 id="with-rabbitmq">With RabbitMQ</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">state</span>:
+  <span style="color:#75715e"># ...</span>
+</code></pre></div><h3 id="with-rabbitmq">With RabbitMQ</h3>
 <p>This feature supports sending to RabbitMQ instances.</p>
 <h4 id="basic-configuration">Basic configuration</h4>
 <p>To enable a connection to your RabbitMQ application, you need at least 3 options which are <code>host</code>, <code>vhost</code> and <code>topic</code>.</p>
@@ -463,13 +463,13 @@
 <li><code>vhost</code>: this is the virtual host of your RabbitMQ instance</li>
 <li><code>topic</code>: this is the name of the queue to which the rejects will be sent</li>
 </ul>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#f92672">state</span>:
-</span></span><span style="display:flex;"><span>  <span style="color:#f92672">destinations</span>:
-</span></span><span style="display:flex;"><span>    - <span style="color:#f92672">rabbitmq</span>:
-</span></span><span style="display:flex;"><span>        <span style="color:#f92672">host</span>: <span style="color:#ae81ff">rabbitmq.example.com</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#f92672">vhost</span>: <span style="color:#ae81ff">/</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#f92672">topic</span>: <span style="color:#ae81ff">foo.rejects</span>
-</span></span></code></pre></div><h4 id="additional-options">Additional options</h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">state</span>:
+  <span style="color:#f92672">destinations</span>:
+    - <span style="color:#f92672">rabbitmq</span>:
+        <span style="color:#f92672">host</span>: <span style="color:#ae81ff">rabbitmq.example.com</span>
+        <span style="color:#f92672">vhost</span>: <span style="color:#ae81ff">/</span>
+        <span style="color:#f92672">topic</span>: <span style="color:#ae81ff">foo.rejects</span>
+</code></pre></div><h4 id="additional-options">Additional options</h4>
 <p>This feature additionally takes some options that can be used when configuring to your instance.</p>
 <ul>
 <li><code>user</code>: this is the username of your user</li>
@@ -477,23 +477,23 @@
 <li><code>port</code>: this is the port that your RabbitMQ application uses</li>
 <li><code>exchange</code>: this is the name of the exchange to be used</li>
 </ul>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#f92672">state</span>:
-</span></span><span style="display:flex;"><span>  <span style="color:#f92672">destinations</span>:
-</span></span><span style="display:flex;"><span>    - <span style="color:#f92672">rabbitmq</span>:
-</span></span><span style="display:flex;"><span>        <span style="color:#f92672">host</span>: <span style="color:#ae81ff">rabbitmq.example.com</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#f92672">port</span>: <span style="color:#ae81ff">5672</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#f92672">user</span>: <span style="color:#e6db74">&#39;guest&#39;</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#f92672">password</span>: <span style="color:#e6db74">&#39;guest&#39;</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#f92672">vhost</span>: <span style="color:#ae81ff">/</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#f92672">topic</span>: <span style="color:#ae81ff">foo.rejects</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#f92672">exchange</span>: <span style="color:#e6db74">&#39;amq.direct&#39;</span>
-</span></span></code></pre></div><h3 id="using-a-service">Using a service</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">state</span>:
+  <span style="color:#f92672">destinations</span>:
+    - <span style="color:#f92672">rabbitmq</span>:
+        <span style="color:#f92672">host</span>: <span style="color:#ae81ff">rabbitmq.example.com</span>
+        <span style="color:#f92672">port</span>: <span style="color:#ae81ff">5672</span>
+        <span style="color:#f92672">user</span>: <span style="color:#e6db74">&#39;guest&#39;</span>
+        <span style="color:#f92672">password</span>: <span style="color:#e6db74">&#39;guest&#39;</span>
+        <span style="color:#f92672">vhost</span>: <span style="color:#ae81ff">/</span>
+        <span style="color:#f92672">topic</span>: <span style="color:#ae81ff">foo.rejects</span>
+        <span style="color:#f92672">exchange</span>: <span style="color:#e6db74">&#39;amq.direct&#39;</span>
+</code></pre></div><h3 id="using-a-service">Using a service</h3>
 <p>It&rsquo;s possible to use a service that has been previously defined in the pipeline or the workflow configuration.</p>
 <p>To use a service, you just have to write the name of your service preceded by a <code>@</code>.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#f92672">state</span>:
-</span></span><span style="display:flex;"><span>  <span style="color:#f92672">destinations</span>:
-</span></span><span style="display:flex;"><span>    - <span style="color:#e6db74">&#39;@App\Service\Bar&#39;</span>
-</span></span></code></pre></div><blockquote>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">state</span>:
+  <span style="color:#f92672">destinations</span>:
+    - <span style="color:#e6db74">&#39;@App\Service\Bar&#39;</span>
+</code></pre></div><blockquote>
 <p>Warning : In the case where the states of your steps must all be sent to the same instance with a unique manager,
 you must use services.</p>
 </blockquote>

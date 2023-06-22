@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <title>Installation  | Gyroscops Documentation</title>
 
-  <meta name="generator" content="Hugo 0.111.3">
+  <meta name="generator" content="Hugo 0.92.2" />
 
   <!-- mobile responsive meta -->
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -365,29 +365,29 @@
           </h1>
           
           <div class="content"><p>Starting from here we will work inside a project directory we will name <code>my_project_directory</code>.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>mkdir my_project_directory <span style="color:#f92672">&amp;&amp;</span> cd my_project_directory
-</span></span></code></pre></div><p>Once the project dir is created and you have changed your current directory to it, the first task will be to initialize
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">mkdir my_project_directory <span style="color:#f92672">&amp;&amp;</span> cd my_project_directory
+</code></pre></div><p>Once the project dir is created and you have changed your current directory to it, the first task will be to initialize
 a composer project inside this directory and add all required dependencies.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>composer init --stability<span style="color:#f92672">=</span>dev
-</span></span></code></pre></div><p><img src="composer_init.png" alt="Composer init"></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">composer init
+</code></pre></div><p><img src="composer_init.png" alt="Composer init"></p>
 <p>In the auto-generated <code>composer.json</code> file, add the following lines at the end :</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span>{
-</span></span><span style="display:flex;"><span><span style="color:#75715e">// ...
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#f92672">&#34;config&#34;</span>: {
-</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;bin-dir&#34;</span>: <span style="color:#e6db74">&#34;bin&#34;</span>
-</span></span><span style="display:flex;"><span>    },
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;scripts&#34;</span>: {
-</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;post-install-cmd&#34;</span>: [
-</span></span><span style="display:flex;"><span>            <span style="color:#e6db74">&#34;Kiboko\\Component\\Satellite\\ComposerScripts::postInstall&#34;</span>
-</span></span><span style="display:flex;"><span>        ],
-</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;post-update-cmd&#34;</span>: [
-</span></span><span style="display:flex;"><span>            <span style="color:#e6db74">&#34;Kiboko\\Component\\Satellite\\ComposerScripts::postUpdate&#34;</span>
-</span></span><span style="display:flex;"><span>        ]
-</span></span><span style="display:flex;"><span>    }
-</span></span><span style="display:flex;"><span>}
-</span></span></code></pre></div><p>Now, your environment is ready for the satellite compiler installation. The following command will install it.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>composer require php-etl/satellite
-</span></span></code></pre></div></div>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json">{
+<span style="color:#75715e">// ...
+</span><span style="color:#75715e"></span>    <span style="color:#f92672">&#34;config&#34;</span>: {
+        <span style="color:#f92672">&#34;bin-dir&#34;</span>: <span style="color:#e6db74">&#34;bin&#34;</span>
+    },
+    <span style="color:#f92672">&#34;scripts&#34;</span>: {
+        <span style="color:#f92672">&#34;post-install-cmd&#34;</span>: [
+            <span style="color:#e6db74">&#34;Kiboko\\Component\\Satellite\\ComposerScripts::postInstall&#34;</span>
+        ],
+        <span style="color:#f92672">&#34;post-update-cmd&#34;</span>: [
+            <span style="color:#e6db74">&#34;Kiboko\\Component\\Satellite\\ComposerScripts::postUpdate&#34;</span>
+        ]
+    }
+}
+</code></pre></div><p>Now, your environment is ready for the satellite compiler installation. The following command will install it.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">composer require php-etl/satellite
+</code></pre></div></div>
           
           <p class="post-meta border-bottom pb-3 mb-0 mt-3">Updated on 12 Oct 2021</p>
           <nav class="pagination mt-3">

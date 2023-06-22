@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <title>Satellite Expression Language  | Gyroscops Documentation</title>
 
-  <meta name="generator" content="Hugo 0.111.3">
+  <meta name="generator" content="Hugo 0.92.2" />
 
   <!-- mobile responsive meta -->
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -448,22 +448,22 @@
 <h2 id="usage">Usage</h2>
 <p>To use the functions provided in this package, you need to add the <code>expression_language</code> key to your plugin configuration
 and use the <code>Kiboko\Component\Satellite\ExpressionLanguage\Provider</code> Provider.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#f92672">expression_language</span>:
-</span></span><span style="display:flex;"><span>  - <span style="color:#ae81ff">Kiboko\Component\Satellite\ExpressionLanguage\Provider</span>
-</span></span></code></pre></div><p>To determine that a value in your configuration will be a language expression, you must use the <code>@</code> annotation.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#f92672">foo</span>: <span style="color:#e6db74">&#39;@=env(&#34;MY_ENVIRONMENT_VARIABLE&#34;)&#39;</span>
-</span></span></code></pre></div><h2 id="list-of-available-functions">List of available functions</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">expression_language</span>:
+  - <span style="color:#ae81ff">Kiboko\Component\Satellite\ExpressionLanguage\Provider</span>
+</code></pre></div><p>To determine that a value in your configuration will be a language expression, you must use the <code>@</code> annotation.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">foo</span>: <span style="color:#e6db74">&#39;@=env(&#34;MY_ENVIRONMENT_VARIABLE&#34;)&#39;</span>
+</code></pre></div><h2 id="list-of-available-functions">List of available functions</h2>
 <table>
 <thead>
 <tr>
 <th>Name</th>
-<th>Desctiption</th>
+<th>Description</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>env(<code>string</code> name): <code>string</code>|<code>false</code></td>
-<td>Gets the value of an environment variable</td>
+<td>env(<code>string</code> name): `string</td>
+<td>false`</td>
 </tr>
 <tr>
 <td>envAsFile(<code>string</code> name): <code>string</code></td>
@@ -474,12 +474,16 @@ and use the <code>Kiboko\Component\Satellite\ExpressionLanguage\Provider</code> 
 <td>Create a file</td>
 </tr>
 <tr>
-<td>base64Decode(<code>string</code> name): <code>string</code>|<code>false</code></td>
-<td>Decodes data encoded with Base64</td>
+<td>base64Decode(<code>string</code> name): `string</td>
+<td>false`</td>
 </tr>
 <tr>
 <td>temporaryFile(<code>string</code> name): <code>resource</code></td>
 <td>Create a temporary file</td>
+</tr>
+<tr>
+<td>inSql(<code>array</code> path, <code>string</code> parameterName): <code>string</code></td>
+<td>Writes &ldquo;IN (&hellip;)&rdquo; with as many parameters as there are values under <code>path</code>, in the format: <code>:parameterName_0</code>, <code>:parameterName_1</code>&hellip; To be used in a SQL query <a href="../../../connectivity/sql/#using-an-unknown-number-of-parameters">when searching among an unknown number of values</a>.</td>
 </tr>
 </tbody>
 </table>

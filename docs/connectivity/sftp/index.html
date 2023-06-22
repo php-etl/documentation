@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <title>SFTP  | Gyroscops Documentation</title>
 
-  <meta name="generator" content="Hugo 0.111.3">
+  <meta name="generator" content="Hugo 0.92.2" />
 
   <!-- mobile responsive meta -->
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -594,46 +594,46 @@ computer.</p>
 <h4 id="configuring-your-servers">Configuring your servers</h4>
 <p>Each server must have a <code>host</code>, a <code>port</code> (optional, use port 21 by default), the <code>username</code> and <code>password</code> to connect to the
 server and the <code>base_path</code> of the server where the files will be sent.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#f92672">sftp</span>:
-</span></span><span style="display:flex;"><span>  <span style="color:#f92672">loader</span>:
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">servers</span>:
-</span></span><span style="display:flex;"><span>      - <span style="color:#f92672">host</span>: <span style="color:#e6db74">&#39;http://localhost&#39;</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#f92672">port</span>: <span style="color:#ae81ff">21</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#f92672">username</span>: <span style="color:#e6db74">&#39;root&#39;</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#f92672">password</span>: <span style="color:#e6db74">&#39;root&#39;</span> 
-</span></span><span style="display:flex;"><span>        <span style="color:#f92672">base_path</span>: <span style="color:#ae81ff">/</span>
-</span></span></code></pre></div><p>It&rsquo;s possible to activate the passive mode when connecting to a server with the <code>passive_mode</code> option.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#f92672">sftp</span>:
-</span></span><span style="display:flex;"><span>  <span style="color:#f92672">loader</span>:
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">servers</span>:
-</span></span><span style="display:flex;"><span>      - <span style="color:#75715e"># ...</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#f92672">passif_mode</span>: <span style="color:#66d9ef">true</span>
-</span></span></code></pre></div><h4 id="configuring-your-files">Configuring your files</h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">sftp</span>:
+  <span style="color:#f92672">loader</span>:
+    <span style="color:#f92672">servers</span>:
+      - <span style="color:#f92672">host</span>: <span style="color:#e6db74">&#39;http://localhost&#39;</span>
+        <span style="color:#f92672">port</span>: <span style="color:#ae81ff">21</span>
+        <span style="color:#f92672">username</span>: <span style="color:#e6db74">&#39;root&#39;</span>
+        <span style="color:#f92672">password</span>: <span style="color:#e6db74">&#39;root&#39;</span> 
+        <span style="color:#f92672">base_path</span>: <span style="color:#ae81ff">/</span>
+</code></pre></div><p>It&rsquo;s possible to activate the passive mode when connecting to a server with the <code>passive_mode</code> option.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">sftp</span>:
+  <span style="color:#f92672">loader</span>:
+    <span style="color:#f92672">servers</span>:
+      - <span style="color:#75715e"># ...</span>
+        <span style="color:#f92672">passif_mode</span>: <span style="color:#66d9ef">true</span>
+</code></pre></div><h4 id="configuring-your-files">Configuring your files</h4>
 <p>Next, you need to determine the specific path of each file you are going to upload and its content.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#f92672">sftp</span>:
-</span></span><span style="display:flex;"><span>  <span style="color:#f92672">loader</span>:
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">put</span>:
-</span></span><span style="display:flex;"><span>      - <span style="color:#f92672">path</span>: <span style="color:#ae81ff">my/file/path</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#f92672">content</span>: <span style="color:#e6db74">&#39;my_content&#39;</span>
-</span></span></code></pre></div><p>It&rsquo;s possible to upload only those files that meet a condition using the <code>if</code> option.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#f92672">sftp</span>:
-</span></span><span style="display:flex;"><span>  <span style="color:#f92672">loader</span>:
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">put</span>:
-</span></span><span style="display:flex;"><span>      - <span style="color:#75715e"># ...</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#f92672">if</span>: <span style="color:#e6db74">&#39;@=input[&#34;image&#34;] !== null&#39;</span>
-</span></span></code></pre></div><h3 id="sample-configuration">Sample configuration</h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#f92672">sftp</span>:
-</span></span><span style="display:flex;"><span>  <span style="color:#f92672">loader</span>:
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">servers</span>:
-</span></span><span style="display:flex;"><span>      - <span style="color:#f92672">host</span>: <span style="color:#e6db74">&#39;http://localhost&#39;</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#f92672">port</span>: <span style="color:#ae81ff">21</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#f92672">username</span>: <span style="color:#e6db74">&#39;root&#39;</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#f92672">password</span>: <span style="color:#e6db74">&#39;root&#39;</span> 
-</span></span><span style="display:flex;"><span>        <span style="color:#f92672">base_path</span>: <span style="color:#ae81ff">/</span>
-</span></span><span style="display:flex;"><span>  <span style="color:#f92672">put</span>:
-</span></span><span style="display:flex;"><span>    - <span style="color:#f92672">path</span>: <span style="color:#ae81ff">my/file/path</span>
-</span></span><span style="display:flex;"><span>      <span style="color:#f92672">content</span>: <span style="color:#e6db74">&#39;my_content&#39;</span>
-</span></span></code></pre></div></div>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">sftp</span>:
+  <span style="color:#f92672">loader</span>:
+    <span style="color:#f92672">put</span>:
+      - <span style="color:#f92672">path</span>: <span style="color:#ae81ff">my/file/path</span>
+        <span style="color:#f92672">content</span>: <span style="color:#e6db74">&#39;my_content&#39;</span>
+</code></pre></div><p>It&rsquo;s possible to upload only those files that meet a condition using the <code>if</code> option.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">sftp</span>:
+  <span style="color:#f92672">loader</span>:
+    <span style="color:#f92672">put</span>:
+      - <span style="color:#75715e"># ...</span>
+        <span style="color:#f92672">if</span>: <span style="color:#e6db74">&#39;@=input[&#34;image&#34;] !== null&#39;</span>
+</code></pre></div><h3 id="sample-configuration">Sample configuration</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">sftp</span>:
+  <span style="color:#f92672">loader</span>:
+    <span style="color:#f92672">servers</span>:
+      - <span style="color:#f92672">host</span>: <span style="color:#e6db74">&#39;http://localhost&#39;</span>
+        <span style="color:#f92672">port</span>: <span style="color:#ae81ff">21</span>
+        <span style="color:#f92672">username</span>: <span style="color:#e6db74">&#39;root&#39;</span>
+        <span style="color:#f92672">password</span>: <span style="color:#e6db74">&#39;root&#39;</span> 
+        <span style="color:#f92672">base_path</span>: <span style="color:#ae81ff">/</span>
+  <span style="color:#f92672">put</span>:
+    - <span style="color:#f92672">path</span>: <span style="color:#ae81ff">my/file/path</span>
+      <span style="color:#f92672">content</span>: <span style="color:#e6db74">&#39;my_content&#39;</span>
+</code></pre></div></div>
           
           <p class="post-meta border-bottom pb-3 mb-0 mt-3">Updated on 09 Aug 2021</p>
           <nav class="pagination mt-3">
