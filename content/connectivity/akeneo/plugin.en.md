@@ -14,7 +14,6 @@ weight: 1
 - [Installation](#installation)
 - [Usage](#usage)
     - [Connecting to Akeneo](#connecting-to-akeneo)
-    - [Using the enterprise version](#using-the-enterprise-version)
     - [Building an extractor](#building-an-extractor)
     - [Building a lookup](#building-a-lookup)
     - [Building a conditional lookup](#building-a-conditional-lookup)
@@ -22,6 +21,7 @@ weight: 1
 - [Advanced Usage](#advanced-usage)
     - [Filtering your search](#filtering-your-search)
     - [Using ExpressionLanguage](#using-expressionlanguage)
+- [Available resources](#available-resources)
 --- 
 ## What is it ?
 
@@ -59,30 +59,10 @@ To retrieve these identifiers, you need to add a
 
 Warning: For the `api_url` option, you must remove the `/` at the end of your URL if there is one.
 
-### Using the enterprise edition
-
-The `enterprise` option allows you to use the enterprise features in Akeneo and uses the Enterprise client accordingly. By default, it's set to `false`.
-
-```yaml
-akeneo:
-  enterprise: true
-  # ...
-```
-
 ### Building an extractor
 
-In the configuration of your extractor, you must specify the `type` of resource you will be working on
-and which `method you want to use to retrieve your data.
-
-The list of available resources is quite long depend on the edition of your Akeneo (Enterprise, Growth or Community).
-
-For a Community Edition or Growth Edition, you can choose between this types of resources : `product`, `category`, `attribute`,
-`attributeOption`, `attributeGroup`, `family`, `productMediaFile`, `locale`, `channel`, `currency`, `measureFamily`,
-`associationType`, `familyVariant`, `productModel`.
-
-For an Enterprise Edition, you will be able to use in addition to the resources present in the Community Edition :
-`publishedProduct`, `productModelDraft`, `productDraft`, `asset`, `assetCategory`, `assetTag`, `referenceEntityRecord`,
-`referenceEntityAttribute`, `referenceEntityAttributeOption`, `referenceEntity`.
+In the configuration of your extractor, you must specify the `type` of resource (see [available-resources](#available-resources)) 
+you will be working on and which method you want to use to retrieve your data.
 
 For each resource, the following 3 methods are available :
 - `all` : retrieves all data from a table
@@ -110,7 +90,8 @@ this is called a lookup.
 In the configuration of your lookup, you must specify the `type` of resource you will be working on
 and which `method` you want to use to retrieve your data.
 
-The list of available resources is quite long and depends on the edition of your Akeneo (Enterprise, Growth or Community).
+You can retrieve the list of available resources [here](#available-resources).
+
 The options available are the same as for the [loader](#building-a-loader).
 
 The `merge` option allows you to add data to your dataset, in a sense merging your actual dataset with your new data.
@@ -171,19 +152,8 @@ akeneo:
 
 ### Building a loader
 
-In the configuration of your loader, you must specify the `type` of resource you are going to write
-and which `method` you want to use to insert your data.
-
-The list of available resources is quite long and dépends on your Akeneo edition (Enterprise, Growth or Community).
-
-For a Community Edition or Growth Edition, you can choose between these types of resources: `product`, `category`, `attribute`,
-`attributeOption`, `attributeGroup`, `family`, `productMediaFile`, `locale`, `channel`, `currency`, `measureFamily`,
-`associationType`, `familyVariant`, `productModel`.
-
-For an Enterprise Edition, you will be able to use in addition to the resources present in the Community Edition:
-`publishedProduct`,
-`productModelDraft`, `productDraft`, `asset`, `assetCategory`, `assetTag`, `referenceEntityRecord`, `referenceEntityAttribute`,
-`referenceEntityAttributeOption`, `referenceEntity`.
+In the configuration of your loader, you must specify the `type` of resource (see [available-resources](#available-resources)) 
+you are going to write and which `method` you want to use to insert your data.
 
 For each resource, the following 4 methods are available :
 
@@ -191,6 +161,19 @@ For each resource, the following 4 methods are available :
 - `upsert`: will try to update the resource, otherwise the resource will be created
 - `upsertList`: will try to update a resources list, otherwise the resources will be created
 - `delete`: delete a resource from the table
+
+Depending on the resource and the method used, different options are available :
+
+| Resource                           | Method     | Option(s) required                                 |
+|------------------------------------|------------|----------------------------------------------------|
+| **All resources**                  | upsert     | code                                               |
+| **All resources**                  | upsertList | _No parameters required_                           |
+| **referenceEntityRecord**          | upsert     | reference_entity, code                             |
+| **referenceEntityRecord**          | upsertList | reference_entity                                   |
+| **referenceEntityAttributeOption** | upsert     | reference_entity, reference_entity_attribute, code |
+| **referenceEntityAttributeOption** | upsertList | reference_entity, reference_entity_attribute       |
+| **attributeOption**                | upsert     | attribute_code, code                               |
+| **attributeOption**                | upsertList | attribute_code                                     |
 
 ```yaml
 akeneo:
@@ -248,3 +231,32 @@ akeneo:
     - 'Kiboko\Component\ExpressionLanguage\Akeneo\AkeneoFilterProvider'
   # ...
 ```
+
+## Available resources
+
+| Resources                          | Akeneo's Edition(s)           |
+|------------------------------------|-------------------------------|
+| **product**                        | Community, Growth, Enterprise |
+| **category**                       | Community, Growth, Enterprise |
+| **attribute**                      | Community, Growth, Enterprise |
+| **attributeOption**                | Community, Growth, Enterprise |
+| **attributeGroup**                 | Community, Growth, Enterprise |
+| **family**                         | Community, Growth, Enterprise |
+| **productMediaFile**               | Community, Growth, Enterprise |
+| **locale**                         | Community, Growth, Enterprise |
+| **channel**                        | Community, Growth, Enterprise |
+| **currency**                       | Community, Growth, Enterprise |
+| **measureFamily**                  | Community, Growth, Enterprise |
+| **associationType**                | Community, Growth, Enterprise |
+| **familyVariant**                  | Community, Growth, Enterprise |
+| **productModel**                   | Community, Growth, Enterprise |
+| **publishedProduct**               | Enterprise                    |
+| **productModelDraft**              | Enterprise                    |
+| **productDraft**                   | Enterprise                    |
+| **asset**                          | Enterprise                    |
+| **assetCategory**                  | Enterprise                    |
+| **assetTag**                       | Enterprise                    |
+| **referenceEntityRecord**          | Enterprise                    |
+| **referenceEntityAttribute**       | Enterprise                    |
+| **referenceEntityAttributeOption** | Enterprise                    |
+| **referenceEntity**                | Enterprise                    |
