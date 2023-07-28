@@ -825,6 +825,8 @@ tbody {
   position: sticky;
   top: 95px;
   padding: 60px 0;
+  max-height: calc(100vh - 100px);
+  overflow-y: auto;
 }
 
 .list-styled li.active > a {
