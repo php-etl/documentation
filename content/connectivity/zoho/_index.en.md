@@ -90,8 +90,8 @@ custom:
           - '@Kiboko\Component\Flow\ZohoCRM\Client\Client'
           - '@Monolog\Logger'
           - '@Symfony\Component\Cache\Psr16Cache'
-          - '@Acme\Zoho\LookupMapper' # Your custom mapper class
-          - 'customer_id' # Index of the search criteria.
+          - '@Acme\Custom\LookupMapper' # Your custom mapper class
+          - 'customer_id' # Index of the search criteria, in your line.
                           # In the case of the ContactLookup, it should be an email.
                           # Here we temporarily store the customer email in this field.
                           # LookupMapper will then replace it with the actual ID.
@@ -115,15 +115,15 @@ custom:
           - 'n7g0a4xfqyemc61uertqplks' # Refresh token
       GuzzleHttp\Client: ~
       GuzzleHttp\Psr7\HttpFactory: ~
-          
+
       Symfony\Component\Cache\Psr16Cache:
         arguments:
           - '@Symfony\Component\Cache\Adapter\ApcuAdapter'
       Symfony\Component\Cache\Adapter\ApcuAdapter: ~
-      
+
       # Your custom mapper class
-      Acme\ZohoCRM\LookupMapper: ~
-      
+      Acme\Custom\LookupMapper: ~
+
       Monolog\Logger:
         arguments:
           - 'app'
@@ -134,30 +134,4 @@ custom:
           - 300 # Log level. 300 for Warning, 200 for Info...
 ```
 
-Next, you will need to create the `LookupMapper`, a class that implements `Kiboko\Contract\Mapping\CompiledMapperInterface`.
-Its purpose is to merge the result of the lookup back into the line.
-
-In our case, the line has a field `customer_id` that contains an email.
-We want to replace that email with the actual customer ID that the lookup has found.
-
-`$output` is your line, and `$input` is the result of the Zoho lookup.
-
-```php
-<?php
-
-declare(strict_types=1);
-
-namespace Acme\Zoho;
-
-use Kiboko\Contract\Mapping\CompiledMapperInterface;
-
-class LookupMapper implements CompiledMapperInterface
-{
-    public function __invoke($input, $output = null)
-    {
-        $output['customer_id'] = $input['id'];
-
-        return $output;
-    }
-}
-```
+[Learn how to create your custom mapper class.](../custom/lookup_mapper)

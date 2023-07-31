@@ -33,6 +33,15 @@ This package includes classes and code that you will be able to use in your cust
 ### Building an extractor
 The package includes the following extractor classes: `CustomerExtractor`, `InvoiceExtractor`, `OrderExtractor`, `ProductExtractor`.
 
+Extractor classes take 4 arguments:
+
+| name          | description                                                                                      | type                     | default value |
+|---------------|--------------------------------------------------------------------------------------------------|--------------------------|---------------|
+| logger        | the service that will log exceptions                                                             | \Psr\Log\LoggerInterface |               |
+| client        | client to choose depending on the Magento version. Available clients are: V2_1, V2_2, V2_3, V2_4 | Client                   |               |
+| page size     | (Optional) maximum amount of entities to retrieve in a single payload                            | int                      | 100           |
+| filter groups | (Optional) groups of filters to use when searching for entities                                  | array                    | []            |
+
 ```yaml
 custom:
   extractor:
@@ -41,16 +50,14 @@ custom:
       Kiboko\Component\Flow\Magento2\CustomerExtractor:
         public: true
         arguments:
-          - '@Monolog\Logger'
-          - '@Kiboko\Magento\V2_1\Client' # Client to use depending on the Magento version.
-                                          # Available clients are:
-                                          # V2_1, V2_2, V2_3, V2_4
+          - '@Monolog\Logger' # Logger
+          - '@Kiboko\Magento\V2_1\Client' # Client
           - 500 # Page size
-          - [] # Optional filter groups
+          - [] # Filter groups
 
       Kiboko\Magento\V2_1\Client:
         factory:
-          class: 'Kiboko\Magento\V2_1\Client'
+          class: 'Kiboko\Magento\V2_1\Client' # Client
           method: 'create'
         arguments:
           - '@Http\Client\Common\PluginClient'
@@ -85,6 +92,8 @@ custom:
 #### With filters
 Filters and filter groups can be specified.
 Filters in a group are chained with `OR`. Groups are chained with `AND`.
+
+In this example we will search for customers that were updated after 1985 (`@date_filter_group`) and which have either the ID 17 or 46 (`@id_filter_group`).
 ```yaml
 # ...
       Kiboko\Component\Flow\Magento2\CustomerExtractor:
@@ -94,8 +103,10 @@ Filters in a group are chained with `OR`. Groups are chained with `AND`.
           - '@Kiboko\Magento\V2_1\Client'
           - 500
           - [ '@date_filter_group', '@id_filter_group' ]
-          # updated_at >= 1985-10-26 11:25:00 AND (entity_id = 12 OR entity_id = 64)
-          
+          # updated_at >= 1985-10-26 11:25:00 AND (entity_id = 17 OR entity_id = 46)
+
+# ...
+
       date_filter_group:
         class: Kiboko\Component\Flow\Magento2\FilterGroup
         calls:
@@ -110,24 +121,24 @@ Filters in a group are chained with `OR`. Groups are chained with `AND`.
       id_filter_group:
         class: Kiboko\Component\Flow\Magento2\FilterGroup
         calls:
-          - withFilter: [ '@id_to_check', '@id_that_doesnt_work' ]
+          - withFilter: [ '@id_to_check', '@other_id' ]
       id_to_check:
         class: Kiboko\Component\Flow\Magento2\Filter
         arguments:
           - 'entity_id'
           - 'eq'
-          - '12'   
-      id_that_doesnt_work:
+          - '17'   
+      other_id:
         class: Kiboko\Component\Flow\Magento2\Filter
         arguments:
           - 'entity_id'
           - 'eq'
-          - '64'
+          - '46'
 # ...
 ```
 
 ### Building a lookup
-There is a lookup class for Categories, and one for product attributes.
+There is a lookup class for Categories, and one for product Attributes.
 
 {{< tabs name="lookup">}}
 
@@ -145,15 +156,12 @@ custom:
                                           # V2_1, V2_2, V2_3, V2_4
           - '@Symfony\Component\Cache\Psr16Cache'
           - 'category.%s'
-          - '@Acme\Magento\LookupMapper' # Your custom mapper class
-          - 'category_name' # Index of the search criteria.
-                            # In the case of the CategoryLookup, it should be the category ID.
-                            # Here we temporarily store the category id in this field.
-                            # LookupMapper will then replace it with the actual name.
+          - '@Acme\Custom\LookupMapper' # Your custom mapper class
+          - 'category_name' # Index of the category ID, in your line.
 
       Kiboko\Magento\V2_3\Client:
         factory:
-          class: 'Kiboko\Magento\V2_3\Client'
+          class: 'Kiboko\Magento\V2_3\Client' # Client
           method: 'create'
         arguments:
           - '@Http\Client\Common\PluginClient'
@@ -181,7 +189,7 @@ custom:
       Symfony\Component\Cache\Adapter\ApcuAdapter: ~
 
       # Your custom mapper class
-      Acme\Magento\LookupMapper: ~
+      Acme\Custom\LookupMapper: ~
 
       Monolog\Logger:
         arguments:
@@ -207,13 +215,13 @@ custom:
                                           # V2_1, V2_2, V2_3, V2_4
           - '@Symfony\Component\Cache\Psr16Cache'
           - 'collection.%s' # Cache key
-          - '@Acme\Magento\LookupMapper' # Your custom mapper class
-          - 'Collection' # Index of the search criteria.
-          - 'qv_collection' # attribute code
+          - '@Acme\Custom\LookupMapper' # Your custom mapper class
+          - 'Collection' # Index of the attribute ID, in your line.
+          - 'qv_collection' # Attribute code
 
       Kiboko\Magento\V2_3\Client:
         factory:
-          class: 'Kiboko\Magento\V2_3\Client'
+          class: 'Kiboko\Magento\V2_3\Client' # Client
           method: 'create'
         arguments:
           - '@Http\Client\Common\PluginClient'
@@ -241,7 +249,7 @@ custom:
       Symfony\Component\Cache\Adapter\ApcuAdapter: ~
 
       # Your custom mapper class
-      Acme\Magento\LookupMapper: ~
+      Acme\Custom\LookupMapper: ~
 
       Monolog\Logger:
         arguments:
@@ -255,30 +263,4 @@ custom:
 
 {{< /tabs >}}
 
-Next, you will need to create the `LookupMapper`, a class that implements `Kiboko\Contract\Mapping\CompiledMapperInterface`.
-Its purpose is to merge the result of the lookup back into the line.
-
-In the case of a CategoryLookup, the line has a field `category_name` that contains the category ID.
-We want to replace that ID with the actual category name that the lookup has found.
-
-`$output` is your line, and `$input` is the result of the Magento lookup.
-
-```php
-<?php
-
-declare(strict_types=1);
-
-namespace Acme\Magento;
-
-use Kiboko\Contract\Mapping\CompiledMapperInterface;
-
-class LookupMapper implements CompiledMapperInterface
-{
-    public function __invoke($input, $output = null)
-    {
-        $output['category_name'] = $input->getName();
-
-        return $output;
-    }
-}
-```
+[Learn how to create your custom mapper class.](../custom/lookup_mapper)
