@@ -69,6 +69,14 @@ For each resource, the following 3 methods are available :
 - `get` : retrieve a row from a table
 - `listPerPage` : retrieves a set number of data from a table
 
+Depending on the resource and the method used, different options are available in the YAML configuration :
+
+| Resource          | Method      | Option(s) required    |
+|-------------------|-------------|-----------------------|
+| **All resources** | all         | _No options required_ |
+| **All resources** | get         | identifier            |
+| **All resources** | listPerPage | _No options required_ |
+
 ```yaml
 akeneo:
   extractor:
@@ -162,12 +170,12 @@ For each resource, the following 4 methods are available :
 - `upsertList`: will try to update a resources list, otherwise the resources will be created
 - `delete`: delete a resource from the table
 
-Depending on the resource and the method used, different options are available :
+Depending on the resource and the method used, different options are available in the YAML configuration :
 
 | Resource                           | Method     | Option(s) required                                 |
 |------------------------------------|------------|----------------------------------------------------|
 | **All resources**                  | upsert     | code                                               |
-| **All resources**                  | upsertList | _No parameters required_                           |
+| **All resources**                  | upsertList | _No options required_                              |
 | **referenceEntityRecord**          | upsert     | reference_entity, code                             |
 | **referenceEntityRecord**          | upsertList | reference_entity                                   |
 | **referenceEntityAttributeOption** | upsert     | reference_entity, reference_entity_attribute, code |
@@ -180,8 +188,6 @@ akeneo:
   loader:
     type: products
     method: create
-  logger:
-    type: stderr
   client:
     api_url: 'http://demo.akeneo.com/'
     client_id: '414yc7d9mnk044ko4wswgw80o8ssw80gssos488kk8ogss40ko'
