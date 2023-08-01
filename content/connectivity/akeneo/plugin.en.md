@@ -71,11 +71,16 @@ For each resource, the following 3 methods are available :
 
 Depending on the resource and the method used, different options are available in the YAML configuration :
 
-| Resource          | Method      | Option(s) required    |
-|-------------------|-------------|-----------------------|
-| **All resources** | all         | _No options required_ |
-| **All resources** | get         | identifier            |
-| **All resources** | listPerPage | _No options required_ |
+| Resource                             | Method      | Option(s) required            |
+|--------------------------------------|-------------|-------------------------------|
+| **All resources**                    | all         | _No options required_         |
+| **All resources**                    | get         | identifier                    |
+| **All resources**                    | listPerPage | _No options required_         |
+| **attributeOption**                  | all         | attribute_code                |
+| **attributeOption**                  | get         | attribute_code, code          |
+| **assetManager**                     | all         | asset_family_code             |
+| **assetManager**                     | get         | asset_family_code, asset_code |
+| **productMediaFile, assetMediaFile** | get         | file                          |
 
 ```yaml
 akeneo:
