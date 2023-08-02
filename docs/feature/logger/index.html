@@ -2,13 +2,13 @@
 <html lang="en-us">
   <head>
   <meta charset="utf-8">
-  <title>Logging</title>
+  <title>Logging  | Gyroscops Documentation</title>
 
-  <meta name="generator" content="Hugo 0.82.0" />
+  <meta name="generator" content="Hugo 0.92.2" />
 
   <!-- mobile responsive meta -->
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  
+
   <!-- ** Plugins Needed for the Project ** -->
   <!-- Bootstrap -->
   <link rel="stylesheet" href="https://php-etl.github.io/documentation/plugins/bootstrap/bootstrap.min.css">
@@ -24,7 +24,7 @@
 
   <!-- fonts -->
   <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700&display=swap" rel="stylesheet">
-  
+
   <style>
   :root{
     --primary-color: #22014f;
@@ -34,7 +34,8 @@
     --text-color:#666;
     --text-color-dark:#333;
     --text-color-light:#eee;
-    --white-color:#eee;
+    --white-color:#fff;
+    --light-color:#eee;
     --font-family:Lato;
   }
   </style>
@@ -63,20 +64,20 @@
 
 </head>
 
-  
+
   <body>
     
     <!-- header -->
-    <header class="shadow-bottom sticky-top bg-white">
-      <nav class="navbar navbar-expand-md navbar-light">
+    <header class="sticky-top bg-gradient">
+      <nav class="navbar navbar-expand-md bg-light">
   <div class="container">
-    <a class="navbar-brand px-2" href="/documentation">
+    <a class="navbar-brand" href="/documentation">
       
       
       
       
       <div class="navbar-brand">
-        <img class="img-fluid" src="https://php-etl.github.io/documentation/logo-web.svg" alt="Gyroscops"> Gyroscops
+        <img class="img-fluid" src="https://php-etl.github.io/documentation/logo-web.svg" alt="Gyroscops"><span class="navbar-logo"> Gyroscops</span>
       </div>
       
       
@@ -88,25 +89,24 @@
 
     <div class="collapse navbar-collapse text-center" id="navigation">
       <ul class="navbar-nav ml-auto">
-        <li class="nav-item">
-          <a class="nav-link text-dark" href="/documentation">Home</a>
-        </li>
         
         
         <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle text-dark" href="#" role="button" data-toggle="dropdown"
+          <span class="nav-link dropdown-toggle text-dark" href="#" role="button" data-toggle="dropdown"
             aria-haspopup="true" aria-expanded="false">
             Getting Started
-          </a>
+          </span>
           <div class="dropdown-menu">
             
-            <a class="dropdown-item" href="/documentation/getting-started/setup">Setup</a>
+            <a class="dropdown-item" href="/documentation/getting-started/environment-setup">Environment Setup</a>
             
-            <a class="dropdown-item" href="/documentation/getting-started/satellite">Creating Satellites</a>
+            <a class="dropdown-item" href="/documentation/getting-started/installation">Installation</a>
             
-            <a class="dropdown-item" href="/documentation/getting-started/pipeline">Pipelines</a>
+            <a class="dropdown-item" href="/documentation/getting-started/writing-configuration">Writing Configuration</a>
             
-            <a class="dropdown-item" href="/documentation/getting-started/workflow">Workflows</a>
+            <a class="dropdown-item" href="/documentation/getting-started/compilation">Compilation</a>
+            
+            <a class="dropdown-item" href="/documentation/getting-started/execution">Execution</a>
             
           </div>
         </li>
@@ -114,10 +114,64 @@
         
         
         <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle text-dark" href="#" role="button" data-toggle="dropdown"
+          <span class="nav-link dropdown-toggle text-dark" href="#" role="button" data-toggle="dropdown"
+            aria-haspopup="true" aria-expanded="false">
+            Core concepts
+          </span>
+          <div class="dropdown-menu">
+            
+            <a class="dropdown-item" href="/documentation/core-concept/satellite">Satellite</a>
+            
+            <a class="dropdown-item" href="/documentation/core-concept/pipeline">Pipeline</a>
+            
+            <a class="dropdown-item" href="/documentation/core-concept/workflow">Workflow</a>
+            
+          </div>
+        </li>
+        
+        
+        
+        <li class="nav-item dropdown">
+          <span class="nav-link dropdown-toggle text-dark" href="#" role="button" data-toggle="dropdown"
+            aria-haspopup="true" aria-expanded="false">
+            Connectivity
+          </span>
+          <div class="dropdown-menu">
+            
+            <a class="dropdown-item" href="/documentation/connectivity/akeneo">Akeneo</a>
+            
+            <a class="dropdown-item" href="/documentation/connectivity/csv">CSV files</a>
+            
+            <a class="dropdown-item" href="/documentation/connectivity/custom">Custom connector</a>
+            
+            <a class="dropdown-item" href="/documentation/connectivity/fast-map">FastMap</a>
+            
+            <a class="dropdown-item" href="/documentation/connectivity/ftp">FTP</a>
+            
+            <a class="dropdown-item" href="/documentation/connectivity/sftp">SFTP</a>
+            
+            <a class="dropdown-item" href="/documentation/connectivity/json">JSON</a>
+            
+            <a class="dropdown-item" href="/documentation/connectivity/spreadsheet">Spreadsheet files</a>
+            
+            <a class="dropdown-item" href="/documentation/connectivity/sql">SQL database</a>
+            
+            <a class="dropdown-item" href="/documentation/connectivity/sylius">Sylius</a>
+            
+            <a class="dropdown-item" href="/documentation/connectivity/prestashop">Prestashop</a>
+            
+            <a class="dropdown-item" href="/documentation/connectivity/filtering">Filtering, drop or reject</a>
+            
+          </div>
+        </li>
+        
+        
+        
+        <li class="nav-item dropdown">
+          <span class="nav-link dropdown-toggle text-dark" href="#" role="button" data-toggle="dropdown"
             aria-haspopup="true" aria-expanded="false">
             Features
-          </a>
+          </span>
           <div class="dropdown-menu">
             
             <a class="dropdown-item" href="/documentation/feature/services">Declaring services</a>
@@ -134,59 +188,7 @@
         </li>
         
         
-        
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle text-dark" href="#" role="button" data-toggle="dropdown"
-            aria-haspopup="true" aria-expanded="false">
-            Connectivity
-          </a>
-          <div class="dropdown-menu">
-            
-            <a class="dropdown-item" href="/documentation/connectivity/akeneo">Akeneo</a>
-            
-            <a class="dropdown-item" href="/documentation/connectivity/csv">CSV files</a>
-            
-            <a class="dropdown-item" href="/documentation/connectivity/custom">Custom connector</a>
-            
-            <a class="dropdown-item" href="/documentation/connectivity/fast-map">FastMap</a>
-            
-            <a class="dropdown-item" href="/documentation/connectivity/ftp">FTP</a>
-            
-            <a class="dropdown-item" href="/documentation/connectivity/sftp">SFTP</a>
-            
-            <a class="dropdown-item" href="/documentation/connectivity/nl-json">NL-JSON</a>
-            
-            <a class="dropdown-item" href="/documentation/connectivity/spreadsheet">Spreadsheet files</a>
-            
-            <a class="dropdown-item" href="/documentation/connectivity/sql">SQL database</a>
-            
-            <a class="dropdown-item" href="/documentation/connectivity/sylius">Sylius</a>
-            
-          </div>
-        </li>
-        
-        
       </ul>
-      
-      <select class="lang-list dark" id="select-language"
-        onchange="location = this.value;">
-        
-        
-        
-        
-        
-        
-        
-        
-        <option id="en" value="https://php-etl.github.io/documentation/feature/logger/" selected>English
-        </option>
-        
-        
-        
-        
-        
-        
-      </select>
       
     </div>
   </div>
@@ -206,6 +208,10 @@
           <ul class="list-styled">
             
             <a class="back-btn" href="/documentation"></a>
+            
+              
+            
+              
             
               
               
@@ -277,10 +283,10 @@
 
 
 
-<li data-nav-id="https://php-etl.github.io/documentation/feature/expression-language/array-expression-functions/" title="Array Expression Language" class="sidelist
+<li data-nav-id="https://php-etl.github.io/documentation/feature/expression-language/satellite-expression-functions/" title="Satellite Expression Language" class="sidelist
   ">
-  <a href="https://php-etl.github.io/documentation/feature/expression-language/array-expression-functions/">
-    Array Expression Language
+  <a href="https://php-etl.github.io/documentation/feature/expression-language/satellite-expression-functions/">
+    Satellite Expression Language
   </a>
   
   
@@ -299,10 +305,10 @@
 
 
 
-<li data-nav-id="https://php-etl.github.io/documentation/feature/expression-language/satellite-expression-functions/" title="Satellite Expression Language" class="sidelist
+<li data-nav-id="https://php-etl.github.io/documentation/feature/expression-language/array-expression-functions/" title="Array Expression Language" class="sidelist
   ">
-  <a href="https://php-etl.github.io/documentation/feature/expression-language/satellite-expression-functions/">
-    Satellite Expression Language
+  <a href="https://php-etl.github.io/documentation/feature/expression-language/array-expression-functions/">
+    Array Expression Language
   </a>
   
   
@@ -417,13 +423,11 @@
             
               
             
-              
-            
           </ul>
         </div>
       </div>
       <div class="col-lg-9">
-        <div class="p-lg-5 p-4 bg-white">
+        <div class="p-lg-5 p-4">
           <h1 class="single-title mb-5">
               
               <i class="ti-archive icon d-block"></i>
@@ -440,11 +444,11 @@
 <li><a href="#setting-your-channel">Setting your channel</a></li>
 <li><a href="#setting-one-or-more-destinations">Setting one or more destinations</a>
 <ul>
-<li><a href="#using-elasticsearch">Using ElasticSearch</a></li>
-<li><a href="#using-logstash">Using Logstash</a></li>
 <li><a href="#using-a-stream">Using a Stream</a></li>
+<li><a href="#using-elasticsearch">Using ElasticSearch</a></li>
 <li><a href="#using-syslog">Using Syslog</a></li>
 <li><a href="#using-gelf">Using GELF</a></li>
+<li><a href="#using-logstash">Using Logstash</a></li>
 </ul>
 </li>
 <li><a href="#tcp-protocol-configuration">TCP protocol configuration</a></li>
@@ -465,12 +469,29 @@ use in different steps of your pipeline.</p>
 <h2 id="usage">Usage</h2>
 <h3 id="setting-your-channel">Setting your channel</h3>
 <p>First, you need to specify the name of your channel in which your logs will be written.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">logger</span>:
-  <span style="color:#f92672">channel</span>: <span style="color:#ae81ff">pipeline</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml">- <span style="color:#f92672">example_step</span>:
+    <span style="color:#f92672">foo</span>: <span style="color:#ae81ff">bar</span>
+  <span style="color:#f92672">logger</span>:
+    <span style="color:#f92672">channel</span>: <span style="color:#ae81ff">pipeline</span>
 </code></pre></div><h3 id="setting-one-or-more-destinations">Setting one or more destinations</h3>
 <p>Next, you need to define the destination(s) for your logs. You can choose between several logging systems:
 ElasticSearch, Logstash, Gelf, Syslog and Stream.</p>
-<h4 id="using-elasticsearch">Using ElasticSearch</h4>
+<h4 id="using-a-stream">Using a Stream</h4>
+<blockquote>
+<p>A log stream is an application-specific collection of data that is used as a log.
+The data is written to and read from the log stream by one or more instances of the associated application.</p>
+</blockquote>
+<p>To establish a connection to a stream, you need to define a <code>path</code> and the minimum <a href="#the-different-levels-of-logs-in-php">logging level</a> at which this
+handler will be triggered with the <code>level</code> option.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml">- <span style="color:#f92672">example_step</span>:
+    <span style="color:#f92672">foo</span>: <span style="color:#ae81ff">bar</span>
+  <span style="color:#f92672">logger</span>:
+    <span style="color:#75715e"># ...</span>
+    <span style="color:#f92672">destinations</span>:
+      - <span style="color:#f92672">stream</span>:
+          <span style="color:#f92672">path</span>: <span style="color:#ae81ff">/my/path</span>
+          <span style="color:#f92672">level</span>: <span style="color:#ae81ff">warning</span>
+</code></pre></div><h4 id="using-elasticsearch">Using ElasticSearch</h4>
 <blockquote>
 <p>ElasticSearch is a search and analysis engine.</p>
 </blockquote>
@@ -480,43 +501,15 @@ the <code>level</code> option.</p>
 <p>Note: if you need to install a local ElasticStack environment, check the <a href="../installation/manual">Manual installation</a> documentation.</p>
 </blockquote>
 <p>Next, you need to set the various hosts for your ElasticSearch application.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">logger</span>:
-  <span style="color:#75715e"># ...</span>
-  <span style="color:#f92672">destinations</span>:
-    - <span style="color:#f92672">elasticsearch</span>:
-        <span style="color:#f92672">level</span>: <span style="color:#ae81ff">warning</span>
-        <span style="color:#f92672">hosts</span>:
-          - <span style="color:#ae81ff">http://user:password@elasticsearch.example.com:9200</span>
-</code></pre></div><h4 id="using-logstash">Using Logstash</h4>
-<blockquote>
-<p>Logstash is a software tool for collecting, analysing and storing logs.</p>
-</blockquote>
-<p>When setting up your connection to Logstash, you should first set the name of your application
-using the <code>application_name</code> option and the minimum <a href="#the-different-levels-of-logs-in-php">logging level</a> at which this handler will be
-with the <code>level</code> option.</p>
-<p>Next, you need to set the protocol you want to use: <a href="#amqp-protocol-configuration">AMQP</a> or <a href="#tcp-protocol-configuration">TCP</a>.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">logger</span>:
-  <span style="color:#75715e"># ...</span>
-  <span style="color:#f92672">destinations</span>:
-    - <span style="color:#f92672">logstash</span>:
-        <span style="color:#f92672">application_name</span>: <span style="color:#ae81ff">my_log_system</span>
-        <span style="color:#f92672">level</span>: <span style="color:#ae81ff">warning</span>
-        <span style="color:#f92672">tcp</span>:
-          <span style="color:#f92672">host</span>: <span style="color:#ae81ff">logstash.example.com</span>
-          <span style="color:#f92672">port</span>: <span style="color:#ae81ff">100</span>
-</code></pre></div><h4 id="using-a-stream">Using a Stream</h4>
-<blockquote>
-<p>A log stream is an application-specific collection of data that is used as a log.
-The data is written to and read from the log stream by one or more instances of the associated application.</p>
-</blockquote>
-<p>To establish a connection to a stream, you need to establish a <code>path</code> and the minimum <a href="#the-different-levels-of-logs-in-php">logging level</a> at which this
-handler will be triggered with the this handler will be triggered with the <code>level</code> option.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">logger</span>:
-  <span style="color:#75715e"># ...</span>
-  <span style="color:#f92672">destinations</span>:
-    - <span style="color:#f92672">stream</span>:
-        <span style="color:#f92672">path</span>: <span style="color:#ae81ff">/my/path</span>
-        <span style="color:#f92672">level</span>: <span style="color:#ae81ff">warning</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml">- <span style="color:#f92672">example_step</span>:
+    <span style="color:#f92672">foo</span>: <span style="color:#ae81ff">bar</span>
+  <span style="color:#f92672">logger</span>:
+    <span style="color:#75715e"># ...</span>
+    <span style="color:#f92672">destinations</span>:
+      - <span style="color:#f92672">elasticsearch</span>:
+          <span style="color:#f92672">level</span>: <span style="color:#ae81ff">warning</span>
+          <span style="color:#f92672">hosts</span>:
+           - <span style="color:#ae81ff">http://user:password@elasticsearch.example.com:9200</span>
 </code></pre></div><h4 id="using-syslog">Using Syslog</h4>
 <blockquote>
 <p>Syslog, System Logging Protocol, is a standard protocol used to send system log files or event messages
@@ -531,24 +524,45 @@ then compress and fragment them in a snap.</p>
 <p>The first thing to do is to set the minimum <a href="#the-different-levels-of-logs-in-php">logging level</a> at which this handler will be triggered using the <code>level</code>
 option.</p>
 <p>Next, you need to set the protocol you want to use: <a href="#amqp-protocol-configuration">AMQP</a> or <a href="#tcp-protocol-configuration">TCP</a>.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">logger</span>:
-  <span style="color:#75715e"># ...</span>
-  <span style="color:#f92672">destinations</span>:
-    - <span style="color:#f92672">gelf</span>:
-        <span style="color:#f92672">level</span>: <span style="color:#ae81ff">warning</span>
-        <span style="color:#f92672">amqp</span>:
-          <span style="color:#f92672">queue</span>: <span style="color:#ae81ff">my_queue_nama</span>
-          <span style="color:#f92672">host</span>: <span style="color:#ae81ff">example.com</span>
-          <span style="color:#f92672">port</span>: <span style="color:#ae81ff">100</span>
-          <span style="color:#f92672">login</span>: <span style="color:#ae81ff">foo</span>
-          <span style="color:#f92672">password</span>: <span style="color:#ae81ff">password</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml">- <span style="color:#f92672">example_step</span>:
+    <span style="color:#f92672">foo</span>: <span style="color:#ae81ff">bar</span>
+  <span style="color:#f92672">logger</span>:
+    <span style="color:#75715e"># ...</span>
+    <span style="color:#f92672">destinations</span>:
+      - <span style="color:#f92672">gelf</span>:
+          <span style="color:#f92672">level</span>: <span style="color:#ae81ff">warning</span>
+          <span style="color:#f92672">amqp</span>:
+            <span style="color:#f92672">queue</span>: <span style="color:#ae81ff">my_queue_nama</span>
+            <span style="color:#f92672">host</span>: <span style="color:#ae81ff">example.com</span>
+            <span style="color:#f92672">port</span>: <span style="color:#ae81ff">100</span>
+            <span style="color:#f92672">login</span>: <span style="color:#ae81ff">foo</span>
+            <span style="color:#f92672">password</span>: <span style="color:#ae81ff">password</span>
+</code></pre></div><h4 id="using-logstash">Using Logstash</h4>
+<blockquote>
+<p>Logstash is a software tool for collecting, analysing and storing logs.</p>
+</blockquote>
+<p>When setting up your connection to Logstash, you should first set the name of your application
+using the <code>application_name</code> option and the minimum <a href="#the-different-levels-of-logs-in-php">logging level</a> at which this handler will be
+with the <code>level</code> option.</p>
+<p>Next, you need to set the protocol you want to use: <a href="#tcp-protocol-configuration">TCP</a> or <a href="#amqp-protocol-configuration">AMQP</a>.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml">- <span style="color:#f92672">example_step</span>:
+    <span style="color:#f92672">foo</span>: <span style="color:#ae81ff">bar</span>
+  <span style="color:#f92672">logger</span>:
+    <span style="color:#75715e"># ...</span>
+    <span style="color:#f92672">destinations</span>:
+      - <span style="color:#f92672">logstash</span>:
+          <span style="color:#f92672">application_name</span>: <span style="color:#ae81ff">my_log_system</span>
+          <span style="color:#f92672">level</span>: <span style="color:#ae81ff">warning</span>
+          <span style="color:#f92672">tcp</span>:
+            <span style="color:#f92672">host</span>: <span style="color:#ae81ff">logstash.example.com</span>
+            <span style="color:#f92672">port</span>: <span style="color:#ae81ff">100</span>
 </code></pre></div><h3 id="tcp-protocol-configuration">TCP protocol configuration</h3>
 <blockquote>
 <p>TCP, Transmission Control Protocol, is a standardised protocol for the transmission of data between different
 subscribers to a computer network.</p>
 </blockquote>
 <p>The configuration for TCP is simple, you only need to set the <code>host</code> and <code>port</code> options on your system.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">tcp</span>:
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">tcp</span>:
   <span style="color:#f92672">host</span>: <span style="color:#ae81ff">example.com</span>
   <span style="color:#f92672">port</span>: <span style="color:#ae81ff">100</span>
 </code></pre></div><h3 id="amqp-protocol-configuration">AMQP protocol configuration</h3>
@@ -558,7 +572,7 @@ secure and reliable transfer of messages.</p>
 </blockquote>
 <p>For the AMQP protocol, you need to define the name of your <code>queue</code>, the <code>host</code> and <code>port</code> of your application,
 and the login credentials (<code>login</code> and <code>password</code>).</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">amqp</span>:
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">amqp</span>:
   <span style="color:#f92672">queue</span>: <span style="color:#ae81ff">my_queue_nama</span>
   <span style="color:#f92672">host</span>: <span style="color:#ae81ff">example.com</span>
   <span style="color:#f92672">port</span>: <span style="color:#ae81ff">100</span>
@@ -596,273 +610,6 @@ and the login credentials (<code>login</code> and <code>password</code>).</p>
             
             
             
-
-            
-            
-            
-            
-            
-
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-
-            
-            
-            
-            
-            
-
-            
-            
-            
-            
-            
-            
-            
-            
-
-            
-            
-            
-
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-
-            
-            
-            
-
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-
-            
-            
-            
-
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-
-            
-            
-            
-
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-
-            
-            
-            
-
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-
-            
-            
-            
-
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-
-            
-            
-            
-
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-
-            
-            
-            
-            
-            
-
-            
-            
-            
-            
-            
-            
-            
-            
-
-            
-            
-            
-
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-
-            
-            
-            
-
-            
-            
-            
-            
-            
-            
-            
-            
-
-            
-            
-            
-
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-
-            
-            
-            
-
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-
-            
-            
-            
-
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-
-            
-            
-            
-
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
             
             
 
@@ -1029,6 +776,390 @@ and the login credentials (<code>login</code> and <code>password</code>).</p>
             
             
 
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+
+            
+            
+            
             
             
             
@@ -1142,7 +1273,7 @@ and the login credentials (<code>login</code> and <code>password</code>).</p>
             <a class="nav nav-prev" href="https://php-etl.github.io/documentation/feature/expression-language/string-expression-functions/"><i class="ti-arrow-left mr-2"></i> <span class="d-none d-md-block">String Expression functions</span></a>
             
             
-            <a class="nav nav-next" href="https://php-etl.github.io/documentation/feature/services/"> <span class="d-none d-md-block">Declaring services</span><i class="ti-arrow-right ml-2"></i></a>
+            <a class="nav nav-next" href="https://php-etl.github.io/documentation/feature/rejection/"> <span class="d-none d-md-block">Rejection</span><i class="ti-arrow-right ml-2"></i></a>
             
           </nav>
         </div>
@@ -1162,7 +1293,7 @@ and the login credentials (<code>login</code> and <code>password</code>).</p>
   <div class="container">
     <div class="row align-items-center">
       <div class="col-md-8 text-md-left text-center">
-       <p class="mb-md-0 mb-4">The Gyroscops Documents are copyright © <a href="https://kiboko.fr/">Kiboko</a> 2020, 2021.</p>
+       <p class="mb-md-0 mb-4">The Gyroscops Documentation is copyright © <a href="https://gyroscops.com/">Gyroscops</a> 2020-2023.</p>
       </div>
       <div class="col-md-4 text-md-right text-center">
         <ul class="list-inline">

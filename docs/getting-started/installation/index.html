@@ -2,13 +2,13 @@
 <html lang="en-us">
   <head>
   <meta charset="utf-8">
-  <title>Getting started</title>
+  <title>Installation  | Gyroscops Documentation</title>
 
-  <meta name="generator" content="Hugo 0.82.0" />
+  <meta name="generator" content="Hugo 0.92.2" />
 
   <!-- mobile responsive meta -->
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  
+
   <!-- ** Plugins Needed for the Project ** -->
   <!-- Bootstrap -->
   <link rel="stylesheet" href="https://php-etl.github.io/documentation/plugins/bootstrap/bootstrap.min.css">
@@ -20,11 +20,11 @@
   <link rel="stylesheet" href="https://php-etl.github.io/documentation/plugins/highlight/hybrid.css">
 
   <!--Favicon-->
-  <link rel="icon" href="https://php-etl.github.io/documentation/images/favicon.png" type="image/x-icon">
+  <link rel="icon" href="https://php-etl.github.io/documentation/favicon.png" type="image/x-icon">
 
   <!-- fonts -->
   <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700&display=swap" rel="stylesheet">
-  
+
   <style>
   :root{
     --primary-color: #22014f;
@@ -34,7 +34,8 @@
     --text-color:#666;
     --text-color-dark:#333;
     --text-color-light:#eee;
-    --white-color:#eee;
+    --white-color:#fff;
+    --light-color:#eee;
     --font-family:Lato;
   }
   </style>
@@ -63,20 +64,20 @@
 
 </head>
 
-  
+
   <body>
     
     <!-- header -->
-    <header class="shadow-bottom sticky-top bg-white">
-      <nav class="navbar navbar-expand-md navbar-light">
+    <header class="sticky-top bg-gradient">
+      <nav class="navbar navbar-expand-md bg-light">
   <div class="container">
-    <a class="navbar-brand px-2" href="/documentation">
+    <a class="navbar-brand" href="/documentation">
       
       
       
       
       <div class="navbar-brand">
-        <img class="img-fluid" src="https://php-etl.github.io/documentation/logo-web.svg" alt="Middleware"> Middleware
+        <img class="img-fluid" src="https://php-etl.github.io/documentation/logo-web.svg" alt="Gyroscops"><span class="navbar-logo"> Gyroscops</span>
       </div>
       
       
@@ -88,25 +89,24 @@
 
     <div class="collapse navbar-collapse text-center" id="navigation">
       <ul class="navbar-nav ml-auto">
-        <li class="nav-item">
-          <a class="nav-link text-dark" href="/documentation">Home</a>
-        </li>
         
         
         <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle text-dark" href="#" role="button" data-toggle="dropdown"
+          <span class="nav-link dropdown-toggle text-dark" href="#" role="button" data-toggle="dropdown"
             aria-haspopup="true" aria-expanded="false">
             Getting Started
-          </a>
+          </span>
           <div class="dropdown-menu">
+            
+            <a class="dropdown-item" href="/documentation/getting-started/environment-setup">Environment Setup</a>
             
             <a class="dropdown-item" href="/documentation/getting-started/installation">Installation</a>
             
-            <a class="dropdown-item" href="/documentation/getting-started/satellite">Using Satellite</a>
+            <a class="dropdown-item" href="/documentation/getting-started/writing-configuration">Writing Configuration</a>
             
-            <a class="dropdown-item" href="/documentation/getting-started/pipeline">Pipelines</a>
+            <a class="dropdown-item" href="/documentation/getting-started/compilation">Compilation</a>
             
-            <a class="dropdown-item" href="/documentation/getting-started/workflow">Workflows</a>
+            <a class="dropdown-item" href="/documentation/getting-started/execution">Execution</a>
             
           </div>
         </li>
@@ -114,15 +114,17 @@
         
         
         <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle text-dark" href="#" role="button" data-toggle="dropdown"
+          <span class="nav-link dropdown-toggle text-dark" href="#" role="button" data-toggle="dropdown"
             aria-haspopup="true" aria-expanded="false">
-            Features
-          </a>
+            Core concepts
+          </span>
           <div class="dropdown-menu">
             
-            <a class="dropdown-item" href="/documentation/feature/expression-language">Expression Language</a>
+            <a class="dropdown-item" href="/documentation/core-concept/satellite">Satellite</a>
             
-            <a class="dropdown-item" href="/documentation/feature/logger">Logging</a>
+            <a class="dropdown-item" href="/documentation/core-concept/pipeline">Pipeline</a>
+            
+            <a class="dropdown-item" href="/documentation/core-concept/workflow">Workflow</a>
             
           </div>
         </li>
@@ -130,10 +132,10 @@
         
         
         <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle text-dark" href="#" role="button" data-toggle="dropdown"
+          <span class="nav-link dropdown-toggle text-dark" href="#" role="button" data-toggle="dropdown"
             aria-haspopup="true" aria-expanded="false">
             Connectivity
-          </a>
+          </span>
           <div class="dropdown-menu">
             
             <a class="dropdown-item" href="/documentation/connectivity/akeneo">Akeneo</a>
@@ -148,7 +150,7 @@
             
             <a class="dropdown-item" href="/documentation/connectivity/sftp">SFTP</a>
             
-            <a class="dropdown-item" href="/documentation/connectivity/nl-json">NL-JSON</a>
+            <a class="dropdown-item" href="/documentation/connectivity/json">JSON</a>
             
             <a class="dropdown-item" href="/documentation/connectivity/spreadsheet">Spreadsheet files</a>
             
@@ -156,35 +158,42 @@
             
             <a class="dropdown-item" href="/documentation/connectivity/sylius">Sylius</a>
             
+            <a class="dropdown-item" href="/documentation/connectivity/prestashop">Prestashop</a>
+            
+            <a class="dropdown-item" href="/documentation/connectivity/filtering">Filtering, drop or reject</a>
+            
+          </div>
+        </li>
+        
+        
+        
+        <li class="nav-item dropdown">
+          <span class="nav-link dropdown-toggle text-dark" href="#" role="button" data-toggle="dropdown"
+            aria-haspopup="true" aria-expanded="false">
+            Features
+          </span>
+          <div class="dropdown-menu">
+            
+            <a class="dropdown-item" href="/documentation/feature/services">Declaring services</a>
+            
+            <a class="dropdown-item" href="/documentation/feature/expression-language">Expression Language</a>
+            
+            <a class="dropdown-item" href="/documentation/feature/logger">Logging</a>
+            
+            <a class="dropdown-item" href="/documentation/feature/rejection">Rejection</a>
+            
+            <a class="dropdown-item" href="/documentation/feature/state">State</a>
+            
           </div>
         </li>
         
         
       </ul>
       
-      <select class="lang-list dark" id="select-language"
-        onchange="location = this.value;">
-        
-        
-        
-        
-        
-        
-        
-        
-        <option id="en" value="https://php-etl.github.io/documentation/getting-started/installation/" selected>English
-        </option>
-        
-        
-        
-        
-        
-        
-      </select>
-      
     </div>
   </div>
 </nav>
+
     </header>
     <!-- /header -->
     
@@ -231,29 +240,32 @@
 
 
 
-<li data-nav-id="https://php-etl.github.io/documentation/getting-started/installation/" title="Getting started" class="sidelist
+<li data-nav-id="https://php-etl.github.io/documentation/getting-started/environment-setup/" title="Environment Setup" class="sidelist
+  ">
+  <a href="https://php-etl.github.io/documentation/getting-started/environment-setup/">
+    Environment Setup
+  </a>
+  
+  
+</li>
+
+
+        
+      
+        
+          
+
+
+
+
+
+
+
+
+<li data-nav-id="https://php-etl.github.io/documentation/getting-started/installation/" title="Installation" class="sidelist
   active">
   <a href="https://php-etl.github.io/documentation/getting-started/installation/">
-    Getting started
-  </a>
-  
-  
-    <ul>
-      
-        
-          
-
-
-
-
-
-
-
-
-<li data-nav-id="https://php-etl.github.io/documentation/getting-started/installation/bare-metal/" title="Bare-metal Installation" class="sidelist
-  ">
-  <a href="https://php-etl.github.io/documentation/getting-started/installation/bare-metal/">
-    Bare-metal Installation
+    Installation
   </a>
   
   
@@ -272,10 +284,54 @@
 
 
 
-<li data-nav-id="https://php-etl.github.io/documentation/getting-started/installation/manual/" title="Manual installation" class="sidelist
+<li data-nav-id="https://php-etl.github.io/documentation/getting-started/writing-configuration/" title="Writing Configuration" class="sidelist
   ">
-  <a href="https://php-etl.github.io/documentation/getting-started/installation/manual/">
-    Manual installation
+  <a href="https://php-etl.github.io/documentation/getting-started/writing-configuration/">
+    Writing Configuration
+  </a>
+  
+  
+</li>
+
+
+        
+      
+        
+          
+
+
+
+
+
+
+
+
+<li data-nav-id="https://php-etl.github.io/documentation/getting-started/compilation/" title="Compilation" class="sidelist
+  ">
+  <a href="https://php-etl.github.io/documentation/getting-started/compilation/">
+    Compilation
+  </a>
+  
+  
+</li>
+
+
+        
+      
+        
+          
+
+
+
+
+
+
+
+
+<li data-nav-id="https://php-etl.github.io/documentation/getting-started/execution/" title="Execution" class="sidelist
+  ">
+  <a href="https://php-etl.github.io/documentation/getting-started/execution/">
+    Execution
   </a>
   
   
@@ -289,127 +345,8 @@
 </li>
 
 
-        
-      
-        
-          
-
-
-
-
-
-
-
-
-<li data-nav-id="https://php-etl.github.io/documentation/getting-started/pipeline/" title="Pipeline" class="sidelist
-  ">
-  <a href="https://php-etl.github.io/documentation/getting-started/pipeline/">
-    Pipeline
-  </a>
-  
-  
-</li>
-
-
-        
-      
-        
-          
-
-
-
-
-
-
-
-
-<li data-nav-id="https://php-etl.github.io/documentation/getting-started/satellite/" title="Satellite" class="sidelist
-  ">
-  <a href="https://php-etl.github.io/documentation/getting-started/satellite/">
-    Satellite
-  </a>
-  
-  
-    <ul>
-      
-        
-          
-
-
-
-
-
-
-
-
-<li data-nav-id="https://php-etl.github.io/documentation/getting-started/satellite/php-objects/" title="PHP Objects" class="sidelist
-  ">
-  <a href="https://php-etl.github.io/documentation/getting-started/satellite/php-objects/">
-    PHP Objects
-  </a>
-  
-  
-</li>
-
-
-        
-      
-        
-          
-
-
-
-
-
-
-
-
-<li data-nav-id="https://php-etl.github.io/documentation/getting-started/satellite/yaml-format/" title="The YAML configuration format" class="sidelist
-  ">
-  <a href="https://php-etl.github.io/documentation/getting-started/satellite/yaml-format/">
-    The YAML configuration format
-  </a>
-  
-  
-</li>
-
-
-        
-      
-    </ul>
-  
-</li>
-
-
-        
-      
-        
-          
-
-
-
-
-
-
-
-
-<li data-nav-id="https://php-etl.github.io/documentation/getting-started/workflow/" title="Workflow" class="sidelist
-  ">
-  <a href="https://php-etl.github.io/documentation/getting-started/workflow/">
-    Workflow
-  </a>
-  
-  
-</li>
-
-
-        
-      
-    </ul>
-  
-</li>
-
-
+              
+            
               
             
               
@@ -420,209 +357,39 @@
         </div>
       </div>
       <div class="col-lg-9">
-        <div class="p-lg-5 p-4 bg-white">
-          <h2 class="mb-5">Getting started</h2>
+        <div class="p-lg-5 p-4">
+          <h1 class="single-title mb-5">
+              
+              
+              Installation
+          </h1>
           
-          <div class="content"><h1 id="getting-started">Getting Started</h1>
-<ul>
-<li><a href="#requirements">Requirements</a></li>
-<li><a href="#installation">Installation</a></li>
-<li><a href="#create-your-micro-service">Create your micro-service</a>
-<ul>
-<li><a href="#explanation-of-configuration">Explanation of configuration</a></li>
-</ul>
-</li>
-<li><a href="#running-the-pipeline">Running the pipeline</a></li>
-</ul>
-<hr>
-<h2 id="requirements">Requirements</h2>
-<p>Before creating your first middleware application you must :</p>
-<ul>
-<li><a href="https://getcomposer.org/download/">Install Composer</a> version 2</li>
-<li>Install PHP 8.0 or higher</li>
-<li>A connection to an Akeneo API (minimum read mode)</li>
-</ul>
-<h2 id="installation">Installation</h2>
-<p>After creating a new blank project, open your console terminal and run these commands :</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">composer init
-</code></pre></div><p>You must choose <code>dev</code> as the value for the <code>minimum-stability</code> option.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">composer require php-etl/satellite
-</code></pre></div><p>This command will add the <code>php-etl/satellite</code> package, that is the core of the middleware, to your composer.json.</p>
-<p>Then, choose the plugin(s) you need from <a href="../../connectivity">all our plugins</a>.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">composer require php-etl/akeneo-expression-language php-etl/akeneo-plugin
-</code></pre></div><p>In this example, the command will add the following component packages to your composer.json :</p>
-<ul>
-<li><code>php-etl/akeneo-expression-language</code> provide some config functions useful when working with Akeneo</li>
-<li><code>php-etl/akeneo-plugin</code> is a Middleware plugin dedicated to Akeneo. It allow to connect and use the Akeneo Api</li>
-</ul>
-<p>Finally, in your <code>composer.json</code> file, add the following lines :</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json"><span style="color:#e6db74">&#34;config&#34;</span><span style="color:#960050;background-color:#1e0010">:</span> {
-    <span style="color:#f92672">&#34;bin-dir&#34;</span>: <span style="color:#e6db74">&#34;bin&#34;</span>
-}<span style="color:#960050;background-color:#1e0010">,</span>
-<span style="color:#e6db74">&#34;scripts&#34;</span><span style="color:#960050;background-color:#1e0010">:</span> {
-    <span style="color:#f92672">&#34;post-install-cmd&#34;</span>: [
-        <span style="color:#e6db74">&#34;Kiboko\\Component\\Satellite\\ComposerScripts::postInstall&#34;</span>
-    ],
-    <span style="color:#f92672">&#34;post-update-cmd&#34;</span>: [
-        <span style="color:#e6db74">&#34;Kiboko\\Component\\Satellite\\ComposerScripts::postUpdate&#34;</span>
-    ]
-}
-</code></pre></div><h2 id="create-your-micro-service">Create your micro-service</h2>
-<p>Create a <code>src</code> folder in which you will add a new folder each time you want to create a microservice.
-In this new folder, create a yaml file that will contain your configuration.</p>
-<p>In our case, we have created a <code>pipeline.yaml</code> file in the <code>src/pipeline-akeneo-to-csv/</code> folder which contains the
-following content :</p>
-<!-- raw HTML omitted -->
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#75715e"># src/pipeline-akeneo-to-csv/pipeline.yaml</span>
-
-<span style="color:#f92672">satellite</span>:
-
-  <span style="color:#f92672">filesystem</span>:
-    <span style="color:#f92672">path</span>: <span style="color:#ae81ff">build</span>
-
-  <span style="color:#f92672">composer</span>:
-    <span style="color:#f92672">require</span>:
-      - <span style="color:#e6db74">&#34;php-etl/pipeline:^0.3&#34;</span>
-      - <span style="color:#e6db74">&#34;php-etl/fast-map:^0.2&#34;</span>
-      - <span style="color:#e6db74">&#34;php-etl/csv-flow:^0.2&#34;</span>
-      - <span style="color:#e6db74">&#34;akeneo/api-php-client-ee&#34;</span>
-      - <span style="color:#e6db74">&#34;laminas/laminas-diactoros&#34;</span>
-      - <span style="color:#e6db74">&#34;php-http/guzzle7-adapter&#34;</span>
-
-  <span style="color:#f92672">pipeline</span>:
-    <span style="color:#f92672">steps</span>:
-      - <span style="color:#f92672">akeneo</span>:
-          <span style="color:#f92672">enterprise</span>: <span style="color:#66d9ef">false</span>
-          <span style="color:#f92672">extractor</span>:
-            <span style="color:#f92672">type</span>: <span style="color:#ae81ff">attribute</span>
-            <span style="color:#f92672">method</span>: <span style="color:#ae81ff">all</span>
-          <span style="color:#f92672">client</span>:
-            <span style="color:#f92672">api_url</span>: <span style="color:#e6db74">&#39;api_url&#39;</span>
-            <span style="color:#f92672">client_id</span>: <span style="color:#e6db74">&#39;client_id&#39;</span>
-            <span style="color:#f92672">secret</span>: <span style="color:#e6db74">&#39;secret&#39;</span>
-            <span style="color:#f92672">username</span>: <span style="color:#e6db74">&#39;username&#39;</span>
-            <span style="color:#f92672">password</span>: <span style="color:#e6db74">&#39;password&#39;</span>
-      - <span style="color:#f92672">fastmap</span>:
-          <span style="color:#f92672">map</span>:
-            - <span style="color:#f92672">field</span>: <span style="color:#e6db74">&#39;[code]&#39;</span>
-              <span style="color:#f92672">expression</span>: <span style="color:#e6db74">&#39;input[&#34;code&#34;]&#39;</span>
-            - <span style="color:#f92672">field</span>: <span style="color:#e6db74">&#39;[type]&#39;</span>
-              <span style="color:#f92672">constant</span>: <span style="color:#e6db74">&#39;input[&#34;type&#34;]&#39;</span>
-            - <span style="color:#f92672">field</span>: <span style="color:#e6db74">&#39;[group]&#39;</span>
-              <span style="color:#f92672">expression</span>: <span style="color:#e6db74">&#39;input[&#34;group&#34;]&#39;</span>
-      - <span style="color:#f92672">csv</span>:
-          <span style="color:#f92672">loader</span>:
-            <span style="color:#f92672">file_path</span>: <span style="color:#e6db74">&#39;attributes.csv&#39;</span>
-            <span style="color:#f92672">delimiter</span>: <span style="color:#e6db74">&#39;;&#39;</span>
-            <span style="color:#f92672">enclosure</span>: <span style="color:#e6db74">&#39;&#34;&#39;</span>
-            <span style="color:#f92672">escape</span>: <span style="color:#e6db74">&#39;\&#39;</span>
-
-</code></pre></div><!-- raw HTML omitted -->
-<p>In this example we extract every attribute ok Akeneo and export some informations into a csv file.</p>
-<h3 id="explanation-of-configuration">Explanation of configuration</h3>
-<h4 id="1-the-system-declaration-">1. The system declaration :</h4>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">satellite</span>:
-
-  <span style="color:#f92672">filesystem</span>:
-    <span style="color:#f92672">path</span>: <span style="color:#ae81ff">build</span>
-    
-  <span style="color:#f92672">composer</span>:
-    <span style="color:#f92672">require</span>:
-      - <span style="color:#e6db74">&#34;php-etl/pipeline:^0.3&#34;</span>
-      - <span style="color:#e6db74">&#34;php-etl/fast-map:^0.2&#34;</span>
-      - <span style="color:#e6db74">&#34;php-etl/csv-flow:^0.2&#34;</span>
-      - <span style="color:#e6db74">&#34;akeneo/api-php-client-ee&#34;</span>
-      - <span style="color:#e6db74">&#34;laminas/laminas-diactoros&#34;</span>
-      - <span style="color:#e6db74">&#34;php-http/guzzle7-adapter&#34;</span>
-      
-  <span style="color:#f92672">pipeline</span>:
-    <span style="color:#f92672">steps</span>:
-</code></pre></div><p>To understand the structure of the configuration go to the <a href="../../components/satellite">Satellite documentation</a>.</p>
-<h4 id="2-steps">2. Steps</h4>
-<p>In this pipeline , you have 3 steps.
-The first one, allow you to extract every attribute of the Akeneo instance you are connected to
-(you have to configure your credentials).
-For more explication about this plugin, check the corresponding documentation page.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml">  - <span style="color:#f92672">fastmap</span>:
-      <span style="color:#f92672">map</span>:
-        - <span style="color:#f92672">field</span>: <span style="color:#e6db74">&#39;[code]&#39;</span>
-          <span style="color:#f92672">expression</span>: <span style="color:#e6db74">&#39;input[&#34;code&#34;]&#39;</span>
-        - <span style="color:#f92672">field</span>: <span style="color:#e6db74">&#39;[type]&#39;</span>
-          <span style="color:#f92672">constant</span>: <span style="color:#e6db74">&#39;input[&#34;type&#34;]&#39;</span>
-        - <span style="color:#f92672">field</span>: <span style="color:#e6db74">&#39;[group]&#39;</span>
-          <span style="color:#f92672">expression</span>: <span style="color:#e6db74">&#39;input[&#34;group&#34;]&#39;</span>
-</code></pre></div><p>This step uses the fastmap plugin, like the Akeneo plugin, there is a dedicated documentation.
-This step create associative array with key : code, type and group and fill row with values
-corresponding to the data from the last step, in the input variable, so you access using the
-<a href="https://symfony.com/doc/current/components/expression_language.html">Symfony expression language syntax</a>
-We will see later that you can add some functions in every step , and use them in <code>expression</code>.
-If you want to see what is available in this step, you can use Postman and check the data returned by Akeneo.
-Here, an attribute is represented like that:</p>
-<!-- raw HTML omitted -->
-<pre><code>{
-  &quot;_links&quot;: {
-    &quot;self&quot;: {
-      &quot;href&quot;: &quot;https://myakeneo/api/rest/v1/attributes/accessoires&quot;
+          <div class="content"><p>Starting from here we will work inside a project directory we will name <code>my_project_directory</code>.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">mkdir my_project_directory <span style="color:#f92672">&amp;&amp;</span> cd my_project_directory
+</code></pre></div><p>Once the project dir is created and you have changed your current directory to it, the first task will be to initialize
+a composer project inside this directory and add all required dependencies.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">composer init
+</code></pre></div><p><img src="composer_init.png" alt="Composer init"></p>
+<p>In the auto-generated <code>composer.json</code> file, add the following lines at the end :</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json">{
+<span style="color:#75715e">// ...
+</span><span style="color:#75715e"></span>    <span style="color:#f92672">&#34;config&#34;</span>: {
+        <span style="color:#f92672">&#34;bin-dir&#34;</span>: <span style="color:#e6db74">&#34;bin&#34;</span>
+    },
+    <span style="color:#f92672">&#34;scripts&#34;</span>: {
+        <span style="color:#f92672">&#34;post-install-cmd&#34;</span>: [
+            <span style="color:#e6db74">&#34;Kiboko\\Component\\Satellite\\ComposerScripts::postInstall&#34;</span>
+        ],
+        <span style="color:#f92672">&#34;post-update-cmd&#34;</span>: [
+            <span style="color:#e6db74">&#34;Kiboko\\Component\\Satellite\\ComposerScripts::postUpdate&#34;</span>
+        ]
     }
-  },
-  &quot;code&quot;: &quot;accessories&quot;,
-  &quot;type&quot;: &quot;pim_catalog_text&quot;,
-  &quot;group&quot;: &quot;marketing&quot;,
-  &quot;unique&quot;: false,
-  &quot;useable_as_grid_filter&quot;: false,
-  &quot;allowed_extensions&quot;: [],
-  &quot;metric_family&quot;: null,
-  &quot;default_metric_unit&quot;: null,
-  &quot;reference_data_name&quot;: null,
-  &quot;available_locales&quot;: [],
-  &quot;max_characters&quot;: null,
-  &quot;validation_rule&quot;: null,
-  &quot;validation_regexp&quot;: null,
-  &quot;wysiwyg_enabled&quot;: null,
-  &quot;number_min&quot;: null,
-  &quot;number_max&quot;: null,
-  &quot;decimals_allowed&quot;: null,
-  &quot;negative_allowed&quot;: null,
-  &quot;date_min&quot;: null,
-  &quot;date_max&quot;: null,
-  &quot;max_file_size&quot;: null,
-  &quot;minimum_input_length&quot;: null,
-  &quot;sort_order&quot;: 17,
-  &quot;localizable&quot;: true,
-  &quot;scopable&quot;: false,
-  &quot;labels&quot;: {
-    &quot;fr_FR&quot;: &quot;Accessoires&quot;
-  },
-  &quot;auto_option_sorting&quot;: null,
-  &quot;default_value&quot;: null,
-  &quot;group_labels&quot;: {
-    &quot;fr_FR&quot;: &quot;Marketing&quot;
-  }
 }
-</code></pre><!-- raw HTML omitted -->
-<p>And the last step, exporting the data into a csv file.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml">- <span style="color:#f92672">csv</span>:
-    <span style="color:#f92672">loader</span>:
-        <span style="color:#f92672">file_path</span>: <span style="color:#e6db74">&#39;attributes.csv&#39;</span>
-        <span style="color:#f92672">delimiter</span>: <span style="color:#e6db74">&#39;;&#39;</span>
-        <span style="color:#f92672">enclosure</span>: <span style="color:#e6db74">&#39;&#34;&#39;</span>
-        <span style="color:#f92672">escape</span>: <span style="color:#e6db74">&#39;\&#39;</span>
-</code></pre></div><p>We create a <code>attributes.csv</code> file. The header is the key of the array of the last step (code, type, group).
-And this step will fill data automatically.</p>
-<h2 id="running-the-pipeline">Running the pipeline</h2>
-<p>Once you have completed your configuration, open a console terminal and run these commands :</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#75715e"># php bin/satellite build --path-to-your-config-file</span>
-php bin/satellite build src/pipeline-akeneo-to-csv/pipeline.yaml
-</code></pre></div><p>Warning: You must run this command every time you change your configuration.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#75715e"># php --path-to-the-generated-function-file</span>
-php src/pipeline-akeneo-to-csv/build/function.php
-</code></pre></div><p>The first command will build your microservice and create a folder whose name is the value defined in the path of your
-filesystem in which there is a generated function.php file.</p>
-<p>The second command allows you to run your microservice. The execution of your microservice may take several minutes,
-so please wait until the execution is completed.</p>
-</div>
+</code></pre></div><p>Now, your environment is ready for the satellite compiler installation. The following command will install it.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">composer require php-etl/satellite
+</code></pre></div></div>
           
-          <p class="post-meta border-bottom pb-3 mb-0 mt-3">Updated on 12 Jul 2020</p>
+          <p class="post-meta border-bottom pb-3 mb-0 mt-3">Updated on 12 Oct 2021</p>
           <nav class="pagination mt-3">
             
             
@@ -671,9 +438,23 @@ so please wait until the execution is completed.</p>
             
             
             
+
+            
+            
+            
+            
+            
+            
             
             
 
+            
+            
+            
+
+            
+            
+            
             
             
             
@@ -698,6 +479,9 @@ so please wait until the execution is completed.</p>
             
             
             
+            
+            
+            
 
             
             
@@ -730,15 +514,27 @@ so please wait until the execution is completed.</p>
             
             
             
+
             
             
             
 
+            
+            
+            
             
             
             
+            
+            
+            
+            
+            
 
+            
             
+            
+
             
             
             
@@ -750,10 +546,17 @@ so please wait until the execution is completed.</p>
             
             
             
+
             
             
             
 
+            
+            
+            
+            
+            
+            
             
             
             
@@ -763,6 +566,10 @@ so please wait until the execution is completed.</p>
             
             
             
+
+            
+            
+            
             
             
             
@@ -800,6 +607,9 @@ so please wait until the execution is completed.</p>
             
             
             
+            
+            
+            
 
             
             
@@ -832,6 +642,7 @@ so please wait until the execution is completed.</p>
             
             
             
+
             
             
             
@@ -839,7 +650,6 @@ so please wait until the execution is completed.</p>
             
             
             
-
             
             
             
@@ -886,6 +696,7 @@ so please wait until the execution is completed.</p>
             
             
             
+            
 
             
             
@@ -905,16 +716,29 @@ so please wait until the execution is completed.</p>
             
             
             
+
             
             
             
 
+            
+            
+            
+            
             
             
             
             
             
+            
+            
+
+            
+            
+            
 
+            
+            
             
             
             
@@ -923,6 +747,7 @@ so please wait until the execution is completed.</p>
             
             
             
+            
 
             
             
@@ -936,14 +761,19 @@ so please wait until the execution is completed.</p>
             
             
             
-
+            
             
             
             
+            
+            
 
+            
+            
             
             
             
+
             
             
             
@@ -957,20 +787,32 @@ so please wait until the execution is completed.</p>
             
             
 
+            
+            
+            
+            
+            
+            
             
             
             
             
             
+
+            
+            
             
             
             
+
+            
             
             
             
             
             
             
+            
 
             
             
@@ -1008,6 +850,7 @@ so please wait until the execution is completed.</p>
             
             
 
+            
             
             
             
@@ -1019,6 +862,8 @@ so please wait until the execution is completed.</p>
             
             
             
+            
+            
 
             
             
@@ -1056,6 +901,12 @@ so please wait until the execution is completed.</p>
             
             
 
+            
+            
+            
+            
+            
+            
             
             
             
@@ -1064,17 +915,26 @@ so please wait until the execution is completed.</p>
             
             
             
+
+            
+            
             
             
             
 
+            
+            
+            
+            
             
             
             
+            
 
             
             
             
+
             
             
             
@@ -1122,9 +982,9 @@ so please wait until the execution is completed.</p>
             
             
             
+
             
             
-
             
             
             
@@ -1133,11 +993,15 @@ so please wait until the execution is completed.</p>
             
             
             
+            
 
             
             
             
 
+            
+            
+            
             
             
             
@@ -1153,7 +1017,10 @@ so please wait until the execution is completed.</p>
             
             
             
+            
+            
 
+            
             
             
             
@@ -1161,15 +1028,27 @@ so please wait until the execution is completed.</p>
             
             
             
+
+            
             
+            
 
+            
             
             
             
+            
+            
+            
+            
+            
+            
+            
 
             
             
             
+
             
             
             
@@ -1198,10 +1077,10 @@ so please wait until the execution is completed.</p>
             
 
             
-            <a class="nav nav-prev" href="https://php-etl.github.io/documentation/getting-started/workflow/"><i class="ti-arrow-left mr-2"></i> <span class="d-none d-md-block">Workflow</span></a>
+            <a class="nav nav-prev" href="https://php-etl.github.io/documentation/getting-started/environment-setup/"><i class="ti-arrow-left mr-2"></i> <span class="d-none d-md-block">Environment Setup</span></a>
             
             
-            <a class="nav nav-next" href="https://php-etl.github.io/documentation/getting-started/installation/bare-metal/"> <span class="d-none d-md-block">Bare-metal Installation</span><i class="ti-arrow-right ml-2"></i></a>
+            <a class="nav nav-next" href="https://php-etl.github.io/documentation/getting-started/writing-configuration/"> <span class="d-none d-md-block">Writing Configuration</span><i class="ti-arrow-right ml-2"></i></a>
             
           </nav>
         </div>
@@ -1221,7 +1100,7 @@ so please wait until the execution is completed.</p>
   <div class="container">
     <div class="row align-items-center">
       <div class="col-md-8 text-md-left text-center">
-       <p class="mb-md-0 mb-4">The Middleware Documents are copyright © <a href="https://kiboko.fr/">Kiboko</a> 2020, 2021.</p>
+       <p class="mb-md-0 mb-4">The Gyroscops Documentation is copyright © <a href="https://gyroscops.com/">Gyroscops</a> 2020-2023.</p>
       </div>
       <div class="col-md-4 text-md-right text-center">
         <ul class="list-inline">

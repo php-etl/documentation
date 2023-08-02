@@ -2,13 +2,13 @@
 <html lang="en-us">
   <head>
   <meta charset="utf-8">
-  <title>Akeneo</title>
+  <title>Akeneo  | Gyroscops Documentation</title>
 
-  <meta name="generator" content="Hugo 0.82.0" />
+  <meta name="generator" content="Hugo 0.92.2" />
 
   <!-- mobile responsive meta -->
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  
+
   <!-- ** Plugins Needed for the Project ** -->
   <!-- Bootstrap -->
   <link rel="stylesheet" href="https://php-etl.github.io/documentation/plugins/bootstrap/bootstrap.min.css">
@@ -24,7 +24,7 @@
 
   <!-- fonts -->
   <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700&display=swap" rel="stylesheet">
-  
+
   <style>
   :root{
     --primary-color: #22014f;
@@ -34,7 +34,8 @@
     --text-color:#666;
     --text-color-dark:#333;
     --text-color-light:#eee;
-    --white-color:#eee;
+    --white-color:#fff;
+    --light-color:#eee;
     --font-family:Lato;
   }
   </style>
@@ -63,20 +64,20 @@
 
 </head>
 
-  
+
   <body>
     
     <!-- header -->
-    <header class="shadow-bottom sticky-top bg-white">
-      <nav class="navbar navbar-expand-md navbar-light">
+    <header class="sticky-top bg-gradient">
+      <nav class="navbar navbar-expand-md bg-light">
   <div class="container">
-    <a class="navbar-brand px-2" href="/documentation">
+    <a class="navbar-brand" href="/documentation">
       
       
       
       
       <div class="navbar-brand">
-        <img class="img-fluid" src="https://php-etl.github.io/documentation/logo-web.svg" alt="Gyroscops"> Gyroscops
+        <img class="img-fluid" src="https://php-etl.github.io/documentation/logo-web.svg" alt="Gyroscops"><span class="navbar-logo"> Gyroscops</span>
       </div>
       
       
@@ -88,25 +89,24 @@
 
     <div class="collapse navbar-collapse text-center" id="navigation">
       <ul class="navbar-nav ml-auto">
-        <li class="nav-item">
-          <a class="nav-link text-dark" href="/documentation">Home</a>
-        </li>
         
         
         <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle text-dark" href="#" role="button" data-toggle="dropdown"
+          <span class="nav-link dropdown-toggle text-dark" href="#" role="button" data-toggle="dropdown"
             aria-haspopup="true" aria-expanded="false">
             Getting Started
-          </a>
+          </span>
           <div class="dropdown-menu">
             
-            <a class="dropdown-item" href="/documentation/getting-started/setup">Setup</a>
+            <a class="dropdown-item" href="/documentation/getting-started/environment-setup">Environment Setup</a>
             
-            <a class="dropdown-item" href="/documentation/getting-started/satellite">Creating Satellites</a>
+            <a class="dropdown-item" href="/documentation/getting-started/installation">Installation</a>
             
-            <a class="dropdown-item" href="/documentation/getting-started/pipeline">Pipelines</a>
+            <a class="dropdown-item" href="/documentation/getting-started/writing-configuration">Writing Configuration</a>
             
-            <a class="dropdown-item" href="/documentation/getting-started/workflow">Workflows</a>
+            <a class="dropdown-item" href="/documentation/getting-started/compilation">Compilation</a>
+            
+            <a class="dropdown-item" href="/documentation/getting-started/execution">Execution</a>
             
           </div>
         </li>
@@ -114,10 +114,64 @@
         
         
         <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle text-dark" href="#" role="button" data-toggle="dropdown"
+          <span class="nav-link dropdown-toggle text-dark" href="#" role="button" data-toggle="dropdown"
+            aria-haspopup="true" aria-expanded="false">
+            Core concepts
+          </span>
+          <div class="dropdown-menu">
+            
+            <a class="dropdown-item" href="/documentation/core-concept/satellite">Satellite</a>
+            
+            <a class="dropdown-item" href="/documentation/core-concept/pipeline">Pipeline</a>
+            
+            <a class="dropdown-item" href="/documentation/core-concept/workflow">Workflow</a>
+            
+          </div>
+        </li>
+        
+        
+        
+        <li class="nav-item dropdown">
+          <span class="nav-link dropdown-toggle text-dark" href="#" role="button" data-toggle="dropdown"
+            aria-haspopup="true" aria-expanded="false">
+            Connectivity
+          </span>
+          <div class="dropdown-menu">
+            
+            <a class="dropdown-item" href="/documentation/connectivity/akeneo">Akeneo</a>
+            
+            <a class="dropdown-item" href="/documentation/connectivity/csv">CSV files</a>
+            
+            <a class="dropdown-item" href="/documentation/connectivity/custom">Custom connector</a>
+            
+            <a class="dropdown-item" href="/documentation/connectivity/fast-map">FastMap</a>
+            
+            <a class="dropdown-item" href="/documentation/connectivity/ftp">FTP</a>
+            
+            <a class="dropdown-item" href="/documentation/connectivity/sftp">SFTP</a>
+            
+            <a class="dropdown-item" href="/documentation/connectivity/json">JSON</a>
+            
+            <a class="dropdown-item" href="/documentation/connectivity/spreadsheet">Spreadsheet files</a>
+            
+            <a class="dropdown-item" href="/documentation/connectivity/sql">SQL database</a>
+            
+            <a class="dropdown-item" href="/documentation/connectivity/sylius">Sylius</a>
+            
+            <a class="dropdown-item" href="/documentation/connectivity/prestashop">Prestashop</a>
+            
+            <a class="dropdown-item" href="/documentation/connectivity/filtering">Filtering, drop or reject</a>
+            
+          </div>
+        </li>
+        
+        
+        
+        <li class="nav-item dropdown">
+          <span class="nav-link dropdown-toggle text-dark" href="#" role="button" data-toggle="dropdown"
             aria-haspopup="true" aria-expanded="false">
             Features
-          </a>
+          </span>
           <div class="dropdown-menu">
             
             <a class="dropdown-item" href="/documentation/feature/services">Declaring services</a>
@@ -134,59 +188,7 @@
         </li>
         
         
-        
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle text-dark" href="#" role="button" data-toggle="dropdown"
-            aria-haspopup="true" aria-expanded="false">
-            Connectivity
-          </a>
-          <div class="dropdown-menu">
-            
-            <a class="dropdown-item" href="/documentation/connectivity/akeneo">Akeneo</a>
-            
-            <a class="dropdown-item" href="/documentation/connectivity/csv">CSV files</a>
-            
-            <a class="dropdown-item" href="/documentation/connectivity/custom">Custom connector</a>
-            
-            <a class="dropdown-item" href="/documentation/connectivity/fast-map">FastMap</a>
-            
-            <a class="dropdown-item" href="/documentation/connectivity/ftp">FTP</a>
-            
-            <a class="dropdown-item" href="/documentation/connectivity/sftp">SFTP</a>
-            
-            <a class="dropdown-item" href="/documentation/connectivity/nl-json">NL-JSON</a>
-            
-            <a class="dropdown-item" href="/documentation/connectivity/spreadsheet">Spreadsheet files</a>
-            
-            <a class="dropdown-item" href="/documentation/connectivity/sql">SQL database</a>
-            
-            <a class="dropdown-item" href="/documentation/connectivity/sylius">Sylius</a>
-            
-          </div>
-        </li>
-        
-        
       </ul>
-      
-      <select class="lang-list dark" id="select-language"
-        onchange="location = this.value;">
-        
-        
-        
-        
-        
-        
-        
-        
-        <option id="en" value="https://php-etl.github.io/documentation/connectivity/akeneo/" selected>English
-        </option>
-        
-        
-        
-        
-        
-        
-      </select>
       
     </div>
   </div>
@@ -206,10 +208,6 @@
           <ul class="list-styled">
             
             <a class="back-btn" href="/documentation"></a>
-            
-              
-            
-              
             
               
               
@@ -259,10 +257,10 @@
 
 
 
-<li data-nav-id="https://php-etl.github.io/documentation/connectivity/akeneo/expression-language/" title="Akeneo expression language functions" class="sidelist
+<li data-nav-id="https://php-etl.github.io/documentation/connectivity/akeneo/plugin/" title="Akeneo plugin" class="sidelist
   ">
-  <a href="https://php-etl.github.io/documentation/connectivity/akeneo/expression-language/">
-    Akeneo expression language functions
+  <a href="https://php-etl.github.io/documentation/connectivity/akeneo/plugin/">
+    Akeneo plugin
   </a>
   
   
@@ -281,10 +279,10 @@
 
 
 
-<li data-nav-id="https://php-etl.github.io/documentation/connectivity/akeneo/plugin/" title="Akeneo plugin" class="sidelist
+<li data-nav-id="https://php-etl.github.io/documentation/connectivity/akeneo/expression-language/" title="Akeneo expression language functions" class="sidelist
   ">
-  <a href="https://php-etl.github.io/documentation/connectivity/akeneo/plugin/">
-    Akeneo plugin
+  <a href="https://php-etl.github.io/documentation/connectivity/akeneo/expression-language/">
+    Akeneo expression language functions
   </a>
   
   
@@ -398,10 +396,10 @@
 
 
 
-<li data-nav-id="https://php-etl.github.io/documentation/connectivity/nl-json/" title="NL-JSON" class="sidelist
+<li data-nav-id="https://php-etl.github.io/documentation/connectivity/sftp/" title="SFTP" class="sidelist
   ">
-  <a href="https://php-etl.github.io/documentation/connectivity/nl-json/">
-    NL-JSON
+  <a href="https://php-etl.github.io/documentation/connectivity/sftp/">
+    SFTP
   </a>
   
   
@@ -420,10 +418,10 @@
 
 
 
-<li data-nav-id="https://php-etl.github.io/documentation/connectivity/sftp/" title="SFTP" class="sidelist
+<li data-nav-id="https://php-etl.github.io/documentation/connectivity/json/" title="JSON" class="sidelist
   ">
-  <a href="https://php-etl.github.io/documentation/connectivity/sftp/">
-    SFTP
+  <a href="https://php-etl.github.io/documentation/connectivity/json/">
+    JSON
   </a>
   
   
@@ -498,6 +496,50 @@
 
         
       
+        
+          
+
+
+
+
+
+
+
+
+<li data-nav-id="https://php-etl.github.io/documentation/connectivity/prestashop/" title="Prestashop" class="sidelist
+  ">
+  <a href="https://php-etl.github.io/documentation/connectivity/prestashop/">
+    Prestashop
+  </a>
+  
+  
+</li>
+
+
+        
+      
+        
+          
+
+
+
+
+
+
+
+
+<li data-nav-id="https://php-etl.github.io/documentation/connectivity/filtering/" title="Filtering, drop or reject" class="sidelist
+  ">
+  <a href="https://php-etl.github.io/documentation/connectivity/filtering/">
+    Filtering, drop or reject
+  </a>
+  
+  
+</li>
+
+
+        
+      
     </ul>
   
 </li>
@@ -507,11 +549,17 @@
             
               
             
+              
+            
+              
+            
+              
+            
           </ul>
         </div>
       </div>
       <div class="col-lg-9">
-        <div class="p-lg-5 p-4 bg-white">
+        <div class="p-lg-5 p-4">
           <h1 class="single-title mb-5">
               
               
@@ -524,19 +572,12 @@
               Akeneo
           </h1>
           
-          <div class="content"><ul>
-<li><a href="#goal">Goal</a></li>
-<li><a href="#the-akeneo-plugin-for-etl-pipeline">The Akeneo plugin for ETL Pipeline</a></li>
-<li><a href="#the-akeneo-expression-functions">The Akeneo expression functions</a></li>
-</ul>
-<hr>
-<h3 id="goal">Goal</h3>
-<p>The packages listed below aims at the integration of <a href="https://www.akeneo.com">Akeneo PIM</a> into the <a href="../../components/pipeline">ETL Pipeline</a>
-and <a href="../../components/satellite">Satellite</a> stacks.</p>
+          <div class="content"><p>The packages listed below aims at the integration of <a href="https://www.akeneo.com">Akeneo PIM</a> into the <a href="../../core-concept/pipeline">ETL Pipeline</a>
+and <a href="../../core-concept/satellite">Satellite</a> stacks.</p>
 <p>The tools built for Akeneo is composed of ETL capacities and data processing functions to be used in
-<a href="../../components/fast-map">Fast Map</a>.</p>
+<a href="../fast-map">Fast Map</a>.</p>
 <h3 id="the-akeneo-plugin-for-etl-pipeline">The Akeneo plugin for ETL Pipeline</h3>
-<p>This plugin will enable Akeneo connectivity to the <a href="../../components/pipeline">ETL Pipeline</a>, in order to
+<p>This plugin will enable Akeneo connectivity to the <a href="../../core-concept/pipeline">ETL Pipeline</a>, in order to
 read and write from and to Akeneo PIM. This integration is compatible with both
 <a href="https://github.com/akeneo/api-php-client-ee">Akeneo Enterprise Edition client</a>
 and the <a href="https://github.com/akeneo/api-php-client">Akeneo Community Edition client</a>.</p>
@@ -575,271 +616,6 @@ data formats and concepts.</p>
             
             
             
-            
-            
-
-            
-            
-            
-            
-            
-
-            
-            
-            
-            
-            
-            
-            
-            
-
-            
-            
-            
-            
-            
-
-            
-            
-            
-            
-            
-            
-            
-            
-
-            
-            
-            
-
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-
-            
-            
-            
-
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-
-            
-            
-            
-
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-
-            
-            
-            
-
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-
-            
-            
-            
-
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-
-            
-            
-            
-
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-
-            
-            
-            
-
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-
-            
-            
-            
-            
-            
-
-            
-            
-            
-            
-            
-            
-            
-            
-
-            
-            
-            
-
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-
-            
-            
-            
-
-            
-            
-            
-            
-            
-            
-            
-            
-
-            
-            
-            
-
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-
-            
-            
-            
-
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-
-            
-            
-            
-
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-
-            
-            
-            
-
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
 
             
             
@@ -1008,6 +784,382 @@ data formats and concepts.</p>
             
             
 
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+
+            
+            
+            
             
             
             
@@ -1121,7 +1273,7 @@ data formats and concepts.</p>
             <a class="nav nav-prev" href="https://php-etl.github.io/documentation/connectivity/"><i class="ti-arrow-left mr-2"></i> <span class="d-none d-md-block">Connectivities</span></a>
             
             
-            <a class="nav nav-next" href="https://php-etl.github.io/documentation/connectivity/akeneo/expression-language/"> <span class="d-none d-md-block">Akeneo expression language functions</span><i class="ti-arrow-right ml-2"></i></a>
+            <a class="nav nav-next" href="https://php-etl.github.io/documentation/connectivity/akeneo/plugin/"> <span class="d-none d-md-block">Akeneo plugin</span><i class="ti-arrow-right ml-2"></i></a>
             
           </nav>
         </div>
@@ -1141,7 +1293,7 @@ data formats and concepts.</p>
   <div class="container">
     <div class="row align-items-center">
       <div class="col-md-8 text-md-left text-center">
-       <p class="mb-md-0 mb-4">The Gyroscops Documents are copyright © <a href="https://kiboko.fr/">Kiboko</a> 2020, 2021.</p>
+       <p class="mb-md-0 mb-4">The Gyroscops Documentation is copyright © <a href="https://gyroscops.com/">Gyroscops</a> 2020-2023.</p>
       </div>
       <div class="col-md-4 text-md-right text-center">
         <ul class="list-inline">

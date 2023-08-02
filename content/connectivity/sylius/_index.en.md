@@ -5,7 +5,7 @@ draft: false
 type: "plugins"
 logo: "sylius"
 description: "Connect your Sylius e-commerce through pipelines"
-weight: 3
+weight: 10
 ---
 
 {{< feature-state for_mw_version="0.1" state="alpha" >}}
@@ -25,7 +25,7 @@ weight: 3
 
 ## What is it ?
 
-The Sylius plugin will enable Sylius connectivity to the [Pipeline](../../components/pipeline), in order to read and write from and to Sylius.
+The Sylius plugin will enable Sylius connectivity to the [Pipeline](../../core-concept/pipeline), in order to read and write from and to Sylius.
 
 ## Installation
 

@@ -2,13 +2,13 @@
 <html lang="en-us">
   <head>
   <meta charset="utf-8">
-  <title>Spreadsheet</title>
+  <title>Spreadsheet  | Gyroscops Documentation</title>
 
-  <meta name="generator" content="Hugo 0.82.0" />
+  <meta name="generator" content="Hugo 0.92.2" />
 
   <!-- mobile responsive meta -->
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  
+
   <!-- ** Plugins Needed for the Project ** -->
   <!-- Bootstrap -->
   <link rel="stylesheet" href="https://php-etl.github.io/documentation/plugins/bootstrap/bootstrap.min.css">
@@ -24,7 +24,7 @@
 
   <!-- fonts -->
   <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700&display=swap" rel="stylesheet">
-  
+
   <style>
   :root{
     --primary-color: #22014f;
@@ -34,7 +34,8 @@
     --text-color:#666;
     --text-color-dark:#333;
     --text-color-light:#eee;
-    --white-color:#eee;
+    --white-color:#fff;
+    --light-color:#eee;
     --font-family:Lato;
   }
   </style>
@@ -63,20 +64,20 @@
 
 </head>
 
-  
+
   <body>
     
     <!-- header -->
-    <header class="shadow-bottom sticky-top bg-white">
-      <nav class="navbar navbar-expand-md navbar-light">
+    <header class="sticky-top bg-gradient">
+      <nav class="navbar navbar-expand-md bg-light">
   <div class="container">
-    <a class="navbar-brand px-2" href="/documentation">
+    <a class="navbar-brand" href="/documentation">
       
       
       
       
       <div class="navbar-brand">
-        <img class="img-fluid" src="https://php-etl.github.io/documentation/logo-web.svg" alt="Gyroscops"> Gyroscops
+        <img class="img-fluid" src="https://php-etl.github.io/documentation/logo-web.svg" alt="Gyroscops"><span class="navbar-logo"> Gyroscops</span>
       </div>
       
       
@@ -88,25 +89,24 @@
 
     <div class="collapse navbar-collapse text-center" id="navigation">
       <ul class="navbar-nav ml-auto">
-        <li class="nav-item">
-          <a class="nav-link text-dark" href="/documentation">Home</a>
-        </li>
         
         
         <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle text-dark" href="#" role="button" data-toggle="dropdown"
+          <span class="nav-link dropdown-toggle text-dark" href="#" role="button" data-toggle="dropdown"
             aria-haspopup="true" aria-expanded="false">
             Getting Started
-          </a>
+          </span>
           <div class="dropdown-menu">
             
-            <a class="dropdown-item" href="/documentation/getting-started/setup">Setup</a>
+            <a class="dropdown-item" href="/documentation/getting-started/environment-setup">Environment Setup</a>
             
-            <a class="dropdown-item" href="/documentation/getting-started/satellite">Creating Satellites</a>
+            <a class="dropdown-item" href="/documentation/getting-started/installation">Installation</a>
             
-            <a class="dropdown-item" href="/documentation/getting-started/pipeline">Pipelines</a>
+            <a class="dropdown-item" href="/documentation/getting-started/writing-configuration">Writing Configuration</a>
             
-            <a class="dropdown-item" href="/documentation/getting-started/workflow">Workflows</a>
+            <a class="dropdown-item" href="/documentation/getting-started/compilation">Compilation</a>
+            
+            <a class="dropdown-item" href="/documentation/getting-started/execution">Execution</a>
             
           </div>
         </li>
@@ -114,10 +114,64 @@
         
         
         <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle text-dark" href="#" role="button" data-toggle="dropdown"
+          <span class="nav-link dropdown-toggle text-dark" href="#" role="button" data-toggle="dropdown"
+            aria-haspopup="true" aria-expanded="false">
+            Core concepts
+          </span>
+          <div class="dropdown-menu">
+            
+            <a class="dropdown-item" href="/documentation/core-concept/satellite">Satellite</a>
+            
+            <a class="dropdown-item" href="/documentation/core-concept/pipeline">Pipeline</a>
+            
+            <a class="dropdown-item" href="/documentation/core-concept/workflow">Workflow</a>
+            
+          </div>
+        </li>
+        
+        
+        
+        <li class="nav-item dropdown">
+          <span class="nav-link dropdown-toggle text-dark" href="#" role="button" data-toggle="dropdown"
+            aria-haspopup="true" aria-expanded="false">
+            Connectivity
+          </span>
+          <div class="dropdown-menu">
+            
+            <a class="dropdown-item" href="/documentation/connectivity/akeneo">Akeneo</a>
+            
+            <a class="dropdown-item" href="/documentation/connectivity/csv">CSV files</a>
+            
+            <a class="dropdown-item" href="/documentation/connectivity/custom">Custom connector</a>
+            
+            <a class="dropdown-item" href="/documentation/connectivity/fast-map">FastMap</a>
+            
+            <a class="dropdown-item" href="/documentation/connectivity/ftp">FTP</a>
+            
+            <a class="dropdown-item" href="/documentation/connectivity/sftp">SFTP</a>
+            
+            <a class="dropdown-item" href="/documentation/connectivity/json">JSON</a>
+            
+            <a class="dropdown-item" href="/documentation/connectivity/spreadsheet">Spreadsheet files</a>
+            
+            <a class="dropdown-item" href="/documentation/connectivity/sql">SQL database</a>
+            
+            <a class="dropdown-item" href="/documentation/connectivity/sylius">Sylius</a>
+            
+            <a class="dropdown-item" href="/documentation/connectivity/prestashop">Prestashop</a>
+            
+            <a class="dropdown-item" href="/documentation/connectivity/filtering">Filtering, drop or reject</a>
+            
+          </div>
+        </li>
+        
+        
+        
+        <li class="nav-item dropdown">
+          <span class="nav-link dropdown-toggle text-dark" href="#" role="button" data-toggle="dropdown"
             aria-haspopup="true" aria-expanded="false">
             Features
-          </a>
+          </span>
           <div class="dropdown-menu">
             
             <a class="dropdown-item" href="/documentation/feature/services">Declaring services</a>
@@ -134,59 +188,7 @@
         </li>
         
         
-        
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle text-dark" href="#" role="button" data-toggle="dropdown"
-            aria-haspopup="true" aria-expanded="false">
-            Connectivity
-          </a>
-          <div class="dropdown-menu">
-            
-            <a class="dropdown-item" href="/documentation/connectivity/akeneo">Akeneo</a>
-            
-            <a class="dropdown-item" href="/documentation/connectivity/csv">CSV files</a>
-            
-            <a class="dropdown-item" href="/documentation/connectivity/custom">Custom connector</a>
-            
-            <a class="dropdown-item" href="/documentation/connectivity/fast-map">FastMap</a>
-            
-            <a class="dropdown-item" href="/documentation/connectivity/ftp">FTP</a>
-            
-            <a class="dropdown-item" href="/documentation/connectivity/sftp">SFTP</a>
-            
-            <a class="dropdown-item" href="/documentation/connectivity/nl-json">NL-JSON</a>
-            
-            <a class="dropdown-item" href="/documentation/connectivity/spreadsheet">Spreadsheet files</a>
-            
-            <a class="dropdown-item" href="/documentation/connectivity/sql">SQL database</a>
-            
-            <a class="dropdown-item" href="/documentation/connectivity/sylius">Sylius</a>
-            
-          </div>
-        </li>
-        
-        
       </ul>
-      
-      <select class="lang-list dark" id="select-language"
-        onchange="location = this.value;">
-        
-        
-        
-        
-        
-        
-        
-        
-        <option id="en" value="https://php-etl.github.io/documentation/connectivity/spreadsheet/" selected>English
-        </option>
-        
-        
-        
-        
-        
-        
-      </select>
       
     </div>
   </div>
@@ -206,10 +208,6 @@
           <ul class="list-styled">
             
             <a class="back-btn" href="/documentation"></a>
-            
-              
-            
-              
             
               
               
@@ -259,10 +257,10 @@
 
 
 
-<li data-nav-id="https://php-etl.github.io/documentation/connectivity/akeneo/expression-language/" title="Akeneo expression language functions" class="sidelist
+<li data-nav-id="https://php-etl.github.io/documentation/connectivity/akeneo/plugin/" title="Akeneo plugin" class="sidelist
   ">
-  <a href="https://php-etl.github.io/documentation/connectivity/akeneo/expression-language/">
-    Akeneo expression language functions
+  <a href="https://php-etl.github.io/documentation/connectivity/akeneo/plugin/">
+    Akeneo plugin
   </a>
   
   
@@ -281,10 +279,10 @@
 
 
 
-<li data-nav-id="https://php-etl.github.io/documentation/connectivity/akeneo/plugin/" title="Akeneo plugin" class="sidelist
+<li data-nav-id="https://php-etl.github.io/documentation/connectivity/akeneo/expression-language/" title="Akeneo expression language functions" class="sidelist
   ">
-  <a href="https://php-etl.github.io/documentation/connectivity/akeneo/plugin/">
-    Akeneo plugin
+  <a href="https://php-etl.github.io/documentation/connectivity/akeneo/expression-language/">
+    Akeneo expression language functions
   </a>
   
   
@@ -398,10 +396,10 @@
 
 
 
-<li data-nav-id="https://php-etl.github.io/documentation/connectivity/nl-json/" title="NL-JSON" class="sidelist
+<li data-nav-id="https://php-etl.github.io/documentation/connectivity/sftp/" title="SFTP" class="sidelist
   ">
-  <a href="https://php-etl.github.io/documentation/connectivity/nl-json/">
-    NL-JSON
+  <a href="https://php-etl.github.io/documentation/connectivity/sftp/">
+    SFTP
   </a>
   
   
@@ -420,10 +418,10 @@
 
 
 
-<li data-nav-id="https://php-etl.github.io/documentation/connectivity/sftp/" title="SFTP" class="sidelist
+<li data-nav-id="https://php-etl.github.io/documentation/connectivity/json/" title="JSON" class="sidelist
   ">
-  <a href="https://php-etl.github.io/documentation/connectivity/sftp/">
-    SFTP
+  <a href="https://php-etl.github.io/documentation/connectivity/json/">
+    JSON
   </a>
   
   
@@ -498,6 +496,50 @@
 
         
       
+        
+          
+
+
+
+
+
+
+
+
+<li data-nav-id="https://php-etl.github.io/documentation/connectivity/prestashop/" title="Prestashop" class="sidelist
+  ">
+  <a href="https://php-etl.github.io/documentation/connectivity/prestashop/">
+    Prestashop
+  </a>
+  
+  
+</li>
+
+
+        
+      
+        
+          
+
+
+
+
+
+
+
+
+<li data-nav-id="https://php-etl.github.io/documentation/connectivity/filtering/" title="Filtering, drop or reject" class="sidelist
+  ">
+  <a href="https://php-etl.github.io/documentation/connectivity/filtering/">
+    Filtering, drop or reject
+  </a>
+  
+  
+</li>
+
+
+        
+      
     </ul>
   
 </li>
@@ -507,11 +549,17 @@
             
               
             
+              
+            
+              
+            
+              
+            
           </ul>
         </div>
       </div>
       <div class="col-lg-9">
-        <div class="p-lg-5 p-4 bg-white">
+        <div class="p-lg-5 p-4">
           <h1 class="single-title mb-5">
               
               <i class="ti-layout-grid3 icon d-block"></i>
@@ -558,7 +606,7 @@
 <a href="https://github.com/php-etl/pipeline">Pipeline</a> stack.</p>
 <h2 id="installation">Installation</h2>
 <p>In a Satellite project, add the spreadsheet plugin this way:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">composer require php-etl/spreadsheet-plugin
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">composer require php-etl/spreadsheet-plugin
 </code></pre></div><h2 id="usage">Usage</h2>
 <h3 id="building-an-extractor">Building an extractor</h3>
 <p>To build an extractor, you need to specify the path of your file, the type of extractor to build, and the name of the
@@ -575,7 +623,7 @@ sheet to read.</p>
 		<li class="nav-item"><a data-toggle="tab" class="nav-link" href="#extractor-2" role="tab" aria-controls="extractor-2">CSV</a></li></ul>
 <div class="tab-content" id="extractor"><div id="extractor-0" class="tab-pane show active" role="tabpanel" aria-labelledby="extractor-0">
 
-<p><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml">
+<p><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml">
 
 <span style="color:#f92672">spreadsheet</span>:
   <span style="color:#f92672">extractor</span>:
@@ -586,7 +634,7 @@ sheet to read.</p>
 </code></pre></div></div>
   <div id="extractor-1" class="tab-pane" role="tabpanel" aria-labelledby="extractor-1">
 
-<p><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml">
+<p><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml">
 
 <span style="color:#f92672">spreadsheet</span>:
   <span style="color:#f92672">extractor</span>:
@@ -597,7 +645,7 @@ sheet to read.</p>
 </code></pre></div></div>
   <div id="extractor-2" class="tab-pane" role="tabpanel" aria-labelledby="extractor-2">
 
-<p><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml">
+<p><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml">
 
 <span style="color:#f92672">spreadsheet</span>:
   <span style="color:#f92672">extractor</span>:
@@ -623,7 +671,7 @@ to build and the name of the sheet to write data into.</p>
 		<li class="nav-item"><a data-toggle="tab" class="nav-link" href="#loader-2" role="tab" aria-controls="loader-2">CSV</a></li></ul>
 <div class="tab-content" id="loader"><div id="loader-0" class="tab-pane show active" role="tabpanel" aria-labelledby="loader-0">
 
-<p><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml">
+<p><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml">
 
 <span style="color:#f92672">spreadsheet</span>:
   <span style="color:#f92672">loader</span>:
@@ -634,7 +682,7 @@ to build and the name of the sheet to write data into.</p>
 </code></pre></div></div>
   <div id="loader-1" class="tab-pane" role="tabpanel" aria-labelledby="loader-1">
 
-<p><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml">
+<p><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml">
 
 <span style="color:#f92672">spreadsheet</span>:
   <span style="color:#f92672">loader</span>:
@@ -645,7 +693,7 @@ to build and the name of the sheet to write data into.</p>
 </code></pre></div></div>
   <div id="loader-2" class="tab-pane" role="tabpanel" aria-labelledby="loader-2">
 
-<p><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml">
+<p><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml">
 
 <span style="color:#f92672">spreadsheet</span>:
   <span style="color:#f92672">loader</span>:
@@ -666,7 +714,7 @@ extracting from the right row.</p>
 		<li class="nav-item"><a data-toggle="tab" class="nav-link" href="#skip_lines-2" role="tab" aria-controls="skip_lines-2">CSV</a></li></ul>
 <div class="tab-content" id="skip_lines"><div id="skip_lines-0" class="tab-pane show active" role="tabpanel" aria-labelledby="skip_lines-0">
 
-<p><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml">
+<p><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml">
 
 <span style="color:#f92672">spreadsheet</span>:
   <span style="color:#f92672">extractor</span>: 
@@ -678,7 +726,7 @@ extracting from the right row.</p>
 </code></pre></div></div>
   <div id="skip_lines-1" class="tab-pane" role="tabpanel" aria-labelledby="skip_lines-1">
 
-<p><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml">
+<p><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml">
 
 <span style="color:#f92672">spreadsheet</span>:
   <span style="color:#f92672">extractor</span>: 
@@ -689,7 +737,7 @@ extracting from the right row.</p>
 </code></pre></div></div>
   <div id="skip_lines-2" class="tab-pane" role="tabpanel" aria-labelledby="skip_lines-2">
 
-<p><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml">
+<p><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml">
 
 <span style="color:#f92672">spreadsheet</span>:
   <span style="color:#f92672">extractor</span>: 
@@ -710,7 +758,7 @@ extracting from the right row.</p>
 		<li class="nav-item"><a data-toggle="tab" class="nav-link" href="#max_lines-2" role="tab" aria-controls="max_lines-2">CSV</a></li></ul>
 <div class="tab-content" id="max_lines"><div id="max_lines-0" class="tab-pane show active" role="tabpanel" aria-labelledby="max_lines-0">
 
-<p><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml">
+<p><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml">
 
 <span style="color:#f92672">spreadsheet</span>:
   <span style="color:#f92672">loader</span>:
@@ -721,7 +769,7 @@ extracting from the right row.</p>
 </code></pre></div></div>
   <div id="max_lines-1" class="tab-pane" role="tabpanel" aria-labelledby="max_lines-1">
 
-<p><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml">
+<p><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml">
 
 <span style="color:#f92672">spreadsheet</span>:
   <span style="color:#f92672">loader</span>:
@@ -732,7 +780,7 @@ extracting from the right row.</p>
 </code></pre></div></div>
   <div id="max_lines-2" class="tab-pane" role="tabpanel" aria-labelledby="max_lines-2">
 
-<p><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml">
+<p><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml">
 
 <span style="color:#f92672">spreadsheet</span>:
   <span style="color:#f92672">loader</span>:
@@ -775,11 +823,25 @@ extracting from the right row.</p>
             
             
             
+
+            
+            
             
             
+            
 
+            
+            
+            
             
             
+            
+            
+            
+            
+            
+            
+
             
             
             
@@ -795,6 +857,20 @@ extracting from the right row.</p>
 
             
             
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
             
             
             
@@ -807,6 +883,12 @@ extracting from the right row.</p>
             
             
             
+            
+            
+            
+            
+            
+            
 
             
             
@@ -828,6 +910,7 @@ extracting from the right row.</p>
             
             
 
+            
             
             
             
@@ -838,15 +921,27 @@ extracting from the right row.</p>
             
             
             
+
+            
+            
             
 
+            
+            
+            
+            
             
             
             
+            
+            
+            
+            
 
             
             
             
+
             
             
             
@@ -890,11 +985,13 @@ extracting from the right row.</p>
             
             
             
+            
 
             
             
             
 
+            
             
             
             
@@ -906,6 +1003,8 @@ extracting from the right row.</p>
             
             
             
+            
+            
 
             
             
@@ -922,16 +1021,29 @@ extracting from the right row.</p>
             
             
             
+
             
             
             
 
+            
+            
+            
+            
+            
             
             
             
             
             
+            
+
+            
+            
+            
 
+            
+            
             
             
             
@@ -940,11 +1052,14 @@ extracting from the right row.</p>
             
             
             
+            
 
             
             
             
 
+            
+            
             
             
             
@@ -956,10 +1071,13 @@ extracting from the right row.</p>
             
             
             
+            
 
+            
             
             
             
+            
 
             
             
@@ -974,6 +1092,7 @@ extracting from the right row.</p>
             
             
 
+            
             
             
             
@@ -984,15 +1103,27 @@ extracting from the right row.</p>
             
             
             
+
+            
+            
             
 
+            
+            
+            
+            
             
             
             
+            
+            
+            
+            
 
             
             
             
+
             
             
             
@@ -1025,6 +1156,9 @@ extracting from the right row.</p>
             
             
 
+            
+            
+            
             
             
             
@@ -1036,16 +1170,25 @@ extracting from the right row.</p>
             
             
             
+
             
             
             
             
+            
 
+            
+            
+            
+            
+            
             
             
             
+
             
             
+            
 
             
             
@@ -1059,9 +1202,11 @@ extracting from the right row.</p>
             
             
 
+            
             
             
             
+            
 
             
             
@@ -1103,6 +1248,7 @@ extracting from the right row.</p>
             
             
             
+
             
             
             
@@ -1110,7 +1256,6 @@ extracting from the right row.</p>
             
             
             
-
             
             
             
@@ -1143,7 +1288,6 @@ extracting from the right row.</p>
             
             
 
-            
             
             
             
@@ -1178,10 +1322,22 @@ extracting from the right row.</p>
             
             
             
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
 
             
             
             
+
             
             
             
@@ -1211,6 +1367,9 @@ extracting from the right row.</p>
             
             
 
+            
+            
+            
             
             
             
@@ -1321,7 +1480,7 @@ extracting from the right row.</p>
             
 
             
-            <a class="nav nav-prev" href="https://php-etl.github.io/documentation/connectivity/csv/"><i class="ti-arrow-left mr-2"></i> <span class="d-none d-md-block">CSV</span></a>
+            <a class="nav nav-prev" href="https://php-etl.github.io/documentation/connectivity/json/"><i class="ti-arrow-left mr-2"></i> <span class="d-none d-md-block">JSON</span></a>
             
             
             <a class="nav nav-next" href="https://php-etl.github.io/documentation/connectivity/sql/"> <span class="d-none d-md-block">SQL</span><i class="ti-arrow-right ml-2"></i></a>
@@ -1344,7 +1503,7 @@ extracting from the right row.</p>
   <div class="container">
     <div class="row align-items-center">
       <div class="col-md-8 text-md-left text-center">
-       <p class="mb-md-0 mb-4">The Gyroscops Documents are copyright © <a href="https://kiboko.fr/">Kiboko</a> 2020, 2021.</p>
+       <p class="mb-md-0 mb-4">The Gyroscops Documentation is copyright © <a href="https://gyroscops.com/">Gyroscops</a> 2020-2023.</p>
       </div>
       <div class="col-md-4 text-md-right text-center">
         <ul class="list-inline">

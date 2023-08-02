@@ -23,7 +23,7 @@
     <div class="container">
       <div class="row justify-content-center">
         <div class="col-12 text-center">
-          <h2 class="section-title section-light">{{ i18n "components_title" | safeHTML }}</h2>
+          <h2 class="section-title section-dark">{{ i18n "components_title" | safeHTML }}</h2>
         </div>
         {{ "<!-- topic-item -->" | safeHTML }}
         {{ range (where .Site.Pages "Type" "component") }}
@@ -54,7 +54,7 @@
     <div class="container">
       <div class="row justify-content-center">
         <div class="col-12 text-center">
-          <h2 class="section-title section-light">{{ i18n "plugins_title" | safeHTML }}</h2>
+          <h2 class="section-title section-dark">{{ i18n "plugins_title" | safeHTML }}</h2>
         </div>
         {{ "<!-- topic-item -->" | safeHTML }}
         {{ range (where .Site.Pages "Type" "plugins") }}
@@ -92,7 +92,7 @@
           <p class="mb-4">{{ .content | markdownify }}</p>
           {{ if .button.enable }}
           {{ with .button }}
-          <a href="{{ .link | relLangURL }}" class="btn btn-primary">{{ .label }}</a>
+          <a href="{{ .link }}" class="btn btn-primary">{{ .label }}</a>
           {{ end }}
           {{ end }}
           </div>

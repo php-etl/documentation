@@ -2,13 +2,13 @@
 <html lang="en-us">
   <head>
   <meta charset="utf-8">
-  <title>Satellite Expression Language</title>
+  <title>Satellite Expression Language  | Gyroscops Documentation</title>
 
-  <meta name="generator" content="Hugo 0.82.0" />
+  <meta name="generator" content="Hugo 0.92.2" />
 
   <!-- mobile responsive meta -->
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  
+
   <!-- ** Plugins Needed for the Project ** -->
   <!-- Bootstrap -->
   <link rel="stylesheet" href="https://php-etl.github.io/documentation/plugins/bootstrap/bootstrap.min.css">
@@ -24,7 +24,7 @@
 
   <!-- fonts -->
   <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700&display=swap" rel="stylesheet">
-  
+
   <style>
   :root{
     --primary-color: #22014f;
@@ -34,7 +34,8 @@
     --text-color:#666;
     --text-color-dark:#333;
     --text-color-light:#eee;
-    --white-color:#eee;
+    --white-color:#fff;
+    --light-color:#eee;
     --font-family:Lato;
   }
   </style>
@@ -63,20 +64,20 @@
 
 </head>
 
-  
+
   <body>
     
     <!-- header -->
-    <header class="shadow-bottom sticky-top bg-white">
-      <nav class="navbar navbar-expand-md navbar-light">
+    <header class="sticky-top bg-gradient">
+      <nav class="navbar navbar-expand-md bg-light">
   <div class="container">
-    <a class="navbar-brand px-2" href="/documentation">
+    <a class="navbar-brand" href="/documentation">
       
       
       
       
       <div class="navbar-brand">
-        <img class="img-fluid" src="https://php-etl.github.io/documentation/logo-web.svg" alt="Gyroscops"> Gyroscops
+        <img class="img-fluid" src="https://php-etl.github.io/documentation/logo-web.svg" alt="Gyroscops"><span class="navbar-logo"> Gyroscops</span>
       </div>
       
       
@@ -88,25 +89,24 @@
 
     <div class="collapse navbar-collapse text-center" id="navigation">
       <ul class="navbar-nav ml-auto">
-        <li class="nav-item">
-          <a class="nav-link text-dark" href="/documentation">Home</a>
-        </li>
         
         
         <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle text-dark" href="#" role="button" data-toggle="dropdown"
+          <span class="nav-link dropdown-toggle text-dark" href="#" role="button" data-toggle="dropdown"
             aria-haspopup="true" aria-expanded="false">
             Getting Started
-          </a>
+          </span>
           <div class="dropdown-menu">
             
-            <a class="dropdown-item" href="/documentation/getting-started/setup">Setup</a>
+            <a class="dropdown-item" href="/documentation/getting-started/environment-setup">Environment Setup</a>
             
-            <a class="dropdown-item" href="/documentation/getting-started/satellite">Creating Satellites</a>
+            <a class="dropdown-item" href="/documentation/getting-started/installation">Installation</a>
             
-            <a class="dropdown-item" href="/documentation/getting-started/pipeline">Pipelines</a>
+            <a class="dropdown-item" href="/documentation/getting-started/writing-configuration">Writing Configuration</a>
             
-            <a class="dropdown-item" href="/documentation/getting-started/workflow">Workflows</a>
+            <a class="dropdown-item" href="/documentation/getting-started/compilation">Compilation</a>
+            
+            <a class="dropdown-item" href="/documentation/getting-started/execution">Execution</a>
             
           </div>
         </li>
@@ -114,10 +114,64 @@
         
         
         <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle text-dark" href="#" role="button" data-toggle="dropdown"
+          <span class="nav-link dropdown-toggle text-dark" href="#" role="button" data-toggle="dropdown"
+            aria-haspopup="true" aria-expanded="false">
+            Core concepts
+          </span>
+          <div class="dropdown-menu">
+            
+            <a class="dropdown-item" href="/documentation/core-concept/satellite">Satellite</a>
+            
+            <a class="dropdown-item" href="/documentation/core-concept/pipeline">Pipeline</a>
+            
+            <a class="dropdown-item" href="/documentation/core-concept/workflow">Workflow</a>
+            
+          </div>
+        </li>
+        
+        
+        
+        <li class="nav-item dropdown">
+          <span class="nav-link dropdown-toggle text-dark" href="#" role="button" data-toggle="dropdown"
+            aria-haspopup="true" aria-expanded="false">
+            Connectivity
+          </span>
+          <div class="dropdown-menu">
+            
+            <a class="dropdown-item" href="/documentation/connectivity/akeneo">Akeneo</a>
+            
+            <a class="dropdown-item" href="/documentation/connectivity/csv">CSV files</a>
+            
+            <a class="dropdown-item" href="/documentation/connectivity/custom">Custom connector</a>
+            
+            <a class="dropdown-item" href="/documentation/connectivity/fast-map">FastMap</a>
+            
+            <a class="dropdown-item" href="/documentation/connectivity/ftp">FTP</a>
+            
+            <a class="dropdown-item" href="/documentation/connectivity/sftp">SFTP</a>
+            
+            <a class="dropdown-item" href="/documentation/connectivity/json">JSON</a>
+            
+            <a class="dropdown-item" href="/documentation/connectivity/spreadsheet">Spreadsheet files</a>
+            
+            <a class="dropdown-item" href="/documentation/connectivity/sql">SQL database</a>
+            
+            <a class="dropdown-item" href="/documentation/connectivity/sylius">Sylius</a>
+            
+            <a class="dropdown-item" href="/documentation/connectivity/prestashop">Prestashop</a>
+            
+            <a class="dropdown-item" href="/documentation/connectivity/filtering">Filtering, drop or reject</a>
+            
+          </div>
+        </li>
+        
+        
+        
+        <li class="nav-item dropdown">
+          <span class="nav-link dropdown-toggle text-dark" href="#" role="button" data-toggle="dropdown"
             aria-haspopup="true" aria-expanded="false">
             Features
-          </a>
+          </span>
           <div class="dropdown-menu">
             
             <a class="dropdown-item" href="/documentation/feature/services">Declaring services</a>
@@ -134,59 +188,7 @@
         </li>
         
         
-        
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle text-dark" href="#" role="button" data-toggle="dropdown"
-            aria-haspopup="true" aria-expanded="false">
-            Connectivity
-          </a>
-          <div class="dropdown-menu">
-            
-            <a class="dropdown-item" href="/documentation/connectivity/akeneo">Akeneo</a>
-            
-            <a class="dropdown-item" href="/documentation/connectivity/csv">CSV files</a>
-            
-            <a class="dropdown-item" href="/documentation/connectivity/custom">Custom connector</a>
-            
-            <a class="dropdown-item" href="/documentation/connectivity/fast-map">FastMap</a>
-            
-            <a class="dropdown-item" href="/documentation/connectivity/ftp">FTP</a>
-            
-            <a class="dropdown-item" href="/documentation/connectivity/sftp">SFTP</a>
-            
-            <a class="dropdown-item" href="/documentation/connectivity/nl-json">NL-JSON</a>
-            
-            <a class="dropdown-item" href="/documentation/connectivity/spreadsheet">Spreadsheet files</a>
-            
-            <a class="dropdown-item" href="/documentation/connectivity/sql">SQL database</a>
-            
-            <a class="dropdown-item" href="/documentation/connectivity/sylius">Sylius</a>
-            
-          </div>
-        </li>
-        
-        
       </ul>
-      
-      <select class="lang-list dark" id="select-language"
-        onchange="location = this.value;">
-        
-        
-        
-        
-        
-        
-        
-        
-        <option id="en" value="https://php-etl.github.io/documentation/feature/expression-language/satellite-expression-functions/" selected>English
-        </option>
-        
-        
-        
-        
-        
-        
-      </select>
       
     </div>
   </div>
@@ -206,6 +208,10 @@
           <ul class="list-styled">
             
             <a class="back-btn" href="/documentation"></a>
+            
+              
+            
+              
             
               
               
@@ -277,10 +283,10 @@
 
 
 
-<li data-nav-id="https://php-etl.github.io/documentation/feature/expression-language/array-expression-functions/" title="Array Expression Language" class="sidelist
-  ">
-  <a href="https://php-etl.github.io/documentation/feature/expression-language/array-expression-functions/">
-    Array Expression Language
+<li data-nav-id="https://php-etl.github.io/documentation/feature/expression-language/satellite-expression-functions/" title="Satellite Expression Language" class="sidelist
+  active">
+  <a href="https://php-etl.github.io/documentation/feature/expression-language/satellite-expression-functions/">
+    Satellite Expression Language
   </a>
   
   
@@ -299,10 +305,10 @@
 
 
 
-<li data-nav-id="https://php-etl.github.io/documentation/feature/expression-language/satellite-expression-functions/" title="Satellite Expression Language" class="sidelist
-  active">
-  <a href="https://php-etl.github.io/documentation/feature/expression-language/satellite-expression-functions/">
-    Satellite Expression Language
+<li data-nav-id="https://php-etl.github.io/documentation/feature/expression-language/array-expression-functions/" title="Array Expression Language" class="sidelist
+  ">
+  <a href="https://php-etl.github.io/documentation/feature/expression-language/array-expression-functions/">
+    Array Expression Language
   </a>
   
   
@@ -417,13 +423,11 @@
             
               
             
-              
-            
           </ul>
         </div>
       </div>
       <div class="col-lg-9">
-        <div class="p-lg-5 p-4 bg-white">
+        <div class="p-lg-5 p-4">
           <h1 class="single-title mb-5">
               
               
@@ -444,18 +448,45 @@
 <h2 id="usage">Usage</h2>
 <p>To use the functions provided in this package, you need to add the <code>expression_language</code> key to your plugin configuration
 and use the <code>Kiboko\Component\Satellite\ExpressionLanguage\Provider</code> Provider.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">expression_language</span>:
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">expression_language</span>:
   - <span style="color:#ae81ff">Kiboko\Component\Satellite\ExpressionLanguage\Provider</span>
 </code></pre></div><p>To determine that a value in your configuration will be a language expression, you must use the <code>@</code> annotation.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">foo</span>: <span style="color:#e6db74">&#39;@=env(&#34;MY_ENVIRONMENT_VARIABLE&#34;)&#39;</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">foo</span>: <span style="color:#e6db74">&#39;@=env(&#34;MY_ENVIRONMENT_VARIABLE&#34;)&#39;</span>
 </code></pre></div><h2 id="list-of-available-functions">List of available functions</h2>
-<ul>
-<li><code>env(string $name) : string|false</code> : Gets the value of an environment variable</li>
-<li><code>envAsFile(string $name) : string</code> : Create a file whose name is an environment variable</li>
-<li><code>file(string $name) : string</code> : Create a file</li>
-<li><code>base64Decode(string $name) : string|false</code> :  Decodes data encoded with Base64</li>
-<li><code>temporaryFile(string $name) : resource</code> : Create a temporary file</li>
-</ul>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>env(<code>string</code> name): `string</td>
+<td>false`</td>
+</tr>
+<tr>
+<td>envAsFile(<code>string</code> name): <code>string</code></td>
+<td>Create a file whose name is an environment variable</td>
+</tr>
+<tr>
+<td>file(<code>string</code> name): <code>string</code></td>
+<td>Create a file</td>
+</tr>
+<tr>
+<td>base64Decode(<code>string</code> name): `string</td>
+<td>false`</td>
+</tr>
+<tr>
+<td>temporaryFile(<code>string</code> name): <code>resource</code></td>
+<td>Create a temporary file</td>
+</tr>
+<tr>
+<td>inSql(<code>array</code> path, <code>string</code> parameterName): <code>string</code></td>
+<td>Writes &ldquo;IN (&hellip;)&rdquo; with as many parameters as there are values under <code>path</code>, in the format: <code>:parameterName_0</code>, <code>:parameterName_1</code>&hellip; To be used in a SQL query <a href="../../../connectivity/sql/#using-an-unknown-number-of-parameters">when searching among an unknown number of values</a>.</td>
+</tr>
+</tbody>
+</table>
 </div>
           
           <p class="post-meta border-bottom pb-3 mb-0 mt-3">Updated on 12 Aug 2021</p>
@@ -486,271 +517,6 @@ and use the <code>Kiboko\Component\Satellite\ExpressionLanguage\Provider</code> 
             
             
             
-
-            
-            
-            
-            
-            
-
-            
-            
-            
-            
-            
-            
-            
-            
-            
-
-            
-            
-            
-            
-            
-
-            
-            
-            
-            
-            
-            
-            
-            
-            
-
-            
-            
-            
-
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-
-            
-            
-            
-
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-
-            
-            
-            
-
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-
-            
-            
-            
-
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-
-            
-            
-            
-
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-
-            
-            
-            
-
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-
-            
-            
-            
-
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-
-            
-            
-            
-            
-            
-
-            
-            
-            
-            
-            
-            
-            
-            
-
-            
-            
-            
-
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-
-            
-            
-            
-
-            
-            
-            
-            
-            
-            
-            
-            
-
-            
-            
-            
-
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-
-            
-            
-            
-
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-
-            
-            
-            
-
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-
-            
-            
-            
-
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
             
             
 
@@ -917,6 +683,391 @@ and use the <code>Kiboko\Component\Satellite\ExpressionLanguage\Provider</code> 
             
             
 
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+
+            
+            
+            
             
             
             
@@ -1050,7 +1201,7 @@ and use the <code>Kiboko\Component\Satellite\ExpressionLanguage\Provider</code> 
   <div class="container">
     <div class="row align-items-center">
       <div class="col-md-8 text-md-left text-center">
-       <p class="mb-md-0 mb-4">The Gyroscops Documents are copyright © <a href="https://kiboko.fr/">Kiboko</a> 2020, 2021.</p>
+       <p class="mb-md-0 mb-4">The Gyroscops Documentation is copyright © <a href="https://gyroscops.com/">Gyroscops</a> 2020-2023.</p>
       </div>
       <div class="col-md-4 text-md-right text-center">
         <ul class="list-inline">

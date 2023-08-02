@@ -2,13 +2,13 @@
 <html lang="en-us">
   <head>
   <meta charset="utf-8">
-  <title>String Expression functions</title>
+  <title>String Expression functions  | Gyroscops Documentation</title>
 
-  <meta name="generator" content="Hugo 0.82.0" />
+  <meta name="generator" content="Hugo 0.92.2" />
 
   <!-- mobile responsive meta -->
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  
+
   <!-- ** Plugins Needed for the Project ** -->
   <!-- Bootstrap -->
   <link rel="stylesheet" href="https://php-etl.github.io/documentation/plugins/bootstrap/bootstrap.min.css">
@@ -24,7 +24,7 @@
 
   <!-- fonts -->
   <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700&display=swap" rel="stylesheet">
-  
+
   <style>
   :root{
     --primary-color: #22014f;
@@ -34,7 +34,8 @@
     --text-color:#666;
     --text-color-dark:#333;
     --text-color-light:#eee;
-    --white-color:#eee;
+    --white-color:#fff;
+    --light-color:#eee;
     --font-family:Lato;
   }
   </style>
@@ -63,20 +64,20 @@
 
 </head>
 
-  
+
   <body>
     
     <!-- header -->
-    <header class="shadow-bottom sticky-top bg-white">
-      <nav class="navbar navbar-expand-md navbar-light">
+    <header class="sticky-top bg-gradient">
+      <nav class="navbar navbar-expand-md bg-light">
   <div class="container">
-    <a class="navbar-brand px-2" href="/documentation">
+    <a class="navbar-brand" href="/documentation">
       
       
       
       
       <div class="navbar-brand">
-        <img class="img-fluid" src="https://php-etl.github.io/documentation/logo-web.svg" alt="Gyroscops"> Gyroscops
+        <img class="img-fluid" src="https://php-etl.github.io/documentation/logo-web.svg" alt="Gyroscops"><span class="navbar-logo"> Gyroscops</span>
       </div>
       
       
@@ -88,25 +89,24 @@
 
     <div class="collapse navbar-collapse text-center" id="navigation">
       <ul class="navbar-nav ml-auto">
-        <li class="nav-item">
-          <a class="nav-link text-dark" href="/documentation">Home</a>
-        </li>
         
         
         <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle text-dark" href="#" role="button" data-toggle="dropdown"
+          <span class="nav-link dropdown-toggle text-dark" href="#" role="button" data-toggle="dropdown"
             aria-haspopup="true" aria-expanded="false">
             Getting Started
-          </a>
+          </span>
           <div class="dropdown-menu">
             
-            <a class="dropdown-item" href="/documentation/getting-started/setup">Setup</a>
+            <a class="dropdown-item" href="/documentation/getting-started/environment-setup">Environment Setup</a>
             
-            <a class="dropdown-item" href="/documentation/getting-started/satellite">Creating Satellites</a>
+            <a class="dropdown-item" href="/documentation/getting-started/installation">Installation</a>
             
-            <a class="dropdown-item" href="/documentation/getting-started/pipeline">Pipelines</a>
+            <a class="dropdown-item" href="/documentation/getting-started/writing-configuration">Writing Configuration</a>
             
-            <a class="dropdown-item" href="/documentation/getting-started/workflow">Workflows</a>
+            <a class="dropdown-item" href="/documentation/getting-started/compilation">Compilation</a>
+            
+            <a class="dropdown-item" href="/documentation/getting-started/execution">Execution</a>
             
           </div>
         </li>
@@ -114,10 +114,64 @@
         
         
         <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle text-dark" href="#" role="button" data-toggle="dropdown"
+          <span class="nav-link dropdown-toggle text-dark" href="#" role="button" data-toggle="dropdown"
+            aria-haspopup="true" aria-expanded="false">
+            Core concepts
+          </span>
+          <div class="dropdown-menu">
+            
+            <a class="dropdown-item" href="/documentation/core-concept/satellite">Satellite</a>
+            
+            <a class="dropdown-item" href="/documentation/core-concept/pipeline">Pipeline</a>
+            
+            <a class="dropdown-item" href="/documentation/core-concept/workflow">Workflow</a>
+            
+          </div>
+        </li>
+        
+        
+        
+        <li class="nav-item dropdown">
+          <span class="nav-link dropdown-toggle text-dark" href="#" role="button" data-toggle="dropdown"
+            aria-haspopup="true" aria-expanded="false">
+            Connectivity
+          </span>
+          <div class="dropdown-menu">
+            
+            <a class="dropdown-item" href="/documentation/connectivity/akeneo">Akeneo</a>
+            
+            <a class="dropdown-item" href="/documentation/connectivity/csv">CSV files</a>
+            
+            <a class="dropdown-item" href="/documentation/connectivity/custom">Custom connector</a>
+            
+            <a class="dropdown-item" href="/documentation/connectivity/fast-map">FastMap</a>
+            
+            <a class="dropdown-item" href="/documentation/connectivity/ftp">FTP</a>
+            
+            <a class="dropdown-item" href="/documentation/connectivity/sftp">SFTP</a>
+            
+            <a class="dropdown-item" href="/documentation/connectivity/json">JSON</a>
+            
+            <a class="dropdown-item" href="/documentation/connectivity/spreadsheet">Spreadsheet files</a>
+            
+            <a class="dropdown-item" href="/documentation/connectivity/sql">SQL database</a>
+            
+            <a class="dropdown-item" href="/documentation/connectivity/sylius">Sylius</a>
+            
+            <a class="dropdown-item" href="/documentation/connectivity/prestashop">Prestashop</a>
+            
+            <a class="dropdown-item" href="/documentation/connectivity/filtering">Filtering, drop or reject</a>
+            
+          </div>
+        </li>
+        
+        
+        
+        <li class="nav-item dropdown">
+          <span class="nav-link dropdown-toggle text-dark" href="#" role="button" data-toggle="dropdown"
             aria-haspopup="true" aria-expanded="false">
             Features
-          </a>
+          </span>
           <div class="dropdown-menu">
             
             <a class="dropdown-item" href="/documentation/feature/services">Declaring services</a>
@@ -134,59 +188,7 @@
         </li>
         
         
-        
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle text-dark" href="#" role="button" data-toggle="dropdown"
-            aria-haspopup="true" aria-expanded="false">
-            Connectivity
-          </a>
-          <div class="dropdown-menu">
-            
-            <a class="dropdown-item" href="/documentation/connectivity/akeneo">Akeneo</a>
-            
-            <a class="dropdown-item" href="/documentation/connectivity/csv">CSV files</a>
-            
-            <a class="dropdown-item" href="/documentation/connectivity/custom">Custom connector</a>
-            
-            <a class="dropdown-item" href="/documentation/connectivity/fast-map">FastMap</a>
-            
-            <a class="dropdown-item" href="/documentation/connectivity/ftp">FTP</a>
-            
-            <a class="dropdown-item" href="/documentation/connectivity/sftp">SFTP</a>
-            
-            <a class="dropdown-item" href="/documentation/connectivity/nl-json">NL-JSON</a>
-            
-            <a class="dropdown-item" href="/documentation/connectivity/spreadsheet">Spreadsheet files</a>
-            
-            <a class="dropdown-item" href="/documentation/connectivity/sql">SQL database</a>
-            
-            <a class="dropdown-item" href="/documentation/connectivity/sylius">Sylius</a>
-            
-          </div>
-        </li>
-        
-        
       </ul>
-      
-      <select class="lang-list dark" id="select-language"
-        onchange="location = this.value;">
-        
-        
-        
-        
-        
-        
-        
-        
-        <option id="en" value="https://php-etl.github.io/documentation/feature/expression-language/string-expression-functions/" selected>English
-        </option>
-        
-        
-        
-        
-        
-        
-      </select>
       
     </div>
   </div>
@@ -206,6 +208,10 @@
           <ul class="list-styled">
             
             <a class="back-btn" href="/documentation"></a>
+            
+              
+            
+              
             
               
               
@@ -277,10 +283,10 @@
 
 
 
-<li data-nav-id="https://php-etl.github.io/documentation/feature/expression-language/array-expression-functions/" title="Array Expression Language" class="sidelist
+<li data-nav-id="https://php-etl.github.io/documentation/feature/expression-language/satellite-expression-functions/" title="Satellite Expression Language" class="sidelist
   ">
-  <a href="https://php-etl.github.io/documentation/feature/expression-language/array-expression-functions/">
-    Array Expression Language
+  <a href="https://php-etl.github.io/documentation/feature/expression-language/satellite-expression-functions/">
+    Satellite Expression Language
   </a>
   
   
@@ -299,10 +305,10 @@
 
 
 
-<li data-nav-id="https://php-etl.github.io/documentation/feature/expression-language/satellite-expression-functions/" title="Satellite Expression Language" class="sidelist
+<li data-nav-id="https://php-etl.github.io/documentation/feature/expression-language/array-expression-functions/" title="Array Expression Language" class="sidelist
   ">
-  <a href="https://php-etl.github.io/documentation/feature/expression-language/satellite-expression-functions/">
-    Satellite Expression Language
+  <a href="https://php-etl.github.io/documentation/feature/expression-language/array-expression-functions/">
+    Array Expression Language
   </a>
   
   
@@ -417,13 +423,11 @@
             
               
             
-              
-            
           </ul>
         </div>
       </div>
       <div class="col-lg-9">
-        <div class="p-lg-5 p-4 bg-white">
+        <div class="p-lg-5 p-4">
           <h1 class="single-title mb-5">
               
               
@@ -446,23 +450,117 @@
 <h2 id="what-is-it-for">What is it for?</h2>
 <p>This package extends the ExpressionLanguage component of Symfony to compile and evaluate arrays with custom functions.</p>
 <h2 id="installation">Installation</h2>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">composer require php-etl/string-expression-language
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">composer require php-etl/string-expression-language
 </code></pre></div><h2 id="usage">Usage</h2>
 <p>To use the functions provided in this package, you need to add the <code>expression_language</code> key to your plugin configuration
 and use the <code>Kiboko\Component\ArrayExpressionLanguage\ArrayExpressionLanguageProvider</code> Provider.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">expression_language</span>:
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">expression_language</span>:
   - <span style="color:#ae81ff">Kiboko\Component\StringExpressionLanguage\StringExpressionLanguageProvider</span>
 </code></pre></div><p>To determine that a value in your configuration will be a language expression, you must use the <code>@</code> annotation.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">foo</span>: <span style="color:#e6db74">&#39;@=dateTime(input[&#34;updated_at&#34;], &#34;YYYY-MM-ddTHH:ii:ss&#34;, &#34;Europe/Paris&#34;)&#39;</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">foo</span>: <span style="color:#e6db74">&#39;@=dateTime(input[&#34;updated_at&#34;], &#34;YYYY-MM-ddTHH:ii:ss&#34;, &#34;Europe/Paris&#34;)&#39;</span>
 </code></pre></div><h2 id="list-of-available-functions">List of available functions</h2>
-<ul>
-<li><code>format( string format, mixed ...inputs ) : string</code> formats a string using the <a href="https://www.php.net/manual/en/function.sprintf.php">sprintf</a> syntax</li>
-<li><code>trim( string input ) : string</code> trims whitespaces from a string</li>
-<li><code>replace( string search, string replace, string input ) : string</code> replaces the <code>search</code> values in the string by the <code>replace</code></li>
-<li><code>fileName( string path ) : string</code> extracts the file name from the path name</li>
-<li><code>dateTime( string dateTime, string format, string timezone = 'UTC' ) : date</code> Creates a date object from a formatted date</li>
-<li><code>formatDate( date dateTime, string format ) : string</code> Transforms a date object into a formatted date string</li>
-</ul>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>format(<code>string</code> format, <code>mixed</code> &hellip;inputs): <code>string</code></td>
+<td>Formats a string using the <a href="https://www.php.net/manual/en/function.sprintf.php">sprintf</a> syntax</td>
+</tr>
+<tr>
+<td>trim(<code>string</code> input): <code>string</code></td>
+<td>Trims whitespaces from a string</td>
+</tr>
+<tr>
+<td>capitalize(<code>string</code> input): <code>string</code></td>
+<td>Makes a string&rsquo;s first character uppercase</td>
+</tr>
+<tr>
+<td>toLowerCase(<code>string</code> input): <code>string</code></td>
+<td>Makes a string lowercase</td>
+</tr>
+<tr>
+<td>search(<code>string</code> input, <code>int</code> offset, <code>?int</code> length = null): <code>string</code></td>
+<td>Returns part of a string</td>
+</tr>
+<tr>
+<td>toUpperCase(<code>string</code> input): <code>string</code></td>
+<td>Makes a string uppercase</td>
+</tr>
+<tr>
+<td>formatNumber(<code>float</code> num, <code>int</code> decimals = 0, <code>?string</code> decimal_separator = &ldquo;.&rdquo;, <code>?string</code> thousands_separator = &ldquo;,&quot;): <code>string</code></td>
+<td>Formats a number with grouped thousands</td>
+</tr>
+<tr>
+<td>indexOf(<code>string</code> haystack, <code>string</code> needle, <code>int</code> offset = 0): <code>int</code>|<code>false</code></td>
+<td>Finds the position of the first occurrence of a substring in a string</td>
+</tr>
+<tr>
+<td>replace(<code>string</code> search, <code>string</code> replace, <code>string</code> input): <code>string</code></td>
+<td>Replaces the <code>search</code> values in the string by the <code>replace</code></td>
+</tr>
+<tr>
+<td>stripHtml(<code>string</code> string, <code>array</code>|<code>string</code>|<code>null</code> allowed_tags = null): <code>string</code></td>
+<td>Strips HTML and PHP tags from a string</td>
+</tr>
+<tr>
+<td>decode(<code>string</code> string, <code>array</code>|<code>string</code>|<code>null</code> allowed_tags = null): <code>mixed</code></td>
+<td>Decodes a JSON string</td>
+</tr>
+<tr>
+<td>replaceByExpression(<code>string</code>|<code>array</code> pattern, <code>string</code>|<code>array</code> replacement, <code>string</code>|<code>array</code> subject, <code>int</code> limit = -1, <code>int</code> &amp;count = null): <code>string</code>|<code>array</code>|<code>null</code></td>
+<td>Performs a regular expression search and replace</td>
+</tr>
+<tr>
+<td>capitalizeWords(<code>string</code> string, <code>string</code> separators = &quot; \t\r\n\f\v&rdquo;): <code>string</code></td>
+<td>Uppercase’s the first character of each word in a string</td>
+</tr>
+<tr>
+<td>removeWhitespaces(<code>string</code> string, <code>string</code> characters = &quot; \n\r\t\v\x00&quot;): <code>string</code></td>
+<td>Strips whitespace (or other characters) from the end of a string</td>
+</tr>
+<tr>
+<td>splitIntoArray(<code>string</code> separator, <code>string</code> string): <code>array</code></td>
+<td>Splits a string by a string</td>
+</tr>
+<tr>
+<td>fileName(<code>string</code> path): <code>string</code></td>
+<td>Extracts the file name from the path name</td>
+</tr>
+<tr>
+<td>dateTime(<code>string</code> dateTime, <code>string</code> format, <code>string</code> timezone = &lsquo;UTC&rsquo;): <code>date</code></td>
+<td>Creates a date object from a formatted date</td>
+</tr>
+<tr>
+<td>formatDate(<code>date</code> dateTime, <code>string</code> format): <code>string</code></td>
+<td>Transforms a date object into a formatted date string</td>
+</tr>
+<tr>
+<td>now(<code>string</code> timezone): <code>string</code></td>
+<td>Returns a new \DateTime object with the given timezone</td>
+</tr>
+<tr>
+<td>convertCharCode(<code>string</code> text, <code>string</code> sourceCharCode, <code>string</code> destinationCharCode): <code>string</code></td>
+<td>Converts a string from one character encoding to another</td>
+</tr>
+<tr>
+<td>asFloat(<code>string</code> value): <code>string</code></td>
+<td>Converts the value into a float number</td>
+</tr>
+<tr>
+<td>asInteger(<code>string</code> value): <code>string</code></td>
+<td>Converts the value to an integer</td>
+</tr>
+<tr>
+<td>asString(<code>string</code> value): <code>string</code></td>
+<td>Converts the value into a string</td>
+</tr>
+</tbody>
+</table>
 </div>
           
           <p class="post-meta border-bottom pb-3 mb-0 mt-3">Updated on 12 Aug 2021</p>
@@ -493,274 +591,6 @@ and use the <code>Kiboko\Component\ArrayExpressionLanguage\ArrayExpressionLangua
             
             
             
-
-            
-            
-            
-            
-            
-
-            
-            
-            
-            
-            
-            
-            
-            
-            
-
-            
-            
-            
-            
-            
-
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-
-            
-            
-            
-
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-
-            
-            
-            
-
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-
-            
-            
-            
-
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-
-            
-            
-            
-
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-
-            
-            
-            
-
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-
-            
-            
-            
-
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-
-            
-            
-            
-
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-
-            
-            
-            
-            
-            
-
-            
-            
-            
-            
-            
-            
-            
-            
-
-            
-            
-            
-
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-
-            
-            
-            
-
-            
-            
-            
-            
-            
-            
-            
-            
-
-            
-            
-            
-
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-
-            
-            
-            
-
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-
-            
-            
-            
-
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-
-            
-            
-            
-
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
             
             
 
@@ -927,6 +757,394 @@ and use the <code>Kiboko\Component\ArrayExpressionLanguage\ArrayExpressionLangua
             
             
 
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+
+            
+            
+            
             
             
             
@@ -1060,7 +1278,7 @@ and use the <code>Kiboko\Component\ArrayExpressionLanguage\ArrayExpressionLangua
   <div class="container">
     <div class="row align-items-center">
       <div class="col-md-8 text-md-left text-center">
-       <p class="mb-md-0 mb-4">The Gyroscops Documents are copyright © <a href="https://kiboko.fr/">Kiboko</a> 2020, 2021.</p>
+       <p class="mb-md-0 mb-4">The Gyroscops Documentation is copyright © <a href="https://gyroscops.com/">Gyroscops</a> 2020-2023.</p>
       </div>
       <div class="col-md-4 text-md-right text-center">
         <ul class="list-inline">

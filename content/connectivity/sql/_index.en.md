@@ -5,7 +5,7 @@ draft: false
 type: "plugins"
 icon: "ti-server"
 description: "Process data from SQL data stores in your pipelines"
-weight: 6
+weight: 9
 ---
 
 - [What is it ?](#what-is-it-)
@@ -19,6 +19,7 @@ weight: 6
     - [Building a ConditionalLoader](#building-a-conditionalloader)
 - [Advanced usage](#advanced-usage)
     - [Using params in your queries](#using-params-in-your-queries)
+    - [Using an unknown number of parameters](#using-an-unknown-number-of-parameters)
     - [Creating before and after queries](#creating-before-and-after-queries)
     
 ---
@@ -32,8 +33,21 @@ stack.
 
 ## Installation
 
+> Before installing the SQL plugin, you must verify that the PDO extension is installed on your environment.
+
 ```shell
 composer require php-etl/sql-plugin
+```
+
+>> If you want to use an engine like postgres, install `ext-php_postgres` on the computer.
+>> Add these lines to your pipeline to have an explicit error message if your SQL engine is not installed
+
+```shell
+  sql-to-csv:
+   label: 'SQLite to CSV simple'
+   composer:
+     require:
+       - "ext-php_sqlite"
 ```
 
 ## Usage
@@ -46,13 +60,21 @@ This connection must be present in any case, whether it be when defining the ext
 loader or lookup.
 
 ```yaml
-sql:
-  connection:
-    dsn: 'mysql:host=127.0.0.1;port=3306;dbname=kiboko'
-    username: username
-    password: password
+composer:
+  require:
+    - "ext-php_mysql"
+pipeline:
+  steps:
+    sql:
+      connection:
+        dsn: 'mysql:host=127.0.0.1;port=3306;dbname=kiboko'
+        username: username
+        password: password
 ```
 
+### Options
+
+#### Persistent
 It is possible to specify options at the time of this connection using `options`. Currently, it is only possible to
 specify if the database connection should be persistent.
 
@@ -62,6 +84,18 @@ sql:
     # ...
     options:
       persistent: true
+```
+
+#### Shared
+
+In some cases, you may need to pool connections to your database to avoid having to open and close a whole new connection 
+for every operation the database needs to perform.
+
+```yaml
+sql:
+  connection:
+    # ...
+    shared: true
 ```
 
 ### Building an extractor
@@ -87,7 +121,7 @@ In the configuration of your lookup, you must write your query avec l'option `qu
 
 The `merge` option allows you to add data to your dataset, in a sense merging your actual dataset with your new data.
 
-The `map` option comes from the [FastMap](../../../connectivity/fast-map) plugin, feel free to read its documentation
+The `map` option comes from the [FastMap](../fast-map) plugin, feel free to read its documentation
 to understand how to use it.
 
 ```yaml
@@ -120,7 +154,7 @@ sql:
       - condition: '@=input["id"] > 2'
         query: 'SELECT * FROM foo WHERE value IS NOT NULL AND id <= ?'
         parameters:
-          - key: 'identifier'
+          identifier:
             value: '@=3'
         merge:
           map:
@@ -159,7 +193,7 @@ sql:
       - condition: '@=input["id"] > 2'
         query: 'SELECT * FROM foo WHERE value IS NOT NULL AND id <= ?'
         parameters:
-          - key: 'identifier'
+          identifier:
             value: '@=3'
   # ...
 ```
@@ -170,7 +204,7 @@ sql:
 
 Thanks to the SQL plugin, it is possible to write your queries with parameters.
 
-If you write a prepared statement using named parameters (`:param`), your parameter key in the configuration will be
+If you write a prepared statement using named parameters (`:param`), your parameter's key in the configuration will be
 the name of your parameter without the `:` :
 
 ```yaml
@@ -178,16 +212,16 @@ sql:
   loader:
     query: 'INSERT INTO table1 VALUES (:value1, :value2, :value3)'
     parameters:
-      - key: value1
+      value1:
         value: '@=input["value1"]'
-      - key: value2
+      value2:
         value: '@=input["value3"]'
-      - key: value3
+      value3:
         value: '@=input["value3"]'
     # ... 
 ```
 
-If you are using a prepared statement using interrogative markers (`?`), your parameter key in the
+If you are using a prepared statement using interrogative markers (`?`), your parameter's key in the
 configuration will be its position (starting from 1) :
 
 ```yaml
@@ -195,13 +229,50 @@ sql:
   loader: 
     query: 'INSERT INTO table1 VALUES (?, ?, ?)'
     parameters:
-      - key: 1
+      1:
         value: '@=input["value1"]'
-      - key: 2
+      2:
         value: '@=input["value3"]'
-      - key: 3
+      3:
         value: '@=input["value3"]'
   # ... 
+```
+
+### Using an unknown number of parameters
+
+In some cases, you may not know in advance how many parameters you will need to enter,
+for example if you are searching using an `IN` with many values.
+
+Using `from` instead of `value` will bind as many parameters as there are values in the path.
+
+And use [the expression `inSql(path, parameter_name)`](../../feature/expression-language/satellite-expression-functions/#list-of-available-functions) to prepare the values in the query.
+
+```yaml
+sql:
+  loader: 
+    query: '@="SELECT * FROM category WHERE id " ~ inSql(input["codes_list"], "identifier") ~ "'
+    parameters:
+      identifier:
+        from: '@=input["codes_list"]'
+  # ...
+```
+
+If at runtime there are 4 values under `[codes_list]`, this would be equivalent to writing:
+
+```yaml
+sql:
+  loader: 
+    query: 'SELECT * FROM category WHERE id IN (:identifier_0, :identifier_1, :identifier_2, :identifier_3)'
+    parameters:
+      identifier_0:
+        value: '@=input["codes_list"][0]'
+      identifier_1:
+        value: '@=input["codes_list"][1]'
+      identifier_2:
+        value: '@=input["codes_list"][2]'
+      identifier_3:
+        value: '@=input["codes_list"][3]'
+  # ...
 ```
 
 ### Creating before and after queries

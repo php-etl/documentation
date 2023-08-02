@@ -5,7 +5,7 @@ draft: false
 type: "plugins"
 logo: "fastmap"
 description: "Data transformation and serialization, with compiled and static mappers"
-weight: 2
+weight: 4
 ---
 
 {{< feature-state for_mw_version="0.1" state="alpha" >}}
@@ -17,6 +17,7 @@ weight: 2
   - [Building a ListMapper](#building-a-listmapper)
   - [Building a CollectionMapper](#building-a-collectionmapper)
   - [Building an ObjectMapper](#building-an-objectmapper)
+  - [Building a ConditionalMapper](#building-a-conditionalmapper)
   
 ---
 
@@ -66,6 +67,7 @@ To write a mapping to an array, you must use the `map option.
 
 ```yaml
 fastmap:
+  append: true # Optional. Merges this step's output into the previous step's result.
   map:
   # ...
 ```
@@ -141,7 +143,7 @@ fastmap:
 
 ### Building a ListMapper
 
-To write a mapping to a list, you must use the `list` option, which will always be accompanied by the
+To write a mapping to a list, you must use the `list` option, which will always be accompanied by
 the `expression` option.
 
 - `expression` : allows you to write an expression which will be used in the mapping.
@@ -199,3 +201,24 @@ fastmap:
 Warning: Unlike an ArrayMapper, here the `field` must not be between `[...]`. 
 
 See [Reading from objects](https://symfony.com/doc/current/components/property_access.html#reading-from-objects).
+
+### Building a ConditionalMapper
+
+To write a list of mappers that will only execute if a condition is met, you must use the `conditional` option,
+under which you can declare multiple [Array](#building-an-arraymapper) (`map`) or [Object](#building-an-objectmapper) (`object`) mappers,
+each protected by a `condition`.
+
+The behaviour is similar to `if ... else if ...`, meaning **only 1 of the mappers will be executed**.
+
+```yaml
+fastmap:
+  conditional:
+    - condition: 'keyExists("sku", input)'
+      append: true # Optional. Merges this step's output into the previous step's result.
+      map:
+        # ...
+    - condition: 'keyExists("identifier", input)'
+      append: true
+      object:
+        # ...
+```

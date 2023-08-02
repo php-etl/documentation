@@ -1,18 +1,18 @@
 <!DOCTYPE html>
 <html lang="{{ with .Site.LanguageCode }}{{ . }}{{ else }}en-us{{ end }}">
   {{ partial "head.html" . }}
-  
+
   <body>
     {{ if .IsHome }}
+    {{ partial "navigation.html" . }}
     {{ "<!-- header -->" | safeHTML }}
-    <header class="banner {{if .Site.Params.banner.bg_image}}overlay bg-cover{{else}}bg-white{{end}}" data-background="{{ .Site.Params.banner.bg_image | absURL }}">
-      {{ partial "navigation.html" . }}
+    <header class="banner {{if .Site.Params.banner.bg_image}}overlay bg-cover{{end}}" data-background="{{ .Site.Params.banner.bg_image | absURL }}">
       {{ partial "banner.html" . }}
     </header>
     {{ "<!-- /header -->" | safeHTML }}
     {{ else }}
     {{ "<!-- header -->" | safeHTML }}
-    <header class="shadow-bottom sticky-top bg-white">
+    <header class="sticky-top bg-gradient">
       {{ partial "navigation.html" . }}
     </header>
     {{ "<!-- /header -->" | safeHTML }}

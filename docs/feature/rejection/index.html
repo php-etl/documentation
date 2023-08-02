@@ -2,13 +2,13 @@
 <html lang="en-us">
   <head>
   <meta charset="utf-8">
-  <title>Rejection</title>
+  <title>Rejection  | Gyroscops Documentation</title>
 
-  <meta name="generator" content="Hugo 0.82.0" />
+  <meta name="generator" content="Hugo 0.92.2" />
 
   <!-- mobile responsive meta -->
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  
+
   <!-- ** Plugins Needed for the Project ** -->
   <!-- Bootstrap -->
   <link rel="stylesheet" href="https://php-etl.github.io/documentation/plugins/bootstrap/bootstrap.min.css">
@@ -24,7 +24,7 @@
 
   <!-- fonts -->
   <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700&display=swap" rel="stylesheet">
-  
+
   <style>
   :root{
     --primary-color: #22014f;
@@ -34,7 +34,8 @@
     --text-color:#666;
     --text-color-dark:#333;
     --text-color-light:#eee;
-    --white-color:#eee;
+    --white-color:#fff;
+    --light-color:#eee;
     --font-family:Lato;
   }
   </style>
@@ -63,20 +64,20 @@
 
 </head>
 
-  
+
   <body>
     
     <!-- header -->
-    <header class="shadow-bottom sticky-top bg-white">
-      <nav class="navbar navbar-expand-md navbar-light">
+    <header class="sticky-top bg-gradient">
+      <nav class="navbar navbar-expand-md bg-light">
   <div class="container">
-    <a class="navbar-brand px-2" href="/documentation">
+    <a class="navbar-brand" href="/documentation">
       
       
       
       
       <div class="navbar-brand">
-        <img class="img-fluid" src="https://php-etl.github.io/documentation/logo-web.svg" alt="Gyroscops"> Gyroscops
+        <img class="img-fluid" src="https://php-etl.github.io/documentation/logo-web.svg" alt="Gyroscops"><span class="navbar-logo"> Gyroscops</span>
       </div>
       
       
@@ -88,25 +89,24 @@
 
     <div class="collapse navbar-collapse text-center" id="navigation">
       <ul class="navbar-nav ml-auto">
-        <li class="nav-item">
-          <a class="nav-link text-dark" href="/documentation">Home</a>
-        </li>
         
         
         <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle text-dark" href="#" role="button" data-toggle="dropdown"
+          <span class="nav-link dropdown-toggle text-dark" href="#" role="button" data-toggle="dropdown"
             aria-haspopup="true" aria-expanded="false">
             Getting Started
-          </a>
+          </span>
           <div class="dropdown-menu">
             
-            <a class="dropdown-item" href="/documentation/getting-started/setup">Setup</a>
+            <a class="dropdown-item" href="/documentation/getting-started/environment-setup">Environment Setup</a>
             
-            <a class="dropdown-item" href="/documentation/getting-started/satellite">Creating Satellites</a>
+            <a class="dropdown-item" href="/documentation/getting-started/installation">Installation</a>
             
-            <a class="dropdown-item" href="/documentation/getting-started/pipeline">Pipelines</a>
+            <a class="dropdown-item" href="/documentation/getting-started/writing-configuration">Writing Configuration</a>
             
-            <a class="dropdown-item" href="/documentation/getting-started/workflow">Workflows</a>
+            <a class="dropdown-item" href="/documentation/getting-started/compilation">Compilation</a>
+            
+            <a class="dropdown-item" href="/documentation/getting-started/execution">Execution</a>
             
           </div>
         </li>
@@ -114,10 +114,64 @@
         
         
         <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle text-dark" href="#" role="button" data-toggle="dropdown"
+          <span class="nav-link dropdown-toggle text-dark" href="#" role="button" data-toggle="dropdown"
+            aria-haspopup="true" aria-expanded="false">
+            Core concepts
+          </span>
+          <div class="dropdown-menu">
+            
+            <a class="dropdown-item" href="/documentation/core-concept/satellite">Satellite</a>
+            
+            <a class="dropdown-item" href="/documentation/core-concept/pipeline">Pipeline</a>
+            
+            <a class="dropdown-item" href="/documentation/core-concept/workflow">Workflow</a>
+            
+          </div>
+        </li>
+        
+        
+        
+        <li class="nav-item dropdown">
+          <span class="nav-link dropdown-toggle text-dark" href="#" role="button" data-toggle="dropdown"
+            aria-haspopup="true" aria-expanded="false">
+            Connectivity
+          </span>
+          <div class="dropdown-menu">
+            
+            <a class="dropdown-item" href="/documentation/connectivity/akeneo">Akeneo</a>
+            
+            <a class="dropdown-item" href="/documentation/connectivity/csv">CSV files</a>
+            
+            <a class="dropdown-item" href="/documentation/connectivity/custom">Custom connector</a>
+            
+            <a class="dropdown-item" href="/documentation/connectivity/fast-map">FastMap</a>
+            
+            <a class="dropdown-item" href="/documentation/connectivity/ftp">FTP</a>
+            
+            <a class="dropdown-item" href="/documentation/connectivity/sftp">SFTP</a>
+            
+            <a class="dropdown-item" href="/documentation/connectivity/json">JSON</a>
+            
+            <a class="dropdown-item" href="/documentation/connectivity/spreadsheet">Spreadsheet files</a>
+            
+            <a class="dropdown-item" href="/documentation/connectivity/sql">SQL database</a>
+            
+            <a class="dropdown-item" href="/documentation/connectivity/sylius">Sylius</a>
+            
+            <a class="dropdown-item" href="/documentation/connectivity/prestashop">Prestashop</a>
+            
+            <a class="dropdown-item" href="/documentation/connectivity/filtering">Filtering, drop or reject</a>
+            
+          </div>
+        </li>
+        
+        
+        
+        <li class="nav-item dropdown">
+          <span class="nav-link dropdown-toggle text-dark" href="#" role="button" data-toggle="dropdown"
             aria-haspopup="true" aria-expanded="false">
             Features
-          </a>
+          </span>
           <div class="dropdown-menu">
             
             <a class="dropdown-item" href="/documentation/feature/services">Declaring services</a>
@@ -134,59 +188,7 @@
         </li>
         
         
-        
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle text-dark" href="#" role="button" data-toggle="dropdown"
-            aria-haspopup="true" aria-expanded="false">
-            Connectivity
-          </a>
-          <div class="dropdown-menu">
-            
-            <a class="dropdown-item" href="/documentation/connectivity/akeneo">Akeneo</a>
-            
-            <a class="dropdown-item" href="/documentation/connectivity/csv">CSV files</a>
-            
-            <a class="dropdown-item" href="/documentation/connectivity/custom">Custom connector</a>
-            
-            <a class="dropdown-item" href="/documentation/connectivity/fast-map">FastMap</a>
-            
-            <a class="dropdown-item" href="/documentation/connectivity/ftp">FTP</a>
-            
-            <a class="dropdown-item" href="/documentation/connectivity/sftp">SFTP</a>
-            
-            <a class="dropdown-item" href="/documentation/connectivity/nl-json">NL-JSON</a>
-            
-            <a class="dropdown-item" href="/documentation/connectivity/spreadsheet">Spreadsheet files</a>
-            
-            <a class="dropdown-item" href="/documentation/connectivity/sql">SQL database</a>
-            
-            <a class="dropdown-item" href="/documentation/connectivity/sylius">Sylius</a>
-            
-          </div>
-        </li>
-        
-        
       </ul>
-      
-      <select class="lang-list dark" id="select-language"
-        onchange="location = this.value;">
-        
-        
-        
-        
-        
-        
-        
-        
-        <option id="en" value="https://php-etl.github.io/documentation/feature/rejection/" selected>English
-        </option>
-        
-        
-        
-        
-        
-        
-      </select>
       
     </div>
   </div>
@@ -206,6 +208,10 @@
           <ul class="list-styled">
             
             <a class="back-btn" href="/documentation"></a>
+            
+              
+            
+              
             
               
               
@@ -277,10 +283,10 @@
 
 
 
-<li data-nav-id="https://php-etl.github.io/documentation/feature/expression-language/array-expression-functions/" title="Array Expression Language" class="sidelist
+<li data-nav-id="https://php-etl.github.io/documentation/feature/expression-language/satellite-expression-functions/" title="Satellite Expression Language" class="sidelist
   ">
-  <a href="https://php-etl.github.io/documentation/feature/expression-language/array-expression-functions/">
-    Array Expression Language
+  <a href="https://php-etl.github.io/documentation/feature/expression-language/satellite-expression-functions/">
+    Satellite Expression Language
   </a>
   
   
@@ -299,10 +305,10 @@
 
 
 
-<li data-nav-id="https://php-etl.github.io/documentation/feature/expression-language/satellite-expression-functions/" title="Satellite Expression Language" class="sidelist
+<li data-nav-id="https://php-etl.github.io/documentation/feature/expression-language/array-expression-functions/" title="Array Expression Language" class="sidelist
   ">
-  <a href="https://php-etl.github.io/documentation/feature/expression-language/satellite-expression-functions/">
-    Satellite Expression Language
+  <a href="https://php-etl.github.io/documentation/feature/expression-language/array-expression-functions/">
+    Array Expression Language
   </a>
   
   
@@ -417,13 +423,11 @@
             
               
             
-              
-            
           </ul>
         </div>
       </div>
       <div class="col-lg-9">
-        <div class="p-lg-5 p-4 bg-white">
+        <div class="p-lg-5 p-4">
           <h1 class="single-title mb-5">
               
               
@@ -447,7 +451,7 @@
 <h2 id="usage">Usage</h2>
 <p>When you configure your pipeline, you can add the configuration of this feature to your step configuration.</p>
 <p>First, you must use the <code>rejection</code> option.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">rejection</span>:
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">rejection</span>:
   <span style="color:#75715e"># ...</span>
 </code></pre></div><h3 id="with-rabbitmq">With RabbitMQ</h3>
 <p>This feature supports sending to RabbitMQ instances.</p>
@@ -458,7 +462,7 @@
 <li><code>vhost</code>: the virtual host of your RabbitMQ instance</li>
 <li><code>topic</code>: the name of the queue to which the rejects will be sent</li>
 </ul>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">rejection</span>:
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">rejection</span>:
   <span style="color:#f92672">destinations</span>:
     - <span style="color:#f92672">rabbitmq</span>:
         <span style="color:#f92672">host</span>: <span style="color:#ae81ff">rabbitmq.example.com</span>
@@ -472,7 +476,7 @@
 <li><code>port</code>: the port that your RabbitMQ application uses</li>
 <li><code>exchange</code>: the name of the exchange to be used</li>
 </ul>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">rejection</span>:
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">rejection</span>:
   <span style="color:#f92672">destinations</span>:
     - <span style="color:#f92672">rabbitmq</span>:
         <span style="color:#f92672">host</span>: <span style="color:#ae81ff">rabbitmq.example.com</span>
@@ -512,6 +516,8 @@
             
             
             
+            
+            
 
             
             
@@ -527,14 +533,22 @@
             
             
             
+
             
             
             
 
+            
+            
+            
+            
             
             
             
             
+
+            
+            
             
 
             
@@ -545,11 +559,15 @@
             
             
             
+            
+            
+            
 
             
             
             
 
+            
             
             
             
@@ -561,11 +579,14 @@
             
             
             
+            
+            
 
             
             
             
 
+            
             
             
             
@@ -576,15 +597,27 @@
             
             
             
+
+            
             
+            
 
+            
             
             
             
+            
+            
+            
+            
+            
+            
+            
 
             
             
             
+
             
             
             
@@ -644,15 +677,27 @@
             
             
             
+
+            
+            
             
 
+            
+            
+            
+            
             
             
             
+            
+            
+            
+            
 
             
             
             
+
             
             
             
@@ -664,16 +709,29 @@
             
             
             
+
             
             
             
 
+            
             
             
             
             
             
+            
+            
+            
+            
+            
+
+            
+            
+            
 
+            
+            
             
             
             
@@ -682,11 +740,15 @@
             
             
             
+            
 
             
             
             
 
+            
+            
+            
             
             
             
@@ -702,6 +764,8 @@
             
             
             
+            
+            
 
             
             
@@ -716,6 +780,7 @@
             
             
 
+            
             
             
             
@@ -726,8 +791,19 @@
             
             
             
+
+            
             
+            
 
+            
+            
+            
+            
+            
+            
+            
+            
             
             
             
@@ -735,6 +811,7 @@
             
             
             
+
             
             
             
@@ -781,6 +858,7 @@
             
             
             
+            
 
             
             
@@ -788,6 +866,7 @@
             
             
 
+            
             
             
             
@@ -796,11 +875,15 @@
             
             
             
+            
+            
 
             
             
             
 
+            
+            
             
             
             
@@ -809,10 +892,13 @@
             
             
             
+            
 
+            
             
             
             
+            
 
             
             
@@ -822,17 +908,27 @@
             
             
             
+
             
             
             
 
+            
+            
+            
+            
             
             
             
+            
+            
+            
+            
 
             
             
             
+
             
             
             
@@ -849,6 +945,8 @@
             
             
 
+            
+            
             
             
             
@@ -860,11 +958,13 @@
             
             
             
+            
 
             
             
             
 
+            
             
             
             
@@ -881,6 +981,8 @@
             
             
 
+            
+            
             
             
             
@@ -892,11 +994,15 @@
             
             
             
+            
 
             
             
             
 
+            
+            
+            
             
             
             
@@ -912,10 +1018,22 @@
             
             
             
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
 
             
             
             
+
             
             
             
@@ -945,6 +1063,9 @@
             
             
 
+            
+            
+            
             
             
             
@@ -1055,10 +1176,10 @@
             
 
             
-            <a class="nav nav-prev" href="https://php-etl.github.io/documentation/feature/state/"><i class="ti-arrow-left mr-2"></i> <span class="d-none d-md-block">State</span></a>
+            <a class="nav nav-prev" href="https://php-etl.github.io/documentation/feature/logger/"><i class="ti-arrow-left mr-2"></i> <span class="d-none d-md-block">Logging</span></a>
             
             
-            <a class="nav nav-next" href="https://php-etl.github.io/documentation/getting-started/"> <span class="d-none d-md-block">Getting-starteds</span><i class="ti-arrow-right ml-2"></i></a>
+            <a class="nav nav-next" href="https://php-etl.github.io/documentation/feature/state/"> <span class="d-none d-md-block">State</span><i class="ti-arrow-right ml-2"></i></a>
             
           </nav>
         </div>
@@ -1078,7 +1199,7 @@
   <div class="container">
     <div class="row align-items-center">
       <div class="col-md-8 text-md-left text-center">
-       <p class="mb-md-0 mb-4">The Gyroscops Documents are copyright © <a href="https://kiboko.fr/">Kiboko</a> 2020, 2021.</p>
+       <p class="mb-md-0 mb-4">The Gyroscops Documentation is copyright © <a href="https://gyroscops.com/">Gyroscops</a> 2020-2023.</p>
       </div>
       <div class="col-md-4 text-md-right text-center">
         <ul class="list-inline">

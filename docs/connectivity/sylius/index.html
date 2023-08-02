@@ -2,13 +2,13 @@
 <html lang="en-us">
   <head>
   <meta charset="utf-8">
-  <title>Sylius</title>
+  <title>Sylius  | Gyroscops Documentation</title>
 
-  <meta name="generator" content="Hugo 0.82.0" />
+  <meta name="generator" content="Hugo 0.92.2" />
 
   <!-- mobile responsive meta -->
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  
+
   <!-- ** Plugins Needed for the Project ** -->
   <!-- Bootstrap -->
   <link rel="stylesheet" href="https://php-etl.github.io/documentation/plugins/bootstrap/bootstrap.min.css">
@@ -24,7 +24,7 @@
 
   <!-- fonts -->
   <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700&display=swap" rel="stylesheet">
-  
+
   <style>
   :root{
     --primary-color: #22014f;
@@ -34,7 +34,8 @@
     --text-color:#666;
     --text-color-dark:#333;
     --text-color-light:#eee;
-    --white-color:#eee;
+    --white-color:#fff;
+    --light-color:#eee;
     --font-family:Lato;
   }
   </style>
@@ -63,20 +64,20 @@
 
 </head>
 
-  
+
   <body>
     
     <!-- header -->
-    <header class="shadow-bottom sticky-top bg-white">
-      <nav class="navbar navbar-expand-md navbar-light">
+    <header class="sticky-top bg-gradient">
+      <nav class="navbar navbar-expand-md bg-light">
   <div class="container">
-    <a class="navbar-brand px-2" href="/documentation">
+    <a class="navbar-brand" href="/documentation">
       
       
       
       
       <div class="navbar-brand">
-        <img class="img-fluid" src="https://php-etl.github.io/documentation/logo-web.svg" alt="Gyroscops"> Gyroscops
+        <img class="img-fluid" src="https://php-etl.github.io/documentation/logo-web.svg" alt="Gyroscops"><span class="navbar-logo"> Gyroscops</span>
       </div>
       
       
@@ -88,25 +89,24 @@
 
     <div class="collapse navbar-collapse text-center" id="navigation">
       <ul class="navbar-nav ml-auto">
-        <li class="nav-item">
-          <a class="nav-link text-dark" href="/documentation">Home</a>
-        </li>
         
         
         <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle text-dark" href="#" role="button" data-toggle="dropdown"
+          <span class="nav-link dropdown-toggle text-dark" href="#" role="button" data-toggle="dropdown"
             aria-haspopup="true" aria-expanded="false">
             Getting Started
-          </a>
+          </span>
           <div class="dropdown-menu">
             
-            <a class="dropdown-item" href="/documentation/getting-started/setup">Setup</a>
+            <a class="dropdown-item" href="/documentation/getting-started/environment-setup">Environment Setup</a>
             
-            <a class="dropdown-item" href="/documentation/getting-started/satellite">Creating Satellites</a>
+            <a class="dropdown-item" href="/documentation/getting-started/installation">Installation</a>
             
-            <a class="dropdown-item" href="/documentation/getting-started/pipeline">Pipelines</a>
+            <a class="dropdown-item" href="/documentation/getting-started/writing-configuration">Writing Configuration</a>
             
-            <a class="dropdown-item" href="/documentation/getting-started/workflow">Workflows</a>
+            <a class="dropdown-item" href="/documentation/getting-started/compilation">Compilation</a>
+            
+            <a class="dropdown-item" href="/documentation/getting-started/execution">Execution</a>
             
           </div>
         </li>
@@ -114,10 +114,64 @@
         
         
         <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle text-dark" href="#" role="button" data-toggle="dropdown"
+          <span class="nav-link dropdown-toggle text-dark" href="#" role="button" data-toggle="dropdown"
+            aria-haspopup="true" aria-expanded="false">
+            Core concepts
+          </span>
+          <div class="dropdown-menu">
+            
+            <a class="dropdown-item" href="/documentation/core-concept/satellite">Satellite</a>
+            
+            <a class="dropdown-item" href="/documentation/core-concept/pipeline">Pipeline</a>
+            
+            <a class="dropdown-item" href="/documentation/core-concept/workflow">Workflow</a>
+            
+          </div>
+        </li>
+        
+        
+        
+        <li class="nav-item dropdown">
+          <span class="nav-link dropdown-toggle text-dark" href="#" role="button" data-toggle="dropdown"
+            aria-haspopup="true" aria-expanded="false">
+            Connectivity
+          </span>
+          <div class="dropdown-menu">
+            
+            <a class="dropdown-item" href="/documentation/connectivity/akeneo">Akeneo</a>
+            
+            <a class="dropdown-item" href="/documentation/connectivity/csv">CSV files</a>
+            
+            <a class="dropdown-item" href="/documentation/connectivity/custom">Custom connector</a>
+            
+            <a class="dropdown-item" href="/documentation/connectivity/fast-map">FastMap</a>
+            
+            <a class="dropdown-item" href="/documentation/connectivity/ftp">FTP</a>
+            
+            <a class="dropdown-item" href="/documentation/connectivity/sftp">SFTP</a>
+            
+            <a class="dropdown-item" href="/documentation/connectivity/json">JSON</a>
+            
+            <a class="dropdown-item" href="/documentation/connectivity/spreadsheet">Spreadsheet files</a>
+            
+            <a class="dropdown-item" href="/documentation/connectivity/sql">SQL database</a>
+            
+            <a class="dropdown-item" href="/documentation/connectivity/sylius">Sylius</a>
+            
+            <a class="dropdown-item" href="/documentation/connectivity/prestashop">Prestashop</a>
+            
+            <a class="dropdown-item" href="/documentation/connectivity/filtering">Filtering, drop or reject</a>
+            
+          </div>
+        </li>
+        
+        
+        
+        <li class="nav-item dropdown">
+          <span class="nav-link dropdown-toggle text-dark" href="#" role="button" data-toggle="dropdown"
             aria-haspopup="true" aria-expanded="false">
             Features
-          </a>
+          </span>
           <div class="dropdown-menu">
             
             <a class="dropdown-item" href="/documentation/feature/services">Declaring services</a>
@@ -134,59 +188,7 @@
         </li>
         
         
-        
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle text-dark" href="#" role="button" data-toggle="dropdown"
-            aria-haspopup="true" aria-expanded="false">
-            Connectivity
-          </a>
-          <div class="dropdown-menu">
-            
-            <a class="dropdown-item" href="/documentation/connectivity/akeneo">Akeneo</a>
-            
-            <a class="dropdown-item" href="/documentation/connectivity/csv">CSV files</a>
-            
-            <a class="dropdown-item" href="/documentation/connectivity/custom">Custom connector</a>
-            
-            <a class="dropdown-item" href="/documentation/connectivity/fast-map">FastMap</a>
-            
-            <a class="dropdown-item" href="/documentation/connectivity/ftp">FTP</a>
-            
-            <a class="dropdown-item" href="/documentation/connectivity/sftp">SFTP</a>
-            
-            <a class="dropdown-item" href="/documentation/connectivity/nl-json">NL-JSON</a>
-            
-            <a class="dropdown-item" href="/documentation/connectivity/spreadsheet">Spreadsheet files</a>
-            
-            <a class="dropdown-item" href="/documentation/connectivity/sql">SQL database</a>
-            
-            <a class="dropdown-item" href="/documentation/connectivity/sylius">Sylius</a>
-            
-          </div>
-        </li>
-        
-        
       </ul>
-      
-      <select class="lang-list dark" id="select-language"
-        onchange="location = this.value;">
-        
-        
-        
-        
-        
-        
-        
-        
-        <option id="en" value="https://php-etl.github.io/documentation/connectivity/sylius/" selected>English
-        </option>
-        
-        
-        
-        
-        
-        
-      </select>
       
     </div>
   </div>
@@ -206,10 +208,6 @@
           <ul class="list-styled">
             
             <a class="back-btn" href="/documentation"></a>
-            
-              
-            
-              
             
               
               
@@ -259,10 +257,10 @@
 
 
 
-<li data-nav-id="https://php-etl.github.io/documentation/connectivity/akeneo/expression-language/" title="Akeneo expression language functions" class="sidelist
+<li data-nav-id="https://php-etl.github.io/documentation/connectivity/akeneo/plugin/" title="Akeneo plugin" class="sidelist
   ">
-  <a href="https://php-etl.github.io/documentation/connectivity/akeneo/expression-language/">
-    Akeneo expression language functions
+  <a href="https://php-etl.github.io/documentation/connectivity/akeneo/plugin/">
+    Akeneo plugin
   </a>
   
   
@@ -281,10 +279,10 @@
 
 
 
-<li data-nav-id="https://php-etl.github.io/documentation/connectivity/akeneo/plugin/" title="Akeneo plugin" class="sidelist
+<li data-nav-id="https://php-etl.github.io/documentation/connectivity/akeneo/expression-language/" title="Akeneo expression language functions" class="sidelist
   ">
-  <a href="https://php-etl.github.io/documentation/connectivity/akeneo/plugin/">
-    Akeneo plugin
+  <a href="https://php-etl.github.io/documentation/connectivity/akeneo/expression-language/">
+    Akeneo expression language functions
   </a>
   
   
@@ -398,10 +396,10 @@
 
 
 
-<li data-nav-id="https://php-etl.github.io/documentation/connectivity/nl-json/" title="NL-JSON" class="sidelist
+<li data-nav-id="https://php-etl.github.io/documentation/connectivity/sftp/" title="SFTP" class="sidelist
   ">
-  <a href="https://php-etl.github.io/documentation/connectivity/nl-json/">
-    NL-JSON
+  <a href="https://php-etl.github.io/documentation/connectivity/sftp/">
+    SFTP
   </a>
   
   
@@ -420,10 +418,10 @@
 
 
 
-<li data-nav-id="https://php-etl.github.io/documentation/connectivity/sftp/" title="SFTP" class="sidelist
+<li data-nav-id="https://php-etl.github.io/documentation/connectivity/json/" title="JSON" class="sidelist
   ">
-  <a href="https://php-etl.github.io/documentation/connectivity/sftp/">
-    SFTP
+  <a href="https://php-etl.github.io/documentation/connectivity/json/">
+    JSON
   </a>
   
   
@@ -498,6 +496,50 @@
 
         
       
+        
+          
+
+
+
+
+
+
+
+
+<li data-nav-id="https://php-etl.github.io/documentation/connectivity/prestashop/" title="Prestashop" class="sidelist
+  ">
+  <a href="https://php-etl.github.io/documentation/connectivity/prestashop/">
+    Prestashop
+  </a>
+  
+  
+</li>
+
+
+        
+      
+        
+          
+
+
+
+
+
+
+
+
+<li data-nav-id="https://php-etl.github.io/documentation/connectivity/filtering/" title="Filtering, drop or reject" class="sidelist
+  ">
+  <a href="https://php-etl.github.io/documentation/connectivity/filtering/">
+    Filtering, drop or reject
+  </a>
+  
+  
+</li>
+
+
+        
+      
     </ul>
   
 </li>
@@ -507,11 +549,17 @@
             
               
             
+              
+            
+              
+            
+              
+            
           </ul>
         </div>
       </div>
       <div class="col-lg-9">
-        <div class="p-lg-5 p-4 bg-white">
+        <div class="p-lg-5 p-4">
           <h1 class="single-title mb-5">
               
               
@@ -555,14 +603,14 @@
 <p>Sylius is a Headless E-commerce platform.</p>
 </blockquote>
 <h2 id="what-is-it-">What is it ?</h2>
-<p>The Sylius plugin will enable Sylius connectivity to the <a href="../../components/pipeline">Pipeline</a>, in order to read and write from and to Sylius.</p>
+<p>The Sylius plugin will enable Sylius connectivity to the <a href="../../core-concept/pipeline">Pipeline</a>, in order to read and write from and to Sylius.</p>
 <h2 id="installation">Installation</h2>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">composer require php-etl/sylius-plugin
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">composer require php-etl/sylius-plugin
 </code></pre></div><h2 id="usage">Usage</h2>
 <h3 id="connecting-to-sylius">Connecting to Sylius</h3>
 <p>To establish a connection to your Sylius API, you must specify its URL and some connection identifiers
 (<code>client_id</code>, <code>secret</code>, <code>username</code>, <code>password</code>).</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">sylius</span>:
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">sylius</span>:
   <span style="color:#75715e"># ...</span>
   <span style="color:#f92672">client</span>:
     <span style="color:#f92672">api_url</span>: <span style="color:#e6db74">&#39;http://127.0.0.1:8001&#39;</span>
@@ -584,7 +632,7 @@ and which method you want to use to retrieve your data.</p>
 <li><code>get</code> : retrieve a row from a table</li>
 <li><code>listPerPage</code> : retrieves a set number of data from a table</li>
 </ul>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">sylius</span>:
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">sylius</span>:
   <span style="color:#f92672">extractor</span>:
     <span style="color:#f92672">type</span>: <span style="color:#ae81ff">products</span>
     <span style="color:#f92672">method</span>: <span style="color:#ae81ff">all</span>
@@ -605,7 +653,7 @@ and which method you want to use to insert your data.</p>
 <li><code>create</code> : insert a row into the table</li>
 <li><code>delete</code> : delete a row from the table</li>
 </ul>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">sylius</span>:
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">sylius</span>:
   <span style="color:#f92672">loader</span>:
     <span style="color:#f92672">type</span>: <span style="color:#ae81ff">products</span>
     <span style="color:#f92672">method</span>: <span style="color:#ae81ff">create</span>
@@ -629,7 +677,7 @@ and which method you want to use to insert your data.</p>
 <li><code>scope</code> : channel in which you search</li>
 <li><code>locale</code> : code of the locale you are looking for</li>
 </ul>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">sylius</span>:
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">sylius</span>:
   <span style="color:#f92672">extractor</span>:
     <span style="color:#75715e"># ...</span>
     <span style="color:#f92672">search</span>:
@@ -664,8 +712,6 @@ and which method you want to use to insert your data.</p>
             
             
             
-            
-            
 
             
             
@@ -681,10 +727,11 @@ and which method you want to use to insert your data.</p>
             
             
             
-
             
             
             
+
+            
             
             
 
@@ -728,7 +775,6 @@ and which method you want to use to insert your data.</p>
             
             
             
-
             
             
             
@@ -736,6 +782,7 @@ and which method you want to use to insert your data.</p>
             
             
             
+
             
             
             
@@ -811,10 +858,17 @@ and which method you want to use to insert your data.</p>
             
             
             
+
             
             
             
 
+            
+            
+            
+            
+            
+            
             
             
             
@@ -824,6 +878,13 @@ and which method you want to use to insert your data.</p>
             
             
             
+
+            
+            
+            
+            
+            
+            
             
             
             
@@ -845,11 +906,15 @@ and which method you want to use to insert your data.</p>
             
             
             
+            
 
             
             
             
 
+            
+            
+            
             
             
             
@@ -858,6 +923,9 @@ and which method you want to use to insert your data.</p>
             
             
             
+            
+            
+            
 
             
             
@@ -879,6 +947,7 @@ and which method you want to use to insert your data.</p>
             
             
 
+            
             
             
             
@@ -892,12 +961,27 @@ and which method you want to use to insert your data.</p>
             
             
             
+
+            
+            
+            
+            
+            
+
             
+            
+            
+            
+            
+            
+            
+            
 
             
             
             
 
+            
             
             
             
@@ -908,15 +992,28 @@ and which method you want to use to insert your data.</p>
             
             
             
+
+            
+            
             
 
+            
+            
+            
+            
             
             
             
+            
+            
+            
+            
 
             
             
             
+
+            
             
             
             
@@ -926,6 +1023,8 @@ and which method you want to use to insert your data.</p>
             
             
             
+            
+
             
             
             
@@ -935,7 +1034,18 @@ and which method you want to use to insert your data.</p>
             
             
             
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
 
+            
             
             
             
@@ -947,7 +1057,11 @@ and which method you want to use to insert your data.</p>
             
             
             
+            
+            
 
+            
+            
             
             
             
@@ -980,10 +1094,22 @@ and which method you want to use to insert your data.</p>
             
             
             
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
 
             
             
             
+
             
             
             
@@ -1000,6 +1126,7 @@ and which method you want to use to insert your data.</p>
             
             
 
+            
             
             
             
@@ -1009,6 +1136,8 @@ and which method you want to use to insert your data.</p>
             
             
             
+            
+
             
             
             
@@ -1016,10 +1145,22 @@ and which method you want to use to insert your data.</p>
             
             
             
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
 
             
             
             
+
             
             
             
@@ -1052,6 +1193,9 @@ and which method you want to use to insert your data.</p>
             
             
 
+            
+            
+            
             
             
             
@@ -1067,10 +1211,22 @@ and which method you want to use to insert your data.</p>
             
             
             
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
 
             
             
             
+
             
             
             
@@ -1100,6 +1256,9 @@ and which method you want to use to insert your data.</p>
             
             
 
+            
+            
+            
             
             
             
@@ -1210,10 +1369,10 @@ and which method you want to use to insert your data.</p>
             
 
             
-            <a class="nav nav-prev" href="https://php-etl.github.io/documentation/connectivity/fast-map/"><i class="ti-arrow-left mr-2"></i> <span class="d-none d-md-block">Fast Map</span></a>
+            <a class="nav nav-prev" href="https://php-etl.github.io/documentation/connectivity/sql/"><i class="ti-arrow-left mr-2"></i> <span class="d-none d-md-block">SQL</span></a>
             
             
-            <a class="nav nav-next" href="https://php-etl.github.io/documentation/connectivity/csv/"> <span class="d-none d-md-block">CSV</span><i class="ti-arrow-right ml-2"></i></a>
+            <a class="nav nav-next" href="https://php-etl.github.io/documentation/connectivity/prestashop/"> <span class="d-none d-md-block">Prestashop</span><i class="ti-arrow-right ml-2"></i></a>
             
           </nav>
         </div>
@@ -1233,7 +1392,7 @@ and which method you want to use to insert your data.</p>
   <div class="container">
     <div class="row align-items-center">
       <div class="col-md-8 text-md-left text-center">
-       <p class="mb-md-0 mb-4">The Gyroscops Documents are copyright © <a href="https://kiboko.fr/">Kiboko</a> 2020, 2021.</p>
+       <p class="mb-md-0 mb-4">The Gyroscops Documentation is copyright © <a href="https://gyroscops.com/">Gyroscops</a> 2020-2023.</p>
       </div>
       <div class="col-md-4 text-md-right text-center">
         <ul class="list-inline">

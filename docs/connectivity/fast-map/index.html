@@ -2,13 +2,13 @@
 <html lang="en-us">
   <head>
   <meta charset="utf-8">
-  <title>Fast Map</title>
+  <title>Fast Map  | Gyroscops Documentation</title>
 
-  <meta name="generator" content="Hugo 0.82.0" />
+  <meta name="generator" content="Hugo 0.92.2" />
 
   <!-- mobile responsive meta -->
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  
+
   <!-- ** Plugins Needed for the Project ** -->
   <!-- Bootstrap -->
   <link rel="stylesheet" href="https://php-etl.github.io/documentation/plugins/bootstrap/bootstrap.min.css">
@@ -24,7 +24,7 @@
 
   <!-- fonts -->
   <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700&display=swap" rel="stylesheet">
-  
+
   <style>
   :root{
     --primary-color: #22014f;
@@ -34,7 +34,8 @@
     --text-color:#666;
     --text-color-dark:#333;
     --text-color-light:#eee;
-    --white-color:#eee;
+    --white-color:#fff;
+    --light-color:#eee;
     --font-family:Lato;
   }
   </style>
@@ -63,20 +64,20 @@
 
 </head>
 
-  
+
   <body>
     
     <!-- header -->
-    <header class="shadow-bottom sticky-top bg-white">
-      <nav class="navbar navbar-expand-md navbar-light">
+    <header class="sticky-top bg-gradient">
+      <nav class="navbar navbar-expand-md bg-light">
   <div class="container">
-    <a class="navbar-brand px-2" href="/documentation">
+    <a class="navbar-brand" href="/documentation">
       
       
       
       
       <div class="navbar-brand">
-        <img class="img-fluid" src="https://php-etl.github.io/documentation/logo-web.svg" alt="Gyroscops"> Gyroscops
+        <img class="img-fluid" src="https://php-etl.github.io/documentation/logo-web.svg" alt="Gyroscops"><span class="navbar-logo"> Gyroscops</span>
       </div>
       
       
@@ -88,25 +89,24 @@
 
     <div class="collapse navbar-collapse text-center" id="navigation">
       <ul class="navbar-nav ml-auto">
-        <li class="nav-item">
-          <a class="nav-link text-dark" href="/documentation">Home</a>
-        </li>
         
         
         <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle text-dark" href="#" role="button" data-toggle="dropdown"
+          <span class="nav-link dropdown-toggle text-dark" href="#" role="button" data-toggle="dropdown"
             aria-haspopup="true" aria-expanded="false">
             Getting Started
-          </a>
+          </span>
           <div class="dropdown-menu">
             
-            <a class="dropdown-item" href="/documentation/getting-started/setup">Setup</a>
+            <a class="dropdown-item" href="/documentation/getting-started/environment-setup">Environment Setup</a>
             
-            <a class="dropdown-item" href="/documentation/getting-started/satellite">Creating Satellites</a>
+            <a class="dropdown-item" href="/documentation/getting-started/installation">Installation</a>
             
-            <a class="dropdown-item" href="/documentation/getting-started/pipeline">Pipelines</a>
+            <a class="dropdown-item" href="/documentation/getting-started/writing-configuration">Writing Configuration</a>
             
-            <a class="dropdown-item" href="/documentation/getting-started/workflow">Workflows</a>
+            <a class="dropdown-item" href="/documentation/getting-started/compilation">Compilation</a>
+            
+            <a class="dropdown-item" href="/documentation/getting-started/execution">Execution</a>
             
           </div>
         </li>
@@ -114,10 +114,64 @@
         
         
         <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle text-dark" href="#" role="button" data-toggle="dropdown"
+          <span class="nav-link dropdown-toggle text-dark" href="#" role="button" data-toggle="dropdown"
+            aria-haspopup="true" aria-expanded="false">
+            Core concepts
+          </span>
+          <div class="dropdown-menu">
+            
+            <a class="dropdown-item" href="/documentation/core-concept/satellite">Satellite</a>
+            
+            <a class="dropdown-item" href="/documentation/core-concept/pipeline">Pipeline</a>
+            
+            <a class="dropdown-item" href="/documentation/core-concept/workflow">Workflow</a>
+            
+          </div>
+        </li>
+        
+        
+        
+        <li class="nav-item dropdown">
+          <span class="nav-link dropdown-toggle text-dark" href="#" role="button" data-toggle="dropdown"
+            aria-haspopup="true" aria-expanded="false">
+            Connectivity
+          </span>
+          <div class="dropdown-menu">
+            
+            <a class="dropdown-item" href="/documentation/connectivity/akeneo">Akeneo</a>
+            
+            <a class="dropdown-item" href="/documentation/connectivity/csv">CSV files</a>
+            
+            <a class="dropdown-item" href="/documentation/connectivity/custom">Custom connector</a>
+            
+            <a class="dropdown-item" href="/documentation/connectivity/fast-map">FastMap</a>
+            
+            <a class="dropdown-item" href="/documentation/connectivity/ftp">FTP</a>
+            
+            <a class="dropdown-item" href="/documentation/connectivity/sftp">SFTP</a>
+            
+            <a class="dropdown-item" href="/documentation/connectivity/json">JSON</a>
+            
+            <a class="dropdown-item" href="/documentation/connectivity/spreadsheet">Spreadsheet files</a>
+            
+            <a class="dropdown-item" href="/documentation/connectivity/sql">SQL database</a>
+            
+            <a class="dropdown-item" href="/documentation/connectivity/sylius">Sylius</a>
+            
+            <a class="dropdown-item" href="/documentation/connectivity/prestashop">Prestashop</a>
+            
+            <a class="dropdown-item" href="/documentation/connectivity/filtering">Filtering, drop or reject</a>
+            
+          </div>
+        </li>
+        
+        
+        
+        <li class="nav-item dropdown">
+          <span class="nav-link dropdown-toggle text-dark" href="#" role="button" data-toggle="dropdown"
             aria-haspopup="true" aria-expanded="false">
             Features
-          </a>
+          </span>
           <div class="dropdown-menu">
             
             <a class="dropdown-item" href="/documentation/feature/services">Declaring services</a>
@@ -134,59 +188,7 @@
         </li>
         
         
-        
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle text-dark" href="#" role="button" data-toggle="dropdown"
-            aria-haspopup="true" aria-expanded="false">
-            Connectivity
-          </a>
-          <div class="dropdown-menu">
-            
-            <a class="dropdown-item" href="/documentation/connectivity/akeneo">Akeneo</a>
-            
-            <a class="dropdown-item" href="/documentation/connectivity/csv">CSV files</a>
-            
-            <a class="dropdown-item" href="/documentation/connectivity/custom">Custom connector</a>
-            
-            <a class="dropdown-item" href="/documentation/connectivity/fast-map">FastMap</a>
-            
-            <a class="dropdown-item" href="/documentation/connectivity/ftp">FTP</a>
-            
-            <a class="dropdown-item" href="/documentation/connectivity/sftp">SFTP</a>
-            
-            <a class="dropdown-item" href="/documentation/connectivity/nl-json">NL-JSON</a>
-            
-            <a class="dropdown-item" href="/documentation/connectivity/spreadsheet">Spreadsheet files</a>
-            
-            <a class="dropdown-item" href="/documentation/connectivity/sql">SQL database</a>
-            
-            <a class="dropdown-item" href="/documentation/connectivity/sylius">Sylius</a>
-            
-          </div>
-        </li>
-        
-        
       </ul>
-      
-      <select class="lang-list dark" id="select-language"
-        onchange="location = this.value;">
-        
-        
-        
-        
-        
-        
-        
-        
-        <option id="en" value="https://php-etl.github.io/documentation/connectivity/fast-map/" selected>English
-        </option>
-        
-        
-        
-        
-        
-        
-      </select>
       
     </div>
   </div>
@@ -206,10 +208,6 @@
           <ul class="list-styled">
             
             <a class="back-btn" href="/documentation"></a>
-            
-              
-            
-              
             
               
               
@@ -259,10 +257,10 @@
 
 
 
-<li data-nav-id="https://php-etl.github.io/documentation/connectivity/akeneo/expression-language/" title="Akeneo expression language functions" class="sidelist
+<li data-nav-id="https://php-etl.github.io/documentation/connectivity/akeneo/plugin/" title="Akeneo plugin" class="sidelist
   ">
-  <a href="https://php-etl.github.io/documentation/connectivity/akeneo/expression-language/">
-    Akeneo expression language functions
+  <a href="https://php-etl.github.io/documentation/connectivity/akeneo/plugin/">
+    Akeneo plugin
   </a>
   
   
@@ -281,10 +279,10 @@
 
 
 
-<li data-nav-id="https://php-etl.github.io/documentation/connectivity/akeneo/plugin/" title="Akeneo plugin" class="sidelist
+<li data-nav-id="https://php-etl.github.io/documentation/connectivity/akeneo/expression-language/" title="Akeneo expression language functions" class="sidelist
   ">
-  <a href="https://php-etl.github.io/documentation/connectivity/akeneo/plugin/">
-    Akeneo plugin
+  <a href="https://php-etl.github.io/documentation/connectivity/akeneo/expression-language/">
+    Akeneo expression language functions
   </a>
   
   
@@ -398,10 +396,10 @@
 
 
 
-<li data-nav-id="https://php-etl.github.io/documentation/connectivity/nl-json/" title="NL-JSON" class="sidelist
+<li data-nav-id="https://php-etl.github.io/documentation/connectivity/sftp/" title="SFTP" class="sidelist
   ">
-  <a href="https://php-etl.github.io/documentation/connectivity/nl-json/">
-    NL-JSON
+  <a href="https://php-etl.github.io/documentation/connectivity/sftp/">
+    SFTP
   </a>
   
   
@@ -420,10 +418,10 @@
 
 
 
-<li data-nav-id="https://php-etl.github.io/documentation/connectivity/sftp/" title="SFTP" class="sidelist
+<li data-nav-id="https://php-etl.github.io/documentation/connectivity/json/" title="JSON" class="sidelist
   ">
-  <a href="https://php-etl.github.io/documentation/connectivity/sftp/">
-    SFTP
+  <a href="https://php-etl.github.io/documentation/connectivity/json/">
+    JSON
   </a>
   
   
@@ -498,6 +496,50 @@
 
         
       
+        
+          
+
+
+
+
+
+
+
+
+<li data-nav-id="https://php-etl.github.io/documentation/connectivity/prestashop/" title="Prestashop" class="sidelist
+  ">
+  <a href="https://php-etl.github.io/documentation/connectivity/prestashop/">
+    Prestashop
+  </a>
+  
+  
+</li>
+
+
+        
+      
+        
+          
+
+
+
+
+
+
+
+
+<li data-nav-id="https://php-etl.github.io/documentation/connectivity/filtering/" title="Filtering, drop or reject" class="sidelist
+  ">
+  <a href="https://php-etl.github.io/documentation/connectivity/filtering/">
+    Filtering, drop or reject
+  </a>
+  
+  
+</li>
+
+
+        
+      
     </ul>
   
 </li>
@@ -507,11 +549,17 @@
             
               
             
+              
+            
+              
+            
+              
+            
           </ul>
         </div>
       </div>
       <div class="col-lg-9">
-        <div class="p-lg-5 p-4 bg-white">
+        <div class="p-lg-5 p-4">
           <h1 class="single-title mb-5">
               
               
@@ -543,6 +591,7 @@
 <li><a href="#building-a-listmapper">Building a ListMapper</a></li>
 <li><a href="#building-a-collectionmapper">Building a CollectionMapper</a></li>
 <li><a href="#building-an-objectmapper">Building an ObjectMapper</a></li>
+<li><a href="#building-a-conditionalmapper">Building a ConditionalMapper</a></li>
 </ul>
 </li>
 </ul>
@@ -570,11 +619,12 @@ during the mapping operation.</p>
 <p>If you need to config your mappers, we advise you to use the yml config which will generate a php code usable by the fast-map-config.
 This code will then be converted into a machine code that can be used by the fast map package.</p>
 <h2 id="installation">Installation</h2>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">composer require php-etl/fast-map-plugin
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">composer require php-etl/fast-map-plugin
 </code></pre></div><h2 id="usage">Usage</h2>
 <h3 id="building-an-arraymapper">Building an ArrayMapper</h3>
 <p>To write a mapping to an array, you must use the `map option.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">fastmap</span>:
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">fastmap</span>:
+  <span style="color:#f92672">append</span>: <span style="color:#66d9ef">true</span> <span style="color:#75715e"># Optional. Merges this step&#39;s output into the previous step&#39;s result.</span>
   <span style="color:#f92672">map</span>:
   <span style="color:#75715e"># ...</span>
 </code></pre></div><p>Next, you need to specify the field you are going to map to and assign a value to it.</p>
@@ -589,7 +639,7 @@ and copy it.</li>
 component and allows you to write your own expressions.</li>
 <li><code>constant</code> : This option allows you to write directly the value of your field</li>
 </ul>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">fastmap</span>:
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">fastmap</span>:
   <span style="color:#f92672">map</span>:
     - <span style="color:#f92672">field</span>: <span style="color:#e6db74">&#39;[sku]&#39;</span>
       <span style="color:#f92672">copy</span>: <span style="color:#e6db74">&#39;[sku]&#39;</span>
@@ -605,7 +655,7 @@ component and allows you to write your own expressions.</li>
 <li><code>collection</code> : <a href="#building-a-collectionmapper">see the configuration</a></li>
 <li><code>object</code> : <a href="#building-an-objectmapper">see the configuration</a></li>
 </ul>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">fastmap</span>: 
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">fastmap</span>: 
   <span style="color:#f92672">map</span>: 
     - <span style="color:#f92672">field</span>: <span style="color:#e6db74">&#39;[foo]&#39;</span>
       <span style="color:#f92672">expression</span>: <span style="color:#e6db74">&#39;input&#39;</span>
@@ -638,12 +688,12 @@ component and allows you to write your own expressions.</li>
         - <span style="color:#f92672">field</span>: <span style="color:#e6db74">&#39;notice&#39;</span>
           <span style="color:#f92672">copy</span>: <span style="color:#e6db74">&#39;[notice]&#39;</span>
 </code></pre></div><h3 id="building-a-listmapper">Building a ListMapper</h3>
-<p>To write a mapping to a list, you must use the <code>list</code> option, which will always be accompanied by the
+<p>To write a mapping to a list, you must use the <code>list</code> option, which will always be accompanied by
 the <code>expression</code> option.</p>
 <ul>
 <li><code>expression</code> : allows you to write an expression which will be used in the mapping.</li>
 </ul>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">fastmap</span>:
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">fastmap</span>:
   <span style="color:#f92672">expression</span>: <span style="color:#e6db74">&#39;input&#39;</span>
   <span style="color:#f92672">list</span>:
     - <span style="color:#f92672">field</span>: <span style="color:#e6db74">&#39;[bar]&#39;</span>
@@ -655,7 +705,7 @@ by the <code>class</code> and <code>expression</code> options.</p>
 <li><code>class</code> : determines the class to use in the mapping.</li>
 <li><code>expression</code> : allows you to write an expression which will be used in the mapping.</li>
 </ul>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">fastmap</span>:
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">fastmap</span>:
   <span style="color:#f92672">class</span>: <span style="color:#e6db74">&#39;Foo\DTO\Messages&#39;</span>
   <span style="color:#f92672">expression</span>: <span style="color:#e6db74">&#39;input&#39;</span>
   <span style="color:#f92672">collection</span>:
@@ -674,7 +724,7 @@ options <code>class</code> and <code>expression</code>.</p>
 <li><code>class</code> : determines the class to be used in the mapping.</li>
 <li><code>expression</code> : allows you to write an expression that will be used in the mapping.</li>
 </ul>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">fastmap</span>:
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">fastmap</span>:
   <span style="color:#f92672">class</span>: <span style="color:#e6db74">&#39;Foo\DTO\Product&#39;</span>
   <span style="color:#f92672">expression</span>: <span style="color:#e6db74">&#39;input&#39;</span>
   <span style="color:#f92672">object</span>:
@@ -682,7 +732,22 @@ options <code>class</code> and <code>expression</code>.</p>
       <span style="color:#f92672">copy</span>: <span style="color:#e6db74">&#39;[sku]&#39;</span>
 </code></pre></div><p>Warning: Unlike an ArrayMapper, here the <code>field</code> must not be between <code>[...]</code>.</p>
 <p>See <a href="https://symfony.com/doc/current/components/property_access.html#reading-from-objects">Reading from objects</a>.</p>
-</div>
+<h3 id="building-a-conditionalmapper">Building a ConditionalMapper</h3>
+<p>To write a list of mappers that will only execute if a condition is met, you must use the <code>conditional</code> option,
+under which you can declare multiple <a href="#building-an-arraymapper">Array</a> (<code>map</code>) or <a href="#building-an-objectmapper">Object</a> (<code>object</code>) mappers,
+each protected by a <code>condition</code>.</p>
+<p>The behaviour is similar to <code>if ... else if ...</code>, meaning <strong>only 1 of the mappers will be executed</strong>.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">fastmap</span>:
+  <span style="color:#f92672">conditional</span>:
+    - <span style="color:#f92672">condition</span>: <span style="color:#e6db74">&#39;keyExists(&#34;sku&#34;, input)&#39;</span>
+      <span style="color:#f92672">append</span>: <span style="color:#66d9ef">true</span> <span style="color:#75715e"># Optional. Merges this step&#39;s output into the previous step&#39;s result.</span>
+      <span style="color:#f92672">map</span>:
+        <span style="color:#75715e"># ...</span>
+    - <span style="color:#f92672">condition</span>: <span style="color:#e6db74">&#39;keyExists(&#34;identifier&#34;, input)&#39;</span>
+      <span style="color:#f92672">append</span>: <span style="color:#66d9ef">true</span>
+      <span style="color:#f92672">object</span>:
+        <span style="color:#75715e"># ...</span>
+</code></pre></div></div>
           
           <p class="post-meta border-bottom pb-3 mb-0 mt-3">Updated on 12 Jul 2020</p>
           <nav class="pagination mt-3">
@@ -712,11 +777,25 @@ options <code>class</code> and <code>expression</code>.</p>
             
             
             
+
+            
+            
             
             
+            
 
+            
+            
+            
             
             
+            
+            
+            
+            
+            
+            
+
             
             
             
@@ -732,6 +811,20 @@ options <code>class</code> and <code>expression</code>.</p>
 
             
             
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
             
             
             
@@ -744,6 +837,12 @@ options <code>class</code> and <code>expression</code>.</p>
             
             
             
+            
+            
+            
+            
+            
+            
 
             
             
@@ -765,6 +864,7 @@ options <code>class</code> and <code>expression</code>.</p>
             
             
 
+            
             
             
             
@@ -859,10 +959,17 @@ options <code>class</code> and <code>expression</code>.</p>
             
             
             
+
             
             
             
 
+            
+            
+            
+            
+            
+            
             
             
             
@@ -872,6 +979,13 @@ options <code>class</code> and <code>expression</code>.</p>
             
             
             
+
+            
+            
+            
+            
+            
+            
             
             
             
@@ -906,7 +1020,15 @@ options <code>class</code> and <code>expression</code>.</p>
             
             
             
+            
+            
+            
+            
+            
+            
 
+            
+            
             
             
             
@@ -919,17 +1041,27 @@ options <code>class</code> and <code>expression</code>.</p>
             
             
             
+
             
             
             
 
+            
+            
+            
+            
+            
+            
             
             
             
+            
+            
 
             
             
             
+
             
             
             
@@ -973,28 +1105,40 @@ options <code>class</code> and <code>expression</code>.</p>
             
             
             
-            
+
             
             
             
 
+            
+            
             
             
             
             
             
+            
+            
+            
+            
+            
+            
+            
 
             
             
             
             
             
+
+            
             
             
             
             
             
             
+            
 
             
             
@@ -1008,7 +1152,6 @@ options <code>class</code> and <code>expression</code>.</p>
             
             
             
-
             
             
             
@@ -1018,17 +1161,21 @@ options <code>class</code> and <code>expression</code>.</p>
             
             
             
+
+            
             
             
             
             
             
             
+            
 
             
             
             
 
+            
             
             
             
@@ -1039,11 +1186,22 @@ options <code>class</code> and <code>expression</code>.</p>
             
             
             
+
+            
+            
+            
+
+            
+            
             
             
             
             
             
+            
+            
+            
+            
 
             
             
@@ -1100,6 +1258,9 @@ options <code>class</code> and <code>expression</code>.</p>
             
             
 
+            
+            
+            
             
             
             
@@ -1115,10 +1276,22 @@ options <code>class</code> and <code>expression</code>.</p>
             
             
             
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
 
             
             
             
+
             
             
             
@@ -1148,6 +1321,9 @@ options <code>class</code> and <code>expression</code>.</p>
             
             
 
+            
+            
+            
             
             
             
@@ -1258,10 +1434,10 @@ options <code>class</code> and <code>expression</code>.</p>
             
 
             
-            <a class="nav nav-prev" href="https://php-etl.github.io/documentation/connectivity/akeneo/plugin/"><i class="ti-arrow-left mr-2"></i> <span class="d-none d-md-block">Akeneo plugin</span></a>
+            <a class="nav nav-prev" href="https://php-etl.github.io/documentation/connectivity/custom/"><i class="ti-arrow-left mr-2"></i> <span class="d-none d-md-block">Custom connector</span></a>
             
             
-            <a class="nav nav-next" href="https://php-etl.github.io/documentation/connectivity/sylius/"> <span class="d-none d-md-block">Sylius</span><i class="ti-arrow-right ml-2"></i></a>
+            <a class="nav nav-next" href="https://php-etl.github.io/documentation/connectivity/ftp/"> <span class="d-none d-md-block">FTP</span><i class="ti-arrow-right ml-2"></i></a>
             
           </nav>
         </div>
@@ -1281,7 +1457,7 @@ options <code>class</code> and <code>expression</code>.</p>
   <div class="container">
     <div class="row align-items-center">
       <div class="col-md-8 text-md-left text-center">
-       <p class="mb-md-0 mb-4">The Gyroscops Documents are copyright © <a href="https://kiboko.fr/">Kiboko</a> 2020, 2021.</p>
+       <p class="mb-md-0 mb-4">The Gyroscops Documentation is copyright © <a href="https://gyroscops.com/">Gyroscops</a> 2020-2023.</p>
       </div>
       <div class="col-md-4 text-md-right text-center">
         <ul class="list-inline">

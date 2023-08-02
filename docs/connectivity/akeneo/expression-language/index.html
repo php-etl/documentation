@@ -2,13 +2,13 @@
 <html lang="en-us">
   <head>
   <meta charset="utf-8">
-  <title>Akeneo expression language functions</title>
+  <title>Akeneo expression language functions  | Gyroscops Documentation</title>
 
-  <meta name="generator" content="Hugo 0.82.0" />
+  <meta name="generator" content="Hugo 0.92.2" />
 
   <!-- mobile responsive meta -->
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  
+
   <!-- ** Plugins Needed for the Project ** -->
   <!-- Bootstrap -->
   <link rel="stylesheet" href="https://php-etl.github.io/documentation/plugins/bootstrap/bootstrap.min.css">
@@ -24,7 +24,7 @@
 
   <!-- fonts -->
   <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700&display=swap" rel="stylesheet">
-  
+
   <style>
   :root{
     --primary-color: #22014f;
@@ -34,7 +34,8 @@
     --text-color:#666;
     --text-color-dark:#333;
     --text-color-light:#eee;
-    --white-color:#eee;
+    --white-color:#fff;
+    --light-color:#eee;
     --font-family:Lato;
   }
   </style>
@@ -63,20 +64,20 @@
 
 </head>
 
-  
+
   <body>
     
     <!-- header -->
-    <header class="shadow-bottom sticky-top bg-white">
-      <nav class="navbar navbar-expand-md navbar-light">
+    <header class="sticky-top bg-gradient">
+      <nav class="navbar navbar-expand-md bg-light">
   <div class="container">
-    <a class="navbar-brand px-2" href="/documentation">
+    <a class="navbar-brand" href="/documentation">
       
       
       
       
       <div class="navbar-brand">
-        <img class="img-fluid" src="https://php-etl.github.io/documentation/logo-web.svg" alt="Gyroscops"> Gyroscops
+        <img class="img-fluid" src="https://php-etl.github.io/documentation/logo-web.svg" alt="Gyroscops"><span class="navbar-logo"> Gyroscops</span>
       </div>
       
       
@@ -88,25 +89,24 @@
 
     <div class="collapse navbar-collapse text-center" id="navigation">
       <ul class="navbar-nav ml-auto">
-        <li class="nav-item">
-          <a class="nav-link text-dark" href="/documentation">Home</a>
-        </li>
         
         
         <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle text-dark" href="#" role="button" data-toggle="dropdown"
+          <span class="nav-link dropdown-toggle text-dark" href="#" role="button" data-toggle="dropdown"
             aria-haspopup="true" aria-expanded="false">
             Getting Started
-          </a>
+          </span>
           <div class="dropdown-menu">
             
-            <a class="dropdown-item" href="/documentation/getting-started/setup">Setup</a>
+            <a class="dropdown-item" href="/documentation/getting-started/environment-setup">Environment Setup</a>
             
-            <a class="dropdown-item" href="/documentation/getting-started/satellite">Creating Satellites</a>
+            <a class="dropdown-item" href="/documentation/getting-started/installation">Installation</a>
             
-            <a class="dropdown-item" href="/documentation/getting-started/pipeline">Pipelines</a>
+            <a class="dropdown-item" href="/documentation/getting-started/writing-configuration">Writing Configuration</a>
             
-            <a class="dropdown-item" href="/documentation/getting-started/workflow">Workflows</a>
+            <a class="dropdown-item" href="/documentation/getting-started/compilation">Compilation</a>
+            
+            <a class="dropdown-item" href="/documentation/getting-started/execution">Execution</a>
             
           </div>
         </li>
@@ -114,10 +114,64 @@
         
         
         <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle text-dark" href="#" role="button" data-toggle="dropdown"
+          <span class="nav-link dropdown-toggle text-dark" href="#" role="button" data-toggle="dropdown"
+            aria-haspopup="true" aria-expanded="false">
+            Core concepts
+          </span>
+          <div class="dropdown-menu">
+            
+            <a class="dropdown-item" href="/documentation/core-concept/satellite">Satellite</a>
+            
+            <a class="dropdown-item" href="/documentation/core-concept/pipeline">Pipeline</a>
+            
+            <a class="dropdown-item" href="/documentation/core-concept/workflow">Workflow</a>
+            
+          </div>
+        </li>
+        
+        
+        
+        <li class="nav-item dropdown">
+          <span class="nav-link dropdown-toggle text-dark" href="#" role="button" data-toggle="dropdown"
+            aria-haspopup="true" aria-expanded="false">
+            Connectivity
+          </span>
+          <div class="dropdown-menu">
+            
+            <a class="dropdown-item" href="/documentation/connectivity/akeneo">Akeneo</a>
+            
+            <a class="dropdown-item" href="/documentation/connectivity/csv">CSV files</a>
+            
+            <a class="dropdown-item" href="/documentation/connectivity/custom">Custom connector</a>
+            
+            <a class="dropdown-item" href="/documentation/connectivity/fast-map">FastMap</a>
+            
+            <a class="dropdown-item" href="/documentation/connectivity/ftp">FTP</a>
+            
+            <a class="dropdown-item" href="/documentation/connectivity/sftp">SFTP</a>
+            
+            <a class="dropdown-item" href="/documentation/connectivity/json">JSON</a>
+            
+            <a class="dropdown-item" href="/documentation/connectivity/spreadsheet">Spreadsheet files</a>
+            
+            <a class="dropdown-item" href="/documentation/connectivity/sql">SQL database</a>
+            
+            <a class="dropdown-item" href="/documentation/connectivity/sylius">Sylius</a>
+            
+            <a class="dropdown-item" href="/documentation/connectivity/prestashop">Prestashop</a>
+            
+            <a class="dropdown-item" href="/documentation/connectivity/filtering">Filtering, drop or reject</a>
+            
+          </div>
+        </li>
+        
+        
+        
+        <li class="nav-item dropdown">
+          <span class="nav-link dropdown-toggle text-dark" href="#" role="button" data-toggle="dropdown"
             aria-haspopup="true" aria-expanded="false">
             Features
-          </a>
+          </span>
           <div class="dropdown-menu">
             
             <a class="dropdown-item" href="/documentation/feature/services">Declaring services</a>
@@ -134,59 +188,7 @@
         </li>
         
         
-        
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle text-dark" href="#" role="button" data-toggle="dropdown"
-            aria-haspopup="true" aria-expanded="false">
-            Connectivity
-          </a>
-          <div class="dropdown-menu">
-            
-            <a class="dropdown-item" href="/documentation/connectivity/akeneo">Akeneo</a>
-            
-            <a class="dropdown-item" href="/documentation/connectivity/csv">CSV files</a>
-            
-            <a class="dropdown-item" href="/documentation/connectivity/custom">Custom connector</a>
-            
-            <a class="dropdown-item" href="/documentation/connectivity/fast-map">FastMap</a>
-            
-            <a class="dropdown-item" href="/documentation/connectivity/ftp">FTP</a>
-            
-            <a class="dropdown-item" href="/documentation/connectivity/sftp">SFTP</a>
-            
-            <a class="dropdown-item" href="/documentation/connectivity/nl-json">NL-JSON</a>
-            
-            <a class="dropdown-item" href="/documentation/connectivity/spreadsheet">Spreadsheet files</a>
-            
-            <a class="dropdown-item" href="/documentation/connectivity/sql">SQL database</a>
-            
-            <a class="dropdown-item" href="/documentation/connectivity/sylius">Sylius</a>
-            
-          </div>
-        </li>
-        
-        
       </ul>
-      
-      <select class="lang-list dark" id="select-language"
-        onchange="location = this.value;">
-        
-        
-        
-        
-        
-        
-        
-        
-        <option id="en" value="https://php-etl.github.io/documentation/connectivity/akeneo/expression-language/" selected>English
-        </option>
-        
-        
-        
-        
-        
-        
-      </select>
       
     </div>
   </div>
@@ -206,10 +208,6 @@
           <ul class="list-styled">
             
             <a class="back-btn" href="/documentation"></a>
-            
-              
-            
-              
             
               
               
@@ -259,10 +257,10 @@
 
 
 
-<li data-nav-id="https://php-etl.github.io/documentation/connectivity/akeneo/expression-language/" title="Akeneo expression language functions" class="sidelist
-  active">
-  <a href="https://php-etl.github.io/documentation/connectivity/akeneo/expression-language/">
-    Akeneo expression language functions
+<li data-nav-id="https://php-etl.github.io/documentation/connectivity/akeneo/plugin/" title="Akeneo plugin" class="sidelist
+  ">
+  <a href="https://php-etl.github.io/documentation/connectivity/akeneo/plugin/">
+    Akeneo plugin
   </a>
   
   
@@ -281,10 +279,10 @@
 
 
 
-<li data-nav-id="https://php-etl.github.io/documentation/connectivity/akeneo/plugin/" title="Akeneo plugin" class="sidelist
-  ">
-  <a href="https://php-etl.github.io/documentation/connectivity/akeneo/plugin/">
-    Akeneo plugin
+<li data-nav-id="https://php-etl.github.io/documentation/connectivity/akeneo/expression-language/" title="Akeneo expression language functions" class="sidelist
+  active">
+  <a href="https://php-etl.github.io/documentation/connectivity/akeneo/expression-language/">
+    Akeneo expression language functions
   </a>
   
   
@@ -398,10 +396,10 @@
 
 
 
-<li data-nav-id="https://php-etl.github.io/documentation/connectivity/nl-json/" title="NL-JSON" class="sidelist
+<li data-nav-id="https://php-etl.github.io/documentation/connectivity/sftp/" title="SFTP" class="sidelist
   ">
-  <a href="https://php-etl.github.io/documentation/connectivity/nl-json/">
-    NL-JSON
+  <a href="https://php-etl.github.io/documentation/connectivity/sftp/">
+    SFTP
   </a>
   
   
@@ -420,10 +418,10 @@
 
 
 
-<li data-nav-id="https://php-etl.github.io/documentation/connectivity/sftp/" title="SFTP" class="sidelist
+<li data-nav-id="https://php-etl.github.io/documentation/connectivity/json/" title="JSON" class="sidelist
   ">
-  <a href="https://php-etl.github.io/documentation/connectivity/sftp/">
-    SFTP
+  <a href="https://php-etl.github.io/documentation/connectivity/json/">
+    JSON
   </a>
   
   
@@ -498,6 +496,50 @@
 
         
       
+        
+          
+
+
+
+
+
+
+
+
+<li data-nav-id="https://php-etl.github.io/documentation/connectivity/prestashop/" title="Prestashop" class="sidelist
+  ">
+  <a href="https://php-etl.github.io/documentation/connectivity/prestashop/">
+    Prestashop
+  </a>
+  
+  
+</li>
+
+
+        
+      
+        
+          
+
+
+
+
+
+
+
+
+<li data-nav-id="https://php-etl.github.io/documentation/connectivity/filtering/" title="Filtering, drop or reject" class="sidelist
+  ">
+  <a href="https://php-etl.github.io/documentation/connectivity/filtering/">
+    Filtering, drop or reject
+  </a>
+  
+  
+</li>
+
+
+        
+      
     </ul>
   
 </li>
@@ -507,11 +549,17 @@
             
               
             
+              
+            
+              
+            
+              
+            
           </ul>
         </div>
       </div>
       <div class="col-lg-9">
-        <div class="p-lg-5 p-4 bg-white">
+        <div class="p-lg-5 p-4">
           <h1 class="single-title mb-5">
               
               
@@ -531,6 +579,8 @@
 <ul>
 <li><a href="#what-is-it-">What is it ?</a></li>
 <li><a href="#installation">Installation</a></li>
+<li><a href="#filter-provider">Filter Provider</a>
+<ul>
 <li><a href="#usage">Usage</a></li>
 <li><a href="#functions-reference">Functions reference</a>
 <ul>
@@ -554,12 +604,21 @@
 </ul>
 </li>
 </ul>
+</li>
+<li><a href="#builder-provider">Builder Provider</a>
+<ul>
+<li><a href="#builder-provider">Usage</a></li>
+<li><a href="#builder-provider">Functions reference</a></li>
+</ul>
+</li>
+</ul>
 <h2 id="what-is-it-">What is it ?</h2>
 <p>This library implements functions for manipulating Akeneo API data through the
 <a href="https://symfony.com/doc/current/components/expression_language.html">Symfony Expression Language</a>.</p>
 <h2 id="installation">Installation</h2>
-<pre><code>composer require php-etl/akeneo-expression-language
-</code></pre><h2 id="usage">Usage</h2>
+<pre tabindex="0"><code>composer require php-etl/akeneo-expression-language
+</code></pre><h2 id="filter-provider">Filter Provider</h2>
+<h3 id="usage">Usage</h3>
 <p>To use Akeneo&rsquo;s expression language functions, you must first add the <code>expression_language</code> key and put in
 the provider <code>Kiboko\Component\ExpressionLanguage\Akeneo\AkeneoFilterProvider</code>.</p>
 <p>Then, in the fields that can use expression languages, you can use any <a href="#functions-reference">functions</a> provided by
@@ -569,7 +628,7 @@ the Akeneo provider.</p>
 		<li class="nav-item"><a data-toggle="tab" class="nav-link" href="#basic_definition-1" role="tab" aria-controls="basic_definition-1">PHP</a></li></ul>
 <div class="tab-content" id="basic_definition"><div id="basic_definition-0" class="tab-pane show active" role="tabpanel" aria-labelledby="basic_definition-0">
 
-<p><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml">
+<p><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml">
 - <span style="color:#f92672">fastmap</span>:
     <span style="color:#f92672">expression_language</span>:
     - <span style="color:#e6db74">&#39;Kiboko\Component\ExpressionLanguage\Akeneo\AkeneoFilterProvider&#39;</span>
@@ -579,7 +638,7 @@ the Akeneo provider.</p>
 </code></pre></div></div>
   <div id="basic_definition-1" class="tab-pane" role="tabpanel" aria-labelledby="basic_definition-1">
 
-<p><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php">
+<p><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php">
 <span style="color:#f92672">&lt;?</span><span style="color:#a6e22e">php</span>
 
 <span style="color:#66d9ef">use</span> <span style="color:#a6e22e">Symfony\Component\ExpressionLanguage\ExpressionLanguage</span>;
@@ -618,8 +677,8 @@ $interpreter <span style="color:#f92672">=</span> <span style="color:#66d9ef">ne
 $interpreter<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">evaluate</span>($expression, [<span style="color:#e6db74">&#39;input&#39;</span> <span style="color:#f92672">=&gt;</span> $input]);
 </code></pre></div></div></div>
 
-<h2 id="functions-reference">Functions reference</h2>
-<h3 id="attribute-data-manipulation">Attribute data manipulation</h3>
+<h3 id="functions-reference">Functions reference</h3>
+<h4 id="attribute-data-manipulation">Attribute data manipulation</h4>
 <p>Akeneo has a specific data format that would make cumbersome the data mapping
 if there were no dedicated tools. In this matter the Expression Language functions
 for Akeneo gives you more control over what you wish to synchronize.</p>
@@ -641,7 +700,7 @@ with no reordering.</p>
 		<li class="nav-item"><a data-toggle="tab" class="nav-link" href="#locale-1" role="tab" aria-controls="locale-1">Data Source</a></li></ul>
 <div class="tab-content" id="locale"><div id="locale-0" class="tab-pane show active" role="tabpanel" aria-labelledby="locale-0">
 
-<p><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json">
+<p><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json">
 [
     {
         <span style="color:#f92672">&#34;locale&#34;</span>: <span style="color:#e6db74">&#34;fr_FR&#34;</span>,
@@ -662,7 +721,7 @@ with no reordering.</p>
 </code></pre></div></div>
   <div id="locale-1" class="tab-pane" role="tabpanel" aria-labelledby="locale-1">
 
-<p><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json">
+<p><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json">
 [
     {
         <span style="color:#f92672">&#34;locale&#34;</span>: <span style="color:#e6db74">&#34;fr_FR&#34;</span>,
@@ -697,7 +756,7 @@ with no reordering.</p>
 		<li class="nav-item"><a data-toggle="tab" class="nav-link" href="#scope-1" role="tab" aria-controls="scope-1">Data Source</a></li></ul>
 <div class="tab-content" id="scope"><div id="scope-0" class="tab-pane show active" role="tabpanel" aria-labelledby="scope-0">
 
-<p><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json">
+<p><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json">
 [
     {
         <span style="color:#f92672">&#34;locale&#34;</span>: <span style="color:#e6db74">&#34;fr_FR&#34;</span>,
@@ -718,7 +777,7 @@ with no reordering.</p>
 </code></pre></div></div>
   <div id="scope-1" class="tab-pane" role="tabpanel" aria-labelledby="scope-1">
 
-<p><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json">
+<p><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json">
 [
     {
         <span style="color:#f92672">&#34;locale&#34;</span>: <span style="color:#e6db74">&#34;fr_FR&#34;</span>,
@@ -752,7 +811,7 @@ with no reordering.</p>
 		<li class="nav-item"><a data-toggle="tab" class="nav-link" href="#coalesce-1" role="tab" aria-controls="coalesce-1">Data Source</a></li></ul>
 <div class="tab-content" id="coalesce"><div id="coalesce-0" class="tab-pane show active" role="tabpanel" aria-labelledby="coalesce-0">
 
-<p><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json">
+<p><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json">
 [
     {
         <span style="color:#f92672">&#34;locale&#34;</span>: <span style="color:#e6db74">&#34;fr_FR&#34;</span>,
@@ -763,7 +822,7 @@ with no reordering.</p>
 </code></pre></div></div>
   <div id="coalesce-1" class="tab-pane" role="tabpanel" aria-labelledby="coalesce-1">
 
-<p><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json">
+<p><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json">
 [
     {
         <span style="color:#f92672">&#34;locale&#34;</span>: <span style="color:#e6db74">&#34;fr_FR&#34;</span>,
@@ -799,7 +858,7 @@ filter is true.</p>
 		<li class="nav-item"><a data-toggle="tab" class="nav-link" href="#anyof-1" role="tab" aria-controls="anyof-1">Data Source</a></li></ul>
 <div class="tab-content" id="anyof"><div id="anyof-0" class="tab-pane show active" role="tabpanel" aria-labelledby="anyof-0">
 
-<p><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json">
+<p><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json">
 [
     {
         <span style="color:#f92672">&#34;locale&#34;</span>: <span style="color:#e6db74">&#34;fr_FR&#34;</span>,
@@ -820,7 +879,7 @@ filter is true.</p>
 </code></pre></div></div>
   <div id="anyof-1" class="tab-pane" role="tabpanel" aria-labelledby="anyof-1">
 
-<p><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json">
+<p><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json">
 [
     {
         <span style="color:#f92672">&#34;locale&#34;</span>: <span style="color:#e6db74">&#34;fr_FR&#34;</span>,
@@ -855,7 +914,7 @@ to every specified filter. It will result in a list where <strong>all</strong> f
 		<li class="nav-item"><a data-toggle="tab" class="nav-link" href="#allof-1" role="tab" aria-controls="allof-1">Data Source</a></li></ul>
 <div class="tab-content" id="allof"><div id="allof-0" class="tab-pane show active" role="tabpanel" aria-labelledby="allof-0">
 
-<p><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json">
+<p><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json">
 [
     {
         <span style="color:#f92672">&#34;locale&#34;</span>: <span style="color:#e6db74">&#34;fr_FR&#34;</span>,
@@ -866,7 +925,7 @@ to every specified filter. It will result in a list where <strong>all</strong> f
 </code></pre></div></div>
   <div id="allof-1" class="tab-pane" role="tabpanel" aria-labelledby="allof-1">
 
-<p><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json">
+<p><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json">
 [
     {
         <span style="color:#f92672">&#34;locale&#34;</span>: <span style="color:#e6db74">&#34;fr_FR&#34;</span>,
@@ -900,7 +959,7 @@ to every specified filter. It will result in a list where <strong>all</strong> f
 		<li class="nav-item"><a data-toggle="tab" class="nav-link" href="#slice-1" role="tab" aria-controls="slice-1">Data Source</a></li></ul>
 <div class="tab-content" id="slice"><div id="slice-0" class="tab-pane show active" role="tabpanel" aria-labelledby="slice-0">
 
-<p><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json">
+<p><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json">
 [
     {
         <span style="color:#f92672">&#34;locale&#34;</span>: <span style="color:#e6db74">&#34;en_US&#34;</span>,
@@ -916,7 +975,7 @@ to every specified filter. It will result in a list where <strong>all</strong> f
 </code></pre></div></div>
   <div id="slice-1" class="tab-pane" role="tabpanel" aria-labelledby="slice-1">
 
-<p><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json">
+<p><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json">
 [
     {
         <span style="color:#f92672">&#34;locale&#34;</span>: <span style="color:#e6db74">&#34;fr_FR&#34;</span>,
@@ -950,7 +1009,7 @@ to every specified filter. It will result in a list where <strong>all</strong> f
 		<li class="nav-item"><a data-toggle="tab" class="nav-link" href="#head-1" role="tab" aria-controls="head-1">Data Source</a></li></ul>
 <div class="tab-content" id="head"><div id="head-0" class="tab-pane show active" role="tabpanel" aria-labelledby="head-0">
 
-<p><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json">
+<p><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json">
 [
     {
         <span style="color:#f92672">&#34;locale&#34;</span>: <span style="color:#e6db74">&#34;fr_FR&#34;</span>,
@@ -966,7 +1025,7 @@ to every specified filter. It will result in a list where <strong>all</strong> f
 </code></pre></div></div>
   <div id="head-1" class="tab-pane" role="tabpanel" aria-labelledby="head-1">
 
-<p><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json">
+<p><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json">
 [
     {
         <span style="color:#f92672">&#34;locale&#34;</span>: <span style="color:#e6db74">&#34;fr_FR&#34;</span>,
@@ -1000,7 +1059,7 @@ to every specified filter. It will result in a list where <strong>all</strong> f
 		<li class="nav-item"><a data-toggle="tab" class="nav-link" href="#tail-1" role="tab" aria-controls="tail-1">Data Source</a></li></ul>
 <div class="tab-content" id="tail"><div id="tail-0" class="tab-pane show active" role="tabpanel" aria-labelledby="tail-0">
 
-<p><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json">
+<p><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json">
 [
     {
         <span style="color:#f92672">&#34;locale&#34;</span>: <span style="color:#e6db74">&#34;fr_CA&#34;</span>,
@@ -1016,7 +1075,7 @@ to every specified filter. It will result in a list where <strong>all</strong> f
 </code></pre></div></div>
   <div id="tail-1" class="tab-pane" role="tabpanel" aria-labelledby="tail-1">
 
-<p><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json">
+<p><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json">
 [
     {
         <span style="color:#f92672">&#34;locale&#34;</span>: <span style="color:#e6db74">&#34;fr_FR&#34;</span>,
@@ -1050,7 +1109,7 @@ to every specified filter. It will result in a list where <strong>all</strong> f
 		<li class="nav-item"><a data-toggle="tab" class="nav-link" href="#offset-1" role="tab" aria-controls="offset-1">Data Source</a></li></ul>
 <div class="tab-content" id="offset"><div id="offset-0" class="tab-pane show active" role="tabpanel" aria-labelledby="offset-0">
 
-<p><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json">
+<p><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json">
 [
     {
         <span style="color:#f92672">&#34;locale&#34;</span>: <span style="color:#e6db74">&#34;en_US&#34;</span>,
@@ -1071,7 +1130,7 @@ to every specified filter. It will result in a list where <strong>all</strong> f
 </code></pre></div></div>
   <div id="offset-1" class="tab-pane" role="tabpanel" aria-labelledby="offset-1">
 
-<p><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json">
+<p><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json">
 [
     {
         <span style="color:#f92672">&#34;locale&#34;</span>: <span style="color:#e6db74">&#34;fr_FR&#34;</span>,
@@ -1105,7 +1164,7 @@ to every specified filter. It will result in a list where <strong>all</strong> f
 		<li class="nav-item"><a data-toggle="tab" class="nav-link" href="#first-1" role="tab" aria-controls="first-1">Data Source</a></li></ul>
 <div class="tab-content" id="first"><div id="first-0" class="tab-pane show active" role="tabpanel" aria-labelledby="first-0">
 
-<p><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json">
+<p><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json">
 [
     {
         <span style="color:#f92672">&#34;locale&#34;</span>: <span style="color:#e6db74">&#34;fr_FR&#34;</span>,
@@ -1116,7 +1175,7 @@ to every specified filter. It will result in a list where <strong>all</strong> f
 </code></pre></div></div>
   <div id="first-1" class="tab-pane" role="tabpanel" aria-labelledby="first-1">
 
-<p><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json">
+<p><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json">
 [
     {
         <span style="color:#f92672">&#34;locale&#34;</span>: <span style="color:#e6db74">&#34;fr_FR&#34;</span>,
@@ -1150,7 +1209,7 @@ to every specified filter. It will result in a list where <strong>all</strong> f
 		<li class="nav-item"><a data-toggle="tab" class="nav-link" href="#first-1" role="tab" aria-controls="first-1">Data Source</a></li></ul>
 <div class="tab-content" id="first"><div id="first-0" class="tab-pane show active" role="tabpanel" aria-labelledby="first-0">
 
-<p><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json">
+<p><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json">
 [
     {
         <span style="color:#f92672">&#34;locale&#34;</span>: <span style="color:#e6db74">&#34;fr_FR&#34;</span>,
@@ -1161,7 +1220,7 @@ to every specified filter. It will result in a list where <strong>all</strong> f
 </code></pre></div></div>
   <div id="first-1" class="tab-pane" role="tabpanel" aria-labelledby="first-1">
 
-<p><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json">
+<p><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json">
 [
     {
         <span style="color:#f92672">&#34;locale&#34;</span>: <span style="color:#e6db74">&#34;fr_FR&#34;</span>,
@@ -1198,6 +1257,69 @@ to every specified filter. It will result in a list where <strong>all</strong> f
 <p>This function will extract the unit part of a metric attribute&rsquo;s value</p>
 <p><code>formatMetric(array $attribut, string $locale)</code></p>
 <p>This function will format the metric according to the specified locale</p>
+<h2 id="builder-provider">Builder Provider</h2>
+<p>The Akeneo API expects you to have certain types of format for your attributes.
+The functions provided by the AkeneoBuilderProvider allow you to create the expected formats easily.</p>
+<h3 id="usage-1">Usage</h3>
+<p>To use the Akeneo&rsquo;s Builder expression language, you must first add the <code>expression_language</code> key and put in
+the provider <code>Kiboko\Component\ExpressionLanguage\Akeneo\AkeneoBuilderProvider</code>.</p>
+<p>Then, in the fields that can use expression languages, you can use any <a href="#builder-functions-reference">functions</a> provided by
+the Akeneo Builder provider.</p>
+<ul class="nav nav-tabs" id="basic_definition" role="tablist"><li class="nav-item"><a data-toggle="tab" class="nav-link active" href="#basic_definition-0" role="tab" aria-controls="basic_definition-0" aria-selected="true">YAML</a></li>
+	  </ul>
+<div class="tab-content" id="basic_definition"><div id="basic_definition-0" class="tab-pane show active" role="tabpanel" aria-labelledby="basic_definition-0">
+
+<p><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml">
+- <span style="color:#f92672">fastmap</span>:
+    <span style="color:#f92672">expression_language</span>:
+    - <span style="color:#e6db74">&#39;Kiboko\Component\ExpressionLanguage\Akeneo\AkeneoBuilderProvider&#39;</span>
+    <span style="color:#f92672">map</span>:
+    - <span style="color:#f92672">field</span>: <span style="color:#e6db74">&#39;[title]&#39;</span>
+      <span style="color:#f92672">expression</span>: <span style="color:#e6db74">&#39;withValue(input[&#34;title&#34;])&#39;</span>
+</code></pre></div></div></div>
+
+<h3 id="functions-reference-1">Functions reference</h3>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>build(<code>string</code> &hellip;values)</td>
+<td>Enables several values to be grouped together in a single ordered array corresponding to the format that the API expects.</td>
+<td>build(input[&ldquo;values&rdquo;])</td>
+</tr>
+<tr>
+<td>withValue(<code>string</code> value, <code>string</code> locale, <code>string</code> scope)</td>
+<td>Creates the expected format for attributes of type single-line text, multi-line text, boolean, date, number, measurement.</td>
+<td>withValue(input[&ldquo;variant_name&rdquo;], &ldquo;fr_FR&rdquo;, &ldquo;ecommerce&rdquo;)</td>
+</tr>
+<tr>
+<td>withSimpleOption(<code>string</code> code, <code>string</code> attribute, <code>string</code> labels, <code>string</code> locale = &lsquo;null&rsquo;, <code>string</code> scope = &lsquo;null&rsquo;)</td>
+<td>Creates the expected format for single-option attributes.</td>
+<td>build(withSimpleOption(&ldquo;PHY&rdquo;,&ldquo;kind&rdquo;, {&ldquo;fr_FR&rdquo;: &ldquo;PHY&rdquo;}))</td>
+</tr>
+<tr>
+<td>withMultipleOption(<code>string</code> codes, <code>string</code> attribute, <code>string</code> labels, <code>string</code> locale, <code>string</code> scope)</td>
+<td>Creates the expected format for multiple-option attributes.</td>
+<td>withMultipleOption(input[&ldquo;collection&rdquo;], &ldquo;collection&rdquo;, {&ldquo;fr_FR&rdquo;: &ldquo;My collection&rdquo;}, &ldquo;fr_FR&rdquo;, &ldquo;ecommerce&rdquo;)</td>
+</tr>
+<tr>
+<td>withReferenceEntityValue(<code>string</code> value, <code>string</code> locale = &lsquo;null&rsquo;, <code>string</code> channel = &lsquo;null&rsquo;)</td>
+<td>Creates the expected format for reference entity record attributes of type single-line text, multi-line text, boolean, date, number, measurement.</td>
+<td>withReferenceEntityValue(input[&ldquo;label&rdquo;], &ldquo;fr_FR&rdquo;)</td>
+</tr>
+<tr>
+<td>withReferenceEntitySimpleOption(<code>string</code> value, <code>string</code> locale = &lsquo;null&rsquo;, <code>string</code> channel = &lsquo;null&rsquo;)</td>
+<td>Creates the expected format for simple-select reference entity record attributes.</td>
+<td>withReferenceEntitySimpleOption(input[&ldquo;associated_crops_code&rdquo;], &ldquo;fr_FR&rdquo;)</td>
+</tr>
+</tbody>
+</table>
 </div>
           
           <p class="post-meta border-bottom pb-3 mb-0 mt-3">Updated on 24 Jan 2021</p>
@@ -1228,26 +1350,39 @@ to every specified filter. It will result in a list where <strong>all</strong> f
             
             
             
+
+            
+            
             
             
+            
 
+            
+            
+            
             
             
             
             
             
+            
 
+            
             
             
+
             
             
             
             
             
             
-
             
             
+            
+            
+            
+
             
             
             
@@ -1260,11 +1395,18 @@ to every specified filter. It will result in a list where <strong>all</strong> f
             
             
             
+            
+            
+            
+            
 
             
             
             
 
+            
+            
+            
             
             
             
@@ -1276,11 +1418,15 @@ to every specified filter. It will result in a list where <strong>all</strong> f
             
             
             
+            
+            
+            
 
             
             
             
 
+            
             
             
             
@@ -1291,15 +1437,27 @@ to every specified filter. It will result in a list where <strong>all</strong> f
             
             
             
+
+            
             
+            
 
+            
             
             
             
+            
+            
+            
+            
+            
+            
+            
 
             
             
             
+
             
             
             
@@ -1375,10 +1533,17 @@ to every specified filter. It will result in a list where <strong>all</strong> f
             
             
             
+
             
             
             
 
+            
+            
+            
+            
+            
+            
             
             
             
@@ -1388,6 +1553,13 @@ to every specified filter. It will result in a list where <strong>all</strong> f
             
             
             
+
+            
+            
+            
+            
+            
+            
             
             
             
@@ -1422,7 +1594,15 @@ to every specified filter. It will result in a list where <strong>all</strong> f
             
             
             
+            
+            
+            
+            
+            
+            
 
+            
+            
             
             
             
@@ -1435,17 +1615,27 @@ to every specified filter. It will result in a list where <strong>all</strong> f
             
             
             
+
             
             
             
 
+            
+            
+            
+            
+            
+            
             
             
             
+            
+            
 
             
             
             
+
             
             
             
@@ -1478,7 +1668,6 @@ to every specified filter. It will result in a list where <strong>all</strong> f
             
             
 
-            
             
             
             
@@ -1490,6 +1679,7 @@ to every specified filter. It will result in a list where <strong>all</strong> f
             
             
             
+
             
             
             
@@ -1499,7 +1689,6 @@ to every specified filter. It will result in a list where <strong>all</strong> f
             
             
             
-
             
             
             
@@ -1510,6 +1699,8 @@ to every specified filter. It will result in a list where <strong>all</strong> f
             
             
 
+            
+            
             
             
             
@@ -1522,23 +1713,38 @@ to every specified filter. It will result in a list where <strong>all</strong> f
             
             
             
+
+            
+            
             
 
+            
+            
+            
+            
             
             
             
+            
+            
+            
+            
 
             
             
             
             
             
+
+            
             
             
             
             
             
             
+            
+
             
             
             
@@ -1546,10 +1752,19 @@ to every specified filter. It will result in a list where <strong>all</strong> f
             
             
             
+            
+            
+            
+            
+            
+            
+            
+            
 
             
             
             
+
             
             
             
@@ -1566,6 +1781,8 @@ to every specified filter. It will result in a list where <strong>all</strong> f
             
             
 
+            
+            
             
             
             
@@ -1577,6 +1794,7 @@ to every specified filter. It will result in a list where <strong>all</strong> f
             
             
             
+            
 
             
             
@@ -1614,6 +1832,9 @@ to every specified filter. It will result in a list where <strong>all</strong> f
             
             
 
+            
+            
+            
             
             
             
@@ -1629,10 +1850,22 @@ to every specified filter. It will result in a list where <strong>all</strong> f
             
             
             
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
 
             
             
             
+
             
             
             
@@ -1662,6 +1895,9 @@ to every specified filter. It will result in a list where <strong>all</strong> f
             
             
 
+            
+            
+            
             
             
             
@@ -1772,10 +2008,10 @@ to every specified filter. It will result in a list where <strong>all</strong> f
             
 
             
-            <a class="nav nav-prev" href="https://php-etl.github.io/documentation/connectivity/akeneo/"><i class="ti-arrow-left mr-2"></i> <span class="d-none d-md-block">Akeneo</span></a>
+            <a class="nav nav-prev" href="https://php-etl.github.io/documentation/connectivity/akeneo/plugin/"><i class="ti-arrow-left mr-2"></i> <span class="d-none d-md-block">Akeneo plugin</span></a>
             
             
-            <a class="nav nav-next" href="https://php-etl.github.io/documentation/connectivity/akeneo/plugin/"> <span class="d-none d-md-block">Akeneo plugin</span><i class="ti-arrow-right ml-2"></i></a>
+            <a class="nav nav-next" href="https://php-etl.github.io/documentation/connectivity/csv/"> <span class="d-none d-md-block">CSV</span><i class="ti-arrow-right ml-2"></i></a>
             
           </nav>
         </div>
@@ -1795,7 +2031,7 @@ to every specified filter. It will result in a list where <strong>all</strong> f
   <div class="container">
     <div class="row align-items-center">
       <div class="col-md-8 text-md-left text-center">
-       <p class="mb-md-0 mb-4">The Gyroscops Documents are copyright © <a href="https://kiboko.fr/">Kiboko</a> 2020, 2021.</p>
+       <p class="mb-md-0 mb-4">The Gyroscops Documentation is copyright © <a href="https://gyroscops.com/">Gyroscops</a> 2020-2023.</p>
       </div>
       <div class="col-md-4 text-md-right text-center">
         <ul class="list-inline">

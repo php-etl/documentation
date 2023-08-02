@@ -5,7 +5,7 @@ draft: false
 type: "plugins"
 icon: "ti-cloud-up"
 description: "Transfer files to a remote FTP location"
-weight: 8
+weight: 5
 ---
 
 - [What is it ?](#what-is-it-)
