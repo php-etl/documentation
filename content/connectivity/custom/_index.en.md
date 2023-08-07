@@ -14,6 +14,7 @@ weight: 3
   - [Building an extractor](#building-an-extractor)
   - [Building a transformer](#building-a-transformer)
   - [Building a loader](#building-a-loader)
+  - [Adding a method call](#adding-a-method-call)
 ---
 
 ## Definition
@@ -40,10 +41,14 @@ custom:
     use: 'App\Class\Bar'
     services:
       App\Class\Bar:
+        factory: 
+          class: App\Class\Bar
+          method: extract
         arguments:
             - '@foo'
         tags:
             - { example }
+        public: true
 ```
 
 ### Building a transformer
@@ -54,10 +59,14 @@ custom:
     use: 'App\Class\Bar'
     services:
       App\Class\Bar:
+        factory: 
+          class: App\Class\Bar
+          method: extract
         arguments:
             - '@foo'
         tags:
             - { example }
+        public: true
 ```
 
 ### Building a loader
@@ -68,8 +77,32 @@ custom:
     use: 'App\Class\Bar'
     services:
       App\Class\Bar:
+        factory: 
+          class: App\Class\Bar
+          method: extract
         arguments:
             - '@foo'
         tags:
             - { example }
+        public: true
 ```
+
+### Adding a method call
+
+```yaml
+custom:
+# ...
+      updated_at_group_filter:
+        class: App\Class\FilterGroup
+        calls:
+          - withFilter:
+              - '@updated_at_filter'
+      updated_at_filter:
+        class: App\Class\Filter
+        arguments:
+          - 'updated_at'
+          - 'gteq'
+          - '01-03-1998'
+```
+
+
