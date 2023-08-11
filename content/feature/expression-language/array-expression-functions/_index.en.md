@@ -60,6 +60,7 @@ foo: '@=map(input["attributes"], extractData("[fr_FR][data]"))'
 | intersect(`array` array, `array` ...arrays): `array`                      | Computes the intersection of arrays                                                                                                     |
 | filterList(`string` iterator, `string` callback): `FilterIterator`        | Filters elements of an array using a callback function                                                                                  |
 | mapValues(`array` input, `array{pattern: replacement}` values): `array`   | Finds multiple matches in the input and replaces them with a value, with the format `{pattern: replacement, pattern: replacement ... }` |
+| implode(`string` $separator, `array` $array): `string`                    | Turns a list into a string                                                                                                              |
 
 ### Closures that can be provided to reduce
 
