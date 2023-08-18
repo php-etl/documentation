@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <title>Writing Configuration  | Gyroscops Documentation</title>
 
-  <meta name="generator" content="Hugo 0.92.2" />
+  <meta name="generator" content="Hugo 0.111.3">
 
   <!-- mobile responsive meta -->
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -161,6 +161,8 @@
             <a class="dropdown-item" href="/documentation/connectivity/prestashop">Prestashop</a>
             
             <a class="dropdown-item" href="/documentation/connectivity/filtering">Filtering, drop or reject</a>
+            
+            <a class="dropdown-item" href="/documentation/connectivity/batch">Batch</a>
             
           </div>
         </li>
@@ -368,26 +370,25 @@
 <p>The first thing to do is creating a configuration file which we will call <code>satellite.yaml</code>.</p>
 <p>To avoid keeping all our files at the root of the project, we will create <code>satellite.yaml</code> inside a <code>src/</code> folder.</p>
 <p>In a terminal, enter the following command:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">mkdir src <span style="color:#f92672">&amp;&amp;</span> touch src/satellite.yaml
-</code></pre></div><p>Then add this configuration to your YAML file:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">version</span>: <span style="color:#e6db74">&#39;0.3&#39;</span>
-<span style="color:#f92672">satellites</span>:
-  <span style="color:#f92672">csv_to_json</span>:
-    <span style="color:#f92672">label</span>: <span style="color:#e6db74">&#39;CSV to JSON&#39;</span>
-    <span style="color:#f92672">filesystem</span>:
-        <span style="color:#f92672">path</span>: <span style="color:#ae81ff">build</span>
-    <span style="color:#f92672">pipeline</span>:
-      <span style="color:#f92672">steps</span>:
-        - <span style="color:#f92672">csv</span>:
-            <span style="color:#f92672">extractor</span>:
-              <span style="color:#f92672">file_path</span>: <span style="color:#e6db74">&#39;data/products.csv&#39;</span>
-        - <span style="color:#f92672">json</span>:
-            <span style="color:#f92672">loader</span>:
-              <span style="color:#f92672">file_path</span>: <span style="color:#e6db74">&#39;output.json&#39;</span>
-
-</code></pre></div><p>In our case, we use <code>csv</code> as an extractor and <code>json</code> as a loader, so we have to add the corresponding plugins to our project:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">composer require php-etl/csv-plugin:<span style="color:#e6db74">&#39;*&#39;</span> php-etl/json-plugin:<span style="color:#e6db74">&#39;*&#39;</span>
-</code></pre></div><p>Composer will install a version of the plugin that is compatible with the <code>php-etl/satellite</code> package you have previously installed.
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>mkdir src <span style="color:#f92672">&amp;&amp;</span> touch src/satellite.yaml
+</span></span></code></pre></div><p>Then add this configuration to your YAML file:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#f92672">version</span>: <span style="color:#e6db74">&#39;0.3&#39;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">satellites</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">csv_to_json</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">label</span>: <span style="color:#e6db74">&#39;CSV to JSON&#39;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">filesystem</span>:
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">path</span>: <span style="color:#ae81ff">build</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">pipeline</span>:
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">steps</span>:
+</span></span><span style="display:flex;"><span>        - <span style="color:#f92672">csv</span>:
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">extractor</span>:
+</span></span><span style="display:flex;"><span>              <span style="color:#f92672">file_path</span>: <span style="color:#e6db74">&#39;data/products.csv&#39;</span>
+</span></span><span style="display:flex;"><span>        - <span style="color:#f92672">json</span>:
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">loader</span>:
+</span></span><span style="display:flex;"><span>              <span style="color:#f92672">file_path</span>: <span style="color:#e6db74">&#39;output.json&#39;</span>
+</span></span></code></pre></div><p>In our case, we use <code>csv</code> as an extractor and <code>json</code> as a loader, so we have to add the corresponding plugins to our project:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>composer require php-etl/csv-plugin:<span style="color:#e6db74">&#39;*&#39;</span> php-etl/json-plugin:<span style="color:#e6db74">&#39;*&#39;</span>
+</span></span></code></pre></div><p>Composer will install a version of the plugin that is compatible with the <code>php-etl/satellite</code> package you have previously installed.
 Find the different versions of our plugins <a href="https://packagist.org/?query=php-etl%2F">here</a>.</p>
 <blockquote>
 <p>In a configuration file, paths start at the folder specified under <code>filesystem.path</code>. Here for example, the result will be <code>src/build/output.csv</code>.</p>
@@ -477,6 +478,22 @@ Find the different versions of our plugins <a href="https://packagist.org/?query
             
             
             
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+
             
             
             

@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <title>Workflow  | Gyroscops Documentation</title>
 
-  <meta name="generator" content="Hugo 0.92.2" />
+  <meta name="generator" content="Hugo 0.111.3">
 
   <!-- mobile responsive meta -->
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -161,6 +161,8 @@
             <a class="dropdown-item" href="/documentation/connectivity/prestashop">Prestashop</a>
             
             <a class="dropdown-item" href="/documentation/connectivity/filtering">Filtering, drop or reject</a>
+            
+            <a class="dropdown-item" href="/documentation/connectivity/batch">Batch</a>
             
           </div>
         </li>
@@ -388,38 +390,38 @@
 </code></pre><h2 id="basic-usage">Basic usage</h2>
 <p>To define your workflow, you need to specify the <code>jobs</code> you need, that is to say your different pipelines.
 Please see the <a href="../pipeline">Pipeline documentation</a> to know how a pipeline should be configured.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">workflow</span>:
-  <span style="color:#f92672">jobs</span>:
-    - <span style="color:#f92672">pipeline</span>:
-        <span style="color:#75715e"># the first pipeline configuration</span>
-        <span style="color:#75715e"># ...</span>
-    - <span style="color:#f92672">pipeline</span>:
-        <span style="color:#75715e"># the second pipeline configuration</span>
-        <span style="color:#75715e"># ...</span>
-</code></pre></div><p>The <code>name</code> option allows you to name your job.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">workflow</span>:
-  <span style="color:#f92672">jobs</span>:
-    - <span style="color:#f92672">name</span>: <span style="color:#e6db74">&#39;Pipeline 1&#39;</span>
-      <span style="color:#f92672">pipeline</span>:
-        <span style="color:#75715e"># the pipeline configuration</span>
-        <span style="color:#75715e"># ...</span>
-</code></pre></div><h2 id="advanced-usage">Advanced usage</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#f92672">workflow</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">jobs</span>:
+</span></span><span style="display:flex;"><span>    - <span style="color:#f92672">pipeline</span>:
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e"># the first pipeline configuration</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e"># ...</span>
+</span></span><span style="display:flex;"><span>    - <span style="color:#f92672">pipeline</span>:
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e"># the second pipeline configuration</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e"># ...</span>
+</span></span></code></pre></div><p>The <code>name</code> option allows you to name your job.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#f92672">workflow</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">jobs</span>:
+</span></span><span style="display:flex;"><span>    - <span style="color:#f92672">name</span>: <span style="color:#e6db74">&#39;Pipeline 1&#39;</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">pipeline</span>:
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e"># the pipeline configuration</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e"># ...</span>
+</span></span></code></pre></div><h2 id="advanced-usage">Advanced usage</h2>
 <h3 id="using-expressions">Using expressions</h3>
 <p>It&rsquo;s possible to use expressions in your pipeline using the <code>expression_language</code> option. To use these expressions,
 you need to use our customised Providers which provide the different expressions. For more information, please visit
 the <a href="../../feature/expression-language">detailed documentation</a> of the language expressions.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">pipeline</span>:
-  <span style="color:#f92672">expression_language</span>:
-    - <span style="color:#e6db74">&#39;Kiboko\Component\Satellite\ExpressionLanguage\Provider&#39;</span>
-</code></pre></div><h3 id="using-services">Using services</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#f92672">pipeline</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">expression_language</span>:
+</span></span><span style="display:flex;"><span>    - <span style="color:#e6db74">&#39;Kiboko\Component\Satellite\ExpressionLanguage\Provider&#39;</span>
+</span></span></code></pre></div><h3 id="using-services">Using services</h3>
 <p>You can use services in your pipeline in the same way as in a traditional Symfony application.</p>
 <p>For more details, go to the <a href="../../feature/logger">detailed services documentation</a>.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">pipeline</span>:
-  <span style="color:#f92672">services</span>:
-    <span style="color:#f92672">App\Service\Bar</span>:
-      <span style="color:#f92672">arguments</span>:
-        - <span style="color:#e6db74">&#39;my-file.csv&#39;</span>
-</code></pre></div></div>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#f92672">pipeline</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">services</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">App\Service\Bar</span>:
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">arguments</span>:
+</span></span><span style="display:flex;"><span>        - <span style="color:#e6db74">&#39;my-file.csv&#39;</span>
+</span></span></code></pre></div></div>
           
           <p class="post-meta border-bottom pb-3 mb-0 mt-3">Updated on 10 Aug 2021</p>
           <nav class="pagination mt-3">
@@ -503,6 +505,22 @@ the <a href="../../feature/expression-language">detailed documentation</a> of th
             
             
             
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+
             
             
             

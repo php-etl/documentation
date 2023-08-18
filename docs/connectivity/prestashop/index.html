@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <title>Prestashop  | Gyroscops Documentation</title>
 
-  <meta name="generator" content="Hugo 0.92.2" />
+  <meta name="generator" content="Hugo 0.111.3">
 
   <!-- mobile responsive meta -->
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -161,6 +161,8 @@
             <a class="dropdown-item" href="/documentation/connectivity/prestashop">Prestashop</a>
             
             <a class="dropdown-item" href="/documentation/connectivity/filtering">Filtering, drop or reject</a>
+            
+            <a class="dropdown-item" href="/documentation/connectivity/batch">Batch</a>
             
           </div>
         </li>
@@ -540,6 +542,28 @@
 
         
       
+        
+          
+
+
+
+
+
+
+
+
+<li data-nav-id="https://php-etl.github.io/documentation/connectivity/batch/" title="Batch" class="sidelist
+  ">
+  <a href="https://php-etl.github.io/documentation/connectivity/batch/">
+    Batch
+  </a>
+  
+  
+</li>
+
+
+        
+      
     </ul>
   
 </li>
@@ -587,80 +611,80 @@ and <a href="https://devdocs.prestashop-project.org/1.7/webservice/tutorials/cre
 <p>The Prestashop plugin aims at connecting a Prestashop instance through its API using a <a href="../../core-concept/pipeline">pipeline</a>.</p>
 <p>Currently, the following resources are supported by the plugin: <code>categories</code>, <code>combinations</code>, <code>manufacturers</code>, <code>product_features</code>, <code>product_feature_values</code>, <code>product_options</code>, <code>product_option_values</code>, <code>products</code>, <code>shops</code>, <code>stock_availables</code>, <code>suppliers</code>, <code>tax_rule_groups</code>, <code>tax_rules</code>.</p>
 <h2 id="installation">Installation</h2>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">composer require <span style="color:#e6db74">&#34;php-etl/prestashop-plugin:*&#34;</span>
-</code></pre></div><h2 id="usage">Usage</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>composer require <span style="color:#e6db74">&#34;php-etl/prestashop-plugin:*&#34;</span>
+</span></span></code></pre></div><h2 id="usage">Usage</h2>
 <h3 id="building-an-extractor">Building an extractor</h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">prestashop</span>:
-  <span style="color:#f92672">client</span>:
-    <span style="color:#f92672">url</span>: <span style="color:#e6db74">&#39;https://prestashop.example.com&#39;</span> <span style="color:#75715e"># the base URL of your Prestashop main website</span>
-    <span style="color:#f92672">api_key</span>: <span style="color:#e6db74">&#39;abc1234&#39;</span>                    <span style="color:#75715e"># the access key to the API</span>
-  <span style="color:#f92672">extractor</span>:
-    <span style="color:#f92672">type</span>: <span style="color:#e6db74">&#39;products&#39;</span>                      <span style="color:#75715e"># the resource type you wish to retrieve</span>
-    <span style="color:#f92672">method</span>: <span style="color:#e6db74">&#39;all&#39;</span>                         <span style="color:#75715e"># the retrieval method, currently it should always be &#39;all&#39;.</span>
-</code></pre></div><h4 id="optional-parameters">Optional parameters:</h4>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml">  <span style="color:#f92672">extractor</span>:
-<span style="color:#75715e"># ...</span>
-    <span style="color:#f92672">options</span>:
-      <span style="color:#f92672">columns</span>:           <span style="color:#75715e"># Specify the fields you wish to retrieve</span>
-        - <span style="color:#e6db74">&#39;id&#39;</span>           <span style="color:#75715e"># by default all the fields will be retrieved, which can have</span>
-        - <span style="color:#e6db74">&#39;product_type&#39;</span> <span style="color:#75715e"># an impact on the performance of your pipelines</span>
-        - <span style="color:#e6db74">&#39;price&#39;</span>
-      <span style="color:#f92672">filter</span>:            <span style="color:#75715e"># filter the result based on a value, or a range of values</span>
-        <span style="color:#f92672">id</span>: <span style="color:#e6db74">&#39;[1,10]&#39;</span>
-      <span style="color:#f92672">sorters</span>:           <span style="color:#75715e"># sorting fields and their direction</span>
-        <span style="color:#f92672">id</span>: <span style="color:#e6db74">&#34;ASC&#34;</span>
-      <span style="color:#f92672">id_shop</span>: <span style="color:#ae81ff">1</span>         <span style="color:#75715e"># identifier of the shop containing the data you want to extract data from</span>
-      <span style="color:#f92672">id_group_shop</span>: <span style="color:#ae81ff">1</span>
-      <span style="color:#f92672">price</span>:             <span style="color:#75715e"># list the price requests you want the API to calculate for you</span>
-        <span style="color:#f92672">my_price</span>:        <span style="color:#75715e"># each element in this list is an individual price request you </span>
-                         <span style="color:#75715e"># will ask, that will be retrieved through an individual field</span>
-          <span style="color:#f92672">quantity</span>: <span style="color:#ae81ff">25</span>
-                  <span style="color:#75715e"># the price request may contain any of the following parameters: </span>
-                  <span style="color:#75715e"># country, state, postcode, currency, group, quantity, product_attribute,</span>
-                  <span style="color:#75715e"># decimals, use_tax, use_reduction, only_reduction, use_ecotax</span>
-                  <span style="color:#75715e"># for more details, see https://devdocs.prestashop-project.org/8/webservice/tutorials/advanced-use/specific-price/</span>
-</code></pre></div><h5 id="languages">languages:</h5>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#f92672">prestashop</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">client</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">url</span>: <span style="color:#e6db74">&#39;https://prestashop.example.com&#39;</span> <span style="color:#75715e"># the base URL of your Prestashop main website</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">api_key</span>: <span style="color:#e6db74">&#39;abc1234&#39;</span>                    <span style="color:#75715e"># the access key to the API</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">extractor</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">type</span>: <span style="color:#e6db74">&#39;products&#39;</span>                      <span style="color:#75715e"># the resource type you wish to retrieve</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">method</span>: <span style="color:#e6db74">&#39;all&#39;</span>                         <span style="color:#75715e"># the retrieval method, currently it should always be &#39;all&#39;.</span>
+</span></span></code></pre></div><h4 id="optional-parameters">Optional parameters:</h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span>  <span style="color:#f92672">extractor</span>:
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># ...</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">options</span>:
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">columns</span>:           <span style="color:#75715e"># Specify the fields you wish to retrieve</span>
+</span></span><span style="display:flex;"><span>        - <span style="color:#e6db74">&#39;id&#39;</span>           <span style="color:#75715e"># by default all the fields will be retrieved, which can have</span>
+</span></span><span style="display:flex;"><span>        - <span style="color:#e6db74">&#39;product_type&#39;</span> <span style="color:#75715e"># an impact on the performance of your pipelines</span>
+</span></span><span style="display:flex;"><span>        - <span style="color:#e6db74">&#39;price&#39;</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">filter</span>:            <span style="color:#75715e"># filter the result based on a value, or a range of values</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">id</span>: <span style="color:#e6db74">&#39;[1,10]&#39;</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">sorters</span>:           <span style="color:#75715e"># sorting fields and their direction</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">id</span>: <span style="color:#e6db74">&#34;ASC&#34;</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">id_shop</span>: <span style="color:#ae81ff">1</span>         <span style="color:#75715e"># identifier of the shop containing the data you want to extract data from</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">id_group_shop</span>: <span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">price</span>:             <span style="color:#75715e"># list the price requests you want the API to calculate for you</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">my_price</span>:        <span style="color:#75715e"># each element in this list is an individual price request you </span>
+</span></span><span style="display:flex;"><span>                         <span style="color:#75715e"># will ask, that will be retrieved through an individual field</span>
+</span></span><span style="display:flex;"><span>          <span style="color:#f92672">quantity</span>: <span style="color:#ae81ff">25</span>
+</span></span><span style="display:flex;"><span>                  <span style="color:#75715e"># the price request may contain any of the following parameters: </span>
+</span></span><span style="display:flex;"><span>                  <span style="color:#75715e"># country, state, postcode, currency, group, quantity, product_attribute,</span>
+</span></span><span style="display:flex;"><span>                  <span style="color:#75715e"># decimals, use_tax, use_reduction, only_reduction, use_ecotax</span>
+</span></span><span style="display:flex;"><span>                  <span style="color:#75715e"># for more details, see https://devdocs.prestashop-project.org/8/webservice/tutorials/advanced-use/specific-price/</span>
+</span></span></code></pre></div><h5 id="languages">languages:</h5>
 <ul class="nav nav-tabs" id="extractor_options_languages" role="tablist"><li class="nav-item"><a data-toggle="tab" class="nav-link active" href="#extractor_options_languages-0" role="tab" aria-controls="extractor_options_languages-0" aria-selected="true">Example, with a list of identifiers</a></li>
 	  
 		<li class="nav-item"><a data-toggle="tab" class="nav-link" href="#extractor_options_languages-1" role="tab" aria-controls="extractor_options_languages-1">Example, with a range of identifiers</a></li></ul>
 <div class="tab-content" id="extractor_options_languages"><div id="extractor_options_languages-0" class="tab-pane show active" role="tabpanel" aria-labelledby="extractor_options_languages-0">
 
-<p><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml">
-  <span style="color:#f92672">extractor</span>:
-<span style="color:#75715e"># ...</span>
-    <span style="color:#f92672">options</span>:
-      <span style="color:#f92672">languages</span>: [ <span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">3</span> ] <span style="color:#75715e"># list of ids of the languages to retrieve.</span>
-</code></pre></div></div>
+<p><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">extractor</span>:
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># ...</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">options</span>:
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">languages</span>: [ <span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">3</span> ] <span style="color:#75715e"># list of ids of the languages to retrieve.</span>
+</span></span></code></pre></div></div>
   <div id="extractor_options_languages-1" class="tab-pane" role="tabpanel" aria-labelledby="extractor_options_languages-1">
 
-<p><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml">
-  <span style="color:#f92672">extractor</span>:
-<span style="color:#75715e"># ...</span>
-    <span style="color:#f92672">options</span>:
-      <span style="color:#f92672">languages</span>: <span style="color:#75715e"># a range of ids of the languages to retrieve.</span>
-        <span style="color:#f92672">from</span>: <span style="color:#ae81ff">1</span>
-        <span style="color:#f92672">to</span>: <span style="color:#ae81ff">5</span>
-</code></pre></div></div></div>
+<p><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">extractor</span>:
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># ...</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">options</span>:
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">languages</span>: <span style="color:#75715e"># a range of ids of the languages to retrieve.</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">from</span>: <span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">to</span>: <span style="color:#ae81ff">5</span>
+</span></span></code></pre></div></div></div>
 
 <p><a href="https://devdocs.prestashop-project.org/8/webservice/tutorials/advanced-use/additional-list-parameters/">Read the PrestaShop Documentation for more details.</a></p>
 <h3 id="building-a-loader">Building a loader</h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">prestashop</span>:
-  <span style="color:#f92672">client</span>:
-    <span style="color:#f92672">url</span>: <span style="color:#e6db74">&#39;https://prestashop.example.com&#39;</span>
-    <span style="color:#f92672">api_key</span>: <span style="color:#e6db74">&#39;abc1234&#39;</span>
-  <span style="color:#f92672">loader</span>:
-    <span style="color:#f92672">type</span>: <span style="color:#e6db74">&#39;products&#39;</span>   <span style="color:#75715e"># the resource type to write to</span>
-    <span style="color:#f92672">method</span>: <span style="color:#e6db74">&#39;upsert&#39;</span>   <span style="color:#75715e"># the method to use, available methods are &#39;create&#39;, &#39;update&#39;, &#39;upsert&#39;.</span>
-                       <span style="color:#75715e"># &#39;create&#39; will only create products and fail if the product already exists</span>
-                       <span style="color:#75715e"># &#39;update&#39; will only update products and fail if the product does not exist</span>
-                       <span style="color:#75715e"># &#39;upsert&#39; will try to update if the product already exists or create the product if it does not exist</span>
-</code></pre></div><h4 id="optional-parameters-1">Optional parameters:</h4>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml">  <span style="color:#f92672">loader</span>:
-<span style="color:#75715e"># ...</span>
-    <span style="color:#f92672">options</span>: 
-      <span style="color:#f92672">id_shop</span>: <span style="color:#ae81ff">1</span>       <span style="color:#75715e"># id of the shop</span>
-      <span style="color:#f92672">id_group_shop</span>: <span style="color:#ae81ff">1</span> <span style="color:#75715e"># id of the shop group</span>
-</code></pre></div><p><a href="https://devdocs.prestashop-project.org/8/webservice/tutorials/advanced-use/additional-list-parameters/">Read the PrestaShop Documentation for more details.</a></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#f92672">prestashop</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">client</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">url</span>: <span style="color:#e6db74">&#39;https://prestashop.example.com&#39;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">api_key</span>: <span style="color:#e6db74">&#39;abc1234&#39;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">loader</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">type</span>: <span style="color:#e6db74">&#39;products&#39;</span>   <span style="color:#75715e"># the resource type to write to</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">method</span>: <span style="color:#e6db74">&#39;upsert&#39;</span>   <span style="color:#75715e"># the method to use, available methods are &#39;create&#39;, &#39;update&#39;, &#39;upsert&#39;.</span>
+</span></span><span style="display:flex;"><span>                       <span style="color:#75715e"># &#39;create&#39; will only create products and fail if the product already exists</span>
+</span></span><span style="display:flex;"><span>                       <span style="color:#75715e"># &#39;update&#39; will only update products and fail if the product does not exist</span>
+</span></span><span style="display:flex;"><span>                       <span style="color:#75715e"># &#39;upsert&#39; will try to update if the product already exists or create the product if it does not exist</span>
+</span></span></code></pre></div><h4 id="optional-parameters-1">Optional parameters:</h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span>  <span style="color:#f92672">loader</span>:
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># ...</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">options</span>: 
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">id_shop</span>: <span style="color:#ae81ff">1</span>       <span style="color:#75715e"># id of the shop</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">id_group_shop</span>: <span style="color:#ae81ff">1</span> <span style="color:#75715e"># id of the shop group</span>
+</span></span></code></pre></div><p><a href="https://devdocs.prestashop-project.org/8/webservice/tutorials/advanced-use/additional-list-parameters/">Read the PrestaShop Documentation for more details.</a></p>
 </div>
           
           <p class="post-meta border-bottom pb-3 mb-0 mt-3">Updated on 02 May 2023</p>
@@ -910,6 +934,22 @@ and <a href="https://devdocs.prestashop-project.org/1.7/webservice/tutorials/cre
             
             
             
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+
             
             
             
