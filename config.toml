@@ -180,6 +180,12 @@ hasChildren = true
    url = "connectivity/filtering"
    weight = 12
 
+  [[menu.main]]
+   parent = "Connectivity"
+   name = "Batch"
+   url = "connectivity/batch"
+   weight = 13
+
 [params]
 logo = "logo-web.svg"
 logo_white = "logo-web.svg"
