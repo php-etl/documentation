@@ -68,6 +68,18 @@ hasChildren = true
   url = "core-concept/workflow"
   weight = 3
 
+  [[menu.main]]
+  parent = "Core concepts"
+  name = "HTTP Hook"
+  url = "core-concept/http-hook"
+  weight = 4
+
+  [[menu.main]]
+  parent = "Core concepts"
+  name = "HTTP API"
+  url = "core-concept/http-api"
+  weight = 5
+
 [[menu.main]]
 weight = 3
 name = "Features"

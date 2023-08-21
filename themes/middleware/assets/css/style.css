@@ -637,8 +637,7 @@ h1.single-title {
 
 .content h1,
 .content h2,
-.content h3,
-.content h4 {
+.content h3 {
   padding: 10px 0;
   position: sticky;
   top: 95px;
