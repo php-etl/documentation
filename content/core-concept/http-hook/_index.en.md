@@ -37,7 +37,7 @@ Your HTTP Hook will serve the route set in the option `path`:
 version: '0.3'
 satellites:
   my_satellite:
-    label: 'Example of an api'
+    label: 'Example of a hook'
     filesystem:
       path: build
     composer:
@@ -56,7 +56,7 @@ satellites:
         - "php-etl/mapping-contracts"
     http_hook:
       name: 'My HTTP Hook' # Optional
-      path: /my-api
+      path: /my-hook
       expression: 'input'
       pipeline:
         steps:
@@ -77,7 +77,7 @@ After [building](../../getting-started/compilation) the satellite, start a serve
 bin/satellite run:hook build/
 ```
 
-You can then send POST requests containing the data be processed to `http://localhost:8000/my-api`
+You can then send POST requests containing the data be processed to `http://localhost:8000/my-hook`
 
 ```yaml
 # input:
@@ -105,7 +105,7 @@ test_2;862
       require:
         - "tuupola/slim-jwt-auth"
 # ...
-    http_api:
+    http_hook:
       authorization:
         jwt:
           secret: 'mysecret'
@@ -126,7 +126,7 @@ The string after "Bearer" is the token, generated from the secret phrase. This s
       require:
         - "tuupola/slim-basic-auth"
 # ...
-    http_api:
+    http_hook:
       authorization:
         basic:
           - user: john
