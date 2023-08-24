@@ -186,6 +186,18 @@ hasChildren = true
    url = "connectivity/batch"
    weight = 13
 
+  [[menu.main]]
+   parent = "Connectivity"
+   name = "Magento 2"
+   url = "connectivity/magento-2"
+   weight = 14
+
+  [[menu.main]]
+  parent = "Connectivity"
+  name = "Zoho CRM"
+  url = "connectivity/zoho"
+  weight = 15
+
 [params]
 logo = "logo-web.svg"
 logo_white = "logo-web.svg"
