@@ -126,6 +126,10 @@
             
             <a class="dropdown-item" href="/documentation/core-concept/workflow">Workflow</a>
             
+            <a class="dropdown-item" href="/documentation/core-concept/http-hook">HTTP Hook</a>
+            
+            <a class="dropdown-item" href="/documentation/core-concept/http-api">HTTP API</a>
+            
           </div>
         </li>
         
@@ -400,12 +404,7 @@
 </ul>
 </li>
 <li><a href="#configure-composer">Configure composer</a></li>
-<li><a href="#setting-up-the-runtime">Setting up the runtime</a>
-<ul>
-<li><a href="#using-pipeline">Using Pipeline</a></li>
-<li><a href="#using-workflow">Using Workflow</a></li>
-</ul>
-</li>
+<li><a href="#setting-up-the-runtime">Setting up the runtime</a></li>
 </ul>
 </li>
 <li><a href="#configuration-formats">Configuration formats</a></li>
@@ -442,10 +441,10 @@
 </span></span><span style="display:flex;"><span>  </span></span></code></pre></div></div></div>
 
 <h3 id="setting-up-the-adapter">Setting up the Adapter</h3>
-<p>Your next step, you should declare the docker image, or the file, on which you want to build the satellite.</p>
+<p>Next, you should declare the Docker image or the directory inside which you want to build the satellite.</p>
 <p>If you are using <a href="https://gyroscops.com">Gyroscops Cloud</a>, you can ignore this step and directly go to <a href="#configure-composer">the next chapter</a>.</p>
 <h4 id="using-docker">Using Docker</h4>
-<p>To use a docker image to build your satellite, implement the <code>docker</code> key with its configuration options :</p>
+<p>To use a Docker image to build your satellite, implement the <code>docker</code> key with its configuration options :</p>
 <ul>
 <li><code>from</code> : determines the image on which your code will run</li>
 <li><code>workdir</code> : define the working directory of a Docker container</li>
@@ -470,7 +469,7 @@
 </span></span></code></pre></div></div></div>
 
 <p>Here, we chose to use the <code>php:8.0-cli-alpine</code> base image on which our code will be executed.
-You could use any docker image of your choice, however you will need to have a PHP runtime
+You could use any Docker image of your choice, however you will need to have a PHP runtime
 available, in a compatible version: &gt;=8.0 with the CLI SAPI.</p>
 <h4 id="using-the-file-system">Using the file system</h4>
 <p>To use a system file to build your satellite, implement the <code>filesystem</code> key.</p>
@@ -579,19 +578,44 @@ The parameter is the way for you to tell composer how to authenticate to the reg
 <h3 id="setting-up-the-runtime">Setting up the runtime</h3>
 <p>Now that we have made our environment prepared for our satellite, we will declare
 the way we want our pipeline to handle our data flows.</p>
-<p>There are 4 types of runtimes, depending on your needs you will have to choose one of:</p>
-<ul>
-<li><code>http-api</code>: the satellite will be operating an API, on which several URL routes can be registered. <code>http-api</code> is used for REST API.</li>
-<li><code>http-hook</code>: the satellite will be operating an API on a single URL route. <code>http-hook</code> is used for webhooks. A webhook is a POST request sent to a URL. It&rsquo;s considered to be
-a means for one application to provide other applications with real-time information</li>
-<li><code>pipeline</code>: the satellite will be operating a data pipeline, executed in the backend that can be executed as a cron job.</li>
-<li><code>workflow</code>: the satellite will be orchestrating more than one data pipeline, executed in the backend that can be executed as a cron job</li>
-</ul>
-<h4 id="using-pipeline">Using Pipeline</h4>
-<p>Please visit the <a href="../pipeline">Pipeline documentation page</a> to find out how to set up your pipeline.</p>
-<ul class="nav nav-tabs" id="dataflows" role="tablist"><li class="nav-item"><a data-toggle="tab" class="nav-link active" href="#dataflows-0" role="tab" aria-controls="dataflows-0" aria-selected="true">YAML</a></li>
-	  </ul>
-<div class="tab-content" id="dataflows"><div id="dataflows-0" class="tab-pane show active" role="tabpanel" aria-labelledby="dataflows-0">
+<p>There are 4 types of runtimes, you will have to choose one depending on your needs:</p>
+<table>
+<thead>
+<tr>
+<th>name</th>
+<th>description</th>
+<th>details</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>pipeline</td>
+<td>The satellite will be operating a data pipeline, executed in the backend that can be executed as a cron job.</td>
+<td><a href="../pipeline">Pipeline documentation page</a></td>
+</tr>
+<tr>
+<td>workflow</td>
+<td>The satellite will be orchestrating multiple pipelines, executed in the backend that can be executed as a cron job</td>
+<td><a href="../workflow">Workflow documentation page</a></td>
+</tr>
+<tr>
+<td>http_hook</td>
+<td>The satellite will be operating an API on a single URL route. <code>http_hook</code> is used for webhooks. A webhook is a POST request sent to a URL. It&rsquo;s considered to be a mean for one application to provide other applications with real-time information</td>
+<td><a href="../http-hook">HTTP Hook documentation page</a></td>
+</tr>
+<tr>
+<td>http_api</td>
+<td>The satellite will be operating an API on multiple URL routes. <code>http_api</code> is used for REST API.</td>
+<td><a href="../http-api">HTTP API documentation page</a></td>
+</tr>
+</tbody>
+</table>
+<ul class="nav nav-tabs" id="runtimes" role="tablist"><li class="nav-item"><a data-toggle="tab" class="nav-link active" href="#runtimes-0" role="tab" aria-controls="runtimes-0" aria-selected="true">pipeline</a></li>
+	  
+		<li class="nav-item"><a data-toggle="tab" class="nav-link" href="#runtimes-1" role="tab" aria-controls="runtimes-1">workflow</a></li>
+		<li class="nav-item"><a data-toggle="tab" class="nav-link" href="#runtimes-2" role="tab" aria-controls="runtimes-2">http_hook</a></li>
+		<li class="nav-item"><a data-toggle="tab" class="nav-link" href="#runtimes-3" role="tab" aria-controls="runtimes-3">http_api</a></li></ul>
+<div class="tab-content" id="runtimes"><div id="runtimes-0" class="tab-pane show active" role="tabpanel" aria-labelledby="runtimes-0">
 
 <p><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#f92672">version</span>: <span style="color:#e6db74">&#39;0.3&#39;</span>
@@ -601,53 +625,34 @@ a means for one application to provide other applications with real-time informa
 </span></span><span style="display:flex;"><span>    <span style="color:#75715e"># ...</span>
 </span></span><span style="display:flex;"><span>    <span style="color:#f92672">pipeline</span>:
 </span></span><span style="display:flex;"><span>      <span style="color:#f92672">steps</span>:
-</span></span><span style="display:flex;"><span>      - <span style="color:#f92672">akeneo</span>:
-</span></span><span style="display:flex;"><span>          <span style="color:#f92672">enterprise</span>: <span style="color:#66d9ef">true</span>
-</span></span><span style="display:flex;"><span>          <span style="color:#f92672">extractor</span>:
-</span></span><span style="display:flex;"><span>            <span style="color:#f92672">type</span>: <span style="color:#ae81ff">productModel</span>
-</span></span><span style="display:flex;"><span>            <span style="color:#f92672">method</span>: <span style="color:#ae81ff">all</span>
-</span></span><span style="display:flex;"><span>            <span style="color:#f92672">search</span>:
-</span></span><span style="display:flex;"><span>              - { <span style="color:#f92672">field: enabled, operator: &#39;=&#39;, value</span>: <span style="color:#66d9ef">true</span> }
-</span></span><span style="display:flex;"><span>              - { <span style="color:#f92672">field: completeness, operator: &#39;&gt;&#39;, value: 70, scope</span>: <span style="color:#ae81ff">ecommerce }</span>
-</span></span><span style="display:flex;"><span>              - { <span style="color:#f92672">field: completeness, operator: &#39;&lt;&#39;, value: 85, scope</span>: <span style="color:#ae81ff">ecommerce }</span>
-</span></span><span style="display:flex;"><span>              - { <span style="color:#f92672">field: categories, operator: IN, value</span>: <span style="color:#ae81ff">winter_collection }</span>
-</span></span><span style="display:flex;"><span>              - { <span style="color:#f92672">field: family, operator: IN, value</span>: [<span style="color:#ae81ff">camcorders, digital_cameras] }</span>
-</span></span><span style="display:flex;"><span>          <span style="color:#f92672">logger</span>:
-</span></span><span style="display:flex;"><span>            <span style="color:#f92672">type</span>: <span style="color:#e6db74">&#39;stderr&#39;</span>
-</span></span><span style="display:flex;"><span>      - <span style="color:#f92672">fastmap</span>:
-</span></span><span style="display:flex;"><span>          <span style="color:#f92672">map</span>:
-</span></span><span style="display:flex;"><span>            - <span style="color:#f92672">field</span>: <span style="color:#e6db74">&#39;[sku]&#39;</span>
-</span></span><span style="display:flex;"><span>              <span style="color:#f92672">copy</span>: <span style="color:#e6db74">&#39;[sku]&#39;</span>
-</span></span><span style="display:flex;"><span>            - <span style="color:#f92672">field</span>: <span style="color:#e6db74">&#39;[title]&#39;</span>
-</span></span><span style="display:flex;"><span>              <span style="color:#f92672">expression</span>: <span style="color:#e6db74">&#39;input[&#34;sku&#34;] ~&#34; | &#34;~ input[&#34;name&#34;]&#39;</span>
-</span></span><span style="display:flex;"><span>            - <span style="color:#f92672">field</span>: <span style="color:#e6db74">&#39;[name]&#39;</span>
-</span></span><span style="display:flex;"><span>              <span style="color:#f92672">copy</span>: <span style="color:#e6db74">&#39;[name]&#39;</span>
-</span></span><span style="display:flex;"><span>            - <span style="color:#f92672">field</span>: <span style="color:#e6db74">&#39;[staticValue]&#39;</span>
-</span></span><span style="display:flex;"><span>              <span style="color:#f92672">constant</span>: <span style="color:#e6db74">&#39;Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur mollis efficitur justo, id facilisis elit venenatis et. Sed fermentum posuere convallis. Phasellus lectus neque, bibendum sit amet enim imperdiet, dignissim blandit nisi. Donec nec neque nisi. Vivamus luctus facilisis nibh id rhoncus. Vestibulum eget facilisis tortor. Etiam at cursus enim, vitae mollis ex. Proin at velit at erat bibendum ultricies. Duis ut velit malesuada, placerat nisl a, ultrices tortor.&#39;</span>
-</span></span><span style="display:flex;"><span>            - <span style="color:#f92672">field</span>: <span style="color:#e6db74">&#39;[foo]&#39;</span>
-</span></span><span style="display:flex;"><span>              <span style="color:#f92672">expression</span>: <span style="color:#e6db74">&#39;input&#39;</span>
-</span></span><span style="display:flex;"><span>              <span style="color:#f92672">list</span>:
-</span></span><span style="display:flex;"><span>                - <span style="color:#f92672">field</span>: <span style="color:#e6db74">&#39;[bar]&#39;</span>
-</span></span><span style="display:flex;"><span>                  <span style="color:#f92672">copy</span>: <span style="color:#e6db74">&#39;[bar]&#39;</span>
-</span></span><span style="display:flex;"><span>      - <span style="color:#f92672">csv</span>:
-</span></span><span style="display:flex;"><span>          <span style="color:#f92672">loader</span>:
-</span></span><span style="display:flex;"><span>            <span style="color:#f92672">file_path</span>: <span style="color:#ae81ff">output.csv</span>
-</span></span><span style="display:flex;"><span>            <span style="color:#f92672">delimiter</span>: <span style="color:#e6db74">&#39;,&#39;</span>
-</span></span><span style="display:flex;"><span>            <span style="color:#f92672">enclosure</span>: <span style="color:#e6db74">&#39;&#34;&#39;</span>
-</span></span><span style="display:flex;"><span>            <span style="color:#f92672">escape</span>: <span style="color:#e6db74">&#39;\&#39;</span>
-</span></span></code></pre></div></div></div>
+</span></span><span style="display:flex;"><span>        - <span style="color:#f92672">akeneo</span>:
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">extractor</span>:
+</span></span><span style="display:flex;"><span>              <span style="color:#f92672">type</span>: <span style="color:#ae81ff">category</span>
+</span></span><span style="display:flex;"><span>              <span style="color:#f92672">method</span>: <span style="color:#ae81ff">all</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">client</span>:
+</span></span><span style="display:flex;"><span>              <span style="color:#f92672">api_url</span>: <span style="color:#e6db74">&#39;@=env(&#34;AKENEO_URL&#34;)&#39;</span>
+</span></span><span style="display:flex;"><span>              <span style="color:#f92672">client_id</span>: <span style="color:#e6db74">&#39;@=env(&#34;AKENEO_CLIENT_ID&#34;)&#39;</span>
+</span></span><span style="display:flex;"><span>              <span style="color:#f92672">secret</span>: <span style="color:#e6db74">&#39;@=env(&#34;AKENEO_CLIENT_SECRET&#34;)&#39;</span>
+</span></span><span style="display:flex;"><span>              <span style="color:#f92672">username</span>: <span style="color:#e6db74">&#39;@=env(&#34;AKENEO_USERNAME&#34;)&#39;</span>
+</span></span><span style="display:flex;"><span>              <span style="color:#f92672">password</span>: <span style="color:#e6db74">&#39;@=env(&#34;AKENEO_PASSWORD&#34;)&#39;</span>
+</span></span><span style="display:flex;"><span>        - <span style="color:#f92672">csv</span>:
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">loader</span>:
+</span></span><span style="display:flex;"><span>              <span style="color:#f92672">file_path</span>: <span style="color:#ae81ff">categories.csv</span>
+</span></span><span style="display:flex;"><span>              <span style="color:#f92672">delimiter</span>: <span style="color:#e6db74">&#39;,&#39;</span>
+</span></span><span style="display:flex;"><span>              <span style="color:#f92672">enclosure</span>: <span style="color:#e6db74">&#39;&#34;&#39;</span>
+</span></span><span style="display:flex;"><span>              <span style="color:#f92672">escape</span>: <span style="color:#e6db74">&#39;\\&#39;</span>
+</span></span></code></pre></div></div>
+  <div id="runtimes-1" class="tab-pane" role="tabpanel" aria-labelledby="runtimes-1">
 
-<h4 id="using-workflow">Using Workflow</h4>
-<p>Please visit the <a href="../workflow">Workflow documentation page</a> to find out how to set up your workflow.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#f92672">version</span>: <span style="color:#e6db74">&#39;0.3&#39;</span>
+<p><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">version</span>: <span style="color:#e6db74">&#39;0.3&#39;</span>
 </span></span><span style="display:flex;"><span><span style="color:#f92672">satellites</span>:
 </span></span><span style="display:flex;"><span>  <span style="color:#f92672">my_satellite</span>:
 </span></span><span style="display:flex;"><span>    <span style="color:#f92672">label</span>: <span style="color:#e6db74">&#39;My first Satellite&#39;</span>
 </span></span><span style="display:flex;"><span>    <span style="color:#75715e"># ...</span>
 </span></span><span style="display:flex;"><span>    <span style="color:#f92672">workflow</span>:
 </span></span><span style="display:flex;"><span>      <span style="color:#f92672">jobs</span>:
-</span></span><span style="display:flex;"><span>        - <span style="color:#f92672">name</span>: <span style="color:#e6db74">&#39;Lorem ipsum dolor&#39;</span>
-</span></span><span style="display:flex;"><span>          <span style="color:#f92672">pipeline</span>:
+</span></span><span style="display:flex;"><span>        - <span style="color:#f92672">pipeline</span>:
 </span></span><span style="display:flex;"><span>            <span style="color:#f92672">steps</span>:
 </span></span><span style="display:flex;"><span>              - <span style="color:#f92672">akeneo</span>:
 </span></span><span style="display:flex;"><span>                  <span style="color:#f92672">extractor</span>:
@@ -665,27 +670,88 @@ a means for one application to provide other applications with real-time informa
 </span></span><span style="display:flex;"><span>                    <span style="color:#f92672">delimiter</span>: <span style="color:#e6db74">&#39;,&#39;</span>
 </span></span><span style="display:flex;"><span>                    <span style="color:#f92672">enclosure</span>: <span style="color:#e6db74">&#39;&#34;&#39;</span>
 </span></span><span style="display:flex;"><span>                    <span style="color:#f92672">escape</span>: <span style="color:#e6db74">&#39;\\&#39;</span>
-</span></span><span style="display:flex;"><span>  <span style="color:#f92672">my_second_satellite</span>:
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">label</span>: <span style="color:#e6db74">&#39;My second Satellite&#39;</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">pipeline</span>:
-</span></span><span style="display:flex;"><span>      <span style="color:#f92672">steps</span>:
-</span></span><span style="display:flex;"><span>        - <span style="color:#f92672">akeneo</span>:
-</span></span><span style="display:flex;"><span>            <span style="color:#f92672">extractor</span>:
-</span></span><span style="display:flex;"><span>              <span style="color:#f92672">type</span>: <span style="color:#ae81ff">product</span>
-</span></span><span style="display:flex;"><span>              <span style="color:#f92672">method</span>: <span style="color:#ae81ff">all</span>
-</span></span><span style="display:flex;"><span>            <span style="color:#f92672">client</span>:
-</span></span><span style="display:flex;"><span>              <span style="color:#f92672">api_url</span>: <span style="color:#e6db74">&#39;@=env(&#34;AKENEO_URL&#34;)&#39;</span>
-</span></span><span style="display:flex;"><span>              <span style="color:#f92672">client_id</span>: <span style="color:#e6db74">&#39;@=env(&#34;AKENEO_CLIENT_ID&#34;)&#39;</span>
-</span></span><span style="display:flex;"><span>              <span style="color:#f92672">secret</span>: <span style="color:#e6db74">&#39;@=env(&#34;AKENEO_CLIENT_SECRET&#34;)&#39;</span>
-</span></span><span style="display:flex;"><span>              <span style="color:#f92672">username</span>: <span style="color:#e6db74">&#39;@=env(&#34;AKENEO_USERNAME&#34;)&#39;</span>
-</span></span><span style="display:flex;"><span>              <span style="color:#f92672">password</span>: <span style="color:#e6db74">&#39;@=env(&#34;AKENEO_PASSWORD&#34;)&#39;</span>
-</span></span><span style="display:flex;"><span>        - <span style="color:#f92672">csv</span>:
-</span></span><span style="display:flex;"><span>            <span style="color:#f92672">loader</span>:
-</span></span><span style="display:flex;"><span>              <span style="color:#f92672">file_path</span>: <span style="color:#ae81ff">products.csv</span>
-</span></span><span style="display:flex;"><span>              <span style="color:#f92672">delimiter</span>: <span style="color:#e6db74">&#39;,&#39;</span>
-</span></span><span style="display:flex;"><span>              <span style="color:#f92672">enclosure</span>: <span style="color:#e6db74">&#39;&#34;&#39;</span>
-</span></span><span style="display:flex;"><span>              <span style="color:#f92672">escape</span>: <span style="color:#e6db74">&#39;\&#39;</span>
-</span></span></code></pre></div><h3 id="configuration-formats">Configuration formats</h3>
+</span></span><span style="display:flex;"><span>        - <span style="color:#f92672">pipeline</span>:
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">steps</span>:
+</span></span><span style="display:flex;"><span>              - <span style="color:#f92672">akeneo</span>:
+</span></span><span style="display:flex;"><span>                  <span style="color:#f92672">extractor</span>:
+</span></span><span style="display:flex;"><span>                    <span style="color:#f92672">type</span>: <span style="color:#ae81ff">product</span>
+</span></span><span style="display:flex;"><span>                    <span style="color:#f92672">method</span>: <span style="color:#ae81ff">all</span>
+</span></span><span style="display:flex;"><span>                  <span style="color:#f92672">client</span>:
+</span></span><span style="display:flex;"><span>                    <span style="color:#f92672">api_url</span>: <span style="color:#e6db74">&#39;@=env(&#34;AKENEO_URL&#34;)&#39;</span>
+</span></span><span style="display:flex;"><span>                    <span style="color:#f92672">client_id</span>: <span style="color:#e6db74">&#39;@=env(&#34;AKENEO_CLIENT_ID&#34;)&#39;</span>
+</span></span><span style="display:flex;"><span>                    <span style="color:#f92672">secret</span>: <span style="color:#e6db74">&#39;@=env(&#34;AKENEO_CLIENT_SECRET&#34;)&#39;</span>
+</span></span><span style="display:flex;"><span>                    <span style="color:#f92672">username</span>: <span style="color:#e6db74">&#39;@=env(&#34;AKENEO_USERNAME&#34;)&#39;</span>
+</span></span><span style="display:flex;"><span>                    <span style="color:#f92672">password</span>: <span style="color:#e6db74">&#39;@=env(&#34;AKENEO_PASSWORD&#34;)&#39;</span>
+</span></span><span style="display:flex;"><span>              - <span style="color:#f92672">csv</span>:
+</span></span><span style="display:flex;"><span>                  <span style="color:#f92672">loader</span>:
+</span></span><span style="display:flex;"><span>                    <span style="color:#f92672">file_path</span>: <span style="color:#ae81ff">products.csv</span>
+</span></span><span style="display:flex;"><span>                    <span style="color:#f92672">delimiter</span>: <span style="color:#e6db74">&#39;,&#39;</span>
+</span></span><span style="display:flex;"><span>                    <span style="color:#f92672">enclosure</span>: <span style="color:#e6db74">&#39;&#34;&#39;</span>
+</span></span><span style="display:flex;"><span>                    <span style="color:#f92672">escape</span>: <span style="color:#e6db74">&#39;\&#39;</span>
+</span></span></code></pre></div></div>
+  <div id="runtimes-2" class="tab-pane" role="tabpanel" aria-labelledby="runtimes-2">
+
+<p><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">version</span>: <span style="color:#e6db74">&#39;0.3&#39;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">satellites</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">my_satellite</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">label</span>: <span style="color:#e6db74">&#39;My first Satellite&#39;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># ...</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">http_hook</span>:
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">path</span>: <span style="color:#ae81ff">/my-hook</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">expression</span>: <span style="color:#e6db74">&#39;input&#39;</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">pipeline</span>:
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">steps</span>:
+</span></span><span style="display:flex;"><span>          - <span style="color:#f92672">fastmap</span>:
+</span></span><span style="display:flex;"><span>              <span style="color:#f92672">map</span>:
+</span></span><span style="display:flex;"><span>                - <span style="color:#f92672">field</span>: <span style="color:#e6db74">&#39;[sku]&#39;</span>
+</span></span><span style="display:flex;"><span>                  <span style="color:#f92672">copy</span>: <span style="color:#e6db74">&#39;[product_name]&#39;</span>
+</span></span><span style="display:flex;"><span>                - <span style="color:#f92672">field</span>: <span style="color:#e6db74">&#39;[id]&#39;</span>
+</span></span><span style="display:flex;"><span>                  <span style="color:#f92672">copy</span>: <span style="color:#e6db74">&#39;[product_code]&#39;</span>
+</span></span><span style="display:flex;"><span>          - <span style="color:#f92672">csv</span>:
+</span></span><span style="display:flex;"><span>              <span style="color:#f92672">loader</span>:
+</span></span><span style="display:flex;"><span>                <span style="color:#f92672">file_path</span>: <span style="color:#e6db74">&#39;output.csv&#39;</span>
+</span></span></code></pre></div></div>
+  <div id="runtimes-3" class="tab-pane" role="tabpanel" aria-labelledby="runtimes-3">
+
+<p><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">version</span>: <span style="color:#e6db74">&#39;0.3&#39;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">satellites</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">my_satellite</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">label</span>: <span style="color:#e6db74">&#39;My first Satellite&#39;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># ...</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">http_api</span>:
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">path</span>: <span style="color:#ae81ff">/my-api</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">routes</span>:
+</span></span><span style="display:flex;"><span>        - <span style="color:#f92672">route</span>: <span style="color:#ae81ff">/category</span>
+</span></span><span style="display:flex;"><span>          <span style="color:#f92672">expression</span>: <span style="color:#e6db74">&#39;input&#39;</span>
+</span></span><span style="display:flex;"><span>          <span style="color:#f92672">pipeline</span>:
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">steps</span>:
+</span></span><span style="display:flex;"><span>              - <span style="color:#f92672">fastmap</span>:
+</span></span><span style="display:flex;"><span>                  <span style="color:#f92672">map</span>:
+</span></span><span style="display:flex;"><span>                    - <span style="color:#f92672">field</span>: <span style="color:#e6db74">&#39;[code]&#39;</span>
+</span></span><span style="display:flex;"><span>                      <span style="color:#f92672">copy</span>: <span style="color:#e6db74">&#39;[category_name]&#39;</span>
+</span></span><span style="display:flex;"><span>                    - <span style="color:#f92672">field</span>: <span style="color:#e6db74">&#39;[id]&#39;</span>
+</span></span><span style="display:flex;"><span>                      <span style="color:#f92672">copy</span>: <span style="color:#e6db74">&#39;[category_code]&#39;</span>
+</span></span><span style="display:flex;"><span>              - <span style="color:#f92672">csv</span>:
+</span></span><span style="display:flex;"><span>                  <span style="color:#f92672">loader</span>:
+</span></span><span style="display:flex;"><span>                    <span style="color:#f92672">file_path</span>: <span style="color:#e6db74">&#39;category.csv&#39;</span>
+</span></span><span style="display:flex;"><span>        - <span style="color:#f92672">route</span>: <span style="color:#ae81ff">/product</span>
+</span></span><span style="display:flex;"><span>          <span style="color:#f92672">expression</span>: <span style="color:#e6db74">&#39;input&#39;</span>
+</span></span><span style="display:flex;"><span>          <span style="color:#f92672">pipeline</span>:
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">steps</span>:
+</span></span><span style="display:flex;"><span>              - <span style="color:#f92672">fastmap</span>:
+</span></span><span style="display:flex;"><span>                  <span style="color:#f92672">map</span>:
+</span></span><span style="display:flex;"><span>                    - <span style="color:#f92672">field</span>: <span style="color:#e6db74">&#39;[sku]&#39;</span>
+</span></span><span style="display:flex;"><span>                      <span style="color:#f92672">copy</span>: <span style="color:#e6db74">&#39;[product_name]&#39;</span>
+</span></span><span style="display:flex;"><span>                    - <span style="color:#f92672">field</span>: <span style="color:#e6db74">&#39;[id]&#39;</span>
+</span></span><span style="display:flex;"><span>                      <span style="color:#f92672">copy</span>: <span style="color:#e6db74">&#39;[product_code]&#39;</span>
+</span></span><span style="display:flex;"><span>              - <span style="color:#f92672">csv</span>:
+</span></span><span style="display:flex;"><span>                  <span style="color:#f92672">loader</span>:
+</span></span><span style="display:flex;"><span>                    <span style="color:#f92672">file_path</span>: <span style="color:#e6db74">&#39;product.csv&#39;</span>
+</span></span></code></pre></div></div></div>
+
+<h3 id="configuration-formats">Configuration formats</h3>
 <p>We are using YAML configuration format in all our example. However, you can similarly write your satellite configuration in the JSON format.</p>
 <h3 id="build-your-satellite-locally">Build your satellite locally</h3>
 <p>After declaring your satellite definition file, there is a command allowing you to generate the satellite program, either as a <a href="#using-docker">Docker image</a> or <a href="#using-the-file-system">files in your filesystem</a></p>
