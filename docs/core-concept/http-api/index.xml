@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>HTTP API on Gyroscops</title>
+    <link>https://php-etl.github.io/documentation/core-concept/http-api/</link>
+    <description>Recent content in HTTP API on Gyroscops</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>The Gyroscops Documentation is copyright © [Gyroscops](https://gyroscops.com/) 2020-2023.</copyright>
+    <lastBuildDate>Mon, 28 Aug 2023 11:14:02 +0200</lastBuildDate><atom:link href="https://php-etl.github.io/documentation/core-concept/http-api/index.xml" rel="self" type="application/rss+xml" />
+  </channel>
+</rss>
