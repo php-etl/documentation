@@ -18,8 +18,6 @@ weight: 3
         - [Using Syslog](#using-syslog)
         - [Using GELF](#using-gelf)
         - [Using Logstash](#using-logstash)
-    - [TCP protocol configuration](#tcp-protocol-configuration)
-    - [AMQP protocol configuration](#amqp-protocol-configuration)
     - [The different levels of logs in PHP](#usage)
 
 ---
@@ -45,7 +43,6 @@ First, you need to specify the name of your channel in which your logs will be w
 
 ```yaml
 - example_step:
-    foo: bar
   logger:
     channel: pipeline
 ```
@@ -65,12 +62,11 @@ handler will be triggered with the `level` option.
 
 ```yaml
 - example_step:
-    foo: bar
   logger:
     # ...
     destinations:
       - stream:
-          path: /my/path
+          path: var/example.log
           level: warning
 ```
 
@@ -87,7 +83,6 @@ Next, you need to set the various hosts for your ElasticSearch application.
 
 ```yaml
 - example_step:
-    foo: bar
   logger:
     # ...
     destinations:
@@ -109,23 +104,38 @@ Next, you need to set the various hosts for your ElasticSearch application.
 The first thing to do is to set the minimum [logging level](#the-different-levels-of-logs-in-php) at which this handler will be triggered using the `level` 
 option.
 
-Next, you need to set the protocol you want to use: [AMQP](#amqp-protocol-configuration) or [TCP](#tcp-protocol-configuration).
+Next, you need to set the protocol you want to use: TCP or AMQP.
 
-```yaml
+{{< tabs name="gelf" >}}
+
+{{< tab name="TCP" codelang="yaml" >}}
 - example_step:
-    foo: bar
+  logger:
+    # ...
+    destinations:
+      - gelf:
+          level: warning
+          tcp:
+            host: gelf.example.com
+            port: 100
+{{< /tab >}}
+
+{{< tab name="AMQP" codelang="yaml" >}}
+- example_step:
   logger:
     # ...
     destinations:
       - gelf:
           level: warning
           amqp:
-            queue: my_queue_nama
+            queue: my_queue_name
             host: example.com
             port: 100
             login: foo
             password: password
-```
+{{< /tab >}}
+
+{{< /tabs >}}
 
 #### Using Logstash
 
@@ -135,11 +145,12 @@ When setting up your connection to Logstash, you should first set the name of yo
 using the `application_name` option and the minimum [logging level](#the-different-levels-of-logs-in-php) at which this handler will be
 with the `level` option.
 
-Next, you need to set the protocol you want to use: [TCP](#tcp-protocol-configuration) or [AMQP](#amqp-protocol-configuration).
+Next, you need to set the protocol you want to use: TCP or AMQP.
 
-```yaml
+{{< tabs name="logstash" >}}
+
+{{< tab name="TCP" codelang="yaml" >}}
 - example_step:
-    foo: bar
   logger:
     # ...
     destinations:
@@ -149,37 +160,25 @@ Next, you need to set the protocol you want to use: [TCP](#tcp-protocol-configur
           tcp:
             host: logstash.example.com
             port: 100
-```
+{{< /tab >}}
 
-### TCP protocol configuration
+{{< tab name="AMQP" codelang="yaml" >}}
+- example_step:
+  logger:
+    # ...
+    destinations:
+      - logstash:
+          application_name: my_log_system
+          level: warning
+          amqp:
+            queue: my_queue_name
+            host: example.com
+            port: 100
+            login: foo
+            password: password
+{{< /tab >}}
 
-> TCP, Transmission Control Protocol, is a standardised protocol for the transmission of data between different 
-> subscribers to a computer network.
-
-The configuration for TCP is simple, you only need to set the `host` and `port` options on your system.
-
-```yaml
-tcp:
-  host: example.com
-  port: 100
-```
-
-### AMQP protocol configuration
-
-> AMQP, Advanced Message Queuing Protocol, is a standardised transfer and framing protocol for the asynchronous, 
-> secure and reliable transfer of messages.
-
-For the AMQP protocol, you need to define the name of your `queue`, the `host` and `port` of your application, 
-and the login credentials (`login` and `password`).
-
-```yaml
-amqp:
-  queue: my_queue_nama
-  host: example.com
-  port: 100
-  login: foo
-  password: password
-```
+{{< /tabs >}}
 
 ### The different levels of logs in PHP
 
