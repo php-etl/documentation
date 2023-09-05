@@ -19,7 +19,7 @@ The rejection feature allows you to manage the rejections that may occur in your
 
 ## Installation
 
-This plugin is already integrated into the Satellite package, so you can't require it with the composer.
+This plugin is already integrated into the Satellite package, so you can't require it with composer.
 
 ## Usage
 
@@ -28,29 +28,39 @@ When you configure your pipeline, you can add the configuration of this feature 
 First, you must use the `rejection` option.
 
 ```yaml
-rejection:
-  # ...
+- example_step:
+    foo: bar
+  rejection:
+    # ...
 ```
 
 ### With RabbitMQ
 
-This feature supports sending to RabbitMQ instances.
+This feature supports sending to RabbitMQ instances. For this feature to work you will need to install [`bunny/bunny`](https://packagist.org/packages/bunny/bunny):
+
+```shell
+composer require bunny/bunny
+```
 
 #### Basic configuration
 
-To enable a connection to your RabbitMQ application, you need at least 3 options which are `host`, `vhost` and `topic`.
+To enable a connection to your RabbitMQ application, you need at least 4 options which are `host`, `vhost`, `topic` and `port`.
 
 - `host`: the name of your host name
 - `vhost`: the virtual host of your RabbitMQ instance
 - `topic`: the name of the queue to which the rejects will be sent
+- `port`: the port that your RabbitMQ application uses
 
 ```yaml
-rejection:
-  destinations:
-    - rabbitmq:
-        host: rabbitmq.example.com
-        vhost: /
-        topic: foo.rejects
+- example_step:
+    # ...
+  rejection:
+    destinations:
+      - rabbitmq:
+          host: rabbitmq.example.com
+          vhost: /
+          topic: foo.rejects
+          port: 5672
 ```
 
 #### Additional options
@@ -59,18 +69,19 @@ This feature additionally takes some options that can be used when configuring t
 
 - `user`: the username of your user
 - `password`: the password of your user
-- `port`: the port that your RabbitMQ application uses
 - `exchange`: the name of the exchange to be used
 
 ```yaml
-rejection:
-  destinations:
-    - rabbitmq:
-        host: rabbitmq.example.com
-        port: 5672
-        user: 'guest'
-        password: 'guest'
-        vhost: /
-        topic: foo.rejects
-        exchange: 'amq.direct'
+- example_step:
+    # ...
+  rejection:
+    destinations:
+      - rabbitmq:
+          host: rabbitmq.example.com
+          vhost: /
+          topic: foo.rejects
+          port: 5672
+          user: 'guest'
+          password: 'guest'
+          exchange: 'amq.direct'
 ```
