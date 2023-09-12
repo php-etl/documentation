@@ -1,5 +1,5 @@
 ---
-title: "Creating Satellite"
+title: "Satellites"
 date: 2020-07-12T15:21:02+02:00
 draft: false
 type: "component"
@@ -13,8 +13,8 @@ weight: 1
 - [Building a satellite](#building-a-satellite)
     - [Setting up the Adapter](#setting-up-the-adapter)
         - [Using Docker](#using-docker)
-        - [Using system](#using-system)
-    - [Configure composer](#configure-composer)
+        - [Using the file system](#using-the-file-system)
+    - [Configure Composer](#configure-composer)
     - [Setting up the runtime](#setting-up-the-runtime)
 - [Configuration formats](#configuration-formats)
 - Building
@@ -29,7 +29,7 @@ A satellite is the program that will execute your data flows. Depending on the t
 
 It can be deployed in a various list of infrastructure types, including LAMP stacks and container-aware stacks.
 
-In the context of Gyroscops, a satellite can be a [Pipeline](#using-pipeline), a [Workflow](#using-workflow), an Action, an API Proxy or an HTTP hook
+In the context of Gyroscops, a satellite can either be a [Pipeline](pipeline), a [Workflow](workflow) (containing multiple [Pipelines](pipeline) and Actions), a HTTP [Hook](http-hook) or an [API](http-api).
 
 > Those programs are called Satellites to reflect the fact that they need to operate very close from the main application in order to enhance their data connectivity
 > ![Satellite schema](satellite.svg)
@@ -40,17 +40,13 @@ The configuration of your satellite must be defined in a yaml file.
 
 A single file can describe several satellites. Each satellite is identified by a code (`my_satellite` in the following example) and has a label.
 
-{{< tabs name="basic_definition" >}}
-
-{{< tab name="YAML" codelang="yaml"  >}}
+```yaml
 version: '0.3'
 satellites:
   my_satellite:
     label: 'My first satellite'
       #...
-  {{< /tab >}}
-
-{{< /tabs >}}
+```
 
 ### Setting up the Adapter
 
@@ -66,9 +62,7 @@ To use a Docker image to build your satellite, implement the `docker` key with i
 - `workdir` : define the working directory of a Docker container
 - `tags` : determines the references to the Docker images
 
-{{< tabs name="basic_definition_docker" >}}
-
-{{< tab name="YAML" codelang="yaml"  >}}
+```yaml
 version: '0.3'
 satellites:
   my_satellite:
@@ -80,9 +74,7 @@ satellites:
         - acmeinc/my-satellite:latest
         - acmeinc/my-satellite:1.0.0
 #...
-{{< /tab >}}
-
-{{< /tabs >}}
+```
 
 Here, we chose to use the `php:8.0-cli-alpine` base image on which our code will be executed.
 You could use any Docker image of your choice, however you will need to have a PHP runtime 
@@ -90,13 +82,11 @@ available, in a compatible version: >=8.0 with the CLI SAPI.
 
 #### Using the file system
 
-To use a system file to build your satellite, implement the `filesystem` key.
+To build your satellite inside your file system, implement the `filesystem` key.
 
 The filesystem key is accompanied by a `path` key which determines the path of the microservice to be built.
 
-{{< tabs name="basic_definition_filesystem" >}}
-
-{{< tab name="YAML" codelang="yaml"  >}}
+```yaml
 version: '0.3'
 satellites:
   my_satellite:
@@ -104,25 +94,30 @@ satellites:
     filesystem:
       path: ../build # path to the build directory, relative to the YAML file
 #...
-{{< /tab >}}
+```
 
-{{< /tabs >}}
+### Configure Composer
 
-### Configure composer 
+It's possible to declare the Composer dependencies, autoloads, repositories and auths that our microservice needs with the `composer` key.
+
+If you instead wish to use your own `composer.json` to define the requirements and autoloads, set the option `from_local` to `true`, and jump to [the next chapter](#setting-up-the-runtime).
+This will copy `composer.json`, and optionally `composer.lock`, if they are present next to your YAML configuration file:
+
+```yaml
+version: '0.3'
+satellites:
+  my_satellite:
+    label: 'My first Satellite'
+    # ...
+    composer:
+      from_local: true
+```
 
 #### Dependencies
 
-It's possible to declare the composer dependencies that our microservice needs with the `composer` key.
-
-> Tip : This part is not mandatory. If you do not configure it, these packages (`php-etl/pipeline-contracts`,
-`php-etl/pipeline`, `php-etl/pipeline-console-runtime`, `php-etl/workflow-console-runtime`, 
-`psr/log`, `monolog/monolog`, `symfony/console`, `symfony/dependency-injection`) will be installed automatically.
-
 The `require` parameter allows to add all the packages, written as `package_name:version`, that your microservice needs.
 
-{{< tabs name="basic_with_composer" >}}
-
-{{< tab name="YAML" codelang="yaml"  >}}
+```yaml
 version: '0.3'
 satellites:
   my_satellite:
@@ -131,9 +126,11 @@ satellites:
     composer:
       require:
         - "foo/bar:^0.2"
-{{< /tab >}}
+```
 
-{{< /tabs >}}
+> Tip : This part is not mandatory. If you do not configure it, these packages (`php-etl/pipeline-contracts`,
+`php-etl/pipeline`, `php-etl/pipeline-console-runtime`, `php-etl/workflow-console-runtime`, 
+`psr/log`, `monolog/monolog`, `symfony/console`, `symfony/dependency-injection`) will be installed automatically.
 
 #### Autoload
 
@@ -156,22 +153,7 @@ satellites:
         psr4:
           - namespace: "Pipeline\\"
             paths: [""]
-``` 
-
-#### From local
-
-The `from_local` parameter is optional and copies local `composer.json`, `composer.lock` and `vendor` files into your 
-microservice instead of creating them.
-
-```yaml
-version: '0.3'
-satellites:
-  my_satellite:
-    label: 'My first Satellite'
-    # ...
-    composer:
-      from_local: true
-``` 
+```
 
 #### Repositories
 
@@ -225,10 +207,10 @@ the way we want our pipeline to handle our data flows.
 There are 4 types of runtimes, you will have to choose one depending on your needs:
 | name      | description | details |
 |-|-|-|
-| pipeline  | The satellite will be operating a data pipeline, executed in the backend that can be executed as a cron job. | [Pipeline documentation page](../pipeline) |
-| workflow  | The satellite will be orchestrating multiple pipelines, executed in the backend that can be executed as a cron job | [Workflow documentation page](../workflow) |
-| http_hook | The satellite will be operating an API on a single URL route. `http_hook` is used for webhooks. A webhook is a POST request sent to a URL. It's considered to be a mean for one application to provide other applications with real-time information | [HTTP Hook documentation page](../http-hook) |
-| http_api  | The satellite will be operating an API on multiple URL routes. `http_api` is used for REST API. | [HTTP API documentation page](../http-api) |
+| pipeline  | The satellite will be operating a data pipeline, executed in the backend that can be executed as a cron job. | [Pipeline documentation page](pipeline) |
+| workflow  | The satellite will be orchestrating multiple pipelines, executed in the backend that can be executed as a cron job | [Workflow documentation page](workflow) |
+| http_hook | The satellite will be operating an API on a single URL route. `http_hook` is used for webhooks. A webhook is a POST request sent to a URL. It's considered to be a mean for one application to provide other applications with real-time information | [HTTP Hook documentation page](http-hook) |
+| http_api  | The satellite will be operating an API on multiple URL routes. `http_api` is used for REST API. | [HTTP API documentation page](http-api) |
 
 {{< tabs name="runtimes" >}}
 

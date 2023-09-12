@@ -52,32 +52,32 @@ hasChildren = true
 
   [[menu.main]]
   parent = "Core concepts"
-  name = "Satellite"
+  name = "Satellites"
   url = "core-concept/satellite"
   weight = 1
 
   [[menu.main]]
   parent = "Core concepts"
   name = "Pipeline"
-  url = "core-concept/pipeline"
+  url = "core-concept/satellite/pipeline"
   weight = 2
 
   [[menu.main]]
   parent = "Core concepts"
   name = "Workflow"
-  url = "core-concept/workflow"
+  url = "core-concept/satellite/workflow"
   weight = 3
 
   [[menu.main]]
   parent = "Core concepts"
   name = "HTTP Hook"
-  url = "core-concept/http-hook"
+  url = "core-concept/satellite/http-hook"
   weight = 4
 
   [[menu.main]]
   parent = "Core concepts"
   name = "HTTP API"
-  url = "core-concept/http-api"
+  url = "core-concept/satellite/http-api"
   weight = 5
 
 [[menu.main]]
