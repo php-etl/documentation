@@ -18,6 +18,7 @@ weight: 4
 ---
 
 > An action is a process that enables a task to be carried out before, during or at the end of the execution of a workflow.
+> For example, an action can be used to retrieve or upload files to an SFTP server.
 
 ## What is it for?
 
@@ -37,8 +38,37 @@ At present, actions can only be used within a workflow. It is therefore not curr
 workflow:
   jobs:
     - action: # ...
-    - pipeline: # ...
-    - action: # ...
+```
+
+We've made sure that you can use your own actions.
+
+You need to implement the `Kiboko\Contract\Action\Interface` and in the `execute` method, you simply write your script.
+
+```php
+<?php 
+
+namespace App;
+
+final readonly class MyCustomAction implements ActionInterface
+{
+    public function execute(): void
+    {
+        // write your script here
+    }
+}
+```
+
+Once you've written your action, you need to use it in your Satellite using the custom action plugin like this :
+
+```yaml
+workflow:
+  jobs:
+    - action:
+        custom:
+          use: 'App\MyCustomAction'
+          services:
+            App\MyCustomAction:
+              public: true
 ```
 
 ## Advanced usage
@@ -47,7 +77,7 @@ workflow:
 
 It's possible to use expressions in your pipeline using the `expression_language` option. To use these expressions,
 you need to use our customised Providers which provide the different expressions. For more information, please visit
-the [detailed documentation](../../feature/expression-language) of the language expressions.
+the [detailed documentation](../../../feature/expression-language) of the language expressions.
 
 ```yaml
 action:
@@ -59,7 +89,7 @@ action:
 
 It's possible to add a `logger` at each action of a workflow.
 
-For more details, go to the [detailed logger documentation](../../feature/logger).
+For more details, go to the [detailed logger documentation](../../../feature/logger).
 
 ```yaml
 satellite:
@@ -81,7 +111,7 @@ satellite:
 
 It's possible to add a `state` at each action of a workflow.
 
-For more details, go to the [detailed state documentation](../../feature/state)
+For more details, go to the [detailed state documentation](../../../feature/state)
 
 ```yaml
 satellite:
