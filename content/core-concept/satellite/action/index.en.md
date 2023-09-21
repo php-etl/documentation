@@ -117,7 +117,7 @@ For more details, go to the [detailed state documentation](../../../feature/stat
 satellite:
 # ...
    workflow:
-      jobs:
+    jobs:
       - action:
         # ...
         state:
