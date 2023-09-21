@@ -120,15 +120,15 @@
           </span>
           <div class="dropdown-menu">
             
-            <a class="dropdown-item" href="/documentation/core-concept/satellite">Satellite</a>
+            <a class="dropdown-item" href="/documentation/core-concept/satellite">Satellites</a>
             
-            <a class="dropdown-item" href="/documentation/core-concept/pipeline">Pipeline</a>
+            <a class="dropdown-item" href="/documentation/core-concept/satellite/pipeline">Pipeline</a>
             
-            <a class="dropdown-item" href="/documentation/core-concept/workflow">Workflow</a>
+            <a class="dropdown-item" href="/documentation/core-concept/satellite/workflow">Workflow</a>
             
-            <a class="dropdown-item" href="/documentation/core-concept/http-hook">HTTP Hook</a>
+            <a class="dropdown-item" href="/documentation/core-concept/satellite/http-hook">HTTP Hook</a>
             
-            <a class="dropdown-item" href="/documentation/core-concept/http-api">HTTP API</a>
+            <a class="dropdown-item" href="/documentation/core-concept/satellite/http-api">HTTP API</a>
             
           </div>
         </li>
@@ -685,7 +685,6 @@
 <li><a href="#usage">Usage</a>
 <ul>
 <li><a href="#connecting-to-akeneo">Connecting to Akeneo</a></li>
-<li><a href="#using-the-enterprise-version">Using the enterprise version</a></li>
 <li><a href="#building-an-extractor">Building an extractor</a></li>
 <li><a href="#building-a-lookup">Building a lookup</a></li>
 <li><a href="#building-a-conditional-lookup">Building a conditional lookup</a></li>
@@ -698,6 +697,7 @@
 <li><a href="#using-expressionlanguage">Using ExpressionLanguage</a></li>
 </ul>
 </li>
+<li><a href="#available-resources">Available resources</a></li>
 </ul>
 <hr>
 <h2 id="what-is-it-">What is it ?</h2>
@@ -722,27 +722,67 @@ and the <a href="https://github.com/akeneo/api-php-client">Akeneo Community Edit
 </span></span></code></pre></div><p>To retrieve these identifiers, you need to add a
 <a href="https://help.akeneo.com/pim/v4/updates/connections.html">connection</a> in your Akeneo PIM.</p>
 <p>Warning: For the <code>api_url</code> option, you must remove the <code>/</code> at the end of your URL if there is one.</p>
-<h3 id="using-the-enterprise-edition">Using the enterprise edition</h3>
-<p>The <code>enterprise</code> option allows you to use the enterprise features in Akeneo and uses the Enterprise client accordingly. By default, it&rsquo;s set to <code>false</code>.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#f92672">akeneo</span>:
-</span></span><span style="display:flex;"><span>  <span style="color:#f92672">enterprise</span>: <span style="color:#66d9ef">true</span>
-</span></span><span style="display:flex;"><span>  <span style="color:#75715e"># ...</span>
-</span></span></code></pre></div><h3 id="building-an-extractor">Building an extractor</h3>
-<p>In the configuration of your extractor, you must specify the <code>type</code> of resource you will be working on
-and which `method you want to use to retrieve your data.</p>
-<p>The list of available resources is quite long depend on the edition of your Akeneo (Enterprise, Growth or Community).</p>
-<p>For a Community Edition or Growth Edition, you can choose between this types of resources : <code>product</code>, <code>category</code>, <code>attribute</code>,
-<code>attributeOption</code>, <code>attributeGroup</code>, <code>family</code>, <code>productMediaFile</code>, <code>locale</code>, <code>channel</code>, <code>currency</code>, <code>measureFamily</code>,
-<code>associationType</code>, <code>familyVariant</code>, <code>productModel</code>.</p>
-<p>For an Enterprise Edition, you will be able to use in addition to the resources present in the Community Edition :
-<code>publishedProduct</code>, <code>productModelDraft</code>, <code>productDraft</code>, <code>asset</code>, <code>assetCategory</code>, <code>assetTag</code>, <code>referenceEntityRecord</code>,
-<code>referenceEntityAttribute</code>, <code>referenceEntityAttributeOption</code>, <code>referenceEntity</code>.</p>
+<h3 id="building-an-extractor">Building an extractor</h3>
+<p>In the configuration of your extractor, you must specify the <code>type</code> of resource (see <a href="#available-resources">available-resources</a>)
+you will be working on and which method you want to use to retrieve your data.</p>
 <p>For each resource, the following 3 methods are available :</p>
 <ul>
 <li><code>all</code> : retrieves all data from a table</li>
 <li><code>get</code> : retrieve a row from a table</li>
 <li><code>listPerPage</code> : retrieves a set number of data from a table</li>
 </ul>
+<p>Depending on the resource and the method used, different options are available in the YAML configuration :</p>
+<table>
+<thead>
+<tr>
+<th>Resource</th>
+<th>Method</th>
+<th>Option(s) required</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>All resources</strong></td>
+<td>all</td>
+<td><em>No options required</em></td>
+</tr>
+<tr>
+<td><strong>All resources</strong></td>
+<td>get</td>
+<td>identifier</td>
+</tr>
+<tr>
+<td><strong>All resources</strong></td>
+<td>listPerPage</td>
+<td><em>No options required</em></td>
+</tr>
+<tr>
+<td><strong>attributeOption</strong></td>
+<td>all</td>
+<td>attribute_code</td>
+</tr>
+<tr>
+<td><strong>attributeOption</strong></td>
+<td>get</td>
+<td>attribute_code, code</td>
+</tr>
+<tr>
+<td><strong>assetManager</strong></td>
+<td>all</td>
+<td>asset_family_code</td>
+</tr>
+<tr>
+<td><strong>assetManager</strong></td>
+<td>get</td>
+<td>asset_family_code, asset_code</td>
+</tr>
+<tr>
+<td><strong>productMediaFile, assetMediaFile</strong></td>
+<td>get</td>
+<td>file</td>
+</tr>
+</tbody>
+</table>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#f92672">akeneo</span>:
 </span></span><span style="display:flex;"><span>  <span style="color:#f92672">extractor</span>:
 </span></span><span style="display:flex;"><span>    <span style="color:#f92672">type</span>: <span style="color:#ae81ff">product</span>
@@ -758,8 +798,8 @@ and which `method you want to use to retrieve your data.</p>
 this is called a lookup.</p>
 <p>In the configuration of your lookup, you must specify the <code>type</code> of resource you will be working on
 and which <code>method</code> you want to use to retrieve your data.</p>
-<p>The list of available resources is quite long and depends on the edition of your Akeneo (Enterprise, Growth or Community).
-The options available are the same as for the <a href="#building-a-loader">loader</a>.</p>
+<p>You can retrieve the list of available resources <a href="#available-resources">here</a>.</p>
+<p>The options available are the same as for the <a href="#building-a-loader">loader</a>.</p>
 <p>The <code>merge</code> option allows you to add data to your dataset, in a sense merging your actual dataset with your new data.</p>
 <p>The <code>map</code> option comes from the <a href="../fast-map">FastMap</a> plugin, you may need to read its documentation
 to understand how to use it properly.</p>
@@ -806,16 +846,8 @@ are full-filled.</p>
 </span></span><span style="display:flex;"><span>              <span style="color:#f92672">expression</span>: <span style="color:#e6db74">&#39;join(&#34;|&#34;, lookup[&#34;code&#34;])&#39;</span>
 </span></span><span style="display:flex;"><span>  <span style="color:#75715e"># ...</span>
 </span></span></code></pre></div><h3 id="building-a-loader">Building a loader</h3>
-<p>In the configuration of your loader, you must specify the <code>type</code> of resource you are going to write
-and which <code>method</code> you want to use to insert your data.</p>
-<p>The list of available resources is quite long and dépends on your Akeneo edition (Enterprise, Growth or Community).</p>
-<p>For a Community Edition or Growth Edition, you can choose between these types of resources: <code>product</code>, <code>category</code>, <code>attribute</code>,
-<code>attributeOption</code>, <code>attributeGroup</code>, <code>family</code>, <code>productMediaFile</code>, <code>locale</code>, <code>channel</code>, <code>currency</code>, <code>measureFamily</code>,
-<code>associationType</code>, <code>familyVariant</code>, <code>productModel</code>.</p>
-<p>For an Enterprise Edition, you will be able to use in addition to the resources present in the Community Edition:
-<code>publishedProduct</code>,
-<code>productModelDraft</code>, <code>productDraft</code>, <code>asset</code>, <code>assetCategory</code>, <code>assetTag</code>, <code>referenceEntityRecord</code>, <code>referenceEntityAttribute</code>,
-<code>referenceEntityAttributeOption</code>, <code>referenceEntity</code>.</p>
+<p>In the configuration of your loader, you must specify the <code>type</code> of resource (see <a href="#available-resources">available-resources</a>)
+you are going to write and which <code>method</code> you want to use to insert your data.</p>
 <p>For each resource, the following 4 methods are available :</p>
 <ul>
 <li><code>create</code>: insert a new resource</li>
@@ -823,12 +855,62 @@ and which <code>method</code> you want to use to insert your data.</p>
 <li><code>upsertList</code>: will try to update a resources list, otherwise the resources will be created</li>
 <li><code>delete</code>: delete a resource from the table</li>
 </ul>
+<p>Depending on the resource and the method used, different options are available in the YAML configuration :</p>
+<table>
+<thead>
+<tr>
+<th>Resource</th>
+<th>Method</th>
+<th>Option(s) required</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>All resources</strong></td>
+<td>upsert</td>
+<td>code</td>
+</tr>
+<tr>
+<td><strong>All resources</strong></td>
+<td>upsertList</td>
+<td><em>No options required</em></td>
+</tr>
+<tr>
+<td><strong>referenceEntityRecord</strong></td>
+<td>upsert</td>
+<td>reference_entity, code</td>
+</tr>
+<tr>
+<td><strong>referenceEntityRecord</strong></td>
+<td>upsertList</td>
+<td>reference_entity</td>
+</tr>
+<tr>
+<td><strong>referenceEntityAttributeOption</strong></td>
+<td>upsert</td>
+<td>reference_entity, reference_entity_attribute, code</td>
+</tr>
+<tr>
+<td><strong>referenceEntityAttributeOption</strong></td>
+<td>upsertList</td>
+<td>reference_entity, reference_entity_attribute</td>
+</tr>
+<tr>
+<td><strong>attributeOption</strong></td>
+<td>upsert</td>
+<td>attribute_code, code</td>
+</tr>
+<tr>
+<td><strong>attributeOption</strong></td>
+<td>upsertList</td>
+<td>attribute_code</td>
+</tr>
+</tbody>
+</table>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#f92672">akeneo</span>:
 </span></span><span style="display:flex;"><span>  <span style="color:#f92672">loader</span>:
 </span></span><span style="display:flex;"><span>    <span style="color:#f92672">type</span>: <span style="color:#ae81ff">products</span>
 </span></span><span style="display:flex;"><span>    <span style="color:#f92672">method</span>: <span style="color:#ae81ff">create</span>
-</span></span><span style="display:flex;"><span>  <span style="color:#f92672">logger</span>:
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">type</span>: <span style="color:#ae81ff">stderr</span>
 </span></span><span style="display:flex;"><span>  <span style="color:#f92672">client</span>:
 </span></span><span style="display:flex;"><span>    <span style="color:#f92672">api_url</span>: <span style="color:#e6db74">&#39;http://demo.akeneo.com/&#39;</span>
 </span></span><span style="display:flex;"><span>    <span style="color:#f92672">client_id</span>: <span style="color:#e6db74">&#39;414yc7d9mnk044ko4wswgw80o8ssw80gssos488kk8ogss40ko&#39;</span>
@@ -864,7 +946,114 @@ component provided by Symfony.</p>
 </span></span><span style="display:flex;"><span>  <span style="color:#f92672">expression_language</span>:
 </span></span><span style="display:flex;"><span>    - <span style="color:#e6db74">&#39;Kiboko\Component\ExpressionLanguage\Akeneo\AkeneoFilterProvider&#39;</span>
 </span></span><span style="display:flex;"><span>  <span style="color:#75715e"># ...</span>
-</span></span></code></pre></div></div>
+</span></span></code></pre></div><h2 id="available-resources">Available resources</h2>
+<table>
+<thead>
+<tr>
+<th>Resources</th>
+<th>Akeneo&rsquo;s Edition(s)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>product</strong></td>
+<td>Community, Growth, Enterprise</td>
+</tr>
+<tr>
+<td><strong>category</strong></td>
+<td>Community, Growth, Enterprise</td>
+</tr>
+<tr>
+<td><strong>attribute</strong></td>
+<td>Community, Growth, Enterprise</td>
+</tr>
+<tr>
+<td><strong>attributeOption</strong></td>
+<td>Community, Growth, Enterprise</td>
+</tr>
+<tr>
+<td><strong>attributeGroup</strong></td>
+<td>Community, Growth, Enterprise</td>
+</tr>
+<tr>
+<td><strong>family</strong></td>
+<td>Community, Growth, Enterprise</td>
+</tr>
+<tr>
+<td><strong>productMediaFile</strong></td>
+<td>Community, Growth, Enterprise</td>
+</tr>
+<tr>
+<td><strong>locale</strong></td>
+<td>Community, Growth, Enterprise</td>
+</tr>
+<tr>
+<td><strong>channel</strong></td>
+<td>Community, Growth, Enterprise</td>
+</tr>
+<tr>
+<td><strong>currency</strong></td>
+<td>Community, Growth, Enterprise</td>
+</tr>
+<tr>
+<td><strong>measureFamily</strong></td>
+<td>Community, Growth, Enterprise</td>
+</tr>
+<tr>
+<td><strong>associationType</strong></td>
+<td>Community, Growth, Enterprise</td>
+</tr>
+<tr>
+<td><strong>familyVariant</strong></td>
+<td>Community, Growth, Enterprise</td>
+</tr>
+<tr>
+<td><strong>productModel</strong></td>
+<td>Community, Growth, Enterprise</td>
+</tr>
+<tr>
+<td><strong>publishedProduct</strong></td>
+<td>Enterprise</td>
+</tr>
+<tr>
+<td><strong>productModelDraft</strong></td>
+<td>Enterprise</td>
+</tr>
+<tr>
+<td><strong>productDraft</strong></td>
+<td>Enterprise</td>
+</tr>
+<tr>
+<td><strong>asset</strong></td>
+<td>Enterprise</td>
+</tr>
+<tr>
+<td><strong>assetCategory</strong></td>
+<td>Enterprise</td>
+</tr>
+<tr>
+<td><strong>assetTag</strong></td>
+<td>Enterprise</td>
+</tr>
+<tr>
+<td><strong>referenceEntityRecord</strong></td>
+<td>Enterprise</td>
+</tr>
+<tr>
+<td><strong>referenceEntityAttribute</strong></td>
+<td>Enterprise</td>
+</tr>
+<tr>
+<td><strong>referenceEntityAttributeOption</strong></td>
+<td>Enterprise</td>
+</tr>
+<tr>
+<td><strong>referenceEntity</strong></td>
+<td>Enterprise</td>
+</tr>
+</tbody>
+</table>
+</div>
           
           <p class="post-meta border-bottom pb-3 mb-0 mt-3">Updated on 24 Jan 2021</p>
           <nav class="pagination mt-3">
@@ -915,42 +1104,9 @@ component provided by Symfony.</p>
             
             
             
-
-            
-            
-            
-            
-            
-            
             
             
 
-            
-            
-            
-
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-
-            
-            
-            
-
-            
-            
-            
-            
-            
-            
             
             
             
@@ -1012,6 +1168,9 @@ component provided by Symfony.</p>
             
             
 
+            
+            
+            
             
             
             

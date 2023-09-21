@@ -2,7 +2,7 @@
 <html lang="en-us">
   <head>
   <meta charset="utf-8">
-  <title>Creating Satellite  | Gyroscops Documentation</title>
+  <title>Satellites  | Gyroscops Documentation</title>
 
   <meta name="generator" content="Hugo 0.111.3">
 
@@ -120,15 +120,15 @@
           </span>
           <div class="dropdown-menu">
             
-            <a class="dropdown-item" href="/documentation/core-concept/satellite">Satellite</a>
+            <a class="dropdown-item" href="/documentation/core-concept/satellite">Satellites</a>
             
-            <a class="dropdown-item" href="/documentation/core-concept/pipeline">Pipeline</a>
+            <a class="dropdown-item" href="/documentation/core-concept/satellite/pipeline">Pipeline</a>
             
-            <a class="dropdown-item" href="/documentation/core-concept/workflow">Workflow</a>
+            <a class="dropdown-item" href="/documentation/core-concept/satellite/workflow">Workflow</a>
             
-            <a class="dropdown-item" href="/documentation/core-concept/http-hook">HTTP Hook</a>
+            <a class="dropdown-item" href="/documentation/core-concept/satellite/http-hook">HTTP Hook</a>
             
-            <a class="dropdown-item" href="/documentation/core-concept/http-api">HTTP API</a>
+            <a class="dropdown-item" href="/documentation/core-concept/satellite/http-api">HTTP API</a>
             
           </div>
         </li>
@@ -248,10 +248,10 @@
 
 
 
-<li data-nav-id="https://php-etl.github.io/documentation/core-concept/satellite/" title="Creating Satellite" class="sidelist
+<li data-nav-id="https://php-etl.github.io/documentation/core-concept/satellite/" title="Satellites" class="sidelist
   active">
   <a href="https://php-etl.github.io/documentation/core-concept/satellite/">
-    Creating Satellite
+    Satellites
   </a>
   
   
@@ -267,60 +267,9 @@
 
 
 
-<li data-nav-id="https://php-etl.github.io/documentation/core-concept/satellite/yaml-format/" title="The YAML configuration format" class="sidelist
+<li data-nav-id="https://php-etl.github.io/documentation/core-concept/satellite/pipeline/" title="Pipeline" class="sidelist
   ">
-  <a href="https://php-etl.github.io/documentation/core-concept/satellite/yaml-format/">
-    The YAML configuration format
-  </a>
-  
-  
-</li>
-
-
-        
-      
-        
-          
-
-
-
-
-
-
-
-
-<li data-nav-id="https://php-etl.github.io/documentation/core-concept/satellite/php-objects/" title="PHP Objects" class="sidelist
-  ">
-  <a href="https://php-etl.github.io/documentation/core-concept/satellite/php-objects/">
-    PHP Objects
-  </a>
-  
-  
-</li>
-
-
-        
-      
-    </ul>
-  
-</li>
-
-
-        
-      
-        
-          
-
-
-
-
-
-
-
-
-<li data-nav-id="https://php-etl.github.io/documentation/core-concept/pipeline/" title="Pipeline" class="sidelist
-  ">
-  <a href="https://php-etl.github.io/documentation/core-concept/pipeline/">
+  <a href="https://php-etl.github.io/documentation/core-concept/satellite/pipeline/">
     Pipeline
   </a>
   
@@ -340,9 +289,9 @@
 
 
 
-<li data-nav-id="https://php-etl.github.io/documentation/core-concept/workflow/" title="Workflow" class="sidelist
+<li data-nav-id="https://php-etl.github.io/documentation/core-concept/satellite/workflow/" title="Workflow" class="sidelist
   ">
-  <a href="https://php-etl.github.io/documentation/core-concept/workflow/">
+  <a href="https://php-etl.github.io/documentation/core-concept/satellite/workflow/">
     Workflow
   </a>
   
@@ -362,9 +311,9 @@
 
 
 
-<li data-nav-id="https://php-etl.github.io/documentation/core-concept/http-hook/" title="HTTP Hook" class="sidelist
+<li data-nav-id="https://php-etl.github.io/documentation/core-concept/satellite/http-hook/" title="HTTP Hook" class="sidelist
   ">
-  <a href="https://php-etl.github.io/documentation/core-concept/http-hook/">
+  <a href="https://php-etl.github.io/documentation/core-concept/satellite/http-hook/">
     HTTP Hook
   </a>
   
@@ -384,12 +333,19 @@
 
 
 
-<li data-nav-id="https://php-etl.github.io/documentation/core-concept/http-api/" title="HTTP API" class="sidelist
+<li data-nav-id="https://php-etl.github.io/documentation/core-concept/satellite/http-api/" title="HTTP API" class="sidelist
   ">
-  <a href="https://php-etl.github.io/documentation/core-concept/http-api/">
+  <a href="https://php-etl.github.io/documentation/core-concept/satellite/http-api/">
     HTTP API
   </a>
   
+  
+</li>
+
+
+        
+      
+    </ul>
   
 </li>
 
@@ -425,7 +381,7 @@
                   </svg>
               </i>
               
-              Creating Satellite
+              Satellites
           </h1>
           
           <div class="content">
@@ -444,10 +400,10 @@
 <li><a href="#setting-up-the-adapter">Setting up the Adapter</a>
 <ul>
 <li><a href="#using-docker">Using Docker</a></li>
-<li><a href="#using-system">Using system</a></li>
+<li><a href="#using-the-file-system">Using the file system</a></li>
 </ul>
 </li>
-<li><a href="#configure-composer">Configure composer</a></li>
+<li><a href="#configure-composer">Configure Composer</a></li>
 <li><a href="#setting-up-the-runtime">Setting up the runtime</a></li>
 </ul>
 </li>
@@ -464,7 +420,7 @@
 <hr>
 <p>A satellite is the program that will execute your data flows. Depending on the type, it can be executed periodically or act as a microservice.</p>
 <p>It can be deployed in a various list of infrastructure types, including LAMP stacks and container-aware stacks.</p>
-<p>In the context of Gyroscops, a satellite can be a <a href="#using-pipeline">Pipeline</a>, a <a href="#using-workflow">Workflow</a>, an Action, an API Proxy or an HTTP hook</p>
+<p>In the context of Gyroscops, a satellite can either be a <a href="pipeline">Pipeline</a>, a <a href="workflow">Workflow</a> (containing multiple <a href="pipeline">Pipelines</a> and Actions), a HTTP <a href="http-hook">Hook</a> or an <a href="http-api">API</a>.</p>
 <blockquote>
 <p>Those programs are called Satellites to reflect the fact that they need to operate very close from the main application in order to enhance their data connectivity
 <img src="satellite.svg" alt="Satellite schema"></p>
@@ -472,19 +428,12 @@
 <h2 id="building-a-satellite">Building a satellite</h2>
 <p>The configuration of your satellite must be defined in a yaml file.</p>
 <p>A single file can describe several satellites. Each satellite is identified by a code (<code>my_satellite</code> in the following example) and has a label.</p>
-<ul class="nav nav-tabs" id="basic_definition" role="tablist"><li class="nav-item"><a data-toggle="tab" class="nav-link active" href="#basic_definition-0" role="tab" aria-controls="basic_definition-0" aria-selected="true">YAML</a></li>
-	  </ul>
-<div class="tab-content" id="basic_definition"><div id="basic_definition-0" class="tab-pane show active" role="tabpanel" aria-labelledby="basic_definition-0">
-
-<p><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#f92672">version</span>: <span style="color:#e6db74">&#39;0.3&#39;</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#f92672">version</span>: <span style="color:#e6db74">&#39;0.3&#39;</span>
 </span></span><span style="display:flex;"><span><span style="color:#f92672">satellites</span>:
 </span></span><span style="display:flex;"><span>  <span style="color:#f92672">my_satellite</span>:
 </span></span><span style="display:flex;"><span>    <span style="color:#f92672">label</span>: <span style="color:#e6db74">&#39;My first satellite&#39;</span>
 </span></span><span style="display:flex;"><span>      <span style="color:#75715e">#...</span>
-</span></span><span style="display:flex;"><span>  </span></span></code></pre></div></div></div>
-
-<h3 id="setting-up-the-adapter">Setting up the Adapter</h3>
+</span></span></code></pre></div><h3 id="setting-up-the-adapter">Setting up the Adapter</h3>
 <p>Next, you should declare the Docker image or the directory inside which you want to build the satellite.</p>
 <p>If you are using <a href="https://gyroscops.com">Gyroscops Cloud</a>, you can ignore this step and directly go to <a href="#configure-composer">the next chapter</a>.</p>
 <h4 id="using-docker">Using Docker</h4>
@@ -494,12 +443,7 @@
 <li><code>workdir</code> : define the working directory of a Docker container</li>
 <li><code>tags</code> : determines the references to the Docker images</li>
 </ul>
-<ul class="nav nav-tabs" id="basic_definition_docker" role="tablist"><li class="nav-item"><a data-toggle="tab" class="nav-link active" href="#basic_definition_docker-0" role="tab" aria-controls="basic_definition_docker-0" aria-selected="true">YAML</a></li>
-	  </ul>
-<div class="tab-content" id="basic_definition_docker"><div id="basic_definition_docker-0" class="tab-pane show active" role="tabpanel" aria-labelledby="basic_definition_docker-0">
-
-<p><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#f92672">version</span>: <span style="color:#e6db74">&#39;0.3&#39;</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#f92672">version</span>: <span style="color:#e6db74">&#39;0.3&#39;</span>
 </span></span><span style="display:flex;"><span><span style="color:#f92672">satellites</span>:
 </span></span><span style="display:flex;"><span>  <span style="color:#f92672">my_satellite</span>:
 </span></span><span style="display:flex;"><span>    <span style="color:#f92672">label</span>: <span style="color:#e6db74">&#39;My first Satellite&#39;</span>
@@ -510,43 +454,33 @@
 </span></span><span style="display:flex;"><span>        - <span style="color:#ae81ff">acmeinc/my-satellite:latest</span>
 </span></span><span style="display:flex;"><span>        - <span style="color:#ae81ff">acmeinc/my-satellite:1.0.0</span>
 </span></span><span style="display:flex;"><span><span style="color:#75715e">#...</span>
-</span></span></code></pre></div></div></div>
-
-<p>Here, we chose to use the <code>php:8.0-cli-alpine</code> base image on which our code will be executed.
+</span></span></code></pre></div><p>Here, we chose to use the <code>php:8.0-cli-alpine</code> base image on which our code will be executed.
 You could use any Docker image of your choice, however you will need to have a PHP runtime
 available, in a compatible version: &gt;=8.0 with the CLI SAPI.</p>
 <h4 id="using-the-file-system">Using the file system</h4>
-<p>To use a system file to build your satellite, implement the <code>filesystem</code> key.</p>
+<p>To build your satellite inside your file system, implement the <code>filesystem</code> key.</p>
 <p>The filesystem key is accompanied by a <code>path</code> key which determines the path of the microservice to be built.</p>
-<ul class="nav nav-tabs" id="basic_definition_filesystem" role="tablist"><li class="nav-item"><a data-toggle="tab" class="nav-link active" href="#basic_definition_filesystem-0" role="tab" aria-controls="basic_definition_filesystem-0" aria-selected="true">YAML</a></li>
-	  </ul>
-<div class="tab-content" id="basic_definition_filesystem"><div id="basic_definition_filesystem-0" class="tab-pane show active" role="tabpanel" aria-labelledby="basic_definition_filesystem-0">
-
-<p><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#f92672">version</span>: <span style="color:#e6db74">&#39;0.3&#39;</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#f92672">version</span>: <span style="color:#e6db74">&#39;0.3&#39;</span>
 </span></span><span style="display:flex;"><span><span style="color:#f92672">satellites</span>:
 </span></span><span style="display:flex;"><span>  <span style="color:#f92672">my_satellite</span>:
 </span></span><span style="display:flex;"><span>    <span style="color:#f92672">label</span>: <span style="color:#e6db74">&#39;My first Satellite&#39;</span>
 </span></span><span style="display:flex;"><span>    <span style="color:#f92672">filesystem</span>:
 </span></span><span style="display:flex;"><span>      <span style="color:#f92672">path</span>: <span style="color:#ae81ff">../build</span> <span style="color:#75715e"># path to the build directory, relative to the YAML file</span>
 </span></span><span style="display:flex;"><span><span style="color:#75715e">#...</span>
-</span></span></code></pre></div></div></div>
-
-<h3 id="configure-composer">Configure composer</h3>
-<h4 id="dependencies">Dependencies</h4>
-<p>It&rsquo;s possible to declare the composer dependencies that our microservice needs with the <code>composer</code> key.</p>
-<blockquote>
-<p>Tip : This part is not mandatory. If you do not configure it, these packages (<code>php-etl/pipeline-contracts</code>,
-<code>php-etl/pipeline</code>, <code>php-etl/pipeline-console-runtime</code>, <code>php-etl/workflow-console-runtime</code>,
-<code>psr/log</code>, <code>monolog/monolog</code>, <code>symfony/console</code>, <code>symfony/dependency-injection</code>) will be installed automatically.</p>
-</blockquote>
+</span></span></code></pre></div><h3 id="configure-composer">Configure Composer</h3>
+<p>It&rsquo;s possible to declare the Composer dependencies, autoloads, repositories and auths that our microservice needs with the <code>composer</code> key.</p>
+<p>If you instead wish to use your own <code>composer.json</code> to define the requirements and autoloads, set the option <code>from_local</code> to <code>true</code>, and jump to <a href="#setting-up-the-runtime">the next chapter</a>.
+This will copy <code>composer.json</code>, and optionally <code>composer.lock</code>, if they are present next to your YAML configuration file:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#f92672">version</span>: <span style="color:#e6db74">&#39;0.3&#39;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">satellites</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">my_satellite</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">label</span>: <span style="color:#e6db74">&#39;My first Satellite&#39;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># ...</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">composer</span>:
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">from_local</span>: <span style="color:#66d9ef">true</span>
+</span></span></code></pre></div><h4 id="dependencies">Dependencies</h4>
 <p>The <code>require</code> parameter allows to add all the packages, written as <code>package_name:version</code>, that your microservice needs.</p>
-<ul class="nav nav-tabs" id="basic_with_composer" role="tablist"><li class="nav-item"><a data-toggle="tab" class="nav-link active" href="#basic_with_composer-0" role="tab" aria-controls="basic_with_composer-0" aria-selected="true">YAML</a></li>
-	  </ul>
-<div class="tab-content" id="basic_with_composer"><div id="basic_with_composer-0" class="tab-pane show active" role="tabpanel" aria-labelledby="basic_with_composer-0">
-
-<p><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#f92672">version</span>: <span style="color:#e6db74">&#39;0.3&#39;</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#f92672">version</span>: <span style="color:#e6db74">&#39;0.3&#39;</span>
 </span></span><span style="display:flex;"><span><span style="color:#f92672">satellites</span>:
 </span></span><span style="display:flex;"><span>  <span style="color:#f92672">my_satellite</span>:
 </span></span><span style="display:flex;"><span>    <span style="color:#f92672">label</span>: <span style="color:#e6db74">&#39;My first Satellite&#39;</span>
@@ -554,8 +488,11 @@ available, in a compatible version: &gt;=8.0 with the CLI SAPI.</p>
 </span></span><span style="display:flex;"><span>    <span style="color:#f92672">composer</span>:
 </span></span><span style="display:flex;"><span>      <span style="color:#f92672">require</span>:
 </span></span><span style="display:flex;"><span>        - <span style="color:#e6db74">&#34;foo/bar:^0.2&#34;</span>
-</span></span></code></pre></div></div></div>
-
+</span></span></code></pre></div><blockquote>
+<p>Tip : This part is not mandatory. If you do not configure it, these packages (<code>php-etl/pipeline-contracts</code>,
+<code>php-etl/pipeline</code>, <code>php-etl/pipeline-console-runtime</code>, <code>php-etl/workflow-console-runtime</code>,
+<code>psr/log</code>, <code>monolog/monolog</code>, <code>symfony/console</code>, <code>symfony/dependency-injection</code>) will be installed automatically.</p>
+</blockquote>
 <h4 id="autoload">Autoload</h4>
 <p>The <code>autoload</code> parameter is optional and allows you to configure your autoloader by specifying one or more namespaces and
 directories paths as if you were directly in the composer.json.</p>
@@ -574,16 +511,6 @@ directories paths as if you were directly in the composer.json.</p>
 </span></span><span style="display:flex;"><span>        <span style="color:#f92672">psr4</span>:
 </span></span><span style="display:flex;"><span>          - <span style="color:#f92672">namespace</span>: <span style="color:#e6db74">&#34;Pipeline\\&#34;</span>
 </span></span><span style="display:flex;"><span>            <span style="color:#f92672">paths</span>: [<span style="color:#e6db74">&#34;&#34;</span>]
-</span></span></code></pre></div><h4 id="from-local">From local</h4>
-<p>The <code>from_local</code> parameter is optional and copies local <code>composer.json</code>, <code>composer.lock</code> and <code>vendor</code> files into your
-microservice instead of creating them.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#f92672">version</span>: <span style="color:#e6db74">&#39;0.3&#39;</span>
-</span></span><span style="display:flex;"><span><span style="color:#f92672">satellites</span>:
-</span></span><span style="display:flex;"><span>  <span style="color:#f92672">my_satellite</span>:
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">label</span>: <span style="color:#e6db74">&#39;My first Satellite&#39;</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># ...</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">composer</span>:
-</span></span><span style="display:flex;"><span>      <span style="color:#f92672">from_local</span>: <span style="color:#66d9ef">true</span>
 </span></span></code></pre></div><h4 id="repositories">Repositories</h4>
 <p>The <code>repositories</code> parameter is optional. It allows you to use repositories that are not hosted on <a href="https://packagist.org/">packagist.org</a>.</p>
 <p>Each repository should have the following configuration fields:</p>
@@ -635,22 +562,22 @@ the way we want our pipeline to handle our data flows.</p>
 <tr>
 <td>pipeline</td>
 <td>The satellite will be operating a data pipeline, executed in the backend that can be executed as a cron job.</td>
-<td><a href="../pipeline">Pipeline documentation page</a></td>
+<td><a href="pipeline">Pipeline documentation page</a></td>
 </tr>
 <tr>
 <td>workflow</td>
 <td>The satellite will be orchestrating multiple pipelines, executed in the backend that can be executed as a cron job</td>
-<td><a href="../workflow">Workflow documentation page</a></td>
+<td><a href="workflow">Workflow documentation page</a></td>
 </tr>
 <tr>
 <td>http_hook</td>
 <td>The satellite will be operating an API on a single URL route. <code>http_hook</code> is used for webhooks. A webhook is a POST request sent to a URL. It&rsquo;s considered to be a mean for one application to provide other applications with real-time information</td>
-<td><a href="../http-hook">HTTP Hook documentation page</a></td>
+<td><a href="http-hook">HTTP Hook documentation page</a></td>
 </tr>
 <tr>
 <td>http_api</td>
 <td>The satellite will be operating an API on multiple URL routes. <code>http_api</code> is used for REST API.</td>
-<td><a href="../http-api">HTTP API documentation page</a></td>
+<td><a href="http-api">HTTP API documentation page</a></td>
 </tr>
 </tbody>
 </table>
@@ -908,42 +835,9 @@ determined by an identifier of your choice.</p>
             
             
             
-
-            
-            
-            
-            
-            
-            
-            
-            
-            
             
             
 
-            
-            
-            
-
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-
-            
-            
-            
-
-            
-            
-            
             
             
             
@@ -1008,6 +902,9 @@ determined by an identifier of your choice.</p>
             
             
 
+            
+            
+            
             
             
             
@@ -1641,7 +1538,7 @@ determined by an identifier of your choice.</p>
             <a class="nav nav-prev" href="https://php-etl.github.io/documentation/core-concept/"><i class="ti-arrow-left mr-2"></i> <span class="d-none d-md-block">Core-concepts</span></a>
             
             
-            <a class="nav nav-next" href="https://php-etl.github.io/documentation/core-concept/satellite/yaml-format/"> <span class="d-none d-md-block">The YAML configuration format</span><i class="ti-arrow-right ml-2"></i></a>
+            <a class="nav nav-next" href="https://php-etl.github.io/documentation/core-concept/satellite/pipeline/"> <span class="d-none d-md-block">Pipeline</span><i class="ti-arrow-right ml-2"></i></a>
             
           </nav>
         </div>
