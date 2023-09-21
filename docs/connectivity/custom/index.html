@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <title>Custom connector  | Gyroscops Documentation</title>
 
-  <meta name="generator" content="Hugo 0.92.2" />
+  <meta name="generator" content="Hugo 0.111.3">
 
   <!-- mobile responsive meta -->
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -120,11 +120,15 @@
           </span>
           <div class="dropdown-menu">
             
-            <a class="dropdown-item" href="/documentation/core-concept/satellite">Satellite</a>
+            <a class="dropdown-item" href="/documentation/core-concept/satellite">Satellites</a>
             
-            <a class="dropdown-item" href="/documentation/core-concept/pipeline">Pipeline</a>
+            <a class="dropdown-item" href="/documentation/core-concept/satellite/pipeline">Pipeline</a>
             
-            <a class="dropdown-item" href="/documentation/core-concept/workflow">Workflow</a>
+            <a class="dropdown-item" href="/documentation/core-concept/satellite/workflow">Workflow</a>
+            
+            <a class="dropdown-item" href="/documentation/core-concept/satellite/http-hook">HTTP Hook</a>
+            
+            <a class="dropdown-item" href="/documentation/core-concept/satellite/http-api">HTTP API</a>
             
           </div>
         </li>
@@ -161,6 +165,12 @@
             <a class="dropdown-item" href="/documentation/connectivity/prestashop">Prestashop</a>
             
             <a class="dropdown-item" href="/documentation/connectivity/filtering">Filtering, drop or reject</a>
+            
+            <a class="dropdown-item" href="/documentation/connectivity/batch">Batch</a>
+            
+            <a class="dropdown-item" href="/documentation/connectivity/magento-2">Magento 2</a>
+            
+            <a class="dropdown-item" href="/documentation/connectivity/zoho">Zoho CRM</a>
             
           </div>
         </li>
@@ -208,6 +218,8 @@
           <ul class="list-styled">
             
             <a class="back-btn" href="/documentation"></a>
+            
+              
             
               
               
@@ -308,6 +320,28 @@
 
 
 
+<li data-nav-id="https://php-etl.github.io/documentation/connectivity/magento-2/" title="Magento 2" class="sidelist
+  ">
+  <a href="https://php-etl.github.io/documentation/connectivity/magento-2/">
+    Magento 2
+  </a>
+  
+  
+</li>
+
+
+        
+      
+        
+          
+
+
+
+
+
+
+
+
 <li data-nav-id="https://php-etl.github.io/documentation/connectivity/csv/" title="CSV" class="sidelist
   ">
   <a href="https://php-etl.github.io/documentation/connectivity/csv/">
@@ -337,6 +371,32 @@
   </a>
   
   
+    <ul>
+      
+        
+          
+
+
+
+
+
+
+
+
+<li data-nav-id="https://php-etl.github.io/documentation/connectivity/custom/lookup_mapper/" title="Lookup mapper" class="sidelist
+  ">
+  <a href="https://php-etl.github.io/documentation/connectivity/custom/lookup_mapper/">
+    Lookup mapper
+  </a>
+  
+  
+</li>
+
+
+        
+      
+    </ul>
+  
 </li>
 
 
@@ -356,6 +416,28 @@
   ">
   <a href="https://php-etl.github.io/documentation/connectivity/fast-map/">
     Fast Map
+  </a>
+  
+  
+</li>
+
+
+        
+      
+        
+          
+
+
+
+
+
+
+
+
+<li data-nav-id="https://php-etl.github.io/documentation/connectivity/zoho/" title="Zoho CRM" class="sidelist
+  ">
+  <a href="https://php-etl.github.io/documentation/connectivity/zoho/">
+    Zoho CRM
   </a>
   
   
@@ -540,13 +622,33 @@
 
         
       
+        
+          
+
+
+
+
+
+
+
+
+<li data-nav-id="https://php-etl.github.io/documentation/connectivity/batch/" title="Batch" class="sidelist
+  ">
+  <a href="https://php-etl.github.io/documentation/connectivity/batch/">
+    Batch
+  </a>
+  
+  
+</li>
+
+
+        
+      
     </ul>
   
 </li>
 
 
-              
-            
               
             
               
@@ -590,36 +692,36 @@ allowing you to connect tools that are not supported by the standard distributio
 <p>First you need to <a href="../../feature/services">determine your services</a> in your pipeline or workflow and then use the <code>use</code>
 option which allows you to define which service to use.</p>
 <h3 id="building-an-extractor">Building an extractor</h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">custom</span>:
-  <span style="color:#f92672">extractor</span>:
-    <span style="color:#f92672">use</span>: <span style="color:#e6db74">&#39;App\Class\Bar&#39;</span>
-    <span style="color:#f92672">services</span>:
-      <span style="color:#f92672">App\Class\Bar</span>:
-        <span style="color:#f92672">arguments</span>:
-            - <span style="color:#e6db74">&#39;@foo&#39;</span>
-        <span style="color:#f92672">tags</span>:
-            - { <span style="color:#ae81ff">example }</span>
-</code></pre></div><h3 id="building-a-transformer">Building a transformer</h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">custom</span>:
-  <span style="color:#f92672">transformer</span>:
-    <span style="color:#f92672">use</span>: <span style="color:#e6db74">&#39;App\Class\Bar&#39;</span>
-    <span style="color:#f92672">services</span>:
-      <span style="color:#f92672">App\Class\Bar</span>:
-        <span style="color:#f92672">arguments</span>:
-            - <span style="color:#e6db74">&#39;@foo&#39;</span>
-        <span style="color:#f92672">tags</span>:
-            - { <span style="color:#ae81ff">example }</span>
-</code></pre></div><h3 id="building-a-loader">Building a loader</h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">custom</span>:
-  <span style="color:#f92672">loader</span>:
-    <span style="color:#f92672">use</span>: <span style="color:#e6db74">&#39;App\Class\Bar&#39;</span>
-    <span style="color:#f92672">services</span>:
-      <span style="color:#f92672">App\Class\Bar</span>:
-        <span style="color:#f92672">arguments</span>:
-            - <span style="color:#e6db74">&#39;@foo&#39;</span>
-        <span style="color:#f92672">tags</span>:
-            - { <span style="color:#ae81ff">example }</span>
-</code></pre></div></div>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#f92672">custom</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">extractor</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">use</span>: <span style="color:#e6db74">&#39;App\Class\Bar&#39;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">services</span>:
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">App\Class\Bar</span>:
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">arguments</span>:
+</span></span><span style="display:flex;"><span>            - <span style="color:#e6db74">&#39;@foo&#39;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">tags</span>:
+</span></span><span style="display:flex;"><span>            - { <span style="color:#ae81ff">example }</span>
+</span></span></code></pre></div><h3 id="building-a-transformer">Building a transformer</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#f92672">custom</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">transformer</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">use</span>: <span style="color:#e6db74">&#39;App\Class\Bar&#39;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">services</span>:
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">App\Class\Bar</span>:
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">arguments</span>:
+</span></span><span style="display:flex;"><span>            - <span style="color:#e6db74">&#39;@foo&#39;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">tags</span>:
+</span></span><span style="display:flex;"><span>            - { <span style="color:#ae81ff">example }</span>
+</span></span></code></pre></div><h3 id="building-a-loader">Building a loader</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#f92672">custom</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">loader</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">use</span>: <span style="color:#e6db74">&#39;App\Class\Bar&#39;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">services</span>:
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">App\Class\Bar</span>:
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">arguments</span>:
+</span></span><span style="display:flex;"><span>            - <span style="color:#e6db74">&#39;@foo&#39;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">tags</span>:
+</span></span><span style="display:flex;"><span>            - { <span style="color:#ae81ff">example }</span>
+</span></span></code></pre></div></div>
           
           <p class="post-meta border-bottom pb-3 mb-0 mt-3">Updated on 22 Jan 2021</p>
           <nav class="pagination mt-3">
@@ -649,17 +751,30 @@ option which allows you to define which service to use.</p>
             
             
             
+            
+            
+
+            
+            
+            
+            
+            
 
+            
+            
             
             
             
             
             
+            
 
+            
             
             
             
             
+
             
             
             
@@ -667,11 +782,13 @@ option which allows you to define which service to use.</p>
             
             
             
+            
 
             
             
             
 
+            
             
             
             
@@ -680,6 +797,8 @@ option which allows you to define which service to use.</p>
             
             
             
+            
+            
 
             
             
@@ -712,6 +831,7 @@ option which allows you to define which service to use.</p>
             
             
             
+
             
             
             
@@ -719,7 +839,6 @@ option which allows you to define which service to use.</p>
             
             
             
-
             
             
             
@@ -732,17 +851,16 @@ option which allows you to define which service to use.</p>
             
             
             
-
             
             
             
 
-            
             
             
             
             
             
+
             
             
             
@@ -751,7 +869,6 @@ option which allows you to define which service to use.</p>
             
             
             
-
             
             
             
@@ -759,6 +876,7 @@ option which allows you to define which service to use.</p>
             
             
             
+
             
             
             
@@ -788,6 +906,8 @@ option which allows you to define which service to use.</p>
             
             
 
+            
+            
             
             
             
@@ -799,6 +919,7 @@ option which allows you to define which service to use.</p>
             
             
             
+            
 
             
             
@@ -820,6 +941,7 @@ option which allows you to define which service to use.</p>
             
             
 
+            
             
             
             
@@ -852,6 +974,9 @@ option which allows you to define which service to use.</p>
             
             
 
+            
+            
+            
             
             
             
@@ -895,12 +1020,23 @@ option which allows you to define which service to use.</p>
             
             
             
+
             
             
             
 
+            
+            
+            
+            
             
             
+            
+            
+            
+            
+            
+
             
             
             
@@ -913,6 +1049,9 @@ option which allows you to define which service to use.</p>
             
             
             
+            
+            
+            
 
             
             
@@ -993,6 +1132,7 @@ option which allows you to define which service to use.</p>
             
             
             
+
             
             
             
@@ -1002,20 +1142,20 @@ option which allows you to define which service to use.</p>
             
             
             
-
             
             
             
             
             
             
+
+            
             
             
 
             
             
             
-
             
             
             
@@ -1090,6 +1230,7 @@ option which allows you to define which service to use.</p>
             
             
             
+
             
             
             
@@ -1097,7 +1238,6 @@ option which allows you to define which service to use.</p>
             
             
             
-
             
             
             
@@ -1106,6 +1246,7 @@ option which allows you to define which service to use.</p>
             
             
             
+
             
             
             
@@ -1113,7 +1254,9 @@ option which allows you to define which service to use.</p>
             
             
             
-
+            
+            
+            
             
             
             
@@ -1122,17 +1265,26 @@ option which allows you to define which service to use.</p>
             
             
             
+
+            
+            
             
             
             
 
+            
+            
+            
             
             
             
+            
+            
 
             
             
             
+
             
             
             
@@ -1164,6 +1316,8 @@ option which allows you to define which service to use.</p>
             
             
 
+            
+            
             
             
             
@@ -1172,11 +1326,14 @@ option which allows you to define which service to use.</p>
             
             
             
+            
 
             
             
             
 
+            
+            
             
             
             
@@ -1186,16 +1343,30 @@ option which allows you to define which service to use.</p>
             
             
             
+
             
             
+            
 
+            
             
             
             
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
 
             
             
             
+
             
             
             
@@ -1309,7 +1480,7 @@ option which allows you to define which service to use.</p>
             <a class="nav nav-prev" href="https://php-etl.github.io/documentation/connectivity/csv/"><i class="ti-arrow-left mr-2"></i> <span class="d-none d-md-block">CSV</span></a>
             
             
-            <a class="nav nav-next" href="https://php-etl.github.io/documentation/connectivity/fast-map/"> <span class="d-none d-md-block">Fast Map</span><i class="ti-arrow-right ml-2"></i></a>
+            <a class="nav nav-next" href="https://php-etl.github.io/documentation/connectivity/custom/lookup_mapper/"> <span class="d-none d-md-block">Lookup mapper</span><i class="ti-arrow-right ml-2"></i></a>
             
           </nav>
         </div>

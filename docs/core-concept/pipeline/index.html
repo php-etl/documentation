@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <title>Pipeline  | Gyroscops Documentation</title>
 
-  <meta name="generator" content="Hugo 0.92.2" />
+  <meta name="generator" content="Hugo 0.111.3">
 
   <!-- mobile responsive meta -->
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -126,6 +126,10 @@
             
             <a class="dropdown-item" href="/documentation/core-concept/workflow">Workflow</a>
             
+            <a class="dropdown-item" href="/documentation/core-concept/http-hook">HTTP Hook</a>
+            
+            <a class="dropdown-item" href="/documentation/core-concept/http-api">HTTP API</a>
+            
           </div>
         </li>
         
@@ -161,6 +165,12 @@
             <a class="dropdown-item" href="/documentation/connectivity/prestashop">Prestashop</a>
             
             <a class="dropdown-item" href="/documentation/connectivity/filtering">Filtering, drop or reject</a>
+            
+            <a class="dropdown-item" href="/documentation/connectivity/batch">Batch</a>
+            
+            <a class="dropdown-item" href="/documentation/connectivity/magento-2">Magento 2</a>
+            
+            <a class="dropdown-item" href="/documentation/connectivity/zoho">Zoho CRM</a>
             
           </div>
         </li>
@@ -208,12 +218,6 @@
           <ul class="list-styled">
             
             <a class="back-btn" href="/documentation"></a>
-            
-              
-            
-              
-            
-              
             
               
               
@@ -348,11 +352,61 @@
 
         
       
+        
+          
+
+
+
+
+
+
+
+
+<li data-nav-id="https://php-etl.github.io/documentation/core-concept/http-hook/" title="HTTP Hook" class="sidelist
+  ">
+  <a href="https://php-etl.github.io/documentation/core-concept/http-hook/">
+    HTTP Hook
+  </a>
+  
+  
+</li>
+
+
+        
+      
+        
+          
+
+
+
+
+
+
+
+
+<li data-nav-id="https://php-etl.github.io/documentation/core-concept/http-api/" title="HTTP API" class="sidelist
+  ">
+  <a href="https://php-etl.github.io/documentation/core-concept/http-api/">
+    HTTP API
+  </a>
+  
+  
+</li>
+
+
+        
+      
     </ul>
   
 </li>
 
 
+              
+            
+              
+            
+              
+            
               
             
               
@@ -413,8 +467,8 @@ sends the results to the second process, and so on, ending with the final result
 <h2 id="what-is-it-for">What is it for?</h2>
 <p>This package allows you to create a microservice that will be operating a data pipeline.</p>
 <h2 id="installation">Installation</h2>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">composer require php-etl/pipeline
-</code></pre></div><h2 id="basic-usage">Basic usage</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>composer require php-etl/pipeline
+</span></span></code></pre></div><h2 id="basic-usage">Basic usage</h2>
 <p>To define your pipeline, you need to specify which steps will make up the pipeline using the <code>steps</code> option. Each step
 contains the configuration of a plugin. For more details, go to the documentation page of the plugin of your choice.</p>
 <ul class="nav nav-tabs" id="basic_definition" role="tablist"><li class="nav-item"><a data-toggle="tab" class="nav-link active" href="#basic_definition-0" role="tab" aria-controls="basic_definition-0" aria-selected="true">YAML</a></li>
@@ -422,117 +476,117 @@ contains the configuration of a plugin. For more details, go to the documentatio
 		<li class="nav-item"><a data-toggle="tab" class="nav-link" href="#basic_definition-1" role="tab" aria-controls="basic_definition-1">PHP</a></li></ul>
 <div class="tab-content" id="basic_definition"><div id="basic_definition-0" class="tab-pane show active" role="tabpanel" aria-labelledby="basic_definition-0">
 
-<p><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml">
-<span style="color:#f92672">pipeline</span>:
-  <span style="color:#f92672">steps</span>:
-    - <span style="color:#f92672">csv</span>:
-        <span style="color:#f92672">extractor</span>:
-          <span style="color:#f92672">file_path</span>: <span style="color:#ae81ff">path/to/file/input.csv</span>
-          <span style="color:#f92672">delimiter</span>: <span style="color:#e6db74">&#39;;&#39;</span>
-          <span style="color:#f92672">enclosure</span>: <span style="color:#e6db74">&#39;&#34;&#39;</span>
-          <span style="color:#f92672">escape</span>: <span style="color:#e6db74">&#39;\\&#39;</span>
-    - <span style="color:#f92672">csv</span>:
-        <span style="color:#f92672">loader</span>:
-          <span style="color:#f92672">file_path</span>: <span style="color:#ae81ff">path/to/file/output.csv</span>
-          <span style="color:#f92672">delimiter</span>: <span style="color:#e6db74">&#39;,&#39;</span>
-          <span style="color:#f92672">enclosure</span>: <span style="color:#e6db74">&#39;&#34;&#39;</span>
-          <span style="color:#f92672">escape</span>: <span style="color:#e6db74">&#39;\\&#39;</span>
-</code></pre></div></div>
+<p><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">pipeline</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">steps</span>:
+</span></span><span style="display:flex;"><span>    - <span style="color:#f92672">csv</span>:
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">extractor</span>:
+</span></span><span style="display:flex;"><span>          <span style="color:#f92672">file_path</span>: <span style="color:#ae81ff">path/to/file/input.csv</span>
+</span></span><span style="display:flex;"><span>          <span style="color:#f92672">delimiter</span>: <span style="color:#e6db74">&#39;;&#39;</span>
+</span></span><span style="display:flex;"><span>          <span style="color:#f92672">enclosure</span>: <span style="color:#e6db74">&#39;&#34;&#39;</span>
+</span></span><span style="display:flex;"><span>          <span style="color:#f92672">escape</span>: <span style="color:#e6db74">&#39;\\&#39;</span>
+</span></span><span style="display:flex;"><span>    - <span style="color:#f92672">csv</span>:
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">loader</span>:
+</span></span><span style="display:flex;"><span>          <span style="color:#f92672">file_path</span>: <span style="color:#ae81ff">path/to/file/output.csv</span>
+</span></span><span style="display:flex;"><span>          <span style="color:#f92672">delimiter</span>: <span style="color:#e6db74">&#39;,&#39;</span>
+</span></span><span style="display:flex;"><span>          <span style="color:#f92672">enclosure</span>: <span style="color:#e6db74">&#39;&#34;&#39;</span>
+</span></span><span style="display:flex;"><span>          <span style="color:#f92672">escape</span>: <span style="color:#e6db74">&#39;\\&#39;</span>
+</span></span></code></pre></div></div>
   <div id="basic_definition-1" class="tab-pane" role="tabpanel" aria-labelledby="basic_definition-1">
 
-<p><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php">
-<span style="color:#f92672">&lt;?</span><span style="color:#a6e22e">php</span>
-
-<span style="color:#66d9ef">use</span> <span style="color:#a6e22e">Kiboko\Component\Pipeline\PipelineRunner</span>;
-<span style="color:#66d9ef">use</span> <span style="color:#a6e22e">Kiboko\Component\Pipeline\Pipeline</span>;
-<span style="color:#66d9ef">use</span> <span style="color:#a6e22e">Kiboko\Component\Flow\Csv\Safe\Extractor</span>;
-<span style="color:#66d9ef">use</span> <span style="color:#a6e22e">Kiboko\Component\Flow\Csv\Safe\Loader</span>;
-
-<span style="color:#e6db74">/** @var Psr\Log\LoggerInterface $logger */</span> 
-$runner <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">PipelineRunner</span>();
-$pipeline <span style="color:#f92672">=</span> (<span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Pipeline</span>($runner))
-    <span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">extract</span>((<span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Extractor</span>(<span style="color:#e6db74">&#39;path/to/file/input.csv&#39;</span>))<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">setLogger</span>($logger))
-    <span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">load</span>(<span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Loader</span>(<span style="color:#e6db74">&#39;path/to/file/output.csv&#39;</span>, <span style="color:#a6e22e">delimiter</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;,&#39;</span>))
-    <span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">run</span>();
-</code></pre></div></div></div>
+<p><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-php" data-lang="php"><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">&lt;?</span><span style="color:#a6e22e">php</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">use</span> <span style="color:#a6e22e">Kiboko\Component\Pipeline\PipelineRunner</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">use</span> <span style="color:#a6e22e">Kiboko\Component\Pipeline\Pipeline</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">use</span> <span style="color:#a6e22e">Kiboko\Component\Flow\Csv\Safe\Extractor</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">use</span> <span style="color:#a6e22e">Kiboko\Component\Flow\Csv\Safe\Loader</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#e6db74">/** @var Psr\Log\LoggerInterface $logger */</span> 
+</span></span><span style="display:flex;"><span>$runner <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">PipelineRunner</span>();
+</span></span><span style="display:flex;"><span>$pipeline <span style="color:#f92672">=</span> (<span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Pipeline</span>($runner))
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">extract</span>((<span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Extractor</span>(<span style="color:#e6db74">&#39;path/to/file/input.csv&#39;</span>))<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">setLogger</span>($logger))
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">load</span>(<span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Loader</span>(<span style="color:#e6db74">&#39;path/to/file/output.csv&#39;</span>, <span style="color:#a6e22e">delimiter</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;,&#39;</span>))
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">run</span>();
+</span></span></code></pre></div></div></div>
 
 <h2 id="advanced-usage">Advanced usage</h2>
 <h3 id="using-expressions">Using expressions</h3>
 <p>It&rsquo;s possible to use expressions in your pipeline using the <code>expression_language</code> option. To use these expressions,
 you need to use our customised Providers which provide the different expressions. For more information, please visit
 the <a href="../../feature/expression-language">detailed documentation</a> of the language expressions.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">pipeline</span>:
-  <span style="color:#f92672">expression_language</span>:
-    - <span style="color:#e6db74">&#39;Kiboko\Component\Satellite\ExpressionLanguage\Provider&#39;</span>
-</code></pre></div><h3 id="using-services">Using services</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#f92672">pipeline</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">expression_language</span>:
+</span></span><span style="display:flex;"><span>    - <span style="color:#e6db74">&#39;Kiboko\Component\Satellite\ExpressionLanguage\Provider&#39;</span>
+</span></span></code></pre></div><h3 id="using-services">Using services</h3>
 <p>You can use services in your pipeline in the same way as in a traditional Symfony application.</p>
 <p>For more details, go to the <a href="../../feature/logger">detailed services documentation</a>.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">pipeline</span>:
-  <span style="color:#f92672">services</span>:
-    <span style="color:#f92672">App\Service\Bar</span>:
-      <span style="color:#f92672">arguments</span>:
-        - <span style="color:#e6db74">&#39;my-file.csv&#39;</span>
-</code></pre></div><h3 id="adding-logger">Adding logger</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#f92672">pipeline</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">services</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">App\Service\Bar</span>:
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">arguments</span>:
+</span></span><span style="display:flex;"><span>        - <span style="color:#e6db74">&#39;my-file.csv&#39;</span>
+</span></span></code></pre></div><h3 id="adding-logger">Adding logger</h3>
 <p>It&rsquo;s possible to add a <code>logger</code> at each step of the pipeline.</p>
 <p>For more details, go to the <a href="../../feature/logger">detailed logger documentation</a>.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">satellite</span>:
-<span style="color:#75715e"># ...</span>
-   <span style="color:#f92672">pipeline</span>:
-      <span style="color:#f92672">steps</span>:
-      - <span style="color:#f92672">akeneo</span>:
-        <span style="color:#75715e"># ...</span>
-        <span style="color:#f92672">logger</span>:
-          <span style="color:#f92672">channel</span>: <span style="color:#ae81ff">pipeline</span>
-          <span style="color:#f92672">destinations</span>:
-            - <span style="color:#f92672">elasticsearch</span>:
-                <span style="color:#f92672">level</span>: <span style="color:#ae81ff">warning</span>
-                <span style="color:#f92672">hosts</span>:
-                  - <span style="color:#ae81ff">http://user:password@elasticsearch.example.com:9200</span>
-</code></pre></div><h3 id="adding-rejection">Adding rejection</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#f92672">satellite</span>:
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># ...</span>
+</span></span><span style="display:flex;"><span>   <span style="color:#f92672">pipeline</span>:
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">steps</span>:
+</span></span><span style="display:flex;"><span>      - <span style="color:#f92672">akeneo</span>:
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e"># ...</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">logger</span>:
+</span></span><span style="display:flex;"><span>          <span style="color:#f92672">channel</span>: <span style="color:#ae81ff">pipeline</span>
+</span></span><span style="display:flex;"><span>          <span style="color:#f92672">destinations</span>:
+</span></span><span style="display:flex;"><span>            - <span style="color:#f92672">elasticsearch</span>:
+</span></span><span style="display:flex;"><span>                <span style="color:#f92672">level</span>: <span style="color:#ae81ff">warning</span>
+</span></span><span style="display:flex;"><span>                <span style="color:#f92672">hosts</span>:
+</span></span><span style="display:flex;"><span>                  - <span style="color:#ae81ff">http://user:password@elasticsearch.example.com:9200</span>
+</span></span></code></pre></div><h3 id="adding-rejection">Adding rejection</h3>
 <p>It&rsquo;s possible to add a <code>rejection</code> at each step of the pipeline.</p>
 <p>For more details, go to the <a href="../../feature/rejection">detailed rejection documentation</a></p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">satellite</span>:
-<span style="color:#75715e"># ...</span>
-   <span style="color:#f92672">pipeline</span>:
-      <span style="color:#f92672">steps</span>:
-      - <span style="color:#f92672">akeneo</span>:
-        <span style="color:#75715e"># ...</span>
-        <span style="color:#f92672">rejection</span>:
-          <span style="color:#f92672">destinations</span>:
-            - <span style="color:#f92672">rabbitmq</span>:
-                <span style="color:#f92672">host</span>: <span style="color:#ae81ff">rabbitmq.example.com</span>
-                <span style="color:#f92672">vhost</span>: <span style="color:#ae81ff">/</span>
-                <span style="color:#f92672">topic</span>: <span style="color:#ae81ff">foo.rejects</span>
-</code></pre></div><h3 id="adding-state">Adding state</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#f92672">satellite</span>:
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># ...</span>
+</span></span><span style="display:flex;"><span>   <span style="color:#f92672">pipeline</span>:
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">steps</span>:
+</span></span><span style="display:flex;"><span>      - <span style="color:#f92672">akeneo</span>:
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e"># ...</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">rejection</span>:
+</span></span><span style="display:flex;"><span>          <span style="color:#f92672">destinations</span>:
+</span></span><span style="display:flex;"><span>            - <span style="color:#f92672">rabbitmq</span>:
+</span></span><span style="display:flex;"><span>                <span style="color:#f92672">host</span>: <span style="color:#ae81ff">rabbitmq.example.com</span>
+</span></span><span style="display:flex;"><span>                <span style="color:#f92672">vhost</span>: <span style="color:#ae81ff">/</span>
+</span></span><span style="display:flex;"><span>                <span style="color:#f92672">topic</span>: <span style="color:#ae81ff">foo.rejects</span>
+</span></span></code></pre></div><h3 id="adding-state">Adding state</h3>
 <p>It&rsquo;s possible to add a <code>state</code> at each step of the pipeline.</p>
 <p>For more details, go to the <a href="../../feature/state">detailed state documentation</a></p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">satellite</span>:
-<span style="color:#75715e"># ...</span>
-   <span style="color:#f92672">pipeline</span>:
-      <span style="color:#f92672">steps</span>:
-      - <span style="color:#f92672">akeneo</span>:
-        <span style="color:#75715e"># ...</span>
-        <span style="color:#f92672">state</span>:
-          <span style="color:#f92672">destinations</span>:
-            - <span style="color:#f92672">rabbitmq</span>:
-                <span style="color:#f92672">host</span>: <span style="color:#ae81ff">rabbitmq.example.com</span>
-                <span style="color:#f92672">vhost</span>: <span style="color:#ae81ff">/</span>
-                <span style="color:#f92672">topic</span>: <span style="color:#ae81ff">foo.rejects</span>
-</code></pre></div><h3 id="setting-environment-variables">Setting environment variables</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#f92672">satellite</span>:
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># ...</span>
+</span></span><span style="display:flex;"><span>   <span style="color:#f92672">pipeline</span>:
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">steps</span>:
+</span></span><span style="display:flex;"><span>      - <span style="color:#f92672">akeneo</span>:
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e"># ...</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">state</span>:
+</span></span><span style="display:flex;"><span>          <span style="color:#f92672">destinations</span>:
+</span></span><span style="display:flex;"><span>            - <span style="color:#f92672">rabbitmq</span>:
+</span></span><span style="display:flex;"><span>                <span style="color:#f92672">host</span>: <span style="color:#ae81ff">rabbitmq.example.com</span>
+</span></span><span style="display:flex;"><span>                <span style="color:#f92672">vhost</span>: <span style="color:#ae81ff">/</span>
+</span></span><span style="display:flex;"><span>                <span style="color:#f92672">topic</span>: <span style="color:#ae81ff">foo.rejects</span>
+</span></span></code></pre></div><h3 id="setting-environment-variables">Setting environment variables</h3>
 <p>It&rsquo;s possible to set environment variables in a <code>.env</code> file, located in your working directory, to re-use those variables in the declaration of your pipeline.</p>
 <p>Example of a <code>.env</code> file:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-makefile" data-lang="makefile">MY_SERVICE_API_KEY<span style="color:#f92672">=</span>abc123
-SOME_SECRET_KEY<span style="color:#f92672">=</span><span style="color:#ae81ff">123456789</span>
-</code></pre></div><p>Then use the variables like this in the configuration:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#75715e"># ...</span>
-  <span style="color:#f92672">pipeline</span>:
-    <span style="color:#f92672">steps</span>:
-      - <span style="color:#f92672">akeneo</span>:
-        <span style="color:#75715e"># ...</span>
-        <span style="color:#f92672">client</span>:
-          <span style="color:#f92672">client_id</span>: <span style="color:#e6db74">&#39;@=env(&#34;MY_SERVICE_API_KEY&#34;)&#39;</span>
-          <span style="color:#f92672">secret</span>: <span style="color:#e6db74">&#39;@=env(&#34;SOME_SECRET_KEY&#34;)&#39;</span>
-</code></pre></div><blockquote>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-makefile" data-lang="makefile"><span style="display:flex;"><span>MY_SERVICE_API_KEY<span style="color:#f92672">=</span>abc123
+</span></span><span style="display:flex;"><span>SOME_SECRET_KEY<span style="color:#f92672">=</span><span style="color:#ae81ff">123456789</span>
+</span></span></code></pre></div><p>Then use the variables like this in the configuration:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#75715e"># ...</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">pipeline</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">steps</span>:
+</span></span><span style="display:flex;"><span>      - <span style="color:#f92672">akeneo</span>:
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e"># ...</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">client</span>:
+</span></span><span style="display:flex;"><span>          <span style="color:#f92672">client_id</span>: <span style="color:#e6db74">&#39;@=env(&#34;MY_SERVICE_API_KEY&#34;)&#39;</span>
+</span></span><span style="display:flex;"><span>          <span style="color:#f92672">secret</span>: <span style="color:#e6db74">&#39;@=env(&#34;SOME_SECRET_KEY&#34;)&#39;</span>
+</span></span></code></pre></div><blockquote>
 <blockquote>
 <p>The <code>.env</code> file must be located in the working directory (next to the configuration file of your pipeline), as it will be symlinked inside the resulting build files.</p>
 </blockquote>
@@ -567,14 +621,28 @@ SOME_SECRET_KEY<span style="color:#f92672">=</span><span style="color:#ae81ff">1
             
             
             
+
+            
+            
             
             
+            
 
+            
+            
+            
+            
+            
+            
+            
+            
             
             
             
+
             
             
+            
 
             
             
@@ -589,6 +657,7 @@ SOME_SECRET_KEY<span style="color:#f92672">=</span><span style="color:#ae81ff">1
             
             
 
+            
             
             
             
@@ -597,11 +666,14 @@ SOME_SECRET_KEY<span style="color:#f92672">=</span><span style="color:#ae81ff">1
             
             
             
+            
+            
 
             
             
             
 
+            
             
             
             
@@ -613,6 +685,9 @@ SOME_SECRET_KEY<span style="color:#f92672">=</span><span style="color:#ae81ff">1
             
             
             
+            
+            
+            
 
             
             
@@ -669,6 +744,10 @@ SOME_SECRET_KEY<span style="color:#f92672">=</span><span style="color:#ae81ff">1
             
             
 
+            
+            
+            
+            
             
             
             
@@ -679,15 +758,26 @@ SOME_SECRET_KEY<span style="color:#f92672">=</span><span style="color:#ae81ff">1
             
             
             
+
+            
+            
             
+            
+            
 
+            
             
             
             
+            
+            
+            
+            
 
             
             
             
+
             
             
             
@@ -717,6 +807,7 @@ SOME_SECRET_KEY<span style="color:#f92672">=</span><span style="color:#ae81ff">1
             
             
 
+            
             
             
             
@@ -728,6 +819,8 @@ SOME_SECRET_KEY<span style="color:#f92672">=</span><span style="color:#ae81ff">1
             
             
             
+            
+            
 
             
             
@@ -773,6 +866,7 @@ SOME_SECRET_KEY<span style="color:#f92672">=</span><span style="color:#ae81ff">1
             
             
             
+
             
             
             
@@ -780,7 +874,6 @@ SOME_SECRET_KEY<span style="color:#f92672">=</span><span style="color:#ae81ff">1
             
             
             
-
             
             
             
@@ -808,16 +901,28 @@ SOME_SECRET_KEY<span style="color:#f92672">=</span><span style="color:#ae81ff">1
             
             
             
+
             
             
             
 
+            
+            
+            
+            
+            
+            
+            
+            
             
             
             
+
             
             
+            
 
+            
             
             
             
@@ -826,6 +931,8 @@ SOME_SECRET_KEY<span style="color:#f92672">=</span><span style="color:#ae81ff">1
             
             
             
+            
+            
 
             
             
@@ -906,10 +1013,17 @@ SOME_SECRET_KEY<span style="color:#f92672">=</span><span style="color:#ae81ff">1
             
             
             
+
             
             
             
 
+            
+            
+            
+            
+            
+            
             
             
             
@@ -919,16 +1033,25 @@ SOME_SECRET_KEY<span style="color:#f92672">=</span><span style="color:#ae81ff">1
             
             
             
+
+            
+            
+            
+            
+            
             
             
             
             
             
+            
 
             
             
             
 
+            
+            
             
             
             
@@ -940,6 +1063,7 @@ SOME_SECRET_KEY<span style="color:#f92672">=</span><span style="color:#ae81ff">1
             
             
             
+            
 
             
             
@@ -1003,6 +1127,7 @@ SOME_SECRET_KEY<span style="color:#f92672">=</span><span style="color:#ae81ff">1
             
             
             
+
             
             
             
@@ -1010,7 +1135,6 @@ SOME_SECRET_KEY<span style="color:#f92672">=</span><span style="color:#ae81ff">1
             
             
             
-
             
             
             
@@ -1019,6 +1143,7 @@ SOME_SECRET_KEY<span style="color:#f92672">=</span><span style="color:#ae81ff">1
             
             
             
+
             
             
             
@@ -1026,7 +1151,6 @@ SOME_SECRET_KEY<span style="color:#f92672">=</span><span style="color:#ae81ff">1
             
             
             
-
             
             
             
@@ -1039,6 +1163,8 @@ SOME_SECRET_KEY<span style="color:#f92672">=</span><span style="color:#ae81ff">1
             
             
 
+            
+            
             
             
             
@@ -1051,24 +1177,30 @@ SOME_SECRET_KEY<span style="color:#f92672">=</span><span style="color:#ae81ff">1
             
             
             
+
             
             
             
+
             
             
             
             
-
             
             
             
             
             
+            
+            
 
+            
             
             
             
             
+
+            
             
             
             
@@ -1081,6 +1213,8 @@ SOME_SECRET_KEY<span style="color:#f92672">=</span><span style="color:#ae81ff">1
             
             
 
+            
+            
             
             
             
@@ -1089,6 +1223,7 @@ SOME_SECRET_KEY<span style="color:#f92672">=</span><span style="color:#ae81ff">1
             
             
             
+            
 
             
             
@@ -1110,6 +1245,8 @@ SOME_SECRET_KEY<span style="color:#f92672">=</span><span style="color:#ae81ff">1
             
             
 
+            
+            
             
             
             
@@ -1122,17 +1259,27 @@ SOME_SECRET_KEY<span style="color:#f92672">=</span><span style="color:#ae81ff">1
             
             
             
+
             
             
             
 
+            
+            
             
             
             
+            
+            
+            
+            
+            
+            
 
             
             
             
+
             
             
             

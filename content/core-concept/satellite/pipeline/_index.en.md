@@ -37,12 +37,6 @@ The different steps of our pipeline are `extract`, `transform` or `load` but the
 
 This package allows you to create a microservice that will be operating a data pipeline.
 
-## Installation
-
-```shell
-composer require php-etl/pipeline
-```
-
 ## Basic usage
 
 To define your pipeline, you need to specify which steps will make up the pipeline using the `steps` option. Each step 

@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <title>String Expression functions  | Gyroscops Documentation</title>
 
-  <meta name="generator" content="Hugo 0.92.2" />
+  <meta name="generator" content="Hugo 0.111.3">
 
   <!-- mobile responsive meta -->
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -120,11 +120,15 @@
           </span>
           <div class="dropdown-menu">
             
-            <a class="dropdown-item" href="/documentation/core-concept/satellite">Satellite</a>
+            <a class="dropdown-item" href="/documentation/core-concept/satellite">Satellites</a>
             
-            <a class="dropdown-item" href="/documentation/core-concept/pipeline">Pipeline</a>
+            <a class="dropdown-item" href="/documentation/core-concept/satellite/pipeline">Pipeline</a>
             
-            <a class="dropdown-item" href="/documentation/core-concept/workflow">Workflow</a>
+            <a class="dropdown-item" href="/documentation/core-concept/satellite/workflow">Workflow</a>
+            
+            <a class="dropdown-item" href="/documentation/core-concept/satellite/http-hook">HTTP Hook</a>
+            
+            <a class="dropdown-item" href="/documentation/core-concept/satellite/http-api">HTTP API</a>
             
           </div>
         </li>
@@ -161,6 +165,12 @@
             <a class="dropdown-item" href="/documentation/connectivity/prestashop">Prestashop</a>
             
             <a class="dropdown-item" href="/documentation/connectivity/filtering">Filtering, drop or reject</a>
+            
+            <a class="dropdown-item" href="/documentation/connectivity/batch">Batch</a>
+            
+            <a class="dropdown-item" href="/documentation/connectivity/magento-2">Magento 2</a>
+            
+            <a class="dropdown-item" href="/documentation/connectivity/zoho">Zoho CRM</a>
             
           </div>
         </li>
@@ -208,6 +218,8 @@
           <ul class="list-styled">
             
             <a class="back-btn" href="/documentation"></a>
+            
+              
             
               
             
@@ -421,8 +433,6 @@
             
               
             
-              
-            
           </ul>
         </div>
       </div>
@@ -450,15 +460,15 @@
 <h2 id="what-is-it-for">What is it for?</h2>
 <p>This package extends the ExpressionLanguage component of Symfony to compile and evaluate arrays with custom functions.</p>
 <h2 id="installation">Installation</h2>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">composer require php-etl/string-expression-language
-</code></pre></div><h2 id="usage">Usage</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>composer require php-etl/string-expression-language
+</span></span></code></pre></div><h2 id="usage">Usage</h2>
 <p>To use the functions provided in this package, you need to add the <code>expression_language</code> key to your plugin configuration
 and use the <code>Kiboko\Component\ArrayExpressionLanguage\ArrayExpressionLanguageProvider</code> Provider.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">expression_language</span>:
-  - <span style="color:#ae81ff">Kiboko\Component\StringExpressionLanguage\StringExpressionLanguageProvider</span>
-</code></pre></div><p>To determine that a value in your configuration will be a language expression, you must use the <code>@</code> annotation.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">foo</span>: <span style="color:#e6db74">&#39;@=dateTime(input[&#34;updated_at&#34;], &#34;YYYY-MM-ddTHH:ii:ss&#34;, &#34;Europe/Paris&#34;)&#39;</span>
-</code></pre></div><h2 id="list-of-available-functions">List of available functions</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#f92672">expression_language</span>:
+</span></span><span style="display:flex;"><span>  - <span style="color:#ae81ff">Kiboko\Component\StringExpressionLanguage\StringExpressionLanguageProvider</span>
+</span></span></code></pre></div><p>To determine that a value in your configuration will be a language expression, you must use the <code>@</code> annotation.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#f92672">foo</span>: <span style="color:#e6db74">&#39;@=dateTime(input[&#34;updated_at&#34;], &#34;YYYY-MM-ddTHH:ii:ss&#34;, &#34;Europe/Paris&#34;)&#39;</span>
+</span></span></code></pre></div><h2 id="list-of-available-functions">List of available functions</h2>
 <table>
 <thead>
 <tr>
@@ -492,7 +502,7 @@ and use the <code>Kiboko\Component\ArrayExpressionLanguage\ArrayExpressionLangua
 <td>Makes a string uppercase</td>
 </tr>
 <tr>
-<td>formatNumber(<code>float</code> num, <code>int</code> decimals = 0, <code>?string</code> decimal_separator = &ldquo;.&rdquo;, <code>?string</code> thousands_separator = &ldquo;,&quot;): <code>string</code></td>
+<td>formatNumber(<code>float</code> num, <code>int</code> decimals = 0, <code>?string</code> decimal_separator = &ldquo;.&rdquo;, <code>?string</code> thousands_separator = &ldquo;,&rdquo;): <code>string</code></td>
 <td>Formats a number with grouped thousands</td>
 </tr>
 <tr>
@@ -516,7 +526,7 @@ and use the <code>Kiboko\Component\ArrayExpressionLanguage\ArrayExpressionLangua
 <td>Performs a regular expression search and replace</td>
 </tr>
 <tr>
-<td>capitalizeWords(<code>string</code> string, <code>string</code> separators = &quot; \t\r\n\f\v&rdquo;): <code>string</code></td>
+<td>capitalizeWords(<code>string</code> string, <code>string</code> separators = &quot; \t\r\n\f\v&quot;): <code>string</code></td>
 <td>Uppercase’s the first character of each word in a string</td>
 </tr>
 <tr>
@@ -558,6 +568,10 @@ and use the <code>Kiboko\Component\ArrayExpressionLanguage\ArrayExpressionLangua
 <tr>
 <td>asString(<code>string</code> value): <code>string</code></td>
 <td>Converts the value into a string</td>
+</tr>
+<tr>
+<td>truncate(<code>string</code> input, <code>int</code> limit): <code>string</code></td>
+<td>Truncates the value. If the limit is 10 and the input goes above that limit, 9 characters will be kept and <code>…</code> will be added at the end.</td>
 </tr>
 </tbody>
 </table>
@@ -612,6 +626,8 @@ and use the <code>Kiboko\Component\ArrayExpressionLanguage\ArrayExpressionLangua
             
             
             
+            
+            
 
             
             
@@ -626,6 +642,9 @@ and use the <code>Kiboko\Component\ArrayExpressionLanguage\ArrayExpressionLangua
             
             
 
+            
+            
+            
             
             
             
@@ -634,17 +653,27 @@ and use the <code>Kiboko\Component\ArrayExpressionLanguage\ArrayExpressionLangua
             
             
             
+
             
             
             
 
+            
+            
+            
+            
             
             
             
+            
+            
+            
+            
 
             
             
             
+
             
             
             
@@ -661,6 +690,12 @@ and use the <code>Kiboko\Component\ArrayExpressionLanguage\ArrayExpressionLangua
             
             
 
+            
+            
+            
+            
+            
+            
             
             
             
@@ -676,10 +711,22 @@ and use the <code>Kiboko\Component\ArrayExpressionLanguage\ArrayExpressionLangua
             
             
             
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
 
             
             
             
+
             
             
             
@@ -709,6 +756,9 @@ and use the <code>Kiboko\Component\ArrayExpressionLanguage\ArrayExpressionLangua
             
             
 
+            
+            
+            
             
             
             
@@ -765,6 +815,7 @@ and use the <code>Kiboko\Component\ArrayExpressionLanguage\ArrayExpressionLangua
             
             
             
+
             
             
             
@@ -772,7 +823,6 @@ and use the <code>Kiboko\Component\ArrayExpressionLanguage\ArrayExpressionLangua
             
             
             
-
             
             
             
@@ -832,16 +882,30 @@ and use the <code>Kiboko\Component\ArrayExpressionLanguage\ArrayExpressionLangua
             
             
             
+
             
             
             
 
+            
+            
+            
             
             
             
             
             
+            
+            
+            
+
+            
+            
+            
 
+            
+            
+            
             
             
             
@@ -930,7 +994,7 @@ and use the <code>Kiboko\Component\ArrayExpressionLanguage\ArrayExpressionLangua
             
             
             
-            
+
             
             
             
@@ -940,7 +1004,8 @@ and use the <code>Kiboko\Component\ArrayExpressionLanguage\ArrayExpressionLangua
             
             
             
-
+            
+            
             
             
             
@@ -948,18 +1013,26 @@ and use the <code>Kiboko\Component\ArrayExpressionLanguage\ArrayExpressionLangua
             
             
             
+
             
             
             
             
+            
 
+            
+            
+            
+            
             
             
             
+            
 
             
             
             
+
             
             
             
@@ -969,9 +1042,9 @@ and use the <code>Kiboko\Component\ArrayExpressionLanguage\ArrayExpressionLangua
             
             
             
-
             
             
+
             
             
             
@@ -1008,7 +1081,6 @@ and use the <code>Kiboko\Component\ArrayExpressionLanguage\ArrayExpressionLangua
             
             
 
-            
             
             
             
@@ -1040,9 +1112,9 @@ and use the <code>Kiboko\Component\ArrayExpressionLanguage\ArrayExpressionLangua
             
             
             
+
             
             
-
             
             
             
@@ -1074,7 +1146,10 @@ and use the <code>Kiboko\Component\ArrayExpressionLanguage\ArrayExpressionLangua
             
             
             
+            
 
+            
+            
             
             
             
@@ -1090,6 +1165,7 @@ and use the <code>Kiboko\Component\ArrayExpressionLanguage\ArrayExpressionLangua
             
             
             
+
             
             
             
@@ -1099,20 +1175,20 @@ and use the <code>Kiboko\Component\ArrayExpressionLanguage\ArrayExpressionLangua
             
             
             
-
             
             
             
             
             
             
+
             
             
+            
 
             
             
             
-
             
             
             
@@ -1121,6 +1197,7 @@ and use the <code>Kiboko\Component\ArrayExpressionLanguage\ArrayExpressionLangua
             
             
             
+            
 
             
             
@@ -1137,14 +1214,17 @@ and use the <code>Kiboko\Component\ArrayExpressionLanguage\ArrayExpressionLangua
             
             
             
-
+            
             
             
             
+            
+            
 
             
             
             
+
             
             
             

@@ -1,0 +1,1604 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+  <meta charset="utf-8">
+  <title>Zoho CRM  | Gyroscops Documentation</title>
+
+  <meta name="generator" content="Hugo 0.111.3">
+
+  <!-- mobile responsive meta -->
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <!-- ** Plugins Needed for the Project ** -->
+  <!-- Bootstrap -->
+  <link rel="stylesheet" href="https://php-etl.github.io/documentation/plugins/bootstrap/bootstrap.min.css">
+
+  <!-- themefy-icon -->
+  <link rel="stylesheet" href="https://php-etl.github.io/documentation/plugins/themify-icons/themify-icons.css">
+
+  <!-- highlight -->
+  <link rel="stylesheet" href="https://php-etl.github.io/documentation/plugins/highlight/hybrid.css">
+
+  <!--Favicon-->
+  <link rel="icon" href="https://php-etl.github.io/documentation/favicon.png" type="image/x-icon">
+
+  <!-- fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700&display=swap" rel="stylesheet">
+
+  <style>
+  :root{
+    --primary-color: #22014f;
+    --primary-color-lighten: #f2e9fe;
+    --secondary-color:#fe8507;
+    --body-color:#ddd;
+    --text-color:#666;
+    --text-color-dark:#333;
+    --text-color-light:#eee;
+    --white-color:#fff;
+    --light-color:#eee;
+    --font-family:Lato;
+  }
+  </style>
+
+<!-- Main Stylesheet -->
+
+<link href="https://php-etl.github.io/documentation/css/style.min.css" rel="stylesheet" media="screen"/>
+
+<!-- jquiry -->
+<script src="https://php-etl.github.io/documentation/plugins/jquery/jquery-1.12.4.js"></script>
+
+<!-- jquary ui -->
+<script src="https://php-etl.github.io/documentation/plugins/jquery/jquery-ui.js"></script>
+
+<!-- Bootstrap JS -->
+<script src="https://php-etl.github.io/documentation/plugins/bootstrap/bootstrap.min.js"></script>
+
+<!-- match-height JS -->
+<script src="https://php-etl.github.io/documentation/plugins/match-height/jquery.matchHeight-min.js"></script>
+
+<!-- highlight -->
+<script src="https://php-etl.github.io/documentation/plugins/highlight/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+
+
+</head>
+
+
+  <body>
+    
+    <!-- header -->
+    <header class="sticky-top bg-gradient">
+      <nav class="navbar navbar-expand-md bg-light">
+  <div class="container">
+    <a class="navbar-brand" href="/documentation">
+      
+      
+      
+      
+      <div class="navbar-brand">
+        <img class="img-fluid" src="https://php-etl.github.io/documentation/logo-web.svg" alt="Gyroscops"><span class="navbar-logo"> Gyroscops</span>
+      </div>
+      
+      
+    </a>
+    <button class="navbar-toggler border-0" type="button" data-toggle="collapse" data-target="#navigation"
+      aria-controls="navigation" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse text-center" id="navigation">
+      <ul class="navbar-nav ml-auto">
+        
+        
+        <li class="nav-item dropdown">
+          <span class="nav-link dropdown-toggle text-dark" href="#" role="button" data-toggle="dropdown"
+            aria-haspopup="true" aria-expanded="false">
+            Getting Started
+          </span>
+          <div class="dropdown-menu">
+            
+            <a class="dropdown-item" href="/documentation/getting-started/environment-setup">Environment Setup</a>
+            
+            <a class="dropdown-item" href="/documentation/getting-started/installation">Installation</a>
+            
+            <a class="dropdown-item" href="/documentation/getting-started/writing-configuration">Writing Configuration</a>
+            
+            <a class="dropdown-item" href="/documentation/getting-started/compilation">Compilation</a>
+            
+            <a class="dropdown-item" href="/documentation/getting-started/execution">Execution</a>
+            
+          </div>
+        </li>
+        
+        
+        
+        <li class="nav-item dropdown">
+          <span class="nav-link dropdown-toggle text-dark" href="#" role="button" data-toggle="dropdown"
+            aria-haspopup="true" aria-expanded="false">
+            Core concepts
+          </span>
+          <div class="dropdown-menu">
+            
+            <a class="dropdown-item" href="/documentation/core-concept/satellite">Satellites</a>
+            
+            <a class="dropdown-item" href="/documentation/core-concept/satellite/pipeline">Pipeline</a>
+            
+            <a class="dropdown-item" href="/documentation/core-concept/satellite/workflow">Workflow</a>
+            
+            <a class="dropdown-item" href="/documentation/core-concept/satellite/http-hook">HTTP Hook</a>
+            
+            <a class="dropdown-item" href="/documentation/core-concept/satellite/http-api">HTTP API</a>
+            
+          </div>
+        </li>
+        
+        
+        
+        <li class="nav-item dropdown">
+          <span class="nav-link dropdown-toggle text-dark" href="#" role="button" data-toggle="dropdown"
+            aria-haspopup="true" aria-expanded="false">
+            Connectivity
+          </span>
+          <div class="dropdown-menu">
+            
+            <a class="dropdown-item" href="/documentation/connectivity/akeneo">Akeneo</a>
+            
+            <a class="dropdown-item" href="/documentation/connectivity/csv">CSV files</a>
+            
+            <a class="dropdown-item" href="/documentation/connectivity/custom">Custom connector</a>
+            
+            <a class="dropdown-item" href="/documentation/connectivity/fast-map">FastMap</a>
+            
+            <a class="dropdown-item" href="/documentation/connectivity/ftp">FTP</a>
+            
+            <a class="dropdown-item" href="/documentation/connectivity/sftp">SFTP</a>
+            
+            <a class="dropdown-item" href="/documentation/connectivity/json">JSON</a>
+            
+            <a class="dropdown-item" href="/documentation/connectivity/spreadsheet">Spreadsheet files</a>
+            
+            <a class="dropdown-item" href="/documentation/connectivity/sql">SQL database</a>
+            
+            <a class="dropdown-item" href="/documentation/connectivity/sylius">Sylius</a>
+            
+            <a class="dropdown-item" href="/documentation/connectivity/prestashop">Prestashop</a>
+            
+            <a class="dropdown-item" href="/documentation/connectivity/filtering">Filtering, drop or reject</a>
+            
+            <a class="dropdown-item" href="/documentation/connectivity/batch">Batch</a>
+            
+            <a class="dropdown-item" href="/documentation/connectivity/magento-2">Magento 2</a>
+            
+            <a class="dropdown-item" href="/documentation/connectivity/zoho">Zoho CRM</a>
+            
+          </div>
+        </li>
+        
+        
+        
+        <li class="nav-item dropdown">
+          <span class="nav-link dropdown-toggle text-dark" href="#" role="button" data-toggle="dropdown"
+            aria-haspopup="true" aria-expanded="false">
+            Features
+          </span>
+          <div class="dropdown-menu">
+            
+            <a class="dropdown-item" href="/documentation/feature/services">Declaring services</a>
+            
+            <a class="dropdown-item" href="/documentation/feature/expression-language">Expression Language</a>
+            
+            <a class="dropdown-item" href="/documentation/feature/logger">Logging</a>
+            
+            <a class="dropdown-item" href="/documentation/feature/rejection">Rejection</a>
+            
+            <a class="dropdown-item" href="/documentation/feature/state">State</a>
+            
+          </div>
+        </li>
+        
+        
+      </ul>
+      
+    </div>
+  </div>
+</nav>
+
+    </header>
+    <!-- /header -->
+    
+    
+
+<!-- details page -->
+<section class="single section-sm pb-0">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-3">
+        <div class="sidebar">
+          <ul class="list-styled">
+            
+            <a class="back-btn" href="/documentation"></a>
+            
+              
+            
+              
+              
+
+
+
+
+
+
+
+
+<li data-nav-id="https://php-etl.github.io/documentation/connectivity/" title="Connectivities" class="sidelist
+  ">
+  <a href="https://php-etl.github.io/documentation/connectivity/">
+    Connectivities
+  </a>
+  
+  
+    <ul>
+      
+        
+          
+
+
+
+
+
+
+
+
+<li data-nav-id="https://php-etl.github.io/documentation/connectivity/akeneo/" title="Akeneo" class="sidelist
+  ">
+  <a href="https://php-etl.github.io/documentation/connectivity/akeneo/">
+    Akeneo
+  </a>
+  
+  
+    <ul>
+      
+        
+          
+
+
+
+
+
+
+
+
+<li data-nav-id="https://php-etl.github.io/documentation/connectivity/akeneo/plugin/" title="Akeneo plugin" class="sidelist
+  ">
+  <a href="https://php-etl.github.io/documentation/connectivity/akeneo/plugin/">
+    Akeneo plugin
+  </a>
+  
+  
+</li>
+
+
+        
+      
+        
+          
+
+
+
+
+
+
+
+
+<li data-nav-id="https://php-etl.github.io/documentation/connectivity/akeneo/expression-language/" title="Akeneo expression language functions" class="sidelist
+  ">
+  <a href="https://php-etl.github.io/documentation/connectivity/akeneo/expression-language/">
+    Akeneo expression language functions
+  </a>
+  
+  
+</li>
+
+
+        
+      
+    </ul>
+  
+</li>
+
+
+        
+      
+        
+          
+
+
+
+
+
+
+
+
+<li data-nav-id="https://php-etl.github.io/documentation/connectivity/magento-2/" title="Magento 2" class="sidelist
+  ">
+  <a href="https://php-etl.github.io/documentation/connectivity/magento-2/">
+    Magento 2
+  </a>
+  
+  
+</li>
+
+
+        
+      
+        
+          
+
+
+
+
+
+
+
+
+<li data-nav-id="https://php-etl.github.io/documentation/connectivity/csv/" title="CSV" class="sidelist
+  ">
+  <a href="https://php-etl.github.io/documentation/connectivity/csv/">
+    CSV
+  </a>
+  
+  
+</li>
+
+
+        
+      
+        
+          
+
+
+
+
+
+
+
+
+<li data-nav-id="https://php-etl.github.io/documentation/connectivity/custom/" title="Custom connector" class="sidelist
+  ">
+  <a href="https://php-etl.github.io/documentation/connectivity/custom/">
+    Custom connector
+  </a>
+  
+  
+    <ul>
+      
+        
+          
+
+
+
+
+
+
+
+
+<li data-nav-id="https://php-etl.github.io/documentation/connectivity/custom/lookup_mapper/" title="Lookup mapper" class="sidelist
+  ">
+  <a href="https://php-etl.github.io/documentation/connectivity/custom/lookup_mapper/">
+    Lookup mapper
+  </a>
+  
+  
+</li>
+
+
+        
+      
+    </ul>
+  
+</li>
+
+
+        
+      
+        
+          
+
+
+
+
+
+
+
+
+<li data-nav-id="https://php-etl.github.io/documentation/connectivity/fast-map/" title="Fast Map" class="sidelist
+  ">
+  <a href="https://php-etl.github.io/documentation/connectivity/fast-map/">
+    Fast Map
+  </a>
+  
+  
+</li>
+
+
+        
+      
+        
+          
+
+
+
+
+
+
+
+
+<li data-nav-id="https://php-etl.github.io/documentation/connectivity/zoho/" title="Zoho CRM" class="sidelist
+  active">
+  <a href="https://php-etl.github.io/documentation/connectivity/zoho/">
+    Zoho CRM
+  </a>
+  
+  
+</li>
+
+
+        
+      
+        
+          
+
+
+
+
+
+
+
+
+<li data-nav-id="https://php-etl.github.io/documentation/connectivity/ftp/" title="FTP" class="sidelist
+  ">
+  <a href="https://php-etl.github.io/documentation/connectivity/ftp/">
+    FTP
+  </a>
+  
+  
+</li>
+
+
+        
+      
+        
+          
+
+
+
+
+
+
+
+
+<li data-nav-id="https://php-etl.github.io/documentation/connectivity/sftp/" title="SFTP" class="sidelist
+  ">
+  <a href="https://php-etl.github.io/documentation/connectivity/sftp/">
+    SFTP
+  </a>
+  
+  
+</li>
+
+
+        
+      
+        
+          
+
+
+
+
+
+
+
+
+<li data-nav-id="https://php-etl.github.io/documentation/connectivity/json/" title="JSON" class="sidelist
+  ">
+  <a href="https://php-etl.github.io/documentation/connectivity/json/">
+    JSON
+  </a>
+  
+  
+</li>
+
+
+        
+      
+        
+          
+
+
+
+
+
+
+
+
+<li data-nav-id="https://php-etl.github.io/documentation/connectivity/spreadsheet/" title="Spreadsheet" class="sidelist
+  ">
+  <a href="https://php-etl.github.io/documentation/connectivity/spreadsheet/">
+    Spreadsheet
+  </a>
+  
+  
+</li>
+
+
+        
+      
+        
+          
+
+
+
+
+
+
+
+
+<li data-nav-id="https://php-etl.github.io/documentation/connectivity/sql/" title="SQL" class="sidelist
+  ">
+  <a href="https://php-etl.github.io/documentation/connectivity/sql/">
+    SQL
+  </a>
+  
+  
+</li>
+
+
+        
+      
+        
+          
+
+
+
+
+
+
+
+
+<li data-nav-id="https://php-etl.github.io/documentation/connectivity/sylius/" title="Sylius" class="sidelist
+  ">
+  <a href="https://php-etl.github.io/documentation/connectivity/sylius/">
+    Sylius
+  </a>
+  
+  
+</li>
+
+
+        
+      
+        
+          
+
+
+
+
+
+
+
+
+<li data-nav-id="https://php-etl.github.io/documentation/connectivity/prestashop/" title="Prestashop" class="sidelist
+  ">
+  <a href="https://php-etl.github.io/documentation/connectivity/prestashop/">
+    Prestashop
+  </a>
+  
+  
+</li>
+
+
+        
+      
+        
+          
+
+
+
+
+
+
+
+
+<li data-nav-id="https://php-etl.github.io/documentation/connectivity/filtering/" title="Filtering, drop or reject" class="sidelist
+  ">
+  <a href="https://php-etl.github.io/documentation/connectivity/filtering/">
+    Filtering, drop or reject
+  </a>
+  
+  
+</li>
+
+
+        
+      
+        
+          
+
+
+
+
+
+
+
+
+<li data-nav-id="https://php-etl.github.io/documentation/connectivity/batch/" title="Batch" class="sidelist
+  ">
+  <a href="https://php-etl.github.io/documentation/connectivity/batch/">
+    Batch
+  </a>
+  
+  
+</li>
+
+
+        
+      
+    </ul>
+  
+</li>
+
+
+              
+            
+              
+            
+              
+            
+              
+            
+          </ul>
+        </div>
+      </div>
+      <div class="col-lg-9">
+        <div class="p-lg-5 p-4">
+          <h1 class="single-title mb-5">
+              
+              
+              Zoho CRM
+          </h1>
+          
+          <div class="content"><ul>
+<li><a href="#what-is-it">What is it?</a></li>
+<li><a href="#installation">Installation</a></li>
+<li><a href="#usage">Usage</a>
+<ul>
+<li><a href="#building-a-loader">Building a loader</a></li>
+<li><a href="#building-a-lookup">Building a lookup</a></li>
+</ul>
+</li>
+</ul>
+<hr>
+<h2 id="what-is-it">What is it?</h2>
+<p>This package includes classes to load data into Zoho CRM, using a <a href="../custom">custom connector</a>.</p>
+<h2 id="installation">Installation</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>composer require <span style="color:#e6db74">&#34;php-etl/zoho-crm-flow:*&#34;</span>
+</span></span></code></pre></div><h2 id="usage">Usage</h2>
+<h3 id="building-a-loader">Building a loader</h3>
+<p>The package includes the following loader classes: <code>ContactLoader</code>, <code>DealLoader</code>, <code>OrderLoader</code>, <code>ProductLoader</code>.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#f92672">custom</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">loader</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">use</span>: <span style="color:#e6db74">&#39;Kiboko\Component\Flow\ZohoCRM\ContactLoader&#39;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">services</span>:
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">Kiboko\Component\Flow\ZohoCRM\ContactLoader</span>:
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">public</span>: <span style="color:#66d9ef">true</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">arguments</span>:
+</span></span><span style="display:flex;"><span>          - <span style="color:#e6db74">&#39;@Kiboko\Component\Flow\ZohoCRM\Client\Client&#39;</span>
+</span></span><span style="display:flex;"><span>          - <span style="color:#e6db74">&#39;@Monolog\Logger&#39;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">Kiboko\Component\Flow\ZohoCRM\Client\Client</span>:
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">arguments</span>:
+</span></span><span style="display:flex;"><span>          - <span style="color:#e6db74">&#39;example-zoho.com&#39;</span> <span style="color:#75715e"># URL of the website</span>
+</span></span><span style="display:flex;"><span>          - <span style="color:#e6db74">&#39;@Kiboko\Component\Flow\ZohoCRM\Client\AuthenticationMiddleware&#39;</span>
+</span></span><span style="display:flex;"><span>          - <span style="color:#e6db74">&#39;@GuzzleHttp\Psr7\HttpFactory&#39;</span>
+</span></span><span style="display:flex;"><span>          - <span style="color:#e6db74">&#39;@GuzzleHttp\Psr7\HttpFactory&#39;</span>
+</span></span><span style="display:flex;"><span>          - <span style="color:#e6db74">&#39;@GuzzleHttp\Psr7\HttpFactory&#39;</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">Kiboko\Component\Flow\ZohoCRM\Client\AuthenticationMiddleware</span>:
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">arguments</span>:
+</span></span><span style="display:flex;"><span>          - <span style="color:#e6db74">&#39;@GuzzleHttp\Client&#39;</span>
+</span></span><span style="display:flex;"><span>          - <span style="color:#e6db74">&#39;@GuzzleHttp\Psr7\HttpFactory&#39;</span>
+</span></span><span style="display:flex;"><span>          - <span style="color:#e6db74">&#39;@GuzzleHttp\Psr7\HttpFactory&#39;</span>
+</span></span><span style="display:flex;"><span>          - <span style="color:#e6db74">&#39;accounts.example-zoho.com&#39;</span> <span style="color:#75715e"># OAuth host</span>
+</span></span><span style="display:flex;"><span>          - <span style="color:#e6db74">&#39;200USADNWBAKRAFZASD&#39;</span> <span style="color:#75715e"># Client id</span>
+</span></span><span style="display:flex;"><span>          - <span style="color:#e6db74">&#39;e7c20hns0pxmzsa531hdt7c9&#39;</span> <span style="color:#75715e"># Client secret</span>
+</span></span><span style="display:flex;"><span>          - <span style="color:#e6db74">&#39;p2in89sjdgfnwoc3ehe8q00r&#39;</span> <span style="color:#75715e"># Access token</span>
+</span></span><span style="display:flex;"><span>          - <span style="color:#e6db74">&#39;n7g0a4xfqyemc61uertqplks&#39;</span> <span style="color:#75715e"># Refresh token</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">GuzzleHttp\Client</span>: <span style="color:#ae81ff">~</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">GuzzleHttp\Psr7\HttpFactory</span>: <span style="color:#ae81ff">~</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">Monolog\Logger</span>:
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">arguments</span>:
+</span></span><span style="display:flex;"><span>          - <span style="color:#e6db74">&#39;app&#39;</span>
+</span></span><span style="display:flex;"><span>          - [ <span style="color:#e6db74">&#39;@Monolog\Handler\StreamHandler&#39;</span> ]
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">Monolog\Handler\StreamHandler</span>:
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">arguments</span>:
+</span></span><span style="display:flex;"><span>          - <span style="color:#e6db74">&#39;var/dev.log&#39;</span> <span style="color:#75715e"># Path to the log file</span>
+</span></span><span style="display:flex;"><span>          - <span style="color:#ae81ff">300</span> <span style="color:#75715e"># Log level. 300 for Warning, 200 for Info...</span>
+</span></span></code></pre></div><h3 id="building-a-lookup">Building a lookup</h3>
+<p>The package includes the following lookup classes, and each require a different criteria to search for corresponding entries.</p>
+<table>
+<thead>
+<tr>
+<th>Entity to lookup</th>
+<th>Class</th>
+<th>Search criteria</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Contact</td>
+<td>Kiboko\Component\Flow\ZohoCRM\ContactLookup</td>
+<td>Email</td>
+</tr>
+<tr>
+<td>Order</td>
+<td>Kiboko\Component\Flow\ZohoCRM\OrderLookup</td>
+<td>Subject + Store</td>
+</tr>
+<tr>
+<td>Product</td>
+<td>Kiboko\Component\Flow\ZohoCRM\ProductLookup</td>
+<td>Product code</td>
+</tr>
+</tbody>
+</table>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#f92672">custom</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">transformer</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">use</span>: <span style="color:#e6db74">&#39;Kiboko\Component\Flow\ZohoCRM\ContactLookup&#39;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">services</span>:
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">Kiboko\Component\Flow\ZohoCRM\ContactLookup</span>:
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">public</span>: <span style="color:#66d9ef">true</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">arguments</span>:
+</span></span><span style="display:flex;"><span>          - <span style="color:#e6db74">&#39;@Kiboko\Component\Flow\ZohoCRM\Client\Client&#39;</span>
+</span></span><span style="display:flex;"><span>          - <span style="color:#e6db74">&#39;@Monolog\Logger&#39;</span>
+</span></span><span style="display:flex;"><span>          - <span style="color:#e6db74">&#39;@Symfony\Component\Cache\Psr16Cache&#39;</span>
+</span></span><span style="display:flex;"><span>          - <span style="color:#e6db74">&#39;@Acme\Custom\LookupMapper&#39;</span> <span style="color:#75715e"># Your custom mapper class</span>
+</span></span><span style="display:flex;"><span>          - <span style="color:#e6db74">&#39;customer_id&#39;</span> <span style="color:#75715e"># Index of the search criteria, in your line.</span>
+</span></span><span style="display:flex;"><span>                          <span style="color:#75715e"># In the case of the ContactLookup, it should be an email.</span>
+</span></span><span style="display:flex;"><span>                          <span style="color:#75715e"># Here we temporarily store the customer email in this field.</span>
+</span></span><span style="display:flex;"><span>                          <span style="color:#75715e"># LookupMapper will then replace it with the actual ID.</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">Kiboko\Component\Flow\ZohoCRM\Client\Client</span>:
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">arguments</span>:
+</span></span><span style="display:flex;"><span>          - <span style="color:#e6db74">&#39;example-zoho.com&#39;</span> <span style="color:#75715e"># URL of the website</span>
+</span></span><span style="display:flex;"><span>          - <span style="color:#e6db74">&#39;@Kiboko\Component\Flow\ZohoCRM\Client\AuthenticationMiddleware&#39;</span>
+</span></span><span style="display:flex;"><span>          - <span style="color:#e6db74">&#39;@GuzzleHttp\Psr7\HttpFactory&#39;</span>
+</span></span><span style="display:flex;"><span>          - <span style="color:#e6db74">&#39;@GuzzleHttp\Psr7\HttpFactory&#39;</span>
+</span></span><span style="display:flex;"><span>          - <span style="color:#e6db74">&#39;@GuzzleHttp\Psr7\HttpFactory&#39;</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">Kiboko\Component\Flow\ZohoCRM\Client\AuthenticationMiddleware</span>:
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">arguments</span>:
+</span></span><span style="display:flex;"><span>          - <span style="color:#e6db74">&#39;@GuzzleHttp\Client&#39;</span>
+</span></span><span style="display:flex;"><span>          - <span style="color:#e6db74">&#39;@GuzzleHttp\Psr7\HttpFactory&#39;</span>
+</span></span><span style="display:flex;"><span>          - <span style="color:#e6db74">&#39;@GuzzleHttp\Psr7\HttpFactory&#39;</span>
+</span></span><span style="display:flex;"><span>          - <span style="color:#e6db74">&#39;accounts.example-zoho.com&#39;</span> <span style="color:#75715e"># OAuth host</span>
+</span></span><span style="display:flex;"><span>          - <span style="color:#e6db74">&#39;200USADNWBAKRAFZASD&#39;</span> <span style="color:#75715e"># Client id</span>
+</span></span><span style="display:flex;"><span>          - <span style="color:#e6db74">&#39;e7c20hns0pxmzsa531hdt7c9&#39;</span> <span style="color:#75715e"># Client secret</span>
+</span></span><span style="display:flex;"><span>          - <span style="color:#e6db74">&#39;p2in89sjdgfnwoc3ehe8q00r&#39;</span> <span style="color:#75715e"># Access token</span>
+</span></span><span style="display:flex;"><span>          - <span style="color:#e6db74">&#39;n7g0a4xfqyemc61uertqplks&#39;</span> <span style="color:#75715e"># Refresh token</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">GuzzleHttp\Client</span>: <span style="color:#ae81ff">~</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">GuzzleHttp\Psr7\HttpFactory</span>: <span style="color:#ae81ff">~</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">Symfony\Component\Cache\Psr16Cache</span>:
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">arguments</span>:
+</span></span><span style="display:flex;"><span>          - <span style="color:#e6db74">&#39;@Symfony\Component\Cache\Adapter\ApcuAdapter&#39;</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">Symfony\Component\Cache\Adapter\ApcuAdapter</span>: <span style="color:#ae81ff">~</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>      <span style="color:#75715e"># Your custom mapper class</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">Acme\Custom\LookupMapper</span>: <span style="color:#ae81ff">~</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">Monolog\Logger</span>:
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">arguments</span>:
+</span></span><span style="display:flex;"><span>          - <span style="color:#e6db74">&#39;app&#39;</span>
+</span></span><span style="display:flex;"><span>          - [ <span style="color:#e6db74">&#39;@Monolog\Handler\StreamHandler&#39;</span> ]
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">Monolog\Handler\StreamHandler</span>:
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">arguments</span>:
+</span></span><span style="display:flex;"><span>          - <span style="color:#e6db74">&#39;var/dev.log&#39;</span> <span style="color:#75715e"># Path to the log file</span>
+</span></span><span style="display:flex;"><span>          - <span style="color:#ae81ff">300</span> <span style="color:#75715e"># Log level. 300 for Warning, 200 for Info...</span>
+</span></span></code></pre></div><p><a href="../custom/lookup_mapper">Learn how to create your custom mapper class.</a></p>
+</div>
+          
+          <p class="post-meta border-bottom pb-3 mb-0 mt-3">Updated on 07 Jun 2023</p>
+          <nav class="pagination mt-3">
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            <a class="nav nav-prev" href="https://php-etl.github.io/documentation/connectivity/fast-map/"><i class="ti-arrow-left mr-2"></i> <span class="d-none d-md-block">Fast Map</span></a>
+            
+            
+            <a class="nav nav-next" href="https://php-etl.github.io/documentation/connectivity/ftp/"> <span class="d-none d-md-block">FTP</span><i class="ti-arrow-right ml-2"></i></a>
+            
+          </nav>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- /details page -->
+
+
+
+
+
+
+    <!-- footer -->
+<footer class="section pb-4">
+  <div class="container">
+    <div class="row align-items-center">
+      <div class="col-md-8 text-md-left text-center">
+       <p class="mb-md-0 mb-4">The Gyroscops Documentation is copyright © <a href="https://gyroscops.com/">Gyroscops</a> 2020-2023.</p>
+      </div>
+      <div class="col-md-4 text-md-right text-center">
+        <ul class="list-inline">
+          
+        </ul>
+      </div>
+    </div>
+  </div>
+</footer>
+<!-- /footer -->
+
+<!-- Main Script -->
+
+<script src="https://php-etl.github.io/documentation/js/script.min.js"></script>
+  </body>
+
+</html>

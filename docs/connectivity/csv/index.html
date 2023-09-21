@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <title>CSV  | Gyroscops Documentation</title>
 
-  <meta name="generator" content="Hugo 0.92.2" />
+  <meta name="generator" content="Hugo 0.111.3">
 
   <!-- mobile responsive meta -->
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -120,11 +120,15 @@
           </span>
           <div class="dropdown-menu">
             
-            <a class="dropdown-item" href="/documentation/core-concept/satellite">Satellite</a>
+            <a class="dropdown-item" href="/documentation/core-concept/satellite">Satellites</a>
             
-            <a class="dropdown-item" href="/documentation/core-concept/pipeline">Pipeline</a>
+            <a class="dropdown-item" href="/documentation/core-concept/satellite/pipeline">Pipeline</a>
             
-            <a class="dropdown-item" href="/documentation/core-concept/workflow">Workflow</a>
+            <a class="dropdown-item" href="/documentation/core-concept/satellite/workflow">Workflow</a>
+            
+            <a class="dropdown-item" href="/documentation/core-concept/satellite/http-hook">HTTP Hook</a>
+            
+            <a class="dropdown-item" href="/documentation/core-concept/satellite/http-api">HTTP API</a>
             
           </div>
         </li>
@@ -161,6 +165,12 @@
             <a class="dropdown-item" href="/documentation/connectivity/prestashop">Prestashop</a>
             
             <a class="dropdown-item" href="/documentation/connectivity/filtering">Filtering, drop or reject</a>
+            
+            <a class="dropdown-item" href="/documentation/connectivity/batch">Batch</a>
+            
+            <a class="dropdown-item" href="/documentation/connectivity/magento-2">Magento 2</a>
+            
+            <a class="dropdown-item" href="/documentation/connectivity/zoho">Zoho CRM</a>
             
           </div>
         </li>
@@ -208,6 +218,8 @@
           <ul class="list-styled">
             
             <a class="back-btn" href="/documentation"></a>
+            
+              
             
               
               
@@ -308,6 +320,28 @@
 
 
 
+<li data-nav-id="https://php-etl.github.io/documentation/connectivity/magento-2/" title="Magento 2" class="sidelist
+  ">
+  <a href="https://php-etl.github.io/documentation/connectivity/magento-2/">
+    Magento 2
+  </a>
+  
+  
+</li>
+
+
+        
+      
+        
+          
+
+
+
+
+
+
+
+
 <li data-nav-id="https://php-etl.github.io/documentation/connectivity/csv/" title="CSV" class="sidelist
   active">
   <a href="https://php-etl.github.io/documentation/connectivity/csv/">
@@ -337,6 +371,32 @@
   </a>
   
   
+    <ul>
+      
+        
+          
+
+
+
+
+
+
+
+
+<li data-nav-id="https://php-etl.github.io/documentation/connectivity/custom/lookup_mapper/" title="Lookup mapper" class="sidelist
+  ">
+  <a href="https://php-etl.github.io/documentation/connectivity/custom/lookup_mapper/">
+    Lookup mapper
+  </a>
+  
+  
+</li>
+
+
+        
+      
+    </ul>
+  
 </li>
 
 
@@ -356,6 +416,28 @@
   ">
   <a href="https://php-etl.github.io/documentation/connectivity/fast-map/">
     Fast Map
+  </a>
+  
+  
+</li>
+
+
+        
+      
+        
+          
+
+
+
+
+
+
+
+
+<li data-nav-id="https://php-etl.github.io/documentation/connectivity/zoho/" title="Zoho CRM" class="sidelist
+  ">
+  <a href="https://php-etl.github.io/documentation/connectivity/zoho/">
+    Zoho CRM
   </a>
   
   
@@ -540,13 +622,33 @@
 
         
       
+        
+          
+
+
+
+
+
+
+
+
+<li data-nav-id="https://php-etl.github.io/documentation/connectivity/batch/" title="Batch" class="sidelist
+  ">
+  <a href="https://php-etl.github.io/documentation/connectivity/batch/">
+    Batch
+  </a>
+  
+  
+</li>
+
+
+        
+      
     </ul>
   
 </li>
 
 
-              
-            
               
             
               
@@ -597,19 +699,19 @@
 <p>The CSV plugin aims at integrating the CSV reader and writer into the <a href="../../core-concept/pipeline">Pipeline</a>
 stack.</p>
 <h2 id="installation">Installation</h2>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">composer require php-etl/csv-plugin
-</code></pre></div><h2 id="usage">Usage</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>composer require php-etl/csv-plugin
+</span></span></code></pre></div><h2 id="usage">Usage</h2>
 <h3 id="building-an-extractor">Building an extractor</h3>
 <p>To build an extractor, you need to specify the path of your file.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">csv</span>:
-  <span style="color:#f92672">extractor</span>:
-    <span style="color:#f92672">file_path</span>: <span style="color:#e6db74">&#39;input.csv&#39;</span>
-</code></pre></div><h3 id="building-a-loader">Building a loader</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#f92672">csv</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">extractor</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">file_path</span>: <span style="color:#e6db74">&#39;input.csv&#39;</span>
+</span></span></code></pre></div><h3 id="building-a-loader">Building a loader</h3>
 <p>To build a loader, you need to specify the path of your file.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">csv</span>:
-  <span style="color:#f92672">loader</span>:
-    <span style="color:#f92672">file_path</span>: <span style="color:#e6db74">&#39;output.csv&#39;</span>
-</code></pre></div><h3 id="additional-options">Additional options</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#f92672">csv</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">loader</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">file_path</span>: <span style="color:#e6db74">&#39;output.csv&#39;</span>
+</span></span></code></pre></div><h3 id="additional-options">Additional options</h3>
 <p>To build extractors or loaders, additional options exist and can be used :</p>
 <ul>
 <li><code>delimiter</code> : sets the field separator</li>
@@ -618,39 +720,39 @@ stack.</p>
 <li><code>safe_mode</code> : enable safe mode in the Pipeline</li>
 <li><code>columns</code> : specify the name of the columns to retrieve or write</li>
 </ul>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">csv</span>:
-  <span style="color:#f92672">loader</span>:
-    <span style="color:#f92672">file_path</span>: <span style="color:#e6db74">&#39;output.csv&#39;</span>
-    <span style="color:#f92672">delimiter</span>: <span style="color:#e6db74">&#39;/&#39;</span>
-    <span style="color:#f92672">enclosure</span>: <span style="color:#e6db74">&#39;&#34;&#39;</span>
-    <span style="color:#f92672">escape</span>: <span style="color:#e6db74">&#39;\\&#39;</span>
-    <span style="color:#f92672">safe_mode</span>: <span style="color:#66d9ef">true</span>
-    <span style="color:#f92672">columns</span>:
-      - <span style="color:#ae81ff">firstname</span>
-      - <span style="color:#ae81ff">lastname</span>
-</code></pre></div><h2 id="advanced-usage">Advanced Usage</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#f92672">csv</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">loader</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">file_path</span>: <span style="color:#e6db74">&#39;output.csv&#39;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">delimiter</span>: <span style="color:#e6db74">&#39;/&#39;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">enclosure</span>: <span style="color:#e6db74">&#39;&#34;&#39;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">escape</span>: <span style="color:#e6db74">&#39;\\&#39;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">safe_mode</span>: <span style="color:#66d9ef">true</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">columns</span>:
+</span></span><span style="display:flex;"><span>      - <span style="color:#ae81ff">firstname</span>
+</span></span><span style="display:flex;"><span>      - <span style="color:#ae81ff">lastname</span>
+</span></span></code></pre></div><h2 id="advanced-usage">Advanced Usage</h2>
 <h3 id="splitting-into-several-files">Splitting into several files</h3>
 <p>To limit the number of lines to be written to your csv file, you can specify the <code>max_lines</code> option.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">csv</span>:
-  <span style="color:#f92672">expression_language</span>:
-    - <span style="color:#e6db74">&#39;Kiboko\Component\StringExpressionLanguage\StringExpressionLanguageProvider&#39;</span>
-  <span style="color:#f92672">loader</span>:
-    <span style="color:#75715e"># ...</span>
-    <span style="color:#f92672">max_lines</span>: <span style="color:#ae81ff">20</span>
-    <span style="color:#f92672">file_path</span>: <span style="color:#e6db74">&#39;@=env(&#34;OUTPUT_DIRECTORY&#34;)~format(&#34;output_%06d.csv&#34;,index)&#39;</span>
-</code></pre></div><p>For the dynamic filename to work, you must install <code>php-etl/string-expression-language</code>:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">composer require php-etl/string-expression-language
-</code></pre></div><blockquote>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#f92672">csv</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">expression_language</span>:
+</span></span><span style="display:flex;"><span>    - <span style="color:#e6db74">&#39;Kiboko\Component\StringExpressionLanguage\StringExpressionLanguageProvider&#39;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">loader</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># ...</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">max_lines</span>: <span style="color:#ae81ff">20</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">file_path</span>: <span style="color:#e6db74">&#39;@=env(&#34;OUTPUT_DIRECTORY&#34;)~format(&#34;output_%06d.csv&#34;,index)&#39;</span>
+</span></span></code></pre></div><p>For the dynamic filename to work, you must install <code>php-etl/string-expression-language</code>:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>composer require php-etl/string-expression-language
+</span></span></code></pre></div><blockquote>
 <p>Warning : this option is only available for loaders</p>
 </blockquote>
 <h3 id="using-a-nonstandard-format">Using a nonstandard format</h3>
 <p>In some cases, it is possible to generate a csv file that does not correspond to the standard format (for example by removing the enclosures).
 For this we have added the <code>nonstandard</code> option which is a boolean.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">csv</span>:
-  <span style="color:#f92672">loader</span>:
-    <span style="color:#75715e"># ...</span>
-    <span style="color:#f92672">nonstandard</span>: <span style="color:#66d9ef">true</span>
-</code></pre></div><blockquote>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#f92672">csv</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">loader</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># ...</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">nonstandard</span>: <span style="color:#66d9ef">true</span>
+</span></span></code></pre></div><blockquote>
 <p>Notice : The <code>nonstandard</code> option cannot be used with the <code>enclosure</code> and <code>escape</code> options.</p>
 </blockquote>
 </div>
@@ -683,6 +785,8 @@ For this we have added the <code>nonstandard</code> option which is a boolean.</
             
             
             
+            
+            
 
             
             
@@ -698,10 +802,9 @@ For this we have added the <code>nonstandard</code> option which is a boolean.</
             
             
             
-            
+
             
             
-
             
             
             
@@ -735,12 +838,22 @@ For this we have added the <code>nonstandard</code> option which is a boolean.</
             
             
 
+            
+            
+            
+            
+            
             
             
             
             
             
             
+
+            
+            
+            
+
             
             
             
@@ -750,6 +863,8 @@ For this we have added the <code>nonstandard</code> option which is a boolean.</
             
             
             
+            
+            
 
             
             
@@ -769,30 +884,33 @@ For this we have added the <code>nonstandard</code> option which is a boolean.</
             
             
             
-
             
             
             
+            
 
             
             
             
             
             
+
             
             
             
             
             
             
-
             
             
             
+            
+            
 
             
             
             
+
             
             
             
@@ -822,6 +940,8 @@ For this we have added the <code>nonstandard</code> option which is a boolean.</
             
             
 
+            
+            
             
             
             
@@ -833,6 +953,7 @@ For this we have added the <code>nonstandard</code> option which is a boolean.</
             
             
             
+            
 
             
             
@@ -849,6 +970,7 @@ For this we have added the <code>nonstandard</code> option which is a boolean.</
             
             
             
+            
 
             
             
@@ -865,7 +987,6 @@ For this we have added the <code>nonstandard</code> option which is a boolean.</
             
             
             
-
             
             
             
@@ -873,6 +994,7 @@ For this we have added the <code>nonstandard</code> option which is a boolean.</
             
             
             
+
             
             
             
@@ -886,6 +1008,8 @@ For this we have added the <code>nonstandard</code> option which is a boolean.</
             
             
 
+            
+            
             
             
             
@@ -897,6 +1021,7 @@ For this we have added the <code>nonstandard</code> option which is a boolean.</
             
             
             
+            
 
             
             
@@ -929,16 +1054,28 @@ For this we have added the <code>nonstandard</code> option which is a boolean.</
             
             
             
+
             
             
             
 
+            
+            
+            
+            
+            
+            
+            
+            
+            
             
             
+
             
             
             
 
+            
             
             
             
@@ -947,6 +1084,8 @@ For this we have added the <code>nonstandard</code> option which is a boolean.</
             
             
             
+            
+            
 
             
             
@@ -1027,6 +1166,7 @@ For this we have added the <code>nonstandard</code> option which is a boolean.</
             
             
             
+
             
             
             
@@ -1036,12 +1176,13 @@ For this we have added the <code>nonstandard</code> option which is a boolean.</
             
             
             
-
             
             
             
             
             
+            
+
             
             
             
@@ -1049,7 +1190,6 @@ For this we have added the <code>nonstandard</code> option which is a boolean.</
             
             
             
-
             
             
             
@@ -1124,6 +1264,7 @@ For this we have added the <code>nonstandard</code> option which is a boolean.</
             
             
             
+
             
             
             
@@ -1131,7 +1272,6 @@ For this we have added the <code>nonstandard</code> option which is a boolean.</
             
             
             
-
             
             
             
@@ -1140,6 +1280,7 @@ For this we have added the <code>nonstandard</code> option which is a boolean.</
             
             
             
+
             
             
             
@@ -1147,7 +1288,9 @@ For this we have added the <code>nonstandard</code> option which is a boolean.</
             
             
             
-
+            
+            
+            
             
             
             
@@ -1156,17 +1299,26 @@ For this we have added the <code>nonstandard</code> option which is a boolean.</
             
             
             
+
+            
+            
             
             
             
 
+            
+            
+            
             
             
             
+            
+            
 
             
             
             
+
             
             
             
@@ -1198,6 +1350,8 @@ For this we have added the <code>nonstandard</code> option which is a boolean.</
             
             
 
+            
+            
             
             
             
@@ -1206,11 +1360,14 @@ For this we have added the <code>nonstandard</code> option which is a boolean.</
             
             
             
+            
 
             
             
             
 
+            
+            
             
             
             
@@ -1220,16 +1377,30 @@ For this we have added the <code>nonstandard</code> option which is a boolean.</
             
             
             
+
             
             
+            
 
+            
             
             
             
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
 
             
             
             
+
             
             
             
@@ -1340,7 +1511,7 @@ For this we have added the <code>nonstandard</code> option which is a boolean.</
             
 
             
-            <a class="nav nav-prev" href="https://php-etl.github.io/documentation/connectivity/akeneo/expression-language/"><i class="ti-arrow-left mr-2"></i> <span class="d-none d-md-block">Akeneo expression language functions</span></a>
+            <a class="nav nav-prev" href="https://php-etl.github.io/documentation/connectivity/magento-2/"><i class="ti-arrow-left mr-2"></i> <span class="d-none d-md-block">Magento 2</span></a>
             
             
             <a class="nav nav-next" href="https://php-etl.github.io/documentation/connectivity/custom/"> <span class="d-none d-md-block">Custom connector</span><i class="ti-arrow-right ml-2"></i></a>

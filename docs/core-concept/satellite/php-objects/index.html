@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <title>PHP Objects  | Gyroscops Documentation</title>
 
-  <meta name="generator" content="Hugo 0.92.2" />
+  <meta name="generator" content="Hugo 0.111.3">
 
   <!-- mobile responsive meta -->
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -126,6 +126,10 @@
             
             <a class="dropdown-item" href="/documentation/core-concept/workflow">Workflow</a>
             
+            <a class="dropdown-item" href="/documentation/core-concept/http-hook">HTTP Hook</a>
+            
+            <a class="dropdown-item" href="/documentation/core-concept/http-api">HTTP API</a>
+            
           </div>
         </li>
         
@@ -161,6 +165,12 @@
             <a class="dropdown-item" href="/documentation/connectivity/prestashop">Prestashop</a>
             
             <a class="dropdown-item" href="/documentation/connectivity/filtering">Filtering, drop or reject</a>
+            
+            <a class="dropdown-item" href="/documentation/connectivity/batch">Batch</a>
+            
+            <a class="dropdown-item" href="/documentation/connectivity/magento-2">Magento 2</a>
+            
+            <a class="dropdown-item" href="/documentation/connectivity/zoho">Zoho CRM</a>
             
           </div>
         </li>
@@ -208,12 +218,6 @@
           <ul class="list-styled">
             
             <a class="back-btn" href="/documentation"></a>
-            
-              
-            
-              
-            
-              
             
               
               
@@ -348,11 +352,61 @@
 
         
       
+        
+          
+
+
+
+
+
+
+
+
+<li data-nav-id="https://php-etl.github.io/documentation/core-concept/http-hook/" title="HTTP Hook" class="sidelist
+  ">
+  <a href="https://php-etl.github.io/documentation/core-concept/http-hook/">
+    HTTP Hook
+  </a>
+  
+  
+</li>
+
+
+        
+      
+        
+          
+
+
+
+
+
+
+
+
+<li data-nav-id="https://php-etl.github.io/documentation/core-concept/http-api/" title="HTTP API" class="sidelist
+  ">
+  <a href="https://php-etl.github.io/documentation/core-concept/http-api/">
+    HTTP API
+  </a>
+  
+  
+</li>
+
+
+        
+      
     </ul>
   
 </li>
 
 
+              
+            
+              
+            
+              
+            
               
             
               
@@ -388,95 +442,95 @@ to composer at build time.</p>
 </ul>
 <h3 id="examples">Examples</h3>
 <h4 id="using-http-api">Using http-api</h4>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php">
-<span style="color:#66d9ef">use</span> <span style="color:#a6e22e">Kiboko\Component\ETL\Satellite\Adapter\Docker</span>;
-
-$dockerfile <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Docker\Dockerfile</span>(
-    <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Docker\Dockerfile\From</span>(<span style="color:#e6db74">&#39;kiboko/php:7.4-cli&#39;</span>),
-    <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Docker\Dockerfile\Workdir</span>(<span style="color:#e6db74">&#39;/var/www/html/&#39;</span>)
-);
-
-$dockerfile<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">push</span>(
-    <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Docker\PHP\Composer</span>(),
-    <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Docker\PHP\ComposerInit</span>(),
-    <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Docker\PHP\ComposerMinimumStability</span>(<span style="color:#e6db74">&#39;dev&#39;</span>),
-    <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Docker\PHP\ComposerRequire</span>(<span style="color:#e6db74">&#39;psr/http-message:^1.0@dev&#39;</span>),
-    <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Docker\PHP\ComposerRequire</span>(<span style="color:#e6db74">&#39;psr/http-factory:^1.0@dev&#39;</span>),
-    <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Docker\PHP\ComposerRequire</span>(<span style="color:#e6db74">&#39;psr/http-server-handler:^1.0@dev&#39;</span>),
-    <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Docker\PHP\ComposerRequire</span>(<span style="color:#e6db74">&#39;middlewares/uuid:dev-master&#39;</span>),
-    <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Docker\PHP\ComposerRequire</span>(<span style="color:#e6db74">&#39;middlewares/base-path:dev-master&#39;</span>),
-    <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Docker\PHP\ComposerRequire</span>(<span style="color:#e6db74">&#39;middlewares/request-handler:dev-master&#39;</span>),
-    <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Docker\PHP\ComposerRequire</span>(<span style="color:#e6db74">&#39;middlewares/fast-route:dev-master&#39;</span>),
-    <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Docker\PHP\ComposerRequire</span>(<span style="color:#e6db74">&#39;nyholm/psr7:^1.0@dev&#39;</span>),
-    <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Docker\PHP\ComposerRequire</span>(<span style="color:#e6db74">&#39;nyholm/psr7-server:dev-master&#39;</span>),
-    <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Docker\PHP\ComposerRequire</span>(<span style="color:#e6db74">&#39;laminas/laminas-httphandlerrunner:1.2.x-dev&#39;</span>);
-);
-
-$satellite <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Docker\Satellite</span>(
-    <span style="color:#e6db74">&#39;foo/satellite:bar&#39;</span>,
-    $dockerfile
-);
-
-$httpApi<span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Runtime\HttpApi</span>();
-$httpApi<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">build</span>();
-</code></pre></div><p>In this example, the URL <code>/foo/hello</code> will show all the data render by the function <code>hello.php</code> and the url <code>/foo/events/products</code>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-php" data-lang="php"><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">use</span> <span style="color:#a6e22e">Kiboko\Component\ETL\Satellite\Adapter\Docker</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>$dockerfile <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Docker\Dockerfile</span>(
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Docker\Dockerfile\From</span>(<span style="color:#e6db74">&#39;kiboko/php:7.4-cli&#39;</span>),
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Docker\Dockerfile\Workdir</span>(<span style="color:#e6db74">&#39;/var/www/html/&#39;</span>)
+</span></span><span style="display:flex;"><span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>$dockerfile<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">push</span>(
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Docker\PHP\Composer</span>(),
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Docker\PHP\ComposerInit</span>(),
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Docker\PHP\ComposerMinimumStability</span>(<span style="color:#e6db74">&#39;dev&#39;</span>),
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Docker\PHP\ComposerRequire</span>(<span style="color:#e6db74">&#39;psr/http-message:^1.0@dev&#39;</span>),
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Docker\PHP\ComposerRequire</span>(<span style="color:#e6db74">&#39;psr/http-factory:^1.0@dev&#39;</span>),
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Docker\PHP\ComposerRequire</span>(<span style="color:#e6db74">&#39;psr/http-server-handler:^1.0@dev&#39;</span>),
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Docker\PHP\ComposerRequire</span>(<span style="color:#e6db74">&#39;middlewares/uuid:dev-master&#39;</span>),
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Docker\PHP\ComposerRequire</span>(<span style="color:#e6db74">&#39;middlewares/base-path:dev-master&#39;</span>),
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Docker\PHP\ComposerRequire</span>(<span style="color:#e6db74">&#39;middlewares/request-handler:dev-master&#39;</span>),
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Docker\PHP\ComposerRequire</span>(<span style="color:#e6db74">&#39;middlewares/fast-route:dev-master&#39;</span>),
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Docker\PHP\ComposerRequire</span>(<span style="color:#e6db74">&#39;nyholm/psr7:^1.0@dev&#39;</span>),
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Docker\PHP\ComposerRequire</span>(<span style="color:#e6db74">&#39;nyholm/psr7-server:dev-master&#39;</span>),
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Docker\PHP\ComposerRequire</span>(<span style="color:#e6db74">&#39;laminas/laminas-httphandlerrunner:1.2.x-dev&#39;</span>);
+</span></span><span style="display:flex;"><span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>$satellite <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Docker\Satellite</span>(
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#39;foo/satellite:bar&#39;</span>,
+</span></span><span style="display:flex;"><span>    $dockerfile
+</span></span><span style="display:flex;"><span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>$httpApi<span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Runtime\HttpApi</span>();
+</span></span><span style="display:flex;"><span>$httpApi<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">build</span>();
+</span></span></code></pre></div><p>In this example, the URL <code>/foo/hello</code> will show all the data render by the function <code>hello.php</code> and the url <code>/foo/events/products</code>
 will show the result of the <code>products.php</code> located in the events folder.</p>
 <h4 id="using-http-hook">Using http-hook</h4>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php"><span style="color:#66d9ef">use</span> <span style="color:#a6e22e">Kiboko\Component\ETL\Satellite\Adapter\Docker</span>;
-
-$dockerfile <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Docker\Dockerfile</span>(
-    <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Docker\Dockerfile\From</span>(<span style="color:#e6db74">&#39;kiboko/php:7.4-cli&#39;</span>),
-    <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Docker\Dockerfile\Workdir</span>(<span style="color:#e6db74">&#39;/var/www/html/&#39;</span>)
-);
-
-$dockerfile<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">push</span>(
-    <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Docker\PHP\Composer</span>(),
-    <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Docker\PHP\ComposerInit</span>(),
-    <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Docker\PHP\ComposerMinimumStability</span>(<span style="color:#e6db74">&#39;dev&#39;</span>),
-    <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Docker\PHP\ComposerRequire</span>(<span style="color:#e6db74">&#39;psr/http-message:^1.0@dev&#39;</span>),
-    <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Docker\PHP\ComposerRequire</span>(<span style="color:#e6db74">&#39;psr/http-factory:^1.0@dev&#39;</span>),
-    <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Docker\PHP\ComposerRequire</span>(<span style="color:#e6db74">&#39;psr/http-server-handler:^1.0@dev&#39;</span>),
-    <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Docker\PHP\ComposerRequire</span>(<span style="color:#e6db74">&#39;middlewares/uuid:dev-master&#39;</span>),
-    <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Docker\PHP\ComposerRequire</span>(<span style="color:#e6db74">&#39;middlewares/base-path:dev-master&#39;</span>),
-    <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Docker\PHP\ComposerRequire</span>(<span style="color:#e6db74">&#39;middlewares/request-handler:dev-master&#39;</span>),
-    <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Docker\PHP\ComposerRequire</span>(<span style="color:#e6db74">&#39;middlewares/fast-route:dev-master&#39;</span>),
-    <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Docker\PHP\ComposerRequire</span>(<span style="color:#e6db74">&#39;nyholm/psr7:^1.0@dev&#39;</span>),
-    <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Docker\PHP\ComposerRequire</span>(<span style="color:#e6db74">&#39;nyholm/psr7-server:dev-master&#39;</span>),
-    <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Docker\PHP\ComposerRequire</span>(<span style="color:#e6db74">&#39;laminas/laminas-httphandlerrunner:1.2.x-dev&#39;</span>);
-);
-
-$satellite <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Docker\Satellite</span>(
-    <span style="color:#e6db74">&#39;foo/satellite:bar&#39;</span>,
-    $dockerfile
-);
-
-$httpHook<span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Runtime\HttpHook</span>();
-$httpHook<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">build</span>();
-</code></pre></div><p>In this example, the URL <code>/bar/hello</code> will show all the data render by the function <code>hello.php</code>.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-php" data-lang="php"><span style="display:flex;"><span><span style="color:#66d9ef">use</span> <span style="color:#a6e22e">Kiboko\Component\ETL\Satellite\Adapter\Docker</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>$dockerfile <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Docker\Dockerfile</span>(
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Docker\Dockerfile\From</span>(<span style="color:#e6db74">&#39;kiboko/php:7.4-cli&#39;</span>),
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Docker\Dockerfile\Workdir</span>(<span style="color:#e6db74">&#39;/var/www/html/&#39;</span>)
+</span></span><span style="display:flex;"><span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>$dockerfile<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">push</span>(
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Docker\PHP\Composer</span>(),
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Docker\PHP\ComposerInit</span>(),
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Docker\PHP\ComposerMinimumStability</span>(<span style="color:#e6db74">&#39;dev&#39;</span>),
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Docker\PHP\ComposerRequire</span>(<span style="color:#e6db74">&#39;psr/http-message:^1.0@dev&#39;</span>),
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Docker\PHP\ComposerRequire</span>(<span style="color:#e6db74">&#39;psr/http-factory:^1.0@dev&#39;</span>),
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Docker\PHP\ComposerRequire</span>(<span style="color:#e6db74">&#39;psr/http-server-handler:^1.0@dev&#39;</span>),
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Docker\PHP\ComposerRequire</span>(<span style="color:#e6db74">&#39;middlewares/uuid:dev-master&#39;</span>),
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Docker\PHP\ComposerRequire</span>(<span style="color:#e6db74">&#39;middlewares/base-path:dev-master&#39;</span>),
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Docker\PHP\ComposerRequire</span>(<span style="color:#e6db74">&#39;middlewares/request-handler:dev-master&#39;</span>),
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Docker\PHP\ComposerRequire</span>(<span style="color:#e6db74">&#39;middlewares/fast-route:dev-master&#39;</span>),
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Docker\PHP\ComposerRequire</span>(<span style="color:#e6db74">&#39;nyholm/psr7:^1.0@dev&#39;</span>),
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Docker\PHP\ComposerRequire</span>(<span style="color:#e6db74">&#39;nyholm/psr7-server:dev-master&#39;</span>),
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Docker\PHP\ComposerRequire</span>(<span style="color:#e6db74">&#39;laminas/laminas-httphandlerrunner:1.2.x-dev&#39;</span>);
+</span></span><span style="display:flex;"><span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>$satellite <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Docker\Satellite</span>(
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#39;foo/satellite:bar&#39;</span>,
+</span></span><span style="display:flex;"><span>    $dockerfile
+</span></span><span style="display:flex;"><span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>$httpHook<span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Runtime\HttpHook</span>();
+</span></span><span style="display:flex;"><span>$httpHook<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">build</span>();
+</span></span></code></pre></div><p>In this example, the URL <code>/bar/hello</code> will show all the data render by the function <code>hello.php</code>.</p>
 <h4 id="using-pipeline">Using Pipeline</h4>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php"><span style="color:#66d9ef">use</span> <span style="color:#a6e22e">Kiboko\Component\ETL\Satellite\Adapter\Docker</span>;
-
-$dockerfile <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Docker\Dockerfile</span>(
-    <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Docker\Dockerfile\From</span>(<span style="color:#e6db74">&#39;kiboko/php:7.4-cli&#39;</span>),
-    <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Docker\Dockerfile\Workdir</span>(<span style="color:#e6db74">&#39;/var/www/html/&#39;</span>)
-);
-
-$dockerfile<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">push</span>(
-    <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Docker\PHP\Composer</span>(),
-    <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Docker\PHP\ComposerInit</span>(),
-    <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Docker\PHP\ComposerMinimumStability</span>(<span style="color:#e6db74">&#39;dev&#39;</span>),
-    <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Docker\PHP\ComposerRequire</span>(<span style="color:#e6db74">&#39;php-etl/pipeline:@dev&#39;</span>),
-    <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Docker\PHP\ComposerRequire</span>(<span style="color:#e6db74">&#39;php-etl/fast-map:@dev&#39;</span>)
-);
-
-$satellite <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Docker\Satellite</span>(
-    <span style="color:#e6db74">&#39;foo/satellite:bar&#39;</span>,
-    $dockerfile
-);
-
-$pipeline<span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Runtime\Pipeline</span>();
-$pipeline<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">build</span>();
-</code></pre></div><p>In this example, the config create a pipeline that the Satellite will use.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-php" data-lang="php"><span style="display:flex;"><span><span style="color:#66d9ef">use</span> <span style="color:#a6e22e">Kiboko\Component\ETL\Satellite\Adapter\Docker</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>$dockerfile <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Docker\Dockerfile</span>(
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Docker\Dockerfile\From</span>(<span style="color:#e6db74">&#39;kiboko/php:7.4-cli&#39;</span>),
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Docker\Dockerfile\Workdir</span>(<span style="color:#e6db74">&#39;/var/www/html/&#39;</span>)
+</span></span><span style="display:flex;"><span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>$dockerfile<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">push</span>(
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Docker\PHP\Composer</span>(),
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Docker\PHP\ComposerInit</span>(),
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Docker\PHP\ComposerMinimumStability</span>(<span style="color:#e6db74">&#39;dev&#39;</span>),
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Docker\PHP\ComposerRequire</span>(<span style="color:#e6db74">&#39;php-etl/pipeline:@dev&#39;</span>),
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Docker\PHP\ComposerRequire</span>(<span style="color:#e6db74">&#39;php-etl/fast-map:@dev&#39;</span>)
+</span></span><span style="display:flex;"><span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>$satellite <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Docker\Satellite</span>(
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#39;foo/satellite:bar&#39;</span>,
+</span></span><span style="display:flex;"><span>    $dockerfile
+</span></span><span style="display:flex;"><span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>$pipeline<span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Runtime\Pipeline</span>();
+</span></span><span style="display:flex;"><span>$pipeline<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">build</span>();
+</span></span></code></pre></div><p>In this example, the config create a pipeline that the Satellite will use.</p>
 </div>
           
           <p class="post-meta border-bottom pb-3 mb-0 mt-3">Updated on 01 Jan 0001</p>
@@ -507,8 +561,6 @@ $pipeline<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">bui
             
             
             
-            
-            
 
             
             
@@ -516,6 +568,7 @@ $pipeline<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">bui
             
             
 
+            
             
             
             
@@ -529,6 +582,9 @@ $pipeline<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">bui
             
             
 
+            
+            
+            
             
             
             
@@ -553,11 +609,14 @@ $pipeline<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">bui
             
             
             
+            
 
             
             
             
 
+            
+            
             
             
             
@@ -572,6 +631,7 @@ $pipeline<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">bui
             
             
             
+            
 
             
             
@@ -625,6 +685,9 @@ $pipeline<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">bui
             
             
 
+            
+            
+            
             
             
             
@@ -640,10 +703,22 @@ $pipeline<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">bui
             
             
             
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
 
             
             
             
+
             
             
             
@@ -673,6 +748,7 @@ $pipeline<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">bui
             
             
 
+            
             
             
             
@@ -684,11 +760,14 @@ $pipeline<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">bui
             
             
             
+            
+            
 
             
             
             
 
+            
             
             
             
@@ -697,17 +776,29 @@ $pipeline<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">bui
             
             
             
+            
+            
+
             
             
             
 
+            
+            
+            
+            
+            
+            
+            
             
             
             
+            
 
             
             
             
+
             
             
             
@@ -721,6 +812,7 @@ $pipeline<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">bui
             
             
 
+            
             
             
             
@@ -732,6 +824,8 @@ $pipeline<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">bui
             
             
             
+            
+            
 
             
             
@@ -748,16 +842,30 @@ $pipeline<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">bui
             
             
             
+
             
             
             
 
+            
+            
+            
+            
+            
+            
+            
             
             
             
             
+
+            
+            
             
 
+            
+            
+            
             
             
             
@@ -846,10 +954,17 @@ $pipeline<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">bui
             
             
             
+
             
             
             
 
+            
+            
+            
+            
+            
+            
             
             
             
@@ -859,16 +974,25 @@ $pipeline<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">bui
             
             
             
+
+            
+            
+            
+            
+            
             
             
             
             
             
+            
 
             
             
             
 
+            
+            
             
             
             
@@ -880,6 +1004,7 @@ $pipeline<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">bui
             
             
             
+            
 
             
             
@@ -943,6 +1068,7 @@ $pipeline<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">bui
             
             
             
+
             
             
             
@@ -950,7 +1076,6 @@ $pipeline<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">bui
             
             
             
-
             
             
             
@@ -959,6 +1084,7 @@ $pipeline<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">bui
             
             
             
+
             
             
             
@@ -966,7 +1092,6 @@ $pipeline<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">bui
             
             
             
-
             
             
             
@@ -979,6 +1104,8 @@ $pipeline<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">bui
             
             
 
+            
+            
             
             
             
@@ -991,21 +1118,29 @@ $pipeline<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">bui
             
             
             
+
             
             
             
+
             
             
             
             
-
             
             
             
             
             
+            
+            
 
+            
             
+            
+            
+            
+
             
             
             
@@ -1046,18 +1181,30 @@ $pipeline<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">bui
             
             
             
-            
 
             
             
             
 
+            
+            
+            
+            
+            
+            
             
             
             
             
             
             
+            
+            
+
+            
+            
+            
+
             
             
             

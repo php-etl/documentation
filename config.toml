@@ -52,27 +52,33 @@ hasChildren = true
 
   [[menu.main]]
   parent = "Core concepts"
-  name = "Satellite"
+  name = "Satellites"
   url = "core-concept/satellite"
   weight = 1
 
   [[menu.main]]
   parent = "Core concepts"
   name = "Pipeline"
-  url = "core-concept/pipeline"
+  url = "core-concept/satellite/pipeline"
   weight = 2
 
   [[menu.main]]
   parent = "Core concepts"
   name = "Workflow"
-  url = "core-concept/workflow"
+  url = "core-concept/satellite/workflow"
   weight = 3
 
   [[menu.main]]
   parent = "Core concepts"
-  name = "Action"
-  url = "core-concept/action"
+  name = "HTTP Hook"
+  url = "core-concept/satellite/http-hook"
   weight = 4
+
+  [[menu.main]]
+  parent = "Core concepts"
+  name = "HTTP API"
+  url = "core-concept/satellite/http-api"
+  weight = 5
 
 [[menu.main]]
 weight = 3
@@ -186,16 +192,23 @@ hasChildren = true
    url = "connectivity/filtering"
    weight = 12
 
-[[menu.main]]
-name = "Actions"
-weight = 4
-hasChildren = true
+  [[menu.main]]
+   parent = "Connectivity"
+   name = "Batch"
+   url = "connectivity/batch"
+   weight = 13
 
   [[menu.main]]
-  parent = "Actions"
-  name = "Custom"
-  url = "action/custom"
-  weight = 1
+   parent = "Connectivity"
+   name = "Magento 2"
+   url = "connectivity/magento-2"
+   weight = 14
+
+  [[menu.main]]
+  parent = "Connectivity"
+  name = "Zoho CRM"
+  url = "connectivity/zoho"
+  weight = 15
 
 [params]
 logo = "logo-web.svg"

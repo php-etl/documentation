@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <title>Akeneo expression language functions  | Gyroscops Documentation</title>
 
-  <meta name="generator" content="Hugo 0.92.2" />
+  <meta name="generator" content="Hugo 0.111.3">
 
   <!-- mobile responsive meta -->
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -120,11 +120,15 @@
           </span>
           <div class="dropdown-menu">
             
-            <a class="dropdown-item" href="/documentation/core-concept/satellite">Satellite</a>
+            <a class="dropdown-item" href="/documentation/core-concept/satellite">Satellites</a>
             
-            <a class="dropdown-item" href="/documentation/core-concept/pipeline">Pipeline</a>
+            <a class="dropdown-item" href="/documentation/core-concept/satellite/pipeline">Pipeline</a>
             
-            <a class="dropdown-item" href="/documentation/core-concept/workflow">Workflow</a>
+            <a class="dropdown-item" href="/documentation/core-concept/satellite/workflow">Workflow</a>
+            
+            <a class="dropdown-item" href="/documentation/core-concept/satellite/http-hook">HTTP Hook</a>
+            
+            <a class="dropdown-item" href="/documentation/core-concept/satellite/http-api">HTTP API</a>
             
           </div>
         </li>
@@ -161,6 +165,12 @@
             <a class="dropdown-item" href="/documentation/connectivity/prestashop">Prestashop</a>
             
             <a class="dropdown-item" href="/documentation/connectivity/filtering">Filtering, drop or reject</a>
+            
+            <a class="dropdown-item" href="/documentation/connectivity/batch">Batch</a>
+            
+            <a class="dropdown-item" href="/documentation/connectivity/magento-2">Magento 2</a>
+            
+            <a class="dropdown-item" href="/documentation/connectivity/zoho">Zoho CRM</a>
             
           </div>
         </li>
@@ -208,6 +218,8 @@
           <ul class="list-styled">
             
             <a class="back-btn" href="/documentation"></a>
+            
+              
             
               
               
@@ -308,6 +320,28 @@
 
 
 
+<li data-nav-id="https://php-etl.github.io/documentation/connectivity/magento-2/" title="Magento 2" class="sidelist
+  ">
+  <a href="https://php-etl.github.io/documentation/connectivity/magento-2/">
+    Magento 2
+  </a>
+  
+  
+</li>
+
+
+        
+      
+        
+          
+
+
+
+
+
+
+
+
 <li data-nav-id="https://php-etl.github.io/documentation/connectivity/csv/" title="CSV" class="sidelist
   ">
   <a href="https://php-etl.github.io/documentation/connectivity/csv/">
@@ -337,6 +371,32 @@
   </a>
   
   
+    <ul>
+      
+        
+          
+
+
+
+
+
+
+
+
+<li data-nav-id="https://php-etl.github.io/documentation/connectivity/custom/lookup_mapper/" title="Lookup mapper" class="sidelist
+  ">
+  <a href="https://php-etl.github.io/documentation/connectivity/custom/lookup_mapper/">
+    Lookup mapper
+  </a>
+  
+  
+</li>
+
+
+        
+      
+    </ul>
+  
 </li>
 
 
@@ -356,6 +416,28 @@
   ">
   <a href="https://php-etl.github.io/documentation/connectivity/fast-map/">
     Fast Map
+  </a>
+  
+  
+</li>
+
+
+        
+      
+        
+          
+
+
+
+
+
+
+
+
+<li data-nav-id="https://php-etl.github.io/documentation/connectivity/zoho/" title="Zoho CRM" class="sidelist
+  ">
+  <a href="https://php-etl.github.io/documentation/connectivity/zoho/">
+    Zoho CRM
   </a>
   
   
@@ -540,13 +622,33 @@
 
         
       
+        
+          
+
+
+
+
+
+
+
+
+<li data-nav-id="https://php-etl.github.io/documentation/connectivity/batch/" title="Batch" class="sidelist
+  ">
+  <a href="https://php-etl.github.io/documentation/connectivity/batch/">
+    Batch
+  </a>
+  
+  
+</li>
+
+
+        
+      
     </ul>
   
 </li>
 
 
-              
-            
               
             
               
@@ -628,54 +730,54 @@ the Akeneo provider.</p>
 		<li class="nav-item"><a data-toggle="tab" class="nav-link" href="#basic_definition-1" role="tab" aria-controls="basic_definition-1">PHP</a></li></ul>
 <div class="tab-content" id="basic_definition"><div id="basic_definition-0" class="tab-pane show active" role="tabpanel" aria-labelledby="basic_definition-0">
 
-<p><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml">
-- <span style="color:#f92672">fastmap</span>:
-    <span style="color:#f92672">expression_language</span>:
-    - <span style="color:#e6db74">&#39;Kiboko\Component\ExpressionLanguage\Akeneo\AkeneoFilterProvider&#39;</span>
-    <span style="color:#f92672">map</span>:
-    - <span style="color:#f92672">field</span>: <span style="color:#e6db74">&#39;[title]&#39;</span>
-      <span style="color:#f92672">expression</span>: <span style="color:#e6db74">&#39;filter(input[&#34;title&#34;], scope(&#34;print&#34;, &#34;mobile&#34;, &#34;web&#34;), first())&#39;</span>
-</code></pre></div></div>
+<p><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>- <span style="color:#f92672">fastmap</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">expression_language</span>:
+</span></span><span style="display:flex;"><span>    - <span style="color:#e6db74">&#39;Kiboko\Component\ExpressionLanguage\Akeneo\AkeneoFilterProvider&#39;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">map</span>:
+</span></span><span style="display:flex;"><span>    - <span style="color:#f92672">field</span>: <span style="color:#e6db74">&#39;[title]&#39;</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">expression</span>: <span style="color:#e6db74">&#39;filter(input[&#34;title&#34;], scope(&#34;print&#34;, &#34;mobile&#34;, &#34;web&#34;), first())&#39;</span>
+</span></span></code></pre></div></div>
   <div id="basic_definition-1" class="tab-pane" role="tabpanel" aria-labelledby="basic_definition-1">
 
-<p><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php">
-<span style="color:#f92672">&lt;?</span><span style="color:#a6e22e">php</span>
-
-<span style="color:#66d9ef">use</span> <span style="color:#a6e22e">Symfony\Component\ExpressionLanguage\ExpressionLanguage</span>;
-<span style="color:#66d9ef">use</span> <span style="color:#a6e22e">Kiboko\Component\ExpressionLanguage\Akeneo\AkeneoFilterProvider</span>;
-
-$input <span style="color:#f92672">=</span> [
-    [
-        <span style="color:#e6db74">&#39;locale&#39;</span> <span style="color:#f92672">=&gt;</span> <span style="color:#e6db74">&#39;en_US&#39;</span>,
-        <span style="color:#e6db74">&#39;scope&#39;</span> <span style="color:#f92672">=&gt;</span> <span style="color:#e6db74">&#39;mobile&#39;</span>,
-        <span style="color:#e6db74">&#39;data&#39;</span> <span style="color:#f92672">=&gt;</span> <span style="color:#e6db74">&#39;Lorem ipsum dolor sit amet&#39;</span>,
-    ],
-    [
-        <span style="color:#e6db74">&#39;locale&#39;</span> <span style="color:#f92672">=&gt;</span> <span style="color:#e6db74">&#39;fr_CA&#39;</span>,
-        <span style="color:#e6db74">&#39;scope&#39;</span> <span style="color:#f92672">=&gt;</span> <span style="color:#e6db74">&#39;web&#39;</span>,
-        <span style="color:#e6db74">&#39;data&#39;</span> <span style="color:#f92672">=&gt;</span> <span style="color:#e6db74">&#39;Lorem ipsum dolor sit amet&#39;</span>,
-    ],
-    [
-        <span style="color:#e6db74">&#39;locale&#39;</span> <span style="color:#f92672">=&gt;</span> <span style="color:#e6db74">&#39;fr_CA&#39;</span>,
-        <span style="color:#e6db74">&#39;scope&#39;</span> <span style="color:#f92672">=&gt;</span> <span style="color:#e6db74">&#39;marketplace&#39;</span>,
-        <span style="color:#e6db74">&#39;data&#39;</span> <span style="color:#f92672">=&gt;</span> <span style="color:#e6db74">&#39;Lorem ipsum dolor sit amet&#39;</span>,
-    ],
-    [
-        <span style="color:#e6db74">&#39;locale&#39;</span> <span style="color:#f92672">=&gt;</span> <span style="color:#e6db74">&#39;fr_FR&#39;</span>,
-        <span style="color:#e6db74">&#39;scope&#39;</span> <span style="color:#f92672">=&gt;</span> <span style="color:#e6db74">&#39;print&#39;</span>,
-        <span style="color:#e6db74">&#39;data&#39;</span> <span style="color:#f92672">=&gt;</span> <span style="color:#e6db74">&#39;Lorem ipsum dolor sit amet&#39;</span>,
-    ],
-    [
-        <span style="color:#e6db74">&#39;locale&#39;</span> <span style="color:#f92672">=&gt;</span> <span style="color:#e6db74">&#39;en_GB&#39;</span>,
-        <span style="color:#e6db74">&#39;scope&#39;</span> <span style="color:#f92672">=&gt;</span> <span style="color:#e6db74">&#39;mobile&#39;</span>,
-        <span style="color:#e6db74">&#39;data&#39;</span> <span style="color:#f92672">=&gt;</span> <span style="color:#e6db74">&#39;Lorem ipsum dolor sit amet&#39;</span>,
-    ],
-];
-$expression <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;filter(input, scope(&#34;print&#34;, &#34;mobile&#34;, &#34;web&#34;), first())&#39;</span>;
-
-$interpreter <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">ExpressionLanguage</span>(<span style="color:#66d9ef">null</span>, [<span style="color:#66d9ef">new</span> <span style="color:#a6e22e">AkeneoFilterProvider</span>()]);
-$interpreter<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">evaluate</span>($expression, [<span style="color:#e6db74">&#39;input&#39;</span> <span style="color:#f92672">=&gt;</span> $input]);
-</code></pre></div></div></div>
+<p><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-php" data-lang="php"><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">&lt;?</span><span style="color:#a6e22e">php</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">use</span> <span style="color:#a6e22e">Symfony\Component\ExpressionLanguage\ExpressionLanguage</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">use</span> <span style="color:#a6e22e">Kiboko\Component\ExpressionLanguage\Akeneo\AkeneoFilterProvider</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>$input <span style="color:#f92672">=</span> [
+</span></span><span style="display:flex;"><span>    [
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#39;locale&#39;</span> <span style="color:#f92672">=&gt;</span> <span style="color:#e6db74">&#39;en_US&#39;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#39;scope&#39;</span> <span style="color:#f92672">=&gt;</span> <span style="color:#e6db74">&#39;mobile&#39;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#39;data&#39;</span> <span style="color:#f92672">=&gt;</span> <span style="color:#e6db74">&#39;Lorem ipsum dolor sit amet&#39;</span>,
+</span></span><span style="display:flex;"><span>    ],
+</span></span><span style="display:flex;"><span>    [
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#39;locale&#39;</span> <span style="color:#f92672">=&gt;</span> <span style="color:#e6db74">&#39;fr_CA&#39;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#39;scope&#39;</span> <span style="color:#f92672">=&gt;</span> <span style="color:#e6db74">&#39;web&#39;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#39;data&#39;</span> <span style="color:#f92672">=&gt;</span> <span style="color:#e6db74">&#39;Lorem ipsum dolor sit amet&#39;</span>,
+</span></span><span style="display:flex;"><span>    ],
+</span></span><span style="display:flex;"><span>    [
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#39;locale&#39;</span> <span style="color:#f92672">=&gt;</span> <span style="color:#e6db74">&#39;fr_CA&#39;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#39;scope&#39;</span> <span style="color:#f92672">=&gt;</span> <span style="color:#e6db74">&#39;marketplace&#39;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#39;data&#39;</span> <span style="color:#f92672">=&gt;</span> <span style="color:#e6db74">&#39;Lorem ipsum dolor sit amet&#39;</span>,
+</span></span><span style="display:flex;"><span>    ],
+</span></span><span style="display:flex;"><span>    [
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#39;locale&#39;</span> <span style="color:#f92672">=&gt;</span> <span style="color:#e6db74">&#39;fr_FR&#39;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#39;scope&#39;</span> <span style="color:#f92672">=&gt;</span> <span style="color:#e6db74">&#39;print&#39;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#39;data&#39;</span> <span style="color:#f92672">=&gt;</span> <span style="color:#e6db74">&#39;Lorem ipsum dolor sit amet&#39;</span>,
+</span></span><span style="display:flex;"><span>    ],
+</span></span><span style="display:flex;"><span>    [
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#39;locale&#39;</span> <span style="color:#f92672">=&gt;</span> <span style="color:#e6db74">&#39;en_GB&#39;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#39;scope&#39;</span> <span style="color:#f92672">=&gt;</span> <span style="color:#e6db74">&#39;mobile&#39;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#39;data&#39;</span> <span style="color:#f92672">=&gt;</span> <span style="color:#e6db74">&#39;Lorem ipsum dolor sit amet&#39;</span>,
+</span></span><span style="display:flex;"><span>    ],
+</span></span><span style="display:flex;"><span>];
+</span></span><span style="display:flex;"><span>$expression <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;filter(input, scope(&#34;print&#34;, &#34;mobile&#34;, &#34;web&#34;), first())&#39;</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>$interpreter <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">ExpressionLanguage</span>(<span style="color:#66d9ef">null</span>, [<span style="color:#66d9ef">new</span> <span style="color:#a6e22e">AkeneoFilterProvider</span>()]);
+</span></span><span style="display:flex;"><span>$interpreter<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">evaluate</span>($expression, [<span style="color:#e6db74">&#39;input&#39;</span> <span style="color:#f92672">=&gt;</span> $input]);
+</span></span></code></pre></div></div></div>
 
 <h3 id="functions-reference">Functions reference</h3>
 <h4 id="attribute-data-manipulation">Attribute data manipulation</h4>
@@ -700,51 +802,51 @@ with no reordering.</p>
 		<li class="nav-item"><a data-toggle="tab" class="nav-link" href="#locale-1" role="tab" aria-controls="locale-1">Data Source</a></li></ul>
 <div class="tab-content" id="locale"><div id="locale-0" class="tab-pane show active" role="tabpanel" aria-labelledby="locale-0">
 
-<p><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json">
-[
-    {
-        <span style="color:#f92672">&#34;locale&#34;</span>: <span style="color:#e6db74">&#34;fr_FR&#34;</span>,
-        <span style="color:#f92672">&#34;scope&#34;</span>: <span style="color:#e6db74">&#34;web&#34;</span>,
-        <span style="color:#f92672">&#34;data&#34;</span>: <span style="color:#e6db74">&#34;Lorem ipsum dolor sit amet&#34;</span>
-    },
-    {
-        <span style="color:#f92672">&#34;locale&#34;</span>: <span style="color:#e6db74">&#34;fr_CA&#34;</span>,
-        <span style="color:#f92672">&#34;scope&#34;</span>: <span style="color:#e6db74">&#34;web&#34;</span>,
-        <span style="color:#f92672">&#34;data&#34;</span>: <span style="color:#e6db74">&#34;Lorem ipsum dolor sit amet&#34;</span>
-    },
-    {
-        <span style="color:#f92672">&#34;locale&#34;</span>: <span style="color:#e6db74">&#34;fr_FR&#34;</span>,
-        <span style="color:#f92672">&#34;scope&#34;</span>: <span style="color:#e6db74">&#34;web&#34;</span>,
-        <span style="color:#f92672">&#34;data&#34;</span>: <span style="color:#e6db74">&#34;Lorem ipsum dolor sit amet&#34;</span>
-    }
-]
-</code></pre></div></div>
+<p><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>[
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;locale&#34;</span>: <span style="color:#e6db74">&#34;fr_FR&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;scope&#34;</span>: <span style="color:#e6db74">&#34;web&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;data&#34;</span>: <span style="color:#e6db74">&#34;Lorem ipsum dolor sit amet&#34;</span>
+</span></span><span style="display:flex;"><span>    },
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;locale&#34;</span>: <span style="color:#e6db74">&#34;fr_CA&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;scope&#34;</span>: <span style="color:#e6db74">&#34;web&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;data&#34;</span>: <span style="color:#e6db74">&#34;Lorem ipsum dolor sit amet&#34;</span>
+</span></span><span style="display:flex;"><span>    },
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;locale&#34;</span>: <span style="color:#e6db74">&#34;fr_FR&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;scope&#34;</span>: <span style="color:#e6db74">&#34;web&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;data&#34;</span>: <span style="color:#e6db74">&#34;Lorem ipsum dolor sit amet&#34;</span>
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>]
+</span></span></code></pre></div></div>
   <div id="locale-1" class="tab-pane" role="tabpanel" aria-labelledby="locale-1">
 
-<p><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json">
-[
-    {
-        <span style="color:#f92672">&#34;locale&#34;</span>: <span style="color:#e6db74">&#34;fr_FR&#34;</span>,
-        <span style="color:#f92672">&#34;scope&#34;</span>: <span style="color:#e6db74">&#34;web&#34;</span>,
-        <span style="color:#f92672">&#34;data&#34;</span>: <span style="color:#e6db74">&#34;Lorem ipsum dolor sit amet&#34;</span>
-    },
-    {
-        <span style="color:#f92672">&#34;locale&#34;</span>: <span style="color:#e6db74">&#34;en_US&#34;</span>,
-        <span style="color:#f92672">&#34;scope&#34;</span>: <span style="color:#e6db74">&#34;mobile&#34;</span>,
-        <span style="color:#f92672">&#34;data&#34;</span>: <span style="color:#e6db74">&#34;Lorem ipsum dolor sit amet&#34;</span>
-    },
-    {
-        <span style="color:#f92672">&#34;locale&#34;</span>: <span style="color:#e6db74">&#34;fr_CA&#34;</span>,
-        <span style="color:#f92672">&#34;scope&#34;</span>: <span style="color:#e6db74">&#34;web&#34;</span>,
-        <span style="color:#f92672">&#34;data&#34;</span>: <span style="color:#e6db74">&#34;Lorem ipsum dolor sit amet&#34;</span>
-    },
-    {
-        <span style="color:#f92672">&#34;locale&#34;</span>: <span style="color:#e6db74">&#34;fr_FR&#34;</span>,
-        <span style="color:#f92672">&#34;scope&#34;</span>: <span style="color:#e6db74">&#34;print&#34;</span>,
-        <span style="color:#f92672">&#34;data&#34;</span>: <span style="color:#e6db74">&#34;Lorem ipsum dolor sit amet&#34;</span>,
-    },
-]
-</code></pre></div></div></div>
+<p><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>[
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;locale&#34;</span>: <span style="color:#e6db74">&#34;fr_FR&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;scope&#34;</span>: <span style="color:#e6db74">&#34;web&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;data&#34;</span>: <span style="color:#e6db74">&#34;Lorem ipsum dolor sit amet&#34;</span>
+</span></span><span style="display:flex;"><span>    },
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;locale&#34;</span>: <span style="color:#e6db74">&#34;en_US&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;scope&#34;</span>: <span style="color:#e6db74">&#34;mobile&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;data&#34;</span>: <span style="color:#e6db74">&#34;Lorem ipsum dolor sit amet&#34;</span>
+</span></span><span style="display:flex;"><span>    },
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;locale&#34;</span>: <span style="color:#e6db74">&#34;fr_CA&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;scope&#34;</span>: <span style="color:#e6db74">&#34;web&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;data&#34;</span>: <span style="color:#e6db74">&#34;Lorem ipsum dolor sit amet&#34;</span>
+</span></span><span style="display:flex;"><span>    },
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;locale&#34;</span>: <span style="color:#e6db74">&#34;fr_FR&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;scope&#34;</span>: <span style="color:#e6db74">&#34;print&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;data&#34;</span>: <span style="color:#e6db74">&#34;Lorem ipsum dolor sit amet&#34;</span>,
+</span></span><span style="display:flex;"><span>    },
+</span></span><span style="display:flex;"><span>]
+</span></span></code></pre></div></div></div>
 
 <h4 id="filter-by-scope">Filter by scope</h4>
 <p><code>scope ( string ...scope )</code></p>
@@ -756,51 +858,51 @@ with no reordering.</p>
 		<li class="nav-item"><a data-toggle="tab" class="nav-link" href="#scope-1" role="tab" aria-controls="scope-1">Data Source</a></li></ul>
 <div class="tab-content" id="scope"><div id="scope-0" class="tab-pane show active" role="tabpanel" aria-labelledby="scope-0">
 
-<p><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json">
-[
-    {
-        <span style="color:#f92672">&#34;locale&#34;</span>: <span style="color:#e6db74">&#34;fr_FR&#34;</span>,
-        <span style="color:#f92672">&#34;scope&#34;</span>: <span style="color:#e6db74">&#34;web&#34;</span>,
-        <span style="color:#f92672">&#34;data&#34;</span>: <span style="color:#e6db74">&#34;Lorem ipsum dolor sit amet&#34;</span>
-    },
-    {
-        <span style="color:#f92672">&#34;locale&#34;</span>: <span style="color:#e6db74">&#34;fr_CA&#34;</span>,
-        <span style="color:#f92672">&#34;scope&#34;</span>: <span style="color:#e6db74">&#34;web&#34;</span>,
-        <span style="color:#f92672">&#34;data&#34;</span>: <span style="color:#e6db74">&#34;Lorem ipsum dolor sit amet&#34;</span>
-    },
-    {
-        <span style="color:#f92672">&#34;locale&#34;</span>: <span style="color:#e6db74">&#34;fr_FR&#34;</span>,
-        <span style="color:#f92672">&#34;scope&#34;</span>: <span style="color:#e6db74">&#34;print&#34;</span>,
-        <span style="color:#f92672">&#34;data&#34;</span>: <span style="color:#e6db74">&#34;Lorem ipsum dolor sit amet&#34;</span>
-    }
-]
-</code></pre></div></div>
+<p><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>[
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;locale&#34;</span>: <span style="color:#e6db74">&#34;fr_FR&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;scope&#34;</span>: <span style="color:#e6db74">&#34;web&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;data&#34;</span>: <span style="color:#e6db74">&#34;Lorem ipsum dolor sit amet&#34;</span>
+</span></span><span style="display:flex;"><span>    },
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;locale&#34;</span>: <span style="color:#e6db74">&#34;fr_CA&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;scope&#34;</span>: <span style="color:#e6db74">&#34;web&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;data&#34;</span>: <span style="color:#e6db74">&#34;Lorem ipsum dolor sit amet&#34;</span>
+</span></span><span style="display:flex;"><span>    },
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;locale&#34;</span>: <span style="color:#e6db74">&#34;fr_FR&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;scope&#34;</span>: <span style="color:#e6db74">&#34;print&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;data&#34;</span>: <span style="color:#e6db74">&#34;Lorem ipsum dolor sit amet&#34;</span>
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>]
+</span></span></code></pre></div></div>
   <div id="scope-1" class="tab-pane" role="tabpanel" aria-labelledby="scope-1">
 
-<p><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json">
-[
-    {
-        <span style="color:#f92672">&#34;locale&#34;</span>: <span style="color:#e6db74">&#34;fr_FR&#34;</span>,
-        <span style="color:#f92672">&#34;scope&#34;</span>: <span style="color:#e6db74">&#34;web&#34;</span>,
-        <span style="color:#f92672">&#34;data&#34;</span>: <span style="color:#e6db74">&#34;Lorem ipsum dolor sit amet&#34;</span>
-    },
-    {
-        <span style="color:#f92672">&#34;locale&#34;</span>: <span style="color:#e6db74">&#34;en_US&#34;</span>,
-        <span style="color:#f92672">&#34;scope&#34;</span>: <span style="color:#e6db74">&#34;mobile&#34;</span>,
-        <span style="color:#f92672">&#34;data&#34;</span>: <span style="color:#e6db74">&#34;Lorem ipsum dolor sit amet&#34;</span>
-    },
-    {
-        <span style="color:#f92672">&#34;locale&#34;</span>: <span style="color:#e6db74">&#34;fr_CA&#34;</span>,
-        <span style="color:#f92672">&#34;scope&#34;</span>: <span style="color:#e6db74">&#34;print&#34;</span>,
-        <span style="color:#f92672">&#34;data&#34;</span>: <span style="color:#e6db74">&#34;Lorem ipsum dolor sit amet&#34;</span>
-    },
-    {
-        <span style="color:#f92672">&#34;locale&#34;</span>: <span style="color:#e6db74">&#34;fr_FR&#34;</span>,
-        <span style="color:#f92672">&#34;scope&#34;</span>: <span style="color:#e6db74">&#34;print&#34;</span>,
-        <span style="color:#f92672">&#34;data&#34;</span>: <span style="color:#e6db74">&#34;Lorem ipsum dolor sit amet&#34;</span>,
-    },
-]
-</code></pre></div></div></div>
+<p><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>[
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;locale&#34;</span>: <span style="color:#e6db74">&#34;fr_FR&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;scope&#34;</span>: <span style="color:#e6db74">&#34;web&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;data&#34;</span>: <span style="color:#e6db74">&#34;Lorem ipsum dolor sit amet&#34;</span>
+</span></span><span style="display:flex;"><span>    },
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;locale&#34;</span>: <span style="color:#e6db74">&#34;en_US&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;scope&#34;</span>: <span style="color:#e6db74">&#34;mobile&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;data&#34;</span>: <span style="color:#e6db74">&#34;Lorem ipsum dolor sit amet&#34;</span>
+</span></span><span style="display:flex;"><span>    },
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;locale&#34;</span>: <span style="color:#e6db74">&#34;fr_CA&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;scope&#34;</span>: <span style="color:#e6db74">&#34;print&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;data&#34;</span>: <span style="color:#e6db74">&#34;Lorem ipsum dolor sit amet&#34;</span>
+</span></span><span style="display:flex;"><span>    },
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;locale&#34;</span>: <span style="color:#e6db74">&#34;fr_FR&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;scope&#34;</span>: <span style="color:#e6db74">&#34;print&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;data&#34;</span>: <span style="color:#e6db74">&#34;Lorem ipsum dolor sit amet&#34;</span>,
+</span></span><span style="display:flex;"><span>    },
+</span></span><span style="display:flex;"><span>]
+</span></span></code></pre></div></div></div>
 
 <h4 id="take-the-first-available-value-by-scopes">Take the first available value by scopes</h4>
 <p><code>coalesce ( string ...scope )</code></p>
@@ -811,41 +913,41 @@ with no reordering.</p>
 		<li class="nav-item"><a data-toggle="tab" class="nav-link" href="#coalesce-1" role="tab" aria-controls="coalesce-1">Data Source</a></li></ul>
 <div class="tab-content" id="coalesce"><div id="coalesce-0" class="tab-pane show active" role="tabpanel" aria-labelledby="coalesce-0">
 
-<p><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json">
-[
-    {
-        <span style="color:#f92672">&#34;locale&#34;</span>: <span style="color:#e6db74">&#34;fr_FR&#34;</span>,
-        <span style="color:#f92672">&#34;scope&#34;</span>: <span style="color:#e6db74">&#34;web&#34;</span>,
-        <span style="color:#f92672">&#34;data&#34;</span>: <span style="color:#e6db74">&#34;Lorem ipsum dolor sit amet&#34;</span>
-    }
-]
-</code></pre></div></div>
+<p><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>[
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;locale&#34;</span>: <span style="color:#e6db74">&#34;fr_FR&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;scope&#34;</span>: <span style="color:#e6db74">&#34;web&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;data&#34;</span>: <span style="color:#e6db74">&#34;Lorem ipsum dolor sit amet&#34;</span>
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>]
+</span></span></code></pre></div></div>
   <div id="coalesce-1" class="tab-pane" role="tabpanel" aria-labelledby="coalesce-1">
 
-<p><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json">
-[
-    {
-        <span style="color:#f92672">&#34;locale&#34;</span>: <span style="color:#e6db74">&#34;fr_FR&#34;</span>,
-        <span style="color:#f92672">&#34;scope&#34;</span>: <span style="color:#e6db74">&#34;web&#34;</span>,
-        <span style="color:#f92672">&#34;data&#34;</span>: <span style="color:#e6db74">&#34;Lorem ipsum dolor sit amet&#34;</span>
-    },
-    {
-        <span style="color:#f92672">&#34;locale&#34;</span>: <span style="color:#e6db74">&#34;en_US&#34;</span>,
-        <span style="color:#f92672">&#34;scope&#34;</span>: <span style="color:#e6db74">&#34;mobile&#34;</span>,
-        <span style="color:#f92672">&#34;data&#34;</span>: <span style="color:#e6db74">&#34;Lorem ipsum dolor sit amet&#34;</span>
-    },
-    {
-        <span style="color:#f92672">&#34;locale&#34;</span>: <span style="color:#e6db74">&#34;fr_CA&#34;</span>,
-        <span style="color:#f92672">&#34;scope&#34;</span>: <span style="color:#e6db74">&#34;print&#34;</span>,
-        <span style="color:#f92672">&#34;data&#34;</span>: <span style="color:#e6db74">&#34;Lorem ipsum dolor sit amet&#34;</span>
-    },
-    {
-        <span style="color:#f92672">&#34;locale&#34;</span>: <span style="color:#e6db74">&#34;fr_FR&#34;</span>,
-        <span style="color:#f92672">&#34;scope&#34;</span>: <span style="color:#e6db74">&#34;print&#34;</span>,
-        <span style="color:#f92672">&#34;data&#34;</span>: <span style="color:#e6db74">&#34;Lorem ipsum dolor sit amet&#34;</span>,
-    },
-]
-</code></pre></div></div></div>
+<p><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>[
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;locale&#34;</span>: <span style="color:#e6db74">&#34;fr_FR&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;scope&#34;</span>: <span style="color:#e6db74">&#34;web&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;data&#34;</span>: <span style="color:#e6db74">&#34;Lorem ipsum dolor sit amet&#34;</span>
+</span></span><span style="display:flex;"><span>    },
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;locale&#34;</span>: <span style="color:#e6db74">&#34;en_US&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;scope&#34;</span>: <span style="color:#e6db74">&#34;mobile&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;data&#34;</span>: <span style="color:#e6db74">&#34;Lorem ipsum dolor sit amet&#34;</span>
+</span></span><span style="display:flex;"><span>    },
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;locale&#34;</span>: <span style="color:#e6db74">&#34;fr_CA&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;scope&#34;</span>: <span style="color:#e6db74">&#34;print&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;data&#34;</span>: <span style="color:#e6db74">&#34;Lorem ipsum dolor sit amet&#34;</span>
+</span></span><span style="display:flex;"><span>    },
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;locale&#34;</span>: <span style="color:#e6db74">&#34;fr_FR&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;scope&#34;</span>: <span style="color:#e6db74">&#34;print&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;data&#34;</span>: <span style="color:#e6db74">&#34;Lorem ipsum dolor sit amet&#34;</span>,
+</span></span><span style="display:flex;"><span>    },
+</span></span><span style="display:flex;"><span>]
+</span></span></code></pre></div></div></div>
 
 <h4 id="combining-results-filter">Combining results filter</h4>
 <p><code>anyOf ( ...filters )</code></p>
@@ -858,51 +960,51 @@ filter is true.</p>
 		<li class="nav-item"><a data-toggle="tab" class="nav-link" href="#anyof-1" role="tab" aria-controls="anyof-1">Data Source</a></li></ul>
 <div class="tab-content" id="anyof"><div id="anyof-0" class="tab-pane show active" role="tabpanel" aria-labelledby="anyof-0">
 
-<p><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json">
-[
-    {
-        <span style="color:#f92672">&#34;locale&#34;</span>: <span style="color:#e6db74">&#34;fr_FR&#34;</span>,
-        <span style="color:#f92672">&#34;scope&#34;</span>: <span style="color:#e6db74">&#34;web&#34;</span>,
-        <span style="color:#f92672">&#34;data&#34;</span>: <span style="color:#e6db74">&#34;Lorem ipsum dolor sit amet&#34;</span>
-    },
-    {
-        <span style="color:#f92672">&#34;locale&#34;</span>: <span style="color:#e6db74">&#34;fr_FR&#34;</span>,
-        <span style="color:#f92672">&#34;scope&#34;</span>: <span style="color:#e6db74">&#34;print&#34;</span>,
-        <span style="color:#f92672">&#34;data&#34;</span>: <span style="color:#e6db74">&#34;Lorem ipsum dolor sit amet&#34;</span>
-    },
-    {
-        <span style="color:#f92672">&#34;locale&#34;</span>: <span style="color:#e6db74">&#34;fr_CA&#34;</span>,
-        <span style="color:#f92672">&#34;scope&#34;</span>: <span style="color:#e6db74">&#34;web&#34;</span>,
-        <span style="color:#f92672">&#34;data&#34;</span>: <span style="color:#e6db74">&#34;Lorem ipsum dolor sit amet&#34;</span>
-    }
-]
-</code></pre></div></div>
+<p><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>[
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;locale&#34;</span>: <span style="color:#e6db74">&#34;fr_FR&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;scope&#34;</span>: <span style="color:#e6db74">&#34;web&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;data&#34;</span>: <span style="color:#e6db74">&#34;Lorem ipsum dolor sit amet&#34;</span>
+</span></span><span style="display:flex;"><span>    },
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;locale&#34;</span>: <span style="color:#e6db74">&#34;fr_FR&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;scope&#34;</span>: <span style="color:#e6db74">&#34;print&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;data&#34;</span>: <span style="color:#e6db74">&#34;Lorem ipsum dolor sit amet&#34;</span>
+</span></span><span style="display:flex;"><span>    },
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;locale&#34;</span>: <span style="color:#e6db74">&#34;fr_CA&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;scope&#34;</span>: <span style="color:#e6db74">&#34;web&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;data&#34;</span>: <span style="color:#e6db74">&#34;Lorem ipsum dolor sit amet&#34;</span>
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>]
+</span></span></code></pre></div></div>
   <div id="anyof-1" class="tab-pane" role="tabpanel" aria-labelledby="anyof-1">
 
-<p><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json">
-[
-    {
-        <span style="color:#f92672">&#34;locale&#34;</span>: <span style="color:#e6db74">&#34;fr_FR&#34;</span>,
-        <span style="color:#f92672">&#34;scope&#34;</span>: <span style="color:#e6db74">&#34;web&#34;</span>,
-        <span style="color:#f92672">&#34;data&#34;</span>: <span style="color:#e6db74">&#34;Lorem ipsum dolor sit amet&#34;</span>
-    },
-    {
-        <span style="color:#f92672">&#34;locale&#34;</span>: <span style="color:#e6db74">&#34;en_US&#34;</span>,
-        <span style="color:#f92672">&#34;scope&#34;</span>: <span style="color:#e6db74">&#34;mobile&#34;</span>,
-        <span style="color:#f92672">&#34;data&#34;</span>: <span style="color:#e6db74">&#34;Lorem ipsum dolor sit amet&#34;</span>
-    },
-    {
-        <span style="color:#f92672">&#34;locale&#34;</span>: <span style="color:#e6db74">&#34;fr_CA&#34;</span>,
-        <span style="color:#f92672">&#34;scope&#34;</span>: <span style="color:#e6db74">&#34;web&#34;</span>,
-        <span style="color:#f92672">&#34;data&#34;</span>: <span style="color:#e6db74">&#34;Lorem ipsum dolor sit amet&#34;</span>
-    },
-    {
-        <span style="color:#f92672">&#34;locale&#34;</span>: <span style="color:#e6db74">&#34;fr_FR&#34;</span>,
-        <span style="color:#f92672">&#34;scope&#34;</span>: <span style="color:#e6db74">&#34;print&#34;</span>,
-        <span style="color:#f92672">&#34;data&#34;</span>: <span style="color:#e6db74">&#34;Lorem ipsum dolor sit amet&#34;</span>,
-    },
-]
-</code></pre></div></div></div>
+<p><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>[
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;locale&#34;</span>: <span style="color:#e6db74">&#34;fr_FR&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;scope&#34;</span>: <span style="color:#e6db74">&#34;web&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;data&#34;</span>: <span style="color:#e6db74">&#34;Lorem ipsum dolor sit amet&#34;</span>
+</span></span><span style="display:flex;"><span>    },
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;locale&#34;</span>: <span style="color:#e6db74">&#34;en_US&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;scope&#34;</span>: <span style="color:#e6db74">&#34;mobile&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;data&#34;</span>: <span style="color:#e6db74">&#34;Lorem ipsum dolor sit amet&#34;</span>
+</span></span><span style="display:flex;"><span>    },
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;locale&#34;</span>: <span style="color:#e6db74">&#34;fr_CA&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;scope&#34;</span>: <span style="color:#e6db74">&#34;web&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;data&#34;</span>: <span style="color:#e6db74">&#34;Lorem ipsum dolor sit amet&#34;</span>
+</span></span><span style="display:flex;"><span>    },
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;locale&#34;</span>: <span style="color:#e6db74">&#34;fr_FR&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;scope&#34;</span>: <span style="color:#e6db74">&#34;print&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;data&#34;</span>: <span style="color:#e6db74">&#34;Lorem ipsum dolor sit amet&#34;</span>,
+</span></span><span style="display:flex;"><span>    },
+</span></span><span style="display:flex;"><span>]
+</span></span></code></pre></div></div></div>
 
 <h4 id="excluding-results-filter">Excluding results filter</h4>
 <p><code>allOf ( ...filters )</code></p>
@@ -914,41 +1016,41 @@ to every specified filter. It will result in a list where <strong>all</strong> f
 		<li class="nav-item"><a data-toggle="tab" class="nav-link" href="#allof-1" role="tab" aria-controls="allof-1">Data Source</a></li></ul>
 <div class="tab-content" id="allof"><div id="allof-0" class="tab-pane show active" role="tabpanel" aria-labelledby="allof-0">
 
-<p><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json">
-[
-    {
-        <span style="color:#f92672">&#34;locale&#34;</span>: <span style="color:#e6db74">&#34;fr_FR&#34;</span>,
-        <span style="color:#f92672">&#34;scope&#34;</span>: <span style="color:#e6db74">&#34;web&#34;</span>,
-        <span style="color:#f92672">&#34;data&#34;</span>: <span style="color:#e6db74">&#34;Lorem ipsum dolor sit amet&#34;</span>
-    }
-]
-</code></pre></div></div>
+<p><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>[
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;locale&#34;</span>: <span style="color:#e6db74">&#34;fr_FR&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;scope&#34;</span>: <span style="color:#e6db74">&#34;web&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;data&#34;</span>: <span style="color:#e6db74">&#34;Lorem ipsum dolor sit amet&#34;</span>
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>]
+</span></span></code></pre></div></div>
   <div id="allof-1" class="tab-pane" role="tabpanel" aria-labelledby="allof-1">
 
-<p><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json">
-[
-    {
-        <span style="color:#f92672">&#34;locale&#34;</span>: <span style="color:#e6db74">&#34;fr_FR&#34;</span>,
-        <span style="color:#f92672">&#34;scope&#34;</span>: <span style="color:#e6db74">&#34;web&#34;</span>,
-        <span style="color:#f92672">&#34;data&#34;</span>: <span style="color:#e6db74">&#34;Lorem ipsum dolor sit amet&#34;</span>
-    },
-    {
-        <span style="color:#f92672">&#34;locale&#34;</span>: <span style="color:#e6db74">&#34;en_US&#34;</span>,
-        <span style="color:#f92672">&#34;scope&#34;</span>: <span style="color:#e6db74">&#34;mobile&#34;</span>,
-        <span style="color:#f92672">&#34;data&#34;</span>: <span style="color:#e6db74">&#34;Lorem ipsum dolor sit amet&#34;</span>
-    },
-    {
-        <span style="color:#f92672">&#34;locale&#34;</span>: <span style="color:#e6db74">&#34;fr_CA&#34;</span>,
-        <span style="color:#f92672">&#34;scope&#34;</span>: <span style="color:#e6db74">&#34;web&#34;</span>,
-        <span style="color:#f92672">&#34;data&#34;</span>: <span style="color:#e6db74">&#34;Lorem ipsum dolor sit amet&#34;</span>
-    },
-    {
-        <span style="color:#f92672">&#34;locale&#34;</span>: <span style="color:#e6db74">&#34;fr_FR&#34;</span>,
-        <span style="color:#f92672">&#34;scope&#34;</span>: <span style="color:#e6db74">&#34;print&#34;</span>,
-        <span style="color:#f92672">&#34;data&#34;</span>: <span style="color:#e6db74">&#34;Lorem ipsum dolor sit amet&#34;</span>
-    }
-]
-</code></pre></div></div></div>
+<p><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>[
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;locale&#34;</span>: <span style="color:#e6db74">&#34;fr_FR&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;scope&#34;</span>: <span style="color:#e6db74">&#34;web&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;data&#34;</span>: <span style="color:#e6db74">&#34;Lorem ipsum dolor sit amet&#34;</span>
+</span></span><span style="display:flex;"><span>    },
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;locale&#34;</span>: <span style="color:#e6db74">&#34;en_US&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;scope&#34;</span>: <span style="color:#e6db74">&#34;mobile&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;data&#34;</span>: <span style="color:#e6db74">&#34;Lorem ipsum dolor sit amet&#34;</span>
+</span></span><span style="display:flex;"><span>    },
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;locale&#34;</span>: <span style="color:#e6db74">&#34;fr_CA&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;scope&#34;</span>: <span style="color:#e6db74">&#34;web&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;data&#34;</span>: <span style="color:#e6db74">&#34;Lorem ipsum dolor sit amet&#34;</span>
+</span></span><span style="display:flex;"><span>    },
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;locale&#34;</span>: <span style="color:#e6db74">&#34;fr_FR&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;scope&#34;</span>: <span style="color:#e6db74">&#34;print&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;data&#34;</span>: <span style="color:#e6db74">&#34;Lorem ipsum dolor sit amet&#34;</span>
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>]
+</span></span></code></pre></div></div></div>
 
 <h4 id="extracting-a-slice-of-the-values-list">Extracting a slice of the values list</h4>
 <p><code>slice ( int offset , int length )</code></p>
@@ -959,46 +1061,46 @@ to every specified filter. It will result in a list where <strong>all</strong> f
 		<li class="nav-item"><a data-toggle="tab" class="nav-link" href="#slice-1" role="tab" aria-controls="slice-1">Data Source</a></li></ul>
 <div class="tab-content" id="slice"><div id="slice-0" class="tab-pane show active" role="tabpanel" aria-labelledby="slice-0">
 
-<p><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json">
-[
-    {
-        <span style="color:#f92672">&#34;locale&#34;</span>: <span style="color:#e6db74">&#34;en_US&#34;</span>,
-        <span style="color:#f92672">&#34;scope&#34;</span>: <span style="color:#e6db74">&#34;mobile&#34;</span>,
-        <span style="color:#f92672">&#34;data&#34;</span>: <span style="color:#e6db74">&#34;Lorem ipsum dolor sit amet&#34;</span>
-    },
-    {
-        <span style="color:#f92672">&#34;locale&#34;</span>: <span style="color:#e6db74">&#34;fr_CA&#34;</span>,
-        <span style="color:#f92672">&#34;scope&#34;</span>: <span style="color:#e6db74">&#34;web&#34;</span>,
-        <span style="color:#f92672">&#34;data&#34;</span>: <span style="color:#e6db74">&#34;Lorem ipsum dolor sit amet&#34;</span>
-    }
-]
-</code></pre></div></div>
+<p><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>[
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;locale&#34;</span>: <span style="color:#e6db74">&#34;en_US&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;scope&#34;</span>: <span style="color:#e6db74">&#34;mobile&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;data&#34;</span>: <span style="color:#e6db74">&#34;Lorem ipsum dolor sit amet&#34;</span>
+</span></span><span style="display:flex;"><span>    },
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;locale&#34;</span>: <span style="color:#e6db74">&#34;fr_CA&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;scope&#34;</span>: <span style="color:#e6db74">&#34;web&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;data&#34;</span>: <span style="color:#e6db74">&#34;Lorem ipsum dolor sit amet&#34;</span>
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>]
+</span></span></code></pre></div></div>
   <div id="slice-1" class="tab-pane" role="tabpanel" aria-labelledby="slice-1">
 
-<p><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json">
-[
-    {
-        <span style="color:#f92672">&#34;locale&#34;</span>: <span style="color:#e6db74">&#34;fr_FR&#34;</span>,
-        <span style="color:#f92672">&#34;scope&#34;</span>: <span style="color:#e6db74">&#34;web&#34;</span>,
-        <span style="color:#f92672">&#34;data&#34;</span>: <span style="color:#e6db74">&#34;Lorem ipsum dolor sit amet&#34;</span>
-    },
-    {
-        <span style="color:#f92672">&#34;locale&#34;</span>: <span style="color:#e6db74">&#34;en_US&#34;</span>,
-        <span style="color:#f92672">&#34;scope&#34;</span>: <span style="color:#e6db74">&#34;mobile&#34;</span>,
-        <span style="color:#f92672">&#34;data&#34;</span>: <span style="color:#e6db74">&#34;Lorem ipsum dolor sit amet&#34;</span>
-    },
-    {
-        <span style="color:#f92672">&#34;locale&#34;</span>: <span style="color:#e6db74">&#34;fr_CA&#34;</span>,
-        <span style="color:#f92672">&#34;scope&#34;</span>: <span style="color:#e6db74">&#34;web&#34;</span>,
-        <span style="color:#f92672">&#34;data&#34;</span>: <span style="color:#e6db74">&#34;Lorem ipsum dolor sit amet&#34;</span>
-    },
-    {
-        <span style="color:#f92672">&#34;locale&#34;</span>: <span style="color:#e6db74">&#34;fr_FR&#34;</span>,
-        <span style="color:#f92672">&#34;scope&#34;</span>: <span style="color:#e6db74">&#34;print&#34;</span>,
-        <span style="color:#f92672">&#34;data&#34;</span>: <span style="color:#e6db74">&#34;Lorem ipsum dolor sit amet&#34;</span>
-    }
-]
-</code></pre></div></div></div>
+<p><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>[
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;locale&#34;</span>: <span style="color:#e6db74">&#34;fr_FR&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;scope&#34;</span>: <span style="color:#e6db74">&#34;web&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;data&#34;</span>: <span style="color:#e6db74">&#34;Lorem ipsum dolor sit amet&#34;</span>
+</span></span><span style="display:flex;"><span>    },
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;locale&#34;</span>: <span style="color:#e6db74">&#34;en_US&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;scope&#34;</span>: <span style="color:#e6db74">&#34;mobile&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;data&#34;</span>: <span style="color:#e6db74">&#34;Lorem ipsum dolor sit amet&#34;</span>
+</span></span><span style="display:flex;"><span>    },
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;locale&#34;</span>: <span style="color:#e6db74">&#34;fr_CA&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;scope&#34;</span>: <span style="color:#e6db74">&#34;web&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;data&#34;</span>: <span style="color:#e6db74">&#34;Lorem ipsum dolor sit amet&#34;</span>
+</span></span><span style="display:flex;"><span>    },
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;locale&#34;</span>: <span style="color:#e6db74">&#34;fr_FR&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;scope&#34;</span>: <span style="color:#e6db74">&#34;print&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;data&#34;</span>: <span style="color:#e6db74">&#34;Lorem ipsum dolor sit amet&#34;</span>
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>]
+</span></span></code></pre></div></div></div>
 
 <h4 id="extracting-the-beginning-of-the-values-list">Extracting the beginning of the values list</h4>
 <p><code>head ( int length )</code></p>
@@ -1009,46 +1111,46 @@ to every specified filter. It will result in a list where <strong>all</strong> f
 		<li class="nav-item"><a data-toggle="tab" class="nav-link" href="#head-1" role="tab" aria-controls="head-1">Data Source</a></li></ul>
 <div class="tab-content" id="head"><div id="head-0" class="tab-pane show active" role="tabpanel" aria-labelledby="head-0">
 
-<p><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json">
-[
-    {
-        <span style="color:#f92672">&#34;locale&#34;</span>: <span style="color:#e6db74">&#34;fr_FR&#34;</span>,
-        <span style="color:#f92672">&#34;scope&#34;</span>: <span style="color:#e6db74">&#34;web&#34;</span>,
-        <span style="color:#f92672">&#34;data&#34;</span>: <span style="color:#e6db74">&#34;Lorem ipsum dolor sit amet&#34;</span>
-    },
-    {
-        <span style="color:#f92672">&#34;locale&#34;</span>: <span style="color:#e6db74">&#34;en_US&#34;</span>,
-        <span style="color:#f92672">&#34;scope&#34;</span>: <span style="color:#e6db74">&#34;mobile&#34;</span>,
-        <span style="color:#f92672">&#34;data&#34;</span>: <span style="color:#e6db74">&#34;Lorem ipsum dolor sit amet&#34;</span>
-    }
-]
-</code></pre></div></div>
+<p><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>[
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;locale&#34;</span>: <span style="color:#e6db74">&#34;fr_FR&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;scope&#34;</span>: <span style="color:#e6db74">&#34;web&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;data&#34;</span>: <span style="color:#e6db74">&#34;Lorem ipsum dolor sit amet&#34;</span>
+</span></span><span style="display:flex;"><span>    },
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;locale&#34;</span>: <span style="color:#e6db74">&#34;en_US&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;scope&#34;</span>: <span style="color:#e6db74">&#34;mobile&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;data&#34;</span>: <span style="color:#e6db74">&#34;Lorem ipsum dolor sit amet&#34;</span>
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>]
+</span></span></code></pre></div></div>
   <div id="head-1" class="tab-pane" role="tabpanel" aria-labelledby="head-1">
 
-<p><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json">
-[
-    {
-        <span style="color:#f92672">&#34;locale&#34;</span>: <span style="color:#e6db74">&#34;fr_FR&#34;</span>,
-        <span style="color:#f92672">&#34;scope&#34;</span>: <span style="color:#e6db74">&#34;web&#34;</span>,
-        <span style="color:#f92672">&#34;data&#34;</span>: <span style="color:#e6db74">&#34;Lorem ipsum dolor sit amet&#34;</span>
-    },
-    {
-        <span style="color:#f92672">&#34;locale&#34;</span>: <span style="color:#e6db74">&#34;en_US&#34;</span>,
-        <span style="color:#f92672">&#34;scope&#34;</span>: <span style="color:#e6db74">&#34;mobile&#34;</span>,
-        <span style="color:#f92672">&#34;data&#34;</span>: <span style="color:#e6db74">&#34;Lorem ipsum dolor sit amet&#34;</span>
-    },
-    {
-        <span style="color:#f92672">&#34;locale&#34;</span>: <span style="color:#e6db74">&#34;fr_CA&#34;</span>,
-        <span style="color:#f92672">&#34;scope&#34;</span>: <span style="color:#e6db74">&#34;web&#34;</span>,
-        <span style="color:#f92672">&#34;data&#34;</span>: <span style="color:#e6db74">&#34;Lorem ipsum dolor sit amet&#34;</span>
-    },
-    {
-        <span style="color:#f92672">&#34;locale&#34;</span>: <span style="color:#e6db74">&#34;fr_FR&#34;</span>,
-        <span style="color:#f92672">&#34;scope&#34;</span>: <span style="color:#e6db74">&#34;print&#34;</span>,
-        <span style="color:#f92672">&#34;data&#34;</span>: <span style="color:#e6db74">&#34;Lorem ipsum dolor sit amet&#34;</span>
-    }
-]
-</code></pre></div></div></div>
+<p><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>[
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;locale&#34;</span>: <span style="color:#e6db74">&#34;fr_FR&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;scope&#34;</span>: <span style="color:#e6db74">&#34;web&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;data&#34;</span>: <span style="color:#e6db74">&#34;Lorem ipsum dolor sit amet&#34;</span>
+</span></span><span style="display:flex;"><span>    },
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;locale&#34;</span>: <span style="color:#e6db74">&#34;en_US&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;scope&#34;</span>: <span style="color:#e6db74">&#34;mobile&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;data&#34;</span>: <span style="color:#e6db74">&#34;Lorem ipsum dolor sit amet&#34;</span>
+</span></span><span style="display:flex;"><span>    },
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;locale&#34;</span>: <span style="color:#e6db74">&#34;fr_CA&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;scope&#34;</span>: <span style="color:#e6db74">&#34;web&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;data&#34;</span>: <span style="color:#e6db74">&#34;Lorem ipsum dolor sit amet&#34;</span>
+</span></span><span style="display:flex;"><span>    },
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;locale&#34;</span>: <span style="color:#e6db74">&#34;fr_FR&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;scope&#34;</span>: <span style="color:#e6db74">&#34;print&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;data&#34;</span>: <span style="color:#e6db74">&#34;Lorem ipsum dolor sit amet&#34;</span>
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>]
+</span></span></code></pre></div></div></div>
 
 <h4 id="extracting-the-end-of-the-values-list">Extracting the end of the values list</h4>
 <p><code>tail ( int length )</code></p>
@@ -1059,46 +1161,46 @@ to every specified filter. It will result in a list where <strong>all</strong> f
 		<li class="nav-item"><a data-toggle="tab" class="nav-link" href="#tail-1" role="tab" aria-controls="tail-1">Data Source</a></li></ul>
 <div class="tab-content" id="tail"><div id="tail-0" class="tab-pane show active" role="tabpanel" aria-labelledby="tail-0">
 
-<p><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json">
-[
-    {
-        <span style="color:#f92672">&#34;locale&#34;</span>: <span style="color:#e6db74">&#34;fr_CA&#34;</span>,
-        <span style="color:#f92672">&#34;scope&#34;</span>: <span style="color:#e6db74">&#34;web&#34;</span>,
-        <span style="color:#f92672">&#34;data&#34;</span>: <span style="color:#e6db74">&#34;Lorem ipsum dolor sit amet&#34;</span>
-    },
-    {
-        <span style="color:#f92672">&#34;locale&#34;</span>: <span style="color:#e6db74">&#34;fr_FR&#34;</span>,
-        <span style="color:#f92672">&#34;scope&#34;</span>: <span style="color:#e6db74">&#34;print&#34;</span>,
-        <span style="color:#f92672">&#34;data&#34;</span>: <span style="color:#e6db74">&#34;Lorem ipsum dolor sit amet&#34;</span>
-    }
-]
-</code></pre></div></div>
+<p><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>[
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;locale&#34;</span>: <span style="color:#e6db74">&#34;fr_CA&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;scope&#34;</span>: <span style="color:#e6db74">&#34;web&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;data&#34;</span>: <span style="color:#e6db74">&#34;Lorem ipsum dolor sit amet&#34;</span>
+</span></span><span style="display:flex;"><span>    },
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;locale&#34;</span>: <span style="color:#e6db74">&#34;fr_FR&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;scope&#34;</span>: <span style="color:#e6db74">&#34;print&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;data&#34;</span>: <span style="color:#e6db74">&#34;Lorem ipsum dolor sit amet&#34;</span>
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>]
+</span></span></code></pre></div></div>
   <div id="tail-1" class="tab-pane" role="tabpanel" aria-labelledby="tail-1">
 
-<p><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json">
-[
-    {
-        <span style="color:#f92672">&#34;locale&#34;</span>: <span style="color:#e6db74">&#34;fr_FR&#34;</span>,
-        <span style="color:#f92672">&#34;scope&#34;</span>: <span style="color:#e6db74">&#34;web&#34;</span>,
-        <span style="color:#f92672">&#34;data&#34;</span>: <span style="color:#e6db74">&#34;Lorem ipsum dolor sit amet&#34;</span>
-    },
-    {
-        <span style="color:#f92672">&#34;locale&#34;</span>: <span style="color:#e6db74">&#34;en_US&#34;</span>,
-        <span style="color:#f92672">&#34;scope&#34;</span>: <span style="color:#e6db74">&#34;mobile&#34;</span>,
-        <span style="color:#f92672">&#34;data&#34;</span>: <span style="color:#e6db74">&#34;Lorem ipsum dolor sit amet&#34;</span>
-    },
-    {
-        <span style="color:#f92672">&#34;locale&#34;</span>: <span style="color:#e6db74">&#34;fr_CA&#34;</span>,
-        <span style="color:#f92672">&#34;scope&#34;</span>: <span style="color:#e6db74">&#34;web&#34;</span>,
-        <span style="color:#f92672">&#34;data&#34;</span>: <span style="color:#e6db74">&#34;Lorem ipsum dolor sit amet&#34;</span>
-    },
-    {
-        <span style="color:#f92672">&#34;locale&#34;</span>: <span style="color:#e6db74">&#34;fr_FR&#34;</span>,
-        <span style="color:#f92672">&#34;scope&#34;</span>: <span style="color:#e6db74">&#34;print&#34;</span>,
-        <span style="color:#f92672">&#34;data&#34;</span>: <span style="color:#e6db74">&#34;Lorem ipsum dolor sit amet&#34;</span>
-    }
-]
-</code></pre></div></div></div>
+<p><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>[
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;locale&#34;</span>: <span style="color:#e6db74">&#34;fr_FR&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;scope&#34;</span>: <span style="color:#e6db74">&#34;web&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;data&#34;</span>: <span style="color:#e6db74">&#34;Lorem ipsum dolor sit amet&#34;</span>
+</span></span><span style="display:flex;"><span>    },
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;locale&#34;</span>: <span style="color:#e6db74">&#34;en_US&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;scope&#34;</span>: <span style="color:#e6db74">&#34;mobile&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;data&#34;</span>: <span style="color:#e6db74">&#34;Lorem ipsum dolor sit amet&#34;</span>
+</span></span><span style="display:flex;"><span>    },
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;locale&#34;</span>: <span style="color:#e6db74">&#34;fr_CA&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;scope&#34;</span>: <span style="color:#e6db74">&#34;web&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;data&#34;</span>: <span style="color:#e6db74">&#34;Lorem ipsum dolor sit amet&#34;</span>
+</span></span><span style="display:flex;"><span>    },
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;locale&#34;</span>: <span style="color:#e6db74">&#34;fr_FR&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;scope&#34;</span>: <span style="color:#e6db74">&#34;print&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;data&#34;</span>: <span style="color:#e6db74">&#34;Lorem ipsum dolor sit amet&#34;</span>
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>]
+</span></span></code></pre></div></div></div>
 
 <h4 id="extracting-the-values-list-after-an-offset">Extracting the values list, after an offset</h4>
 <p><code>offset ( int offset )</code></p>
@@ -1109,51 +1211,51 @@ to every specified filter. It will result in a list where <strong>all</strong> f
 		<li class="nav-item"><a data-toggle="tab" class="nav-link" href="#offset-1" role="tab" aria-controls="offset-1">Data Source</a></li></ul>
 <div class="tab-content" id="offset"><div id="offset-0" class="tab-pane show active" role="tabpanel" aria-labelledby="offset-0">
 
-<p><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json">
-[
-    {
-        <span style="color:#f92672">&#34;locale&#34;</span>: <span style="color:#e6db74">&#34;en_US&#34;</span>,
-        <span style="color:#f92672">&#34;scope&#34;</span>: <span style="color:#e6db74">&#34;mobile&#34;</span>,
-        <span style="color:#f92672">&#34;data&#34;</span>: <span style="color:#e6db74">&#34;Lorem ipsum dolor sit amet&#34;</span>
-    },
-    {
-        <span style="color:#f92672">&#34;locale&#34;</span>: <span style="color:#e6db74">&#34;fr_CA&#34;</span>,
-        <span style="color:#f92672">&#34;scope&#34;</span>: <span style="color:#e6db74">&#34;web&#34;</span>,
-        <span style="color:#f92672">&#34;data&#34;</span>: <span style="color:#e6db74">&#34;Lorem ipsum dolor sit amet&#34;</span>
-    },
-    {
-        <span style="color:#f92672">&#34;locale&#34;</span>: <span style="color:#e6db74">&#34;fr_FR&#34;</span>,
-        <span style="color:#f92672">&#34;scope&#34;</span>: <span style="color:#e6db74">&#34;print&#34;</span>,
-        <span style="color:#f92672">&#34;data&#34;</span>: <span style="color:#e6db74">&#34;Lorem ipsum dolor sit amet&#34;</span>
-    }
-]
-</code></pre></div></div>
+<p><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>[
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;locale&#34;</span>: <span style="color:#e6db74">&#34;en_US&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;scope&#34;</span>: <span style="color:#e6db74">&#34;mobile&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;data&#34;</span>: <span style="color:#e6db74">&#34;Lorem ipsum dolor sit amet&#34;</span>
+</span></span><span style="display:flex;"><span>    },
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;locale&#34;</span>: <span style="color:#e6db74">&#34;fr_CA&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;scope&#34;</span>: <span style="color:#e6db74">&#34;web&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;data&#34;</span>: <span style="color:#e6db74">&#34;Lorem ipsum dolor sit amet&#34;</span>
+</span></span><span style="display:flex;"><span>    },
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;locale&#34;</span>: <span style="color:#e6db74">&#34;fr_FR&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;scope&#34;</span>: <span style="color:#e6db74">&#34;print&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;data&#34;</span>: <span style="color:#e6db74">&#34;Lorem ipsum dolor sit amet&#34;</span>
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>]
+</span></span></code></pre></div></div>
   <div id="offset-1" class="tab-pane" role="tabpanel" aria-labelledby="offset-1">
 
-<p><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json">
-[
-    {
-        <span style="color:#f92672">&#34;locale&#34;</span>: <span style="color:#e6db74">&#34;fr_FR&#34;</span>,
-        <span style="color:#f92672">&#34;scope&#34;</span>: <span style="color:#e6db74">&#34;web&#34;</span>,
-        <span style="color:#f92672">&#34;data&#34;</span>: <span style="color:#e6db74">&#34;Lorem ipsum dolor sit amet&#34;</span>
-    },
-    {
-        <span style="color:#f92672">&#34;locale&#34;</span>: <span style="color:#e6db74">&#34;en_US&#34;</span>,
-        <span style="color:#f92672">&#34;scope&#34;</span>: <span style="color:#e6db74">&#34;mobile&#34;</span>,
-        <span style="color:#f92672">&#34;data&#34;</span>: <span style="color:#e6db74">&#34;Lorem ipsum dolor sit amet&#34;</span>
-    },
-    {
-        <span style="color:#f92672">&#34;locale&#34;</span>: <span style="color:#e6db74">&#34;fr_CA&#34;</span>,
-        <span style="color:#f92672">&#34;scope&#34;</span>: <span style="color:#e6db74">&#34;web&#34;</span>,
-        <span style="color:#f92672">&#34;data&#34;</span>: <span style="color:#e6db74">&#34;Lorem ipsum dolor sit amet&#34;</span>
-    },
-    {
-        <span style="color:#f92672">&#34;locale&#34;</span>: <span style="color:#e6db74">&#34;fr_FR&#34;</span>,
-        <span style="color:#f92672">&#34;scope&#34;</span>: <span style="color:#e6db74">&#34;print&#34;</span>,
-        <span style="color:#f92672">&#34;data&#34;</span>: <span style="color:#e6db74">&#34;Lorem ipsum dolor sit amet&#34;</span>
-    }
-]
-</code></pre></div></div></div>
+<p><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>[
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;locale&#34;</span>: <span style="color:#e6db74">&#34;fr_FR&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;scope&#34;</span>: <span style="color:#e6db74">&#34;web&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;data&#34;</span>: <span style="color:#e6db74">&#34;Lorem ipsum dolor sit amet&#34;</span>
+</span></span><span style="display:flex;"><span>    },
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;locale&#34;</span>: <span style="color:#e6db74">&#34;en_US&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;scope&#34;</span>: <span style="color:#e6db74">&#34;mobile&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;data&#34;</span>: <span style="color:#e6db74">&#34;Lorem ipsum dolor sit amet&#34;</span>
+</span></span><span style="display:flex;"><span>    },
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;locale&#34;</span>: <span style="color:#e6db74">&#34;fr_CA&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;scope&#34;</span>: <span style="color:#e6db74">&#34;web&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;data&#34;</span>: <span style="color:#e6db74">&#34;Lorem ipsum dolor sit amet&#34;</span>
+</span></span><span style="display:flex;"><span>    },
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;locale&#34;</span>: <span style="color:#e6db74">&#34;fr_FR&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;scope&#34;</span>: <span style="color:#e6db74">&#34;print&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;data&#34;</span>: <span style="color:#e6db74">&#34;Lorem ipsum dolor sit amet&#34;</span>
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>]
+</span></span></code></pre></div></div></div>
 
 <h4 id="extracting-the-first-value-from-the-list">Extracting the first value from the list</h4>
 <p><code>first ( )</code></p>
@@ -1164,41 +1266,41 @@ to every specified filter. It will result in a list where <strong>all</strong> f
 		<li class="nav-item"><a data-toggle="tab" class="nav-link" href="#first-1" role="tab" aria-controls="first-1">Data Source</a></li></ul>
 <div class="tab-content" id="first"><div id="first-0" class="tab-pane show active" role="tabpanel" aria-labelledby="first-0">
 
-<p><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json">
-[
-    {
-        <span style="color:#f92672">&#34;locale&#34;</span>: <span style="color:#e6db74">&#34;fr_FR&#34;</span>,
-        <span style="color:#f92672">&#34;scope&#34;</span>: <span style="color:#e6db74">&#34;web&#34;</span>,
-        <span style="color:#f92672">&#34;data&#34;</span>: <span style="color:#e6db74">&#34;Lorem ipsum dolor sit amet&#34;</span>
-    }
-]
-</code></pre></div></div>
+<p><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>[
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;locale&#34;</span>: <span style="color:#e6db74">&#34;fr_FR&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;scope&#34;</span>: <span style="color:#e6db74">&#34;web&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;data&#34;</span>: <span style="color:#e6db74">&#34;Lorem ipsum dolor sit amet&#34;</span>
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>]
+</span></span></code></pre></div></div>
   <div id="first-1" class="tab-pane" role="tabpanel" aria-labelledby="first-1">
 
-<p><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json">
-[
-    {
-        <span style="color:#f92672">&#34;locale&#34;</span>: <span style="color:#e6db74">&#34;fr_FR&#34;</span>,
-        <span style="color:#f92672">&#34;scope&#34;</span>: <span style="color:#e6db74">&#34;web&#34;</span>,
-        <span style="color:#f92672">&#34;data&#34;</span>: <span style="color:#e6db74">&#34;Lorem ipsum dolor sit amet&#34;</span>
-    },
-    {
-        <span style="color:#f92672">&#34;locale&#34;</span>: <span style="color:#e6db74">&#34;en_US&#34;</span>,
-        <span style="color:#f92672">&#34;scope&#34;</span>: <span style="color:#e6db74">&#34;mobile&#34;</span>,
-        <span style="color:#f92672">&#34;data&#34;</span>: <span style="color:#e6db74">&#34;Lorem ipsum dolor sit amet&#34;</span>
-    },
-    {
-        <span style="color:#f92672">&#34;locale&#34;</span>: <span style="color:#e6db74">&#34;fr_CA&#34;</span>,
-        <span style="color:#f92672">&#34;scope&#34;</span>: <span style="color:#e6db74">&#34;web&#34;</span>,
-        <span style="color:#f92672">&#34;data&#34;</span>: <span style="color:#e6db74">&#34;Lorem ipsum dolor sit amet&#34;</span>
-    },
-    {
-        <span style="color:#f92672">&#34;locale&#34;</span>: <span style="color:#e6db74">&#34;fr_FR&#34;</span>,
-        <span style="color:#f92672">&#34;scope&#34;</span>: <span style="color:#e6db74">&#34;print&#34;</span>,
-        <span style="color:#f92672">&#34;data&#34;</span>: <span style="color:#e6db74">&#34;Lorem ipsum dolor sit amet&#34;</span>
-    }
-]
-</code></pre></div></div></div>
+<p><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>[
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;locale&#34;</span>: <span style="color:#e6db74">&#34;fr_FR&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;scope&#34;</span>: <span style="color:#e6db74">&#34;web&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;data&#34;</span>: <span style="color:#e6db74">&#34;Lorem ipsum dolor sit amet&#34;</span>
+</span></span><span style="display:flex;"><span>    },
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;locale&#34;</span>: <span style="color:#e6db74">&#34;en_US&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;scope&#34;</span>: <span style="color:#e6db74">&#34;mobile&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;data&#34;</span>: <span style="color:#e6db74">&#34;Lorem ipsum dolor sit amet&#34;</span>
+</span></span><span style="display:flex;"><span>    },
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;locale&#34;</span>: <span style="color:#e6db74">&#34;fr_CA&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;scope&#34;</span>: <span style="color:#e6db74">&#34;web&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;data&#34;</span>: <span style="color:#e6db74">&#34;Lorem ipsum dolor sit amet&#34;</span>
+</span></span><span style="display:flex;"><span>    },
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;locale&#34;</span>: <span style="color:#e6db74">&#34;fr_FR&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;scope&#34;</span>: <span style="color:#e6db74">&#34;print&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;data&#34;</span>: <span style="color:#e6db74">&#34;Lorem ipsum dolor sit amet&#34;</span>
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>]
+</span></span></code></pre></div></div></div>
 
 <h4 id="extracting-the-last-value-from-the-list">Extracting the last value from the list</h4>
 <p><code>last ( )</code></p>
@@ -1209,41 +1311,41 @@ to every specified filter. It will result in a list where <strong>all</strong> f
 		<li class="nav-item"><a data-toggle="tab" class="nav-link" href="#first-1" role="tab" aria-controls="first-1">Data Source</a></li></ul>
 <div class="tab-content" id="first"><div id="first-0" class="tab-pane show active" role="tabpanel" aria-labelledby="first-0">
 
-<p><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json">
-[
-    {
-        <span style="color:#f92672">&#34;locale&#34;</span>: <span style="color:#e6db74">&#34;fr_FR&#34;</span>,
-        <span style="color:#f92672">&#34;scope&#34;</span>: <span style="color:#e6db74">&#34;print&#34;</span>,
-        <span style="color:#f92672">&#34;data&#34;</span>: <span style="color:#e6db74">&#34;Lorem ipsum dolor sit amet&#34;</span>
-    }
-]
-</code></pre></div></div>
+<p><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>[
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;locale&#34;</span>: <span style="color:#e6db74">&#34;fr_FR&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;scope&#34;</span>: <span style="color:#e6db74">&#34;print&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;data&#34;</span>: <span style="color:#e6db74">&#34;Lorem ipsum dolor sit amet&#34;</span>
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>]
+</span></span></code></pre></div></div>
   <div id="first-1" class="tab-pane" role="tabpanel" aria-labelledby="first-1">
 
-<p><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json">
-[
-    {
-        <span style="color:#f92672">&#34;locale&#34;</span>: <span style="color:#e6db74">&#34;fr_FR&#34;</span>,
-        <span style="color:#f92672">&#34;scope&#34;</span>: <span style="color:#e6db74">&#34;web&#34;</span>,
-        <span style="color:#f92672">&#34;data&#34;</span>: <span style="color:#e6db74">&#34;Lorem ipsum dolor sit amet&#34;</span>
-    },
-    {
-        <span style="color:#f92672">&#34;locale&#34;</span>: <span style="color:#e6db74">&#34;en_US&#34;</span>,
-        <span style="color:#f92672">&#34;scope&#34;</span>: <span style="color:#e6db74">&#34;mobile&#34;</span>,
-        <span style="color:#f92672">&#34;data&#34;</span>: <span style="color:#e6db74">&#34;Lorem ipsum dolor sit amet&#34;</span>
-    },
-    {
-        <span style="color:#f92672">&#34;locale&#34;</span>: <span style="color:#e6db74">&#34;fr_CA&#34;</span>,
-        <span style="color:#f92672">&#34;scope&#34;</span>: <span style="color:#e6db74">&#34;web&#34;</span>,
-        <span style="color:#f92672">&#34;data&#34;</span>: <span style="color:#e6db74">&#34;Lorem ipsum dolor sit amet&#34;</span>
-    },
-    {
-        <span style="color:#f92672">&#34;locale&#34;</span>: <span style="color:#e6db74">&#34;fr_FR&#34;</span>,
-        <span style="color:#f92672">&#34;scope&#34;</span>: <span style="color:#e6db74">&#34;print&#34;</span>,
-        <span style="color:#f92672">&#34;data&#34;</span>: <span style="color:#e6db74">&#34;Lorem ipsum dolor sit amet&#34;</span>
-    }
-]
-</code></pre></div></div></div>
+<p><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>[
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;locale&#34;</span>: <span style="color:#e6db74">&#34;fr_FR&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;scope&#34;</span>: <span style="color:#e6db74">&#34;web&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;data&#34;</span>: <span style="color:#e6db74">&#34;Lorem ipsum dolor sit amet&#34;</span>
+</span></span><span style="display:flex;"><span>    },
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;locale&#34;</span>: <span style="color:#e6db74">&#34;en_US&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;scope&#34;</span>: <span style="color:#e6db74">&#34;mobile&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;data&#34;</span>: <span style="color:#e6db74">&#34;Lorem ipsum dolor sit amet&#34;</span>
+</span></span><span style="display:flex;"><span>    },
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;locale&#34;</span>: <span style="color:#e6db74">&#34;fr_CA&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;scope&#34;</span>: <span style="color:#e6db74">&#34;web&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;data&#34;</span>: <span style="color:#e6db74">&#34;Lorem ipsum dolor sit amet&#34;</span>
+</span></span><span style="display:flex;"><span>    },
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;locale&#34;</span>: <span style="color:#e6db74">&#34;fr_FR&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;scope&#34;</span>: <span style="color:#e6db74">&#34;print&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;data&#34;</span>: <span style="color:#e6db74">&#34;Lorem ipsum dolor sit amet&#34;</span>
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>]
+</span></span></code></pre></div></div></div>
 
 <h3 id="dates-management-with-datetime-and-datetimezone">Dates management with <code>dateTime</code> and <code>dateTimeZone</code></h3>
 <p>In order to generate date objects, two functions has been created:</p>
@@ -1269,14 +1371,14 @@ the Akeneo Builder provider.</p>
 	  </ul>
 <div class="tab-content" id="basic_definition"><div id="basic_definition-0" class="tab-pane show active" role="tabpanel" aria-labelledby="basic_definition-0">
 
-<p><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml">
-- <span style="color:#f92672">fastmap</span>:
-    <span style="color:#f92672">expression_language</span>:
-    - <span style="color:#e6db74">&#39;Kiboko\Component\ExpressionLanguage\Akeneo\AkeneoBuilderProvider&#39;</span>
-    <span style="color:#f92672">map</span>:
-    - <span style="color:#f92672">field</span>: <span style="color:#e6db74">&#39;[title]&#39;</span>
-      <span style="color:#f92672">expression</span>: <span style="color:#e6db74">&#39;withValue(input[&#34;title&#34;])&#39;</span>
-</code></pre></div></div></div>
+<p><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>- <span style="color:#f92672">fastmap</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">expression_language</span>:
+</span></span><span style="display:flex;"><span>    - <span style="color:#e6db74">&#39;Kiboko\Component\ExpressionLanguage\Akeneo\AkeneoBuilderProvider&#39;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">map</span>:
+</span></span><span style="display:flex;"><span>    - <span style="color:#f92672">field</span>: <span style="color:#e6db74">&#39;[title]&#39;</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">expression</span>: <span style="color:#e6db74">&#39;withValue(input[&#34;title&#34;])&#39;</span>
+</span></span></code></pre></div></div></div>
 
 <h3 id="functions-reference-1">Functions reference</h3>
 <table>
@@ -1299,7 +1401,7 @@ the Akeneo Builder provider.</p>
 <td>withValue(input[&ldquo;variant_name&rdquo;], &ldquo;fr_FR&rdquo;, &ldquo;ecommerce&rdquo;)</td>
 </tr>
 <tr>
-<td>withSimpleOption(<code>string</code> code, <code>string</code> attribute, <code>string</code> labels, <code>string</code> locale = &lsquo;null&rsquo;, <code>string</code> scope = &lsquo;null&rsquo;)</td>
+<td>withSimpleOption(<code>string</code> code, <code>string</code> attribute, <code>string</code> labels, <code>string</code> locale = &rsquo;null&rsquo;, <code>string</code> scope = &rsquo;null')</td>
 <td>Creates the expected format for single-option attributes.</td>
 <td>build(withSimpleOption(&ldquo;PHY&rdquo;,&ldquo;kind&rdquo;, {&ldquo;fr_FR&rdquo;: &ldquo;PHY&rdquo;}))</td>
 </tr>
@@ -1309,12 +1411,12 @@ the Akeneo Builder provider.</p>
 <td>withMultipleOption(input[&ldquo;collection&rdquo;], &ldquo;collection&rdquo;, {&ldquo;fr_FR&rdquo;: &ldquo;My collection&rdquo;}, &ldquo;fr_FR&rdquo;, &ldquo;ecommerce&rdquo;)</td>
 </tr>
 <tr>
-<td>withReferenceEntityValue(<code>string</code> value, <code>string</code> locale = &lsquo;null&rsquo;, <code>string</code> channel = &lsquo;null&rsquo;)</td>
+<td>withReferenceEntityValue(<code>string</code> value, <code>string</code> locale = &rsquo;null&rsquo;, <code>string</code> channel = &rsquo;null')</td>
 <td>Creates the expected format for reference entity record attributes of type single-line text, multi-line text, boolean, date, number, measurement.</td>
 <td>withReferenceEntityValue(input[&ldquo;label&rdquo;], &ldquo;fr_FR&rdquo;)</td>
 </tr>
 <tr>
-<td>withReferenceEntitySimpleOption(<code>string</code> value, <code>string</code> locale = &lsquo;null&rsquo;, <code>string</code> channel = &lsquo;null&rsquo;)</td>
+<td>withReferenceEntitySimpleOption(<code>string</code> value, <code>string</code> locale = &rsquo;null&rsquo;, <code>string</code> channel = &rsquo;null')</td>
 <td>Creates the expected format for simple-select reference entity record attributes.</td>
 <td>withReferenceEntitySimpleOption(input[&ldquo;associated_crops_code&rdquo;], &ldquo;fr_FR&rdquo;)</td>
 </tr>
@@ -1350,6 +1452,8 @@ the Akeneo Builder provider.</p>
             
             
             
+            
+            
 
             
             
@@ -1365,8 +1469,9 @@ the Akeneo Builder provider.</p>
             
             
             
-            
 
+            
+            
             
             
             
@@ -1379,16 +1484,27 @@ the Akeneo Builder provider.</p>
             
             
             
+
             
             
             
 
+            
+            
+            
+            
             
             
             
+            
+            
+            
+            
 
+            
             
             
+
             
             
             
@@ -1399,6 +1515,7 @@ the Akeneo Builder provider.</p>
             
             
             
+            
 
             
             
@@ -1415,17 +1532,17 @@ the Akeneo Builder provider.</p>
             
             
             
+
             
             
             
+
             
             
             
-
             
             
             
-
             
             
             
@@ -1437,13 +1554,14 @@ the Akeneo Builder provider.</p>
             
             
             
+            
 
             
             
             
-
             
             
+
             
             
             
@@ -1485,11 +1603,13 @@ the Akeneo Builder provider.</p>
             
             
             
+            
 
             
             
             
 
+            
             
             
             
@@ -1501,6 +1621,11 @@ the Akeneo Builder provider.</p>
             
             
             
+            
+            
+            
+            
+            
 
             
             
@@ -1546,6 +1671,7 @@ the Akeneo Builder provider.</p>
             
             
             
+
             
             
             
@@ -1553,7 +1679,6 @@ the Akeneo Builder provider.</p>
             
             
             
-
             
             
             
@@ -1597,16 +1722,28 @@ the Akeneo Builder provider.</p>
             
             
             
+
             
             
             
 
+            
+            
+            
+            
+            
+            
+            
+            
+            
             
             
+
             
             
             
 
+            
             
             
             
@@ -1615,6 +1752,8 @@ the Akeneo Builder provider.</p>
             
             
             
+            
+            
 
             
             
@@ -1695,6 +1834,7 @@ the Akeneo Builder provider.</p>
             
             
             
+
             
             
             
@@ -1704,12 +1844,13 @@ the Akeneo Builder provider.</p>
             
             
             
-
             
             
             
             
             
+            
+
             
             
             
@@ -1717,7 +1858,6 @@ the Akeneo Builder provider.</p>
             
             
             
-
             
             
             
@@ -1792,6 +1932,7 @@ the Akeneo Builder provider.</p>
             
             
             
+
             
             
             
@@ -1799,7 +1940,6 @@ the Akeneo Builder provider.</p>
             
             
             
-
             
             
             
@@ -1808,6 +1948,7 @@ the Akeneo Builder provider.</p>
             
             
             
+
             
             
             
@@ -1815,7 +1956,9 @@ the Akeneo Builder provider.</p>
             
             
             
-
+            
+            
+            
             
             
             
@@ -1824,17 +1967,26 @@ the Akeneo Builder provider.</p>
             
             
             
+
+            
+            
             
             
             
 
+            
+            
+            
             
             
             
+            
+            
 
             
             
             
+
             
             
             
@@ -1866,6 +2018,8 @@ the Akeneo Builder provider.</p>
             
             
 
+            
+            
             
             
             
@@ -1874,11 +2028,14 @@ the Akeneo Builder provider.</p>
             
             
             
+            
 
             
             
             
 
+            
+            
             
             
             
@@ -1888,16 +2045,30 @@ the Akeneo Builder provider.</p>
             
             
             
+
             
             
+            
 
+            
             
             
             
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
 
             
             
             
+
             
             
             
@@ -2011,7 +2182,7 @@ the Akeneo Builder provider.</p>
             <a class="nav nav-prev" href="https://php-etl.github.io/documentation/connectivity/akeneo/plugin/"><i class="ti-arrow-left mr-2"></i> <span class="d-none d-md-block">Akeneo plugin</span></a>
             
             
-            <a class="nav nav-next" href="https://php-etl.github.io/documentation/connectivity/csv/"> <span class="d-none d-md-block">CSV</span><i class="ti-arrow-right ml-2"></i></a>
+            <a class="nav nav-next" href="https://php-etl.github.io/documentation/connectivity/magento-2/"> <span class="d-none d-md-block">Magento 2</span><i class="ti-arrow-right ml-2"></i></a>
             
           </nav>
         </div>

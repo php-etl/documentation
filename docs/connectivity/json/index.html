@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <title>JSON  | Gyroscops Documentation</title>
 
-  <meta name="generator" content="Hugo 0.92.2" />
+  <meta name="generator" content="Hugo 0.111.3">
 
   <!-- mobile responsive meta -->
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -120,11 +120,15 @@
           </span>
           <div class="dropdown-menu">
             
-            <a class="dropdown-item" href="/documentation/core-concept/satellite">Satellite</a>
+            <a class="dropdown-item" href="/documentation/core-concept/satellite">Satellites</a>
             
-            <a class="dropdown-item" href="/documentation/core-concept/pipeline">Pipeline</a>
+            <a class="dropdown-item" href="/documentation/core-concept/satellite/pipeline">Pipeline</a>
             
-            <a class="dropdown-item" href="/documentation/core-concept/workflow">Workflow</a>
+            <a class="dropdown-item" href="/documentation/core-concept/satellite/workflow">Workflow</a>
+            
+            <a class="dropdown-item" href="/documentation/core-concept/satellite/http-hook">HTTP Hook</a>
+            
+            <a class="dropdown-item" href="/documentation/core-concept/satellite/http-api">HTTP API</a>
             
           </div>
         </li>
@@ -161,6 +165,12 @@
             <a class="dropdown-item" href="/documentation/connectivity/prestashop">Prestashop</a>
             
             <a class="dropdown-item" href="/documentation/connectivity/filtering">Filtering, drop or reject</a>
+            
+            <a class="dropdown-item" href="/documentation/connectivity/batch">Batch</a>
+            
+            <a class="dropdown-item" href="/documentation/connectivity/magento-2">Magento 2</a>
+            
+            <a class="dropdown-item" href="/documentation/connectivity/zoho">Zoho CRM</a>
             
           </div>
         </li>
@@ -208,6 +218,8 @@
           <ul class="list-styled">
             
             <a class="back-btn" href="/documentation"></a>
+            
+              
             
               
               
@@ -308,6 +320,28 @@
 
 
 
+<li data-nav-id="https://php-etl.github.io/documentation/connectivity/magento-2/" title="Magento 2" class="sidelist
+  ">
+  <a href="https://php-etl.github.io/documentation/connectivity/magento-2/">
+    Magento 2
+  </a>
+  
+  
+</li>
+
+
+        
+      
+        
+          
+
+
+
+
+
+
+
+
 <li data-nav-id="https://php-etl.github.io/documentation/connectivity/csv/" title="CSV" class="sidelist
   ">
   <a href="https://php-etl.github.io/documentation/connectivity/csv/">
@@ -337,6 +371,32 @@
   </a>
   
   
+    <ul>
+      
+        
+          
+
+
+
+
+
+
+
+
+<li data-nav-id="https://php-etl.github.io/documentation/connectivity/custom/lookup_mapper/" title="Lookup mapper" class="sidelist
+  ">
+  <a href="https://php-etl.github.io/documentation/connectivity/custom/lookup_mapper/">
+    Lookup mapper
+  </a>
+  
+  
+</li>
+
+
+        
+      
+    </ul>
+  
 </li>
 
 
@@ -356,6 +416,28 @@
   ">
   <a href="https://php-etl.github.io/documentation/connectivity/fast-map/">
     Fast Map
+  </a>
+  
+  
+</li>
+
+
+        
+      
+        
+          
+
+
+
+
+
+
+
+
+<li data-nav-id="https://php-etl.github.io/documentation/connectivity/zoho/" title="Zoho CRM" class="sidelist
+  ">
+  <a href="https://php-etl.github.io/documentation/connectivity/zoho/">
+    Zoho CRM
   </a>
   
   
@@ -540,13 +622,33 @@
 
         
       
+        
+          
+
+
+
+
+
+
+
+
+<li data-nav-id="https://php-etl.github.io/documentation/connectivity/batch/" title="Batch" class="sidelist
+  ">
+  <a href="https://php-etl.github.io/documentation/connectivity/batch/">
+    Batch
+  </a>
+  
+  
+</li>
+
+
+        
+      
     </ul>
   
 </li>
 
 
-              
-            
               
             
               
@@ -600,21 +702,21 @@
 stack.</p>
 <h2 id="installation">Installation</h2>
 <p>In a Satellite project, add the JSON plugin this way:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">composer require php-etl/json-plugin
-</code></pre></div><h2 id="usage">Usage</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>composer require php-etl/json-plugin
+</span></span></code></pre></div><h2 id="usage">Usage</h2>
 <h3 id="building-an-extractor">Building an extractor</h3>
 <p>To build an extractor, you need to specify the path of your file with the <code>file_path</code> option.</p>
 <ul class="nav nav-tabs" id="extractor" role="tablist"><li class="nav-item"><a data-toggle="tab" class="nav-link active" href="#extractor-0" role="tab" aria-controls="extractor-0" aria-selected="true">YAML</a></li>
 	  </ul>
 <div class="tab-content" id="extractor"><div id="extractor-0" class="tab-pane show active" role="tabpanel" aria-labelledby="extractor-0">
 
-<p><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml">
-
-<span style="color:#f92672">json</span>:
-  <span style="color:#f92672">extractor</span>:
-    <span style="color:#f92672">file_path</span>: <span style="color:#e6db74">&#39;input.json&#39;</span>
-
-</code></pre></div></div></div>
+<p><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">json</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">extractor</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">file_path</span>: <span style="color:#e6db74">&#39;input.json&#39;</span>
+</span></span><span style="display:flex;"><span>
+</span></span></code></pre></div></div></div>
 
 <h3 id="building-a-loader">Building a loader</h3>
 <p>To build a loader, you need to specify the path to your file with the <code>file_path</code> option.</p>
@@ -622,13 +724,13 @@ stack.</p>
 	  </ul>
 <div class="tab-content" id="loader"><div id="loader-0" class="tab-pane show active" role="tabpanel" aria-labelledby="loader-0">
 
-<p><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml">
-
-<span style="color:#f92672">json</span>:
-  <span style="color:#f92672">loader</span>:
-    <span style="color:#f92672">file_path</span>: <span style="color:#e6db74">&#39;output.json&#39;</span>
-
-</code></pre></div></div></div>
+<p><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">json</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">loader</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">file_path</span>: <span style="color:#e6db74">&#39;output.json&#39;</span>
+</span></span><span style="display:flex;"><span>
+</span></span></code></pre></div></div></div>
 
 </div>
           
@@ -660,17 +762,30 @@ stack.</p>
             
             
             
+            
+            
+
+            
+            
+            
+            
+            
 
+            
+            
             
             
             
             
             
+            
 
+            
             
             
             
             
+
             
             
             
@@ -678,11 +793,13 @@ stack.</p>
             
             
             
+            
 
             
             
             
 
+            
             
             
             
@@ -691,6 +808,8 @@ stack.</p>
             
             
             
+            
+            
 
             
             
@@ -723,6 +842,7 @@ stack.</p>
             
             
             
+
             
             
             
@@ -730,7 +850,6 @@ stack.</p>
             
             
             
-
             
             
             
@@ -742,7 +861,7 @@ stack.</p>
             
             
             
-
+            
             
             
             
@@ -752,20 +871,23 @@ stack.</p>
             
             
             
+
             
             
             
             
             
             
-
             
             
             
+            
+            
 
             
             
             
+
             
             
             
@@ -807,6 +929,8 @@ stack.</p>
             
             
             
+            
+            
 
             
             
@@ -823,17 +947,27 @@ stack.</p>
             
             
             
+
             
             
             
 
+            
+            
+            
             
             
             
+            
+            
+            
+            
+            
 
             
             
             
+
             
             
             
@@ -847,6 +981,8 @@ stack.</p>
             
             
 
+            
+            
             
             
             
@@ -858,6 +994,7 @@ stack.</p>
             
             
             
+            
 
             
             
@@ -906,16 +1043,15 @@ stack.</p>
             
             
             
+
             
             
             
 
-            
             
             
             
             
-
             
             
             
@@ -929,6 +1065,7 @@ stack.</p>
             
             
 
+            
             
             
             
@@ -940,6 +1077,8 @@ stack.</p>
             
             
             
+            
+            
 
             
             
@@ -1004,6 +1143,7 @@ stack.</p>
             
             
             
+
             
             
             
@@ -1013,12 +1153,13 @@ stack.</p>
             
             
             
-
             
             
             
             
             
+            
+
             
             
             
@@ -1026,7 +1167,6 @@ stack.</p>
             
             
             
-
             
             
             
@@ -1101,6 +1241,7 @@ stack.</p>
             
             
             
+
             
             
             
@@ -1108,7 +1249,6 @@ stack.</p>
             
             
             
-
             
             
             
@@ -1117,6 +1257,7 @@ stack.</p>
             
             
             
+
             
             
             
@@ -1124,7 +1265,9 @@ stack.</p>
             
             
             
-
+            
+            
+            
             
             
             
@@ -1133,17 +1276,26 @@ stack.</p>
             
             
             
+
+            
+            
             
             
             
 
+            
+            
+            
             
             
             
+            
+            
 
             
             
             
+
             
             
             
@@ -1175,6 +1327,8 @@ stack.</p>
             
             
 
+            
+            
             
             
             
@@ -1183,11 +1337,14 @@ stack.</p>
             
             
             
+            
 
             
             
             
 
+            
+            
             
             
             
@@ -1197,16 +1354,30 @@ stack.</p>
             
             
             
+
             
             
+            
 
+            
             
             
             
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
 
             
             
             
+
             
             
             

@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <title>Promise  | Gyroscops Documentation</title>
 
-  <meta name="generator" content="Hugo 0.92.2" />
+  <meta name="generator" content="Hugo 0.111.3">
 
   <!-- mobile responsive meta -->
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -120,11 +120,15 @@
           </span>
           <div class="dropdown-menu">
             
-            <a class="dropdown-item" href="/documentation/core-concept/satellite">Satellite</a>
+            <a class="dropdown-item" href="/documentation/core-concept/satellite">Satellites</a>
             
-            <a class="dropdown-item" href="/documentation/core-concept/pipeline">Pipeline</a>
+            <a class="dropdown-item" href="/documentation/core-concept/satellite/pipeline">Pipeline</a>
             
-            <a class="dropdown-item" href="/documentation/core-concept/workflow">Workflow</a>
+            <a class="dropdown-item" href="/documentation/core-concept/satellite/workflow">Workflow</a>
+            
+            <a class="dropdown-item" href="/documentation/core-concept/satellite/http-hook">HTTP Hook</a>
+            
+            <a class="dropdown-item" href="/documentation/core-concept/satellite/http-api">HTTP API</a>
             
           </div>
         </li>
@@ -161,6 +165,12 @@
             <a class="dropdown-item" href="/documentation/connectivity/prestashop">Prestashop</a>
             
             <a class="dropdown-item" href="/documentation/connectivity/filtering">Filtering, drop or reject</a>
+            
+            <a class="dropdown-item" href="/documentation/connectivity/batch">Batch</a>
+            
+            <a class="dropdown-item" href="/documentation/connectivity/magento-2">Magento 2</a>
+            
+            <a class="dropdown-item" href="/documentation/connectivity/zoho">Zoho CRM</a>
             
           </div>
         </li>
@@ -339,32 +349,32 @@ when the second operation does not need to wait for the first to finish before s
 <p>This object allows you to synchronise two (or more) actions that take place in time but not at the same speed.</p>
 <h3 id="callbacks">Callbacks</h3>
 <p>The <code>then</code> method records reminders to receive the possible value of a promise, and the <code>failure</code> method represents the reason why it cannot be kept.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php"><span style="color:#f92672">&lt;?</span><span style="color:#a6e22e">php</span> 
-
-<span style="color:#66d9ef">use</span> <span style="color:#a6e22e">Kiboko\Component\Promise\Promise</span>;
-
-$promise <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Promise</span>();
-$promise
-   <span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">then</span>(<span style="color:#66d9ef">function</span> ($value) {
-        <span style="color:#66d9ef">echo</span> <span style="color:#e6db74">&#34;Hello, &#34;</span><span style="color:#f92672">.</span>$value;
-   })
-   <span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">failure</span>(<span style="color:#66d9ef">function</span> (<span style="color:#a6e22e">\Exception</span> $exception) {
-        <span style="color:#66d9ef">echo</span> <span style="color:#e6db74">&#39;Oups, error : &#39;</span><span style="color:#f92672">.</span>$exception;
-   })
-;
-</code></pre></div><h3 id="resolving-a-promise">Resolving a promise</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-php" data-lang="php"><span style="display:flex;"><span><span style="color:#f92672">&lt;?</span><span style="color:#a6e22e">php</span> 
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">use</span> <span style="color:#a6e22e">Kiboko\Component\Promise\Promise</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>$promise <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Promise</span>();
+</span></span><span style="display:flex;"><span>$promise
+</span></span><span style="display:flex;"><span>   <span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">then</span>(<span style="color:#66d9ef">function</span> ($value) {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">echo</span> <span style="color:#e6db74">&#34;Hello, &#34;</span><span style="color:#f92672">.</span>$value;
+</span></span><span style="display:flex;"><span>   })
+</span></span><span style="display:flex;"><span>   <span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">failure</span>(<span style="color:#66d9ef">function</span> (<span style="color:#a6e22e">\Exception</span> $exception) {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">echo</span> <span style="color:#e6db74">&#39;Oups, error : &#39;</span><span style="color:#f92672">.</span>$exception;
+</span></span><span style="display:flex;"><span>   })
+</span></span><span style="display:flex;"><span>;
+</span></span></code></pre></div><h3 id="resolving-a-promise">Resolving a promise</h3>
 <p>Promises are fulfilled using the resolve($value) method.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php"><span style="color:#f92672">&lt;?</span><span style="color:#a6e22e">php</span>
-
-$promise<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">resolve</span>(<span style="color:#e6db74">&#39;world&#39;</span>);
-<span style="color:#75715e">// Outputs &#39;Hello, world&#39;
-</span></code></pre></div><h3 id="promise-failure">Promise failure</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-php" data-lang="php"><span style="display:flex;"><span><span style="color:#f92672">&lt;?</span><span style="color:#a6e22e">php</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>$promise<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">resolve</span>(<span style="color:#e6db74">&#39;world&#39;</span>);
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Outputs &#39;Hello, world&#39;
+</span></span></span></code></pre></div><h3 id="promise-failure">Promise failure</h3>
 <p>Promises are failed using the fail($exception) method.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php"><span style="color:#f92672">&lt;?</span><span style="color:#a6e22e">php</span>
-
-$promise<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">fail</span>(<span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Exception</span>(<span style="color:#e6db74">&#39;Something went wrong&#39;</span>));
-<span style="color:#75715e">// Outputs &#39;Oups, error : Exception: Something went wrong&#39;
-</span></code></pre></div></div>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-php" data-lang="php"><span style="display:flex;"><span><span style="color:#f92672">&lt;?</span><span style="color:#a6e22e">php</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>$promise<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">fail</span>(<span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Exception</span>(<span style="color:#e6db74">&#39;Something went wrong&#39;</span>));
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Outputs &#39;Oups, error : Exception: Something went wrong&#39;
+</span></span></span></code></pre></div></div>
           
           <p class="post-meta border-bottom pb-3 mb-0 mt-3">Updated on 12 Jul 2020</p>
           <nav class="pagination mt-3">
@@ -415,6 +425,8 @@ $promise<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">fail
             
             
             
+            
+            
 
             
             
@@ -456,6 +468,7 @@ $promise<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">fail
             
             
             
+
             
             
             
@@ -463,7 +476,6 @@ $promise<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">fail
             
             
             
-
             
             
             
@@ -472,6 +484,7 @@ $promise<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">fail
             
             
             
+
             
             
             
@@ -479,7 +492,10 @@ $promise<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">fail
             
             
             
-
+            
+            
+            
+            
             
             
             
@@ -490,8 +506,18 @@ $promise<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">fail
             
             
             
+
+            
+            
+            
+            
             
 
+            
+            
+            
+            
+            
             
             
             
@@ -499,6 +525,7 @@ $promise<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">fail
             
             
             
+
             
             
             
@@ -528,6 +555,7 @@ $promise<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">fail
             
             
 
+            
             
             
             
@@ -539,6 +567,8 @@ $promise<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">fail
             
             
             
+            
+            
 
             
             
@@ -584,6 +614,7 @@ $promise<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">fail
             
             
             
+
             
             
             
@@ -591,7 +622,6 @@ $promise<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">fail
             
             
             
-
             
             
             
@@ -635,16 +665,30 @@ $promise<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">fail
             
             
             
+
             
             
             
 
+            
+            
+            
             
             
             
             
             
+            
+            
+            
+
+            
+            
+            
 
+            
+            
+            
             
             
             
@@ -733,6 +777,7 @@ $promise<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">fail
             
             
             
+
             
             
             
@@ -742,20 +787,20 @@ $promise<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">fail
             
             
             
-
             
             
             
             
             
             
+
             
             
+            
 
             
             
             
-
             
             
             
@@ -830,6 +875,7 @@ $promise<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">fail
             
             
             
+
             
             
             
@@ -837,7 +883,6 @@ $promise<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">fail
             
             
             
-
             
             
             
@@ -846,6 +891,7 @@ $promise<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">fail
             
             
             
+
             
             
             
@@ -853,7 +899,7 @@ $promise<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">fail
             
             
             
-
+            
             
             
             
@@ -864,8 +910,18 @@ $promise<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">fail
             
             
             
+
+            
+            
+            
+            
             
 
+            
+            
+            
+            
+            
             
             
             
@@ -873,6 +929,7 @@ $promise<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">fail
             
             
             
+
             
             
             
@@ -904,6 +961,7 @@ $promise<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">fail
             
             
 
+            
             
             
             
@@ -912,11 +970,14 @@ $promise<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">fail
             
             
             
+            
+            
 
             
             
             
 
+            
             
             
             
@@ -927,15 +988,30 @@ $promise<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">fail
             
             
             
+
+            
             
+            
 
+            
+            
             
             
             
+            
+            
+            
+            
+            
+            
+            
+            
+            
 
             
             
             
+
             
             
             

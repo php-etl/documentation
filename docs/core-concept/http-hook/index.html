@@ -1,0 +1,1381 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+  <meta charset="utf-8">
+  <title>HTTP Hook  | Gyroscops Documentation</title>
+
+  <meta name="generator" content="Hugo 0.111.3">
+
+  <!-- mobile responsive meta -->
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <!-- ** Plugins Needed for the Project ** -->
+  <!-- Bootstrap -->
+  <link rel="stylesheet" href="https://php-etl.github.io/documentation/plugins/bootstrap/bootstrap.min.css">
+
+  <!-- themefy-icon -->
+  <link rel="stylesheet" href="https://php-etl.github.io/documentation/plugins/themify-icons/themify-icons.css">
+
+  <!-- highlight -->
+  <link rel="stylesheet" href="https://php-etl.github.io/documentation/plugins/highlight/hybrid.css">
+
+  <!--Favicon-->
+  <link rel="icon" href="https://php-etl.github.io/documentation/favicon.png" type="image/x-icon">
+
+  <!-- fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700&display=swap" rel="stylesheet">
+
+  <style>
+  :root{
+    --primary-color: #22014f;
+    --primary-color-lighten: #f2e9fe;
+    --secondary-color:#fe8507;
+    --body-color:#ddd;
+    --text-color:#666;
+    --text-color-dark:#333;
+    --text-color-light:#eee;
+    --white-color:#fff;
+    --light-color:#eee;
+    --font-family:Lato;
+  }
+  </style>
+
+<!-- Main Stylesheet -->
+
+<link href="https://php-etl.github.io/documentation/css/style.min.css" rel="stylesheet" media="screen"/>
+
+<!-- jquiry -->
+<script src="https://php-etl.github.io/documentation/plugins/jquery/jquery-1.12.4.js"></script>
+
+<!-- jquary ui -->
+<script src="https://php-etl.github.io/documentation/plugins/jquery/jquery-ui.js"></script>
+
+<!-- Bootstrap JS -->
+<script src="https://php-etl.github.io/documentation/plugins/bootstrap/bootstrap.min.js"></script>
+
+<!-- match-height JS -->
+<script src="https://php-etl.github.io/documentation/plugins/match-height/jquery.matchHeight-min.js"></script>
+
+<!-- highlight -->
+<script src="https://php-etl.github.io/documentation/plugins/highlight/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+
+
+</head>
+
+
+  <body>
+    
+    <!-- header -->
+    <header class="sticky-top bg-gradient">
+      <nav class="navbar navbar-expand-md bg-light">
+  <div class="container">
+    <a class="navbar-brand" href="/documentation">
+      
+      
+      
+      
+      <div class="navbar-brand">
+        <img class="img-fluid" src="https://php-etl.github.io/documentation/logo-web.svg" alt="Gyroscops"><span class="navbar-logo"> Gyroscops</span>
+      </div>
+      
+      
+    </a>
+    <button class="navbar-toggler border-0" type="button" data-toggle="collapse" data-target="#navigation"
+      aria-controls="navigation" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse text-center" id="navigation">
+      <ul class="navbar-nav ml-auto">
+        
+        
+        <li class="nav-item dropdown">
+          <span class="nav-link dropdown-toggle text-dark" href="#" role="button" data-toggle="dropdown"
+            aria-haspopup="true" aria-expanded="false">
+            Getting Started
+          </span>
+          <div class="dropdown-menu">
+            
+            <a class="dropdown-item" href="/documentation/getting-started/environment-setup">Environment Setup</a>
+            
+            <a class="dropdown-item" href="/documentation/getting-started/installation">Installation</a>
+            
+            <a class="dropdown-item" href="/documentation/getting-started/writing-configuration">Writing Configuration</a>
+            
+            <a class="dropdown-item" href="/documentation/getting-started/compilation">Compilation</a>
+            
+            <a class="dropdown-item" href="/documentation/getting-started/execution">Execution</a>
+            
+          </div>
+        </li>
+        
+        
+        
+        <li class="nav-item dropdown">
+          <span class="nav-link dropdown-toggle text-dark" href="#" role="button" data-toggle="dropdown"
+            aria-haspopup="true" aria-expanded="false">
+            Core concepts
+          </span>
+          <div class="dropdown-menu">
+            
+            <a class="dropdown-item" href="/documentation/core-concept/satellite">Satellite</a>
+            
+            <a class="dropdown-item" href="/documentation/core-concept/pipeline">Pipeline</a>
+            
+            <a class="dropdown-item" href="/documentation/core-concept/workflow">Workflow</a>
+            
+            <a class="dropdown-item" href="/documentation/core-concept/http-hook">HTTP Hook</a>
+            
+            <a class="dropdown-item" href="/documentation/core-concept/http-api">HTTP API</a>
+            
+          </div>
+        </li>
+        
+        
+        
+        <li class="nav-item dropdown">
+          <span class="nav-link dropdown-toggle text-dark" href="#" role="button" data-toggle="dropdown"
+            aria-haspopup="true" aria-expanded="false">
+            Connectivity
+          </span>
+          <div class="dropdown-menu">
+            
+            <a class="dropdown-item" href="/documentation/connectivity/akeneo">Akeneo</a>
+            
+            <a class="dropdown-item" href="/documentation/connectivity/csv">CSV files</a>
+            
+            <a class="dropdown-item" href="/documentation/connectivity/custom">Custom connector</a>
+            
+            <a class="dropdown-item" href="/documentation/connectivity/fast-map">FastMap</a>
+            
+            <a class="dropdown-item" href="/documentation/connectivity/ftp">FTP</a>
+            
+            <a class="dropdown-item" href="/documentation/connectivity/sftp">SFTP</a>
+            
+            <a class="dropdown-item" href="/documentation/connectivity/json">JSON</a>
+            
+            <a class="dropdown-item" href="/documentation/connectivity/spreadsheet">Spreadsheet files</a>
+            
+            <a class="dropdown-item" href="/documentation/connectivity/sql">SQL database</a>
+            
+            <a class="dropdown-item" href="/documentation/connectivity/sylius">Sylius</a>
+            
+            <a class="dropdown-item" href="/documentation/connectivity/prestashop">Prestashop</a>
+            
+            <a class="dropdown-item" href="/documentation/connectivity/filtering">Filtering, drop or reject</a>
+            
+            <a class="dropdown-item" href="/documentation/connectivity/batch">Batch</a>
+            
+            <a class="dropdown-item" href="/documentation/connectivity/magento-2">Magento 2</a>
+            
+            <a class="dropdown-item" href="/documentation/connectivity/zoho">Zoho CRM</a>
+            
+          </div>
+        </li>
+        
+        
+        
+        <li class="nav-item dropdown">
+          <span class="nav-link dropdown-toggle text-dark" href="#" role="button" data-toggle="dropdown"
+            aria-haspopup="true" aria-expanded="false">
+            Features
+          </span>
+          <div class="dropdown-menu">
+            
+            <a class="dropdown-item" href="/documentation/feature/services">Declaring services</a>
+            
+            <a class="dropdown-item" href="/documentation/feature/expression-language">Expression Language</a>
+            
+            <a class="dropdown-item" href="/documentation/feature/logger">Logging</a>
+            
+            <a class="dropdown-item" href="/documentation/feature/rejection">Rejection</a>
+            
+            <a class="dropdown-item" href="/documentation/feature/state">State</a>
+            
+          </div>
+        </li>
+        
+        
+      </ul>
+      
+    </div>
+  </div>
+</nav>
+
+    </header>
+    <!-- /header -->
+    
+    
+
+<!-- details page -->
+<section class="single section-sm pb-0">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-3">
+        <div class="sidebar">
+          <ul class="list-styled">
+            
+            <a class="back-btn" href="/documentation"></a>
+            
+              
+              
+
+
+
+
+
+
+
+
+<li data-nav-id="https://php-etl.github.io/documentation/core-concept/" title="Core-concepts" class="sidelist
+  ">
+  <a href="https://php-etl.github.io/documentation/core-concept/">
+    Core-concepts
+  </a>
+  
+  
+    <ul>
+      
+        
+          
+
+
+
+
+
+
+
+
+<li data-nav-id="https://php-etl.github.io/documentation/core-concept/satellite/" title="Creating Satellite" class="sidelist
+  ">
+  <a href="https://php-etl.github.io/documentation/core-concept/satellite/">
+    Creating Satellite
+  </a>
+  
+  
+    <ul>
+      
+        
+          
+
+
+
+
+
+
+
+
+<li data-nav-id="https://php-etl.github.io/documentation/core-concept/satellite/yaml-format/" title="The YAML configuration format" class="sidelist
+  ">
+  <a href="https://php-etl.github.io/documentation/core-concept/satellite/yaml-format/">
+    The YAML configuration format
+  </a>
+  
+  
+</li>
+
+
+        
+      
+        
+          
+
+
+
+
+
+
+
+
+<li data-nav-id="https://php-etl.github.io/documentation/core-concept/satellite/php-objects/" title="PHP Objects" class="sidelist
+  ">
+  <a href="https://php-etl.github.io/documentation/core-concept/satellite/php-objects/">
+    PHP Objects
+  </a>
+  
+  
+</li>
+
+
+        
+      
+    </ul>
+  
+</li>
+
+
+        
+      
+        
+          
+
+
+
+
+
+
+
+
+<li data-nav-id="https://php-etl.github.io/documentation/core-concept/pipeline/" title="Pipeline" class="sidelist
+  ">
+  <a href="https://php-etl.github.io/documentation/core-concept/pipeline/">
+    Pipeline
+  </a>
+  
+  
+</li>
+
+
+        
+      
+        
+          
+
+
+
+
+
+
+
+
+<li data-nav-id="https://php-etl.github.io/documentation/core-concept/workflow/" title="Workflow" class="sidelist
+  ">
+  <a href="https://php-etl.github.io/documentation/core-concept/workflow/">
+    Workflow
+  </a>
+  
+  
+</li>
+
+
+        
+      
+        
+          
+
+
+
+
+
+
+
+
+<li data-nav-id="https://php-etl.github.io/documentation/core-concept/http-hook/" title="HTTP Hook" class="sidelist
+  active">
+  <a href="https://php-etl.github.io/documentation/core-concept/http-hook/">
+    HTTP Hook
+  </a>
+  
+  
+</li>
+
+
+        
+      
+        
+          
+
+
+
+
+
+
+
+
+<li data-nav-id="https://php-etl.github.io/documentation/core-concept/http-api/" title="HTTP API" class="sidelist
+  ">
+  <a href="https://php-etl.github.io/documentation/core-concept/http-api/">
+    HTTP API
+  </a>
+  
+  
+</li>
+
+
+        
+      
+    </ul>
+  
+</li>
+
+
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+          </ul>
+        </div>
+      </div>
+      <div class="col-lg-9">
+        <div class="p-lg-5 p-4">
+          <h1 class="single-title mb-5">
+              
+              
+              <i class="logo-pipeline icon d-block">
+                  <svg>
+                      <use xlink:href="https://php-etl.github.io/documentation/sprites.svg#pipeline"></use>
+                  </svg>
+              </i>
+              
+              HTTP Hook
+          </h1>
+          
+          <div class="content"><ul>
+<li><a href="#what-is-it-">What is it ?</a></li>
+<li><a href="#installation">Installation</a></li>
+<li><a href="#basic-usage">Basic usage</a></li>
+<li><a href="#advanced-usage">Advanced usage</a>
+<ul>
+<li><a href="#adding-json-web-token-jwt-authorization">Adding JWT Authorization</a></li>
+<li><a href="#adding-basic-http-authorization">Adding Basic HTTP Authorization</a></li>
+</ul>
+</li>
+</ul>
+<hr>
+<h2 id="what-is-it-">What is it ?</h2>
+<p>This package allows you to create an API that will serve a single endpoint.</p>
+<p>The goal is to be able to send data to this endpoint, to process it in a series of steps.</p>
+<h2 id="installation">Installation</h2>
+<pre tabindex="0"><code>composer require php-etl/workflow
+</code></pre><h2 id="basic-usage">Basic usage</h2>
+<p>Your HTTP Hook will serve the route set in the option <code>path</code>:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#f92672">version</span>: <span style="color:#e6db74">&#39;0.3&#39;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">satellites</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">my_satellite</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">label</span>: <span style="color:#e6db74">&#39;Example of a hook&#39;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">filesystem</span>:
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">path</span>: <span style="color:#ae81ff">build</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">composer</span>:
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">require</span>:
+</span></span><span style="display:flex;"><span>        - <span style="color:#e6db74">&#34;middlewares/uuid:dev-master&#34;</span>
+</span></span><span style="display:flex;"><span>        - <span style="color:#e6db74">&#34;middlewares/base-path:dev-master&#34;</span>
+</span></span><span style="display:flex;"><span>        - <span style="color:#e6db74">&#34;middlewares/request-handler:dev-master&#34;</span>
+</span></span><span style="display:flex;"><span>        - <span style="color:#e6db74">&#34;middlewares/fast-route:dev-master&#34;</span>
+</span></span><span style="display:flex;"><span>        - <span style="color:#e6db74">&#34;laminas/laminas-diactoros&#34;</span>
+</span></span><span style="display:flex;"><span>        - <span style="color:#e6db74">&#34;laminas/laminas-httphandlerrunner&#34;</span>
+</span></span><span style="display:flex;"><span>        - <span style="color:#e6db74">&#34;nyholm/psr7-server&#34;</span>
+</span></span><span style="display:flex;"><span>        - <span style="color:#e6db74">&#34;nyholm/psr7&#34;</span>
+</span></span><span style="display:flex;"><span>        - <span style="color:#e6db74">&#34;php-etl/pipeline&#34;</span>
+</span></span><span style="display:flex;"><span>        - <span style="color:#e6db74">&#34;php-etl/satellite&#34;</span>
+</span></span><span style="display:flex;"><span>        - <span style="color:#e6db74">&#34;php-etl/api-runtime&#34;</span>
+</span></span><span style="display:flex;"><span>        - <span style="color:#e6db74">&#34;php-etl/mapping-contracts&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">http_hook</span>:
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">name</span>: <span style="color:#e6db74">&#39;My HTTP Hook&#39;</span> <span style="color:#75715e"># Optional</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">path</span>: <span style="color:#ae81ff">/my-hook</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">expression</span>: <span style="color:#e6db74">&#39;input&#39;</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">pipeline</span>:
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">steps</span>:
+</span></span><span style="display:flex;"><span>          - <span style="color:#f92672">fastmap</span>:
+</span></span><span style="display:flex;"><span>              <span style="color:#f92672">map</span>:
+</span></span><span style="display:flex;"><span>                - <span style="color:#f92672">field</span>: <span style="color:#e6db74">&#39;[sku]&#39;</span>
+</span></span><span style="display:flex;"><span>                  <span style="color:#f92672">copy</span>: <span style="color:#e6db74">&#39;[product_name]&#39;</span>
+</span></span><span style="display:flex;"><span>                - <span style="color:#f92672">field</span>: <span style="color:#e6db74">&#39;[id]&#39;</span>
+</span></span><span style="display:flex;"><span>                  <span style="color:#f92672">copy</span>: <span style="color:#e6db74">&#39;[product_code]&#39;</span>
+</span></span><span style="display:flex;"><span>          - <span style="color:#f92672">csv</span>:
+</span></span><span style="display:flex;"><span>              <span style="color:#f92672">loader</span>:
+</span></span><span style="display:flex;"><span>                <span style="color:#f92672">file_path</span>: <span style="color:#e6db74">&#39;output.csv&#39;</span>
+</span></span></code></pre></div><p>After <a href="../../getting-started/compilation">building</a> the satellite, start a server in the path <code>build/</code>:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>bin/satellite run:hook build/
+</span></span></code></pre></div><p>You can then send POST requests containing the data be processed to <code>http://localhost:8000/my-hook</code></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#75715e"># input:</span>
+</span></span><span style="display:flex;"><span>[
+</span></span><span style="display:flex;"><span>  { <span style="color:#f92672">product_name: &#39;test_1&#39;, product_code</span>: <span style="color:#ae81ff">861</span> },
+</span></span><span style="display:flex;"><span>  { <span style="color:#f92672">product_name: &#39;test_2&#39;, product_code</span>: <span style="color:#ae81ff">862</span> }
+</span></span><span style="display:flex;"><span>]
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># response:</span>
+</span></span><span style="display:flex;"><span>{<span style="color:#e6db74">&#34;message&#34;</span>:{<span style="color:#e6db74">&#34;accept&#34;</span>:<span style="color:#ae81ff">4</span>,<span style="color:#e6db74">&#34;reject&#34;</span>:<span style="color:#ae81ff">0</span>,<span style="color:#e6db74">&#34;error&#34;</span>:<span style="color:#ae81ff">0</span>},<span style="color:#e6db74">&#34;server&#34;</span>:<span style="color:#e6db74">&#34;my-computer.local&#34;</span>}
+</span></span><span style="display:flex;"><span>  
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># output.csv:</span>
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">sku;id</span>
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">test_1;861</span>
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">test_2;862</span>
+</span></span></code></pre></div><h2 id="advanced-usage">Advanced usage</h2>
+<h3 id="adding-json-web-token-jwt-authorization">Adding JSON Web Token (JWT) Authorization</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#75715e"># ...</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">composer</span>:
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">require</span>:
+</span></span><span style="display:flex;"><span>        - <span style="color:#e6db74">&#34;tuupola/slim-jwt-auth&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># ...</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">http_hook</span>:
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">authorization</span>:
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">jwt</span>:
+</span></span><span style="display:flex;"><span>          <span style="color:#f92672">secret</span>: <span style="color:#e6db74">&#39;mysecret&#39;</span>
+</span></span></code></pre></div><p>With this config, each requests will need the header <strong>Authorization</strong>:</p>
+<table>
+<thead>
+<tr>
+<th>header</th>
+<th>value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Authorization</code></td>
+<td><code>Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6Ik</code>[&hellip;]</td>
+</tr>
+</tbody>
+</table>
+<p>The string after &ldquo;Bearer&rdquo; is the token, generated from the secret phrase. This site can be used to generate a token from your own secret: <a href="https://jwt.io">https://jwt.io</a></p>
+<h3 id="adding-basic-http-authorization">Adding Basic HTTP Authorization</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#75715e"># ...</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">composer</span>:
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">require</span>:
+</span></span><span style="display:flex;"><span>        - <span style="color:#e6db74">&#34;tuupola/slim-basic-auth&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># ...</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">http_hook</span>:
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">authorization</span>:
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">basic</span>:
+</span></span><span style="display:flex;"><span>          - <span style="color:#f92672">user</span>: <span style="color:#ae81ff">john</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">password</span>: <span style="color:#ae81ff">mypassword</span>
+</span></span><span style="display:flex;"><span>          - <span style="color:#f92672">user</span>: <span style="color:#ae81ff">bill</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">password</span>: <span style="color:#ae81ff">otherpassword</span>
+</span></span></code></pre></div><p>The <code>basic</code> node is an array, and can contain multiple user/password pairs.</p>
+<p>With this configuration, each requests will need the header <strong>Authorization</strong>:</p>
+<table>
+<thead>
+<tr>
+<th>header</th>
+<th>value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Authorization</code></td>
+<td><code>Basic am9objpteXBhc3N3b3Jk</code></td>
+</tr>
+</tbody>
+</table>
+<p>The string after &ldquo;Basic&rdquo; is the combination <code>user:password</code> encoded in Base64.</p>
+</div>
+          
+          <p class="post-meta border-bottom pb-3 mb-0 mt-3">Updated on 28 Aug 2023</p>
+          <nav class="pagination mt-3">
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            <a class="nav nav-prev" href="https://php-etl.github.io/documentation/core-concept/workflow/"><i class="ti-arrow-left mr-2"></i> <span class="d-none d-md-block">Workflow</span></a>
+            
+            
+            <a class="nav nav-next" href="https://php-etl.github.io/documentation/core-concept/http-api/"> <span class="d-none d-md-block">HTTP API</span><i class="ti-arrow-right ml-2"></i></a>
+            
+          </nav>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- /details page -->
+
+
+
+
+
+
+    <!-- footer -->
+<footer class="section pb-4">
+  <div class="container">
+    <div class="row align-items-center">
+      <div class="col-md-8 text-md-left text-center">
+       <p class="mb-md-0 mb-4">The Gyroscops Documentation is copyright © <a href="https://gyroscops.com/">Gyroscops</a> 2020-2023.</p>
+      </div>
+      <div class="col-md-4 text-md-right text-center">
+        <ul class="list-inline">
+          
+        </ul>
+      </div>
+    </div>
+  </div>
+</footer>
+<!-- /footer -->
+
+<!-- Main Script -->
+
+<script src="https://php-etl.github.io/documentation/js/script.min.js"></script>
+  </body>
+
+</html>

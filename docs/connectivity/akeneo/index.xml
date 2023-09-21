@@ -14,7 +14,7 @@
       <pubDate>Sun, 24 Jan 2021 09:23:54 +0100</pubDate>
       
       <guid>https://php-etl.github.io/documentation/connectivity/akeneo/plugin/</guid>
-      <description>FEATURE STATE: Gyroscops 0.1 [alpha]  Akeneo Plugin  What is it ? Installation Usage  Connecting to Akeneo Using the enterprise version Building an extractor Building a lookup Building a conditional lookup Building a loader   Advanced Usage  Filtering your search Using ExpressionLanguage     What is it ? The Akeneo plugin aims at integration the Akeneo PHP clients into the Pipeline stack. This integration is compatible with both Akeneo Enterprise Edition client and the Akeneo Community Edition client.</description>
+      <description>FEATURE STATE: Gyroscops 0.1 [alpha] Akeneo Plugin What is it ? Installation Usage Connecting to Akeneo Building an extractor Building a lookup Building a conditional lookup Building a loader Advanced Usage Filtering your search Using ExpressionLanguage Available resources What is it ? The Akeneo plugin aims at integration the Akeneo PHP clients into the Pipeline stack. This integration is compatible with both Akeneo Enterprise Edition client and the Akeneo Community Edition client.</description>
     </item>
     
     <item>
@@ -23,7 +23,7 @@
       <pubDate>Sun, 24 Jan 2021 09:23:54 +0100</pubDate>
       
       <guid>https://php-etl.github.io/documentation/connectivity/akeneo/expression-language/</guid>
-      <description>FEATURE STATE: Gyroscops 0.1 [alpha]   What is it ? Installation Filter Provider  Usage Functions reference  Attribute data manipulation  Filter by locale Filter by scope Take the first available value by scopes Combining results filter Excluding results filter Extracting a slice of the values list Extracting the beginning of the values list Extracting the end of the values list Extracting the values list, after an offset Extracting the first value from the list Extracting the last value from the list   Dates management with dateTime and dateTimeZone Manage metrics with metricAmount, metricUnit and formatMetric     Builder Provider  Usage Functions reference    What is it ?</description>
+      <description>FEATURE STATE: Gyroscops 0.1 [alpha] What is it ? Installation Filter Provider Usage Functions reference Attribute data manipulation Filter by locale Filter by scope Take the first available value by scopes Combining results filter Excluding results filter Extracting a slice of the values list Extracting the beginning of the values list Extracting the end of the values list Extracting the values list, after an offset Extracting the first value from the list Extracting the last value from the list Dates management with dateTime and dateTimeZone Manage metrics with metricAmount, metricUnit and formatMetric Builder Provider Usage Functions reference What is it ?</description>
     </item>
     
   </channel>

@@ -12,7 +12,11 @@
 - Edit theme design & layout in `themes/middleware`
 - Edit theme configuration in `config.toml`
 
-Local : `hugo server -D`
+Open local server : 
+- `hugo server -D`
+
+Build static files:
+- `hugo`
 
 ## Maintainers
 
