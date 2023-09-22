@@ -76,7 +76,7 @@ After [building](../../getting-started/compilation) the satellite, start a serve
 bin/satellite run:api build/
 ```
 
-You can then send POST requests containing the data be processed to `http://localhost:8000/my-api/transform`
+You can then send POST requests containing the data to process to `http://localhost:8000/my-api/transform`
 
 ```yaml
 # input:
