@@ -42,10 +42,13 @@ This package allows you to create a microservice that will be operating a data p
 To define your pipeline, you need to specify which steps will make up the pipeline using the `steps` option. Each step 
 contains the configuration of a plugin. For more details, go to the documentation page of the plugin of your choice.
 
+You must also set a `code` of your choosing, which will help identify the pipeline. This pipeline code should be unique within the satellite.
+
 {{< tabs name="basic_definition" >}}
 
 {{< tab name="YAML" codelang="yaml"  >}}
 pipeline:
+  code: 'my-example-pipeline'
   steps:
     - csv:
         extractor:
@@ -117,6 +120,7 @@ For more details, go to the [detailed logger documentation](../../feature/logger
 satellite:
 # ...
    pipeline:
+      code: 'my-example-pipeline'
       steps:
       - akeneo:
         # ...
@@ -139,6 +143,7 @@ For more details, go to the [detailed rejection documentation](../../feature/rej
 satellite:
 # ...
    pipeline:
+      code: 'my-example-pipeline'
       steps:
       - akeneo:
         # ...
@@ -160,6 +165,7 @@ For more details, go to the [detailed state documentation](../../feature/state)
 satellite:
 # ...
    pipeline:
+      code: 'my-example-pipeline'
       steps:
       - akeneo:
         # ...
@@ -186,6 +192,7 @@ Then use the variables like this in the configuration:
 ```yaml
 # ...
   pipeline:
+    code: 'my-example-pipeline'
     steps:
       - akeneo:
         # ...

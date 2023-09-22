@@ -221,6 +221,7 @@ satellites:
     label: 'My first Satellite'
     # ...
     pipeline:
+      code: 'my-first-pipeline'
       steps:
         - akeneo:
             extractor:
@@ -249,6 +250,7 @@ satellites:
     workflow:
       jobs:
         - pipeline:
+            code: 'my-first-pipeline'
             steps:
               - akeneo:
                   extractor:
@@ -267,6 +269,7 @@ satellites:
                     enclosure: '"'
                     escape: '\\'
         - pipeline:
+            code: 'my-second-pipeline'
             steps:
               - akeneo:
                   extractor:
@@ -296,6 +299,7 @@ satellites:
       path: /my-hook
       expression: 'input'
       pipeline:
+        code: 'my-first-pipeline'
         steps:
           - fastmap:
               map:
@@ -320,6 +324,7 @@ satellites:
         - route: /category
           expression: 'input'
           pipeline:
+            code: 'my-first-pipeline'
             steps:
               - fastmap:
                   map:
@@ -333,6 +338,7 @@ satellites:
         - route: /product
           expression: 'input'
           pipeline:
+            code: 'my-second-pipeline'
             steps:
               - fastmap:
                   map:
