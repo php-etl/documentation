@@ -80,6 +80,12 @@ hasChildren = true
   url = "core-concept/satellite/http-api"
   weight = 5
 
+  [[menu.main]]
+    parent = "Core concepts"
+    name = "Action"
+    url = "core-concept/satellite/action"
+    weight = 6
+
 [[menu.main]]
 weight = 3
 name = "Features"
