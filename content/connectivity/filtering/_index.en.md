@@ -48,3 +48,22 @@ This will ignore a line where the field "`image`" is empty, and store that data 
       destinations:
         # ...
 ```
+
+### Serializer
+
+In some case, you can have an object returned by the api instead of an array.
+And this object isn't serializable or can't be encoded in json ?
+
+You can use our new option, the rejection_serializer !
+
+This option allowed you to use an expression to normalize your object and have its data on the rejection data.
+
+```yaml
+- filter:
+    reject:
+      - when: '@=input["identifier"] === null'
+        rejection_serializer: '@=normalize(input)'
+    rejection:
+      destinations:
+        # ...
+```
