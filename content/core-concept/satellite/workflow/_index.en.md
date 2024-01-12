@@ -28,17 +28,38 @@ composer require php-etl/workflow:'*'
 
 ## Basic usage
 
-To define your workflow, you need to specify the `jobs` you need, that is to say your different pipelines.
-Please see the [Pipeline documentation](../pipeline) to know how a pipeline should be configured.
+To define your workflow, you need to specify the `jobs` you need, that is to say your different [pipelines](../pipeline) or [actions](../action).
+
+Each job must be identified by a code. If you forget it, you will be reminded to add it.
 
 ```yaml
 workflow:
   jobs:
-    - pipeline:
-        # the first pipeline configuration
+    job-1: # this is your job code
+      pipeline:
         # ...
-    - pipeline:
-        # the second pipeline configuration
+    job-2:
+      pipeline:
+        # ...
+    job-3:
+      action:
+        # ...
+```
+
+You can declare your codes in another way, but which we find less legible. We advise you to use the first method, 
+but it's good to know the 2 solutions.
+
+```yaml
+workflow:
+  jobs:
+    - code: 'job-1' # this is your job code
+      pipeline:
+        # ...
+    - code: 'job-2'
+      pipeline:
+        # ...
+    - code: 'job-3'
+      action:
         # ...
 ```
 
@@ -47,7 +68,8 @@ The `name` option allows you to name your job.
 ```yaml
 workflow:
   jobs:
-    - name: 'Pipeline 1'
+    job-1:
+      name: 'First Pipeline'
       pipeline:
         # the pipeline configuration
         # ...
