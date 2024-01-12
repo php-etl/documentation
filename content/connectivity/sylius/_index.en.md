@@ -30,7 +30,7 @@ The Sylius plugin will enable Sylius connectivity to the [Pipeline](../../core-c
 ## Installation
 
 ```shell
-composer require php-etl/sylius-plugin
+composer require php-etl/sylius-plugin:'*'
 ```
 
 ## Usage

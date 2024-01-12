@@ -23,7 +23,7 @@ This package includes classes to extract data from Magento, using a [custom conn
 ## Installation
 
 ```shell
-composer require "php-etl/magento2-flow:*"
+composer require php-etl/magento2-flow:'*'
 ```
 
 This package includes classes and code that you will be able to use in your custom connector.

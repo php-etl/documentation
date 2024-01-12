@@ -29,7 +29,7 @@ stack.
 ## Installation
 
 ```shell
-composer require php-etl/csv-plugin
+composer require php-etl/csv-plugin:'*'
 ```
 
 ## Usage

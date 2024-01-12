@@ -28,7 +28,7 @@ Currently, the following resources are supported by the plugin: `categories`, `c
 ## Installation
 
 ```shell
-composer require "php-etl/prestashop-plugin:*"
+composer require php-etl/prestashop-plugin:'*'
 ```
 
 ## Usage

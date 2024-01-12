@@ -22,8 +22,8 @@ This package allows you to create a micro-service that will be orchestrating mor
 
 ## Installation
 
-``` 
-composer require php-etl/workflow
+```shell
+composer require php-etl/workflow:'*'
 ```
 
 ## Basic usage
