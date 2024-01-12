@@ -96,6 +96,42 @@ satellites:
 #...
 ```
 
+#### Copy custom files
+
+You want to use a class but you can't add a package to your composer ? Use the copy option under de docker/filesystem key.
+
+The build will copy files you indicate on the yaml to the path you provide. If you are a class with namespace, don't forget to add it to your autoload (see autoload section lower)
+
+```yaml
+version: '0.3'
+satellites:
+  my_satellite:
+    label: 'My first Satellite'
+    filesystem:
+      copy:
+        - from: '../Foo/Bar'
+          to: '../build/Foo/Bar'
+      path: ../build # path to the build directory, relative to the YAML file
+#...
+```
+
+```yaml
+version: '0.3'
+satellites:
+  my_satellite:
+    label: 'My first Satellite'
+    docker:
+      from: php:8.0-cli-alpine
+      workdir: /var/www/html
+      tags:
+        - acmeinc/my-satellite:latest
+        - acmeinc/my-satellite:1.0.0
+      copy:
+        - from: '../Foo/Bar'
+          to: './src/Foo/Bar'
+#...
+```
+
 ### Configure Composer
 
 It's possible to declare the Composer dependencies, autoloads, repositories and auths that our microservice needs with the `composer` key.
