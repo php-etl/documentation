@@ -7,36 +7,35 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>The Gyroscops Documentation is copyright © [Gyroscops](https://gyroscops.com/) 2020-2023.</copyright>
-    <lastBuildDate>Mon, 28 Aug 2023 11:14:02 +0200</lastBuildDate><atom:link href="https://php-etl.github.io/documentation/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 28 Aug 2023 11:14:02 +0200</lastBuildDate>
+    <atom:link href="https://php-etl.github.io/documentation/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Lookup mapper</title>
       <link>https://php-etl.github.io/documentation/connectivity/custom/lookup_mapper/</link>
       <pubDate>Mon, 31 Jul 2023 12:07:47 +0200</pubDate>
-      
       <guid>https://php-etl.github.io/documentation/connectivity/custom/lookup_mapper/</guid>
-      <description>A lookup mapper is a class that implements Kiboko\Contract\Mapping\CompiledMapperInterface.
-Its purpose is to merge the result of the lookup back into your line.
-$output is your line, and $input is the result of the lookup.
-&amp;lt;?php declare(strict_types=1); namespace Acme\Custom; use Kiboko\Contract\Mapping\CompiledMapperInterface; class LookupMapper implements CompiledMapperInterface { public function __invoke($input, $output = null) { $output[&amp;#39;actual_customer_id&amp;#39;] = $input[&amp;#39;id&amp;#39;]; return $output; } } </description>
+      <description>A lookup mapper is a class that implements Kiboko\Contract\Mapping\CompiledMapperInterface.&#xA;Its purpose is to merge the result of the lookup back into your line.&#xA;$output is your line, and $input is the result of the lookup.&#xA;&amp;lt;?php declare(strict_types=1); namespace Acme\Custom; use Kiboko\Contract\Mapping\CompiledMapperInterface; class LookupMapper implements CompiledMapperInterface { public function __invoke($input, $output = null) { $output[&amp;#39;actual_customer_id&amp;#39;] = $input[&amp;#39;id&amp;#39;]; return $output; } } </description>
     </item>
-    
     <item>
       <title>Akeneo plugin</title>
       <link>https://php-etl.github.io/documentation/connectivity/akeneo/plugin/</link>
       <pubDate>Sun, 24 Jan 2021 09:23:54 +0100</pubDate>
-      
       <guid>https://php-etl.github.io/documentation/connectivity/akeneo/plugin/</guid>
       <description>FEATURE STATE: Gyroscops 0.1 [alpha] Akeneo Plugin What is it ? Installation Usage Connecting to Akeneo Building an extractor Building a lookup Building a conditional lookup Building a loader Advanced Usage Filtering your search Using ExpressionLanguage Available resources What is it ? The Akeneo plugin aims at integration the Akeneo PHP clients into the Pipeline stack. This integration is compatible with both Akeneo Enterprise Edition client and the Akeneo Community Edition client.</description>
     </item>
-    
     <item>
       <title>Akeneo expression language functions</title>
       <link>https://php-etl.github.io/documentation/connectivity/akeneo/expression-language/</link>
       <pubDate>Sun, 24 Jan 2021 09:23:54 +0100</pubDate>
-      
       <guid>https://php-etl.github.io/documentation/connectivity/akeneo/expression-language/</guid>
       <description>FEATURE STATE: Gyroscops 0.1 [alpha] What is it ? Installation Filter Provider Usage Functions reference Attribute data manipulation Filter by locale Filter by scope Take the first available value by scopes Combining results filter Excluding results filter Extracting a slice of the values list Extracting the beginning of the values list Extracting the end of the values list Extracting the values list, after an offset Extracting the first value from the list Extracting the last value from the list Dates management with dateTime and dateTimeZone Manage metrics with metricAmount, metricUnit and formatMetric Builder Provider Usage Functions reference What is it ?</description>
     </item>
-    
+    <item>
+      <title>Action</title>
+      <link>https://php-etl.github.io/documentation/core-concept/satellite/action/</link>
+      <pubDate>Thu, 06 Jul 2023 15:06:20 +0200</pubDate>
+      <guid>https://php-etl.github.io/documentation/core-concept/satellite/action/</guid>
+      <description>FEATURE STATE: Gyroscops 0.1 [alpha] What is it for? Installation Basic Usage Advanced Usage Using expressions Adding logger Adding state An action is a process that enables a task to be carried out before, during or at the end of the execution of a workflow. For example, an action can be used to retrieve or upload files to an SFTP server.&#xA;What is it for? This package provides a process capable of executing actions.</description>
+    </item>
   </channel>
 </rss>

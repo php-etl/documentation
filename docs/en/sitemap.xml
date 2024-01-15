@@ -2,50 +2,80 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>https://php-etl.github.io/documentation/connectivity/custom/lookup_mapper/</loc>
+    <lastmod>2023-07-31T12:07:47+02:00</lastmod>
+  </url><url>
     <loc>https://php-etl.github.io/documentation/getting-started/environment-setup/</loc>
     <lastmod>2023-02-14T14:53:57+01:00</lastmod>
+  </url><url>
+    <loc>https://php-etl.github.io/documentation/feature/services/</loc>
+    <lastmod>2021-10-12T17:28:06+02:00</lastmod>
+  </url><url>
+    <loc>https://php-etl.github.io/documentation/connectivity/akeneo/plugin/</loc>
+    <lastmod>2021-01-24T09:23:54+01:00</lastmod>
   </url><url>
     <loc>https://php-etl.github.io/documentation/connectivity/akeneo/</loc>
     <lastmod>2021-01-22T09:23:54+01:00</lastmod>
   </url><url>
-    <loc>https://php-etl.github.io/documentation/core-concept/pipeline/</loc>
+    <loc>https://php-etl.github.io/documentation/core-concept/satellite/</loc>
     <lastmod>2020-07-12T15:21:02+02:00</lastmod>
+  </url><url>
+    <loc>https://php-etl.github.io/documentation/connectivity/magento-2/</loc>
+    <lastmod>2023-06-07T15:00:02+02:00</lastmod>
   </url><url>
     <loc>https://php-etl.github.io/documentation/getting-started/installation/</loc>
     <lastmod>2021-10-12T15:21:02+02:00</lastmod>
   </url><url>
-    <loc>https://php-etl.github.io/documentation/core-concept/satellite/</loc>
-    <lastmod>2020-07-12T15:21:02+02:00</lastmod>
+    <loc>https://php-etl.github.io/documentation/feature/expression-language/</loc>
+    <lastmod>2021-08-12T12:08:50+00:00</lastmod>
   </url><url>
-    <loc>https://php-etl.github.io/documentation/connectivity/fast-map/</loc>
+    <loc>https://php-etl.github.io/documentation/connectivity/akeneo/expression-language/</loc>
+    <lastmod>2021-01-24T09:23:54+01:00</lastmod>
+  </url><url>
+    <loc>https://php-etl.github.io/documentation/connectivity/csv/</loc>
+    <lastmod>2021-01-19T10:02:02+02:00</lastmod>
+  </url><url>
+    <loc>https://php-etl.github.io/documentation/core-concept/satellite/pipeline/</loc>
     <lastmod>2020-07-12T15:21:02+02:00</lastmod>
   </url><url>
     <loc>https://php-etl.github.io/documentation/getting-started/writing-configuration/</loc>
     <lastmod>2023-02-14T15:22:19+01:00</lastmod>
   </url><url>
-    <loc>https://php-etl.github.io/documentation/feature/expression-language/</loc>
-    <lastmod>2021-08-12T12:08:50+00:00</lastmod>
-  </url><url>
-    <loc>https://php-etl.github.io/documentation/connectivity/sylius/</loc>
-    <lastmod>2021-02-17T10:13:54+01:00</lastmod>
-  </url><url>
-    <loc>https://php-etl.github.io/documentation/getting-started/compilation/</loc>
-    <lastmod>2023-02-14T15:33:38+01:00</lastmod>
+    <loc>https://php-etl.github.io/documentation/core-concept/satellite/workflow/</loc>
+    <lastmod>2021-08-10T10:16:41+02:00</lastmod>
   </url><url>
     <loc>https://php-etl.github.io/documentation/feature/logger/</loc>
     <lastmod>2021-08-06T16:40:18+02:00</lastmod>
   </url><url>
-    <loc>https://php-etl.github.io/documentation/connectivity/csv/</loc>
-    <lastmod>2021-01-19T10:02:02+02:00</lastmod>
+    <loc>https://php-etl.github.io/documentation/connectivity/custom/</loc>
+    <lastmod>2021-01-22T09:23:54+01:00</lastmod>
+  </url><url>
+    <loc>https://php-etl.github.io/documentation/core-concept/satellite/http-hook/</loc>
+    <lastmod>2023-08-28T11:14:02+02:00</lastmod>
+  </url><url>
+    <loc>https://php-etl.github.io/documentation/core-concept/satellite/action/</loc>
+    <lastmod>2023-07-06T15:06:20+02:00</lastmod>
+  </url><url>
+    <loc>https://php-etl.github.io/documentation/getting-started/compilation/</loc>
+    <lastmod>2023-02-14T15:33:38+01:00</lastmod>
+  </url><url>
+    <loc>https://php-etl.github.io/documentation/feature/rejection/</loc>
+    <lastmod>2021-10-12T14:54:48+02:00</lastmod>
+  </url><url>
+    <loc>https://php-etl.github.io/documentation/connectivity/fast-map/</loc>
+    <lastmod>2020-07-12T15:21:02+02:00</lastmod>
+  </url><url>
+    <loc>https://php-etl.github.io/documentation/core-concept/satellite/http-api/</loc>
+    <lastmod>2023-08-28T11:14:02+02:00</lastmod>
+  </url><url>
+    <loc>https://php-etl.github.io/documentation/connectivity/zoho/</loc>
+    <lastmod>2023-06-07T15:00:02+02:00</lastmod>
   </url><url>
     <loc>https://php-etl.github.io/documentation/getting-started/execution/</loc>
     <lastmod>2023-02-14T15:33:44+01:00</lastmod>
   </url><url>
-    <loc>https://php-etl.github.io/documentation/connectivity/spreadsheet/</loc>
-    <lastmod>2021-03-30T15:50:22+02:00</lastmod>
-  </url><url>
-    <loc>https://php-etl.github.io/documentation/connectivity/sql/</loc>
-    <lastmod>2021-07-26T16:22:03+02:00</lastmod>
+    <loc>https://php-etl.github.io/documentation/feature/state/</loc>
+    <lastmod>2021-10-12T15:53:46+02:00</lastmod>
   </url><url>
     <loc>https://php-etl.github.io/documentation/connectivity/ftp/</loc>
     <lastmod>2021-08-09T14:55:05+02:00</lastmod>
@@ -53,39 +83,41 @@
     <loc>https://php-etl.github.io/documentation/connectivity/sftp/</loc>
     <lastmod>2021-08-09T14:55:05+02:00</lastmod>
   </url><url>
-    <loc>https://php-etl.github.io/documentation/connectivity/nl-json/</loc>
+    <loc>https://php-etl.github.io/documentation/connectivity/json/</loc>
     <lastmod>2021-03-30T15:55:00+02:00</lastmod>
   </url><url>
-    <loc>https://php-etl.github.io/documentation/connectivity/custom/</loc>
-    <lastmod>2021-01-22T09:23:54+01:00</lastmod>
+    <loc>https://php-etl.github.io/documentation/connectivity/spreadsheet/</loc>
+    <lastmod>2021-03-30T15:50:22+02:00</lastmod>
+  </url><url>
+    <loc>https://php-etl.github.io/documentation/connectivity/sql/</loc>
+    <lastmod>2021-07-26T16:22:03+02:00</lastmod>
+  </url><url>
+    <loc>https://php-etl.github.io/documentation/connectivity/sylius/</loc>
+    <lastmod>2021-02-17T10:13:54+01:00</lastmod>
+  </url><url>
+    <loc>https://php-etl.github.io/documentation/connectivity/prestashop/</loc>
+    <lastmod>2023-05-02T15:00:02+02:00</lastmod>
+  </url><url>
+    <loc>https://php-etl.github.io/documentation/connectivity/filtering/</loc>
+    <lastmod>2023-06-07T15:00:02+02:00</lastmod>
+  </url><url>
+    <loc>https://php-etl.github.io/documentation/connectivity/batch/</loc>
+    <lastmod>2023-06-22T12:00:02+02:00</lastmod>
+  </url><url>
+    <loc>https://php-etl.github.io/documentation/core-concept/</loc>
+    <lastmod>2023-08-28T11:14:02+02:00</lastmod>
+  </url><url>
+    <loc>https://php-etl.github.io/documentation/</loc>
+    <lastmod>2023-08-28T11:14:02+02:00</lastmod>
+  </url><url>
+    <loc>https://php-etl.github.io/documentation/connectivity/</loc>
+    <lastmod>2023-07-31T12:07:47+02:00</lastmod>
   </url><url>
     <loc>https://php-etl.github.io/documentation/getting-started/</loc>
     <lastmod>2023-02-14T15:33:44+01:00</lastmod>
   </url><url>
-    <loc>https://php-etl.github.io/documentation/</loc>
-    <lastmod>2023-02-14T15:33:44+01:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="fr"
-                href="https://php-etl.github.io/documentation/fr/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="https://php-etl.github.io/documentation/"
-                />
-  </url><url>
-    <loc>https://php-etl.github.io/documentation/feature/services/</loc>
-    <lastmod>2021-10-12T17:28:06+02:00</lastmod>
-  </url><url>
     <loc>https://php-etl.github.io/documentation/feature/</loc>
     <lastmod>2021-10-12T17:28:06+02:00</lastmod>
-  </url><url>
-    <loc>https://php-etl.github.io/documentation/feature/state/</loc>
-    <lastmod>2021-10-12T15:53:46+02:00</lastmod>
-  </url><url>
-    <loc>https://php-etl.github.io/documentation/feature/rejection/</loc>
-    <lastmod>2021-10-12T14:54:48+02:00</lastmod>
   </url><url>
     <loc>https://php-etl.github.io/documentation/feature/expression-language/satellite-expression-functions/</loc>
     <lastmod>2021-08-12T12:49:51+00:00</lastmod>
@@ -96,29 +128,11 @@
     <loc>https://php-etl.github.io/documentation/feature/expression-language/string-expression-functions/</loc>
     <lastmod>2021-08-12T12:08:50+00:00</lastmod>
   </url><url>
-    <loc>https://php-etl.github.io/documentation/core-concept/</loc>
-    <lastmod>2021-08-10T10:16:41+02:00</lastmod>
-  </url><url>
-    <loc>https://php-etl.github.io/documentation/core-concept/workflow/</loc>
-    <lastmod>2021-08-10T10:16:41+02:00</lastmod>
-  </url><url>
-    <loc>https://php-etl.github.io/documentation/connectivity/</loc>
-    <lastmod>2021-08-09T14:55:05+02:00</lastmod>
-  </url><url>
-    <loc>https://php-etl.github.io/documentation/connectivity/akeneo/expression-language/</loc>
-    <lastmod>2021-01-24T09:23:54+01:00</lastmod>
-  </url><url>
-    <loc>https://php-etl.github.io/documentation/connectivity/akeneo/plugin/</loc>
-    <lastmod>2021-01-24T09:23:54+01:00</lastmod>
-  </url><url>
     <loc>https://php-etl.github.io/documentation/framework/</loc>
     <lastmod>2021-01-20T12:03:47+01:00</lastmod>
   </url><url>
     <loc>https://php-etl.github.io/documentation/framework/metadata/</loc>
     <lastmod>2021-01-20T12:03:47+01:00</lastmod>
-  </url><url>
-    <loc>https://php-etl.github.io/documentation/framework/contracts/configurator/</loc>
-    <lastmod>2020-07-12T15:21:02+02:00</lastmod>
   </url><url>
     <loc>https://php-etl.github.io/documentation/framework/contracts/</loc>
     <lastmod>2020-07-12T15:21:02+02:00</lastmod>
@@ -126,33 +140,8 @@
     <loc>https://php-etl.github.io/documentation/framework/promise/</loc>
     <lastmod>2020-07-12T15:21:02+02:00</lastmod>
   </url><url>
-    <loc>https://php-etl.github.io/documentation/core-concept/satellite/yaml-format/</loc>
-    <lastmod>2020-07-12T15:21:02+02:00</lastmod>
-  </url><url>
     <loc>https://php-etl.github.io/documentation/categories/</loc>
-    <xhtml:link
-                rel="alternate"
-                hreflang="fr"
-                href="https://php-etl.github.io/documentation/fr/categories/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="https://php-etl.github.io/documentation/categories/"
-                />
-  </url><url>
-    <loc>https://php-etl.github.io/documentation/core-concept/satellite/php-objects/</loc>
   </url><url>
     <loc>https://php-etl.github.io/documentation/tags/</loc>
-    <xhtml:link
-                rel="alternate"
-                hreflang="fr"
-                href="https://php-etl.github.io/documentation/fr/tags/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="https://php-etl.github.io/documentation/tags/"
-                />
   </url>
 </urlset>

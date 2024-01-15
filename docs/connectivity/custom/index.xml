@@ -7,18 +7,14 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>The Gyroscops Documentation is copyright © [Gyroscops](https://gyroscops.com/) 2020-2023.</copyright>
-    <lastBuildDate>Fri, 22 Jan 2021 09:23:54 +0100</lastBuildDate><atom:link href="https://php-etl.github.io/documentation/connectivity/custom/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 22 Jan 2021 09:23:54 +0100</lastBuildDate>
+    <atom:link href="https://php-etl.github.io/documentation/connectivity/custom/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Lookup mapper</title>
       <link>https://php-etl.github.io/documentation/connectivity/custom/lookup_mapper/</link>
       <pubDate>Mon, 31 Jul 2023 12:07:47 +0200</pubDate>
-      
       <guid>https://php-etl.github.io/documentation/connectivity/custom/lookup_mapper/</guid>
-      <description>A lookup mapper is a class that implements Kiboko\Contract\Mapping\CompiledMapperInterface.
-Its purpose is to merge the result of the lookup back into your line.
-$output is your line, and $input is the result of the lookup.
-&amp;lt;?php declare(strict_types=1); namespace Acme\Custom; use Kiboko\Contract\Mapping\CompiledMapperInterface; class LookupMapper implements CompiledMapperInterface { public function __invoke($input, $output = null) { $output[&amp;#39;actual_customer_id&amp;#39;] = $input[&amp;#39;id&amp;#39;]; return $output; } } </description>
+      <description>A lookup mapper is a class that implements Kiboko\Contract\Mapping\CompiledMapperInterface.&#xA;Its purpose is to merge the result of the lookup back into your line.&#xA;$output is your line, and $input is the result of the lookup.&#xA;&amp;lt;?php declare(strict_types=1); namespace Acme\Custom; use Kiboko\Contract\Mapping\CompiledMapperInterface; class LookupMapper implements CompiledMapperInterface { public function __invoke($input, $output = null) { $output[&amp;#39;actual_customer_id&amp;#39;] = $input[&amp;#39;id&amp;#39;]; return $output; } } </description>
     </item>
-    
   </channel>
 </rss>
