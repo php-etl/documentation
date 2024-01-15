@@ -11,6 +11,7 @@ weight: 1
   - [Defining your arguments](#defining-your-arguments)
   - [Making the service public](#making-the-service-public)
   - [Using method calls](#using-method-calls)
+  - [Using factories](#build-a-factory)
   - [Using a service as an argument](#using-a-service-as-an-argument)
 
 ---
@@ -69,6 +70,21 @@ services:
     # ...
     calls:
       - withUsername: [ 'admin' ]
+```
+
+### Build a factory
+
+To understand how to use and create factories, go to the [official call documentation](https://symfony.com/doc/current/service_container/factories.html).
+
+```yaml
+services:
+  App\Foo\Bar:
+    # ...
+    factory:
+      class: App\Class\Bar
+      method: extract
+    arguments:
+      - '@foo'
 ```
 
 ### Using a service as an argument
