@@ -88,7 +88,7 @@ $pipeline = (new Pipeline($runner))
 
 It's possible to use expressions in your pipeline using the `expression_language` option. To use these expressions,
 you need to use our customised Providers which provide the different expressions. For more information, please visit 
-the [detailed documentation](../../feature/expression-language) of the language expressions.
+the [detailed documentation](../../../feature/expression-language) of the language expressions.
 
 ```yaml
 pipeline:
@@ -100,7 +100,7 @@ pipeline:
 
 You can use services in your pipeline in the same way as in a traditional Symfony application.
 
-For more details, go to the [detailed services documentation](../../feature/logger).
+For more details, go to the [detailed services documentation](../../../feature/logger).
 
 ```yaml
 pipeline:
@@ -114,7 +114,7 @@ pipeline:
 
 It's possible to add a `logger` at each step of the pipeline.
 
-For more details, go to the [detailed logger documentation](../../feature/logger).
+For more details, go to the [detailed logger documentation](../../../feature/logger).
 
 ```yaml
 satellite:
@@ -137,7 +137,7 @@ satellite:
 
 It's possible to add a `rejection` at each step of the pipeline.
 
-For more details, go to the [detailed rejection documentation](../../feature/rejection)
+For more details, go to the [detailed rejection documentation](../../../feature/rejection)
 
 ```yaml
 satellite:
@@ -159,7 +159,7 @@ satellite:
 
 It's possible to add a `state` at each step of the pipeline.
 
-For more details, go to the [detailed state documentation](../../feature/state)
+For more details, go to the [detailed state documentation](../../../feature/state)
 
 ```yaml
 satellite:
