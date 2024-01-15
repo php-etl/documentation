@@ -56,7 +56,7 @@ This code will then be converted into a machine code that can be used by the fas
 ## Installation
 
 ```shell
-composer require php-etl/fast-map-plugin
+composer require php-etl/fast-map-plugin:'*'
 ```
 
 ## Usage

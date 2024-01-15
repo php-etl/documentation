@@ -27,7 +27,7 @@ This package provides a process capable of executing actions.
 ## Installation
 
 ```shell
-composer require php-etl/action
+composer require php-etl/action:'*'
 ```
 
 ## Basic usage

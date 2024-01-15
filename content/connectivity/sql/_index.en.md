@@ -36,7 +36,7 @@ stack.
 > Before installing the SQL plugin, you must verify that the PDO extension is installed on your environment.
 
 ```shell
-composer require php-etl/sql-plugin
+composer require php-etl/sql-plugin:'*'
 ```
 
 >> If you want to use an engine like postgres, install `ext-php_postgres` on the computer.
