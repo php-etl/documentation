@@ -216,6 +216,17 @@ hasChildren = true
   url = "connectivity/zoho"
   weight = 15
 
+[[menu.main]]
+weight = 4
+name = "Cloud"
+hasChildren = true
+
+  [[menu.main]]
+  parent = "Cloud"
+  name = "Usage"
+  url = "cloud/usage"
+  weight = 1
+
 [params]
 logo = "logo-web.svg"
 logo_white = "logo-web.svg"
