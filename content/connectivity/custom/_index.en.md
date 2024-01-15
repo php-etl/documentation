@@ -40,10 +40,7 @@ custom:
     use: 'App\Class\Bar'
     services:
       App\Class\Bar:
-        arguments:
-            - '@foo'
-        tags:
-            - { example }
+        public: true
 ```
 
 ### Building a transformer
@@ -54,10 +51,12 @@ custom:
     use: 'App\Class\Bar'
     services:
       App\Class\Bar:
+        factory: 
+          class: App\Class\Bar
+          method: extract
         arguments:
-            - '@foo'
-        tags:
-            - { example }
+          - '@foo'
+        public: true
 ```
 
 ### Building a loader
@@ -68,8 +67,7 @@ custom:
     use: 'App\Class\Bar'
     services:
       App\Class\Bar:
-        arguments:
-            - '@foo'
-        tags:
-            - { example }
+        calls:
+          - withUsername: [ 'admin' ]
+        public: true
 ```
