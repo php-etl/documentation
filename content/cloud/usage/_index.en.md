@@ -19,7 +19,7 @@ If you haven't already done so, simply run this command:
 composer require php-etl/satellite:'*'
 ```
 
-## Login to the API
+## Log into the API
 
 The `login` command is used to establish a connection with the Gyroscops API, allowing access to the various functionalities.
 Before executing this command, make sure you have the necessary identification information to hand.
@@ -54,7 +54,6 @@ php bin/cloud create <path/to/satellite.yaml>
 
 Once you have created your satellite, you can access its configuration from the interface by following these steps:
 
-- Open your favourite web browser
 - Enter the following URL in the address bar: https://app.gyroscops.com (or https://beta.gyroscops.com)
 - Log in with your credentials
 
@@ -77,7 +76,7 @@ php bin/cloud update <path/to/satellite.yaml>
 The `remove` command is used to remove a given satellite.
 
 ```shell
-php bin/cloud update <path/to/satellite.yaml>
+php bin/cloud remove <path/to/satellite.yaml>
 ```
 
 ### Options
