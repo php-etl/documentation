@@ -69,8 +69,7 @@ workflow:
         custom:
           use: 'App\MyCustomAction'
           services:
-            App\MyCustomAction:
-              public: true
+            App\MyCustomAction: ~
 ```
 
 To find out more about how to use services, visit [declaring services](../../../feature/services).
