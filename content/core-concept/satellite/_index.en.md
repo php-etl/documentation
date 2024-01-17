@@ -96,11 +96,13 @@ satellites:
 #...
 ```
 
-#### Copy custom files
+#### Add custom code without a Composer package
 
-You want to use a class but you can't add a package to your composer ? Use the copy option under de docker/filesystem key.
+Sometimes you need to use a custom class but you can't add a composer package, or creating this package is a disproportional effort. In this cas you have the `copy` options under the adapter.
 
-The build will copy files you indicate on the yaml to the path you provide. If you are a class with namespace, don't forget to add it to your autoload (see autoload section lower)
+Supported by [Docker](#using-docker-) and [Filesystem](#using-the-file-system) adapters.
+
+The build will copy files you list. If you use a class with a namespace, you will need to add the namespace to the [autoloading](#autoload) specification.
 
 ```yaml
 version: '0.3'
