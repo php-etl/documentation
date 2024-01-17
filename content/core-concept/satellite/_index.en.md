@@ -19,7 +19,6 @@ weight: 1
 - [Configuration formats](#configuration-formats)
 - Building
   - [Building locally](#build-your-satellite-locally)
-  - [Building through Gyroscops Cloud](#send-your-satellite-to-gyroscops-cloud)
 - [Migration from version 0.2 and earlier](#migration-from-version-02-and-earlier)
 - [Importing external files](#importing-external-configuration-files)
 
@@ -375,28 +374,6 @@ If you are using Docker, you can do it with the following command: `docker run -
 If you selected the [Filesystem variant](#using-the-file-system), you can now execute this Satellite with the `run:*` commands provided:
 * For a Pipeline: `bin/satellite run:pipeline build/`
 * For a Workflow: `bin/satellite run:workflow build/`
-
-### Send your satellite to Gyroscops Cloud
-
-If you are using Gyroscops Cloud, you can push your satellite configuration to the service.
-
-You will need to authenticate to the service before sending your satellites.
-
-```shell
-bin/cloud login johndoe@example.com # authenticate as johndoe@example.com 
-```
-
-> The service may ask you to select your organization and your workspace.
-
-```shell
-# Either use the satellite.yaml file in the current working directory
-php bin/cloud create
-
-# or specify the path to the yaml file
-php bin/cloud create path/to/satellite.yaml
-```
-
-Once done, you will be able to control your satellite execution through the Gyroscops Cloud interface.
 
 ## Migration from version 0.2 and earlier
 
