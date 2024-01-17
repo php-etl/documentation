@@ -7,7 +7,7 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>The Gyroscops Documentation is copyright © [Gyroscops](https://gyroscops.com/) 2020-2023.</copyright>
-    <lastBuildDate>Mon, 28 Aug 2023 11:14:02 +0200</lastBuildDate>
+    <lastBuildDate>Fri, 12 Jan 2024 14:52:40 +0100</lastBuildDate>
     <atom:link href="https://php-etl.github.io/documentation/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Lookup mapper</title>
@@ -36,6 +36,13 @@
       <pubDate>Thu, 06 Jul 2023 15:06:20 +0200</pubDate>
       <guid>https://php-etl.github.io/documentation/core-concept/satellite/action/</guid>
       <description>FEATURE STATE: Gyroscops 0.1 [alpha] What is it for? Installation Basic Usage Advanced Usage Using expressions Adding logger Adding state An action is a process that enables a task to be carried out before, during or at the end of the execution of a workflow. For example, an action can be used to retrieve or upload files to an SFTP server.&#xA;What is it for? This package provides a process capable of executing actions.</description>
+    </item>
+    <item>
+      <title>Configurator Contracts</title>
+      <link>https://php-etl.github.io/documentation/framework/contracts/configurator/</link>
+      <pubDate>Sun, 12 Jul 2020 15:21:02 +0200</pubDate>
+      <guid>https://php-etl.github.io/documentation/framework/contracts/configurator/</guid>
+      <description> FEATURE STATE: Gyroscops 0.1 [alpha] </description>
     </item>
   </channel>
 </rss>

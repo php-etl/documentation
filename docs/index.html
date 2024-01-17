@@ -443,15 +443,27 @@
 						},
 						
 						{
-							value: "Core-Concepts",
+							value: "Clouds",
 							label: "<p></p>",
-							url:"https:\/\/php-etl.github.io\/documentation\/core-concept\/"
+							url:"https:\/\/php-etl.github.io\/documentation\/cloud\/"
 						},
 						
 						{
 							value: "Gyroscops",
 							label: "<p></p>",
 							url:"https:\/\/php-etl.github.io\/documentation\/"
+						},
+						
+						{
+							value: "Usage",
+							label: "<p>Gyroscops also allows you to have your satellites stored in the cloud.\nThanks to the cloud executable provided by the package php-etl\/satellite, you can manage your satellites quickly and easily thanks to command lines.\nRequirements Before you start, make sure you have installed the utility in your project.\nIf you haven\u0026rsquo;t already done so, simply run this command:\ncomposer require php-etl\/satellite:\u0026#39;*\u0026#39; Log into the API The login command is used to establish a connection with the Gyroscops API, allowing access to the various functionalities. Before executing this command, make sure you have the necessary identification information to hand.\nbin\/cloud login The service may ask you to select your organization and your workspace.\nOptions -u, --url: Base URL of the cloud instance [default: \u0026ldquo;https:\/\/app.gyroscops.com\u0026rdquo;] --beta: Shortcut to set the cloud instance to https:\/\/beta.gyroscops.com --ssl|--no-ssl: Enable or disable SSL --help: Display help for the given command See the following sections of this documentation for details of the various commands.\nCreate your satellite The create command is used to create a satellite associated with your account.\nphp bin\/cloud create \u0026lt;path\/to\/satellite.yaml\u0026gt; Options -u, --url: Base URL of the cloud instance [default: \u0026ldquo;https:\/\/app.gyroscops.com\u0026rdquo;] --beta: Shortcut to set the cloud instance to https:\/\/beta.gyroscops.com --ssl|--no-ssl: Enable or disable SSL --help: Display help for the given command Once you have created your satellite, you can access its configuration from the interface by following these steps:\nEnter the following URL in the address bar: https:\/\/app.gyroscops.com (or https:\/\/beta.gyroscops.com) Log in with your credentials Update your satellite The update command is used to update a given satellite.\nphp bin\/cloud update \u0026lt;path\/to\/satellite.yaml\u0026gt; Options -u, --url: Base URL of the cloud instance [default: \u0026ldquo;https:\/\/app.gyroscops.com\u0026rdquo;] --beta: Shortcut to set the cloud instance to https:\/\/beta.gyroscops.com --ssl|--no-ssl: Enable or disable SSL --help: Display help for the given command Remove your satellite The remove command is used to remove a given satellite.\nphp bin\/cloud remove \u0026lt;path\/to\/satellite.yaml\u0026gt; Options -u, --url: Base URL of the cloud instance [default: \u0026ldquo;https:\/\/app.gyroscops.com\u0026rdquo;] --beta: Shortcut to set the cloud instance to https:\/\/beta.gyroscops.com --ssl|--no-ssl: Enable or disable SSL --help: Display help for the given command Other commands In addition to the main commands we have already explored, this command line utility offers a number of additional features. These commands can be useful in a variety of situations.\nFor a list of these commands, use the following command:\nbin\/cloud list </p>",
+							url:"https:\/\/php-etl.github.io\/documentation\/cloud\/usage\/"
+						},
+						
+						{
+							value: "Core-Concepts",
+							label: "<p></p>",
+							url:"https:\/\/php-etl.github.io\/documentation\/core-concept\/"
 						},
 						
 						{
@@ -500,6 +512,12 @@
 							value: "Metadata",
 							label: "<p> FEATURE STATE: Gyroscops 0.1 [alpha] What is it about? A metadata is a set of data that describe and gives information about other data. To sum up, it is an abbreviated representation of the data to which they refer.\nThis component aims at describing data structures in order to help other packages to auto-configure and handle data transformation and data manipulation.\nInstallation To use this package in your application, require it via composer:\ncomposer require php-etl\/metadata Use this package to read metadata of existing code In order to read the metadata of existing PHP code, you may use the automatic type guesser. It can be initialised with the following code:\n\u0026lt;?php use Kiboko\\Component\\Metadata\\TypeGuesser; use Phpactor\\Docblock\\DocblockFactory; use PhpParser\\ParserFactory; $typeGuesser = new TypeGuesser\\CompositeTypeGuesser( new TypeGuesser\\Native\\NativeTypeGuesser(), new TypeGuesser\\Docblock\\DocblockTypeGuesser( (new ParserFactory())-\u0026gt;create(ParserFactory::ONLY_PHP7), new DocblockFactory() ) ); Then, use the instance as a functor to automatically discover the types metadata.\nExample of a DTO class metadata fetcher:\n\u0026lt;?php use Kiboko\\Component\\Metadata; use Kiboko\\Component\\Metadata\\TypeGuesser\\TypeGuesserInterface; \/** @var TypeGuesserInterface $guesser *\/ class Person { public string $firstName; public string $lastName; public ?string $job; } $classOrObject = new \\ReflectionClass(\\Person::class); \/** @var Metadata\\ClassTypeMetadata $metadata *\/ $metadata = (new Metadata\\ClassTypeMetadata($classOrObject-\u0026gt;getShortName(), $classOrObject-\u0026gt;getNamespaceName())) -\u0026gt;addProperties(...array_map( function(\\ReflectionProperty $property) use($classOrObject, $guesser) { return new Metadata\\PropertyMetadata( $property-\u0026gt;getName(), ...$guesser($classOrObject, $property) ); }, $classOrObject-\u0026gt;getProperties(\\ReflectionProperty::IS_PUBLIC) ) ); Automatic class metadata guessing In order to simplify the class metadata building, there is a metadata guesser you can use to ease the building of metadata.\n\u0026lt;?php use Kiboko\\Component\\Metadata; \/** @var Metadata\\ClassMetadataBuilder $metadataBuilder *\/ $metadataBuilder = new Metadata\\ClassMetadataBuilder( new Metadata\\PropertyGuesser\\ReflectionPropertyGuesser($typeGuesser), new Metadata\\MethodGuesser\\ReflectionMethodGuesser($typeGuesser), new Metadata\\FieldGuesser\\FieldGuesserChain( new Metadata\\FieldGuesser\\PublicPropertyFieldGuesser(), new Metadata\\FieldGuesser\\VirtualFieldGuesser() ), new Metadata\\RelationGuesser\\RelationGuesserChain( new Metadata\\RelationGuesser\\PublicPropertyUnaryRelationGuesser(), new Metadata\\RelationGuesser\\PublicPropertyMultipleRelationGuesser(), new Metadata\\RelationGuesser\\VirtualRelationGuesser() ) ); $metadata = $metadataBuilder-\u0026gt;buildFromFQCN(\u0026#39;FooBarBundle\\\\Entity\\\\Foo\u0026#39;); Documentation To go further and see the DTO structure, check the object reference.\n</p>",
 							url:"https:\/\/php-etl.github.io\/documentation\/framework\/metadata\/"
+						},
+						
+						{
+							value: "Configurator Contracts",
+							label: "<p> FEATURE STATE: Gyroscops 0.1 [alpha] </p>",
+							url:"https:\/\/php-etl.github.io\/documentation\/framework\/contracts\/configurator\/"
 						},
 						
 						{

@@ -9,5 +9,12 @@
     <copyright>The Gyroscops Documentation is copyright © [Gyroscops](https://gyroscops.com/) 2020-2023.</copyright>
     <lastBuildDate>Sun, 12 Jul 2020 15:21:02 +0200</lastBuildDate>
     <atom:link href="https://php-etl.github.io/documentation/framework/contracts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Configurator Contracts</title>
+      <link>https://php-etl.github.io/documentation/framework/contracts/configurator/</link>
+      <pubDate>Sun, 12 Jul 2020 15:21:02 +0200</pubDate>
+      <guid>https://php-etl.github.io/documentation/framework/contracts/configurator/</guid>
+      <description> FEATURE STATE: Gyroscops 0.1 [alpha] </description>
+    </item>
   </channel>
 </rss>

@@ -104,10 +104,16 @@
     <loc>https://php-etl.github.io/documentation/connectivity/batch/</loc>
     <lastmod>2023-06-22T12:00:02+02:00</lastmod>
   </url><url>
-    <loc>https://php-etl.github.io/documentation/core-concept/</loc>
-    <lastmod>2023-08-28T11:14:02+02:00</lastmod>
+    <loc>https://php-etl.github.io/documentation/cloud/</loc>
+    <lastmod>2024-01-12T14:52:40+01:00</lastmod>
   </url><url>
     <loc>https://php-etl.github.io/documentation/</loc>
+    <lastmod>2024-01-12T14:52:40+01:00</lastmod>
+  </url><url>
+    <loc>https://php-etl.github.io/documentation/cloud/usage/</loc>
+    <lastmod>2024-01-12T14:52:40+01:00</lastmod>
+  </url><url>
+    <loc>https://php-etl.github.io/documentation/core-concept/</loc>
     <lastmod>2023-08-28T11:14:02+02:00</lastmod>
   </url><url>
     <loc>https://php-etl.github.io/documentation/connectivity/</loc>
@@ -133,6 +139,9 @@
   </url><url>
     <loc>https://php-etl.github.io/documentation/framework/metadata/</loc>
     <lastmod>2021-01-20T12:03:47+01:00</lastmod>
+  </url><url>
+    <loc>https://php-etl.github.io/documentation/framework/contracts/configurator/</loc>
+    <lastmod>2020-07-12T15:21:02+02:00</lastmod>
   </url><url>
     <loc>https://php-etl.github.io/documentation/framework/contracts/</loc>
     <lastmod>2020-07-12T15:21:02+02:00</lastmod>
