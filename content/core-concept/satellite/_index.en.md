@@ -95,6 +95,44 @@ satellites:
 #...
 ```
 
+#### Add custom code without a Composer package
+
+Sometimes you need to use a custom class but you can't add a composer package, or creating this package is a disproportional effort. In this cas you have the `copy` options under the adapter.
+
+Supported by [Docker](#using-docker-) and [Filesystem](#using-the-file-system) adapters.
+
+The build will copy files you list. If you use a class with a namespace, you will need to add the namespace to the [autoloading](#autoload) specification.
+
+```yaml
+version: '0.3'
+satellites:
+  my_satellite:
+    label: 'My first Satellite'
+    filesystem:
+      copy:
+        - from: '../Foo/Bar'
+          to: '../build/Foo/Bar'
+      path: ../build # path to the build directory, relative to the YAML file
+#...
+```
+
+```yaml
+version: '0.3'
+satellites:
+  my_satellite:
+    label: 'My first Satellite'
+    docker:
+      from: php:8.0-cli-alpine
+      workdir: /var/www/html
+      tags:
+        - acmeinc/my-satellite:latest
+        - acmeinc/my-satellite:1.0.0
+      copy:
+        - from: '../Foo/Bar'
+          to: './src/Foo/Bar'
+#...
+```
+
 ### Configure Composer
 
 It's possible to declare the Composer dependencies, autoloads, repositories and auths that our microservice needs with the `composer` key.
