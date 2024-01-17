@@ -39,8 +39,7 @@ custom:
   extractor:
     use: 'App\Class\Bar'
     services:
-      App\Class\Bar:
-        public: true
+      App\Class\Bar: ~
 ```
 
 ### Building a transformer
@@ -56,7 +55,6 @@ custom:
           method: extract
         arguments:
           - '@foo'
-        public: true
 ```
 
 ### Building a loader
@@ -69,5 +67,4 @@ custom:
       App\Class\Bar:
         calls:
           - withUsername: [ 'admin' ]
-        public: true
 ```
