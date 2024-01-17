@@ -200,6 +200,20 @@
         </li>
         
         
+        
+        <li class="nav-item dropdown">
+          <span class="nav-link dropdown-toggle text-dark" href="#" role="button" data-toggle="dropdown"
+            aria-haspopup="true" aria-expanded="false">
+            Cloud
+          </span>
+          <div class="dropdown-menu">
+            
+            <a class="dropdown-item" href="/documentation/cloud/usage">Usage</a>
+            
+          </div>
+        </li>
+        
+        
       </ul>
       
     </div>
@@ -435,7 +449,6 @@
 <li>Building
 <ul>
 <li><a href="#build-your-satellite-locally">Building locally</a></li>
-<li><a href="#send-your-satellite-to-gyroscops-cloud">Building through Gyroscops Cloud</a></li>
 </ul>
 </li>
 <li><a href="#migration-from-version-02-and-earlier">Migration from version 0.2 and earlier</a></li>
@@ -768,19 +781,6 @@ If you are using Docker, you can do it with the following command: <code>docker 
 <li>For a Pipeline: <code>bin/satellite run:pipeline build/</code></li>
 <li>For a Workflow: <code>bin/satellite run:workflow build/</code></li>
 </ul>
-<h3 id="send-your-satellite-to-gyroscops-cloud">Send your satellite to Gyroscops Cloud</h3>
-<p>If you are using Gyroscops Cloud, you can push your satellite configuration to the service.</p>
-<p>You will need to authenticate to the service before sending your satellites.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>bin/cloud login johndoe@example.com <span style="color:#75715e"># authenticate as johndoe@example.com </span>
-</span></span></code></pre></div><blockquote>
-<p>The service may ask you to select your organization and your workspace.</p>
-</blockquote>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#75715e"># Either use the satellite.yaml file in the current working directory</span>
-</span></span><span style="display:flex;"><span>php bin/cloud create
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e"># or specify the path to the yaml file</span>
-</span></span><span style="display:flex;"><span>php bin/cloud create path/to/satellite.yaml
-</span></span></code></pre></div><p>Once done, you will be able to control your satellite execution through the Gyroscops Cloud interface.</p>
 <h2 id="migration-from-version-02-and-earlier">Migration from version 0.2 and earlier</h2>
 <p>If you are using a configuration for satellite prior to version 0.3, you should migrate your files ot the updated version.
 the new version <code>0.3</code> of the files definitions allows you to import files and create several satellites inside a single file.</p>

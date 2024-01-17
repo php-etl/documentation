@@ -200,6 +200,20 @@
         </li>
         
         
+        
+        <li class="nav-item dropdown">
+          <span class="nav-link dropdown-toggle text-dark" href="#" role="button" data-toggle="dropdown"
+            aria-haspopup="true" aria-expanded="false">
+            Cloud
+          </span>
+          <div class="dropdown-menu">
+            
+            <a class="dropdown-item" href="/documentation/cloud/usage">Usage</a>
+            
+          </div>
+        </li>
+        
+        
       </ul>
       
     </div>
@@ -698,8 +712,7 @@ option which allows you to define which service to use.</p>
 </span></span><span style="display:flex;"><span>  <span style="color:#f92672">extractor</span>:
 </span></span><span style="display:flex;"><span>    <span style="color:#f92672">use</span>: <span style="color:#e6db74">&#39;App\Class\Bar&#39;</span>
 </span></span><span style="display:flex;"><span>    <span style="color:#f92672">services</span>:
-</span></span><span style="display:flex;"><span>      <span style="color:#f92672">App\Class\Bar</span>:
-</span></span><span style="display:flex;"><span>        <span style="color:#f92672">public</span>: <span style="color:#66d9ef">true</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">App\Class\Bar</span>: <span style="color:#ae81ff">~</span>
 </span></span></code></pre></div><h3 id="building-a-transformer">Building a transformer</h3>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#f92672">custom</span>:
 </span></span><span style="display:flex;"><span>  <span style="color:#f92672">transformer</span>:
@@ -711,7 +724,6 @@ option which allows you to define which service to use.</p>
 </span></span><span style="display:flex;"><span>          <span style="color:#f92672">method</span>: <span style="color:#ae81ff">extract</span>
 </span></span><span style="display:flex;"><span>        <span style="color:#f92672">arguments</span>:
 </span></span><span style="display:flex;"><span>          - <span style="color:#e6db74">&#39;@foo&#39;</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#f92672">public</span>: <span style="color:#66d9ef">true</span>
 </span></span></code></pre></div><h3 id="building-a-loader">Building a loader</h3>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#f92672">custom</span>:
 </span></span><span style="display:flex;"><span>  <span style="color:#f92672">loader</span>:
@@ -720,7 +732,6 @@ option which allows you to define which service to use.</p>
 </span></span><span style="display:flex;"><span>      <span style="color:#f92672">App\Class\Bar</span>:
 </span></span><span style="display:flex;"><span>        <span style="color:#f92672">calls</span>:
 </span></span><span style="display:flex;"><span>          - <span style="color:#f92672">withUsername</span>: [ <span style="color:#e6db74">&#39;admin&#39;</span> ]
-</span></span><span style="display:flex;"><span>        <span style="color:#f92672">public</span>: <span style="color:#66d9ef">true</span>
 </span></span></code></pre></div></div>
           
           <p class="post-meta border-bottom pb-3 mb-0 mt-3">Updated on 22 Jan 2021</p>
