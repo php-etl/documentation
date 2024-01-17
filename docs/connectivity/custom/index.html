@@ -689,13 +689,20 @@
           </h1>
           
           <div class="content"><ul>
-<li><a href="#what-is-it-">What is it ?</a></li>
+<li><a href="#definition">What is it ?</a></li>
 <li><a href="#installation">Installation</a></li>
 <li><a href="#usage">Usage</a>
 <ul>
 <li><a href="#building-an-extractor">Building an extractor</a></li>
 <li><a href="#building-a-transformer">Building a transformer</a></li>
 <li><a href="#building-a-loader">Building a loader</a></li>
+</ul>
+</li>
+<li><a href="#usage-examples">Usage examples</a>
+<ul>
+<li><a href="#example-of-an-extractor">Example of an extractor</a></li>
+<li><a href="#example-of-a-transformer">Example of a transformer</a></li>
+<li><a href="#example-of-a-loader">Example of a loader</a></li>
 </ul>
 </li>
 </ul>
@@ -707,34 +714,42 @@ allowing you to connect tools that are not supported by the standard distributio
 <p>This plugin is already integrated into the Satellite package, so you can’t require it with the composer.</p>
 <h2 id="usage">Usage</h2>
 <p>Unlike other plugins, the configuration is the same whether it is an extractor, a transformer or a loader.</p>
-<p>First you need to <a href="../../feature/services">determine your services</a> in your pipeline or workflow and then use the <code>use</code>
-option which allows you to define which service to use.</p>
 <h3 id="building-an-extractor">Building an extractor</h3>
+<p>In the example given, we explain how to configure a custom extractor with the <code>Bar</code> class located in the <code>App\Class</code> namespace.</p>
+<p>Here&rsquo;s a more detailed explanation:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#f92672">custom</span>:
 </span></span><span style="display:flex;"><span>  <span style="color:#f92672">extractor</span>:
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">use</span>: <span style="color:#e6db74">&#39;App\Class\Bar&#39;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">use</span>: <span style="color:#e6db74">&#39;App\Class\Bar&#39;</span> <span style="color:#75715e"># This line specifies the extractor class you want to use.</span>
 </span></span><span style="display:flex;"><span>    <span style="color:#f92672">services</span>:
-</span></span><span style="display:flex;"><span>      <span style="color:#f92672">App\Class\Bar</span>: <span style="color:#ae81ff">~</span>
-</span></span></code></pre></div><h3 id="building-a-transformer">Building a transformer</h3>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">App\Class\Bar: ~ # Here, we declare the service associated with the Bar class with the syntax App\Class\Bar</span>: <span style="color:#ae81ff">~. This simply indicates that we want to use the default parameters for this service.</span>
+</span></span></code></pre></div><p>For more details about service configurations, please visit the <a href="../../feature/services">declaring-services</a> documentation.</p>
+<h3 id="building-a-transformer">Building a transformer</h3>
+<p>In the example given, we explain how to configure a custom extractor with the <code>Bar</code> class located in the <code>App\Class</code> namespace.</p>
+<p>Here&rsquo;s a more detailed explanation:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#f92672">custom</span>:
 </span></span><span style="display:flex;"><span>  <span style="color:#f92672">transformer</span>:
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">use</span>: <span style="color:#e6db74">&#39;App\Class\Bar&#39;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">use</span>: <span style="color:#e6db74">&#39;App\Class\Bar&#39;</span> <span style="color:#75715e"># This line specifies the extractor class you want to use.</span>
 </span></span><span style="display:flex;"><span>    <span style="color:#f92672">services</span>:
-</span></span><span style="display:flex;"><span>      <span style="color:#f92672">App\Class\Bar</span>:
-</span></span><span style="display:flex;"><span>        <span style="color:#f92672">factory</span>: 
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">App\Class\Bar</span>: <span style="color:#75715e"># Here, we declare the service associated with the Bar class.</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">factory</span>: <span style="color:#75715e"># This section indicates that the service must be created by calling the extract method of the App\Class\Bar class.</span>
 </span></span><span style="display:flex;"><span>          <span style="color:#f92672">class</span>: <span style="color:#ae81ff">App\Class\Bar</span>
 </span></span><span style="display:flex;"><span>          <span style="color:#f92672">method</span>: <span style="color:#ae81ff">extract</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#f92672">arguments</span>:
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">arguments</span>: <span style="color:#75715e"># The arguments to be passed to the extract method. In this example, the @foo symbol indicates that the foo service should be injected as an argument. Make sure that the foo service is configured correctly elsewhere in your pipeline.</span>
 </span></span><span style="display:flex;"><span>          - <span style="color:#e6db74">&#39;@foo&#39;</span>
-</span></span></code></pre></div><h3 id="building-a-loader">Building a loader</h3>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">foo</span>: <span style="color:#ae81ff">~</span>
+</span></span></code></pre></div><p>For more details about service configurations, please visit the <a href="../../feature/services">declaring-services</a> documentation.</p>
+<h3 id="building-a-loader">Building a loader</h3>
+<p>In the example given, we explain how to configure a custom extractor with the <code>Bar</code> class located in the <code>App\Class</code> namespace.</p>
+<p>Here&rsquo;s a more detailed explanation:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#f92672">custom</span>:
 </span></span><span style="display:flex;"><span>  <span style="color:#f92672">loader</span>:
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">use</span>: <span style="color:#e6db74">&#39;App\Class\Bar&#39;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">use</span>: <span style="color:#e6db74">&#39;App\Class\Bar&#39;</span> <span style="color:#75715e"># This line specifies the extractor class you want to use.</span>
 </span></span><span style="display:flex;"><span>    <span style="color:#f92672">services</span>:
-</span></span><span style="display:flex;"><span>      <span style="color:#f92672">App\Class\Bar</span>:
-</span></span><span style="display:flex;"><span>        <span style="color:#f92672">calls</span>:
-</span></span><span style="display:flex;"><span>          - <span style="color:#f92672">withUsername</span>: [ <span style="color:#e6db74">&#39;admin&#39;</span> ]
-</span></span></code></pre></div></div>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">App\Class\Bar</span>: <span style="color:#75715e"># Here, we declare the service associated with the Bar class.</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">calls</span>: <span style="color:#75715e"># This section indicates that specific method calls must be made to the service instance.</span>
+</span></span><span style="display:flex;"><span>          - <span style="color:#f92672">withUsername</span>: [ <span style="color:#e6db74">&#39;admin&#39;</span> ] <span style="color:#75715e"># This means that a method call named withUsername must be made to the instance of the Bar class, with the username &#34;admin&#34; passed as an argument.</span>
+</span></span></code></pre></div><p>For more details about service configurations, please visit the <a href="../../feature/services">declaring-services</a> documentation.</p>
+</div>
           
           <p class="post-meta border-bottom pb-3 mb-0 mt-3">Updated on 22 Jan 2021</p>
           <nav class="pagination mt-3">

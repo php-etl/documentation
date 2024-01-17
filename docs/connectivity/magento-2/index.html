@@ -833,6 +833,34 @@ Filters in a group are chained with <code>OR</code>. Groups are chained with <co
 </span></span><span style="display:flex;"><span>          - <span style="color:#e6db74">&#39;eq&#39;</span>
 </span></span><span style="display:flex;"><span>          - <span style="color:#e6db74">&#39;46&#39;</span>
 </span></span><span style="display:flex;"><span><span style="color:#75715e"># ...</span>
+</span></span></code></pre></div><h4 id="with-long-filter">With long filter</h4>
+<p>Filters are passed to the url.
+But the most popular web browsers will not work with URLs over 2000 characters, and would return a 414 (Request-URI Too Long).
+You can use the method <code>withLongFilter</code> to avoid this limitation and batch your request in multiple smaller requests.</p>
+<p>In this example we will search for specific orders with a lot of elements in the request&rsquo;s filter.
+We have 214 increment_id, and we use a <code>withLongFilter</code> with parameters:</p>
+<ul>
+<li><code>@order_increment_id</code> references our order&rsquo;s filter.</li>
+<li><code>offset</code>, starts the request at the chosen index, by default we have 0.</li>
+<li><code>length</code>, defines a batch length, by default we have 200.</li>
+</ul>
+<p>Here we have set an offset to 0 and a length to 150, it means we are starting the request from the first element and make multiple requests with 150 items max.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#75715e"># ...</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">order_filter_group</span>:
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">class</span>: <span style="color:#ae81ff">Kiboko\Component\Flow\Magento2\FilterGroup</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">calls</span>:
+</span></span><span style="display:flex;"><span>          - <span style="color:#f92672">withLongFilter</span>: [ <span style="color:#e6db74">&#39;@order_filter&#39;</span> ]
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">order_filter</span>:
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">class</span>: <span style="color:#ae81ff">Kiboko\Component\Flow\Magento2\FilterGroup</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">calls</span>:
+</span></span><span style="display:flex;"><span>        - <span style="color:#f92672">withLongFilter</span>: [<span style="color:#e6db74">&#39;@order_increment_id&#39;</span>, <span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">150</span>]
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">order_increment_id</span>:
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">class</span>: <span style="color:#ae81ff">Kiboko\Component\Flow\Magento2\Filter</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">arguments</span>:
+</span></span><span style="display:flex;"><span>          - <span style="color:#e6db74">&#39;increment_id&#39;</span>
+</span></span><span style="display:flex;"><span>          - <span style="color:#e6db74">&#39;in&#39;</span>
+</span></span><span style="display:flex;"><span>          - <span style="color:#e6db74">&#39;000000526,4000000026,00000918,000001754,6000000123,4000000150,6000000185,000003798,6000000211,[..],5000000445&#39;</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># ...</span>
 </span></span></code></pre></div><h3 id="building-a-lookup">Building a lookup</h3>
 <p>There is a lookup class for Categories, and one for product Attributes.</p>
 <ul class="nav nav-tabs" id="lookup" role="tablist"><li class="nav-item"><a data-toggle="tab" class="nav-link active" href="#lookup-0" role="tab" aria-controls="lookup-0" aria-selected="true">Category</a></li>

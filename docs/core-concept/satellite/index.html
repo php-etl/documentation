@@ -506,6 +506,34 @@ available, in a compatible version: &gt;=8.0 with the CLI SAPI.</p>
 </span></span><span style="display:flex;"><span>    <span style="color:#f92672">filesystem</span>:
 </span></span><span style="display:flex;"><span>      <span style="color:#f92672">path</span>: <span style="color:#ae81ff">../build</span> <span style="color:#75715e"># path to the build directory, relative to the YAML file</span>
 </span></span><span style="display:flex;"><span><span style="color:#75715e">#...</span>
+</span></span></code></pre></div><h4 id="add-custom-code-without-a-composer-package">Add custom code without a Composer package</h4>
+<p>Sometimes you need to use a custom class but you can&rsquo;t add a composer package, or creating this package is a disproportional effort. In this cas you have the <code>copy</code> options under the adapter.</p>
+<p>Supported by <a href="#using-docker-">Docker</a> and <a href="#using-the-file-system">Filesystem</a> adapters.</p>
+<p>The build will copy files you list. If you use a class with a namespace, you will need to add the namespace to the <a href="#autoload">autoloading</a> specification.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#f92672">version</span>: <span style="color:#e6db74">&#39;0.3&#39;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">satellites</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">my_satellite</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">label</span>: <span style="color:#e6db74">&#39;My first Satellite&#39;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">filesystem</span>:
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">copy</span>:
+</span></span><span style="display:flex;"><span>        - <span style="color:#f92672">from</span>: <span style="color:#e6db74">&#39;../Foo/Bar&#39;</span>
+</span></span><span style="display:flex;"><span>          <span style="color:#f92672">to</span>: <span style="color:#e6db74">&#39;../build/Foo/Bar&#39;</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">path</span>: <span style="color:#ae81ff">../build</span> <span style="color:#75715e"># path to the build directory, relative to the YAML file</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#...</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#f92672">version</span>: <span style="color:#e6db74">&#39;0.3&#39;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">satellites</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">my_satellite</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">label</span>: <span style="color:#e6db74">&#39;My first Satellite&#39;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">docker</span>:
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">from</span>: <span style="color:#ae81ff">php:8.0-cli-alpine</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">workdir</span>: <span style="color:#ae81ff">/var/www/html</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">tags</span>:
+</span></span><span style="display:flex;"><span>        - <span style="color:#ae81ff">acmeinc/my-satellite:latest</span>
+</span></span><span style="display:flex;"><span>        - <span style="color:#ae81ff">acmeinc/my-satellite:1.0.0</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">copy</span>:
+</span></span><span style="display:flex;"><span>        - <span style="color:#f92672">from</span>: <span style="color:#e6db74">&#39;../Foo/Bar&#39;</span>
+</span></span><span style="display:flex;"><span>          <span style="color:#f92672">to</span>: <span style="color:#e6db74">&#39;./src/Foo/Bar&#39;</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#...</span>
 </span></span></code></pre></div><h3 id="configure-composer">Configure Composer</h3>
 <p>It&rsquo;s possible to declare the Composer dependencies, autoloads, repositories and auths that our microservice needs with the <code>composer</code> key.</p>
 <p>If you instead wish to use your own <code>composer.json</code> to define the requirements and autoloads, set the option <code>from_local</code> to <code>true</code>, and jump to <a href="#setting-up-the-runtime">the next chapter</a>.
