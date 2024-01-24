@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <title>Workflow  | Gyroscops Documentation</title>
 
-  <meta name="generator" content="Hugo 0.111.3">
+  <meta name="generator" content="Hugo 0.121.2">
 
   <!-- mobile responsive meta -->
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -130,6 +130,8 @@
             
             <a class="dropdown-item" href="/documentation/core-concept/satellite/http-api">HTTP API</a>
             
+            <a class="dropdown-item" href="/documentation/core-concept/satellite/action">Action</a>
+            
           </div>
         </li>
         
@@ -198,6 +200,20 @@
         </li>
         
         
+        
+        <li class="nav-item dropdown">
+          <span class="nav-link dropdown-toggle text-dark" href="#" role="button" data-toggle="dropdown"
+            aria-haspopup="true" aria-expanded="false">
+            Cloud
+          </span>
+          <div class="dropdown-menu">
+            
+            <a class="dropdown-item" href="/documentation/cloud/usage">Usage</a>
+            
+          </div>
+        </li>
+        
+        
       </ul>
       
     </div>
@@ -220,6 +236,8 @@
             <a class="back-btn" href="/documentation"></a>
             
               
+            
+              
               
 
 
@@ -229,10 +247,10 @@
 
 
 
-<li data-nav-id="https://php-etl.github.io/documentation/core-concept/" title="Core-concepts" class="sidelist
+<li data-nav-id="https://php-etl.github.io/documentation/core-concept/" title="Core-Concepts" class="sidelist
   ">
   <a href="https://php-etl.github.io/documentation/core-concept/">
-    Core-concepts
+    Core-Concepts
   </a>
   
   
@@ -333,6 +351,28 @@
 
 
 
+<li data-nav-id="https://php-etl.github.io/documentation/core-concept/satellite/action/" title="Action" class="sidelist
+  ">
+  <a href="https://php-etl.github.io/documentation/core-concept/satellite/action/">
+    Action
+  </a>
+  
+  
+</li>
+
+
+        
+      
+        
+          
+
+
+
+
+
+
+
+
 <li data-nav-id="https://php-etl.github.io/documentation/core-concept/satellite/http-api/" title="HTTP API" class="sidelist
   ">
   <a href="https://php-etl.github.io/documentation/core-concept/satellite/http-api/">
@@ -394,22 +434,39 @@
 <h2 id="what-is-it-">What is it ?</h2>
 <p>This package allows you to create a micro-service that will be orchestrating more than one data pipeline.</p>
 <h2 id="installation">Installation</h2>
-<pre tabindex="0"><code>composer require php-etl/workflow
-</code></pre><h2 id="basic-usage">Basic usage</h2>
-<p>To define your workflow, you need to specify the <code>jobs</code> you need, that is to say your different pipelines.
-Please see the <a href="../pipeline">Pipeline documentation</a> to know how a pipeline should be configured.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>composer require php-etl/workflow:<span style="color:#e6db74">&#39;*&#39;</span>
+</span></span></code></pre></div><h2 id="basic-usage">Basic usage</h2>
+<p>To define your workflow, you need to specify the <code>jobs</code> you need, that is to say your different <a href="../pipeline">pipelines</a> or <a href="../action">actions</a>.</p>
+<p>Each job must be identified by a code. If you forget it, you will be reminded to add it.</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#f92672">workflow</span>:
 </span></span><span style="display:flex;"><span>  <span style="color:#f92672">jobs</span>:
-</span></span><span style="display:flex;"><span>    - <span style="color:#f92672">pipeline</span>:
-</span></span><span style="display:flex;"><span>        <span style="color:#75715e"># the first pipeline configuration</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">job-1</span>: <span style="color:#75715e"># this is your job code</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">pipeline</span>:
 </span></span><span style="display:flex;"><span>        <span style="color:#75715e"># ...</span>
-</span></span><span style="display:flex;"><span>    - <span style="color:#f92672">pipeline</span>:
-</span></span><span style="display:flex;"><span>        <span style="color:#75715e"># the second pipeline configuration</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">job-2</span>:
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">pipeline</span>:
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e"># ...</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">job-3</span>:
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">action</span>:
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e"># ...</span>
+</span></span></code></pre></div><p>You can declare your codes in another way, but which we find less legible. We advise you to use the first method,
+but it&rsquo;s good to know the 2 solutions.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#f92672">workflow</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">jobs</span>:
+</span></span><span style="display:flex;"><span>    - <span style="color:#f92672">code</span>: <span style="color:#e6db74">&#39;job-1&#39;</span> <span style="color:#75715e"># this is your job code</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">pipeline</span>:
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e"># ...</span>
+</span></span><span style="display:flex;"><span>    - <span style="color:#f92672">code</span>: <span style="color:#e6db74">&#39;job-2&#39;</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">pipeline</span>:
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e"># ...</span>
+</span></span><span style="display:flex;"><span>    - <span style="color:#f92672">code</span>: <span style="color:#e6db74">&#39;job-3&#39;</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">action</span>:
 </span></span><span style="display:flex;"><span>        <span style="color:#75715e"># ...</span>
 </span></span></code></pre></div><p>The <code>name</code> option allows you to name your job.</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#f92672">workflow</span>:
 </span></span><span style="display:flex;"><span>  <span style="color:#f92672">jobs</span>:
-</span></span><span style="display:flex;"><span>    - <span style="color:#f92672">name</span>: <span style="color:#e6db74">&#39;Pipeline 1&#39;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">job-1</span>:
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">name</span>: <span style="color:#e6db74">&#39;First Pipeline&#39;</span>
 </span></span><span style="display:flex;"><span>      <span style="color:#f92672">pipeline</span>:
 </span></span><span style="display:flex;"><span>        <span style="color:#75715e"># the pipeline configuration</span>
 </span></span><span style="display:flex;"><span>        <span style="color:#75715e"># ...</span>
@@ -417,13 +474,13 @@ Please see the <a href="../pipeline">Pipeline documentation</a> to know how a pi
 <h3 id="using-expressions">Using expressions</h3>
 <p>It&rsquo;s possible to use expressions in your pipeline using the <code>expression_language</code> option. To use these expressions,
 you need to use our customised Providers which provide the different expressions. For more information, please visit
-the <a href="../../feature/expression-language">detailed documentation</a> of the language expressions.</p>
+the <a href="../../../feature/expression-language">detailed documentation</a> of the language expressions.</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#f92672">pipeline</span>:
 </span></span><span style="display:flex;"><span>  <span style="color:#f92672">expression_language</span>:
 </span></span><span style="display:flex;"><span>    - <span style="color:#e6db74">&#39;Kiboko\Component\Satellite\ExpressionLanguage\Provider&#39;</span>
 </span></span></code></pre></div><h3 id="using-services">Using services</h3>
 <p>You can use services in your pipeline in the same way as in a traditional Symfony application.</p>
-<p>For more details, go to the <a href="../../feature/logger">detailed services documentation</a>.</p>
+<p>For more details, go to the <a href="../../../feature/logger">detailed services documentation</a>.</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#f92672">pipeline</span>:
 </span></span><span style="display:flex;"><span>  <span style="color:#f92672">services</span>:
 </span></span><span style="display:flex;"><span>    <span style="color:#f92672">App\Service\Bar</span>:
@@ -459,6 +516,43 @@ the <a href="../../feature/expression-language">detailed documentation</a> of th
             
             
             
+            
+            
+
+            
+            
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
 
             
             
@@ -498,6 +592,7 @@ the <a href="../../feature/expression-language">detailed documentation</a> of th
             
             
 
+            
             
             
             
@@ -509,15 +604,30 @@ the <a href="../../feature/expression-language">detailed documentation</a> of th
             
             
             
+
+            
             
+            
 
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
             
             
             
+            
 
             
             
             
+
             
             
             
@@ -1126,22 +1236,35 @@ the <a href="../../feature/expression-language">detailed documentation</a> of th
             
             
 
+            
+            
             
             
             
             
             
             
+
+            
             
             
 
+            
+            
+            
             
             
             
+            
+            
+            
+            
+            
 
             
             
             
+
             
             
             
@@ -1155,6 +1278,9 @@ the <a href="../../feature/expression-language">detailed documentation</a> of th
             
             
 
+            
+            
+            
             
             
             
@@ -1206,7 +1332,7 @@ the <a href="../../feature/expression-language">detailed documentation</a> of th
   <div class="container">
     <div class="row align-items-center">
       <div class="col-md-8 text-md-left text-center">
-       <p class="mb-md-0 mb-4">The Gyroscops Documentation is copyright © <a href="https://gyroscops.com/">Gyroscops</a> 2020-2023.</p>
+       <p class="mb-md-0 mb-4"></p>
       </div>
       <div class="col-md-4 text-md-right text-center">
         <ul class="list-inline">

@@ -32,7 +32,7 @@ stack.
 In a Satellite project, add the JSON plugin this way:
 
 ```shell
-composer require php-etl/json-plugin
+composer require php-etl/json-plugin:'*'
 ```
 
 ## Usage

@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <title>Rejection  | Gyroscops Documentation</title>
 
-  <meta name="generator" content="Hugo 0.111.3">
+  <meta name="generator" content="Hugo 0.121.2">
 
   <!-- mobile responsive meta -->
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -130,6 +130,8 @@
             
             <a class="dropdown-item" href="/documentation/core-concept/satellite/http-api">HTTP API</a>
             
+            <a class="dropdown-item" href="/documentation/core-concept/satellite/action">Action</a>
+            
           </div>
         </li>
         
@@ -198,6 +200,20 @@
         </li>
         
         
+        
+        <li class="nav-item dropdown">
+          <span class="nav-link dropdown-toggle text-dark" href="#" role="button" data-toggle="dropdown"
+            aria-haspopup="true" aria-expanded="false">
+            Cloud
+          </span>
+          <div class="dropdown-menu">
+            
+            <a class="dropdown-item" href="/documentation/cloud/usage">Usage</a>
+            
+          </div>
+        </li>
+        
+        
       </ul>
       
     </div>
@@ -218,6 +234,8 @@
           <ul class="list-styled">
             
             <a class="back-btn" href="/documentation"></a>
+            
+              
             
               
             
@@ -457,45 +475,53 @@
 <h2 id="what-is-it-for">What is it for?</h2>
 <p>The rejection feature allows you to manage the rejections that may occur in your project.</p>
 <h2 id="installation">Installation</h2>
-<p>This plugin is already integrated into the Satellite package, so you can&rsquo;t require it with the composer.</p>
+<p>This plugin is already integrated into the Satellite package, so you can&rsquo;t require it with composer.</p>
 <h2 id="usage">Usage</h2>
 <p>When you configure your pipeline, you can add the configuration of this feature to your step configuration.</p>
 <p>First, you must use the <code>rejection</code> option.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#f92672">rejection</span>:
-</span></span><span style="display:flex;"><span>  <span style="color:#75715e"># ...</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span>- <span style="color:#f92672">example_step</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">foo</span>: <span style="color:#ae81ff">bar</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">rejection</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># ...</span>
 </span></span></code></pre></div><h3 id="with-rabbitmq">With RabbitMQ</h3>
-<p>This feature supports sending to RabbitMQ instances.</p>
-<h4 id="basic-configuration">Basic configuration</h4>
-<p>To enable a connection to your RabbitMQ application, you need at least 3 options which are <code>host</code>, <code>vhost</code> and <code>topic</code>.</p>
+<p>This feature supports sending to RabbitMQ instances. For this feature to work you will need to install <a href="https://packagist.org/packages/bunny/bunny"><code>bunny/bunny</code></a>:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>composer require bunny/bunny
+</span></span></code></pre></div><h4 id="basic-configuration">Basic configuration</h4>
+<p>To enable a connection to your RabbitMQ application, you need at least 4 options which are <code>host</code>, <code>vhost</code>, <code>topic</code> and <code>port</code>.</p>
 <ul>
 <li><code>host</code>: the name of your host name</li>
 <li><code>vhost</code>: the virtual host of your RabbitMQ instance</li>
 <li><code>topic</code>: the name of the queue to which the rejects will be sent</li>
+<li><code>port</code>: the port that your RabbitMQ application uses</li>
 </ul>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#f92672">rejection</span>:
-</span></span><span style="display:flex;"><span>  <span style="color:#f92672">destinations</span>:
-</span></span><span style="display:flex;"><span>    - <span style="color:#f92672">rabbitmq</span>:
-</span></span><span style="display:flex;"><span>        <span style="color:#f92672">host</span>: <span style="color:#ae81ff">rabbitmq.example.com</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#f92672">vhost</span>: <span style="color:#ae81ff">/</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#f92672">topic</span>: <span style="color:#ae81ff">foo.rejects</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span>- <span style="color:#f92672">example_step</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># ...</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">rejection</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">destinations</span>:
+</span></span><span style="display:flex;"><span>      - <span style="color:#f92672">rabbitmq</span>:
+</span></span><span style="display:flex;"><span>          <span style="color:#f92672">host</span>: <span style="color:#ae81ff">rabbitmq.example.com</span>
+</span></span><span style="display:flex;"><span>          <span style="color:#f92672">vhost</span>: <span style="color:#ae81ff">/</span>
+</span></span><span style="display:flex;"><span>          <span style="color:#f92672">topic</span>: <span style="color:#ae81ff">foo.rejects</span>
+</span></span><span style="display:flex;"><span>          <span style="color:#f92672">port</span>: <span style="color:#ae81ff">5672</span>
 </span></span></code></pre></div><h4 id="additional-options">Additional options</h4>
 <p>This feature additionally takes some options that can be used when configuring to your instance.</p>
 <ul>
 <li><code>user</code>: the username of your user</li>
 <li><code>password</code>: the password of your user</li>
-<li><code>port</code>: the port that your RabbitMQ application uses</li>
 <li><code>exchange</code>: the name of the exchange to be used</li>
 </ul>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#f92672">rejection</span>:
-</span></span><span style="display:flex;"><span>  <span style="color:#f92672">destinations</span>:
-</span></span><span style="display:flex;"><span>    - <span style="color:#f92672">rabbitmq</span>:
-</span></span><span style="display:flex;"><span>        <span style="color:#f92672">host</span>: <span style="color:#ae81ff">rabbitmq.example.com</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#f92672">port</span>: <span style="color:#ae81ff">5672</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#f92672">user</span>: <span style="color:#e6db74">&#39;guest&#39;</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#f92672">password</span>: <span style="color:#e6db74">&#39;guest&#39;</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#f92672">vhost</span>: <span style="color:#ae81ff">/</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#f92672">topic</span>: <span style="color:#ae81ff">foo.rejects</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#f92672">exchange</span>: <span style="color:#e6db74">&#39;amq.direct&#39;</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span>- <span style="color:#f92672">example_step</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># ...</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">rejection</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">destinations</span>:
+</span></span><span style="display:flex;"><span>      - <span style="color:#f92672">rabbitmq</span>:
+</span></span><span style="display:flex;"><span>          <span style="color:#f92672">host</span>: <span style="color:#ae81ff">rabbitmq.example.com</span>
+</span></span><span style="display:flex;"><span>          <span style="color:#f92672">vhost</span>: <span style="color:#ae81ff">/</span>
+</span></span><span style="display:flex;"><span>          <span style="color:#f92672">topic</span>: <span style="color:#ae81ff">foo.rejects</span>
+</span></span><span style="display:flex;"><span>          <span style="color:#f92672">port</span>: <span style="color:#ae81ff">5672</span>
+</span></span><span style="display:flex;"><span>          <span style="color:#f92672">user</span>: <span style="color:#e6db74">&#39;guest&#39;</span>
+</span></span><span style="display:flex;"><span>          <span style="color:#f92672">password</span>: <span style="color:#e6db74">&#39;guest&#39;</span>
+</span></span><span style="display:flex;"><span>          <span style="color:#f92672">exchange</span>: <span style="color:#e6db74">&#39;amq.direct&#39;</span>
 </span></span></code></pre></div></div>
           
           <p class="post-meta border-bottom pb-3 mb-0 mt-3">Updated on 12 Oct 2021</p>
@@ -547,9 +573,58 @@
             
             
             
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
             
             
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
 
+            
+            
             
             
             
@@ -558,6 +633,7 @@
             
             
             
+            
 
             
             
@@ -1195,22 +1271,35 @@
             
             
 
+            
+            
+            
             
             
             
             
             
+
             
             
             
 
+            
+            
+            
             
             
             
+            
+            
+            
+            
+            
 
             
             
             
+
             
             
             
@@ -1224,6 +1313,9 @@
             
             
 
+            
+            
+            
             
             
             
@@ -1275,7 +1367,7 @@
   <div class="container">
     <div class="row align-items-center">
       <div class="col-md-8 text-md-left text-center">
-       <p class="mb-md-0 mb-4">The Gyroscops Documentation is copyright © <a href="https://gyroscops.com/">Gyroscops</a> 2020-2023.</p>
+       <p class="mb-md-0 mb-4"></p>
       </div>
       <div class="col-md-4 text-md-right text-center">
         <ul class="list-inline">

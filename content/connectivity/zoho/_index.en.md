@@ -21,7 +21,7 @@ This package includes classes to load data into Zoho CRM, using a [custom connec
 ## Installation
 
 ```shell
-composer require "php-etl/zoho-crm-flow:*"
+composer require php-etl/zoho-crm-flow:'*'
 ```
 
 ## Usage

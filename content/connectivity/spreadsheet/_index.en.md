@@ -35,7 +35,7 @@ The Spreadsheet plugin aims at integrating spreadsheet file formats (XLSX, ODS a
 In a Satellite project, add the spreadsheet plugin this way:
 
 ```shell
-composer require php-etl/spreadsheet-plugin
+composer require php-etl/spreadsheet-plugin:'*'
 ```
 
 ## Usage

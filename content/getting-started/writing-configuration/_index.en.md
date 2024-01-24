@@ -48,4 +48,4 @@ Find the different versions of our plugins [here](https://packagist.org/?query=p
 
 > In a configuration file, paths start at the folder specified under `filesystem.path`. Here for example, the result will be `src/build/output.csv`.
 
-For more information on how to write your configuration, please read [satellites](../satellite).
+For more information on how to write your configuration, please read [satellites](../../core-concept/satellite).

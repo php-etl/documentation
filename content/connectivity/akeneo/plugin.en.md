@@ -33,7 +33,7 @@ and the [Akeneo Community Edition client](https://github.com/akeneo/api-php-clie
 ## Installation
 
 ```shell
-composer require php-etl/akeneo-plugin
+composer require php-etl/akeneo-plugin:'*'
 ```
 
 ## Usage

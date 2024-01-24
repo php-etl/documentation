@@ -7,6 +7,14 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>The Gyroscops Documentation is copyright © [Gyroscops](https://gyroscops.com/) 2020-2023.</copyright>
-    <lastBuildDate>Sun, 12 Jul 2020 15:21:02 +0200</lastBuildDate><atom:link href="https://php-etl.github.io/documentation/core-concept/satellite/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 12 Jul 2020 15:21:02 +0200</lastBuildDate>
+    <atom:link href="https://php-etl.github.io/documentation/core-concept/satellite/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Action</title>
+      <link>https://php-etl.github.io/documentation/core-concept/satellite/action/</link>
+      <pubDate>Thu, 06 Jul 2023 15:06:20 +0200</pubDate>
+      <guid>https://php-etl.github.io/documentation/core-concept/satellite/action/</guid>
+      <description>FEATURE STATE: Gyroscops 0.1 [alpha] What is it for? Installation Basic Usage Advanced Usage Using expressions Adding logger Adding state An action is a process that enables a task to be carried out before, during or at the end of the execution of a workflow. For example, an action can be used to retrieve or upload files to an SFTP server.&#xA;What is it for? This package provides a process capable of executing actions.</description>
+    </item>
   </channel>
 </rss>

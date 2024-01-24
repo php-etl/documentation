@@ -19,7 +19,6 @@ weight: 1
 - [Configuration formats](#configuration-formats)
 - Building
   - [Building locally](#build-your-satellite-locally)
-  - [Building through Gyroscops Cloud](#send-your-satellite-to-gyroscops-cloud)
 - [Migration from version 0.2 and earlier](#migration-from-version-02-and-earlier)
 - [Importing external files](#importing-external-configuration-files)
 
@@ -93,6 +92,44 @@ satellites:
     label: 'My first Satellite'
     filesystem:
       path: ../build # path to the build directory, relative to the YAML file
+#...
+```
+
+#### Add custom code without a Composer package
+
+Sometimes you need to use a custom class but you can't add a composer package, or creating this package is a disproportional effort. In this cas you have the `copy` options under the adapter.
+
+Supported by [Docker](#using-docker-) and [Filesystem](#using-the-file-system) adapters.
+
+The build will copy files you list. If you use a class with a namespace, you will need to add the namespace to the [autoloading](#autoload) specification.
+
+```yaml
+version: '0.3'
+satellites:
+  my_satellite:
+    label: 'My first Satellite'
+    filesystem:
+      copy:
+        - from: '../Foo/Bar'
+          to: '../build/Foo/Bar'
+      path: ../build # path to the build directory, relative to the YAML file
+#...
+```
+
+```yaml
+version: '0.3'
+satellites:
+  my_satellite:
+    label: 'My first Satellite'
+    docker:
+      from: php:8.0-cli-alpine
+      workdir: /var/www/html
+      tags:
+        - acmeinc/my-satellite:latest
+        - acmeinc/my-satellite:1.0.0
+      copy:
+        - from: '../Foo/Bar'
+          to: './src/Foo/Bar'
 #...
 ```
 
@@ -375,28 +412,6 @@ If you are using Docker, you can do it with the following command: `docker run -
 If you selected the [Filesystem variant](#using-the-file-system), you can now execute this Satellite with the `run:*` commands provided:
 * For a Pipeline: `bin/satellite run:pipeline build/`
 * For a Workflow: `bin/satellite run:workflow build/`
-
-### Send your satellite to Gyroscops Cloud
-
-If you are using Gyroscops Cloud, you can push your satellite configuration to the service.
-
-You will need to authenticate to the service before sending your satellites.
-
-```shell
-bin/cloud login johndoe@example.com # authenticate as johndoe@example.com 
-```
-
-> The service may ask you to select your organization and your workspace.
-
-```shell
-# Either use the satellite.yaml file in the current working directory
-php bin/cloud create
-
-# or specify the path to the yaml file
-php bin/cloud create path/to/satellite.yaml
-```
-
-Once done, you will be able to control your satellite execution through the Gyroscops Cloud interface.
 
 ## Migration from version 0.2 and earlier
 

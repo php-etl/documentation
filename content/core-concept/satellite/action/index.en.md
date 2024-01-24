@@ -27,7 +27,7 @@ This package provides a process capable of executing actions.
 ## Installation
 
 ```shell
-composer require php-etl/action
+composer require php-etl/action:'*'
 ```
 
 ## Basic usage
@@ -37,7 +37,8 @@ At present, actions can only be used within a workflow. It is therefore not curr
 ```yaml
 workflow:
   jobs:
-    - action: # ...
+    job-1:
+      action: # ...
 ```
 
 We've made sure that you can use your own actions.
@@ -58,18 +59,20 @@ final readonly class MyCustomAction implements ActionInterface
 }
 ```
 
-Once you've written your action, you need to use it in your Satellite using the custom action plugin like this :
+Once you've written your action, you need to use it in your Satellite using the custom action plugin like this.
 
 ```yaml
 workflow:
   jobs:
-    - action:
+    job-1:
+      action:
         custom:
           use: 'App\MyCustomAction'
           services:
-            App\MyCustomAction:
-              public: true
+            App\MyCustomAction: ~
 ```
+
+To find out more about how to use services, visit [declaring services](../../../feature/services).
 
 ## Advanced usage
 
@@ -96,7 +99,8 @@ satellite:
   # ...
   workflow:
     jobs:
-      - action:
+      job-1:
+        action:
         # ...
         logger:
           channel: pipeline
@@ -118,7 +122,8 @@ satellite:
 # ...
    workflow:
     jobs:
-      - action:
+      job-1:
+        action:
         # ...
         state:
           destinations:

@@ -44,5 +44,5 @@ In the auto-generated `composer.json` file, add the following lines at the end :
 Now, your environment is ready for the satellite compiler installation. The following command will install it.
 
 ```shell
-composer require php-etl/satellite
+composer require php-etl/satellite:'*'
 ```

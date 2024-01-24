@@ -70,7 +70,7 @@ satellites:
                     file_path: 'output.csv'
 ```
 
-After [building](../../getting-started/compilation) the satellite, start a server in the path `build/`:
+After [building](../../../getting-started/compilation) the satellite, start a server in the path `build/`:
 
 ```bash
 bin/satellite run:api build/
