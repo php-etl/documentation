@@ -35,12 +35,12 @@ The package includes the following extractor classes: `CustomerExtractor`, `Invo
 
 Extractor classes take 4 arguments:
 
-| name          | description                                                                                      | type                     | default value |
-|---------------|--------------------------------------------------------------------------------------------------|--------------------------|---------------|
-| logger        | the service that will log exceptions                                                             | \Psr\Log\LoggerInterface |               |
-| client        | client to choose depending on the Magento version. Available clients are: V2_1, V2_2, V2_3, V2_4 | Client                   |               |
-| page size     | (Optional) maximum amount of entities to retrieve in a single payload                            | int                      | 100           |
-| filter groups | (Optional) groups of filters to use when searching for entities                                  | array                    | []            |
+| name             | description                                                                                          | type                     | default value |
+|------------------|------------------------------------------------------------------------------------------------------|--------------------------|---------------|
+| logger           | the service that will log exceptions                                                                 | \Psr\Log\LoggerInterface |               |
+| client           | client to choose depending on the Magento version. Available clients are: V2_1, V2_2, V2_3, V2_4     | Client                   |               |
+| query parameters | query parameters sent to the api which contains groups of filters to use when searching for entities | array                    | []            |
+| page size        | (Optional) maximum amount of entities to retrieve in a single payload                                | int                      | 100           |
 
 ```yaml
 custom:
@@ -52,8 +52,8 @@ custom:
         arguments:
           - '@Monolog\Logger' # Logger
           - '@Kiboko\Magento\V2_1\Client' # Client
+          - [] # QueryParameters, contains filters
           - 500 # Page size
-          - [] # Filter groups
 
       Kiboko\Magento\V2_1\Client:
         factory:
@@ -89,7 +89,7 @@ custom:
           - 300 # Log level. 300 for Warning, 200 for Info...
 ```
 
-#### With filters
+#### With ScalarFilters
 Filters and filter groups can be specified.
 Filters in a group are chained with `OR`. Groups are chained with `AND`.
 
@@ -101,18 +101,22 @@ In this example we will search for customers that were updated after 1985 (`@dat
         arguments:
           - '@Monolog\Logger'
           - '@Kiboko\Magento\V2_1\Client'
+          - '@query_parameters'
           - 500
-          - [ '@date_filter_group', '@id_filter_group' ]
-          # updated_at >= 1985-10-26 11:25:00 AND (entity_id = 17 OR entity_id = 46)
 
 # ...
 
+      query_parameters:
+        class: Kiboko\Component\Flow\Magento2\QueryParameters
+        calls:
+          - withGroups: [ '@id_filter_group', '@date_filter_group' ]
+          # updated_at >= 1985-10-26 11:25:00 AND (entity_id = 17 OR entity_id = 46)
       date_filter_group:
         class: Kiboko\Component\Flow\Magento2\FilterGroup
         calls:
           - withFilter: [ '@last_execution' ]
       last_execution:
-        class: Kiboko\Component\Flow\Magento2\Filter
+        class: Kiboko\Component\Flow\Magento2\Filter\ScalarFilter
         arguments:
           - 'updated_at'
           - 'gteq'
@@ -123,13 +127,13 @@ In this example we will search for customers that were updated after 1985 (`@dat
         calls:
           - withFilter: [ '@id_to_check', '@other_id' ]
       id_to_check:
-        class: Kiboko\Component\Flow\Magento2\Filter
+        class: Kiboko\Component\Flow\Magento2\Filter\ScalarFilter
         arguments:
           - 'entity_id'
           - 'eq'
           - '17'   
       other_id:
-        class: Kiboko\Component\Flow\Magento2\Filter
+        class: Kiboko\Component\Flow\Magento2\Filter\ScalarFilter
         arguments:
           - 'entity_id'
           - 'eq'
@@ -137,34 +141,35 @@ In this example we will search for customers that were updated after 1985 (`@dat
 # ...
 ```
 
-#### With long filter
+#### With ArrayFilter
 Filters are passed to the url.
 But the most popular web browsers will not work with URLs over 2000 characters, and would return a 414 (Request-URI Too Long).
-You can use the method `withLongFilter` to avoid this limitation and batch your request in multiple smaller requests.
+You can use the class `ArrayFilter` to avoid this limitation and batch your request in multiple smaller requests.
 
 In this example we will search for specific orders with a lot of elements in the request's filter.
-We have 214 increment_id, and we use a `withLongFilter` with parameters: 
- - `@order_increment_id` references our order's filter.
- - `offset`, starts the request at the chosen index, by default we have 0.
- - `length`, defines a batch length, by default we have 200.
+We have 214 increment_id, and we use the `ArrayFilter` with parameters: 
+ - `increment_id`: name of the field to filter.
+ - `in` operator to the filter, you need the 'in' operator to use the ArrayFilter.
+ - `000000526,4000000026,00000918,000001754,6000000123,4000000150,6000000185,000003798,6000000211,[..],5000000445` defines the target values.
+ - `150` defines the lenght of your smaller request (by default set to 200).
 
-Here we have set an offset to 0 and a length to 150, it means we are starting the request from the first element and make multiple requests with 150 items max.
 ```yaml
 # ...
-      order_filter_group:
-        class: Kiboko\Component\Flow\Magento2\FilterGroup
+      query_parameters:
+        class: Kiboko\Component\Flow\Magento2\QueryParameters
         calls:
-          - withLongFilter: [ '@order_filter' ]
+          - withGroup: [ '@order_filter' ]
       order_filter:
       class: Kiboko\Component\Flow\Magento2\FilterGroup
       calls:
-        - withLongFilter: ['@order_increment_id', 0, 150]
+        - withFilter: ['@order_increment_id']
       order_increment_id:
-        class: Kiboko\Component\Flow\Magento2\Filter
+        class: Kiboko\Component\Flow\Magento2\Filter\ArrayFilter
         arguments:
           - 'increment_id'
           - 'in'
           - '000000526,4000000026,00000918,000001754,6000000123,4000000150,6000000185,000003798,6000000211,[..],5000000445'
+          - 150 
 # ...
 ```
 
