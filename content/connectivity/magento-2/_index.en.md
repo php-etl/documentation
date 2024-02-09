@@ -25,6 +25,10 @@ This package includes classes to extract data from Magento, using a [custom conn
 ```shell
 composer require php-etl/magento2-flow:'*'
 ```
+if you are still on satellite 0.6, use this :
+```shell
+composer require php-etl/magento2-flow:'v0.2'
+```
 
 This package includes classes and code that you will be able to use in your custom connector.
 
@@ -35,12 +39,12 @@ The package includes the following extractor classes: `CustomerExtractor`, `Invo
 
 Extractor classes take 4 arguments:
 
-| name             | description                                                                                          | type                     | default value |
-|------------------|------------------------------------------------------------------------------------------------------|--------------------------|---------------|
-| logger           | the service that will log exceptions                                                                 | \Psr\Log\LoggerInterface |               |
-| client           | client to choose depending on the Magento version. Available clients are: V2_1, V2_2, V2_3, V2_4     | Client                   |               |
-| query parameters | query parameters sent to the api which contains groups of filters to use when searching for entities | array                    | []            |
-| page size        | (Optional) maximum amount of entities to retrieve in a single payload                                | int                      | 100           |
+| name             | description                                                                                                 | type                     | default value |
+|------------------|-------------------------------------------------------------------------------------------------------------|--------------------------|---------------|
+| logger           | the service that will log exceptions                                                                        | \Psr\Log\LoggerInterface |               |
+| client           | client parameter to communicate with magento2 api. Compatibility magento2 api versions : 2.1, 2.2, 2.3, 2.4 | Client                   |               |
+| query parameters | query parameters sent to the api which contains groups of filters to use when searching for entities        | array                    | []            |
+| page size        | (Optional) maximum amount of entities to retrieve in a single payload                                       | int                      | 100           |
 
 ```yaml
 custom:
@@ -51,13 +55,13 @@ custom:
         public: true
         arguments:
           - '@Monolog\Logger' # Logger
-          - '@Kiboko\Magento\V2_1\Client' # Client
+          - '@Kiboko\Magento\Client' # Client
           - [] # QueryParameters, contains filters
           - 500 # Page size
 
-      Kiboko\Magento\V2_1\Client:
+      Kiboko\Magento\Client:
         factory:
-          class: 'Kiboko\Magento\V2_1\Client' # Client
+          class: 'Kiboko\Magento\Client' # Client
           method: 'create'
         arguments:
           - '@Http\Client\Common\PluginClient'
@@ -100,7 +104,7 @@ In this example we will search for customers that were updated after 1985 (`@dat
         public: true
         arguments:
           - '@Monolog\Logger'
-          - '@Kiboko\Magento\V2_1\Client'
+          - '@Kiboko\Magento\Client'
           - '@query_parameters'
           - 500
 
@@ -187,17 +191,15 @@ custom:
         public: true
         arguments:
           - '@Monolog\Logger'
-          - '@Kiboko\Magento\V2_3\Client' # Client to use depending on the Magento version.
-                                          # Available clients are:
-                                          # V2_1, V2_2, V2_3, V2_4
+          - '@Kiboko\Magento\Client'
           - '@Symfony\Component\Cache\Psr16Cache'
           - 'category.%s'
           - '@Acme\Custom\LookupMapper' # Your custom mapper class
           - 'category_name' # Index of the category ID, in your line.
 
-      Kiboko\Magento\V2_3\Client:
+      Kiboko\Magento\Client:
         factory:
-          class: 'Kiboko\Magento\V2_3\Client' # Client
+          class: 'Kiboko\Magento\Client' # Client
           method: 'create'
         arguments:
           - '@Http\Client\Common\PluginClient'
@@ -246,18 +248,16 @@ custom:
         public: true
         arguments:
           - '@Monolog\Logger'
-          - '@Kiboko\Magento\V2_3\Client' # Client to use depending on the Magento version.
-                                          # Available clients are:
-                                          # V2_1, V2_2, V2_3, V2_4
+          - '@Kiboko\Magento\Client'
           - '@Symfony\Component\Cache\Psr16Cache'
           - 'collection.%s' # Cache key
           - '@Acme\Custom\LookupMapper' # Your custom mapper class
           - 'Collection' # Index of the attribute ID, in your line.
           - 'qv_collection' # Attribute code
 
-      Kiboko\Magento\V2_3\Client:
+      Kiboko\Magento\Client:
         factory:
-          class: 'Kiboko\Magento\V2_3\Client' # Client
+          class: 'Kiboko\Magento\Client' # Client
           method: 'create'
         arguments:
           - '@Http\Client\Common\PluginClient'
