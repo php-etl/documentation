@@ -219,9 +219,10 @@ satellites:
 The `auth` parameter is optional and allows you to use registries that are not public and must be accessed through an authentication.
 The parameter is the way for you to tell composer how to authenticate to the registry server.
 
-Each auth can have the following configuration fields:
-- `url`: the url of your repository
-- `token`: when you use a connection via token, you must use this field
+##### HTTP Basic Authentication
+
+HTTP Basic authentication requires three elements: a `url`, a `username` and a `password`. This type of authentication sends
+this information encoded in Base64 in the HTTP request header.
 
 ```yaml
 version: '0.3'
@@ -231,10 +232,68 @@ satellites:
     # ...
     composer:
       auth:
-      - { url: 'http-basic.kiboko.repo.packagist.com', token: '0fe8828b23371406295ca2b72634c0a3df2431c4787df0173ea051a0c639' }
-``` 
+      - { type: 'http-basic', url: 'xxxx.repo.packagist.com', token: '<token>' }
+```
 
-> Notice : Currently, the only way to identify to a repository is to use tokens. Support for other authentication methods is in our backlog.
+##### HTTP Bearer Authentication
+
+HTTP Bearer authentication requires a `domain` and a `token`. This token is included in the HTTP request header to authorize access.
+
+```yaml
+version: '0.3'
+satellites:
+  my_satellite:
+    label: 'My first Satellite'
+    # ...
+    composer:
+      auth:
+      - { type: 'http-bearer', url: 'xxxx.repo.packagist.com', token: '<token>' }
+```
+
+##### GitLab OAuth
+
+GitLab OAuth authentication requires a `token`. The service url is optional; by default it is set to https://gitlab.com.
+
+```yaml
+version: '0.3'
+satellites:
+  my_satellite:
+    label: 'My first Satellite'
+    # ...
+    composer:
+      auth:
+      - { type: 'gitlab-oauth', token: '<token>' }
+```
+
+##### GitLab Token
+
+GitLab Token authentication requires a `token`. The service url is optional; by default it is set to https://gitlab.com.
+
+```yaml
+version: '0.3'
+satellites:
+  my_satellite:
+    label: 'My first Satellite'
+    # ...
+    composer:
+      auth:
+      - { type: 'gitlab-token', token: '<token>' }
+```
+
+##### GitHub OAuth
+
+GitHub OAuth authentication requires a `token`. The service url is optional; by default, it is set to https://github.com.
+
+```yaml
+version: '0.3'
+satellites:
+  my_satellite:
+    label: 'My first Satellite'
+    # ...
+    composer:
+      auth:
+      - { type: 'gitlab-token', token: '<token>' }
+```
 
 ### Setting up the runtime
 

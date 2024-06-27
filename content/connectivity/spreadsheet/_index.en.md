@@ -212,3 +212,18 @@ spreadsheet:
 
 {{< /tabs >}}
 > Note: this option is only available for loaders
+
+### Write to more than one sheet in the same file
+
+In order to be able to write to several sheets of the same file, we've added a `persistent` option to your loader.
+
+Since a loader writes to a single sheet, you need to set this option on each concerned loader.
+
+```yaml
+spreadsheet:
+  loader:
+    persistent: true
+    # ...
+```
+
+> Note: this option is only available for Excel and Open Document loaders.
