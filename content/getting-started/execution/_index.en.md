@@ -15,7 +15,7 @@ the [adapter](http://localhost:1313/documentation/core-concept/satellite#setting
 Runs the pipeline that was compiled under `src/build/`:
 
 ```shell
-php bin/satellite run:pipeline src/build/
+php bin/satellite run src/build/
 ```
 
 This command will run your satellite service located in a directory. The execution of your service may take several minutes,
